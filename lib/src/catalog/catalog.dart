@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:square_connect/src/catalog/catalog-enums.dart';
 import 'package:square_connect/src/catalog/catalog-objects.dart';
 import 'package:http/http.dart' as http;
+import 'package:square_connect/src/catalog/catalog-return-objects.dart';
 import 'package:square_connect/src/squareApiConfig.dart';
 
 var apiKey = '';
 
-Future<List<CatalogObject>> listCatalog({List<CatalogObjectType> types, String cursor}) async{
+Future<ListCatalogResponse> listCatalog({List<CatalogObjectType> types, String cursor}) async{
   var params = [
     if (cursor != null ) QueryParam('cursor', ''),
     if (types != null) QueryParam('types', types.map((type) => getCatalogObjectStringFromType(type)).join(',')),
@@ -19,4 +20,9 @@ Future<List<CatalogObject>> listCatalog({List<CatalogObjectType> types, String c
   final objects = (json.decode(response.body))['objects'] as List<dynamic>;
   final items = objects.map((item) => CatalogObject.fromJson(item)).toList();
   return items;
+}
+
+class RequestObj {
+  final String cursor;
+
 }

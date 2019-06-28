@@ -12,6 +12,27 @@ enum CatalogObjectType {
   timePeriod,
 }
 
+const catalogObjectTypeMappingStringToItem = {
+  'ITEM': CatalogObjectType.item,
+  'ITEM_VARIATION': CatalogObjectType.itemVariation,
+  'IMAGE': CatalogObjectType.image,
+  'CATEGORY': CatalogObjectType.category,
+  'TAX': CatalogObjectType.tax,
+  'DISCOUNT': CatalogObjectType.discount,
+  'MODIFIER_LIST': CatalogObjectType.modifierList,
+  'MODIFIER': CatalogObjectType.modifier,
+  'PRICING_RULE': CatalogObjectType.pricingRule,
+  'PRODUCT_SET': CatalogObjectType.productSet,
+  'TIME_PERIOD': CatalogObjectType.timePeriod,
+};
+
+String getCatalogObjectStringFromType(CatalogObjectType type) {
+  return catalogObjectTypeMappingStringToItem.keys.firstWhere(
+    (k) => catalogObjectTypeMappingStringToItem[k] == type, orElse: () {
+      throw ArgumentError.value(type, 'type', 'Input must be a valid CatalogObjectType');
+    });
+}
+
 CatalogObjectType getCatalogObjectTypeFromString(String input) {
   switch (input) {
     case 'ITEM':

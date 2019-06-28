@@ -97,3 +97,35 @@ CatalogItemProductType getCatalogItemProductTypeFromString(String input) {
       throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogItemProductType in SCREAMING_UPPERCASE');
   }
 }
+
+enum TaxCalculationPhase {
+  taxSubtotalPhase,
+  taxTotalPhase,
+}
+
+TaxCalculationPhase getTaxCalculationPhaseFromString(String input) {
+  switch (input) {
+    case 'TAX_SUBTOTAL_PHASE':
+      return TaxCalculationPhase.taxSubtotalPhase;
+    case 'TAX_TOTAL_PHASE':
+      return TaxCalculationPhase.taxTotalPhase;
+    default:
+      throw ArgumentError.value(input, 'input', 'Input must be a valid TaxCalculationPhase in SCREAMING_UPPERCASE');
+  }
+}
+
+enum TaxInclusionType {
+  additive,
+  inclusive,
+}
+
+TaxInclusionType getTaxInclusionTypeFromString(String input) {
+  switch (input) {
+    case 'ADDITIVE':
+      return TaxInclusionType.additive;
+    case 'INCLUSIVE':
+      return TaxInclusionType.inclusive;
+    default:
+      throw ArgumentError.value(input, 'input', 'Input must be a valid TaxInclusionType in SCREAMING_UPPERCASE');
+  }
+}

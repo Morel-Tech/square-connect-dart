@@ -17,7 +17,8 @@ class CatalogObject {
   final List<String> absentAtLocationIds;
   final CatalogItem itemData;
   final CatalogItemVariation itemVariationData;
-
+  final CatalogCategory categoryData;
+  final CatalogTax taxData;
 }
 
 class CatalogItem {
@@ -125,6 +126,41 @@ class CatalogItemVariation {
       serviceDuration: json['service_duration'],
       catalogMeasurementUnitId: json['catalog_measurement_unit_id'],
       measurementUnitId: json['measurement_unit_id'],
+    );
+  }
+}
+
+class CatalogCategory {
+  final String name;
+
+  CatalogCategory({this.name});
+
+  factory CatalogCategory.fromJson(Map<String, dynamic> json) {
+    return CatalogCategory(
+      name: json['name'],
+    );
+  }
+  
+}
+
+class CatalogTax {
+  final String name;
+  final TaxCalculationPhase calculationPhase;
+  final TaxInclusionType inclusionType;
+  final double percentage;
+  final bool appliesToCustomAmounts;
+  final bool enabled;
+
+  CatalogTax({this.name, this.calculationPhase, this.inclusionType, this.percentage, this.appliesToCustomAmounts, this.enabled});
+
+  factory CatalogTax.fromJson(Map<String, dynamic> json) {
+    return CatalogTax (
+      name: json['name'],
+      calculationPhase: getTaxCalculationPhaseFromString(json['calculation_phase']),
+      inclusionType: getTaxInclusionTypeFromString(json['inclusion_type']),
+      percentage: double.parse(json['percentage']),
+      appliesToCustomAmounts: json['applies_to_custom_amounts'],
+      enabled: json['enabled'],
     );
   }
 }

@@ -73,3 +73,27 @@ InventoryAlertType getInventoryAlertTypeFromString(String input) {
   }
 }
 
+enum CatalogItemProductType {
+  regular,
+  giftCard,
+  appointmentsService,
+  retailItem,
+  restaurantItem,
+}
+
+CatalogItemProductType getCatalogItemProductTypeFromString(String input) {
+  switch (input) {
+    case 'REGULAR':
+      return CatalogItemProductType.regular;
+    case 'GIFT_CARD':
+      return CatalogItemProductType.giftCard;
+    case 'APPOINTMENTS_SERVICE':
+      return CatalogItemProductType.appointmentsService;
+    case 'RETAIL_ITEM':
+      return CatalogItemProductType.retailItem;
+    case 'RESTAURANT_ITEM':
+      return CatalogItemProductType.restaurantItem;
+    default:
+      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogItemProductType in SCREAMING_UPPERCASE');
+  }
+}

@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:convert';
 
 import 'package:flutter/rendering.dart';
 
@@ -12,6 +13,10 @@ class CatalogObject {
   final int version;
   final bool isDeleted;
   final bool presentAtAllLocations;
+  final List<String> presentAtLocationIds;
+  final List<String> absentAtLocationIds;
+  final CatalogItem itemData;
+  final CatalogItemVariation itemVariationData;
 
 }
 
@@ -19,14 +24,50 @@ class CatalogItem {
   final String name;
   final String description;
   final String abbreviation;
-  final Color labelColor;
+  final String labelColor;
   final bool availableOnline;
   final bool availableForPickup;
   final bool availableElectronically;
   final String categoryId;
   final List<String> taxIds; 
+  final List<CatalogItemModifierListInfo> modifierListInfo;
+  final List<CatalogObject> variations;
+  final CatalogItemProductType productType;
+  final bool skipModifierScreen;
 
-  final List<CatalogItemModifierListInfo> modifierListInfo; // TODO
+  CatalogItem({
+    this.name,
+    this.description,
+    this.abbreviation,
+    this.labelColor,
+    this.availableOnline,
+    this.availableForPickup,
+    this.availableElectronically,
+    this.categoryId,
+    this.taxIds,
+    this.modifierListInfo,
+    this.variations,
+    this.productType,
+    this.skipModifierScreen
+  });
+
+  factory CatalogItem.fromJson(Map<String, dynamic> json) {    
+    return CatalogItem(
+      name: json['name'],
+      description: json['description'],
+      abbreviation: json['abbreviation'],
+      labelColor: json['label_color'],
+      availableOnline: json['available_online'],
+      availableForPickup: json['available_for_pickup'],
+      availableElectronically: json['available_electronically'],
+      categoryId: json['category_id'],
+      taxIds: List<String>.of(json['tax_ids']),
+      modifierListInfo: (json['modifier_list_info'] as List).map((item) => CatalogItemModifierListInfo.fromJson(item)).toList(),
+      variations: (json['variations'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+      productType: getCatalogItemProductTypeFromString(json['product_type']),
+      skipModifierScreen: json['skip_modifier_screen'],
+    );
+  }
 
 }
 
@@ -76,7 +117,7 @@ class CatalogItemVariation {
       ordinal: json['ordinal'],
       pricingType: getCatalogPricingTypeFromString(json['pricing_type']),
       priceMoney: Money.fromJson(json['price_money']),
-      locationOverrides: (json['location_overrides'] as List).map((item) => ItemVariationLocationOverride.fromJson(item)),
+      locationOverrides: (json['location_overrides'] as List).map((item) => ItemVariationLocationOverride.fromJson(item)).toList(),
       trackInventory: json['track_inventory'],
       inventoryAlertType: getInventoryAlertTypeFromString(json['inventory_alert_type']),
       inventoryAlertThreshold: json['inventory_alert_threshold'],

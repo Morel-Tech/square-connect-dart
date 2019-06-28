@@ -15,10 +15,59 @@ class CatalogObject {
   final bool presentAtAllLocations;
   final List<String> presentAtLocationIds;
   final List<String> absentAtLocationIds;
+  final String imageId;
   final CatalogItem itemData;
   final CatalogItemVariation itemVariationData;
   final CatalogCategory categoryData;
   final CatalogTax taxData;
+  final CatalogDiscount discountData;
+  final CatalogModifierList modifierListData;
+  final CatalogModifier modifierData;
+  final CatalogImage imageData;
+  final CatalogMeasurementUnit measurementUnitData;
+
+  CatalogObject({
+    this.type,
+    this.id,
+    this.updatedAt,
+    this.version,
+    this.isDeleted,
+    this.presentAtAllLocations,
+    this.presentAtLocationIds,
+    this.absentAtLocationIds,
+    this.imageId,
+    this.itemData,
+    this.itemVariationData,
+    this.categoryData,
+    this.taxData,
+    this.discountData,
+    this.modifierListData,
+    this.modifierData,
+    this.imageData,
+    this.measurementUnitData
+  });
+
+  factory CatalogObject.fromJson(Map<String, dynamic> json) {
+    return CatalogObject (
+      type: getCatalogObjectTypeFromString(json['type']),
+      id: json['id'],
+      updatedAt: DateTime.parse(json['updated_at']),
+      version: json['version'],
+      isDeleted: json['is_deleted'],
+      presentAtAllLocations: json['present_at_all_locations'],
+      presentAtLocationIds: List<String>.from(json['present_at_location_ids']),
+      absentAtLocationIds: List<String>.from(json['absent_at_location_ids']),
+      imageId: json['image_id'],
+      itemData: CatalogItem.fromJson(json['item_data']),
+      categoryData: CatalogCategory.fromJson(json['category_data']),
+      itemVariationData: CatalogItemVariation.fromJson(json['item_variation_data']),
+      taxData: CatalogTax.fromJson(json['tax_data']),
+      discountData: CatalogDiscount.fromJson(json['discount_data']),
+      modifierListData: CatalogModifierList.fromJson(json['modifier_list_data']),
+      modifierData: CatalogModifier.fromJson(json['modifier_data']),
+      imageData: CatalogImage.fromJson(json['image_data']),
+    );
+  }
 }
 
 class CatalogItem {
@@ -163,6 +212,89 @@ class CatalogTax {
       enabled: json['enabled'],
     );
   }
+}
+
+class CatalogDiscount {
+  final String name;
+  final CatalogDiscountType discountType;
+  final double percentage;
+  final Money amountMoney;
+  final bool pinRequired;
+  final String labelColor;
+
+  CatalogDiscount({
+    this.name,
+    this.discountType,
+    this.percentage,
+    this.amountMoney,
+    this.pinRequired,
+    this.labelColor
+  });
+
+  factory CatalogDiscount.fromJson(Map<String, dynamic> json) {
+    return CatalogDiscount (
+      name: json['name'],
+      discountType: getCatalogDiscountTypeFromString(json['discount_type']),
+      percentage: double.parse('percentage'),
+      amountMoney: Money.fromJson(json['amount_money']),
+      pinRequired: json['pin_required'],
+      labelColor: json['label_color'],
+    );
+  }
+}
+
+class CatalogModifierList {
+  final String name;
+  final CatalogModifierListSelectionType selectionType;
+  final List<CatalogObject> modifiers;
+
+  CatalogModifierList({this.name, this.selectionType, this.modifiers});
+
+  factory CatalogModifierList.fromJson(Map<String, dynamic> json) {
+    return CatalogModifierList (
+      name: json['name'],
+      selectionType: getCatalogModifierListSelectionTypeFromString(json['selection_type']),
+      modifiers: (json['modifiers'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+    );
+  }
+}
+
+class CatalogModifier {
+  final String name;
+  final Money priceMoney;
+
+  CatalogModifier({this.name, this.priceMoney});
+
+  factory CatalogModifier.fromJson(Map<String, dynamic> json) {
+    return CatalogModifier (
+      name: json['name'],
+      priceMoney: Money.fromJson(json['price_money']),
+    );
+  }
+}
+
+class CatalogImage {
+  final String name;
+  final String url;
+  final String caption;
+
+  CatalogImage({this.name, this.url, this.caption});
+
+  factory CatalogImage.fromJson(Map<String, dynamic> json) {
+    return CatalogImage (
+      name: json['name'],
+      url: json['url'],
+      caption: json['caption']
+    );
+  }
+}
+
+class CatalogMeasurementUnit {
+
+}
+
+class MeasurementUnit {
+
 }
 
 class ItemVariationLocationOverride {

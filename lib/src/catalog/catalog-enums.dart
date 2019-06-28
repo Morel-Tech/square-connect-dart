@@ -129,3 +129,41 @@ TaxInclusionType getTaxInclusionTypeFromString(String input) {
       throw ArgumentError.value(input, 'input', 'Input must be a valid TaxInclusionType in SCREAMING_UPPERCASE');
   }
 }
+
+enum CatalogDiscountType {
+  fixedPercentage,
+  fixedAmount,
+  variablePercentage,
+  variableAmount,
+}
+
+CatalogDiscountType getCatalogDiscountTypeFromString(String input) {
+  switch (input) {
+    case 'FIXED_PERCENTAGE':
+      return CatalogDiscountType.fixedPercentage;
+    case 'FIXED_AMOUNT':
+      return CatalogDiscountType.fixedAmount;
+    case 'VARIABLE_PERCENTAGE':
+      return CatalogDiscountType.variablePercentage;
+    case 'VARIABLE_AMOUNT':
+      return CatalogDiscountType.variableAmount;
+    default:
+      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogDiscountType in SCREAMING_UPPERCASE');
+  }
+}
+
+enum CatalogModifierListSelectionType {
+  single,
+  multiple,
+}
+
+CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(String input) {
+  switch (input) {
+    case 'SINGLE':
+      return CatalogModifierListSelectionType.single;
+    case 'MULTIPLE':
+      return CatalogModifierListSelectionType.multiple;
+    default:
+      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogModifierListSelectionType in SCREAMING_UPPERCASE');
+  }
+}

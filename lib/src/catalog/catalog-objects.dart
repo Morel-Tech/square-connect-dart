@@ -354,3 +354,15 @@ class CatalogModifierOverride {
     );
   }
 }
+
+class CatalogObjectBatch {
+  final List<CatalogObject> objects;
+
+  CatalogObjectBatch({this.objects});
+
+  factory CatalogObjectBatch.fromJson(Map<String, dynamic> json) {
+    return CatalogObjectBatch (
+      objects: (json['objects'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+    );
+  }
+}

@@ -16,3 +16,91 @@ class ListCatalogResponse {
     );
   }
 }
+class RetrieveCatalogObjectResponse {
+  final List<SquareError> errors;
+  final CatalogObject object;
+  final List<CatalogObject> relatedObjects;
+
+  RetrieveCatalogObjectResponse({this.errors, this.object, this.relatedObjects});
+
+  factory RetrieveCatalogObjectResponse.fromJson(Map<String, dynamic> json) {
+    return RetrieveCatalogObjectResponse(
+      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      object: CatalogObject.fromJson(json['object']),
+      relatedObjects: (json['related_objects'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+    );
+  }
+}
+
+class DeleteCatalogObjectResponse {
+  final List<SquareError> errors;
+  final List<String> deletedObjectIds;
+  final DateTime deletedAt;
+
+  DeleteCatalogObjectResponse({this.errors, this.deletedObjectIds, this.deletedAt});
+
+  factory DeleteCatalogObjectResponse.fromJson(Map<String, dynamic> json) {
+    return DeleteCatalogObjectResponse(
+      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      deletedAt: DateTime.parse(json['deleted_at']),
+      deletedObjectIds: List<String>.of(json['deleted_object_ids']),
+    );
+  }
+}
+
+class BatchDeleteCatalogObjectsResponse {
+  final List<SquareError> errors;
+  final List<String> deletedObjectIds;
+  final DateTime deletedAt;
+
+  BatchDeleteCatalogObjectsResponse({this.errors, this.deletedObjectIds, this.deletedAt});
+
+  factory BatchDeleteCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
+    return BatchDeleteCatalogObjectsResponse(
+      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      deletedAt: DateTime.parse(json['deleted_at']),
+      deletedObjectIds: List<String>.of(json['deleted_object_ids']),
+    );
+  }
+}
+
+class BatchRetrieveCatalogObjectsResponse {
+  final List<SquareError> errors;
+  final List<CatalogObject> objects;
+  final List<CatalogObject> relatedObjects;
+
+  BatchRetrieveCatalogObjectsResponse({this.errors, this.objects, this.relatedObjects});
+
+  factory BatchRetrieveCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
+    return BatchRetrieveCatalogObjectsResponse(
+      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      objects: (json['objects'] as List).map((item) => CatalogObject.fromJson(item)),
+      relatedObjects: (json['related_objects'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+    );
+  }
+}
+
+class BatchUpsertCatalogObjectsResponse {
+  final List<SquareError> errors;
+  final List<CatalogObject> objects;
+  final DateTime updatedAt;
+  final Map<String, String> idMappings;
+
+  BatchUpsertCatalogObjectsResponse({this.errors, this.objects, this.updatedAt, this.idMappings});
+
+  factory BatchUpsertCatalogObjectsResponse.fromJson(Map<String, dynamic> json ) {
+    var mappingsMap = Map<String, String>();
+    (json['id_mappings'] as List).forEach((item) {
+      mappingsMap[item['client_object_id']] = item['object_id'];
+    });
+
+    return BatchUpsertCatalogObjectsResponse(
+      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      objects: (json['objects'] as List).map((item) => CatalogObject.fromJson(item)),
+      updatedAt: DateTime.parse(json['updated_at']),
+      idMappings: mappingsMap,
+    );
+  }
+
+  
+}

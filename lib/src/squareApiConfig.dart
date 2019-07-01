@@ -30,10 +30,10 @@ class RequestObj {
   final List<QueryParam> queryParams;
   final RequestMethod method;
   final Map<String, dynamic> body;
-
+  final http.Client client;
   final _baseUrl = 'https://connect.squareup.com';
 
-  RequestObj({this.token, this.cursor, this.path, this.queryParams, this.method, this.body}): assert(method != null);
+  RequestObj({this.token, this.cursor, this.path, this.queryParams, this.method, this.body, this.client = http.IOClient}): assert(method != null);
 
   get url {
     if (this.cursor == null ) return _baseUrl + path + getParamListString(queryParams);
@@ -47,13 +47,13 @@ class RequestObj {
   Future<dynamic> makeCall() async{
     switch (this.method) {
       case RequestMethod.get:
-        return http.get(this.url, headers: this.headers);
+        return client.get(this.url, headers: this.headers);
       case RequestMethod.post:
-        return http.post(this.url, headers: this.headers, body: json.encode(this.body));
+        return client.post(this.url, headers: this.headers, body: json.encode(this.body));
       case RequestMethod.delete:
-        return http.delete(url, headers: this.headers);
+        return client.delete(url, headers: this.headers);
       case RequestMethod.put:
-        return http.put(this.url, headers: this.headers, body: json.encode(this.body));
+        return client.put(this.url, headers: this.headers, body: json.encode(this.body));
     }
   }
 }

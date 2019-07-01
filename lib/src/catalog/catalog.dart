@@ -4,6 +4,8 @@ import 'package:square_connect/src/catalog/catalog-enums.dart';
 import 'package:square_connect/src/catalog/catalog-objects.dart';
 import 'package:square_connect/src/catalog/catalog-return-objects.dart';
 import 'package:square_connect/src/squareApiConfig.dart';
+import 'package:http/http.dart' as http;
+
 
 class CatalogApi {
 
@@ -29,13 +31,14 @@ Future<ListCatalogResponse> listCatalog({List<CatalogObjectType> types, String c
   return (json.decode(response.body)) as ListCatalogResponse;
 }
 
-Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({String objectId, bool includeRelatedObjects}) async{
+Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({String objectId, bool includeRelatedObjects, http.Client client = http.IOClient()}) async{
   if(objectId == null) throw ArgumentError('objectId must not be null');
   var obj = RequestObj(
     path: '/v2/catalog/object/$objectId',
     token: token,
     method: RequestMethod.get,
-    queryParams: [QueryParam('include_related_objects', includeRelatedObjects.toString())]
+    queryParams: [QueryParam('include_related_objects', includeRelatedObjects.toString())],
+    client: client;
   );
   var response = await obj.makeCall();
   return(json.decode(response.body)) as RetrieveCatalogObjectResponse;

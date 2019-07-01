@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 
 class QueryParam {
@@ -19,7 +19,7 @@ class QueryParam {
 }
 
 String getParamListString(List<QueryParam> list) {
-  if (list.length == 0 || list == null) return '';
+  if (list == null || list.length == 0) return '';
   return '?${list.map((param) => param.toString()).join('&')}';
 }
 
@@ -30,10 +30,10 @@ class RequestObj {
   final List<QueryParam> queryParams;
   final RequestMethod method;
   final Map<String, dynamic> body;
-  final http.Client client;
+  final Client client;
   final _baseUrl = 'https://connect.squareup.com';
 
-  RequestObj({this.token, this.cursor, this.path, this.queryParams, this.method, this.body, this.client = http.IOClient}): assert(method != null);
+  RequestObj({this.token, this.cursor, this.path, this.queryParams, this.method, this.body, this.client}): assert(method != null), assert(client != null);
 
   get url {
     if (this.cursor == null ) return _baseUrl + path + getParamListString(queryParams);
@@ -47,6 +47,8 @@ class RequestObj {
   Future<dynamic> makeCall() async{
     switch (this.method) {
       case RequestMethod.get:
+        print(this.url,);
+        print(this.headers);
         return client.get(this.url, headers: this.headers);
       case RequestMethod.post:
         return client.post(this.url, headers: this.headers, body: json.encode(this.body));

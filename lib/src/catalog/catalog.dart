@@ -1,17 +1,20 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart';
 import 'package:square_connect/src/catalog/catalog-enums.dart';
-import 'package:square_connect/src/catalog/catalog-objects.dart';
 import 'package:square_connect/src/catalog/catalog-return-objects.dart';
 import 'package:square_connect/src/squareApiConfig.dart';
-import 'package:http/http.dart' as http;
 
 
 class CatalogApi {
 
   final String token;
+  final Client client;
 
-  CatalogApi({this. token});
+  CatalogApi({this. token, this.client}):
+  assert(token != null),
+  assert(client != null);
 
   
 /// Lists all catalog objects. Takes optional [cursor] for pagination, and a list of [CatalogObjectType] to filter types of objects
@@ -24,24 +27,28 @@ Future<ListCatalogResponse> listCatalog({List<CatalogObjectType> types, String c
     token: token,
     path: '/v2/catalog/list',
     queryParams: params,
-    method: RequestMethod.get
+    method: RequestMethod.get,
+    client: client, 
   );
 
   var response = await obj.makeCall();
   return (json.decode(response.body)) as ListCatalogResponse;
 }
 
-Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({String objectId, bool includeRelatedObjects, http.Client client = http.IOClient()}) async{
-  if(objectId == null) throw ArgumentError('objectId must not be null');
+Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({@required String objectId, bool includeRelatedObjects}) async{
+  if(objectId == null) {
+    print('objectId: $objectId');
+    return throw ArgumentError('objectId must not be null');
+  }
   var obj = RequestObj(
     path: '/v2/catalog/object/$objectId',
     token: token,
     method: RequestMethod.get,
-    queryParams: [QueryParam('include_related_objects', includeRelatedObjects.toString())],
-    client: client;
+    queryParams: includeRelatedObjects != null ? [QueryParam('include_related_objects', includeRelatedObjects.toString())] : null,
+    client: client,
   );
   var response = await obj.makeCall();
-  return(json.decode(response.body)) as RetrieveCatalogObjectResponse;
+  return RetrieveCatalogObjectResponse.fromJson((json.decode(response.body)));
 }
 
 Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async{
@@ -50,6 +57,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
     path: '/v2/catalog/object/$objectId',
     token: token,
     method: RequestMethod.delete,
+    client: client, 
   );
   var response = await obj.makeCall();
   return(json.decode(response.body)) as DeleteCatalogObjectResponse;
@@ -61,7 +69,8 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
       path: '/v2/catalog/batch-delete',
       token: token,
       method: RequestMethod.post,
-      body: {'object_ids': objectIds}
+      body: {'object_ids': objectIds},
+    client: client, 
     );
     var response = await obj.makeCall();
     return(json.decode(response.body)) as BatchDeleteCatalogObjectsResponse;
@@ -80,6 +89,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
     token: token,
     method: RequestMethod.post,
     body: body,
+    client: client, 
   );
   var response = await obj.makeCall();
   return(json.decode(response.body)) as BatchRetrieveCatalogObjectsResponse;
@@ -93,7 +103,8 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
       path: '/v2/catalog/batch-upsert',
       token: token,
       method: RequestMethod.post,
-      body: body,
+      //body: body,
+      client: client, 
     );
     var response = await obj.makeCall();
     return(json.decode(response.body)) as BatchUpsertCatalogObjectsResponse;

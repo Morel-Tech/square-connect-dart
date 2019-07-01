@@ -55,17 +55,17 @@ class CatalogObject {
       version: json['version'],
       isDeleted: json['is_deleted'],
       presentAtAllLocations: json['present_at_all_locations'],
-      presentAtLocationIds: List<String>.from(json['present_at_location_ids']),
-      absentAtLocationIds: List<String>.from(json['absent_at_location_ids']),
+      presentAtLocationIds: json['present_at_location_ids'] != null ? List<String>.from(json['present_at_location_ids']) : null,
+      absentAtLocationIds: json['absent_at_location_ids'] != null ? List<String>.from(json['absent_at_location_ids']) : null,
       imageId: json['image_id'],
-      itemData: CatalogItem.fromJson(json['item_data']),
-      categoryData: CatalogCategory.fromJson(json['category_data']),
-      itemVariationData: CatalogItemVariation.fromJson(json['item_variation_data']),
-      taxData: CatalogTax.fromJson(json['tax_data']),
-      discountData: CatalogDiscount.fromJson(json['discount_data']),
-      modifierListData: CatalogModifierList.fromJson(json['modifier_list_data']),
-      modifierData: CatalogModifier.fromJson(json['modifier_data']),
-      imageData: CatalogImage.fromJson(json['image_data']),
+      itemData: json['item_data'] != null ? CatalogItem.fromJson(json['item_data']) : null,
+      categoryData: json['category_data'] != null ? CatalogCategory.fromJson(json['category_data']) : null,
+      itemVariationData: json['item_variation_data'] != null ? CatalogItemVariation.fromJson(json['item_variation_data']) : null,
+      taxData: json['tax_data'] != null ? CatalogTax.fromJson(json['tax_data']) : null,
+      discountData: json['discount_data'] != null ? CatalogDiscount.fromJson(json['discount_data']) : null,
+      modifierListData: json['modifier_list_data'] != null ? CatalogModifierList.fromJson(json['modifier_list_data']) : null,
+      modifierData: json['modifier_data'] != null ? CatalogModifier.fromJson(json['modifier_data']) : null,
+      imageData: json['image_data'] != null ? CatalogImage.fromJson(json['image_data']) : null,
     );
   }
 }
@@ -111,7 +111,7 @@ class CatalogItem {
       availableForPickup: json['available_for_pickup'],
       availableElectronically: json['available_electronically'],
       categoryId: json['category_id'],
-      taxIds: List<String>.of(json['tax_ids']),
+      taxIds: json['tax_ids'] != null ? List<String>.of(json['tax_ids']) : null,
       modifierListInfo: (json['modifier_list_info'] as List).map((item) => CatalogItemModifierListInfo.fromJson(item)).toList(),
       variations: (json['variations'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
       productType: getCatalogItemProductTypeFromString(json['product_type']),
@@ -167,9 +167,9 @@ class CatalogItemVariation {
       ordinal: json['ordinal'],
       pricingType: getCatalogPricingTypeFromString(json['pricing_type']),
       priceMoney: Money.fromJson(json['price_money']),
-      locationOverrides: (json['location_overrides'] as List).map((item) => ItemVariationLocationOverride.fromJson(item)).toList(),
+      locationOverrides: json['location_overrides'] != null ? (json['location_overrides'] as List).map((item) => ItemVariationLocationOverride.fromJson(item)).toList() : null,
       trackInventory: json['track_inventory'],
-      inventoryAlertType: getInventoryAlertTypeFromString(json['inventory_alert_type']),
+      inventoryAlertType: json['inventory_alert_type'] != null ? getInventoryAlertTypeFromString(json['inventory_alert_type']) : null,
       inventoryAlertThreshold: json['inventory_alert_threshold'],
       userData: json['user_data'],
       serviceDuration: json['service_duration'],
@@ -254,7 +254,7 @@ class CatalogModifierList {
     return CatalogModifierList (
       name: json['name'],
       selectionType: getCatalogModifierListSelectionTypeFromString(json['selection_type']),
-      modifiers: (json['modifiers'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+      modifiers: json['modifiers'] != null ? (json['modifiers'] as List).map((item) => CatalogObject.fromJson(item)).toList() : null,
     );
   }
 }
@@ -334,7 +334,7 @@ class CatalogItemModifierListInfo {
       minSelectedModifiers: json['min_selected_modifiers'],
       maxSelectedModifiers: json['max_selected_modifiers'],
       enabled: json['enabled'],
-      modifierOverrides: (json['modifier_overrides'] as List<Map<String, dynamic>>).map((item) => CatalogModifierOverride.fromJson(item)).toList(),
+      modifierOverrides: json['modifier_overrides'] != null ? (json['modifier_overrides'] as List).map((item) => CatalogModifierOverride.fromJson(item)).toList() : null,
     );
   }
 }

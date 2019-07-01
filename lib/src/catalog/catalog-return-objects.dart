@@ -10,7 +10,7 @@ class ListCatalogResponse {
 
   factory ListCatalogResponse.fromJson(Map<String, dynamic> json) {
     return ListCatalogResponse(
-      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
       cursor: json['cursor'],
       objects: (json['objects'] as List).map((obj) => CatalogObject.fromJson(obj)).toList(),
     );
@@ -25,9 +25,9 @@ class RetrieveCatalogObjectResponse {
 
   factory RetrieveCatalogObjectResponse.fromJson(Map<String, dynamic> json) {
     return RetrieveCatalogObjectResponse(
-      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
       object: CatalogObject.fromJson(json['object']),
-      relatedObjects: (json['related_objects'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
+      relatedObjects: json['related_objects'] != null ? (json['related_objects'] as List).map((item) => CatalogObject.fromJson(item)).toList() : null,
     );
   }
 }
@@ -41,7 +41,7 @@ class DeleteCatalogObjectResponse {
 
   factory DeleteCatalogObjectResponse.fromJson(Map<String, dynamic> json) {
     return DeleteCatalogObjectResponse(
-      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
       deletedAt: DateTime.parse(json['deleted_at']),
       deletedObjectIds: List<String>.of(json['deleted_object_ids']),
     );
@@ -57,7 +57,7 @@ class BatchDeleteCatalogObjectsResponse {
 
   factory BatchDeleteCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
     return BatchDeleteCatalogObjectsResponse(
-      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
       deletedAt: DateTime.parse(json['deleted_at']),
       deletedObjectIds: List<String>.of(json['deleted_object_ids']),
     );
@@ -73,7 +73,7 @@ class BatchRetrieveCatalogObjectsResponse {
 
   factory BatchRetrieveCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
     return BatchRetrieveCatalogObjectsResponse(
-      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
       objects: (json['objects'] as List).map((item) => CatalogObject.fromJson(item)),
       relatedObjects: (json['related_objects'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
     );
@@ -95,7 +95,7 @@ class BatchUpsertCatalogObjectsResponse {
     });
 
     return BatchUpsertCatalogObjectsResponse(
-      errors: (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList(),
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
       objects: (json['objects'] as List).map((item) => CatalogObject.fromJson(item)),
       updatedAt: DateTime.parse(json['updated_at']),
       idMappings: mappingsMap,

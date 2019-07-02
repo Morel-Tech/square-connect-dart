@@ -279,3 +279,26 @@ MeasurementUnitVolume getMeasurementUnitVolumeFromString(String input) {
   return ans;
 }
 
+enum MeasurementUnitWeight {
+  imperialWeightOunce,
+  imperialPound,
+  imperialStone,
+  metricMilligram,
+  metricGram,
+  metricKilogram,
+}
+
+var stringToMeasurementUnitWeight = {
+  'IMPERIAL_WEIGHT_OUNCE': MeasurementUnitWeight.imperialWeightOunce,
+  'IMPERIAL_POUND': MeasurementUnitWeight.imperialPound,
+  'IMPERIAL_STONE': MeasurementUnitWeight.imperialStone,
+  'METRIC_MILLIGRAM': MeasurementUnitWeight.metricMilligram,
+  'METRIC_GRAM': MeasurementUnitWeight.metricGram,
+  'METRIC_KILOGRAM': MeasurementUnitWeight.metricKilogram,
+};
+
+MeasurementUnitWeight getMeasurementUnitWeightFromString(String input) {
+  var ans = stringToMeasurementUnitWeight[input];
+  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitWeight in SCREAMING_UPPERCASE');
+  return ans;
+}

@@ -294,7 +294,33 @@ class CatalogMeasurementUnit {
 }
 
 class MeasurementUnit {
+  final MeasurementUnitCustom customUnit;
+  final MeasurementUnitArea areaUnit;
+  final MeasurementUnitLength lengthUnit;
+  final MeasurementUnitVolume volumeUnit;
+  final MeasurementUnitWeight weightUnit;
+  final String genericUnit;
 
+  MeasurementUnit({
+    this.customUnit,
+    this.areaUnit,
+    this.lengthUnit,
+    this.volumeUnit,
+    this.weightUnit,
+    this.genericUnit
+  });
+
+  factory MeasurementUnit.fromJson(Map<String, dynamic> json) {
+    return MeasurementUnit(
+      customUnit: MeasurementUnitCustom.fromJson(json['custom_unit']),
+      areaUnit: getMeasurementUnitAreaFromString(json['area_unit']),
+      lengthUnit: getMeasurementUnitLengthFromString(json['length_unit']),
+      volumeUnit: getMeasurementUnitVolumeFromString(json['volume_unit']),
+      weightUnit: getMeasurementUnitWeightFromString(json['weight_unit']),
+      genericUnit: json['generic_unit'],
+    );
+  }
+  
 }
 
 class ItemVariationLocationOverride {

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
@@ -7,7 +6,12 @@ import 'package:mockito/mockito.dart';
 
 void main() {
 
-  group('retrieveCatalogObject', () {
+  group('Square Connect Basics', () {
+    
+  });
+
+  group('Catalog API', () {
+      group('retrieveCatalogObject', () {
     test('if object ID is null, then throw ArgumentException', () async{
       final squareClient = SquareConnect.instance;
       final httpClient = MockClient();
@@ -33,7 +37,12 @@ void main() {
       when(httpClient.get('https://connect.squareup.com/v2/catalog/object/fake-item-id', headers: {'Authorization': 'Bearer fake-token'}))
           .thenAnswer((_) async => Response(returnResponseObjResponse, 200));
 
-      expect(await squareClient.catalogApi.retrieveCatalogObject(objectId: 'fake-item-id'), isInstanceOf<RetrieveCatalogObjectResponse>());
+      var item = await squareClient.catalogApi.retrieveCatalogObject(objectId: 'fake-item-id');
+      expect(item, isInstanceOf<RetrieveCatalogObjectResponse>());
+      expect(item.object.type, CatalogObjectType.item);
+      
+      expect(item.errors, null);
+
     });
 
     group('related objects', () {
@@ -62,6 +71,8 @@ void main() {
       });
     });
   });
+  });
+
 }
 
 class MockClient extends Mock implements Client {}

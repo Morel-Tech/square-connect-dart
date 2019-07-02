@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:square_connect/src/catalog/catalog-enums.dart';
+import 'package:square_connect/src/catalog/catalog-objects.dart';
 import 'package:square_connect/src/catalog/catalog-return-objects.dart';
 import 'package:square_connect/src/squareApiConfig.dart';
+import 'package:uuid/uuid.dart';
 
 
 class CatalogApi {
@@ -95,20 +97,26 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
   return(json.decode(response.body)) as BatchRetrieveCatalogObjectsResponse;
 }
 
-  Future<BatchUpsertCatalogObjectsResponse> batchUpsertCatalogObjects({List<String> objectIds}) async{
-    if(objectIds == null) throw ArgumentError('objectIds must not be null');
+  Future<BatchUpsertCatalogObjectsResponse> batchUpsertCatalogObjects({List<CatalogObjectBatch> batches}) async{
+    if(batches == null) throw ArgumentError('objectIds must not be null');
+    var uuid = new Uuid();
 
+    var body = {
+      'idempotency_key': uuid.v4(),
+      'batches': batches,
+    };
 
     var obj = RequestObj(
       path: '/v2/catalog/batch-upsert',
       token: token,
       method: RequestMethod.post,
-      //body: body,
+      body: body,
       client: client, 
     );
     var response = await obj.makeCall();
     return(json.decode(response.body)) as BatchUpsertCatalogObjectsResponse;
   }
+
 
 
 }

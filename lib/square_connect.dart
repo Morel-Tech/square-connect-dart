@@ -7,6 +7,7 @@ import 'package:square_connect/src/catalog/catalog.dart';
 
 export 'package:square_connect/src/catalog/catalog-return-objects.dart';
 export 'package:square_connect/src/catalog/catalog-objects.dart';
+export 'package:square_connect/src/catalog/catalog-enums.dart';
 
 class SquareConnect {
 

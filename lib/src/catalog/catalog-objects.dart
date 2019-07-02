@@ -300,7 +300,7 @@ class CatalogMeasurementUnit {
 
   factory CatalogMeasurementUnit.fromJson(Map<String, dynamic> json) {
     return CatalogMeasurementUnit(
-      measurementUnit: MeasurementUnit.fromJson(json['measurement_unit']),
+      measurementUnit: json['measurement_unit'] != null ? MeasurementUnit.fromJson(json['measurement_unit']) : null,
       precision: json['precision'],
     );
   }
@@ -325,11 +325,11 @@ class MeasurementUnit {
 
   factory MeasurementUnit.fromJson(Map<String, dynamic> json) {
     return MeasurementUnit(
-      customUnit: MeasurementUnitCustom.fromJson(json['custom_unit']),
-      areaUnit: getMeasurementUnitAreaFromString(json['area_unit']),
-      lengthUnit: getMeasurementUnitLengthFromString(json['length_unit']),
-      volumeUnit: getMeasurementUnitVolumeFromString(json['volume_unit']),
-      weightUnit: getMeasurementUnitWeightFromString(json['weight_unit']),
+      customUnit: json['custom_unit'] != null ? MeasurementUnitCustom.fromJson(json['custom_unit']) : null,
+      areaUnit: json['area_unit'] != null ? getMeasurementUnitAreaFromString(json['area_unit']) : null,
+      lengthUnit: json['length_unit'] != null ? getMeasurementUnitLengthFromString(json['length_unit']) : null,
+      volumeUnit: json['volume_unit'] != null ? getMeasurementUnitVolumeFromString(json['volume_unit']) : null,
+      weightUnit: json['weight_unit'] != null ? getMeasurementUnitWeightFromString(json['weight_unit']) : null,
       genericUnit: json['generic_unit'],
     );
   }

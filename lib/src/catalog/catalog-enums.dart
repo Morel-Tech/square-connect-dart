@@ -188,3 +188,37 @@ CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(S
       throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogModifierListSelectionType in SCREAMING_UPPERCASE');
   }
 }
+
+enum MeasurementUnitArea {
+  imperialAcre,
+  imperialSquareInch,
+  imperialSquareFoot,
+  imperialSquareYard,
+  imperialSquareMile,
+  metricSquareCentimeter,
+  metricSquareMeter,
+  metricSquareKilometer,
+}
+
+MeasurementUnitArea getMeasurementUnitAreaFromString(String input) {
+  switch(input) {
+    case 'IMPERIAL_ACRE':
+      return MeasurementUnitArea.imperialAcre;
+    case 'IMPERIAL_SQUARE_INCH':
+      return MeasurementUnitArea.imperialSquareInch;
+    case 'IMPERIAL_SQUARE_FOOT':
+      return MeasurementUnitArea.imperialSquareFoot;
+    case 'IMPERIAL_SQUARE_YARD':
+      return MeasurementUnitArea.imperialSquareYard;
+    case 'IMPERIAL_SQUARE_MILE':
+      return MeasurementUnitArea.imperialSquareMile;
+    case 'METRIC_SQUARE_CENTIMETER':
+      return MeasurementUnitArea.metricSquareCentimeter;
+    case 'METRIC_SQUARE_METER':
+      return MeasurementUnitArea.metricSquareMeter;
+    case 'METRIC_SQUARE_KILOMETER':
+      return MeasurementUnitArea.metricSquareKilometer;
+    default:
+      throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitArea in SCREAMING_UPPERCASE');
+  }
+}

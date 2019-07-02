@@ -366,3 +366,81 @@ class CatalogObjectBatch {
     );
   }
 }
+
+class CatalogInfoResponseLimits {
+  final int batchUpsertMaxObjectsPerBatch;
+  final int batchUpsertMaxTotalObjects;
+  final int batchRetrieveMaxObjectIds;
+  final int searchMaxPageLimit;
+  final int batchDeleteMaxObjectIds;
+  final int updateItemTaxesMaxItemIds;
+  final int updateItemTaxesMaxTaxesToEnable;
+  final int updateItemTaxesMaxTaxesToDisable;
+  final int updateItemModifierListsMaxItemIds;
+  final int updateItemModifierListsMaxModifierListsToEnable;
+  final int updateItemModifierListsMaxModifierListsToDisable;
+
+  CatalogInfoResponseLimits({
+    this.batchUpsertMaxObjectsPerBatch,
+    this.batchUpsertMaxTotalObjects,
+    this.batchRetrieveMaxObjectIds,
+    this.searchMaxPageLimit,
+    this.batchDeleteMaxObjectIds,
+    this.updateItemTaxesMaxItemIds,
+    this.updateItemTaxesMaxTaxesToEnable,
+    this.updateItemTaxesMaxTaxesToDisable,
+    this.updateItemModifierListsMaxItemIds,
+    this.updateItemModifierListsMaxModifierListsToEnable,
+    this.updateItemModifierListsMaxModifierListsToDisable
+  });
+
+  factory CatalogInfoResponseLimits.fromJson(Map<String, dynamic> json) {
+    return CatalogInfoResponseLimits(
+      batchUpsertMaxObjectsPerBatch: json['batch_upsert_max_objects_per_batch'],
+      batchUpsertMaxTotalObjects: json['batch_upsert_max_total_objects'],
+      batchRetrieveMaxObjectIds: json['batch_retrieve_max_object_ids'],
+      searchMaxPageLimit: json['search_max_page_limit'],
+      batchDeleteMaxObjectIds: json['batch_delete_max_object_ids'],
+      updateItemTaxesMaxItemIds: json['update_item_taxes_max_item_ids'],
+      updateItemTaxesMaxTaxesToEnable: json['update_item_taxes_max_taxes_to_enable'],
+      updateItemTaxesMaxTaxesToDisable: json['update_item_taxes_max_taxes_to_disable'],
+      updateItemModifierListsMaxItemIds: json['update_item_modifier_lists_max_item_ids'],
+      updateItemModifierListsMaxModifierListsToEnable: json['update_item_modifier_lists_max_modifier_lists_to_enable'],
+      updateItemModifierListsMaxModifierListsToDisable: json['update_item_modifier_lists_max_modifier_lists_to_disable'],
+    );
+  }
+}
+
+class StandardUnitDescriptionGroup {
+  final List<StandardUnitDescription> standardUnitDescriptions;
+    final String languageCode;
+  
+    StandardUnitDescriptionGroup({this.standardUnitDescriptions, this.languageCode});
+  
+    
+}
+  
+class StandardUnitDescription {
+  final MeasurementUnit unit;
+  final String name;
+  final String abbreviation;
+
+  StandardUnitDescription(this.unit, this.name, this.abbreviation);
+
+  
+}
+
+class MeasurementUnitCustom {
+  final String name;
+  final String abbreviation;
+
+  MeasurementUnitCustom({this.name, this.abbreviation});
+
+  factory MeasurementUnitCustom.fromJson(Map<String, dynamic> json) {
+    return MeasurementUnitCustom(
+      name: json['name'],
+      abbreviation: json['abbreviation'],
+    );
+  }
+}
+

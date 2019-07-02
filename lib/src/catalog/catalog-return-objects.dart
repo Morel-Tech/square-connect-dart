@@ -101,6 +101,12 @@ class BatchUpsertCatalogObjectsResponse {
       idMappings: mappingsMap,
     );
   }
+}
+
+class CatalogInfoResponse {
+  final List<SquareError> errors;
+  final CatalogInfoResponseLimits limits;
+  final StandardUnitDescriptionGroup standardUnitDescriptionGroup;
 
   
 }

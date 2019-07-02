@@ -117,6 +117,16 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
     return(json.decode(response.body)) as BatchUpsertCatalogObjectsResponse;
   }
 
+  Future<CatalogInfoResponse> getCatalogInfo() async{
+  var obj = RequestObj(
+    token: token,
+    path: '/v2/catalog/info',
+    method: RequestMethod.get,
+    client: client, 
+  );
 
+  var response = await obj.makeCall();
+  return (json.decode(response.body)) as CatalogInfoResponse;
+}
 
 }

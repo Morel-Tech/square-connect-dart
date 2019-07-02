@@ -66,6 +66,7 @@ class CatalogObject {
       modifierListData: json['modifier_list_data'] != null ? CatalogModifierList.fromJson(json['modifier_list_data']) : null,
       modifierData: json['modifier_data'] != null ? CatalogModifier.fromJson(json['modifier_data']) : null,
       imageData: json['image_data'] != null ? CatalogImage.fromJson(json['image_data']) : null,
+      measurementUnitData: json['measurement_unit_data'] != null ? CatalogMeasurementUnit.fromJson(json['measurement_unit_data']) : null,
     );
   }
 }
@@ -456,7 +457,13 @@ class StandardUnitDescriptionGroup {
   
     StandardUnitDescriptionGroup({this.standardUnitDescriptions, this.languageCode});
   
-    
+    factory StandardUnitDescriptionGroup.fromJson(Map<String, dynamic> json) {
+      return StandardUnitDescriptionGroup (
+        standardUnitDescriptions: json['standard_unit_descriptions'] != null ? 
+          (json['standard_unit_descriptions'] as List).map((item) => StandardUnitDescription.fromJson(item)).toList() : null,
+        languageCode: json['language_code'],
+      );
+    }
 }
   
 class StandardUnitDescription {
@@ -464,8 +471,15 @@ class StandardUnitDescription {
   final String name;
   final String abbreviation;
 
-  StandardUnitDescription(this.unit, this.name, this.abbreviation);
+  StandardUnitDescription({this.unit, this.name, this.abbreviation});
 
+  factory StandardUnitDescription.fromJson(Map<String, dynamic> json) {
+    return StandardUnitDescription(
+      unit: json['unit'] != null ? MeasurementUnit.fromJson(json['unit']) : null,
+      name: json['name'],
+      abbreviation: json['abbreviation'],
+    );
+  }
   
 }
 

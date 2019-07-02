@@ -108,5 +108,20 @@ class CatalogInfoResponse {
   final CatalogInfoResponseLimits limits;
   final StandardUnitDescriptionGroup standardUnitDescriptionGroup;
 
+  CatalogInfoResponse({
+    this.errors,
+    this.limits,
+    this.standardUnitDescriptionGroup
+  });
+
+  factory CatalogInfoResponse.fromJson(Map<String, dynamic> json) {
+    return CatalogInfoResponse(
+      errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
+      limits: json['limits'] != null ? CatalogInfoResponseLimits.fromJson(json['limits']) : null,
+      standardUnitDescriptionGroup: json['standard_unit_description_group'] != null ?
+       StandardUnitDescriptionGroup.fromJson(json['standard_unit_description_group']) : null
+    );
+  }
+
   
 }

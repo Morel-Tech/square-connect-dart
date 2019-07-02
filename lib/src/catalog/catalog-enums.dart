@@ -244,3 +244,38 @@ MeasurementUnitLength getMeasurementUnitLengthFromString(String input) {
   if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitLength in SCREAMING_UPPERCASE');
   return ans;
 }
+
+enum MeasurementUnitVolume {
+  genericFluidOunce,
+  genericShot,
+  genericCup,
+  genericPint,
+  genericQuart,
+  genericGallon,
+  imperialCubicInch,
+  imperialCubicFoot,
+  imperialCubicYard,
+  metricMilliliter,
+  metricLiter,
+}
+
+var stringToMeasurementUnitVolume = {
+  'GENERIC_FLUID_OUNCE': MeasurementUnitVolume.genericFluidOunce,
+  'GENERIC_SHOT': MeasurementUnitVolume.genericShot,
+  'GENERIC_CUP': MeasurementUnitVolume.genericCup,
+  'GENERIC_PINT': MeasurementUnitVolume.genericPint,
+  'GENERIC_QUART': MeasurementUnitVolume.genericQuart,
+  'GENERIC_GALLON': MeasurementUnitVolume.genericGallon,
+  'IMPERIAL_CUBIC_INCH': MeasurementUnitVolume.imperialCubicInch,
+  'IMPERIAL_CUBIC_FOOT': MeasurementUnitVolume.imperialCubicFoot,
+  'IMPERIAL_CUBIC_YARD': MeasurementUnitVolume.imperialCubicYard,
+  'METRIC_MILLILITER': MeasurementUnitVolume.metricMilliliter,
+  'METRIC_LITER': MeasurementUnitVolume.metricLiter,
+};
+
+MeasurementUnitVolume getMeasurementUnitVolumeFromString(String input) {
+  var ans = stringToMeasurementUnitVolume[input];
+  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitVolume in SCREAMING_UPPERCASE');
+  return ans;
+}
+

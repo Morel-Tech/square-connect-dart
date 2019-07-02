@@ -200,25 +200,47 @@ enum MeasurementUnitArea {
   metricSquareKilometer,
 }
 
+var stringToMeasurementUnitArea = {
+  'IMPERIAL_ACRE': MeasurementUnitArea.imperialAcre,
+  'IMPERIAL_SQUARE_INCH': MeasurementUnitArea.imperialSquareInch,
+  'IMPERIAL_SQUARE_FOOT': MeasurementUnitArea.imperialSquareFoot,
+  'IMPERIAL_SQUARE_YARD': MeasurementUnitArea.imperialSquareYard,
+  'IMPERIAL_SQUARE_MILE': MeasurementUnitArea.imperialSquareMile,
+  'METRIC_SQUARE_CENTIMETER': MeasurementUnitArea.metricSquareCentimeter,
+  'METRIC_SQUARE_METER': MeasurementUnitArea.metricSquareMeter,
+  'METRIC_SQUARE_KILOMETER': MeasurementUnitArea.metricSquareKilometer,
+};
+
 MeasurementUnitArea getMeasurementUnitAreaFromString(String input) {
-  switch(input) {
-    case 'IMPERIAL_ACRE':
-      return MeasurementUnitArea.imperialAcre;
-    case 'IMPERIAL_SQUARE_INCH':
-      return MeasurementUnitArea.imperialSquareInch;
-    case 'IMPERIAL_SQUARE_FOOT':
-      return MeasurementUnitArea.imperialSquareFoot;
-    case 'IMPERIAL_SQUARE_YARD':
-      return MeasurementUnitArea.imperialSquareYard;
-    case 'IMPERIAL_SQUARE_MILE':
-      return MeasurementUnitArea.imperialSquareMile;
-    case 'METRIC_SQUARE_CENTIMETER':
-      return MeasurementUnitArea.metricSquareCentimeter;
-    case 'METRIC_SQUARE_METER':
-      return MeasurementUnitArea.metricSquareMeter;
-    case 'METRIC_SQUARE_KILOMETER':
-      return MeasurementUnitArea.metricSquareKilometer;
-    default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitArea in SCREAMING_UPPERCASE');
-  }
+  var ans = stringToMeasurementUnitArea[input];
+  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitArea in SCREAMING_UPPERCASE');
+  return ans;
+}
+
+enum MeasurementUnitLength{
+  imperialInch,
+  imperialFoot,
+  imperialYard,
+  imperialMile,
+  metricMillimeter,
+  metricCentimeter,
+  metricMeter,
+  metricKilometer,
+}
+
+var stringToMeasurementUnitLength = {
+  'IMPERIAL_INCH': MeasurementUnitLength.imperialInch,
+  'IMPERIAL_FOOT': MeasurementUnitLength.imperialFoot,
+  'IMPERIAL_YARD': MeasurementUnitLength.imperialYard,
+  'IMPERIAL_MILE': MeasurementUnitLength.imperialMile,
+  'METRIC_MILLIMETER': MeasurementUnitLength.metricMillimeter,
+  'METRIC_CENTIMETER': MeasurementUnitLength.metricCentimeter,
+  'METRIC_METER': MeasurementUnitLength.metricMeter,
+  'METRIC_KILOMETER': MeasurementUnitLength.metricKilometer,
+};
+
+MeasurementUnitLength getMeasurementUnitLengthFromString(String input) {
+  var ans = stringToMeasurementUnitLength[input];
+  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitLength in SCREAMING_UPPERCASE');
+  return ans;
 }

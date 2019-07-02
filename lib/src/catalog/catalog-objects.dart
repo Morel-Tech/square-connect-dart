@@ -290,7 +290,20 @@ class CatalogImage {
 }
 
 class CatalogMeasurementUnit {
+  final MeasurementUnit measurementUnit;
+  final int precision;
 
+  CatalogMeasurementUnit({
+    this.measurementUnit,
+    this.precision
+  });
+
+  factory CatalogMeasurementUnit.fromJson(Map<String, dynamic> json) {
+    return CatalogMeasurementUnit(
+      measurementUnit: MeasurementUnit.fromJson(json['measurement_unit']),
+      precision: json['precision'],
+    );
+  }
 }
 
 class MeasurementUnit {

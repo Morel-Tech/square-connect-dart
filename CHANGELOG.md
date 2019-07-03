@@ -1,3 +1,7 @@
+## 0.0.2
+* Added android and ios folders
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial Release
+* Initial framework decisions and implementaion of most of the Catalog API

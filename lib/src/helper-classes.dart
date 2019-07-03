@@ -18,11 +18,13 @@ class QueryParam {
   }
 }
 
+/// Converts a [List] of [QueryParam]s to a [String] for to be placed at the end of a url 
 String getParamListString(List<QueryParam> list) {
   if (list == null || list.length == 0) return '';
   return '?${list.map((param) => param.toString()).join('&')}';
 }
 
+/// Helper class that contains the logic to make the actual calls for Square APIs.
 class RequestObj {
   final String token;
   final String cursor;

@@ -1,9 +1,13 @@
 import 'package:square_connect/src/catalog/catalog-objects.dart';
 import 'package:square_connect/src/errors.dart';
 
+/// Response from the [listCatalog()] method.
 class ListCatalogResponse {
+  /// List of errors returned from the API. If null, there were no errors.
   final List<SquareError> errors;
+  /// Cursor string for pagination. Null if no more results exist.
   final String cursor;
+  /// The list of [CatalogObject]s returned by the API
   final List<CatalogObject> objects;
 
   ListCatalogResponse({this.errors, this.cursor, this.objects});
@@ -16,9 +20,14 @@ class ListCatalogResponse {
     );
   }
 }
+
+/// Response from the [retrieveCatalogObject()] method.
 class RetrieveCatalogObjectResponse {
+  /// List of errors returned from the API. If null, there were no errors.
   final List<SquareError> errors;
+  /// The object returned by the API
   final CatalogObject object;
+  /// If includeRelatedObjects is true, then a List of [CatalogObject]s that are related to the primary object (ie [CatalogItemVariation]s of and [CatalogItem])
   final List<CatalogObject> relatedObjects;
 
   RetrieveCatalogObjectResponse({this.errors, this.object, this.relatedObjects});

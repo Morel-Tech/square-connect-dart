@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'package:square_connect/src/catalog/catalog-enums.dart';
 import 'package:square_connect/src/catalog/catalog-objects.dart';
 import 'package:square_connect/src/catalog/catalog-return-objects.dart';
-import 'package:square_connect/src/squareApiConfig.dart';
+import 'package:square_connect/src/helper-classes.dart';
 import 'package:uuid/uuid.dart';
 
 

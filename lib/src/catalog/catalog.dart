@@ -34,7 +34,7 @@ Future<ListCatalogResponse> listCatalog({List<CatalogObjectType> types, String c
   );
 
   var response = await obj.makeCall();
-  return (json.decode(response.body)) as ListCatalogResponse;
+  return ListCatalogResponse.fromJson(json.decode(response.body));
 }
 
 Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({@required String objectId, bool includeRelatedObjects}) async{
@@ -62,7 +62,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
     client: client, 
   );
   var response = await obj.makeCall();
-  return(json.decode(response.body)) as DeleteCatalogObjectResponse;
+  return DeleteCatalogObjectResponse.fromJson(json.decode(response.body));
   }
 
   Future<BatchDeleteCatalogObjectsResponse> batchDeleteCatalogObjects({List<String> objectIds}) async{
@@ -75,7 +75,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
     client: client, 
     );
     var response = await obj.makeCall();
-    return(json.decode(response.body)) as BatchDeleteCatalogObjectsResponse;
+    return BatchDeleteCatalogObjectsResponse.fromJson(json.decode(response.body));
   }
 
   Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObjects({List<String> objectIds, bool includeRelatedObjects}) async{
@@ -94,7 +94,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
     client: client, 
   );
   var response = await obj.makeCall();
-  return(json.decode(response.body)) as BatchRetrieveCatalogObjectsResponse;
+  return BatchRetrieveCatalogObjectsResponse.fromJson(json.decode(response.body));
 }
 
   Future<BatchUpsertCatalogObjectsResponse> batchUpsertCatalogObjects({List<CatalogObjectBatch> batches}) async{
@@ -114,7 +114,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
       client: client, 
     );
     var response = await obj.makeCall();
-    return(json.decode(response.body)) as BatchUpsertCatalogObjectsResponse;
+    return BatchUpsertCatalogObjectsResponse.fromJson(json.decode(response.body));
   }
 
   Future<CatalogInfoResponse> getCatalogInfo() async{
@@ -126,7 +126,7 @@ Future<DeleteCatalogObjectResponse> deleteCatalogObject({String objectId}) async
   );
 
   var response = await obj.makeCall();
-  return (json.decode(response.body)) as CatalogInfoResponse;
+  return CatalogInfoResponse.fromJson(json.decode(response.body));
 }
 
 }

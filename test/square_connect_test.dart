@@ -11,6 +11,10 @@ void main() {
   });
 
   group('Catalog API', () {
+
+    group ('Catalog Object fromJson', () {
+
+    });
       group('retrieveCatalogObject', () {
     test('if object ID is null, then throw ArgumentException', () async{
       final squareClient = SquareConnect.instance;

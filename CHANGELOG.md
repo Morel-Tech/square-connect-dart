@@ -1,3 +1,6 @@
+## 0.0.4
+* Added some formating on multiple files
+
 ## 0.0.3
 * Fixed return type on lots of methods
 

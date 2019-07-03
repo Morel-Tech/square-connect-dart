@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final client = SquareConnect.instance;
-  List<CatalogObject> items = [];
+  CatalogItem item;
 
   @override
   void initState() {
@@ -44,15 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Square Connect Demo App'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-          ],
-        ),
+        child: Text(item != null ? item.name : ''),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _refreshItems(),
+        onPressed: _refreshItems,
         tooltip: 'Increment',
         child: Icon(Icons.refresh),
       ), 
@@ -60,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _refreshItems() async{
-    var response = await client.catalogApi.listCatalog();
+    var response = await client.catalogApi.retrieveCatalogObject(objectId: 'L3N4FU22JFINH4ZGZDMBKJBJ');
     setState(() {
-      items = response.objects;
+      item = response.object.itemData;
     });
   }
 }

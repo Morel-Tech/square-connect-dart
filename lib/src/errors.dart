@@ -36,6 +36,8 @@ var errorCategoryStringMapping = {
 
 ErrorCategory getErrorCategoryfromString(String input) {
   var ans = errorCategoryStringMapping[input];
-  if(ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid ErrorCategory in SCREAMING_CAPS');
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
+        'Input must be a valid ErrorCategory in SCREAMING_CAPS');
   return ans;
 }

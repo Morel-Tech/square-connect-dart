@@ -28,9 +28,10 @@ const catalogObjectTypeMappingStringToItem = {
 
 String getCatalogObjectStringFromType(CatalogObjectType type) {
   return catalogObjectTypeMappingStringToItem.keys.firstWhere(
-    (k) => catalogObjectTypeMappingStringToItem[k] == type, orElse: () {
-      throw ArgumentError.value(type, 'type', 'Input must be a valid CatalogObjectType');
-    });
+      (k) => catalogObjectTypeMappingStringToItem[k] == type, orElse: () {
+    throw ArgumentError.value(
+        type, 'type', 'Input must be a valid CatalogObjectType');
+  });
 }
 
 CatalogObjectType getCatalogObjectTypeFromString(String input) {
@@ -58,7 +59,8 @@ CatalogObjectType getCatalogObjectTypeFromString(String input) {
     case 'TIME_PERIOD':
       return CatalogObjectType.timePeriod;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogObjectType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid CatalogObjectType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -74,7 +76,8 @@ CatalogPricingType getCatalogPricingTypeFromString(String input) {
     case 'VARIABLE_PRICING':
       return CatalogPricingType.variablePricing;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogPricingType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid CatalogPricingType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -90,7 +93,8 @@ InventoryAlertType getInventoryAlertTypeFromString(String input) {
     case 'LOW_QUANTITY':
       return InventoryAlertType.lowQuantity;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid InventoryAlertType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid InventoryAlertType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -115,7 +119,8 @@ CatalogItemProductType getCatalogItemProductTypeFromString(String input) {
     case 'RESTAURANT_ITEM':
       return CatalogItemProductType.restaurantItem;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogItemProductType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid CatalogItemProductType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -131,7 +136,8 @@ TaxCalculationPhase getTaxCalculationPhaseFromString(String input) {
     case 'TAX_TOTAL_PHASE':
       return TaxCalculationPhase.taxTotalPhase;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid TaxCalculationPhase in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid TaxCalculationPhase in SCREAMING_UPPERCASE');
   }
 }
 
@@ -147,7 +153,8 @@ TaxInclusionType getTaxInclusionTypeFromString(String input) {
     case 'INCLUSIVE':
       return TaxInclusionType.inclusive;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid TaxInclusionType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid TaxInclusionType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -169,7 +176,8 @@ CatalogDiscountType getCatalogDiscountTypeFromString(String input) {
     case 'VARIABLE_AMOUNT':
       return CatalogDiscountType.variableAmount;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogDiscountType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid CatalogDiscountType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -178,14 +186,16 @@ enum CatalogModifierListSelectionType {
   multiple,
 }
 
-CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(String input) {
+CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(
+    String input) {
   switch (input) {
     case 'SINGLE':
       return CatalogModifierListSelectionType.single;
     case 'MULTIPLE':
       return CatalogModifierListSelectionType.multiple;
     default:
-      throw ArgumentError.value(input, 'input', 'Input must be a valid CatalogModifierListSelectionType in SCREAMING_UPPERCASE');
+      throw ArgumentError.value(input, 'input',
+          'Input must be a valid CatalogModifierListSelectionType in SCREAMING_UPPERCASE');
   }
 }
 
@@ -213,11 +223,13 @@ var stringToMeasurementUnitArea = {
 
 MeasurementUnitArea getMeasurementUnitAreaFromString(String input) {
   var ans = stringToMeasurementUnitArea[input];
-  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitArea in SCREAMING_UPPERCASE');
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
+        'Input must be a valid MeasurementUnitArea in SCREAMING_UPPERCASE');
   return ans;
 }
 
-enum MeasurementUnitLength{
+enum MeasurementUnitLength {
   imperialInch,
   imperialFoot,
   imperialYard,
@@ -241,7 +253,9 @@ var stringToMeasurementUnitLength = {
 
 MeasurementUnitLength getMeasurementUnitLengthFromString(String input) {
   var ans = stringToMeasurementUnitLength[input];
-  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitLength in SCREAMING_UPPERCASE');
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
+        'Input must be a valid MeasurementUnitLength in SCREAMING_UPPERCASE');
   return ans;
 }
 
@@ -275,7 +289,9 @@ var stringToMeasurementUnitVolume = {
 
 MeasurementUnitVolume getMeasurementUnitVolumeFromString(String input) {
   var ans = stringToMeasurementUnitVolume[input];
-  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitVolume in SCREAMING_UPPERCASE');
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
+        'Input must be a valid MeasurementUnitVolume in SCREAMING_UPPERCASE');
   return ans;
 }
 
@@ -299,6 +315,8 @@ var stringToMeasurementUnitWeight = {
 
 MeasurementUnitWeight getMeasurementUnitWeightFromString(String input) {
   var ans = stringToMeasurementUnitWeight[input];
-  if (ans == null) throw ArgumentError.value(input, 'input', 'Input must be a valid MeasurementUnitWeight in SCREAMING_UPPERCASE');
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
+        'Input must be a valid MeasurementUnitWeight in SCREAMING_UPPERCASE');
   return ans;
 }

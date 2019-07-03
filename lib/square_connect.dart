@@ -7,7 +7,6 @@ export 'package:square_connect/src/catalog/catalog-objects.dart';
 export 'package:square_connect/src/catalog/catalog-enums.dart';
 
 class SquareConnect {
-
   String _authToken;
   Client _client;
 

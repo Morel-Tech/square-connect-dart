@@ -2,22 +2,21 @@ class Money {
   final int amount;
   final Currency currency;
 
-  Money({this.amount, this.currency}):
-  assert(amount != null),
-  assert(amount >= 0),
-  assert(currency != null);
+  Money({this.amount, this.currency})
+      : assert(amount != null),
+        assert(amount >= 0),
+        assert(currency != null);
 
   factory Money.fromJson(Map<String, dynamic> json) {
-    return Money (
-      amount: json['amount'],
-      currency: getCurrencyFromString(json['currency'])
-    );
+    return Money(
+        amount: json['amount'],
+        currency: getCurrencyFromString(json['currency']));
   }
 }
 
 Currency getCurrencyFromString(String input) {
   if (input == 'UNKNOWN_CURRENCY') return Currency.unknownCurrency;
-  return Currency.values.firstWhere((f)=> f.toString() == 'Currency.$input');
+  return Currency.values.firstWhere((f) => f.toString() == 'Currency.$input');
 }
 
 enum Currency {

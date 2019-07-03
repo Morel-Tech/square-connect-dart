@@ -1,3 +1,5 @@
+![Pub](https://img.shields.io/pub/v/square_connect.svg?style=flat-square)
+![GitHub](https://img.shields.io/github/license/mtwichel/square-connect-flutter-library.svg?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 # Square Connect Flutter
 

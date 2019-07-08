@@ -20,10 +20,70 @@ void main() {
         
       });
       group('Delete Customer Method', () {
-        
+        test('returns a DeleteCustomerResponse if the http call completes successfully', () async {
+          final squareClient = SquareConnect.instance;
+          final httpClient = MockClient();
+          squareClient.setClient(client: httpClient);
+          squareClient.setAuthToken(token: 'fake-token');
+
+          const response = '{ }';
+
+          when(httpClient.delete('https://connect.squareup.com/v2/customers/fake-customer-id', headers: {'Authorization': 'Bearer fake-token'}))
+              .thenAnswer((_) async => Response(response, 200));
+
+          var item = await squareClient.customersApi.deleteCustomer(customerId: 'fake-customer-id');
+          expect(item, isInstanceOf<DeleteCustomerResponse>());
+          expect(item.errors, null);
+        });
+
+        test('returns a DeleteCustomerResponse with errors if the http call completes unsuccesfully', () async {
+          final squareClient = SquareConnect.instance;
+          final httpClient = MockClient();
+          squareClient.setClient(client: httpClient);
+          squareClient.setAuthToken(token: 'fake-token');
+
+          const response = '{"errors":[{"category":"INVALID_REQUEST_ERROR","code":"NOT_FOUND","detail":"Customer with ID `8MVM30V46N23N31FSYK12E7JNM` not found."}]}';
+
+          when(httpClient.delete('https://connect.squareup.com/v2/customers/fake-customer-id', headers: {'Authorization': 'Bearer fake-token'}))
+              .thenAnswer((_) async => Response(response, 404));
+
+          var item = await squareClient.customersApi.deleteCustomer(customerId: 'fake-customer-id');
+          expect(item, isInstanceOf<DeleteCustomerResponse>());
+          expect(item.errors, isInstanceOf<List<SquareError>>());
+        });
       });
       group('Delete Customer Card Method', () {
-        
+        test('returns a DeleteCustomerCardResponse if the http call completes successfully', () async {
+          final squareClient = SquareConnect.instance;
+          final httpClient = MockClient();
+          squareClient.setClient(client: httpClient);
+          squareClient.setAuthToken(token: 'fake-token');
+
+          const response = '{ }';
+
+          when(httpClient.delete('https://connect.squareup.com/v2/customers/fake-customer-id/cards/fake-card-id', headers: {'Authorization': 'Bearer fake-token'}))
+              .thenAnswer((_) async => Response(response, 200));
+
+          var item = await squareClient.customersApi.deleteCustomerCard(customerId: 'fake-customer-id', cardId: 'fake-card-id');
+          expect(item, isInstanceOf<DeleteCustomerCardResponse>());
+          expect(item.errors, null);
+        });
+
+        test('returns a DeleteCustomerCardResponse with errors if the http call completes unsuccesfully', () async {
+          final squareClient = SquareConnect.instance;
+          final httpClient = MockClient();
+          squareClient.setClient(client: httpClient);
+          squareClient.setAuthToken(token: 'fake-token');
+
+          const response = '{"errors":[{"category":"INVALID_REQUEST_ERROR","code":"NOT_FOUND","detail":"Customer with ID `8MVM30V46N23N31FSYK12E7JNM` not found."}]}';
+
+          when(httpClient.delete('https://connect.squareup.com/v2/customers/fake-customer-id/cards/fake-card-id', headers: {'Authorization': 'Bearer fake-token'}))
+              .thenAnswer((_) async => Response(response, 404));
+
+          var item = await squareClient.customersApi.deleteCustomerCard(customerId: 'fake-customer-id', cardId: 'fake-card-id');
+          expect(item, isInstanceOf<DeleteCustomerCardResponse>());
+          expect(item.errors, isInstanceOf<List<SquareError>>());
+        }); 
       });
       group('List Customer Method', () {
         test('returns a ListCustomerResponse if the http call completes successfully', () async {

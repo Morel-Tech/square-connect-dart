@@ -6,11 +6,11 @@ import 'package:square_connect/square_connect.dart';
 
 import '../helper-classes.dart';
 
-class CustomerApi {
+class CustomersApi {
   final String token;
   final Client client;
 
-  CustomerApi({this.token, this.client})
+  CustomersApi({this.token, this.client})
       : assert(token != null),
         assert(client != null);
 

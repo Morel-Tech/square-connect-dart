@@ -1,6 +1,8 @@
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
+
 import 'package:square_connect/src/catalog/catalog.dart';
+import 'package:square_connect/src/customer/customer.dart';
 
 export 'package:square_connect/src/catalog/catalog-return-objects.dart';
 export 'package:square_connect/src/catalog/catalog-objects.dart';
@@ -39,5 +41,10 @@ class SquareConnect {
   /// Getter for Catalog API methods.
   CatalogApi get catalogApi {
     return CatalogApi(token: _authToken, client: _client);
+  }
+
+  /// Getter for Customers API methods.
+  CustomersApi get customersApi {
+    return CustomersApi(token: _authToken, client: _client);
   }
 }

@@ -6,6 +6,12 @@ export 'package:square_connect/src/catalog/catalog-return-objects.dart';
 export 'package:square_connect/src/catalog/catalog-objects.dart';
 export 'package:square_connect/src/catalog/catalog-enums.dart';
 
+export 'package:square_connect/src/customer/customer-return-objects.dart';
+export 'package:square_connect/src/customer/customer-objects.dart';
+export 'package:square_connect/src/customer/customer-enums.dart';
+
+export 'package:square_connect/src/errors.dart';
+
 class SquareConnect {
   String _authToken;
   Client _client;

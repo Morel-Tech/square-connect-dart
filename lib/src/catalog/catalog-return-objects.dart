@@ -22,9 +22,9 @@ class ListCatalogResponse {
               .toList()
           : null,
       cursor: json['cursor'],
-      objects: (json['objects'] as List)
+      objects: json['objects'] != null ? (json['objects'] as List)
           .map((obj) => CatalogObject.fromJson(obj))
-          .toList(),
+          .toList() : null,
     );
   }
 }
@@ -75,8 +75,8 @@ class DeleteCatalogObjectResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      deletedAt: DateTime.parse(json['deleted_at']),
-      deletedObjectIds: List<String>.of(json['deleted_object_ids']),
+      deletedAt: json['deleted_at'] !=  null ? DateTime.parse(json['deleted_at']) : null,
+      deletedObjectIds: json['deleted_object_ids'] != null ? List<String>.from(json['deleted_object_ids']) : null,
     );
   }
 }

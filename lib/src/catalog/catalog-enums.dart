@@ -210,7 +210,7 @@ enum MeasurementUnitArea {
   metricSquareKilometer,
 }
 
-var stringToMeasurementUnitArea = {
+const stringToMeasurementUnitArea = {
   'IMPERIAL_ACRE': MeasurementUnitArea.imperialAcre,
   'IMPERIAL_SQUARE_INCH': MeasurementUnitArea.imperialSquareInch,
   'IMPERIAL_SQUARE_FOOT': MeasurementUnitArea.imperialSquareFoot,
@@ -240,7 +240,7 @@ enum MeasurementUnitLength {
   metricKilometer,
 }
 
-var stringToMeasurementUnitLength = {
+const stringToMeasurementUnitLength = {
   'IMPERIAL_INCH': MeasurementUnitLength.imperialInch,
   'IMPERIAL_FOOT': MeasurementUnitLength.imperialFoot,
   'IMPERIAL_YARD': MeasurementUnitLength.imperialYard,
@@ -273,7 +273,7 @@ enum MeasurementUnitVolume {
   metricLiter,
 }
 
-var stringToMeasurementUnitVolume = {
+const stringToMeasurementUnitVolume = {
   'GENERIC_FLUID_OUNCE': MeasurementUnitVolume.genericFluidOunce,
   'GENERIC_SHOT': MeasurementUnitVolume.genericShot,
   'GENERIC_CUP': MeasurementUnitVolume.genericCup,
@@ -304,7 +304,7 @@ enum MeasurementUnitWeight {
   metricKilogram,
 }
 
-var stringToMeasurementUnitWeight = {
+const stringToMeasurementUnitWeight = {
   'IMPERIAL_WEIGHT_OUNCE': MeasurementUnitWeight.imperialWeightOunce,
   'IMPERIAL_POUND': MeasurementUnitWeight.imperialPound,
   'IMPERIAL_STONE': MeasurementUnitWeight.imperialStone,

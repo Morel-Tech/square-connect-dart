@@ -56,13 +56,9 @@ class RequestObj {
     return {'Authorization': 'Bearer ' + this.token};
   }
 
-  Future<dynamic> makeCall() async {
+  Future<Response> makeCall() async {
     switch (this.method) {
       case RequestMethod.get:
-        print(
-          this.url,
-        );
-        print(this.headers);
         return client.get(this.url, headers: this.headers);
       case RequestMethod.post:
         return client.post(this.url,
@@ -77,3 +73,8 @@ class RequestObj {
 }
 
 enum RequestMethod { post, get, put, delete }
+
+
+bool xor(bool a, bool b) {
+  return (!a && b) || (a && !b);
+}

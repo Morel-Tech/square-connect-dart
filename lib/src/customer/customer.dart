@@ -67,10 +67,24 @@ class CustomerApi {
 
   Future<ListCustomersResponse> listCustomers({
     String cursor,
-    String sortField,
+    CustomerSortField sortField,
     SortOrder sortOrder,
   })async{
+    List<QueryParam> queryParams = [];
+    if (sortOrder != null) queryParams.add(QueryParam('sort_order', getStringFromSortOrder(sortOrder)));
+    if (sortField != null) queryParams.add(QueryParam('sort_field', getStringFromCustomerSortField(sortField)));
 
+    var obj = RequestObj(
+      token: token,
+      cursor: cursor,
+      path: '/v2/customers',
+      method: RequestMethod.get,
+      client: client,
+      queryParams: queryParams,
+    );
+
+    var response = await obj.makeCall();
+    return ListCustomersResponse.fromJson(json.decode(response.body));
   }
 
   Future<RetrieveCustomerResponse> retrieveCustomer({

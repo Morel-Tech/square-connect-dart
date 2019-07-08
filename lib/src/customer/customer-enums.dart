@@ -97,6 +97,10 @@ SortOrder getSortOrderFromString(String input) {
   return ans;
 }
 
+String getStringFromSortOrder(SortOrder order) {
+  return _mapStringToSortOrder.keys.singleWhere((key) => _mapStringToSortOrder[key] == order);
+}
+
 enum CustomerSortField {
   defaultSort,
   createdAt,
@@ -114,3 +118,6 @@ CustomerSortField getCustomerSortFieldFromString(String input) {
   return ans;
 }
 
+String getStringFromCustomerSortField(CustomerSortField order) {
+  return _mapStringToCustomerSortField.keys.singleWhere((key) => _mapStringToCustomerSortField[key] == order);
+}

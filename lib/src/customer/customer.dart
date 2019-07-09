@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
+import 'package:uuid/uuid.dart';
 
 import '../helper-classes.dart';
 
@@ -19,14 +20,38 @@ class CustomersApi {
     String familyName,
     String companyName,
     String nickname,
-    String email,
+    String emailAddress,
     String phoneNumber,
     String referenceId,
     String note,
     DateTime birthday,
     Address address,
+    String idempotencyKey,
   }) async{
-    
+    Map<String, dynamic> body = {};
+
+    if (givenName != null) body['given_name'] = givenName;
+    if (familyName != null) body['family_name'] = familyName;
+    if (companyName != null) body['company_name'] = companyName;
+    if (nickname != null) body['nickname'] = nickname;
+    if (emailAddress != null) body['email_address'] = emailAddress;
+    if (address != null) body['address'] = address.toJson();
+    if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (note != null) body['note'] = note;
+    if (birthday != null) body['birthday'] = birthday.toUtc().toIso8601String();
+    if (idempotencyKey != null ) body['idempotency_key'] = idempotencyKey;
+    if(body['idempotency_key'] == null) body['idempotency_key'] = Uuid().v4();
+
+    var obj = RequestObj(
+      token: token,
+      path: '/v2/customers',
+      method: RequestMethod.post,
+      client: client,
+      body: body,
+    );
+    var response = await obj.makeCall();
+    return CreateCustomerResponse.fromJson(json.decode(response.body));
   }
 
   Future<CreateCustomerCardResponse> createCustomerCard({
@@ -36,7 +61,22 @@ class CustomersApi {
     String cardholderName,
     String verificationToken,
   }) async{
+    Map<String, dynamic> body = {};
 
+    if (cardNonce != null) body['card_nonce'] = cardNonce;
+    if (billingAddress != null) body['billing_address'] = billingAddress;
+    if (cardholderName != null) body['cardholder_name'] = cardholderName;
+    if (verificationToken != null) body['verification_token'] = verificationToken;
+
+    var obj = RequestObj(
+      token: token,
+      path: '/v2/customers/$customerId/cards',
+      method: RequestMethod.post,
+      client: client,
+      body: body,
+    );
+    var response = await obj.makeCall();
+    return CreateCustomerCardResponse.fromJson(json.decode(response.body));
   }
 
   Future<DeleteCustomerResponse> deleteCustomer({@required String customerId}) async{

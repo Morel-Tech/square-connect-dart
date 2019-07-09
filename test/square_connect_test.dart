@@ -22,10 +22,10 @@ void main() {
 
           const response = '{"customer":{"id":"MDXEF6NVGWWTD34WKTBKAC4QJ0","created_at":"2019-07-09T22:28:12.795Z","updated_at":"2019-07-09T22:28:13Z","given_name":"Tester","family_name":"McTesterson","phone_number":"+5555555555","preferences":{"email_unsubscribed":false},"creation_source":"THIRD_PARTY"}}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers', headers: {'Authorization': 'Bearer fake-token'}))
+          when(httpClient.post('https://connect.squareup.com/v2/customers', headers: {'Authorization': 'Bearer fake-token'}, body: '{"given_name":"Tester","family_name":"McTesterson","phone_number":"+15555555555","idempotency_key":"key"}'))
               .thenAnswer((_) async => Response(response, 200));
 
-          var item = await squareClient.customersApi.createCustomer(givenName: 'Tester', familyName: 'McTesterson', phoneNumber: '+15555555555');
+          var item = await squareClient.customersApi.createCustomer(givenName: 'Tester', familyName: 'McTesterson', phoneNumber: '+15555555555', idempotencyKey: 'key');
           expect(item, isInstanceOf<CreateCustomerResponse>());
           expect(item.customer, isInstanceOf<Customer>());
           expect(item.errors, null);
@@ -39,10 +39,10 @@ void main() {
 
           const response = '{"errors":[{"category":"INVALID_REQUEST_ERROR","code":"BAD_REQUEST","detail":"At least one of `given_name`, `family_name`, `company_name`, `email_address`, or `phone_number` is required for a customer."}]}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers', headers: {'Authorization': 'Bearer fake-token'}))
+          when(httpClient.post('https://connect.squareup.com/v2/customers', headers: {'Authorization': 'Bearer fake-token'}, body: '{"given_name":"Tester","family_name":"McTesterson","phone_number":"+15555555555","idempotency_key":"key"}'))
               .thenAnswer((_) async => Response(response, 400));
 
-          var item = await squareClient.customersApi.createCustomer();
+          var item = await squareClient.customersApi.createCustomer(givenName: 'Tester', familyName: 'McTesterson', phoneNumber: '+15555555555', idempotencyKey: 'key');
           expect(item, isInstanceOf<CreateCustomerResponse>());
           expect(item.customer, null);
           expect(item.errors, isInstanceOf<List<SquareError>>());
@@ -57,7 +57,7 @@ void main() {
 
           const response = '{"card":{"id":"ccof:Q4OtExaEudlItxpD4GB","card_brand":"VISA","last_4":"3425","exp_month":5,"exp_year":2021}}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers/fake-customer-id/cards', headers: {'Authorization': 'Bearer fake-token'}))
+          when(httpClient.post('https://connect.squareup.com/v2/customers/fake-customer-id/cards', headers: {'Authorization': 'Bearer fake-token'}, body: '{"card_nonce":"fake-nonce"}'))
               .thenAnswer((_) async => Response(response, 200));
 
           var item = await squareClient.customersApi.createCustomerCard(customerId: 'fake-customer-id', cardNonce: 'fake-nonce');
@@ -74,10 +74,10 @@ void main() {
 
           const response = '{"errors":[{"category":"INVALID_REQUEST_ERROR","code":"NOT_FOUND","detail":"Customer with ID `fake-id` not found."}]}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers/fake-customer-id/cards', headers: {'Authorization': 'Bearer fake-token'}))
+          when(httpClient.post('https://connect.squareup.com/v2/customers/fake-customer-id/cards', headers: {'Authorization': 'Bearer fake-token'}, body: '{"card_nonce":"fake-nonce"}'))
               .thenAnswer((_) async => Response(response, 400));
 
-          var item = await squareClient.customersApi.createCustomerCard(customerId: 'fake-customer-id');
+          var item = await squareClient.customersApi.createCustomerCard(customerId: 'fake-customer-id', cardNonce: 'fake-nonce');
           expect(item, isInstanceOf<CreateCustomerCardResponse>());
           expect(item.card, null);
           expect(item.errors, isInstanceOf<List<SquareError>>());
@@ -230,7 +230,7 @@ void main() {
 
           const response = '{"customers":[{"id":"H00AXCWB8N7JAX97DV65B0CJKW","created_at":"2019-02-22T18:29:29.89Z","updated_at":"2019-02-22T18:38:09Z","given_name":"Brett","family_name":"Bastien","phone_number":"+15555555555","preferences":{"email_unsubscribed":false},"groups":[{"id":"0SG9C387DX0MN.CHURN_RISK","name":"Lapsed"},{"id":"0SG9C387DX0MN.REACHABLE","name":"Reachable"},{"id":"0SG9C387DX0MN.LOYALTY_ALL","name":"Loyalty Enrollees"}],"creation_source":"MERGE"},{"id":"Q800392NG34TY124AY1XMRDV155MFS0","created_at":"2019-03-13T21:29:29.997Z","updated_at":"2019-03-13T21:29:30Z","phone_number":"+15555555555","preferences":{"email_unsubscribed":false},"groups":[{"id":"0SG9C387DX0MN.LOYALTY_ALL","name":"Loyalty Enrollees"}],"creation_source":"LOYALTY"},{"id":"KS1WFD41ZX49MHXK2F5M3T3QRW","created_at":"2019-05-23T17:38:50.356Z","updated_at":"2019-05-23T17:38:51Z","given_name":"Brittanny","family_name":"Reule","company_name":"City Brew Coffee","email_address":"test@invalid.com","address":{"address_line_1":"1102 Denway Place","locality":"Billings","postal_code":"59105"},"phone_number":"+15555555555","birthday":"1988-02-08T00:00:00-00:00","reference_id":"F8EF86A6-ADCC-4CE8-8BD7-A4A33526E17B","preferences":{"email_unsubscribed":false},"groups":[{"id":"590a4ced-3ac0-4ed7-4436-52f41863a8f5","name":"Import 2019523_113810"},{"id":"0SG9C387DX0MN.REACHABLE","name":"Reachable"}],"creation_source":"IMPORT"},{"id":"XGTWWNNZXD4Y0J5Z3AZZF8R8H8","created_at":"2019-05-23T17:38:50.356Z","updated_at":"2019-05-23T17:38:51Z","given_name":"Chrissy","family_name":"OMalley","email_address":"test@invalid.com","address":{"address_line_1":"PO Box 1159","locality":"Billings","postal_code":"59102"},"phone_number":"+15555555555","birthday":"1983-04-16T00:00:00-00:00","reference_id":"88D4863C-60BC-4CDA-B7A7-661A744CC1A6","preferences":{"email_unsubscribed":false},"groups":[{"id":"590a4ced-3ac0-4ed7-4436-52f41863a8f5","name":"Import 2019523_113810"},{"id":"0SG9C387DX0MN.REACHABLE","name":"Reachable"},{"id":"0SG9C387DX0MN.LOYALTY_ALL","name":"Loyalty Enrollees"}],"creation_source":"IMPORT"},{"id":"33DF2ME28H7X6HNKCZ3J529820","created_at":"2019-05-23T17:38:50.356Z","updated_at":"2019-05-23T17:38:52Z","given_name":"Kate","family_name":"Guerrero","company_name":"City Brew Coffee","email_address":"kater@citybrew.com","address":{"address_line_1":"2223 Hewitt Dr","locality":"Billings","postal_code":"59101"},"phone_number":"+15555555555","birthday":"1988-11-21T00:00:00-00:00","reference_id":"D5C262B4-73AD-4FE2-BE31-9C88BE189B4B","preferences":{"email_unsubscribed":false},"groups":[{"id":"590a4ced-3ac0-4ed7-4436-52f41863a8f5","name":"Import 2019523_113810"},{"id":"0SG9C387DX0MN.REACHABLE","name":"Reachable"}],"creation_source":"IMPORT"}],"cursor":"Cg0wU0c5QzM4N0RYME1OElEIBRIkcjowU0c5QzM4N0RYME1OLjlDVjdaREs5S04zNzJXV0g7bzo1KAFAAWgImgEgCBWigwELCIDo0NTCy98CEACqgwELCIDojrCSkOMCEAAaBggBEAFYAQ=="}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers/search', headers: {'Authorization': 'Bearer fake-token'}, body: '{"limit":5,"query":{"filter":{"created_at":{"start_at":"2019-01-01T00:00:00.000","end_at":"2019-06-30T00:00:00.000"}},"sort":{"field":"CREATED_AT","order":"ASC"}}}'))
+          when(httpClient.post('https://connect.squareup.com/v2/customers/search', headers: {'Authorization': 'Bearer fake-token'}, body: '{"limit":5,"query":{"filter":{"created_at":{"start_at":"2019-01-01T07:00:00.000Z","end_at":"2019-06-30T06:00:00.000Z"}},"sort":{"field":"CREATED_AT","order":"ASC"}}}'))
               .thenAnswer((_) async => Response(response, 200));
 
           var item = await squareClient.customersApi.searchCustomers(limit: 5, sortField: CustomerSortField.createdAt, sortOrder: SortOrder.ascending, createdAtStart: DateTime(2019, 1, 1), createdAtEnd: DateTime(2019, 6, 30));
@@ -248,7 +248,7 @@ void main() {
 
           const response = '{"errors":[{"category":"INVALID_REQUEST_ERROR","code":"INVALID_ENUM_VALUE","detail":"`ASCS` is not a valid enum value for `query.sort.order`.","field":"query.sort.order"}]}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers/search', headers: {'Authorization': 'Bearer fake-token'}, body: '{"limit":5,"query":{"filter":{"created_at":{"start_at":"2019-01-01T00:00:00.000","end_at":"2019-06-30T00:00:00.000"}},"sort":{"field":"CREATED_AT","order":"ASC"}}}'))
+          when(httpClient.post('https://connect.squareup.com/v2/customers/search', headers: {'Authorization': 'Bearer fake-token'}, body: '{"limit":5,"query":{"filter":{"created_at":{"start_at":"2019-01-01T07:00:00.000Z","end_at":"2019-06-30T06:00:00.000Z"}},"sort":{"field":"CREATED_AT","order":"ASC"}}}'))
               .thenAnswer((_) async => Response(response, 400));
 
           var item = await squareClient.customersApi.searchCustomers(limit: 5, sortField: CustomerSortField.createdAt, sortOrder: SortOrder.ascending, createdAtStart: DateTime(2019, 1, 1), createdAtEnd: DateTime(2019, 6, 30));
@@ -342,7 +342,7 @@ void main() {
         });
         test('emailAddress parses correctly', () {
           var object = Customer.fromJson(json.decode(exampleCustomerObj));
-          expect(object.emailAddress, 'marcust@citybrew.com');
+          expect(object.emailAddress, 'test@invalid.com');
         });
         test('address parses correctly', () {
           var object = Customer.fromJson(json.decode(exampleCustomerObj));

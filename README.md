@@ -1,5 +1,5 @@
-![Pub](https://img.shields.io/pub/v/square_connect.svg?style=flat-square)
-![GitHub](https://img.shields.io/github/license/mtwichel/square-connect-flutter-library.svg?style=flat-square)
+[![Pub](https://img.shields.io/pub/v/square_connect.svg?style=flat-square)](https://pub.dev/packages/square_connect)
+[![GitHub](https://img.shields.io/github/license/mtwichel/square-connect-flutter-library.svg?style=flat-square)](https://github.com/mtwichel/square-connect-flutter-library)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 # Square Connect Flutter
 
@@ -83,11 +83,28 @@ if (firstResponse.cursor != null) {
 }
 ```
 
-### Methods Supported (for more info, see API documentation, and Square's documentation [here](https://developer.squareup.com/docs/api/connect/v2)):
-API | Method | Description
---- | --- | ---
-SquareConnect.catalogApi | `listCatalog(CatalogType[] types, String cursor)` | Gets all catalog objects, can filter with specifying types list and pagination support.
-SquareConnect.catalogApi | `retrieveCatalogObject(String objectId, bool includeRelatedObjects)` | Gets specified catalog object by id.
-SquareConnect.catalogApi | `deleteCatalogObject(String objectId)` | Deletes secified catalog object by id.
-SquareConnect.catalogApi | `batchDeleteCatalogObjects({List<String> objectIds})` | Batch deletes catalog objects from list of ids.
-SquareConnect.catalogApi | `getCatalogInfo()` | Gets metadata about catalog.
+## Methods Supported (for more info, see API documentation, and Square's documentation [here](https://developer.squareup.com/docs/api/connect/v2)):
+## Catalog API (SquareConnect.catalogApi)
+Method | Description
+--- | ---
+`listCatalog(types, cursor)` | Gets all catalog objects, can filter with specifying types list and pagination support.
+`retrieveCatalogObject(objectId, includeRelatedObjects)` | Gets specified catalog object by id.
+`deleteCatalogObject(objectId)` | Deletes secified catalog object by id.
+`batchDeleteCatalogObjects(objectIds)` | Batch deletes catalog objects from list of ids.
+`getCatalogInfo()` | Gets metadata about catalog.
+
+## Customer API (SquareConnect.customerApi)
+Method | Description
+--- | ---
+`createCustomer(various inputs)` | Creates a customer object with specified information and returns the created customer.
+`createCustomerCard(customerId, card inputs)` | Creates a card on file for specified customer and returns the created card.
+`deleteCustomer(customerId)` | Deletes secified customer object by id.
+`deleteCustomerCard(customerId, cardId)` | Deletes secified card on file belonging to customer by id.
+`listCustomers(cursor, sortField, sortOrder)` | Lists customers by optional cursor, sort field, and sort order.
+`retrieveCustomer(customerId)` | Retrieves customer object by id.
+`searchCustomers(various query inputs, cursor, limit)` | Searches for customer by filters and sorts, as well as cursor and limit.
+`updateCustomer(customerId, various inputs)` | Updates specified customer object (by id) and returns the created customer.
+
+
+
+

@@ -89,23 +89,62 @@ class CustomersApi {
   }
 
   Future<RetrieveCustomerResponse> retrieveCustomer({
-    String customerId,
-  }){
+    @required String customerId,
+  }) async {
+    if (customerId == null) throw ArgumentError('customerId must not be null');
 
+    var obj = RequestObj(
+      token: token,
+      path: '/v2/customers/$customerId',
+      method: RequestMethod.get,
+      client: client,
+    );
+    var response = await obj.makeCall();
+    return RetrieveCustomerResponse.fromJson(json.decode(response.body));
   }
 
   Future<SearchCustomersResponse> searchCustomers({
     String cursor,
     int limit,
-    CustomerCreationSource source,
+    CustomerCreationSource creationSource,
     DateTime createdAtStart,
     DateTime createdAtEnd,
     DateTime updatedAtStart,
     DateTime updatedAtEnd,
     CustomerSortField sortField,
     SortOrder sortOrder,
-  })async{
+  }) async {
 
+    Map<String, dynamic> body = {};
+
+    if (cursor != null) body['cursor'] = cursor;
+    if(limit != null) body['limit'] = limit;
+
+    body['query'] = Map<String, dynamic>();
+    if (createdAtStart != null || createdAtEnd != null || updatedAtStart != null || updatedAtEnd != null || creationSource != null) body['query']['filter'] = Map<String, dynamic>();
+    if (createdAtStart != null || createdAtEnd != null) body['query']['filter']['created_at'] = Map<String, dynamic>();
+    if (updatedAtStart != null || updatedAtEnd != null) body['query']['filter']['updated_at'] = Map<String, dynamic>();
+
+    if(createdAtStart != null) body['query']['filter']['created_at']['start_at'] = createdAtStart.toIso8601String();
+    if(createdAtEnd != null) body['query']['filter']['created_at']['end_at'] = createdAtEnd.toIso8601String();
+    if(updatedAtStart != null) body['query']['filter']['updated_at']['start_at'] = updatedAtStart.toIso8601String();
+    if(updatedAtEnd != null) body['query']['filter']['updated_at']['end_at'] = updatedAtEnd.toIso8601String();
+    if(creationSource != null) body['query']['filter']['creation_source'] = getStringFromCustomerCreationSource(creationSource);
+
+    if (sortField != null || sortOrder != null) body['query']['sort'] = Map<String, dynamic>();
+
+    if(sortField != null) body['query']['sort']['field'] = getStringFromCustomerSortField(sortField) ;
+    if(sortOrder != null) body['query']['sort']['order'] = getStringFromSortOrder(sortOrder);
+
+    var obj = RequestObj(
+      token: token,
+      path: '/v2/customers/search',
+      method: RequestMethod.post,
+      client: client,
+      body: body,
+    );
+    var response = await obj.makeCall();
+    return SearchCustomersResponse.fromJson(json.decode(response.body));
   }
 
   Future<UpdateCustomerResponse> updateCustomer({

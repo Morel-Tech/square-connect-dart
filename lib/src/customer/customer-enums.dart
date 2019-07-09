@@ -80,6 +80,10 @@ CustomerCreationSource getCustomerCreationSourceFromString(String input) {
   return ans;
 }
 
+String getStringFromCustomerCreationSource(CustomerCreationSource source) {
+  return _mapStringToCustomerCreationSource.keys.singleWhere((key) => _mapStringToCustomerCreationSource[key] == source);
+}
+
 enum SortOrder {
   ascending,
   descending,

@@ -61,6 +61,7 @@ class RequestObj {
       case RequestMethod.get:
         return client.get(this.url, headers: this.headers);
       case RequestMethod.post:
+      print('url: ${this.url} | body: ${json.encode(this.body)} | headers: ${this.headers}');
         return client.post(this.url,
             headers: this.headers, body: json.encode(this.body));
       case RequestMethod.delete:

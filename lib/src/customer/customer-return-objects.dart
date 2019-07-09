@@ -119,7 +119,7 @@ class SearchCustomersResponse {
   factory SearchCustomersResponse.fromJson(Map<String, dynamic> json) {
     return SearchCustomersResponse(
       errors: json['errors'] != null ? (json['errors'] as List).map((error) => SquareError.fromJson(error)).toList() : null,
-      customers: json['customers'] != null ? (json['customers'] as List).map((item) => Customer.fromJson(item)) : null,
+      customers: json['customers'] != null ? (json['customers'] as List).map((item) => Customer.fromJson(item)).toList() : null,
       cursor: json['cursor'],
     );
   }

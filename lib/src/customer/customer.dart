@@ -125,10 +125,10 @@ class CustomersApi {
     if (createdAtStart != null || createdAtEnd != null) body['query']['filter']['created_at'] = Map<String, dynamic>();
     if (updatedAtStart != null || updatedAtEnd != null) body['query']['filter']['updated_at'] = Map<String, dynamic>();
 
-    if(createdAtStart != null) body['query']['filter']['created_at']['start_at'] = createdAtStart.toIso8601String();
-    if(createdAtEnd != null) body['query']['filter']['created_at']['end_at'] = createdAtEnd.toIso8601String();
-    if(updatedAtStart != null) body['query']['filter']['updated_at']['start_at'] = updatedAtStart.toIso8601String();
-    if(updatedAtEnd != null) body['query']['filter']['updated_at']['end_at'] = updatedAtEnd.toIso8601String();
+    if(createdAtStart != null) body['query']['filter']['created_at']['start_at'] = createdAtStart.toUtc().toIso8601String();
+    if(createdAtEnd != null) body['query']['filter']['created_at']['end_at'] = createdAtEnd.toUtc().toIso8601String();
+    if(updatedAtStart != null) body['query']['filter']['updated_at']['start_at'] = updatedAtStart.toUtc().toIso8601String();
+    if(updatedAtEnd != null) body['query']['filter']['updated_at']['end_at'] = updatedAtEnd.toUtc().toIso8601String();
     if(creationSource != null) body['query']['filter']['creation_source'] = getStringFromCustomerCreationSource(creationSource);
 
     if (sortField != null || sortOrder != null) body['query']['sort'] = Map<String, dynamic>();
@@ -160,6 +160,27 @@ class CustomersApi {
     String note,
     DateTime birthday,
   })async{
+    Map<String, dynamic> body = {};
 
+    if (givenName != null) body['given_name'] = givenName;
+    if (familyName != null) body['family_name'] = familyName;
+    if (companyName != null) body['company_name'] = companyName;
+    if (nickname != null) body['nickname'] = nickname;
+    if (emailAddress != null) body['email_address'] = emailAddress;
+    if (address != null) body['address'] = address.toJson();
+    if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (note != null) body['note'] = note;
+    if (birthday != null) body['birthday'] = birthday.toUtc().toIso8601String();
+    
+    var obj = RequestObj(
+      token: token,
+      path: '/v2/customers/$customerId',
+      method: RequestMethod.put,
+      client: client,
+      body: body,
+    );
+    var response = await obj.makeCall();
+    return UpdateCustomerResponse.fromJson(json.decode(response.body));
   }
 }

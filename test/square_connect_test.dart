@@ -267,10 +267,10 @@ void main() {
 
           const response = '{"customer":{"id":"3PPP9N0K056MFAXRN94Y8AN8ZC","created_at":"2019-03-13T21:46:04.073Z","updated_at":"2019-07-09T19:22:31Z","cards":[{"id":"ccof:Cn1d1JeAJR876v8x3GB","card_brand":"VISA","last_4":"7038","exp_month":2,"exp_year":2024}],"given_name":"Tester","family_name":"Twichel","email_address":"marcust@citybrew.com","address":{"address_line_1":"1529 Downy Rd","locality":"Laurel","postal_code":"59044"},"phone_number":"406-518-1287","birthday":"1997-06-15T00:00:00-00:00","reference_id":"810D7A49-6F02-4634-A468-2AF28228EAA4","preferences":{"email_unsubscribed":false},"groups":[{"id":"0SG9C387DX0MN.email_collection","name":"Collected Emails"},{"id":"590a4ced-3ac0-4ed7-4436-52f41863a8f5","name":"Import 2019523_113810"},{"id":"0SG9C387DX0MN.LOYAL","name":"Regulars"},{"id":"0SG9C387DX0MN.REACHABLE","name":"Reachable"},{"id":"0SG9C387DX0MN.CARDS_ON_FILE","name":"Cards on File"},{"id":"0SG9C387DX0MN.LOYALTY_ALL","name":"Loyalty Enrollees"}],"creation_source":"MERGE"}}';
 
-          when(httpClient.put('https://connect.squareup.com/v2/customers/fake-cust-id', headers: {'Authorization': 'Bearer fake-token'}))
+          when(httpClient.put('https://connect.squareup.com/v2/customers/fake-cust-id', headers: {'Authorization': 'Bearer fake-token'}, body: '{"given_name":"Tester","note":"This is a test note"}'))
               .thenAnswer((_) async => Response(response, 200));
 
-          var item = await squareClient.customersApi.updateCustomer(customerId: 'fake-cust-id', givenName: 'Tester');
+          var item = await squareClient.customersApi.updateCustomer(customerId: 'fake-cust-id', givenName: 'Tester', note: 'This is a test note');
           expect(item, isInstanceOf<UpdateCustomerResponse>());
           expect(item.customer, isInstanceOf<Customer>());
           expect(item.errors, null);
@@ -284,10 +284,10 @@ void main() {
 
           const response = '{"errors":[{"category":"INVALID_REQUEST_ERROR","code":"NOT_FOUND","detail":"Customer with ID `3PPP9N0K056MFAXRN94Y8AN8Z` not found."}]}';
 
-          when(httpClient.post('https://connect.squareup.com/v2/customers/fake-cust-id', headers: {'Authorization': 'Bearer fake-token'}))
+          when(httpClient.put('https://connect.squareup.com/v2/customers/fake-cust-id', headers: {'Authorization': 'Bearer fake-token'}, body: '{"given_name":"Tester","note":"This is a test note"}'))
               .thenAnswer((_) async => Response(response, 400));
 
-          var item = await squareClient.customersApi.updateCustomer(customerId: 'fake-cust-id', givenName: 'Tester');
+          var item = await squareClient.customersApi.updateCustomer(customerId: 'fake-cust-id', givenName: 'Tester', note: 'This is a test note');
           expect(item, isInstanceOf<UpdateCustomerResponse>());
           expect(item.customer, null);
           expect(item.errors, isInstanceOf<List<SquareError>>());

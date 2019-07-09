@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:square_connect/src/customer/customer-enums.dart';
 
 class Customer {
@@ -150,6 +152,26 @@ class Address {
       lastName: json['last_name'],
       organization: json['organization'],
     );
+  }
+
+  String toJson() {
+    Map<String, String> map = {};
+    if (this.addressLine1 != null) map['address_line_1'] = this.addressLine1;
+    if (this.addressLine2 != null) map['address_line_2'] = this.addressLine2;
+    if (this.addressLine3 != null) map['address_line_3'] = this.addressLine3;
+    if (this.locality != null) map['locality'] = this.locality;
+    if (this.sublocality != null) map['sublocality'] = this.sublocality;
+    if (this.sublocality2 != null) map['sublocality_2'] = this.sublocality2;
+    if (this.sublocality3 != null) map['sublocality_3'] = this.sublocality3;
+    if (this.administrativeDistrictLevel1 != null) map['administrative_district_level_1'] = this.administrativeDistrictLevel1;
+    if (this.administrativeDistrictLevel2 != null) map['administrative_district_level_2'] = this.administrativeDistrictLevel2;
+    if (this.administrativeDistrictLevel3 != null) map['administrative_district_level_3'] = this.administrativeDistrictLevel3;
+    if (this.postalCode != null) map['postal_code'] = this.postalCode;
+    if (this.country != null) map['country'] = this.country;
+    if (this.firstName != null) map['first_name'] = this.firstName;
+    if (this.lastName != null) map['last_name'] = this.lastName;
+    if (this.organization != null) map['organization'] = this.organization;
+    return json.encode(map);
   }
 }
 

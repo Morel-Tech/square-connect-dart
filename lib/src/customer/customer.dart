@@ -30,6 +30,7 @@ class CustomersApi {
   }
 
   Future<CreateCustomerCardResponse> createCustomerCard({
+    @required String customerId,
     String cardNonce,
     Address billingAddress,
     String cardholderName,

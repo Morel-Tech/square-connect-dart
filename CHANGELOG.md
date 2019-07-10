@@ -1,3 +1,6 @@
+## 0.0.7
+* Minor changes to Locations API
+
 ## 0.0.6
 * Added full support for Locations API
     * Missing test suite

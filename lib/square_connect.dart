@@ -55,4 +55,8 @@ class SquareConnect {
   CustomersApi get customersApi {
     return CustomersApi(token: _authToken, client: _client);
   }
+
+  LocationsApi get locationsApi {
+    return LocationsApi(token: _authToken, client: _client);
+  }
 }

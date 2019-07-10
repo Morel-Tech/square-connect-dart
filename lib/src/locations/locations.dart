@@ -12,7 +12,7 @@ class LocationsApi {
       : assert(token != null),
         assert(client != null);
 
-  Future<ListLocationsResponse> listLocations() async{
+  Future<ListLocationsResponse> listLocations() async {
     var obj = RequestObj(
       token: token,
       path: '/v2/locations',

@@ -24,12 +24,13 @@ const _mapStringToCardBrand = {
 
 CardBrand getCardBrandFromString(String input) {
   var ans = _mapStringToCardBrand[input];
-  if (ans == null) throw ArgumentError.value(input, 'input',
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
         'Input must be a valid CardBrand in SCREAMING_UPPERCASE');
   return ans;
 }
 
-enum CustomerCreationSource{
+enum CustomerCreationSource {
   other,
   appointments,
   coupon,
@@ -75,13 +76,15 @@ const _mapStringToCustomerCreationSource = {
 
 CustomerCreationSource getCustomerCreationSourceFromString(String input) {
   var ans = _mapStringToCustomerCreationSource[input];
-  if (ans == null) throw ArgumentError.value(input, 'input',
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
         'Input must be a valid CustomerCreationSource in SCREAMING_UPPERCASE');
   return ans;
 }
 
 String getStringFromCustomerCreationSource(CustomerCreationSource source) {
-  return _mapStringToCustomerCreationSource.keys.singleWhere((key) => _mapStringToCustomerCreationSource[key] == source);
+  return _mapStringToCustomerCreationSource.keys
+      .singleWhere((key) => _mapStringToCustomerCreationSource[key] == source);
 }
 
 enum SortOrder {
@@ -96,13 +99,15 @@ const _mapStringToSortOrder = {
 
 SortOrder getSortOrderFromString(String input) {
   var ans = _mapStringToSortOrder[input];
-  if (ans == null) throw ArgumentError.value(input, 'input',
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
         'Input must be a valid SortOrder in SCREAMING_UPPERCASE');
   return ans;
 }
 
 String getStringFromSortOrder(SortOrder order) {
-  return _mapStringToSortOrder.keys.singleWhere((key) => _mapStringToSortOrder[key] == order);
+  return _mapStringToSortOrder.keys
+      .singleWhere((key) => _mapStringToSortOrder[key] == order);
 }
 
 enum CustomerSortField {
@@ -117,11 +122,13 @@ const _mapStringToCustomerSortField = {
 
 CustomerSortField getCustomerSortFieldFromString(String input) {
   var ans = _mapStringToCustomerSortField[input];
-  if (ans == null) throw ArgumentError.value(input, 'input',
+  if (ans == null)
+    throw ArgumentError.value(input, 'input',
         'Input must be a valid CustomerSortField in SCREAMING_UPPERCASE');
   return ans;
 }
 
 String getStringFromCustomerSortField(CustomerSortField order) {
-  return _mapStringToCustomerSortField.keys.singleWhere((key) => _mapStringToCustomerSortField[key] == order);
+  return _mapStringToCustomerSortField.keys
+      .singleWhere((key) => _mapStringToCustomerSortField[key] == order);
 }

@@ -4,7 +4,6 @@ import 'package:square_connect/square_connect.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,19 +19,19 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
 
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final client = SquareConnect.instance;
   CatalogItem item;
 
   @override
   void initState() {
-    client.setAuthToken(token: 'EAAAEF6M57K-wC3WrDFaDW80jMZ8KHNCzBbFVWtmg0bZifLJ3XVdcJGta7OgaLuS');
+    client.setAuthToken(
+        token:
+            'EAAAEF6M57K-wC3WrDFaDW80jMZ8KHNCzBbFVWtmg0bZifLJ3XVdcJGta7OgaLuS');
     super.initState();
     _refreshItems();
   }
@@ -50,12 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _refreshItems,
         tooltip: 'Increment',
         child: Icon(Icons.refresh),
-      ), 
+      ),
     );
   }
 
-  _refreshItems() async{
-    var response = await client.catalogApi.retrieveCatalogObject(objectId: 'L3N4FU22JFINH4ZGZDMBKJBJ');
+  _refreshItems() async {
+    var response = await client.catalogApi
+        .retrieveCatalogObject(objectId: 'L3N4FU22JFINH4ZGZDMBKJBJ');
     setState(() {
       item = response.object.itemData;
     });

@@ -21,45 +21,60 @@ class Customer {
   final List<CustomerGroupInfo> groups;
   final CustomerCreationSource creationSource;
 
-  Customer({
-    this.id,
-    this.createdAt,
-    this.updatedAt,
-    this.cards,
-    this.givenName,
-    this.familyName,
-    this.nickname,
-    this.companyName,
-    this.emailAddress,
-    this.address,
-    this.phoneNumber,
-    this.birthday,
-    this.referenceId,
-    this.note,
-    this.preferences,
-    this.groups,
-    this.creationSource
-  });
+  Customer(
+      {this.id,
+      this.createdAt,
+      this.updatedAt,
+      this.cards,
+      this.givenName,
+      this.familyName,
+      this.nickname,
+      this.companyName,
+      this.emailAddress,
+      this.address,
+      this.phoneNumber,
+      this.birthday,
+      this.referenceId,
+      this.note,
+      this.preferences,
+      this.groups,
+      this.creationSource});
 
   factory Customer.fromJson(Map<String, dynamic> json) {
     return Customer(
       id: json['id'],
-      createdAt: json['created_at'] != null ? DateTime.parse(json['created_at']) : null,
-      updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
-      cards: json['cards'] != null ? (json['cards'] as List).map((item) => Card.fromJson(item)).toList() : null,
+      createdAt: json['created_at'] != null
+          ? DateTime.parse(json['created_at'])
+          : null,
+      updatedAt: json['updated_at'] != null
+          ? DateTime.parse(json['updated_at'])
+          : null,
+      cards: json['cards'] != null
+          ? (json['cards'] as List).map((item) => Card.fromJson(item)).toList()
+          : null,
       givenName: json['given_name'],
       familyName: json['family_name'],
       nickname: json['nickname'],
       companyName: json['company_name'],
       emailAddress: json['email_address'],
-      address: json['address'] != null ? Address.fromJson(json['address']) : null,
+      address:
+          json['address'] != null ? Address.fromJson(json['address']) : null,
       phoneNumber: json['phone_number'],
-      birthday: json['birthday'] != null ? DateTime.parse(json['birthday']) : null,
+      birthday:
+          json['birthday'] != null ? DateTime.parse(json['birthday']) : null,
       referenceId: json['reference_id'],
       note: json['note'],
-      preferences: json['preferences'] != null ? CustomerPreferences.fromJson(json['preferences']) : null,
-      groups: json['groups'] != null ? (json['groups'] as List).map((item) => CustomerGroupInfo.fromJson(item)).toList() : null,
-      creationSource: json['creation_source'] != null ? getCustomerCreationSourceFromString(json['creation_source']) : null,
+      preferences: json['preferences'] != null
+          ? CustomerPreferences.fromJson(json['preferences'])
+          : null,
+      groups: json['groups'] != null
+          ? (json['groups'] as List)
+              .map((item) => CustomerGroupInfo.fromJson(item))
+              .toList()
+          : null,
+      creationSource: json['creation_source'] != null
+          ? getCustomerCreationSourceFromString(json['creation_source'])
+          : null,
     );
   }
 }
@@ -74,28 +89,30 @@ class Card {
   final Address billingAddress;
   final String fingerprint;
 
-  Card({
-    this.id,
-    this.cardBrand,
-    this.last4,
-    this.expMonth,
-    this.expYear,
-    this.cardholderName,
-    this.billingAddress,
-    this.fingerprint
-  });
+  Card(
+      {this.id,
+      this.cardBrand,
+      this.last4,
+      this.expMonth,
+      this.expYear,
+      this.cardholderName,
+      this.billingAddress,
+      this.fingerprint});
 
   factory Card.fromJson(Map<String, dynamic> json) {
     return Card(
-      id: json['id'],
-      cardBrand: json['card_brand'] != null ? getCardBrandFromString(json['card_brand']) : null,
-      last4: json['last_4'],
-      expMonth: json['exp_month'],
-      expYear: json['exp_year'],
-      cardholderName: json['cardholder_name'],
-      billingAddress: json['billing_address'] != null ? Address.fromJson(json['billing_address']) : null,
-      fingerprint: json['fingerprint']
-    );
+        id: json['id'],
+        cardBrand: json['card_brand'] != null
+            ? getCardBrandFromString(json['card_brand'])
+            : null,
+        last4: json['last_4'],
+        expMonth: json['exp_month'],
+        expYear: json['exp_year'],
+        cardholderName: json['cardholder_name'],
+        billingAddress: json['billing_address'] != null
+            ? Address.fromJson(json['billing_address'])
+            : null,
+        fingerprint: json['fingerprint']);
   }
 }
 
@@ -116,23 +133,22 @@ class Address {
   final String lastName;
   final String organization;
 
-  Address({
-    this.addressLine1,
-    this.addressLine2,
-    this.addressLine3,
-    this.locality,
-    this.sublocality,
-    this.sublocality2,
-    this.sublocality3,
-    this.administrativeDistrictLevel1,
-    this.administrativeDistrictLevel2,
-    this.administrativeDistrictLevel3,
-    this.postalCode,
-    this.country,
-    this.firstName,
-    this.lastName,
-    this.organization
-  });
+  Address(
+      {this.addressLine1,
+      this.addressLine2,
+      this.addressLine3,
+      this.locality,
+      this.sublocality,
+      this.sublocality2,
+      this.sublocality3,
+      this.administrativeDistrictLevel1,
+      this.administrativeDistrictLevel2,
+      this.administrativeDistrictLevel3,
+      this.postalCode,
+      this.country,
+      this.firstName,
+      this.lastName,
+      this.organization});
 
   factory Address.fromJson(Map<String, dynamic> json) {
     return Address(
@@ -163,9 +179,15 @@ class Address {
     if (this.sublocality != null) map['sublocality'] = this.sublocality;
     if (this.sublocality2 != null) map['sublocality_2'] = this.sublocality2;
     if (this.sublocality3 != null) map['sublocality_3'] = this.sublocality3;
-    if (this.administrativeDistrictLevel1 != null) map['administrative_district_level_1'] = this.administrativeDistrictLevel1;
-    if (this.administrativeDistrictLevel2 != null) map['administrative_district_level_2'] = this.administrativeDistrictLevel2;
-    if (this.administrativeDistrictLevel3 != null) map['administrative_district_level_3'] = this.administrativeDistrictLevel3;
+    if (this.administrativeDistrictLevel1 != null)
+      map['administrative_district_level_1'] =
+          this.administrativeDistrictLevel1;
+    if (this.administrativeDistrictLevel2 != null)
+      map['administrative_district_level_2'] =
+          this.administrativeDistrictLevel2;
+    if (this.administrativeDistrictLevel3 != null)
+      map['administrative_district_level_3'] =
+          this.administrativeDistrictLevel3;
     if (this.postalCode != null) map['postal_code'] = this.postalCode;
     if (this.country != null) map['country'] = this.country;
     if (this.firstName != null) map['first_name'] = this.firstName;
@@ -178,10 +200,8 @@ class Address {
 class CustomerPreferences {
   final bool emailUnsubscribed;
 
-  CustomerPreferences({
-    this.emailUnsubscribed
-  });
-  
+  CustomerPreferences({this.emailUnsubscribed});
+
   factory CustomerPreferences.fromJson(Map<String, dynamic> json) {
     return CustomerPreferences(
       emailUnsubscribed: json['email_unsubscribed'],
@@ -193,10 +213,7 @@ class CustomerGroupInfo {
   final String id;
   final String name;
 
-  CustomerGroupInfo({
-    this.id,
-    this.name
-  });
+  CustomerGroupInfo({this.id, this.name});
 
   factory CustomerGroupInfo.fromJson(Map<String, dynamic> json) {
     return CustomerGroupInfo(

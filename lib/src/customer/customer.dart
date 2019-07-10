@@ -27,7 +27,7 @@ class CustomersApi {
     DateTime birthday,
     Address address,
     String idempotencyKey,
-  }) async{
+  }) async {
     Map<String, dynamic> body = {};
 
     if (givenName != null) body['given_name'] = givenName;
@@ -40,8 +40,8 @@ class CustomersApi {
     if (referenceId != null) body['reference_id'] = referenceId;
     if (note != null) body['note'] = note;
     if (birthday != null) body['birthday'] = birthday.toUtc().toIso8601String();
-    if (idempotencyKey != null ) body['idempotency_key'] = idempotencyKey;
-    if(body['idempotency_key'] == null) body['idempotency_key'] = Uuid().v4();
+    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey;
+    if (body['idempotency_key'] == null) body['idempotency_key'] = Uuid().v4();
 
     var obj = RequestObj(
       token: token,
@@ -60,13 +60,14 @@ class CustomersApi {
     Address billingAddress,
     String cardholderName,
     String verificationToken,
-  }) async{
+  }) async {
     Map<String, dynamic> body = {};
 
     if (cardNonce != null) body['card_nonce'] = cardNonce;
     if (billingAddress != null) body['billing_address'] = billingAddress;
     if (cardholderName != null) body['cardholder_name'] = cardholderName;
-    if (verificationToken != null) body['verification_token'] = verificationToken;
+    if (verificationToken != null)
+      body['verification_token'] = verificationToken;
 
     var obj = RequestObj(
       token: token,
@@ -79,8 +80,9 @@ class CustomersApi {
     return CreateCustomerCardResponse.fromJson(json.decode(response.body));
   }
 
-  Future<DeleteCustomerResponse> deleteCustomer({@required String customerId}) async{
-    if (customerId == null)  throw ArgumentError('customerId must not be null');
+  Future<DeleteCustomerResponse> deleteCustomer(
+      {@required String customerId}) async {
+    if (customerId == null) throw ArgumentError('customerId must not be null');
     var obj = RequestObj(
       token: token,
       path: '/v2/customers/$customerId',
@@ -92,9 +94,10 @@ class CustomersApi {
     return DeleteCustomerResponse.fromJson(json.decode(response.body));
   }
 
-  Future<DeleteCustomerCardResponse> deleteCustomerCard({String customerId, String cardId}) async{
-    if (customerId == null)  throw ArgumentError('customerId must not be null');
-    if (cardId == null)  throw ArgumentError('cardId must not be null');
+  Future<DeleteCustomerCardResponse> deleteCustomerCard(
+      {String customerId, String cardId}) async {
+    if (customerId == null) throw ArgumentError('customerId must not be null');
+    if (cardId == null) throw ArgumentError('cardId must not be null');
     var obj = RequestObj(
       token: token,
       path: '/v2/customers/$customerId/cards/$cardId',
@@ -110,10 +113,14 @@ class CustomersApi {
     String cursor,
     CustomerSortField sortField,
     SortOrder sortOrder,
-  })async{
+  }) async {
     List<QueryParam> queryParams = [];
-    if (sortOrder != null) queryParams.add(QueryParam('sort_order', getStringFromSortOrder(sortOrder)));
-    if (sortField != null) queryParams.add(QueryParam('sort_field', getStringFromCustomerSortField(sortField)));
+    if (sortOrder != null)
+      queryParams
+          .add(QueryParam('sort_order', getStringFromSortOrder(sortOrder)));
+    if (sortField != null)
+      queryParams.add(
+          QueryParam('sort_field', getStringFromCustomerSortField(sortField)));
 
     var obj = RequestObj(
       token: token,
@@ -154,27 +161,47 @@ class CustomersApi {
     CustomerSortField sortField,
     SortOrder sortOrder,
   }) async {
-
     Map<String, dynamic> body = {};
 
     if (cursor != null) body['cursor'] = cursor;
-    if(limit != null) body['limit'] = limit;
+    if (limit != null) body['limit'] = limit;
 
     body['query'] = Map<String, dynamic>();
-    if (createdAtStart != null || createdAtEnd != null || updatedAtStart != null || updatedAtEnd != null || creationSource != null) body['query']['filter'] = Map<String, dynamic>();
-    if (createdAtStart != null || createdAtEnd != null) body['query']['filter']['created_at'] = Map<String, dynamic>();
-    if (updatedAtStart != null || updatedAtEnd != null) body['query']['filter']['updated_at'] = Map<String, dynamic>();
+    if (createdAtStart != null ||
+        createdAtEnd != null ||
+        updatedAtStart != null ||
+        updatedAtEnd != null ||
+        creationSource != null)
+      body['query']['filter'] = Map<String, dynamic>();
+    if (createdAtStart != null || createdAtEnd != null)
+      body['query']['filter']['created_at'] = Map<String, dynamic>();
+    if (updatedAtStart != null || updatedAtEnd != null)
+      body['query']['filter']['updated_at'] = Map<String, dynamic>();
 
-    if(createdAtStart != null) body['query']['filter']['created_at']['start_at'] = createdAtStart.toUtc().toIso8601String();
-    if(createdAtEnd != null) body['query']['filter']['created_at']['end_at'] = createdAtEnd.toUtc().toIso8601String();
-    if(updatedAtStart != null) body['query']['filter']['updated_at']['start_at'] = updatedAtStart.toUtc().toIso8601String();
-    if(updatedAtEnd != null) body['query']['filter']['updated_at']['end_at'] = updatedAtEnd.toUtc().toIso8601String();
-    if(creationSource != null) body['query']['filter']['creation_source'] = getStringFromCustomerCreationSource(creationSource);
+    if (createdAtStart != null)
+      body['query']['filter']['created_at']['start_at'] =
+          createdAtStart.toUtc().toIso8601String();
+    if (createdAtEnd != null)
+      body['query']['filter']['created_at']['end_at'] =
+          createdAtEnd.toUtc().toIso8601String();
+    if (updatedAtStart != null)
+      body['query']['filter']['updated_at']['start_at'] =
+          updatedAtStart.toUtc().toIso8601String();
+    if (updatedAtEnd != null)
+      body['query']['filter']['updated_at']['end_at'] =
+          updatedAtEnd.toUtc().toIso8601String();
+    if (creationSource != null)
+      body['query']['filter']['creation_source'] =
+          getStringFromCustomerCreationSource(creationSource);
 
-    if (sortField != null || sortOrder != null) body['query']['sort'] = Map<String, dynamic>();
+    if (sortField != null || sortOrder != null)
+      body['query']['sort'] = Map<String, dynamic>();
 
-    if(sortField != null) body['query']['sort']['field'] = getStringFromCustomerSortField(sortField) ;
-    if(sortOrder != null) body['query']['sort']['order'] = getStringFromSortOrder(sortOrder);
+    if (sortField != null)
+      body['query']['sort']['field'] =
+          getStringFromCustomerSortField(sortField);
+    if (sortOrder != null)
+      body['query']['sort']['order'] = getStringFromSortOrder(sortOrder);
 
     var obj = RequestObj(
       token: token,
@@ -199,7 +226,7 @@ class CustomersApi {
     String referenceId,
     String note,
     DateTime birthday,
-  })async{
+  }) async {
     Map<String, dynamic> body = {};
 
     if (givenName != null) body['given_name'] = givenName;
@@ -212,7 +239,7 @@ class CustomersApi {
     if (referenceId != null) body['reference_id'] = referenceId;
     if (note != null) body['note'] = note;
     if (birthday != null) body['birthday'] = birthday.toUtc().toIso8601String();
-    
+
     var obj = RequestObj(
       token: token,
       path: '/v2/customers/$customerId',

@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - square_connect (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - square_connect (from `.symlinks/plugins/square_connect/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  square_connect:
+    :path: ".symlinks/plugins/square_connect/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  square_connect: ae3fd262ba545cec5881766ee8df4af861ada977
+
+PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+
+COCOAPODS: 1.7.2

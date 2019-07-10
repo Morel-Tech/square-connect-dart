@@ -8,7 +8,13 @@ import 'package:mockito/mockito.dart';
 void main() {
 
   group('Square Connect Basics', () {
-    
+    test('sample test', () {
+      var time = SquareTimeOfDay.parse('06:30:15');
+      expect(time, isInstanceOf<SquareTimeOfDay>());
+      expect(time.hours, 6);
+      expect(time.minutes, 30);
+      expect(time.seconds, 15);
+    });
   });
 
   group('Customer API', () {

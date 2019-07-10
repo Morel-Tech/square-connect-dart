@@ -105,6 +105,9 @@ Method | Description
 `searchCustomers(various query inputs, cursor, limit)` | Searches for customer by filters and sorts, as well as cursor and limit.
 `updateCustomer(customerId, various inputs)` | Updates specified customer object (by id) and returns the created customer.
 
-
+## Locations API (SquareConnect.locationsApi)
+Method | Description
+--- | ---
+`listLocations()` | Lists all a merchant's locations.
 
 

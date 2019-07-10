@@ -1,8 +1,14 @@
+## 0.0.6
+* Added full support for Locations API
+    * Missing test suite
+    * Full functionality for all functions
+    * Missing full documentation
+
 ## 0.0.5
 * Added full support for Customer API!
-- Full test suite
-- Full functionality for all functions
-- Missing full documentation
+    * Full test suite
+    * Full functionality for all functions
+    * Missing full documentation
 
 ## 0.0.4
 * Added some formating on multiple files

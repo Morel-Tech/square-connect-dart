@@ -42,12 +42,12 @@ Now that you have a SquareConnect client set up, you can access it's methods. Th
 client.catalogApi.methodHere();
 ```
 ### Errors
-Instead of throwing errors caused by Square's API, methods return a list of errors returned by Square's API. To check if errors were thrown, simply check if the errors property is null.
+Instead of throwing errors caused by Square's API, methods return a list of errors returned by Square's API. To check if errors were thrown, you can call .hasErrors on the Response object, or simply check if the errors property is null.
 
 **Example**
 ```dart
 var response = await client.catalogApi.retrieveCatalogObject(objectId: 'fake-obj-id');
-if (response.errors == null) {
+if (response.hasErrors) {
   // at least 1 error occured
   response.errors.forEach((error) => print(error.detail));
 }
@@ -92,6 +92,7 @@ Method | Description
 `deleteCatalogObject(objectId)` | Deletes secified catalog object by id.
 `batchDeleteCatalogObjects(objectIds)` | Batch deletes catalog objects from list of ids.
 `getCatalogInfo()` | Gets metadata about catalog.
+`searchCatalogObjects(various inputs)` | Seaches catalog objects in a variety of ways. See documentation.
 
 ## Customer API (SquareConnect.customerApi)
 Method | Description

@@ -1,4 +1,10 @@
 ## 0.0.7
+* Added .hasErrors to Response objects for easier error handeling
+* Added `searchCatalogObjects()` method
+    * Still needs tests and documentation
+
+
+## 0.0.7
 * Minor changes to Locations API
 
 ## 0.0.6

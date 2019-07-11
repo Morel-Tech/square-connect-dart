@@ -320,3 +320,13 @@ MeasurementUnitWeight getMeasurementUnitWeightFromString(String input) {
         'Input must be a valid MeasurementUnitWeight in SCREAMING_UPPERCASE');
   return ans;
 }
+
+enum CatalogQueryType {
+  sortedAttributeQuery,
+  exactQuery,
+  prefixQuery,
+  rangeQuery,
+  textQuery,
+  itemsForTaxQuery,
+  itemsForModifierListQuery,
+}

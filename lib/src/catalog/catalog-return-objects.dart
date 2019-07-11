@@ -189,3 +189,38 @@ class CatalogInfoResponse {
                 : null);
   }
 }
+
+  class SearchCatalogObjectsResponse {
+    final String cursor;
+    final List<SquareError> errors;
+    final List<CatalogObject> objects;
+    final List<CatalogObject> relatedObjects;
+
+    SearchCatalogObjectsResponse({
+      this.cursor,
+      this.errors,
+      this.objects,
+      this.relatedObjects
+    });
+
+    factory SearchCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
+      return SearchCatalogObjectsResponse(
+        cursor: json['cursor'],
+        errors: json['errors'] != null
+            ? (json['errors'] as List)
+                .map((error) => SquareError.fromJson(error))
+                .toList()
+            : null,
+        objects: json['objects'] != null
+            ? (json['objects'] as List)
+                .map((error) => CatalogObject.fromJson(error))
+                .toList()
+            : null,
+        relatedObjects: json['related_objects'] != null
+            ? (json['related_objects'] as List)
+                .map((error) => CatalogObject.fromJson(error))
+                .toList()
+            : null,
+      );
+    }
+  }

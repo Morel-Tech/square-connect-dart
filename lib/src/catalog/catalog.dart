@@ -145,4 +145,6 @@ class CatalogApi {
     var response = await obj.makeCall();
     return CatalogInfoResponse.fromJson(json.decode(response.body));
   }
+
+  
 }

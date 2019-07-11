@@ -22,4 +22,8 @@ class ListLocationsResponse {
           : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }

@@ -29,6 +29,10 @@ class ListCatalogResponse {
           : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 /// Response from the [retrieveCatalogObject()] method.
@@ -60,6 +64,10 @@ class RetrieveCatalogObjectResponse {
           : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class DeleteCatalogObjectResponse {
@@ -85,6 +93,10 @@ class DeleteCatalogObjectResponse {
           : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class BatchDeleteCatalogObjectsResponse {
@@ -107,6 +119,10 @@ class BatchDeleteCatalogObjectsResponse {
       deletedObjectIds: List<String>.of(json['deleted_object_ids']),
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class BatchRetrieveCatalogObjectsResponse {
@@ -132,6 +148,10 @@ class BatchRetrieveCatalogObjectsResponse {
           .toList(),
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class BatchUpsertCatalogObjectsResponse {
@@ -162,6 +182,10 @@ class BatchUpsertCatalogObjectsResponse {
       idMappings: mappingsMap,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class CatalogInfoResponse {
@@ -188,6 +212,10 @@ class CatalogInfoResponse {
                     json['standard_unit_description_group'])
                 : null);
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
   class SearchCatalogObjectsResponse {
@@ -222,5 +250,9 @@ class CatalogInfoResponse {
                 .toList()
             : null,
       );
+    }
+
+    get hasErrors {
+      return errors != null;
     }
   }

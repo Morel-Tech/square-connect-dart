@@ -19,6 +19,10 @@ class CreateCustomerResponse {
             ? Customer.fromJson(json['customer'])
             : null);
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class CreateCustomerCardResponse {
@@ -38,6 +42,10 @@ class CreateCustomerCardResponse {
       card: json['card'] != null ? Card.fromJson(json['card']) : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class DeleteCustomerResponse {
@@ -56,6 +64,10 @@ class DeleteCustomerResponse {
           : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class DeleteCustomerCardResponse {
@@ -74,6 +86,10 @@ class DeleteCustomerCardResponse {
           : null,
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class ListCustomersResponse {
@@ -102,6 +118,10 @@ class ListCustomersResponse {
       cursor: json['cursor'],
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class RetrieveCustomerResponse {
@@ -122,6 +142,10 @@ class RetrieveCustomerResponse {
             ? Customer.fromJson(json['customer'])
             : null);
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class SearchCustomersResponse {
@@ -150,6 +174,10 @@ class SearchCustomersResponse {
       cursor: json['cursor'],
     );
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }
 
 class UpdateCustomerResponse {
@@ -170,4 +198,8 @@ class UpdateCustomerResponse {
             ? Customer.fromJson(json['customer'])
             : null);
   }
+
+    get hasErrors {
+      return errors != null;
+    }
 }

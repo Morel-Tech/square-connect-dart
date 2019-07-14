@@ -1,8 +1,10 @@
-## 0.0.7
+## 0.0.9
+* Added initial work on implementing Orders API
+
+## 0.0.8
 * Added .hasErrors to Response objects for easier error handeling
 * Added `searchCatalogObjects()` method
     * Still needs tests and documentation
-
 
 ## 0.0.7
 * Minor changes to Locations API

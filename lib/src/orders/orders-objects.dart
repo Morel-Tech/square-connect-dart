@@ -455,14 +455,22 @@ class OrderRoundingAdjustment {
 }
 
 /// Helper class to create order object line items.
-class CreateOrderLineItemObject{
-  double quantity;
-  String note;
-  String catalogVariationId;
-  List<String> modifierIds;
-  List<String> taxIds;
-  List<String> discountIds;
-  
+class OrderLineItemObjectRequest{
+  final double quantity;
+  final String note;
+  final String catalogVariationId;
+  final List<String> modifierIds;
+  final List<String> taxIds;
+  final List<String> discountIds;
+
+  OrderLineItemObjectRequest({
+    this.quantity,
+    this.note,
+    this.catalogVariationId,
+    this.modifierIds,
+    this.taxIds,
+    this.discountIds
+  });
   
   Map<String, dynamic> toMap() {
     var body = Map<String, dynamic>();
@@ -472,6 +480,55 @@ class CreateOrderLineItemObject{
     if(modifierIds != null) body['modifiers'] = modifierIds.map((id) => {'catalog_object_id': id}).toList();
     if(taxIds != null) body['taxes'] = taxIds.map((id) => {'catalog_object_id': id}).toList();
     if(discountIds != null) body['discounts'] = discountIds.map((id) => {'catalog_object_id': id}).toList();
+
+    return body;
+  }
+}
+
+class FulfillmentRequest {
+  final OrderFulfillmentType fulfillmentType;
+  final OrderFulfillmentState fulfillmentState;
+  final String customerId;
+  final String displayName;
+  final String emailAddress;
+  final String phoneNumber;
+  final DateTime expriesAt;
+  final OrderFulfillmentPickupDetailsScheduleType scheduleType;
+  final DateTime pickupAt;
+  final String note;
+
+  FulfillmentRequest({
+    this.fulfillmentType,
+    this.fulfillmentState,
+    this.customerId,
+    this.displayName,
+    this.emailAddress,
+    this.phoneNumber,
+    this.expriesAt,
+    this.scheduleType,
+    this.pickupAt,
+    this.note
+  });
+  
+  Map<String, dynamic> toMap() {
+    var body = Map<String, dynamic>();
+    var pickupDetails = Map<String, dynamic>();
+
+    if (fulfillmentType != null) body['type'] = getStringFromOrderFulfillmentType(fulfillmentType);
+    if (fulfillmentState != null) body['state'] = getStringFromOrderFulfillmentState(fulfillmentState);
+
+    pickupDetails['recipient'] = Map<String, dynamic>();
+    if (customerId != null) pickupDetails['recipient']['customer_id'] = customerId;
+    if (displayName != null) pickupDetails['recipient']['display_name'] = displayName;
+    if (emailAddress != null) pickupDetails['recipient']['email_address'] = emailAddress;
+    if (phoneNumber != null) pickupDetails['recipient']['phone_number'] = phoneNumber;
+
+    if (expriesAt != null) pickupDetails['expires_at'] = expriesAt.toIso8601String();
+    if (scheduleType != null) pickupDetails['schedule_type'] = getStringFromOrderFulfillmentPickupDetailsScheduleType(scheduleType);
+    if (pickupAt != null) pickupDetails['pickup_at'] = pickupAt.toIso8601String();
+    if (note != null) pickupDetails['note'] = note;
+    
+    body['pickup_details'] = pickupDetails;
 
     return body;
   }

@@ -1,3 +1,6 @@
+## 0.0.10
+* inital implementing Create Orders API
+
 ## 0.0.9
 * Added initial work on implementing Orders API
 

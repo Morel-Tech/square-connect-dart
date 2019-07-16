@@ -1,3 +1,6 @@
+## 0.0.11
+* small fixes to Catalog Object parsing
+
 ## 0.0.10
 * inital implementing Create Orders API
 

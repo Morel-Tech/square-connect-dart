@@ -47,7 +47,7 @@ class CatalogObject {
     return CatalogObject(
       type: getCatalogObjectTypeFromString(json['type']),
       id: json['id'],
-      updatedAt: DateTime.parse(json['updated_at']),
+      updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
       version: json['version'],
       isDeleted: json['is_deleted'],
       presentAtAllLocations: json['present_at_all_locations'],

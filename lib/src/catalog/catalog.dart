@@ -41,7 +41,6 @@ class CatalogApi {
   Future<RetrieveCatalogObjectResponse> retrieveCatalogObject(
       {@required String objectId, bool includeRelatedObjects}) async {
     if (objectId == null) {
-      print('objectId: $objectId');
       return throw ArgumentError('objectId must not be null');
     }
     var obj = RequestObj(

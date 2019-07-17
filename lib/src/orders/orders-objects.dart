@@ -78,6 +78,24 @@ class Order {
   
 }
 
+class OrderEntry {
+  final String orderId;
+  final String locationId;
+
+  OrderEntry({
+    this.orderId,
+    this.locationId
+  });
+
+  factory OrderEntry.fromJson(Map<String, dynamic> json) {
+    return OrderEntry(
+      orderId: json['order_id'],
+      locationId: json['location_id'],
+    );
+  }
+  
+}
+
 class OrderLineItem {
   final String uid;
   final String name;

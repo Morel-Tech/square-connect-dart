@@ -297,13 +297,17 @@ class CatalogModifierList {
 class CatalogModifier {
   final String name;
   final Money priceMoney;
+  final bool onByDefault;
+  final int ordinal;
 
-  CatalogModifier({this.name, this.priceMoney});
+  CatalogModifier({this.name, this.priceMoney, this.onByDefault, this.ordinal});
 
   factory CatalogModifier.fromJson(Map<String, dynamic> json) {
     return CatalogModifier(
       name: json['name'],
       priceMoney: Money.fromJson(json['price_money']),
+      onByDefault: json['on_by_default'],
+      ordinal: json['ordinal'],
     );
   }
 }

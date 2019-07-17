@@ -1,3 +1,6 @@
+## 0.0.12
+* Adding on by default and ordinal to modifier
+
 ## 0.0.11
 * small fixes to Catalog Object parsing
 

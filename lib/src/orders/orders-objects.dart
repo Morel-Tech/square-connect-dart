@@ -1,4 +1,5 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/orders/orders-enums-converter.dart';
 
 class Order {
   final String id;

@@ -26,11 +26,10 @@ export 'package:square_connect/src/orders/orders-objects.dart';
 export 'package:square_connect/src/orders/orders-enums.dart';
 export 'package:square_connect/src/orders/orders.dart';
 
-export 'package:square_connect/src/errors.dart';
-export 'package:square_connect/src/money.dart';
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
 
+/// The Square Connect Client object. It should be obtained by `SquareConnect.instance` or `SquareConnect.getInstanceWithTokens(String token)`
 class SquareConnect {
   String _authToken;
   Client _client;

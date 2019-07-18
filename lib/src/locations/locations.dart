@@ -5,19 +5,18 @@ import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
 
 class LocationsApi {
-  final String token;
-  final Client client;
+  final String _token;
+  final Client _client;
 
-  LocationsApi({this.token, this.client})
-      : assert(token != null),
-        assert(client != null);
+  LocationsApi(this._token, this._client);
+
   /// Lists all locations for a given merchant.
   Future<ListLocationsResponse> listLocations() async {
     var obj = RequestObj(
-      token: token,
+      token: _token,
       path: '/v2/locations',
       method: RequestMethod.get,
-      client: client,
+      client: _client,
     );
 
     var response = await obj.makeCall();

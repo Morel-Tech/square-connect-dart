@@ -9,16 +9,18 @@ import 'package:uuid/uuid.dart';
 import 'package:square_connect/square_connect.dart';
 
 class CatalogApi {
-  final String token;
-  final Client client;
+  final String _token;
+  final Client _client;
 
-  CatalogApi({this.token, this.client})
-      : assert(token != null),
-        assert(client != null);
+  CatalogApi(this._token, this._client);
 
-  /// Lists all catalog objects. Takes optional [cursor] for pagination, and a list of [CatalogObjectType] to filter types of objects
-  Future<ListCatalogResponse> listCatalog(
-      {List<CatalogObjectType> types, String cursor}) async {
+  /// Lists all [CatalogObject]s fitting criteria.
+  Future<ListCatalogResponse> listCatalog({
+    /// A list of [CatalogObjectType]s. The call will only return objects of these types, or all types if not set.
+    List<CatalogObjectType> types,
+    /// A pagination cursor from a previous call.
+    String cursor,
+  }) async {
     var params = [
       if (types != null)
         QueryParam(
@@ -29,25 +31,30 @@ class CatalogApi {
     ];
     var obj = RequestObj(
       cursor: cursor,
-      token: token,
+      token: _token,
       path: '/v2/catalog/list',
       queryParams: params,
       method: RequestMethod.get,
-      client: client,
+      client: _client,
     );
 
     var response = await obj.makeCall();
     return ListCatalogResponse.fromJson(json.decode(response.body));
   }
 
-  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject(
-      {@required String objectId, bool includeRelatedObjects}) async {
+  /// Retrieves a [CatalogObject] specified by a given object id.
+  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({
+    /// The id of the [Catalog Object] to be retreived.
+      @required String objectId, 
+      /// If `true`, the reponse will include related objects. Eg, ItemsVariations with Items, Images with Items, ect.
+      bool includeRelatedObjects
+    }) async {
     if (objectId == null) {
       return throw ArgumentError('objectId must not be null');
     }
     var obj = RequestObj(
       path: '/v2/catalog/object/$objectId',
-      token: token,
+      token: _token,
       method: RequestMethod.get,
       queryParams: includeRelatedObjects != null
           ? [
@@ -55,20 +62,20 @@ class CatalogApi {
                   'include_related_objects', includeRelatedObjects.toString())
             ]
           : null,
-      client: client,
+      client: _client,
     );
     var response = await obj.makeCall();
     return RetrieveCatalogObjectResponse.fromJson((json.decode(response.body)));
   }
-
+  
   Future<DeleteCatalogObjectResponse> deleteCatalogObject(
       {String objectId}) async {
     if (objectId == null) throw ArgumentError('objectId must not be null');
     var obj = RequestObj(
       path: '/v2/catalog/object/$objectId',
-      token: token,
+      token: _token,
       method: RequestMethod.delete,
-      client: client,
+      client: _client,
     );
     var response = await obj.makeCall();
     return DeleteCatalogObjectResponse.fromJson(json.decode(response.body));
@@ -79,10 +86,10 @@ class CatalogApi {
     if (objectIds == null) throw ArgumentError('objectIds must not be null');
     var obj = RequestObj(
       path: '/v2/catalog/batch-delete',
-      token: token,
+      token: _token,
       method: RequestMethod.post,
       body: {'object_ids': objectIds},
-      client: client,
+      client: _client,
     );
     var response = await obj.makeCall();
     return BatchDeleteCatalogObjectsResponse.fromJson(
@@ -101,10 +108,10 @@ class CatalogApi {
 
     var obj = RequestObj(
       path: '/v2/catalog/batch-retrieve',
-      token: token,
+      token: _token,
       method: RequestMethod.post,
       body: body,
-      client: client,
+      client: _client,
     );
     var response = await obj.makeCall();
     return BatchRetrieveCatalogObjectsResponse.fromJson(
@@ -123,10 +130,10 @@ class CatalogApi {
 
     var obj = RequestObj(
       path: '/v2/catalog/batch-upsert',
-      token: token,
+      token: _token,
       method: RequestMethod.post,
       body: body,
-      client: client,
+      client: _client,
     );
     var response = await obj.makeCall();
     return BatchUpsertCatalogObjectsResponse.fromJson(
@@ -135,10 +142,10 @@ class CatalogApi {
 
   Future<CatalogInfoResponse> getCatalogInfo() async {
     var obj = RequestObj(
-      token: token,
+      token: _token,
       path: '/v2/catalog/info',
       method: RequestMethod.get,
-      client: client,
+      client: _client,
     );
 
     var response = await obj.makeCall();
@@ -219,10 +226,10 @@ class CatalogApi {
     }
 
     var obj = RequestObj(
-      token: token,
+      token: _token,
       path: '/v2/catalog/search',
       method: RequestMethod.post,
-      client: client,
+      client: _client,
       body: body,
     );
     var response = await obj.makeCall();

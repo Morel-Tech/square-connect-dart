@@ -1,25 +1,43 @@
 import 'dart:convert';
 
 import 'package:square_connect/src/customer/customer-enums-converter.dart';
-import 'package:square_connect/src/customer/customer-enums.dart';
+import 'package:square_connect/square_connect.dart';
 
+/// An object representing a customer identity. The Customer's id field is used throught the apis.
 class Customer {
+  /// The id for the [Customer] in guid format.
   final String id;
+  /// When the [Customer] was created.
   final DateTime createdAt;
+  /// When the [Customer] was last updated.
   final DateTime updatedAt;
+  /// A list of the [Customer]'s cards on file.
   final List<Card> cards;
+  /// The [Customer]'s given name, or first name.
   final String givenName;
+  /// The [Customer]'s family name, or last name.
   final String familyName;
+  /// The [Customer]'s nickname, or prefered name.
   final String nickname;
+  /// The name of the [Customer]'s company.
   final String companyName;
+  /// The [Customer]'s email address.
   final String emailAddress;
+  /// The [Customer]'s physical address.
   final Address address;
+  /// The [Customer]'s phone number.
   final String phoneNumber;
+  /// The [Customer]'s birthday.
   final DateTime birthday;
+  /// The [Customer]'s external reference id, from another system for example. Can be used to link customer id with another system's id.
   final String referenceId;
+  /// The [Customer]'s note.
   final String note;
+  /// The [Customer]'s preferences.
   final CustomerPreferences preferences;
+  /// The ids and names of any customer groups the [Customer] is included in.
   final List<CustomerGroupInfo> groups;
+  /// Where the  [Customer] was created.
   final CustomerCreationSource creationSource;
 
   Customer(
@@ -80,14 +98,23 @@ class Customer {
   }
 }
 
+/// Represents a [Customer]'s card on file
 class Card {
+  /// The unique id for the [Card] on file in guid form.
   final String id;
+  /// The brand of the [Card].
   final CardBrand cardBrand;
+  /// The last four digits of the [Card].
   final String last4;
+  /// The month the [Card] expires as an integer between 1 and 12.
   final int expMonth;
+  ///  The year the [Card] expires.
   final int expYear;
+  /// The name of  the cardholder.
   final String cardholderName;
+  /// The billing address of the [Card].
   final Address billingAddress;
+  /// A unique, Square-assigned ID that identifies the card across multiple locations and applications for a single Square account.
   final String fingerprint;
 
   Card(
@@ -117,88 +144,9 @@ class Card {
   }
 }
 
-class Address {
-  final String addressLine1;
-  final String addressLine2;
-  final String addressLine3;
-  final String locality;
-  final String sublocality;
-  final String sublocality2;
-  final String sublocality3;
-  final String administrativeDistrictLevel1;
-  final String administrativeDistrictLevel2;
-  final String administrativeDistrictLevel3;
-  final String postalCode;
-  final String country;
-  final String firstName;
-  final String lastName;
-  final String organization;
-
-  Address(
-      {this.addressLine1,
-      this.addressLine2,
-      this.addressLine3,
-      this.locality,
-      this.sublocality,
-      this.sublocality2,
-      this.sublocality3,
-      this.administrativeDistrictLevel1,
-      this.administrativeDistrictLevel2,
-      this.administrativeDistrictLevel3,
-      this.postalCode,
-      this.country,
-      this.firstName,
-      this.lastName,
-      this.organization});
-
-  factory Address.fromJson(Map<String, dynamic> json) {
-    return Address(
-      addressLine1: json['address_line_1'],
-      addressLine2: json['address_line_2'],
-      addressLine3: json['address_line_3'],
-      locality: json['locality'],
-      sublocality: json['sublocality'],
-      sublocality2: json['sublocality_2'],
-      sublocality3: json['sublocality_3'],
-      administrativeDistrictLevel1: json['administrative_district_level_1'],
-      administrativeDistrictLevel2: json['administrative_district_level_2'],
-      administrativeDistrictLevel3: json['administrative_district_level_3'],
-      postalCode: json['postal_code'],
-      country: json['country'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      organization: json['organization'],
-    );
-  }
-
-  String toJson() {
-    Map<String, String> map = {};
-    if (this.addressLine1 != null) map['address_line_1'] = this.addressLine1;
-    if (this.addressLine2 != null) map['address_line_2'] = this.addressLine2;
-    if (this.addressLine3 != null) map['address_line_3'] = this.addressLine3;
-    if (this.locality != null) map['locality'] = this.locality;
-    if (this.sublocality != null) map['sublocality'] = this.sublocality;
-    if (this.sublocality2 != null) map['sublocality_2'] = this.sublocality2;
-    if (this.sublocality3 != null) map['sublocality_3'] = this.sublocality3;
-    if (this.administrativeDistrictLevel1 != null)
-      map['administrative_district_level_1'] =
-          this.administrativeDistrictLevel1;
-    if (this.administrativeDistrictLevel2 != null)
-      map['administrative_district_level_2'] =
-          this.administrativeDistrictLevel2;
-    if (this.administrativeDistrictLevel3 != null)
-      map['administrative_district_level_3'] =
-          this.administrativeDistrictLevel3;
-    if (this.postalCode != null) map['postal_code'] = this.postalCode;
-    if (this.country != null) map['country'] = this.country;
-    if (this.firstName != null) map['first_name'] = this.firstName;
-    if (this.lastName != null) map['last_name'] = this.lastName;
-    if (this.organization != null) map['organization'] = this.organization;
-    return json.encode(map);
-  }
-}
-
+/// An object representing a [Customer]'s preferences.
 class CustomerPreferences {
+  /// If true, the [Customer] has unsubscribed from receiving marketing campaign emails.
   final bool emailUnsubscribed;
 
   CustomerPreferences({this.emailUnsubscribed});
@@ -210,8 +158,11 @@ class CustomerPreferences {
   }
 }
 
+/// An object representing information about a CustomerGroup.
 class CustomerGroupInfo {
+  /// The id of the CustomerGroup
   final String id;
+  /// The name of the CustomerGroup
   final String name;
 
   CustomerGroupInfo({this.id, this.name});

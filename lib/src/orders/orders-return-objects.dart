@@ -1,8 +1,11 @@
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
 
+/// The response to the `createOrder()` method in [OrdersApi].
 class CreateOrderResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The newly created [Order].
   final Order order;
 
   CreateOrderResponse({this.errors, this.order})
@@ -26,9 +29,13 @@ class CreateOrderResponse {
     }
 }
 
+/// The response to the `batchRetrieveOrders()` method in [OrdersApi].
 class BatchRetrieveOrdersResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The retrieved [Order]s.
   final List<Order> orders;
+  /// List of [Transaction] ids within the requested set of ids that encountered transformation issues when being converted to an [Order].
   final List<String> unconvertibleTransactionIds;
 
   BatchRetrieveOrdersResponse({this.errors, this.orders, this.unconvertibleTransactionIds});
@@ -54,11 +61,17 @@ class BatchRetrieveOrdersResponse {
     }
 }
 
+/// The response to the `searchOrders()` method in [OrdersApi].
 class SearchOrdersResponse {
+  /// A pagination cursor to be used in a future call.
   final String cursor;
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The list of [Order]s returned.
   final List<Order> orders;
+  /// List of [Transaction] ids within the requested set of ids that encountered transformation issues when being converted to an [Order].
   final List<String> unconvertibleTransactionIds;
+  /// The [OrderEntry]s returned if `returnEntries` is set to true.
   final List<OrderEntry> orderEntries;
 
   SearchOrdersResponse({

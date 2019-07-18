@@ -7,12 +7,10 @@ import 'package:square_connect/src/shared-enums-converter.dart';
 import 'package:uuid/uuid.dart';
 
 class OrdersApi {
-  final String token;
-  final Client client;
+  final String _token;
+  final Client _client;
 
-  OrdersApi({this.token, this.client})
-      : assert(token != null),
-        assert(client != null);
+  OrdersApi(this._token, this._client);
 
   Future<CreateOrderResponse> createOrder({
     String locationId,
@@ -38,10 +36,10 @@ class OrdersApi {
     body['order'] = order;
 
     var obj = RequestObj(
-      token: token,
+      token: _token,
       path: '/v2/locations/$locationId/orders',
       method: RequestMethod.post,
-      client: client,
+      client: _client,
       body: body,
     );
 
@@ -64,10 +62,10 @@ class OrdersApi {
     if (orderIds != null) body['order_ids'] = orderIds;
 
     var obj = RequestObj(
-      token: token,
+      token: _token,
       path: '/v2/locations/$locationId/orders/batch-retrieve',
       method: RequestMethod.post,
-      client: client,
+      client: _client,
       body: body,
     );
 
@@ -91,17 +89,17 @@ class OrdersApi {
       SortOrder sortOrder,
       /// [OrderState]s to filter with.
       List<OrderState> orderStatesFilter,
-      /// Starting time (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter
+      /// Starting time (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter.
       DateTime createdAtStartFilter,
-      /// Ending time (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter
+      /// Ending time (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter.
       DateTime createdAtEndFilter,
-      /// Starting time (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter
+      /// Starting time (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter.
       DateTime updatedAtStartFilter,
-      /// Ending time (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter
+      /// Ending time (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter.
       DateTime updatedAtEndFilter,
-      /// Starting time (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter
+      /// Starting time (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter.
       DateTime closedAtStartFilter,
-      /// Ending time (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter
+      /// Ending time (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter.
       DateTime closedAtEndFilter,
       /// [OrderFulfillmentType]s to filter with.
       List<OrderFulfillmentType> fulfilmentTypesFilter,
@@ -216,10 +214,10 @@ class OrdersApi {
 
 
       var obj = RequestObj(
-        token: token,
+        token: _token,
         path: '/v2/orders/search',
         method: RequestMethod.post,
-        client: client,
+        client: _client,
         body: body,
       );
 

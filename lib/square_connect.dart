@@ -32,6 +32,8 @@ export 'package:square_connect/src/orders/orders.dart';
 export 'package:square_connect/src/errors.dart';
 export 'package:square_connect/src/money.dart';
 export 'package:square_connect/src/shared-enums.dart';
+export 'package:square_connect/src/shared-objects.dart';
+
 
 class SquareConnect {
   String _authToken;
@@ -42,9 +44,19 @@ class SquareConnect {
     this._client = IOClient();
   }
 
+  SquareConnect._withToken(String token) {
+    this._client = IOClient();
+    this._authToken = token;
+  }
+
   /// Entry point for API. Creates an API client to be reused for calls.
   static SquareConnect get instance {
     return SquareConnect();
+  }
+
+  /// Alternate Entry point for API. Creates an API client to be reused for calls without the need to call `setAuthToken()`
+  static SquareConnect getInstanceWithToken(String token) {
+    return SquareConnect._withToken(token);
   }
 
   /// Sets the authorization token of the client for use in all calls. Must be set before any other calls are made.
@@ -59,19 +71,21 @@ class SquareConnect {
 
   /// Getter for Catalog API methods.
   CatalogApi get catalogApi {
-    return CatalogApi(token: _authToken, client: _client);
+    return CatalogApi( _authToken, _client);
   }
 
   /// Getter for Customers API methods.
   CustomersApi get customersApi {
-    return CustomersApi(token: _authToken, client: _client);
+    return CustomersApi(_authToken, _client);
   }
 
+  /// Getter for Locations API methods.
   LocationsApi get locationsApi {
-    return LocationsApi(token: _authToken, client: _client);
+    return LocationsApi(_authToken, _client);
   }
 
+  /// Getter for Orders API methods.
   OrdersApi get ordersApi {
-    return OrdersApi(token: _authToken, client: _client);
+    return OrdersApi(_authToken, _client);
   }
 }

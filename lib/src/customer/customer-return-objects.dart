@@ -1,8 +1,11 @@
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
 
+/// The response to the `createCustomer()` method in [CustomersApi].
 class CreateCustomerResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The newly created [Customer].
   final Customer customer;
 
   CreateCustomerResponse({this.errors, this.customer})
@@ -25,8 +28,11 @@ class CreateCustomerResponse {
     }
 }
 
+/// The response to the `createCustomerCard()` method in [CustomersApi].
 class CreateCustomerCardResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The newly created [Card].
   final Card card;
 
   CreateCustomerCardResponse({this.errors, this.card})
@@ -48,7 +54,9 @@ class CreateCustomerCardResponse {
     }
 }
 
+/// The response to the `deleteCustomer()` method in [CustomersApi].
 class DeleteCustomerResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
 
   DeleteCustomerResponse({
@@ -70,7 +78,9 @@ class DeleteCustomerResponse {
     }
 }
 
+/// The response to the `createCustomerCard()` method in [CustomersApi].
 class DeleteCustomerCardResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
 
   DeleteCustomerCardResponse({
@@ -92,9 +102,13 @@ class DeleteCustomerCardResponse {
     }
 }
 
+/// The response to the `listCustomers()` method in [CustomersApi].
 class ListCustomersResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The list of returned [Customer]s.
   final List<Customer> customers;
+  /// A pagination cursor to be used in a future call.
   final String cursor;
 
   ListCustomersResponse({
@@ -124,8 +138,11 @@ class ListCustomersResponse {
     }
 }
 
+/// The response to the `retrieveCustomer()` method in [CustomersApi].
 class RetrieveCustomerResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The retrieved [Customer].
   final Customer customer;
 
   RetrieveCustomerResponse({this.errors, this.customer})
@@ -148,9 +165,13 @@ class RetrieveCustomerResponse {
     }
 }
 
+/// The response to the `searchCustomers()` method in [CustomersApi].
 class SearchCustomersResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The list of [Customer]s returned by the call.
   final List<Customer> customers;
+  /// A pagination cursor to be used in a future call.
   final String cursor;
 
   SearchCustomersResponse({
@@ -180,8 +201,11 @@ class SearchCustomersResponse {
     }
 }
 
+/// The response to the `updateCustomer()` method in [CustomersApi].
 class UpdateCustomerResponse {
+  /// The list of errors if any exist.
   final List<SquareError> errors;
+  /// The updated [Customer] object.
   final Customer customer;
 
   UpdateCustomerResponse({this.errors, this.customer})

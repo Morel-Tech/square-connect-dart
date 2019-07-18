@@ -9,6 +9,7 @@ import 'package:uuid/uuid.dart';
 
 import '../helper-classes.dart';
 
+/// An object containing all methods for the Customers API. Retrieve this object with `SquareConnect.instance.customersApi`.
 class CustomersApi {
   final String _token;
   final Client _client;

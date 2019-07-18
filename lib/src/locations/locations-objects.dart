@@ -1,5 +1,6 @@
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/locations/locations-enums-converter.dart';
+import 'package:square_connect/src/shared-enums-converter.dart';
 
 /// Represents a buisness's locations. Can be physical or mobile. They are set up in the Square dashboard. Their id is used in many other endpoints.
 class Location {

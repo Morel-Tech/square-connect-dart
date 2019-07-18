@@ -8,6 +8,7 @@ import 'package:square_connect/src/shared-enums-converter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:square_connect/square_connect.dart';
 
+/// An object containing all methods for the Catalog API. Retrieve this object with `SquareConnect.instance.catalogApi`.
 class CatalogApi {
   final String _token;
   final Client _client;

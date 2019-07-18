@@ -7,6 +7,7 @@ import 'package:square_connect/src/orders/orders-enums-converter.dart';
 import 'package:square_connect/src/shared-enums-converter.dart';
 import 'package:uuid/uuid.dart';
 
+/// An object containing all methods for the Orders API. Retrieve this object with `SquareConnect.instance.ordersApi`.
 class OrdersApi {
   final String _token;
   final Client _client;

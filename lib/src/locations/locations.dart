@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
 
+/// An object containing all methods for the Locations API. Retrieve this object with `SquareConnect.instance.locationsApi`.
 class LocationsApi {
   final String _token;
   final Client _client;

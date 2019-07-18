@@ -1,5 +1,4 @@
-import 'package:square_connect/src/catalog/catalog-objects.dart';
-import 'package:square_connect/src/errors.dart';
+import 'package:square_connect/square_connect.dart';
 
 /// Response from the [listCatalog()] method.
 class ListCatalogResponse {

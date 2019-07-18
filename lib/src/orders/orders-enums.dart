@@ -13,10 +13,10 @@ const _mapStringtoOrderLineItemTaxType = {
 OrderLineItemTaxType getOrderLineItemTaxTypeFromString(String input) =>
     _mapStringtoOrderLineItemTaxType[input];
 String getStringFromOrderLineItemTaxType(OrderLineItemTaxType input) =>
-    _mapStringtoOrderLineItemTaxType.keys
-        .singleWhere((value) => _mapStringtoOrderLineItemTaxType[value] == input);
+    _mapStringtoOrderLineItemTaxType.keys.singleWhere(
+        (value) => _mapStringtoOrderLineItemTaxType[value] == input);
 
-enum OrderLineItemTaxScope{
+enum OrderLineItemTaxScope {
   otherTaxScope,
   lineItem,
   order,
@@ -31,10 +31,10 @@ const _mapStringtoOrderLineItemTaxScope = {
 OrderLineItemTaxScope getOrderLineItemTaxScopeFromString(String input) =>
     _mapStringtoOrderLineItemTaxScope[input];
 String getStringFromOrderLineItemTaxScope(OrderLineItemTaxScope input) =>
-    _mapStringtoOrderLineItemTaxScope.keys
-        .singleWhere((value) => _mapStringtoOrderLineItemTaxScope[value] == input);
+    _mapStringtoOrderLineItemTaxScope.keys.singleWhere(
+        (value) => _mapStringtoOrderLineItemTaxScope[value] == input);
 
-enum OrderLineItemDiscountType{
+enum OrderLineItemDiscountType {
   unknownDiscount,
   fixedPercentage,
   fixedAmount,
@@ -50,13 +50,15 @@ const _mapStringtoOrderLineItemDiscountType = {
   'VARIABLE_AMOUNT': OrderLineItemDiscountType.variableAmount,
 };
 
-OrderLineItemDiscountType getOrderLineItemDiscountTypeFromString(String input) =>
+OrderLineItemDiscountType getOrderLineItemDiscountTypeFromString(
+        String input) =>
     _mapStringtoOrderLineItemDiscountType[input];
-String getStringFromOrderLineItemDiscountType(OrderLineItemDiscountType input) =>
-    _mapStringtoOrderLineItemDiscountType.keys
-        .singleWhere((value) => _mapStringtoOrderLineItemDiscountType[value] == input);
+String getStringFromOrderLineItemDiscountType(
+        OrderLineItemDiscountType input) =>
+    _mapStringtoOrderLineItemDiscountType.keys.singleWhere(
+        (value) => _mapStringtoOrderLineItemDiscountType[value] == input);
 
-enum OrderLineItemDiscountScope{
+enum OrderLineItemDiscountScope {
   otherDiscountScope,
   lineItem,
   order,
@@ -68,13 +70,15 @@ const _mapStringtoOrderLineItemDiscountScope = {
   'ORDER': OrderLineItemDiscountScope.order,
 };
 
-OrderLineItemDiscountScope getOrderLineItemDiscountScopeFromString(String input) =>
+OrderLineItemDiscountScope getOrderLineItemDiscountScopeFromString(
+        String input) =>
     _mapStringtoOrderLineItemDiscountScope[input];
-String getStringFromOrderLineItemDiscountScope(OrderLineItemDiscountScope input) =>
-    _mapStringtoOrderLineItemDiscountScope.keys
-        .singleWhere((value) => _mapStringtoOrderLineItemDiscountScope[value] == input);
+String getStringFromOrderLineItemDiscountScope(
+        OrderLineItemDiscountScope input) =>
+    _mapStringtoOrderLineItemDiscountScope.keys.singleWhere(
+        (value) => _mapStringtoOrderLineItemDiscountScope[value] == input);
 
-enum OrderState{
+enum OrderState {
   open,
   completed,
   canceled,
@@ -88,11 +92,10 @@ const _mapStringtoOrderState = {
 
 OrderState getOrderStateFromString(String input) =>
     _mapStringtoOrderState[input];
-String getStringFromOrderState(OrderState input) =>
-    _mapStringtoOrderState.keys
-        .singleWhere((value) => _mapStringtoOrderState[value] == input);
+String getStringFromOrderState(OrderState input) => _mapStringtoOrderState.keys
+    .singleWhere((value) => _mapStringtoOrderState[value] == input);
 
-enum OrderServiceChargeCalculationPhase{
+enum OrderServiceChargeCalculationPhase {
   subtotalPhase,
   totalPhase,
 }
@@ -102,13 +105,15 @@ const _mapStringtoOrderServiceChargeCalculationPhase = {
   'TOTAL_PHASE': OrderServiceChargeCalculationPhase.totalPhase,
 };
 
-OrderServiceChargeCalculationPhase getOrderServiceChargeCalculationPhaseFromString(String input) =>
-    _mapStringtoOrderServiceChargeCalculationPhase[input];
-String getStringFromOrderServiceChargeCalculationPhase(OrderServiceChargeCalculationPhase input) =>
-    _mapStringtoOrderServiceChargeCalculationPhase.keys
-        .singleWhere((value) => _mapStringtoOrderServiceChargeCalculationPhase[value] == input);
+OrderServiceChargeCalculationPhase
+    getOrderServiceChargeCalculationPhaseFromString(String input) =>
+        _mapStringtoOrderServiceChargeCalculationPhase[input];
+String getStringFromOrderServiceChargeCalculationPhase(
+        OrderServiceChargeCalculationPhase input) =>
+    _mapStringtoOrderServiceChargeCalculationPhase.keys.singleWhere((value) =>
+        _mapStringtoOrderServiceChargeCalculationPhase[value] == input);
 
-enum OrderFulfillmentType{
+enum OrderFulfillmentType {
   pickup,
 }
 
@@ -119,10 +124,10 @@ const _mapStringtoOrderFulfillmentType = {
 OrderFulfillmentType getOrderFulfillmentTypeFromString(String input) =>
     _mapStringtoOrderFulfillmentType[input];
 String getStringFromOrderFulfillmentType(OrderFulfillmentType input) =>
-    _mapStringtoOrderFulfillmentType.keys
-        .singleWhere((value) => _mapStringtoOrderFulfillmentType[value] == input);
+    _mapStringtoOrderFulfillmentType.keys.singleWhere(
+        (value) => _mapStringtoOrderFulfillmentType[value] == input);
 
-enum OrderFulfillmentState{
+enum OrderFulfillmentState {
   proposed,
   reserved,
   prepared,
@@ -143,10 +148,10 @@ const _mapStringtoOrderFulfillmentState = {
 OrderFulfillmentState getOrderFulfillmentStateFromString(String input) =>
     _mapStringtoOrderFulfillmentState[input];
 String getStringFromOrderFulfillmentState(OrderFulfillmentState input) =>
-    _mapStringtoOrderFulfillmentState.keys
-        .singleWhere((value) => _mapStringtoOrderFulfillmentState[value] == input);
+    _mapStringtoOrderFulfillmentState.keys.singleWhere(
+        (value) => _mapStringtoOrderFulfillmentState[value] == input);
 
-enum OrderFulfillmentPickupDetailsScheduleType{
+enum OrderFulfillmentPickupDetailsScheduleType {
   scheduled,
   asap,
 }
@@ -156,8 +161,12 @@ const _mapStringtoOrderFulfillmentPickupDetailsScheduleType = {
   'ASAP': OrderFulfillmentPickupDetailsScheduleType.asap,
 };
 
-OrderFulfillmentPickupDetailsScheduleType getOrderFulfillmentPickupDetailsScheduleTypeFromString(String input) =>
-    _mapStringtoOrderFulfillmentPickupDetailsScheduleType[input];
-String getStringFromOrderFulfillmentPickupDetailsScheduleType(OrderFulfillmentPickupDetailsScheduleType input) =>
-    _mapStringtoOrderFulfillmentPickupDetailsScheduleType.keys
-        .singleWhere((value) => _mapStringtoOrderFulfillmentPickupDetailsScheduleType[value] == input);
+OrderFulfillmentPickupDetailsScheduleType
+    getOrderFulfillmentPickupDetailsScheduleTypeFromString(String input) =>
+        _mapStringtoOrderFulfillmentPickupDetailsScheduleType[input];
+String getStringFromOrderFulfillmentPickupDetailsScheduleType(
+        OrderFulfillmentPickupDetailsScheduleType input) =>
+    _mapStringtoOrderFulfillmentPickupDetailsScheduleType.keys.singleWhere(
+        (value) =>
+            _mapStringtoOrderFulfillmentPickupDetailsScheduleType[value] ==
+            input);

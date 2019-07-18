@@ -30,9 +30,9 @@ class ListCatalogResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// Response from the [retrieveCatalogObject()] method.
@@ -65,9 +65,9 @@ class RetrieveCatalogObjectResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 class DeleteCatalogObjectResponse {
@@ -94,9 +94,9 @@ class DeleteCatalogObjectResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 class BatchDeleteCatalogObjectsResponse {
@@ -120,9 +120,9 @@ class BatchDeleteCatalogObjectsResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 class BatchRetrieveCatalogObjectsResponse {
@@ -149,9 +149,9 @@ class BatchRetrieveCatalogObjectsResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 class BatchUpsertCatalogObjectsResponse {
@@ -183,9 +183,9 @@ class BatchUpsertCatalogObjectsResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 class CatalogInfoResponse {
@@ -213,46 +213,42 @@ class CatalogInfoResponse {
                 : null);
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
-  class SearchCatalogObjectsResponse {
-    final String cursor;
-    final List<SquareError> errors;
-    final List<CatalogObject> objects;
-    final List<CatalogObject> relatedObjects;
+class SearchCatalogObjectsResponse {
+  final String cursor;
+  final List<SquareError> errors;
+  final List<CatalogObject> objects;
+  final List<CatalogObject> relatedObjects;
 
-    SearchCatalogObjectsResponse({
-      this.cursor,
-      this.errors,
-      this.objects,
-      this.relatedObjects
-    });
+  SearchCatalogObjectsResponse(
+      {this.cursor, this.errors, this.objects, this.relatedObjects});
 
-    factory SearchCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
-      return SearchCatalogObjectsResponse(
-        cursor: json['cursor'],
-        errors: json['errors'] != null
-            ? (json['errors'] as List)
-                .map((error) => SquareError.fromJson(error))
-                .toList()
-            : null,
-        objects: json['objects'] != null
-            ? (json['objects'] as List)
-                .map((error) => CatalogObject.fromJson(error))
-                .toList()
-            : null,
-        relatedObjects: json['related_objects'] != null
-            ? (json['related_objects'] as List)
-                .map((error) => CatalogObject.fromJson(error))
-                .toList()
-            : null,
-      );
-    }
-
-    get hasErrors {
-      return errors != null;
-    }
+  factory SearchCatalogObjectsResponse.fromJson(Map<String, dynamic> json) {
+    return SearchCatalogObjectsResponse(
+      cursor: json['cursor'],
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      objects: json['objects'] != null
+          ? (json['objects'] as List)
+              .map((error) => CatalogObject.fromJson(error))
+              .toList()
+          : null,
+      relatedObjects: json['related_objects'] != null
+          ? (json['related_objects'] as List)
+              .map((error) => CatalogObject.fromJson(error))
+              .toList()
+          : null,
+    );
   }
+
+  get hasErrors {
+    return errors != null;
+  }
+}

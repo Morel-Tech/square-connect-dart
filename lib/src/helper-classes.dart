@@ -68,6 +68,8 @@ class RequestObj {
       case RequestMethod.put:
         return client.put(this.url,
             headers: this.headers, body: json.encode(this.body));
+      default:
+        throw ArgumentError('Method is unsuported');
     }
   }
 }

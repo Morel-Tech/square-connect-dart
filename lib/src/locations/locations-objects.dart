@@ -5,46 +5,67 @@ import 'package:square_connect/src/locations/locations-enums-converter.dart';
 class Location {
   /// The [Location]'s id in guid form.
   final String id;
+
   /// The name of the [Location].
   final String name;
+
   /// The address of the [Location].
   final Address address;
+
   /// The timezone of the [Location].
   final String timezone;
+
   /// The [LocationCapability]s for the [Location].
   final List<LocationCapability> capabilities;
+
   /// Whether the [Location] is active or inactive.
   final LocationStatus locationStatus;
+
   /// When the [Location] was created.
   final DateTime createdAt;
+
   /// The identifier of the merchant that owns the location.
   final String merchantId;
+
   /// The [Location]'s country in ISO 3166-1-alpha-2 format.
   final String country;
+
   /// The [Location]'s language in BCP 47 format.
   final String languageCode;
+
   /// The currency the [Location] uses.
   final Currency currency;
+
   /// The [Location]'s phone number.
   final String phoneNumber;
+
   /// The customer facing business name, shown on customer recipts.
   final String businessName;
+
   /// Whether the [Location] is physical or mobile.
   final LocationType type;
+
   /// The website url for the [Location].
   final String websiteUrl;
+
   /// The full business hours for the [Location].
   final BusinessHours businessHours;
+
   /// The email address for the [Location].
   final String businessEmail;
+
   /// The desciption of the [Location].
   final String description;
+
   /// The twitter username for the [Location].
   final String twitterUsername;
+
   /// The instagram username for the [Location].
   final String instagramUsername;
+
   /// The facebook url for the [Location].
   final String facebookUrl;
+
   /// The physical coordinates (Latitude and Longitude) of the [Location].
   final Coordinates coordinates;
 
@@ -52,6 +73,7 @@ class Location {
   get twitterUrl => this.twitterUsername != null
       ? 'https://twitter.com/${this.twitterUsername}'
       : null;
+
   /// The instagram url for the [Location].
   get instagramUrl => this.instagramUsername != null
       ? 'https://www.instagram.com/${this.instagramUsername}'
@@ -134,14 +156,28 @@ class BusinessHours {
 
   /// Gets periods in a map grouped by [DayOfWeek].
   Map<DayOfWeek, List<BusinessHoursPeriod>> get periodsAsMap {
-    return{
-      DayOfWeek.sunday: periods.where((period) => period.dayOfWeek == DayOfWeek.sunday).toList(),
-      DayOfWeek.monday: periods.where((period) => period.dayOfWeek == DayOfWeek.monday).toList(),
-      DayOfWeek.tuesday: periods.where((period) => period.dayOfWeek == DayOfWeek.tuesday).toList(),
-      DayOfWeek.wednesday: periods.where((period) => period.dayOfWeek == DayOfWeek.wednesday).toList(),
-      DayOfWeek.thursday: periods.where((period) => period.dayOfWeek == DayOfWeek.thursday).toList(),
-      DayOfWeek.friday: periods.where((period) => period.dayOfWeek == DayOfWeek.friday).toList(),
-      DayOfWeek.saturday: periods.where((period) => period.dayOfWeek == DayOfWeek.saturday).toList(),
+    return {
+      DayOfWeek.sunday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.sunday)
+          .toList(),
+      DayOfWeek.monday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.monday)
+          .toList(),
+      DayOfWeek.tuesday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.tuesday)
+          .toList(),
+      DayOfWeek.wednesday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.wednesday)
+          .toList(),
+      DayOfWeek.thursday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.thursday)
+          .toList(),
+      DayOfWeek.friday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.friday)
+          .toList(),
+      DayOfWeek.saturday: periods
+          .where((period) => period.dayOfWeek == DayOfWeek.saturday)
+          .toList(),
     };
   }
 
@@ -159,8 +195,10 @@ class BusinessHours {
 class BusinessHoursPeriod {
   /// The start time of the period.
   final SquareTimeOfDay startLocalTime;
+
   /// The end time of the period.
   final SquareTimeOfDay endLocalTime;
+
   /// The day of the week this period takes place in.
   final DayOfWeek dayOfWeek;
 
@@ -185,8 +223,10 @@ class BusinessHoursPeriod {
 class SquareTimeOfDay {
   /// Hours starting in ranges 0-23.
   final int hours;
+
   /// Minutes starting in ranges 0-59.
   final int minutes;
+
   /// Seconds starting in ranges 0-59.
   final int seconds;
 
@@ -201,7 +241,7 @@ class SquareTimeOfDay {
   get niceString =>
       '${this.amPmHour}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes} ${this.isAm ? 'AM' : 'PM'}';
 
-  /// Creates SquareTimeOfDay from partial-time RFC3339 format. 
+  /// Creates SquareTimeOfDay from partial-time RFC3339 format.
   factory SquareTimeOfDay.parse(String input) {
     if (!(RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)))
       throw ArgumentError.value(input, input, 'input is invalid time of day');
@@ -211,9 +251,7 @@ class SquareTimeOfDay {
 
   /// GCreates SquareTimeOfDay from a DateTime object. Pulls hours, minutes, and seconds from Datetime and ignores the rest.
   factory SquareTimeOfDay.fromDateTime(DateTime dateTime) {
-    return SquareTimeOfDay(
-      dateTime.hour, dateTime.minute, dateTime.second
-    );
+    return SquareTimeOfDay(dateTime.hour, dateTime.minute, dateTime.second);
   }
 
   /// Converts to DateTime with year, month, and day being 0
@@ -227,8 +265,6 @@ class SquareTimeOfDay {
       this.seconds,
     );
   }
-
-  
 
   bool get isAm => hours < 12;
   bool get isPm => hours >= 12;

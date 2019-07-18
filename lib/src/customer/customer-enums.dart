@@ -39,4 +39,3 @@ enum CustomerSortField {
   defaultSort,
   createdAt,
 }
-

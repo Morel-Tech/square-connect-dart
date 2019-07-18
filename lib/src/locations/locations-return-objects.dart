@@ -5,6 +5,7 @@ import 'package:square_connect/src/helper-classes.dart';
 class ListLocationsResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The list of [Location]s returned.
   final List<Location> locations;
 
@@ -26,7 +27,7 @@ class ListLocationsResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }

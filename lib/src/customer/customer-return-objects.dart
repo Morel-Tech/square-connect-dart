@@ -5,6 +5,7 @@ import 'package:square_connect/src/helper-classes.dart';
 class CreateCustomerResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The newly created [Customer].
   final Customer customer;
 
@@ -23,15 +24,16 @@ class CreateCustomerResponse {
             : null);
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `createCustomerCard()` method in [CustomersApi].
 class CreateCustomerCardResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The newly created [Card].
   final Card card;
 
@@ -49,9 +51,9 @@ class CreateCustomerCardResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `deleteCustomer()` method in [CustomersApi].
@@ -73,9 +75,9 @@ class DeleteCustomerResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `createCustomerCard()` method in [CustomersApi].
@@ -97,17 +99,19 @@ class DeleteCustomerCardResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `listCustomers()` method in [CustomersApi].
 class ListCustomersResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The list of returned [Customer]s.
   final List<Customer> customers;
+
   /// A pagination cursor to be used in a future call.
   final String cursor;
 
@@ -133,15 +137,16 @@ class ListCustomersResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `retrieveCustomer()` method in [CustomersApi].
 class RetrieveCustomerResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The retrieved [Customer].
   final Customer customer;
 
@@ -160,17 +165,19 @@ class RetrieveCustomerResponse {
             : null);
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `searchCustomers()` method in [CustomersApi].
 class SearchCustomersResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The list of [Customer]s returned by the call.
   final List<Customer> customers;
+
   /// A pagination cursor to be used in a future call.
   final String cursor;
 
@@ -196,15 +203,16 @@ class SearchCustomersResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `updateCustomer()` method in [CustomersApi].
 class UpdateCustomerResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The updated [Customer] object.
   final Customer customer;
 
@@ -223,7 +231,7 @@ class UpdateCustomerResponse {
             : null);
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }

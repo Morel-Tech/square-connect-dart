@@ -23,6 +23,7 @@ enum CatalogPricingType {
 enum InventoryAlertType {
   /// The variation does not display an alert.
   none,
+
   /// The variation does display an alert when the quantity is low.
   lowQuantity,
 }
@@ -40,6 +41,7 @@ enum CatalogItemProductType {
 enum TaxCalculationPhase {
   /// The tax is calculated based on the payment's subtotal. (ie before discounts)
   taxSubtotalPhase,
+
   /// The tax is calculated based on the payment's total.
   taxTotalPhase,
 }
@@ -48,6 +50,7 @@ enum TaxCalculationPhase {
 enum TaxInclusionType {
   /// The tax is an additive tax. The tax amount is added on top of the [CatalogItemVariation] price. For example, a $1.00 item with a 10% additive tax would have a total cost to the buyer of $1.10.
   additive,
+
   /// The tax is an inclusive tax. The tax amount is included in the [CatalogItemVariation] price. For example, a $1.00 item with a 10% inclusive tax would have a total cost to the buyer of $1.00, with $0.91 (91 cents) of that total being the cost of the item and $0.09 (9 cents) being tax.
   inclusive,
 }
@@ -56,10 +59,13 @@ enum TaxInclusionType {
 enum CatalogDiscountType {
   /// Apply the discount as a fixed percentage (e.g., 5%) off the item price.
   fixedPercentage,
+
   /// Apply the discount as a fixed amount (e.g., $1.00) off the item price.
   fixedAmount,
+
   /// Apply the discount as a variable percentage off the item price. The percentage will be specified at the time of sale.
   variablePercentage,
+
   /// Apply the discount as a variable amount off the item price. The amount will be specified at the time of sale.
   variableAmount,
 }
@@ -68,6 +74,7 @@ enum CatalogDiscountType {
 enum CatalogModifierListSelectionType {
   /// Indicates that a [CatalogModifierList] allows only a single [CatalogModifier] to be selected.
   single,
+
   /// Indicates that a [CatalogModifierList] allows multiple [CatalogModifier] to be selected.
   multiple,
 }

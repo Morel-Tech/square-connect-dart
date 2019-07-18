@@ -18,6 +18,7 @@ class CatalogApi {
   Future<ListCatalogResponse> listCatalog({
     /// A list of [CatalogObjectType]s. The call will only return objects of these types, or all types if not set.
     List<CatalogObjectType> types,
+
     /// A pagination cursor from a previous call.
     String cursor,
   }) async {
@@ -43,12 +44,14 @@ class CatalogApi {
   }
 
   /// Retrieves a [CatalogObject] specified by a given object id.
-  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({
-    /// The id of the [Catalog Object] to be retreived.
-      @required String objectId, 
+  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject(
+      {
+
+      /// The id of the [Catalog Object] to be retreived.
+      @required String objectId,
+
       /// If `true`, the reponse will include related objects. Eg, ItemsVariations with Items, Images with Items, ect.
-      bool includeRelatedObjects
-    }) async {
+      bool includeRelatedObjects}) async {
     if (objectId == null) {
       return throw ArgumentError('objectId must not be null');
     }
@@ -67,7 +70,7 @@ class CatalogApi {
     var response = await obj.makeCall();
     return RetrieveCatalogObjectResponse.fromJson((json.decode(response.body)));
   }
-  
+
   Future<DeleteCatalogObjectResponse> deleteCatalogObject(
       {String objectId}) async {
     if (objectId == null) throw ArgumentError('objectId must not be null');
@@ -174,54 +177,77 @@ class CatalogApi {
     Map<String, dynamic> body = Map<String, dynamic>();
 
     if (cursor != null) body['cursor'] = cursor;
-    if (types != null) body['object_types'] = types.map((type) => getStringFromCatalogObjectType(type)).toList();
-    if (includeDeletedObjects != null) body['include_deleted_objects'] = includeDeletedObjects;
-    if (includeRelatedObjects != null) body['include_related_objects'] = includeRelatedObjects;
-    if (beginTime != null) body['begin_time'] = beginTime.toUtc().toIso8601String();
+    if (types != null)
+      body['object_types'] =
+          types.map((type) => getStringFromCatalogObjectType(type)).toList();
+    if (includeDeletedObjects != null)
+      body['include_deleted_objects'] = includeDeletedObjects;
+    if (includeRelatedObjects != null)
+      body['include_related_objects'] = includeRelatedObjects;
+    if (beginTime != null)
+      body['begin_time'] = beginTime.toUtc().toIso8601String();
     if (limit != null) body['limit'] = limit;
 
     switch (queryType) {
-      
       case CatalogQueryType.sortedAttributeQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['sorted_attribute_query'] = Map<String, dynamic>();
-        if (attributeName != null) body['query']['sorted_attribute_query']['attribute_name'] = attributeName;
-        if (initialAttributeValue != null) body['query']['sorted_attribute_query']['initial_attribute_value'] = initialAttributeValue;
-        if (sortOrder != null) body['query']['sorted_attribute_query']['sort_order'] = getStringFromSortOrder(sortOrder);
+        if (attributeName != null)
+          body['query']['sorted_attribute_query']['attribute_name'] =
+              attributeName;
+        if (initialAttributeValue != null)
+          body['query']['sorted_attribute_query']['initial_attribute_value'] =
+              initialAttributeValue;
+        if (sortOrder != null)
+          body['query']['sorted_attribute_query']['sort_order'] =
+              getStringFromSortOrder(sortOrder);
         break;
       case CatalogQueryType.exactQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['exact_query'] = Map<String, dynamic>();
-        if (attributeName != null) body['query']['exact_query']['attribute_name'] = attributeName;
-        if (attributeValue != null) body['query']['exact_query']['attribute_value'] = attributeValue;
+        if (attributeName != null)
+          body['query']['exact_query']['attribute_name'] = attributeName;
+        if (attributeValue != null)
+          body['query']['exact_query']['attribute_value'] = attributeValue;
         break;
       case CatalogQueryType.prefixQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['prefix_query'] = Map<String, dynamic>();
-        if (attributeName != null) body['query']['prefix_query']['attribute_name'] = attributeName;
-        if (attributePrefix != null) body['query']['prefix_query']['attribute_prefix'] = attributePrefix;
+        if (attributeName != null)
+          body['query']['prefix_query']['attribute_name'] = attributeName;
+        if (attributePrefix != null)
+          body['query']['prefix_query']['attribute_prefix'] = attributePrefix;
         break;
       case CatalogQueryType.rangeQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['range_query'] = Map<String, dynamic>();
-        if (attributeName != null) body['query']['range_query']['attribute_name'] = attributeName;
-        if (attributeMinValue != null) body['query']['range_query']['attribute_min_value'] = attributeMinValue;
-        if (attributeMaxValue != null) body['query']['range_query']['attribute_max_value'] = attributeMaxValue;
+        if (attributeName != null)
+          body['query']['range_query']['attribute_name'] = attributeName;
+        if (attributeMinValue != null)
+          body['query']['range_query']['attribute_min_value'] =
+              attributeMinValue;
+        if (attributeMaxValue != null)
+          body['query']['range_query']['attribute_max_value'] =
+              attributeMaxValue;
         break;
       case CatalogQueryType.textQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['text_query'] = Map<String, dynamic>();
-        if (keywords != null) body['query']['text_query']['keywords'] = keywords;
+        if (keywords != null)
+          body['query']['text_query']['keywords'] = keywords;
         break;
       case CatalogQueryType.itemsForTaxQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['text_query'] = Map<String, dynamic>();
-        if (taxIds != null) body['query']['items_for_tax_query']['tax_ids'] = taxIds;
+        if (taxIds != null)
+          body['query']['items_for_tax_query']['tax_ids'] = taxIds;
         break;
       case CatalogQueryType.itemsForModifierListQuery:
         body['query'] = Map<String, dynamic>();
         body['query']['text_query'] = Map<String, dynamic>();
-        if (modifierListIds != null) body['query']['items_for_modifier_list_query']['modifier_list_ids'] = modifierListIds;
+        if (modifierListIds != null)
+          body['query']['items_for_modifier_list_query']['modifier_list_ids'] =
+              modifierListIds;
         break;
     }
 
@@ -235,6 +261,4 @@ class CatalogApi {
     var response = await obj.makeCall();
     return SearchCatalogObjectsResponse.fromJson(json.decode(response.body));
   }
-
-  
 }

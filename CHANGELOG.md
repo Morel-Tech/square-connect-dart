@@ -1,3 +1,21 @@
+## 0.1.0
+* WooHoo first major release!!!
+    * This doesn't mean the package is anywhere near complete, but the direction seems clear and now it's time to plug and chug.
+    * Still missing many API endpoints, documentation on a few items, and testing on lots of items.
+* Added a bunch of documentation
+* Refactored enums
+    * Converter methods are now out of public facing API scope
+    * Now only the enums themselves will be accessible through the API
+* Added shared enums and shared objects
+    * This shouldn't affect public facing API, just internally making general things easier to find
+* Moved Api Objects into documenation scope
+    * There should now be documentation of API methods in the docs
+    * Also made tokens and clients private so they cannot be accessed once set
+* Added and optional SquareConnect constructor that allows you to input token when you get your instance
+    * The method is `SquareConnect.getInstanceWithToken(String token)`
+* Added `periodsAsMap` to [BusinessHours] object in [LocationsApi] to easily get periods grouped into days of the week.
+* Various minor improvements throughout
+
 ## 0.0.12
 * Adding on by default and ordinal to modifier
 

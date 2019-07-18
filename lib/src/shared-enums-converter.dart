@@ -5,9 +5,6 @@ const _mapStringtoSortOrder = {
   'DESC': SortOrder.descending,
 };
 
-
-SortOrder getSortOrderFromString(String input) =>
-    _mapStringtoSortOrder[input];
-String getStringFromSortOrder(SortOrder input) =>
-    _mapStringtoSortOrder.keys
-        .singleWhere((value) => _mapStringtoSortOrder[value] == input);
+SortOrder getSortOrderFromString(String input) => _mapStringtoSortOrder[input];
+String getStringFromSortOrder(SortOrder input) => _mapStringtoSortOrder.keys
+    .singleWhere((value) => _mapStringtoSortOrder[value] == input);

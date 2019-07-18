@@ -19,7 +19,7 @@ CatalogObjectType getCatalogObjectTypeFromString(String input) =>
 String getStringFromCatalogObjectType(CatalogObjectType input) =>
     _mapStringtoCatalogObjectType.keys
         .singleWhere((value) => _mapStringtoCatalogObjectType[value] == input);
-      
+
 const _mapStringtoCatalogPricingType = {
   'FIXED_PRICING': CatalogPricingType.fixedPricing,
   'VARIABLE_PRICING': CatalogPricingType.variablePricing,
@@ -53,8 +53,8 @@ const _mapStringtoCatalogItemProductType = {
 CatalogItemProductType getCatalogItemProductTypeFromString(String input) =>
     _mapStringtoCatalogItemProductType[input];
 String getStringFromCatalogItemProductType(CatalogItemProductType input) =>
-    _mapStringtoCatalogItemProductType.keys
-        .singleWhere((value) => _mapStringtoCatalogItemProductType[value] == input);
+    _mapStringtoCatalogItemProductType.keys.singleWhere(
+        (value) => _mapStringtoCatalogItemProductType[value] == input);
 
 const _mapStringtoTaxCalculationPhase = {
   'TAX_SUBTOTAL_PHASE': TaxCalculationPhase.taxSubtotalPhase,
@@ -64,8 +64,8 @@ const _mapStringtoTaxCalculationPhase = {
 TaxCalculationPhase getTaxCalculationPhaseFromString(String input) =>
     _mapStringtoTaxCalculationPhase[input];
 String getStringFromTaxCalculationPhase(TaxCalculationPhase input) =>
-    _mapStringtoTaxCalculationPhase.keys
-        .singleWhere((value) => _mapStringtoTaxCalculationPhase[value] == input);
+    _mapStringtoTaxCalculationPhase.keys.singleWhere(
+        (value) => _mapStringtoTaxCalculationPhase[value] == input);
 
 const _mapStringtoTaxInclusionType = {
   'ADDITIVE': TaxInclusionType.additive,
@@ -88,19 +88,21 @@ const _mapStringtoCatalogDiscountType = {
 CatalogDiscountType getCatalogDiscountTypeFromString(String input) =>
     _mapStringtoCatalogDiscountType[input];
 String getStringFromCatalogDiscountType(CatalogDiscountType input) =>
-    _mapStringtoCatalogDiscountType.keys
-        .singleWhere((value) => _mapStringtoCatalogDiscountType[value] == input);
+    _mapStringtoCatalogDiscountType.keys.singleWhere(
+        (value) => _mapStringtoCatalogDiscountType[value] == input);
 
 const _mapStringtoCatalogModifierListSelectionType = {
   'SINGLE': CatalogModifierListSelectionType.single,
   'MULTIPLE': CatalogModifierListSelectionType.multiple,
 };
 
-CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(String input) =>
+CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(
+        String input) =>
     _mapStringtoCatalogModifierListSelectionType[input];
-String getStringFromCatalogModifierListSelectionType(CatalogModifierListSelectionType input) =>
-    _mapStringtoCatalogModifierListSelectionType.keys
-        .singleWhere((value) => _mapStringtoCatalogModifierListSelectionType[value] == input);
+String getStringFromCatalogModifierListSelectionType(
+        CatalogModifierListSelectionType input) =>
+    _mapStringtoCatalogModifierListSelectionType.keys.singleWhere((value) =>
+        _mapStringtoCatalogModifierListSelectionType[value] == input);
 
 const _mapStringtoMeasurementUnitArea = {
   'IMPERIAL_ACRE': MeasurementUnitArea.imperialAcre,
@@ -116,8 +118,8 @@ const _mapStringtoMeasurementUnitArea = {
 MeasurementUnitArea getMeasurementUnitAreaFromString(String input) =>
     _mapStringtoMeasurementUnitArea[input];
 String getStringFromMeasurementUnitArea(MeasurementUnitArea input) =>
-    _mapStringtoMeasurementUnitArea.keys
-        .singleWhere((value) => _mapStringtoMeasurementUnitArea[value] == input);
+    _mapStringtoMeasurementUnitArea.keys.singleWhere(
+        (value) => _mapStringtoMeasurementUnitArea[value] == input);
 
 const _mapStringtoMeasurementUnitLength = {
   'IMPERIAL_INCH': MeasurementUnitLength.imperialInch,
@@ -133,8 +135,8 @@ const _mapStringtoMeasurementUnitLength = {
 MeasurementUnitLength getMeasurementUnitLengthFromString(String input) =>
     _mapStringtoMeasurementUnitLength[input];
 String getStringFromMeasurementUnitLength(MeasurementUnitLength input) =>
-    _mapStringtoMeasurementUnitLength.keys
-        .singleWhere((value) => _mapStringtoMeasurementUnitLength[value] == input);
+    _mapStringtoMeasurementUnitLength.keys.singleWhere(
+        (value) => _mapStringtoMeasurementUnitLength[value] == input);
 
 const _mapStringtoMeasurementUnitVolume = {
   'GENERIC_FLUID_OUNCE': MeasurementUnitVolume.genericFluidOunce,
@@ -153,8 +155,8 @@ const _mapStringtoMeasurementUnitVolume = {
 MeasurementUnitVolume getMeasurementUnitVolumeFromString(String input) =>
     _mapStringtoMeasurementUnitVolume[input];
 String getStringFromMeasurementUnitVolume(MeasurementUnitVolume input) =>
-    _mapStringtoMeasurementUnitVolume.keys
-        .singleWhere((value) => _mapStringtoMeasurementUnitVolume[value] == input);
+    _mapStringtoMeasurementUnitVolume.keys.singleWhere(
+        (value) => _mapStringtoMeasurementUnitVolume[value] == input);
 
 const _mapStringtoMeasurementUnitWeight = {
   'IMPERIAL_WEIGHT_OUNCE': MeasurementUnitWeight.imperialWeightOunce,
@@ -168,5 +170,5 @@ const _mapStringtoMeasurementUnitWeight = {
 MeasurementUnitWeight getMeasurementUnitWeightFromString(String input) =>
     _mapStringtoMeasurementUnitWeight[input];
 String getStringFromMeasurementUnitWeight(MeasurementUnitWeight input) =>
-    _mapStringtoMeasurementUnitWeight.keys
-        .singleWhere((value) => _mapStringtoMeasurementUnitWeight[value] == input);
+    _mapStringtoMeasurementUnitWeight.keys.singleWhere(
+        (value) => _mapStringtoMeasurementUnitWeight[value] == input);

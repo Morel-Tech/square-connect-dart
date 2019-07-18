@@ -5,6 +5,7 @@ import 'package:square_connect/src/helper-classes.dart';
 class CreateOrderResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The newly created [Order].
   final Order order;
 
@@ -18,27 +19,28 @@ class CreateOrderResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      order: json['order'] != null
-          ? Order.fromJson(json['order'])
-          : null,
+      order: json['order'] != null ? Order.fromJson(json['order']) : null,
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `batchRetrieveOrders()` method in [OrdersApi].
 class BatchRetrieveOrdersResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The retrieved [Order]s.
   final List<Order> orders;
+
   /// List of [Transaction] ids within the requested set of ids that encountered transformation issues when being converted to an [Order].
   final List<String> unconvertibleTransactionIds;
 
-  BatchRetrieveOrdersResponse({this.errors, this.orders, this.unconvertibleTransactionIds});
+  BatchRetrieveOrdersResponse(
+      {this.errors, this.orders, this.unconvertibleTransactionIds});
 
   factory BatchRetrieveOrdersResponse.fromJson(Map<String, dynamic> json) {
     return BatchRetrieveOrdersResponse(
@@ -48,7 +50,9 @@ class BatchRetrieveOrdersResponse {
               .toList()
           : null,
       orders: json['orders'] != null
-          ? (json['orders'] as List).map((item) => Order.fromJson(item)).toList()
+          ? (json['orders'] as List)
+              .map((item) => Order.fromJson(item))
+              .toList()
           : null,
       unconvertibleTransactionIds: json['unconvertible_transaction_ids'] != null
           ? List<String>.from(json['unconvertible_transaction_ids'])
@@ -56,31 +60,34 @@ class BatchRetrieveOrdersResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }
 
 /// The response to the `searchOrders()` method in [OrdersApi].
 class SearchOrdersResponse {
   /// A pagination cursor to be used in a future call.
   final String cursor;
+
   /// The list of errors if any exist.
   final List<SquareError> errors;
+
   /// The list of [Order]s returned.
   final List<Order> orders;
+
   /// List of [Transaction] ids within the requested set of ids that encountered transformation issues when being converted to an [Order].
   final List<String> unconvertibleTransactionIds;
+
   /// The [OrderEntry]s returned if `returnEntries` is set to true.
   final List<OrderEntry> orderEntries;
 
-  SearchOrdersResponse({
-    this.errors,
-    this.orders,
-    this.orderEntries,
-    this.cursor,
-    this.unconvertibleTransactionIds
-  });
+  SearchOrdersResponse(
+      {this.errors,
+      this.orders,
+      this.orderEntries,
+      this.cursor,
+      this.unconvertibleTransactionIds});
 
   factory SearchOrdersResponse.fromJson(Map<String, dynamic> json) {
     return SearchOrdersResponse(
@@ -90,10 +97,14 @@ class SearchOrdersResponse {
               .toList()
           : null,
       orders: json['orders'] != null
-          ? (json['orders'] as List).map((item) => Order.fromJson(item)).toList()
+          ? (json['orders'] as List)
+              .map((item) => Order.fromJson(item))
+              .toList()
           : null,
       orderEntries: json['order_entries'] != null
-          ? (json['order_entries'] as List).map((item) => OrderEntry.fromJson(item)).toList()
+          ? (json['order_entries'] as List)
+              .map((item) => OrderEntry.fromJson(item))
+              .toList()
           : null,
       unconvertibleTransactionIds: json['unconvertible_transaction_ids'] != null
           ? List<String>.from(json['unconvertible_transaction_ids'])
@@ -102,7 +113,7 @@ class SearchOrdersResponse {
     );
   }
 
-    get hasErrors {
-      return errors != null;
-    }
+  get hasErrors {
+    return errors != null;
+  }
 }

@@ -12,12 +12,9 @@ const _mapStringtoCardBrand = {
   'SQUARE_GIFT_CARD': CardBrand.squareGiftCard,
 };
 
-
-CardBrand getCardBrandFromString(String input) =>
-    _mapStringtoCardBrand[input];
-String getStringFromCardBrand(CardBrand input) =>
-    _mapStringtoCardBrand.keys
-        .singleWhere((value) => _mapStringtoCardBrand[value] == input);
+CardBrand getCardBrandFromString(String input) => _mapStringtoCardBrand[input];
+String getStringFromCardBrand(CardBrand input) => _mapStringtoCardBrand.keys
+    .singleWhere((value) => _mapStringtoCardBrand[value] == input);
 
 const _mapStringtoCustomerCreationSource = {
   'OTHER': CustomerCreationSource.other,
@@ -44,8 +41,8 @@ const _mapStringtoCustomerCreationSource = {
 CustomerCreationSource getCustomerCreationSourceFromString(String input) =>
     _mapStringtoCustomerCreationSource[input];
 String getStringFromCustomerCreationSource(CustomerCreationSource input) =>
-    _mapStringtoCustomerCreationSource.keys
-        .singleWhere((value) => _mapStringtoCustomerCreationSource[value] == input);
+    _mapStringtoCustomerCreationSource.keys.singleWhere(
+        (value) => _mapStringtoCustomerCreationSource[value] == input);
 
 const _mapStringtoCustomerSortField = {
   'DEFAULT': CustomerSortField.defaultSort,

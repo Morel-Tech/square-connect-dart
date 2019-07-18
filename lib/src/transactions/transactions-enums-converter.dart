@@ -14,5 +14,5 @@ const _mapStringtoTransactionProduct = {
 TransactionProduct getTransactionProductFromString(String input) =>
     _mapStringtoTransactionProduct[input];
 String getStringFromTransactionProduct(TransactionProduct input) =>
-    _mapStringtoTransactionProduct.keys.singleWhere(
-        (value) => _mapStringtoTransactionProduct[value] == input);
+    _mapStringtoTransactionProduct.keys
+        .singleWhere((value) => _mapStringtoTransactionProduct[value] == input);

@@ -6,35 +6,49 @@ import 'package:square_connect/src/shared-enums-converter.dart';
 /// An object representing a physical address.
 class Address {
   /// The first line of the address.
-  /// Fields that start with address_line provide the address's most specific details, like street number, street name, and building name. 
+  /// Fields that start with address_line provide the address's most specific details, like street number, street name, and building name.
   /// They do not provide less specific details like city, state/province, or country (these details are provided in other fields).
   final String addressLine1;
+
   /// The second line of the address, if any.
   final String addressLine2;
+
   /// The third line of the address, if any.
   final String addressLine3;
+
   /// The city or town of the address.
   final String locality;
+
   /// A civil region within the address's locality, if any.
   final String sublocality;
+
   /// A civil region within the address's sublocality, if any.
   final String sublocality2;
+
   /// A civil region within the address's sublocality2, if any.
   final String sublocality3;
+
   /// A civil entity within the address's country. In the US, this is the state.
   final String administrativeDistrictLevel1;
+
   /// A civil entity within the address's administrativeDistrictLevel1. In the US, this is the county.
   final String administrativeDistrictLevel2;
+
   /// A civil entity within the address's administrative_district_level_2, if any.
   final String administrativeDistrictLevel3;
+
   /// The address's postal code.
   final String postalCode;
+
   /// The address's country, in ISO 3166-1-alpha-2 format.
   final String country;
+
   /// Optional first name when it's representing recipient.
   final String firstName;
+
   /// Optional last name when it's representing recipient.
   final String lastName;
+
   /// Optional organization name when it's representing recipient.
   final String organization;
 
@@ -106,6 +120,7 @@ class Address {
 class Money {
   /// The amount of money, in the smallest denomination of the currency indicated by currency. For example, when currency is USD, amount is in cents. **NOTE:** Amount MUST be positive.
   final int amount;
+
   /// The type of currency.
   final Currency currency;
 
@@ -125,10 +140,13 @@ class Money {
 class SquareError {
   /// The category this [Error] belongs to.
   final ErrorCategory category;
+
   /// The [Error]'s specific code.
   final String code;
+
   /// The human-readable description of the [Error].
   final String detail;
+
   /// The name of the field provided in the original request that the error pertains to, if any.
   final String field;
 
@@ -164,20 +182,19 @@ class Tender {
   final TenderCashDetails cashDetails;
   final List<AdditionalRecipient> additionalRecipients;
 
-  Tender({
-    this.id,
-    this.locationId,
-    this.transactionId,
-    this.createdAt,
-    this.note,
-    this.amountMoney,
-    this.tipMoney,
-    this.processingFeeMoney,
-    this.customerId,
-    this.cardDetails,
-    this.cashDetails,
-    this.additionalRecipients
-  });
+  Tender(
+      {this.id,
+      this.locationId,
+      this.transactionId,
+      this.createdAt,
+      this.note,
+      this.amountMoney,
+      this.tipMoney,
+      this.processingFeeMoney,
+      this.customerId,
+      this.cardDetails,
+      this.cashDetails,
+      this.additionalRecipients});
 
   factory Tender.fromJson(Map<String, dynamic> json) {
     return Tender(
@@ -185,31 +202,31 @@ class Tender {
       locationId: json['location_id'],
       transactionId: json['transaction_id'],
       createdAt: json['created_at'] != null
-        ? DateTime.parse(json['created_at'])
-        : null,
+          ? DateTime.parse(json['created_at'])
+          : null,
       note: json['note'],
       amountMoney: json['amount_money'] != null
-        ? Money.fromJson(json['amount_money'])
-        : null,
-      tipMoney: json['tip_money'] != null
-        ? Money.fromJson(json['tip_money'])
-        : null,
+          ? Money.fromJson(json['amount_money'])
+          : null,
+      tipMoney:
+          json['tip_money'] != null ? Money.fromJson(json['tip_money']) : null,
       processingFeeMoney: json['processing_fee_money'] != null
-        ? Money.fromJson(json['processing_fee_money'])
-        : null,
+          ? Money.fromJson(json['processing_fee_money'])
+          : null,
       customerId: json['customer_id'],
       cardDetails: json['card_details'] != null
-        ? TenderCardDetails.fromJson(json['card_details'])
-        : null,
+          ? TenderCardDetails.fromJson(json['card_details'])
+          : null,
       cashDetails: json['cash_details'] != null
-        ? TenderCashDetails.fromJson(json['cash_details'])
-        : null,
+          ? TenderCashDetails.fromJson(json['cash_details'])
+          : null,
       additionalRecipients: json['additional_recipients'] != null
-        ? (json['additional_recipients'] as List).map((item) => AdditionalRecipient.fromJson(item)).toList()
-        : null,
+          ? (json['additional_recipients'] as List)
+              .map((item) => AdditionalRecipient.fromJson(item))
+              .toList()
+          : null,
     );
   }
-
 }
 
 /// An object representing additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`.
@@ -218,23 +235,17 @@ class TenderCardDetails {
   final Card card;
   final TenderCardDetailsEntryMethod entryMethod;
 
-  TenderCardDetails({
-    this.status,
-    this.card,
-    this.entryMethod
-  });
+  TenderCardDetails({this.status, this.card, this.entryMethod});
 
   factory TenderCardDetails.fromJson(Map<String, dynamic> json) {
     return TenderCardDetails(
       status: json['status'] != null
-        ? getTenderCardDetailsStatusFromString(json['status'])
-        : null,
-      card: json['card'] != null
-        ? Card.fromJson(json['card'])
-        : null,
+          ? getTenderCardDetailsStatusFromString(json['status'])
+          : null,
+      card: json['card'] != null ? Card.fromJson(json['card']) : null,
       entryMethod: json['entry_method']
-        ? getTenderCardDetailsEntryMethodFromString(json['entry_method'])
-        : null,
+          ? getTenderCardDetailsEntryMethodFromString(json['entry_method'])
+          : null,
     );
   }
 }
@@ -244,19 +255,16 @@ class TenderCashDetails {
   final Money buyerTenderedMoney;
   final Money changeBackMoney;
 
-  TenderCashDetails({
-    this.buyerTenderedMoney,
-    this.changeBackMoney
-  });
+  TenderCashDetails({this.buyerTenderedMoney, this.changeBackMoney});
 
   factory TenderCashDetails.fromJson(Map<String, dynamic> json) {
     return TenderCashDetails(
       buyerTenderedMoney: json['buyer_tendered_money'] != null
-        ? Money.fromJson(json['buyer_tendered_money'])
-        : null,
+          ? Money.fromJson(json['buyer_tendered_money'])
+          : null,
       changeBackMoney: json['change_back_money'] != null
-        ? Money.fromJson(json['change_back_money'])
-        : null,
+          ? Money.fromJson(json['change_back_money'])
+          : null,
     );
   }
 }
@@ -268,20 +276,16 @@ class AdditionalRecipient {
   final Money amountMoney;
   final String receivableId;
 
-  AdditionalRecipient({
-    this.locationId,
-    this.description,
-    this.amountMoney,
-    this.receivableId
-  });
+  AdditionalRecipient(
+      {this.locationId, this.description, this.amountMoney, this.receivableId});
 
   factory AdditionalRecipient.fromJson(Map<String, dynamic> json) {
     return AdditionalRecipient(
       locationId: json['location_id'],
       description: json['description'],
       amountMoney: json['amount_money'] != null
-        ? Money.fromJson(json['amount_money'])
-        : null,
+          ? Money.fromJson(json['amount_money'])
+          : null,
       receivableId: json['receivable_id'],
     );
   }
@@ -300,18 +304,17 @@ class Refund {
   final Money processingFeeMoney;
   final List<AdditionalRecipient> additionalRecipients;
 
-  Refund({
-    this.id,
-    this.locationId,
-    this.transactionId,
-    this.tenderId,
-    this.createdAt,
-    this.reason,
-    this.amountMoney,
-    this.status,
-    this.processingFeeMoney,
-    this.additionalRecipients
-  });
+  Refund(
+      {this.id,
+      this.locationId,
+      this.transactionId,
+      this.tenderId,
+      this.createdAt,
+      this.reason,
+      this.amountMoney,
+      this.status,
+      this.processingFeeMoney,
+      this.additionalRecipients});
 
   factory Refund.fromJson(Map<String, dynamic> json) {
     return Refund(
@@ -320,22 +323,23 @@ class Refund {
       transactionId: json['transaction_id'],
       tenderId: json['tender_id'],
       createdAt: json['created_at'] != null
-        ? DateTime.parse(json['created_at'])
-        : null,
+          ? DateTime.parse(json['created_at'])
+          : null,
       reason: json['reason'],
       amountMoney: json['amount_money'] != null
-        ? Money.fromJson(json['amount_money'])
-        : null,
+          ? Money.fromJson(json['amount_money'])
+          : null,
       status: json['status'] != null
-        ? getRefundStatusFromString(json['status'])
-        : null,
+          ? getRefundStatusFromString(json['status'])
+          : null,
       processingFeeMoney: json['processing_fee_money'] != null
-        ? Money.fromJson(json['processing_fee_money'])
-        : null,
+          ? Money.fromJson(json['processing_fee_money'])
+          : null,
       additionalRecipients: json['additional_recipients'] != null
-        ? (json['additional_recipients'] as List).map((item) => AdditionalRecipient.fromJson(item)).toList()
-        : null,
+          ? (json['additional_recipients'] as List)
+              .map((item) => AdditionalRecipient.fromJson(item))
+              .toList()
+          : null,
     );
   }
-
 }

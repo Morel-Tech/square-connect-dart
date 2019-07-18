@@ -23,9 +23,11 @@ const _mapStringtoErrorCategory = {
   'REFUND_ERROR': ErrorCategory.refundError,
 };
 
-ErrorCategory getErrorCategoryFromString(String input) => _mapStringtoErrorCategory[input];
-String getStringFromErrorCategory(ErrorCategory input) => _mapStringtoErrorCategory.keys
-    .singleWhere((value) => _mapStringtoErrorCategory[value] == input);
+ErrorCategory getErrorCategoryFromString(String input) =>
+    _mapStringtoErrorCategory[input];
+String getStringFromErrorCategory(ErrorCategory input) =>
+    _mapStringtoErrorCategory.keys
+        .singleWhere((value) => _mapStringtoErrorCategory[value] == input);
 
 const _mapStringtoTenderCardDetailsStatus = {
   'AUTHORIZED': TenderCardDetailsStatus.authorized,
@@ -34,9 +36,11 @@ const _mapStringtoTenderCardDetailsStatus = {
   'FAILED': TenderCardDetailsStatus.failed,
 };
 
-TenderCardDetailsStatus getTenderCardDetailsStatusFromString(String input) => _mapStringtoTenderCardDetailsStatus[input];
-String getStringFromTenderCardDetailsStatus(TenderCardDetailsStatus input) => _mapStringtoTenderCardDetailsStatus.keys
-    .singleWhere((value) => _mapStringtoTenderCardDetailsStatus[value] == input);
+TenderCardDetailsStatus getTenderCardDetailsStatusFromString(String input) =>
+    _mapStringtoTenderCardDetailsStatus[input];
+String getStringFromTenderCardDetailsStatus(TenderCardDetailsStatus input) =>
+    _mapStringtoTenderCardDetailsStatus.keys.singleWhere(
+        (value) => _mapStringtoTenderCardDetailsStatus[value] == input);
 
 const _mapStringtoTenderType = {
   'CARD': TenderType.card,
@@ -47,7 +51,8 @@ const _mapStringtoTenderType = {
   'OTHER': TenderType.other,
 };
 
-TenderType getTenderTypeFromString(String input) => _mapStringtoTenderType[input];
+TenderType getTenderTypeFromString(String input) =>
+    _mapStringtoTenderType[input];
 String getStringFromTenderType(TenderType input) => _mapStringtoTenderType.keys
     .singleWhere((value) => _mapStringtoTenderType[value] == input);
 
@@ -59,9 +64,13 @@ const _mapStringtoTenderCardDetailsEntryMethod = {
   'CONTACTLESS': TenderCardDetailsEntryMethod.contactless,
 };
 
-TenderCardDetailsEntryMethod getTenderCardDetailsEntryMethodFromString(String input) => _mapStringtoTenderCardDetailsEntryMethod[input];
-String getStringFromTenderCardDetailsEntryMethod(TenderCardDetailsEntryMethod input) => _mapStringtoTenderCardDetailsEntryMethod.keys
-    .singleWhere((value) => _mapStringtoTenderCardDetailsEntryMethod[value] == input);
+TenderCardDetailsEntryMethod getTenderCardDetailsEntryMethodFromString(
+        String input) =>
+    _mapStringtoTenderCardDetailsEntryMethod[input];
+String getStringFromTenderCardDetailsEntryMethod(
+        TenderCardDetailsEntryMethod input) =>
+    _mapStringtoTenderCardDetailsEntryMethod.keys.singleWhere(
+        (value) => _mapStringtoTenderCardDetailsEntryMethod[value] == input);
 
 const _mapStringtoRefundStatus = {
   'PENDING': RefundStatus.pending,
@@ -70,6 +79,8 @@ const _mapStringtoRefundStatus = {
   'FAILED': RefundStatus.failed,
 };
 
-RefundStatus getRefundStatusFromString(String input) => _mapStringtoRefundStatus[input];
-String getStringFromRefundStatus(RefundStatus input) => _mapStringtoRefundStatus.keys
-    .singleWhere((value) => _mapStringtoRefundStatus[value] == input);
+RefundStatus getRefundStatusFromString(String input) =>
+    _mapStringtoRefundStatus[input];
+String getStringFromRefundStatus(RefundStatus input) =>
+    _mapStringtoRefundStatus.keys
+        .singleWhere((value) => _mapStringtoRefundStatus[value] == input);

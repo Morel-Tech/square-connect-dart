@@ -11,7 +11,7 @@ class LocationsApi {
   LocationsApi({this.token, this.client})
       : assert(token != null),
         assert(client != null);
-
+  /// Lists all locations for a given merchant.
   Future<ListLocationsResponse> listLocations() async {
     var obj = RequestObj(
       token: token,

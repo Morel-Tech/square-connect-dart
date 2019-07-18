@@ -16,8 +16,8 @@ class Order {
   final OrderMoneyAmounts returnAmounts;
   final OrderMoneyAmounts netAmounts;
   final OrderRoundingAdjustment roundingAdjustment;
-  // TODO final List<Tender> tenders;
-  // TODO final List<Refund> refunds;
+  final List<Tender> tenders;
+  final List<Refund> refunds;
   final DateTime createdAt;
   final DateTime updatedAt;
   final DateTime closedAt;
@@ -49,6 +49,8 @@ class Order {
     this.totalTaxMoney,
     this.totalDiscountMoney,
     this.totalServiceChargeMoney,
+    this.tenders,
+    this.refunds,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
@@ -114,6 +116,16 @@ class Order {
           : null,
       totalServiceChargeMoney: json['total_service_charge_money'] != null
           ? Money.fromJson(json['total_service_charge_money'])
+          : null,
+      tenders: json['tenders'] != null
+          ? (json['tenders'] as List)
+              .map((item) => Tender.fromJson(item))
+              .toList()
+          : null,
+      refunds: json['refunds'] != null
+          ? (json['refunds'] as List)
+              .map((item) => Refund.fromJson(item))
+              .toList()
           : null,
     );
   }

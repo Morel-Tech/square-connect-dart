@@ -148,3 +148,194 @@ class SquareError {
     return 'ERROR OF TYPE ${getStringFromErrorCategory(category)}: $code on field $field \n\n\t Detail: $detail';
   }
 }
+
+/// An object representing a method of payment used in a [Transaction].
+class Tender {
+  final String id;
+  final String locationId;
+  final String transactionId;
+  final DateTime createdAt;
+  final String note;
+  final Money amountMoney;
+  final Money tipMoney;
+  final Money processingFeeMoney;
+  final String customerId;
+  final TenderCardDetails cardDetails;
+  final TenderCashDetails cashDetails;
+  final List<AdditionalRecipient> additionalRecipients;
+
+  Tender({
+    this.id,
+    this.locationId,
+    this.transactionId,
+    this.createdAt,
+    this.note,
+    this.amountMoney,
+    this.tipMoney,
+    this.processingFeeMoney,
+    this.customerId,
+    this.cardDetails,
+    this.cashDetails,
+    this.additionalRecipients
+  });
+
+  factory Tender.fromJson(Map<String, dynamic> json) {
+    return Tender(
+      id: json['id'],
+      locationId: json['location_id'],
+      transactionId: json['transaction_id'],
+      createdAt: json['created_at'] != null
+        ? DateTime.parse(json['created_at'])
+        : null,
+      note: json['note'],
+      amountMoney: json['amount_money'] != null
+        ? Money.fromJson(json['amount_money'])
+        : null,
+      tipMoney: json['tip_money'] != null
+        ? Money.fromJson(json['tip_money'])
+        : null,
+      processingFeeMoney: json['processing_fee_money'] != null
+        ? Money.fromJson(json['processing_fee_money'])
+        : null,
+      customerId: json['customer_id'],
+      cardDetails: json['card_details'] != null
+        ? TenderCardDetails.fromJson(json['card_details'])
+        : null,
+      cashDetails: json['cash_details'] != null
+        ? TenderCashDetails.fromJson(json['cash_details'])
+        : null,
+      additionalRecipients: json['additional_recipients'] != null
+        ? (json['additional_recipients'] as List).map((item) => AdditionalRecipient.fromJson(item)).toList()
+        : null,
+    );
+  }
+
+}
+
+/// An object representing additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`.
+class TenderCardDetails {
+  final TenderCardDetailsStatus status;
+  final Card card;
+  final TenderCardDetailsEntryMethod entryMethod;
+
+  TenderCardDetails({
+    this.status,
+    this.card,
+    this.entryMethod
+  });
+
+  factory TenderCardDetails.fromJson(Map<String, dynamic> json) {
+    return TenderCardDetails(
+      status: json['status'] != null
+        ? getTenderCardDetailsStatusFromString(json['status'])
+        : null,
+      card: json['card'] != null
+        ? Card.fromJson(json['card'])
+        : null,
+      entryMethod: json['entry_method']
+        ? getTenderCardDetailsEntryMethodFromString(json['entry_method'])
+        : null,
+    );
+  }
+}
+
+/// An object representing the details of a tender with `type` `CASH`.
+class TenderCashDetails {
+  final Money buyerTenderedMoney;
+  final Money changeBackMoney;
+
+  TenderCashDetails({
+    this.buyerTenderedMoney,
+    this.changeBackMoney
+  });
+
+  factory TenderCashDetails.fromJson(Map<String, dynamic> json) {
+    return TenderCashDetails(
+      buyerTenderedMoney: json['buyer_tendered_money'] != null
+        ? Money.fromJson(json['buyer_tendered_money'])
+        : null,
+      changeBackMoney: json['change_back_money'] != null
+        ? Money.fromJson(json['change_back_money'])
+        : null,
+    );
+  }
+}
+
+/// An object representing an additional recipient (other than the merchant) receiving a portion of this tender.
+class AdditionalRecipient {
+  final String locationId;
+  final String description;
+  final Money amountMoney;
+  final String receivableId;
+
+  AdditionalRecipient({
+    this.locationId,
+    this.description,
+    this.amountMoney,
+    this.receivableId
+  });
+
+  factory AdditionalRecipient.fromJson(Map<String, dynamic> json) {
+    return AdditionalRecipient(
+      locationId: json['location_id'],
+      description: json['description'],
+      amountMoney: json['amount_money'] != null
+        ? Money.fromJson(json['amount_money'])
+        : null,
+      receivableId: json['receivable_id'],
+    );
+  }
+}
+
+/// An object representing a refund processed for a Square transaction.
+class Refund {
+  final String id;
+  final String locationId;
+  final String transactionId;
+  final String tenderId;
+  final DateTime createdAt;
+  final String reason;
+  final Money amountMoney;
+  final RefundStatus status;
+  final Money processingFeeMoney;
+  final List<AdditionalRecipient> additionalRecipients;
+
+  Refund({
+    this.id,
+    this.locationId,
+    this.transactionId,
+    this.tenderId,
+    this.createdAt,
+    this.reason,
+    this.amountMoney,
+    this.status,
+    this.processingFeeMoney,
+    this.additionalRecipients
+  });
+
+  factory Refund.fromJson(Map<String, dynamic> json) {
+    return Refund(
+      id: json['id'],
+      locationId: json['location_id'],
+      transactionId: json['transaction_id'],
+      tenderId: json['tender_id'],
+      createdAt: json['created_at'] != null
+        ? DateTime.parse(json['created_at'])
+        : null,
+      reason: json['reason'],
+      amountMoney: json['amount_money'] != null
+        ? Money.fromJson(json['amount_money'])
+        : null,
+      status: json['status'] != null
+        ? getRefundStatusFromString(json['status'])
+        : null,
+      processingFeeMoney: json['processing_fee_money'] != null
+        ? Money.fromJson(json['processing_fee_money'])
+        : null,
+      additionalRecipients: json['additional_recipients'] != null
+        ? (json['additional_recipients'] as List).map((item) => AdditionalRecipient.fromJson(item)).toList()
+        : null,
+    );
+  }
+
+}

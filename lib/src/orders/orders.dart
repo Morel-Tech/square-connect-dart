@@ -132,7 +132,7 @@ class OrdersApi {
     /// [OrderSource]s to filter with as Strings (the name field in [OrderSource]).
     List<String> sourcesFilter,
 
-    /// CustomerIds to filter with. NOTE: Only based on Order customer_id and any Tender customer_id.
+    /// CustomerIds to filter with. NOTE: Only based on Order customer_id and any [Tender] customer_id.
     List<String> customerIdsFilter,
   }) async {
     var body = Map<String, dynamic>();

@@ -26,6 +26,11 @@ export 'package:square_connect/src/orders/orders-objects.dart';
 export 'package:square_connect/src/orders/orders-enums.dart';
 export 'package:square_connect/src/orders/orders.dart';
 
+export 'package:square_connect/src/transactions/transactions-return-objects.dart';
+export 'package:square_connect/src/transactions/transactions-objects.dart';
+export 'package:square_connect/src/transactions/transactions-enums.dart';
+export 'package:square_connect/src/transactions/transactions.dart';
+
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
 

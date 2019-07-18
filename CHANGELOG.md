@@ -1,3 +1,8 @@
+## 0.1.1
+* Adding more documentation.
+* Fixing scope issues for some enums.
+* Initial work behind the scenes for Transactions API.
+
 ## 0.1.0
 * WooHoo first major release!!!
     * This doesn't mean the package is anywhere near complete, but the direction seems clear and now it's time to plug and chug.

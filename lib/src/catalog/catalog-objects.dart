@@ -1,5 +1,7 @@
 import 'dart:core';
 
+import 'package:square_connect/src/catalog/catalog-enums-converter.dart';
+
 import '../money.dart';
 import 'catalog-enums.dart';
 

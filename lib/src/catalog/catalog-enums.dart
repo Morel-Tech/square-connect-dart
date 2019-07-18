@@ -1,3 +1,4 @@
+/// Indicates the type of [CatalogObject].
 enum CatalogObjectType {
   item,
   itemVariation,
@@ -12,92 +13,21 @@ enum CatalogObjectType {
   timePeriod,
 }
 
-const catalogObjectTypeMappingStringToItem = {
-  'ITEM': CatalogObjectType.item,
-  'ITEM_VARIATION': CatalogObjectType.itemVariation,
-  'IMAGE': CatalogObjectType.image,
-  'CATEGORY': CatalogObjectType.category,
-  'TAX': CatalogObjectType.tax,
-  'DISCOUNT': CatalogObjectType.discount,
-  'MODIFIER_LIST': CatalogObjectType.modifierList,
-  'MODIFIER': CatalogObjectType.modifier,
-  'PRICING_RULE': CatalogObjectType.pricingRule,
-  'PRODUCT_SET': CatalogObjectType.productSet,
-  'TIME_PERIOD': CatalogObjectType.timePeriod,
-};
-
-String getCatalogObjectStringFromType(CatalogObjectType type) {
-  return catalogObjectTypeMappingStringToItem.keys.firstWhere(
-      (k) => catalogObjectTypeMappingStringToItem[k] == type, orElse: () {
-    throw ArgumentError.value(
-        type, 'type', 'Input must be a valid CatalogObjectType');
-  });
-}
-
-CatalogObjectType getCatalogObjectTypeFromString(String input) {
-  switch (input) {
-    case 'ITEM':
-      return CatalogObjectType.item;
-    case 'ITEM_VARIATION':
-      return CatalogObjectType.itemVariation;
-    case 'IMAGE':
-      return CatalogObjectType.image;
-    case 'CATEGORY':
-      return CatalogObjectType.category;
-    case 'TAX':
-      return CatalogObjectType.tax;
-    case 'DISCOUNT':
-      return CatalogObjectType.discount;
-    case 'MODIFIER_LIST':
-      return CatalogObjectType.modifierList;
-    case 'MODIFIER':
-      return CatalogObjectType.modifier;
-    case 'PRICING_RULE':
-      return CatalogObjectType.pricingRule;
-    case 'PRODUCT_SET':
-      return CatalogObjectType.productSet;
-    case 'TIME_PERIOD':
-      return CatalogObjectType.timePeriod;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid CatalogObjectType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates whether the price of a [CatalogItemVariation] should be entered manually at point of sale
 enum CatalogPricingType {
   fixedPricing,
   variablePricing,
 }
 
-CatalogPricingType getCatalogPricingTypeFromString(String input) {
-  switch (input) {
-    case 'FIXED_PRICING':
-      return CatalogPricingType.fixedPricing;
-    case 'VARIABLE_PRICING':
-      return CatalogPricingType.variablePricing;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid CatalogPricingType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates whether Square should alert when the inventory quantity of a CatalogItemVariation is low.
 enum InventoryAlertType {
+  /// The variation does not display an alert.
   none,
+  /// The variation does display an alert when the quantity is low.
   lowQuantity,
 }
 
-InventoryAlertType getInventoryAlertTypeFromString(String input) {
-  switch (input) {
-    case 'NONE':
-      return InventoryAlertType.none;
-    case 'LOW_QUANTITY':
-      return InventoryAlertType.lowQuantity;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid InventoryAlertType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates the type of [CatalogItem]. Can only create `regular` and `appointmentsService`.
 enum CatalogItemProductType {
   regular,
   giftCard,
@@ -106,99 +36,43 @@ enum CatalogItemProductType {
   restaurantItem,
 }
 
-CatalogItemProductType getCatalogItemProductTypeFromString(String input) {
-  switch (input) {
-    case 'REGULAR':
-      return CatalogItemProductType.regular;
-    case 'GIFT_CARD':
-      return CatalogItemProductType.giftCard;
-    case 'APPOINTMENTS_SERVICE':
-      return CatalogItemProductType.appointmentsService;
-    case 'RETAIL_ITEM':
-      return CatalogItemProductType.retailItem;
-    case 'RESTAURANT_ITEM':
-      return CatalogItemProductType.restaurantItem;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid CatalogItemProductType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates when to calculate the taxes due on a cart.
 enum TaxCalculationPhase {
+  /// The tax is calculated based on the payment's subtotal. (ie before discounts)
   taxSubtotalPhase,
+  /// The tax is calculated based on the payment's total.
   taxTotalPhase,
 }
 
-TaxCalculationPhase getTaxCalculationPhaseFromString(String input) {
-  switch (input) {
-    case 'TAX_SUBTOTAL_PHASE':
-      return TaxCalculationPhase.taxSubtotalPhase;
-    case 'TAX_TOTAL_PHASE':
-      return TaxCalculationPhase.taxTotalPhase;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid TaxCalculationPhase in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates whether to the tax amount should be additional to or included in to the [CatalogItem] price.
 enum TaxInclusionType {
+  /// The tax is an additive tax. The tax amount is added on top of the [CatalogItemVariation] price. For example, a $1.00 item with a 10% additive tax would have a total cost to the buyer of $1.10.
   additive,
+  /// The tax is an inclusive tax. The tax amount is included in the [CatalogItemVariation] price. For example, a $1.00 item with a 10% inclusive tax would have a total cost to the buyer of $1.00, with $0.91 (91 cents) of that total being the cost of the item and $0.09 (9 cents) being tax.
   inclusive,
 }
 
-TaxInclusionType getTaxInclusionTypeFromString(String input) {
-  switch (input) {
-    case 'ADDITIVE':
-      return TaxInclusionType.additive;
-    case 'INCLUSIVE':
-      return TaxInclusionType.inclusive;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid TaxInclusionType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates how to apply a [CatalogDiscount] to a [CatalogItem].
 enum CatalogDiscountType {
+  /// Apply the discount as a fixed percentage (e.g., 5%) off the item price.
   fixedPercentage,
+  /// Apply the discount as a fixed amount (e.g., $1.00) off the item price.
   fixedAmount,
+  /// Apply the discount as a variable percentage off the item price. The percentage will be specified at the time of sale.
   variablePercentage,
+  /// Apply the discount as a variable amount off the item price. The amount will be specified at the time of sale.
   variableAmount,
 }
 
-CatalogDiscountType getCatalogDiscountTypeFromString(String input) {
-  switch (input) {
-    case 'FIXED_PERCENTAGE':
-      return CatalogDiscountType.fixedPercentage;
-    case 'FIXED_AMOUNT':
-      return CatalogDiscountType.fixedAmount;
-    case 'VARIABLE_PERCENTAGE':
-      return CatalogDiscountType.variablePercentage;
-    case 'VARIABLE_AMOUNT':
-      return CatalogDiscountType.variableAmount;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid CatalogDiscountType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates whether a [CatalogModifierList] supports multiple selections.
 enum CatalogModifierListSelectionType {
+  /// Indicates that a [CatalogModifierList] allows only a single [CatalogModifier] to be selected.
   single,
+  /// Indicates that a [CatalogModifierList] allows multiple [CatalogModifier] to be selected.
   multiple,
 }
 
-CatalogModifierListSelectionType getCatalogModifierListSelectionTypeFromString(
-    String input) {
-  switch (input) {
-    case 'SINGLE':
-      return CatalogModifierListSelectionType.single;
-    case 'MULTIPLE':
-      return CatalogModifierListSelectionType.multiple;
-    default:
-      throw ArgumentError.value(input, 'input',
-          'Input must be a valid CatalogModifierListSelectionType in SCREAMING_UPPERCASE');
-  }
-}
-
+/// Indicates a unit of area used to measure a quantity.
 enum MeasurementUnitArea {
   imperialAcre,
   imperialSquareInch,
@@ -210,25 +84,7 @@ enum MeasurementUnitArea {
   metricSquareKilometer,
 }
 
-const stringToMeasurementUnitArea = {
-  'IMPERIAL_ACRE': MeasurementUnitArea.imperialAcre,
-  'IMPERIAL_SQUARE_INCH': MeasurementUnitArea.imperialSquareInch,
-  'IMPERIAL_SQUARE_FOOT': MeasurementUnitArea.imperialSquareFoot,
-  'IMPERIAL_SQUARE_YARD': MeasurementUnitArea.imperialSquareYard,
-  'IMPERIAL_SQUARE_MILE': MeasurementUnitArea.imperialSquareMile,
-  'METRIC_SQUARE_CENTIMETER': MeasurementUnitArea.metricSquareCentimeter,
-  'METRIC_SQUARE_METER': MeasurementUnitArea.metricSquareMeter,
-  'METRIC_SQUARE_KILOMETER': MeasurementUnitArea.metricSquareKilometer,
-};
-
-MeasurementUnitArea getMeasurementUnitAreaFromString(String input) {
-  var ans = stringToMeasurementUnitArea[input];
-  if (ans == null)
-    throw ArgumentError.value(input, 'input',
-        'Input must be a valid MeasurementUnitArea in SCREAMING_UPPERCASE');
-  return ans;
-}
-
+/// Indicates a unit of length used to measure a quantity.
 enum MeasurementUnitLength {
   imperialInch,
   imperialFoot,
@@ -240,25 +96,7 @@ enum MeasurementUnitLength {
   metricKilometer,
 }
 
-const stringToMeasurementUnitLength = {
-  'IMPERIAL_INCH': MeasurementUnitLength.imperialInch,
-  'IMPERIAL_FOOT': MeasurementUnitLength.imperialFoot,
-  'IMPERIAL_YARD': MeasurementUnitLength.imperialYard,
-  'IMPERIAL_MILE': MeasurementUnitLength.imperialMile,
-  'METRIC_MILLIMETER': MeasurementUnitLength.metricMillimeter,
-  'METRIC_CENTIMETER': MeasurementUnitLength.metricCentimeter,
-  'METRIC_METER': MeasurementUnitLength.metricMeter,
-  'METRIC_KILOMETER': MeasurementUnitLength.metricKilometer,
-};
-
-MeasurementUnitLength getMeasurementUnitLengthFromString(String input) {
-  var ans = stringToMeasurementUnitLength[input];
-  if (ans == null)
-    throw ArgumentError.value(input, 'input',
-        'Input must be a valid MeasurementUnitLength in SCREAMING_UPPERCASE');
-  return ans;
-}
-
+/// Indicates a unit of volume used to measure a quantity.
 enum MeasurementUnitVolume {
   genericFluidOunce,
   genericShot,
@@ -273,28 +111,7 @@ enum MeasurementUnitVolume {
   metricLiter,
 }
 
-const stringToMeasurementUnitVolume = {
-  'GENERIC_FLUID_OUNCE': MeasurementUnitVolume.genericFluidOunce,
-  'GENERIC_SHOT': MeasurementUnitVolume.genericShot,
-  'GENERIC_CUP': MeasurementUnitVolume.genericCup,
-  'GENERIC_PINT': MeasurementUnitVolume.genericPint,
-  'GENERIC_QUART': MeasurementUnitVolume.genericQuart,
-  'GENERIC_GALLON': MeasurementUnitVolume.genericGallon,
-  'IMPERIAL_CUBIC_INCH': MeasurementUnitVolume.imperialCubicInch,
-  'IMPERIAL_CUBIC_FOOT': MeasurementUnitVolume.imperialCubicFoot,
-  'IMPERIAL_CUBIC_YARD': MeasurementUnitVolume.imperialCubicYard,
-  'METRIC_MILLILITER': MeasurementUnitVolume.metricMilliliter,
-  'METRIC_LITER': MeasurementUnitVolume.metricLiter,
-};
-
-MeasurementUnitVolume getMeasurementUnitVolumeFromString(String input) {
-  var ans = stringToMeasurementUnitVolume[input];
-  if (ans == null)
-    throw ArgumentError.value(input, 'input',
-        'Input must be a valid MeasurementUnitVolume in SCREAMING_UPPERCASE');
-  return ans;
-}
-
+/// Indicates a unit of weight used to measure a quantity.
 enum MeasurementUnitWeight {
   imperialWeightOunce,
   imperialPound,
@@ -304,23 +121,7 @@ enum MeasurementUnitWeight {
   metricKilogram,
 }
 
-const stringToMeasurementUnitWeight = {
-  'IMPERIAL_WEIGHT_OUNCE': MeasurementUnitWeight.imperialWeightOunce,
-  'IMPERIAL_POUND': MeasurementUnitWeight.imperialPound,
-  'IMPERIAL_STONE': MeasurementUnitWeight.imperialStone,
-  'METRIC_MILLIGRAM': MeasurementUnitWeight.metricMilligram,
-  'METRIC_GRAM': MeasurementUnitWeight.metricGram,
-  'METRIC_KILOGRAM': MeasurementUnitWeight.metricKilogram,
-};
-
-MeasurementUnitWeight getMeasurementUnitWeightFromString(String input) {
-  var ans = stringToMeasurementUnitWeight[input];
-  if (ans == null)
-    throw ArgumentError.value(input, 'input',
-        'Input must be a valid MeasurementUnitWeight in SCREAMING_UPPERCASE');
-  return ans;
-}
-
+/// Indicates a type of query made on [searchCatalog()].
 enum CatalogQueryType {
   sortedAttributeQuery,
   exactQuery,

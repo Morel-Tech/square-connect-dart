@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/customer/customer-enums-converter.dart';
+import 'package:square_connect/src/shared-enums-converter.dart';
 import 'package:uuid/uuid.dart';
 
 import '../helper-classes.dart';

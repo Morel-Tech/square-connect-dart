@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
+import 'package:square_connect/src/shared-enums-converter.dart';
 import 'package:uuid/uuid.dart';
 
 class OrdersApi {

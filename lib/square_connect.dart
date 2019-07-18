@@ -31,6 +31,7 @@ export 'package:square_connect/src/orders/orders.dart';
 
 export 'package:square_connect/src/errors.dart';
 export 'package:square_connect/src/money.dart';
+export 'package:square_connect/src/shared-enums.dart';
 
 class SquareConnect {
   String _authToken;

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:square_connect/src/customer/customer-enums-converter.dart';
 import 'package:square_connect/src/customer/customer-enums.dart';
 
 class Customer {

@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
+import 'package:square_connect/src/catalog/catalog-enums-converter.dart';
 import 'package:square_connect/src/helper-classes.dart';
+import 'package:square_connect/src/shared-enums-converter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:square_connect/square_connect.dart';
 
@@ -22,7 +24,7 @@ class CatalogApi {
         QueryParam(
             'types',
             types
-                .map((type) => getCatalogObjectStringFromType(type))
+                .map((type) => getStringFromCatalogObjectType(type))
                 .join(',')),
     ];
     var obj = RequestObj(
@@ -165,7 +167,7 @@ class CatalogApi {
     Map<String, dynamic> body = Map<String, dynamic>();
 
     if (cursor != null) body['cursor'] = cursor;
-    if (types != null) body['object_types'] = types.map((type) => getCatalogObjectStringFromType(type)).toList();
+    if (types != null) body['object_types'] = types.map((type) => getStringFromCatalogObjectType(type)).toList();
     if (includeDeletedObjects != null) body['include_deleted_objects'] = includeDeletedObjects;
     if (includeRelatedObjects != null) body['include_related_objects'] = includeRelatedObjects;
     if (beginTime != null) body['begin_time'] = beginTime.toUtc().toIso8601String();

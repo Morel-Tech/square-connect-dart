@@ -134,6 +134,13 @@ class Money {
         amount: json['amount'],
         currency: getCurrencyFromString(json['currency']));
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'amount': amount,
+      'currency': getStringFromCurrency(currency),
+    };
+  }
 }
 
 /// An object representing and error generated from any Square APIs.
@@ -288,6 +295,15 @@ class AdditionalRecipient {
           : null,
       receivableId: json['receivable_id'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'location_id': locationId,
+      'description': description,
+      'amount_money': amountMoney.toJson(),
+      'receivable_id': receivableId,
+    };
   }
 }
 

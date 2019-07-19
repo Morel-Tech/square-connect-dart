@@ -14,6 +14,11 @@ Currency getCurrencyFromString(String input) {
   return Currency.values.firstWhere((f) => f.toString() == 'Currency.$input');
 }
 
+String getStringFromCurrency(Currency input) {
+  if (input == Currency.unknownCurrency) return 'UNKNOWN_CURRENCY';
+  return input.toString().substring(8);
+}
+
 const _mapStringtoErrorCategory = {
   'API_ERROR': ErrorCategory.apiError,
   'AUTHENTICATION_ERROR': ErrorCategory.authenticationError,

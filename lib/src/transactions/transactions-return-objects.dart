@@ -74,9 +74,8 @@ class CreateRefundResponse {
                 .map((error) => SquareError.fromJson(error))
                 .toList()
             : null,
-        refund: json['refund'] != null
-            ? Refund.fromJson(json['refund'])
-            : null);
+        refund:
+            json['refund'] != null ? Refund.fromJson(json['refund']) : null);
   }
 
   get hasErrors {
@@ -109,10 +108,11 @@ class ListRefundsResponse {
                 .toList()
             : null,
         refunds: json['refund'] != null
-            ? (json['refund'] as List).map((item) => Refund.fromJson(item)).toList()
+            ? (json['refund'] as List)
+                .map((item) => Refund.fromJson(item))
+                .toList()
             : null,
-        cursor: json['cursor']
-    );
+        cursor: json['cursor']);
   }
 
   get hasErrors {
@@ -145,10 +145,11 @@ class ListTransactionsResponse {
                 .toList()
             : null,
         transactions: json['transactions'] != null
-            ? (json['transactions'] as List).map((item) => Transaction.fromJson(item)).toList()
+            ? (json['transactions'] as List)
+                .map((item) => Transaction.fromJson(item))
+                .toList()
             : null,
-        cursor: json['cursor']
-    );
+        cursor: json['cursor']);
   }
 
   get hasErrors {

@@ -1,4 +1,8 @@
 ## 0.1.1
+* Adding full implementation for Transactions API.
+    * Still needs documentation and tests.
+
+## 0.1.1
 * Adding more documentation.
 * Fixing scope issues for some enums.
 * Initial work behind the scenes for Transactions API.

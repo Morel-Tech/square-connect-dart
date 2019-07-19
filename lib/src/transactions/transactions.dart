@@ -17,7 +17,8 @@ class TransactionsApi {
     String locationId,
     String transactionId,
   }) async {
-    if (transactionId == null) throw ArgumentError('transactionId must not be null');
+    if (transactionId == null)
+      throw ArgumentError('transactionId must not be null');
     if (locationId == null) throw ArgumentError('locationId must not be null');
 
     var obj = RequestObj(
@@ -57,12 +58,18 @@ class TransactionsApi {
     if (referenceId != null) body['reference_id'] = referenceId;
     if (note != null) body['note'] = note;
     if (customerId != null) body['customer_id'] = customerId;
-    if (billingAddress != null) body['billing_address'] = billingAddress.toJson();
-    if (shippingAddress != null) body['shipping_address'] = shippingAddress.toJson();
-    if (buyerEmailAddress != null) body['buyer_email_address'] = buyerEmailAddress;
+    if (billingAddress != null)
+      body['billing_address'] = billingAddress.toJson();
+    if (shippingAddress != null)
+      body['shipping_address'] = shippingAddress.toJson();
+    if (buyerEmailAddress != null)
+      body['buyer_email_address'] = buyerEmailAddress;
     if (orderId != null) body['order_id'] = orderId;
-    if (additionalRecipients != null) body['additional_recipients'] = additionalRecipients.map((item) => item.toJson()).toList();
-    if (verificationToken != null) body['verification_token'] = verificationToken;
+    if (additionalRecipients != null)
+      body['additional_recipients'] =
+          additionalRecipients.map((item) => item.toJson()).toList();
+    if (verificationToken != null)
+      body['verification_token'] = verificationToken;
 
     var obj = RequestObj(
       token: _token,
@@ -102,7 +109,7 @@ class TransactionsApi {
     return CreateRefundResponse.fromJson(json.decode(response.body));
   }
 
-    Future<ListRefundsResponse> listRefunds({
+  Future<ListRefundsResponse> listRefunds({
     String locationId,
     DateTime beginTime,
     DateTime endTime,
@@ -110,9 +117,11 @@ class TransactionsApi {
     String cursor,
   }) async {
     List<QueryParam> queryParams = [
-      if (beginTime != null) QueryParam('begin_time', beginTime.toIso8601String()),
+      if (beginTime != null)
+        QueryParam('begin_time', beginTime.toIso8601String()),
       if (endTime != null) QueryParam('end_time', endTime.toIso8601String()),
-      if (sortOrder != null) QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
+      if (sortOrder != null)
+        QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
       if (cursor != null) QueryParam('cursor', cursor),
     ];
 
@@ -136,9 +145,11 @@ class TransactionsApi {
     String cursor,
   }) async {
     List<QueryParam> queryParams = [
-      if (beginTime != null) QueryParam('begin_time', beginTime.toIso8601String()),
+      if (beginTime != null)
+        QueryParam('begin_time', beginTime.toIso8601String()),
       if (endTime != null) QueryParam('end_time', endTime.toIso8601String()),
-      if (sortOrder != null) QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
+      if (sortOrder != null)
+        QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
       if (cursor != null) QueryParam('cursor', cursor),
     ];
 
@@ -173,7 +184,8 @@ class TransactionsApi {
     String locationId,
     String transactionId,
   }) async {
-    if (transactionId == null) throw ArgumentError('transactionId must not be null');
+    if (transactionId == null)
+      throw ArgumentError('transactionId must not be null');
     if (locationId == null) throw ArgumentError('locationId must not be null');
 
     var obj = RequestObj(
@@ -186,5 +198,4 @@ class TransactionsApi {
     var response = await obj.makeCall();
     return VoidTransactionResponse.fromJson(json.decode(response.body));
   }
-
 }

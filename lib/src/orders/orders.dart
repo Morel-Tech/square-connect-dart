@@ -57,7 +57,7 @@ class OrdersApi {
   /// A method for retreiving multiple orders in one batch. A maximum of 100 orders is allowed. Per request.
   /// NOTE: If an orderId does not exist, it is ignored instead of generating an error.
   Future<BatchRetrieveOrdersResponse> batchRetrieveOrders({
-    /// The locationIds of the Orders
+    /// The locationId of the Orders
     String locationId,
 
     /// A list of orderIds to retrieve.

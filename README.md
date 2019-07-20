@@ -105,7 +105,7 @@ if (firstResponse.cursor != null) {
 }
 ```
 
-## Methods Supported (for more info, see API documentation, and Square's documentation [here](https://developer.squareup.com/docs/api/connect/v2)):
+## Methods Supported (for more info, see [API documentation](https://pub.dev/documentation/square_connect/latest/), and [Square's documentation](https://developer.squareup.com/docs/api/connect/v2)):
 ## Catalog API (SquareConnect.catalogApi)
 Method | Description
 --- | ---

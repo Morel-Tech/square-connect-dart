@@ -3,8 +3,10 @@ import 'package:http/io_client.dart';
 
 import 'package:square_connect/src/catalog/catalog.dart';
 import 'package:square_connect/src/customer/customer.dart';
+import 'package:square_connect/src/employees/employees.dart';
 import 'package:square_connect/src/locations/locations.dart';
 import 'package:square_connect/src/orders/orders.dart';
+import 'package:square_connect/src/transactions/transactions.dart';
 
 export 'package:square_connect/src/catalog/catalog-return-objects.dart';
 export 'package:square_connect/src/catalog/catalog-objects.dart';
@@ -30,6 +32,11 @@ export 'package:square_connect/src/transactions/transactions-return-objects.dart
 export 'package:square_connect/src/transactions/transactions-objects.dart';
 export 'package:square_connect/src/transactions/transactions-enums.dart';
 export 'package:square_connect/src/transactions/transactions.dart';
+
+export 'package:square_connect/src/employees/employees-return-objects.dart';
+export 'package:square_connect/src/employees/employees-objects.dart';
+export 'package:square_connect/src/employees/employees-enums.dart';
+export 'package:square_connect/src/employees/employees.dart';
 
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
@@ -87,5 +94,13 @@ class SquareConnect {
   /// Getter for Orders API methods.
   OrdersApi get ordersApi {
     return OrdersApi(_authToken, _client);
+  }
+  /// Getter for Transactions API methods.
+  TransactionsApi get transactionsApi {
+    return TransactionsApi(_authToken, _client);
+  }
+  /// Getter for Employees API methods.
+  EmployeesApi get employeesApi {
+    return EmployeesApi(_authToken, _client);
   }
 }

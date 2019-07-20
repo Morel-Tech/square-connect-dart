@@ -19,19 +19,18 @@ class ListEmployeesResponse {
 
   factory ListEmployeesResponse.fromJson(Map<String, dynamic> json) {
     return ListEmployeesResponse(
-        errors: json['errors'] != null
-            ? (json['errors'] as List)
-                .map((error) => SquareError.fromJson(error))
-                .toList()
-            : null,
-        employees: json['employees'] != null
-            ? (json['employees'] as List)
-                .map((item) => Employee.fromJson(item))
-                .toList()
-            : null,
-        cursor: json['cursor'],
-      );
-
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      employees: json['employees'] != null
+          ? (json['employees'] as List)
+              .map((item) => Employee.fromJson(item))
+              .toList()
+          : null,
+      cursor: json['cursor'],
+    );
   }
 
   get hasErrors {
@@ -54,16 +53,14 @@ class RetrieveEmployeeResponse {
 
   factory RetrieveEmployeeResponse.fromJson(Map<String, dynamic> json) {
     return RetrieveEmployeeResponse(
-        errors: json['errors'] != null
-            ? (json['errors'] as List)
-                .map((error) => SquareError.fromJson(error))
-                .toList()
-            : null,
-        employee: json['employee'] != null
-            ? Employee.fromJson(json['employee'])
-            : null,
-      );
-
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      employee:
+          json['employee'] != null ? Employee.fromJson(json['employee']) : null,
+    );
   }
 
   get hasErrors {

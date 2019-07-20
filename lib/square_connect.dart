@@ -95,10 +95,12 @@ class SquareConnect {
   OrdersApi get ordersApi {
     return OrdersApi(_authToken, _client);
   }
+
   /// Getter for Transactions API methods.
   TransactionsApi get transactionsApi {
     return TransactionsApi(_authToken, _client);
   }
+
   /// Getter for Employees API methods.
   EmployeesApi get employeesApi {
     return EmployeesApi(_authToken, _client);

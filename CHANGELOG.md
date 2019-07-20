@@ -1,3 +1,8 @@
+## 0.1.3
+* Adding full implementation for Employees API.
+    * Still needs tests.
+    * Added documentation to Transactions API.
+
 ## 0.1.2
 * Adding full implementation for Transactions API.
     * Still needs documentation and tests.

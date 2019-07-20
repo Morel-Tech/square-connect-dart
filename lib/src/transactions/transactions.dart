@@ -185,7 +185,7 @@ class TransactionsApi {
     var response = await obj.makeCall();
     return RetrieveTransactionResponse.fromJson(json.decode(response.body));
   }
-  
+
   /// Cancels a [Transaction] that was created with the `charge()` method with a `delayCapture` value of `true`.
   Future<VoidTransactionResponse> voidTransaction({
     String locationId,

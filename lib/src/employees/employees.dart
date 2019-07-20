@@ -20,11 +20,10 @@ class EmployeesApi {
     String cursor,
   }) async {
     List<QueryParam> queryParams = [
-      if (locationId != null)
-        QueryParam('location_id', locationId),
-      if (status != null) QueryParam('status', getStringFromEmployeeStatus(status)),
-      if (limit != null)
-        QueryParam('limit', limit.toString()),
+      if (locationId != null) QueryParam('location_id', locationId),
+      if (status != null)
+        QueryParam('status', getStringFromEmployeeStatus(status)),
+      if (limit != null) QueryParam('limit', limit.toString()),
       if (cursor != null) QueryParam('cursor', cursor),
     ];
 
@@ -54,5 +53,4 @@ class EmployeesApi {
     var response = await obj.makeCall();
     return RetrieveEmployeeResponse.fromJson(json.decode(response.body));
   }
-
 }

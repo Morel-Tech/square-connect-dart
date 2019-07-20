@@ -29,12 +29,34 @@ Then set two config options:
 client.setAuthToken(token: 'YOUR-TOKEN-HERE');
 ```
 
+**ALTERNATIVELY** You can combine the `.instance` and the `setAuthToken(token)` to one call that does both, which is often more 
+convenient.
+
+```dart
+client.getInstanceWithToken('YOUR-TOKEN-HERE');
+```
+
 **OPTIONAL** Second, you may add a different HttpClient to use. By defauly, the IOClient is used (the object that flutter needs to make http calls). This is useful for testing (you can enter a Mock client) or using BrowserClient if developing for web.
 
 ```dart
 var httpClient = BrowserClient();
 client.setAuthToken(client: httpClient);
 ```
+
+**ADITIONAL TIP** If using Flutter, and excelent strategy is to use the [Provider](https://pub.dev/packages/provider) package to manage the SquareConnect client. You can initalize like so :
+```dart
+Provider<SquareConnect>.value(
+  value: SquareConnect.getInstanceWithToken('YOUR-TOKEN-HERE'),
+  child: MaterialApp(
+    home: Home(),
+  )
+)
+```
+and then retrieve anywhere in the widget tree like so:
+```dart
+Provider.of<SquareConnect>(context).xxxApi.someMethod();
+```
+This way, you only need to enter your token once, and you can use the same client anywhere your app. Of course, you could use a `MultiProvider` intead if you had multiple items to provide.
 
 ## Usage
 Now that you have a SquareConnect client set up, you can access it's methods. The seperate APIs are contained in their own objects for better organization. For example, to access the Catalog API, you can use:

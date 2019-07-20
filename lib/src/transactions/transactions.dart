@@ -13,6 +13,7 @@ class TransactionsApi {
 
   TransactionsApi(this._token, this._client);
 
+  /// Captures a [Transaction] that was created with the `charge()` method with a `delayCapture` value of `true`.
   Future<CaptureTransactionResponse> captureTransaction({
     String locationId,
     String transactionId,
@@ -32,6 +33,7 @@ class TransactionsApi {
     return CaptureTransactionResponse.fromJson(json.decode(response.body));
   }
 
+  /// Charges a card represented by a card nonce or a [Customer]'s [Card] on file.
   Future<ChargeResponse> charge({
     String locationId,
     String idempotencyKey,
@@ -83,6 +85,7 @@ class TransactionsApi {
     return ChargeResponse.fromJson(json.decode(response.body));
   }
 
+  /// Initiates a refund for a previously charged tender.
   Future<CreateRefundResponse> createRefund({
     String locationId,
     String transactionId,
@@ -109,6 +112,7 @@ class TransactionsApi {
     return CreateRefundResponse.fromJson(json.decode(response.body));
   }
 
+  /// Lists [Refund]s for one of a business's [Location]s.
   Future<ListRefundsResponse> listRefunds({
     String locationId,
     DateTime beginTime,
@@ -137,6 +141,7 @@ class TransactionsApi {
     return ListRefundsResponse.fromJson(json.decode(response.body));
   }
 
+  /// Lists [Transaction]s for a particular [Location].
   Future<ListTransactionsResponse> listTransactions({
     String locationId,
     DateTime beginTime,
@@ -165,6 +170,7 @@ class TransactionsApi {
     return ListTransactionsResponse.fromJson(json.decode(response.body));
   }
 
+  /// Retrieves details for a single [Transaction].
   Future<RetrieveTransactionResponse> retrieveTransaction({
     String locationId,
     String transactionId,
@@ -179,7 +185,8 @@ class TransactionsApi {
     var response = await obj.makeCall();
     return RetrieveTransactionResponse.fromJson(json.decode(response.body));
   }
-
+  
+  /// Cancels a [Transaction] that was created with the `charge()` method with a `delayCapture` value of `true`.
   Future<VoidTransactionResponse> voidTransaction({
     String locationId,
     String transactionId,

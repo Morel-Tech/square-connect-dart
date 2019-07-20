@@ -3,7 +3,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/mtwichel/square-connect-flutter-library)
 # Square Connect Flutter
 
-This project is a wip extending the Square Connect APIs. You can learn more about them here https://developer.squareup.com/docs/api/connect/v2. At the moment, the CatalogAPI, CustomersAPI, LocationsAPI, and OrdersAPI are implemented.
+This project is a wip extending the Square Connect APIs. You can learn more about them here https://developer.squareup.com/docs/api/connect/v2. At the moment, the CatalogAPI, CustomersAPI, LocationsAPI, OrdersAPI, TransactionsAPI, and EmployeesAPI are implemented.
 
 ## Getting Started
 
@@ -111,4 +111,26 @@ Method | Description
 --- | ---
 `listLocations()` | Lists all a merchant's locations.
 
+## Orders API (SquareConnect.locationsApi)
+Method | Description
+--- | ---
+`createOrder(various inputs)` | Creates and order from Catalog ids. Custom line items not yet supported.
+`searchOrders(various inputs)` | Searches for orders with different filter and sorting options.
+`batchRetrieveOrders(locationId, orderIds)` | Retrieves one or more orders given their Order ID.
 
+## Transactions API (SquareConnect.locationsApi)
+Method | Description
+--- | ---
+`captureTransaction(locationId, transactionId)` | Fully processes `Transaction` when `deloyCapture` is set to true in the `charge()` method.
+`charge(various inputs)` | Charges a card represented by a card nonce or a customer's card on file.
+`createRefund(various inputs)` | Retrieves one or more orders given their Order ID.
+`listRefunds(various inputs)` | Lists refunds for one of a business's locations.
+`listTransactions(various inputs)` | Lists transactions for a particular location.
+`retrieveTransaction(locationId, transactionId)` | Retrieves details for a single transaction.
+`listRefunds(various inputs)` | Cancels a `Transaction` that was created with the `charge()` method with a `delayCapture` value of `true`.
+
+## Employees API (SquareConnect.locationsApi)
+Method | Description
+--- | ---
+`listEmployees(locationId, status, limit, cursor,)` | Gets a list of `Employee` objects for a business.
+`retrieveEmployee(employeeId)` | Gets an `Employee` from Employee Id.

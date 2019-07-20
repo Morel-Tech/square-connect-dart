@@ -72,10 +72,10 @@ var response = await client.catalogApi.retrieveCatalogObject(objectId: 'fake-obj
 if (response.hasErrors) {
   // at least 1 error occured
   response.errors.forEach((error) => print(error.detail));
+} else {
+  // no errors occured, you can access your payload
+  var object = response.object;
 }
-
-// no errors occured, you can access your payload
-var object = response.object;
 ```
 
 ### Pagination

@@ -97,6 +97,18 @@ enum RefundStatus {
   failed,
 }
 
+/// Indicates a day of a 7 day week.
+enum DayOfWeek {
+  sunday,
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+}
+
+
 /// Indicates the associated currency for an amount of money. Values correspond to ISO 4217.
 enum Currency {
   unknownCurrency,

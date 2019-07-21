@@ -38,6 +38,11 @@ export 'package:square_connect/src/employees/employees-objects.dart';
 export 'package:square_connect/src/employees/employees-enums.dart';
 export 'package:square_connect/src/employees/employees.dart';
 
+export 'package:square_connect/src/labor/labor-return-objects.dart';
+export 'package:square_connect/src/labor/labor-objects.dart';
+export 'package:square_connect/src/labor/labor-enums.dart';
+export 'package:square_connect/src/labor/labor.dart';
+
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
 

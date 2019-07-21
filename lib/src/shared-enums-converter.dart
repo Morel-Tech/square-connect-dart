@@ -89,3 +89,17 @@ RefundStatus getRefundStatusFromString(String input) =>
 String getStringFromRefundStatus(RefundStatus input) =>
     _mapStringtoRefundStatus.keys
         .singleWhere((value) => _mapStringtoRefundStatus[value] == input);
+
+const _mapStringtoDayOfWeek = {
+  'SUN': DayOfWeek.sunday,
+  'MON': DayOfWeek.monday,
+  'TUE': DayOfWeek.tuesday,
+  'WED': DayOfWeek.wednesday,
+  'THU': DayOfWeek.thursday,
+  'FRI': DayOfWeek.friday,
+  'SAT': DayOfWeek.saturday,
+};
+
+DayOfWeek getDayOfWeekFromString(String input) => _mapStringtoDayOfWeek[input];
+String getStringFromDayOfWeek(DayOfWeek input) => _mapStringtoDayOfWeek.keys
+    .singleWhere((value) => _mapStringtoDayOfWeek[value] == input);

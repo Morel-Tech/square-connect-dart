@@ -31,17 +31,3 @@ LocationType getLocationTypeFromString(String input) =>
 String getStringFromLocationType(LocationType input) =>
     _mapStringtoLocationType.keys
         .singleWhere((value) => _mapStringtoLocationType[value] == input);
-
-const _mapStringtoDayOfWeek = {
-  'SUN': DayOfWeek.sunday,
-  'MON': DayOfWeek.monday,
-  'TUE': DayOfWeek.tuesday,
-  'WED': DayOfWeek.wednesday,
-  'THU': DayOfWeek.thursday,
-  'FRI': DayOfWeek.friday,
-  'SAT': DayOfWeek.saturday,
-};
-
-DayOfWeek getDayOfWeekFromString(String input) => _mapStringtoDayOfWeek[input];
-String getStringFromDayOfWeek(DayOfWeek input) => _mapStringtoDayOfWeek.keys
-    .singleWhere((value) => _mapStringtoDayOfWeek[value] == input);

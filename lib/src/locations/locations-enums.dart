@@ -14,14 +14,3 @@ enum LocationType {
   physical,
   mobile,
 }
-
-/// Indicates a day of a 7 day week.
-enum DayOfWeek {
-  sunday,
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-}

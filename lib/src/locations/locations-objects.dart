@@ -244,10 +244,14 @@ class SquareTimeOfDay {
 
   /// Creates SquareTimeOfDay from partial-time RFC3339 format.
   factory SquareTimeOfDay.parse(String input) {
-    if (!(RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)))
-      throw ArgumentError.value(input, input, 'input is invalid time of day');
-    return SquareTimeOfDay(int.parse(input.substring(0, 2)),
+    if (RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
+      return SquareTimeOfDay(int.parse(input.substring(0, 2)),
         int.parse(input.substring(3, 5)), int.parse(input.substring(6)));
+    } else if (RegExp(r"[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
+      return SquareTimeOfDay(int.parse(input.substring(0, 2)),int.parse(input.substring(3, 5)), 0);
+    } else {
+      throw ArgumentError.value(input, input, 'input is invalid time of day');
+    }
   }
 
   /// GCreates SquareTimeOfDay from a DateTime object. Pulls hours, minutes, and seconds from Datetime and ignores the rest.

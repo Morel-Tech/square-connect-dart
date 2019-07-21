@@ -193,3 +193,28 @@ class WorkweekConfig {
     );
   }
 }
+
+class EmployeeWage {
+  final String id;
+  final String employeeId;
+  final String title;
+  final Money hourlyRate;
+
+  EmployeeWage({
+    this.id,
+    this.employeeId,
+    this.title,
+    this.hourlyRate
+  });
+
+  factory EmployeeWage.fromJson(Map<String, dynamic> json) {
+    return EmployeeWage(
+      id: json['id'],
+      employeeId: json['employee_id'],
+      title: json['title'],
+      hourlyRate: json['hourly_rate'] != null
+        ? Money.fromJson(json['hourly_rate'])
+        : null,
+    );
+  }
+}

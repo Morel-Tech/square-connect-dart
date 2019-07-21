@@ -108,7 +108,6 @@ enum DayOfWeek {
   saturday,
 }
 
-
 /// Indicates the associated currency for an amount of money. Values correspond to ISO 4217.
 enum Currency {
   unknownCurrency,

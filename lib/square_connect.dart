@@ -4,6 +4,8 @@ import 'package:http/io_client.dart';
 import 'package:square_connect/src/catalog/catalog.dart';
 import 'package:square_connect/src/customer/customer.dart';
 import 'package:square_connect/src/employees/employees.dart';
+import 'package:square_connect/src/inventory/inventory.dart';
+import 'package:square_connect/src/labor/labor.dart';
 import 'package:square_connect/src/locations/locations.dart';
 import 'package:square_connect/src/orders/orders.dart';
 import 'package:square_connect/src/transactions/transactions.dart';
@@ -42,6 +44,11 @@ export 'package:square_connect/src/labor/labor-return-objects.dart';
 export 'package:square_connect/src/labor/labor-objects.dart';
 export 'package:square_connect/src/labor/labor-enums.dart';
 export 'package:square_connect/src/labor/labor.dart';
+
+export 'package:square_connect/src/inventory/inventory-return-objects.dart';
+export 'package:square_connect/src/inventory/inventory-objects.dart';
+export 'package:square_connect/src/inventory/inventory-enums.dart';
+export 'package:square_connect/src/inventory/inventory.dart';
 
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
@@ -109,5 +116,15 @@ class SquareConnect {
   /// Getter for Employees API methods.
   EmployeesApi get employeesApi {
     return EmployeesApi(_authToken, _client);
+  }
+
+  /// Getter for Labor API methods.
+  LaborApi get laborApi {
+    return LaborApi(_authToken, _client);
+  }
+
+  /// Getter for Inventory API methods.
+  InventoryApi get inventoryApi {
+    return InventoryApi(_authToken, _client);
   }
 }

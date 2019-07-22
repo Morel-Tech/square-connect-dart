@@ -105,23 +105,14 @@ class OrdersApi {
     /// [OrderState]s to filter with.
     List<OrderState> orderStatesFilter,
 
-    /// Starting time (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter.
-    DateTime createdAtStartFilter,
+    /// Timerange (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter.
+    TimeRange createdAtFilter,
 
-    /// Ending time (inclusive) of order creation time. Cannot use with `updateAt` filter or `closedAt` filter.
-    DateTime createdAtEndFilter,
+    /// Timerange (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter.
+    TimeRange updatedAtFilter,
 
-    /// Starting time (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter.
-    DateTime updatedAtStartFilter,
-
-    /// Ending time (inclusive) of order creation time. Cannot use with `createdAt` filter or `closedAt` filter.
-    DateTime updatedAtEndFilter,
-
-    /// Starting time (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter.
-    DateTime closedAtStartFilter,
-
-    /// Ending time (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter.
-    DateTime closedAtEndFilter,
+    /// Timerange (inclusive) of order creation time. Cannot use with `updateAt` filter or `createdAt` filter.
+    TimeRange closedAtFilter,
 
     /// [OrderFulfillmentType]s to filter with.
     List<OrderFulfillmentType> fulfilmentTypesFilter,
@@ -159,49 +150,28 @@ class OrdersApi {
           .toList();
 
     // case for date time filter
-    if (createdAtStartFilter != null ||
-        createdAtEndFilter != null ||
-        updatedAtStartFilter != null ||
-        updatedAtEndFilter != null ||
-        closedAtStartFilter != null ||
-        closedAtEndFilter != null)
+    if (createdAtFilter != null ||
+        updatedAtFilter != null ||
+        closedAtFilter != null)
       filter['date_time_filter'] = Map<String, dynamic>();
 
-    if (createdAtStartFilter != null || createdAtEndFilter != null)
-      filter['date_time_filter']['created_at'] = Map<String, dynamic>();
-    if (createdAtStartFilter != null)
-      filter['date_time_filter']['created_at']['start_at'] =
-          createdAtStartFilter.toIso8601String();
-    if (createdAtStartFilter != null)
-      filter['date_time_filter']['created_at']['end_at'] =
-          createdAtEndFilter.toIso8601String();
+    if (createdAtFilter != null)
+      filter['date_time_filter']['created_at'] = createdAtFilter.toJson();
 
-    if (updatedAtStartFilter != null || updatedAtEndFilter != null)
-      filter['date_time_filter']['updated_at'] = Map<String, dynamic>();
-    if (updatedAtStartFilter != null)
-      filter['date_time_filter']['updated_at']['start_at'] =
-          updatedAtStartFilter.toIso8601String();
-    if (updatedAtStartFilter != null)
-      filter['date_time_filter']['updated_at']['end_at'] =
-          updatedAtEndFilter.toIso8601String();
+    if (updatedAtFilter != null)
+      filter['date_time_filter']['updated_at'] = updatedAtFilter.toJson();
 
-    if (closedAtStartFilter != null || closedAtEndFilter != null)
-      filter['date_time_filter']['closed_at'] = Map<String, dynamic>();
-    if (closedAtStartFilter != null)
-      filter['date_time_filter']['closed_at']['start_at'] =
-          closedAtStartFilter.toIso8601String();
-    if (closedAtStartFilter != null)
-      filter['date_time_filter']['closed_at']['end_at'] =
-          closedAtEndFilter.toIso8601String();
+    if (closedAtFilter != null)
+      filter['date_time_filter']['closed_at'] = closedAtFilter.toJson();
 
     // case for fulfillment filter
     if (fulfilmentStatesFilter != null || fulfilmentTypesFilter != null)
       filter['fulfillment_filter'] = Map<String, dynamic>();
-    if (closedAtStartFilter != null)
+    if (fulfilmentTypesFilter != null)
       filter['fulfillment_filter']['fulfillment_types'] = fulfilmentTypesFilter
           .map((type) => getStringFromOrderFulfillmentType(type))
           .toList();
-    if (closedAtStartFilter != null)
+    if (fulfilmentStatesFilter != null)
       filter['fulfillment_filter']['fulfillment_states'] =
           fulfilmentStatesFilter
               .map((state) => getStringFromOrderFulfillmentState(state))
@@ -221,12 +191,9 @@ class OrdersApi {
 
     if (sortField != null || sortOrder != null) query['sort'] = sort;
 
-    if (createdAtStartFilter != null ||
-        createdAtEndFilter != null ||
-        updatedAtStartFilter != null ||
-        updatedAtEndFilter != null ||
-        closedAtStartFilter != null ||
-        closedAtEndFilter != null ||
+    if (createdAtFilter != null ||
+        updatedAtFilter != null ||
+        closedAtFilter != null ||
         fulfilmentTypesFilter != null ||
         fulfilmentStatesFilter != null ||
         sourcesFilter != null ||
@@ -234,12 +201,9 @@ class OrdersApi {
 
     if (sortField != null ||
         sortOrder != null ||
-        createdAtStartFilter != null ||
-        createdAtEndFilter != null ||
-        updatedAtStartFilter != null ||
-        updatedAtEndFilter != null ||
-        closedAtStartFilter != null ||
-        closedAtEndFilter != null ||
+        createdAtFilter != null ||
+        updatedAtFilter != null ||
+        closedAtFilter != null ||
         fulfilmentTypesFilter != null ||
         fulfilmentStatesFilter != null ||
         sourcesFilter != null ||

@@ -212,17 +212,11 @@ class CustomersApi {
     /// The creation source used to filter customers.
     CustomerCreationSource creationSource,
 
-    /// The starting time of customer creation time.
-    DateTime createdAtStart,
+    /// The timerange of when the customer was created.
+    TimeRange createdAt,
 
-    /// The ending time of customer creation time.
-    DateTime createdAtEnd,
-
-    /// The starting time of the last customer update.
-    DateTime updatedAtStart,
-
-    /// The ending time of the customer update.
-    DateTime updatedAtEnd,
+    /// The timerange of when the customer was last updated.
+    TimeRange updatedAt,
 
     /// THe field used to sort the [Customer]s.
     CustomerSortField sortField,
@@ -236,29 +230,14 @@ class CustomersApi {
     if (limit != null) body['limit'] = limit;
 
     body['query'] = Map<String, dynamic>();
-    if (createdAtStart != null ||
-        createdAtEnd != null ||
-        updatedAtStart != null ||
-        updatedAtEnd != null ||
+    if (createdAt != null ||
+        updatedAt != null ||
         creationSource != null)
       body['query']['filter'] = Map<String, dynamic>();
-    if (createdAtStart != null || createdAtEnd != null)
-      body['query']['filter']['created_at'] = Map<String, dynamic>();
-    if (updatedAtStart != null || updatedAtEnd != null)
-      body['query']['filter']['updated_at'] = Map<String, dynamic>();
-
-    if (createdAtStart != null)
-      body['query']['filter']['created_at']['start_at'] =
-          createdAtStart.toUtc().toIso8601String();
-    if (createdAtEnd != null)
-      body['query']['filter']['created_at']['end_at'] =
-          createdAtEnd.toUtc().toIso8601String();
-    if (updatedAtStart != null)
-      body['query']['filter']['updated_at']['start_at'] =
-          updatedAtStart.toUtc().toIso8601String();
-    if (updatedAtEnd != null)
-      body['query']['filter']['updated_at']['end_at'] =
-          updatedAtEnd.toUtc().toIso8601String();
+    if (createdAt != null)
+      body['query']['filter']['created_at'] = createdAt.toJson();
+    if (updatedAt != null)
+      body['query']['filter']['updated_at'] = updatedAt.toJson();
     if (creationSource != null)
       body['query']['filter']['creation_source'] =
           getStringFromCustomerCreationSource(creationSource);

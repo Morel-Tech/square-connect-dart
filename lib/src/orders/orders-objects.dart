@@ -13,7 +13,7 @@ class Order {
   final List<OrderLineItemDiscount> discounts;
   final List<OrderServiceCharge> serviceCharges;
   final List<OrderFulfillment> fulfillments;
-  // TODO final List<OrderReturn> returns;
+  final List<OrderReturn> returns;
   final OrderMoneyAmounts returnAmounts;
   final OrderMoneyAmounts netAmounts;
   final OrderRoundingAdjustment roundingAdjustment;
@@ -52,6 +52,7 @@ class Order {
     this.totalServiceChargeMoney,
     this.tenders,
     this.refunds,
+    this.returns,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
@@ -126,6 +127,11 @@ class Order {
       refunds: json['refunds'] != null
           ? (json['refunds'] as List)
               .map((item) => Refund.fromJson(item))
+              .toList()
+          : null,
+      returns: json['returns'] != null
+          ? (json['returns'] as List)
+              .map((item) => OrderReturn.fromJson(item))
               .toList()
           : null,
     );
@@ -697,5 +703,314 @@ class FulfillmentRequest {
     body['pickup_details'] = pickupDetails;
 
     return body;
+  }
+}
+
+class OrderReturn {
+  final String id;
+  final String sourceOrderId;
+  final List<OrderReturnLineItem> returnLineItems;
+  final List<OrderReturnServiceCharge> returnServiceCharges;
+  final List<OrderReturnTax> returnTaxes;
+  final List<OrderReturnDiscount> returnDiscounts;
+  final OrderRoundingAdjustment roundingAdjustment;
+  final OrderMoneyAmounts returnAmounts;
+
+  OrderReturn({
+    this.id,
+    this.sourceOrderId,
+    this.returnLineItems,
+    this.returnServiceCharges,
+    this.returnTaxes,
+    this.returnDiscounts,
+    this.roundingAdjustment,
+    this.returnAmounts
+  });
+
+  factory OrderReturn.fromJson(Map<String, dynamic> json) {
+    return OrderReturn(
+      id: json['uid'],
+      sourceOrderId: json['source_order_id'],
+      returnLineItems: json['return_line_items'] != null
+          ? (json['return_line_items'] as List)
+              .map((item) => OrderReturnLineItem.fromJson(item))
+              .toList()
+          : null,
+    );
+  }
+}
+
+class OrderReturnLineItem {
+  final String id;
+  final String sourceLineItemId;
+  final String name;
+  final double quantity;
+  final OrderQuantityUnit quantityUnit;
+  final String note;
+  final String catalogObjectId;
+  final String variationName;
+  final List<OrderReturnLineItemModifier> returnModifiers;
+  final List<OrderReturnTax> returnTaxes;
+  final List<OrderReturnDiscount> returnDiscounts;
+  final Money basePriceMoney;
+  final Money variationTotalPriceMoney;
+  final Money grossReturnMoney;
+  final Money totalTaxMoney;
+  final Money totalDiscountMoney;
+  final Money totalMoney;
+
+  OrderReturnLineItem({
+    this.id,
+    this.sourceLineItemId,
+    this.name,
+    this.quantity,
+    this.quantityUnit,
+    this.note,
+    this.catalogObjectId,
+    this.variationName,
+    this.returnModifiers,
+    this.returnTaxes,
+    this.returnDiscounts,
+    this.basePriceMoney,
+    this.variationTotalPriceMoney,
+    this.grossReturnMoney,
+    this.totalTaxMoney,
+    this.totalDiscountMoney,
+    this.totalMoney
+  });
+
+  factory OrderReturnLineItem.fromJson(Map<String, dynamic> json) {
+    return OrderReturnLineItem(
+      id: json['uid'],
+      sourceLineItemId: json['source_line_item_uid'],
+      name: json['name'],
+      quantity: json['quantity'] != null
+        ? double.parse(json['quantity'])
+        : null,
+      quantityUnit: json['quantity_unit'] != null
+        ? OrderQuantityUnit.fromJson(json['quantity_unit'])
+        : null,
+      note: json['note'],
+      catalogObjectId: json['catalog_object_id'],
+      variationName: json['variation_name'],
+      returnModifiers: json['return_modifiers'] != null
+          ? (json['return_modifiers'] as List)
+              .map((item) => OrderReturnLineItemModifier.fromJson(item))
+              .toList()
+          : null,
+      returnDiscounts: json['return_taxes'] != null
+          ? (json['return_taxes'] as List)
+              .map((item) => OrderReturnDiscount.fromJson(item))
+              .toList()
+          : null,
+      returnTaxes: json['return_discounts'] != null
+          ? (json['return_discounts'] as List)
+              .map((item) => OrderReturnTax.fromJson(item))
+              .toList()
+          : null,
+      basePriceMoney: json['base_price_money'] != null
+          ? Money.fromJson(json['base_price_money'])
+          : null,
+      variationTotalPriceMoney: json['variation_total_price_money'] != null
+          ? Money.fromJson(json['variation_total_price_money'])
+          : null,
+      grossReturnMoney: json['gross_return_money'] != null
+          ? Money.fromJson(json['gross_return_money'])
+          : null,
+      totalTaxMoney: json['total_tax_money'] != null
+          ? Money.fromJson(json['total_tax_money'])
+          : null,
+      totalDiscountMoney: json['total_discount_money'] != null
+          ? Money.fromJson(json['total_discount_money'])
+          : null,
+      totalMoney: json['total_money'] != null
+          ? Money.fromJson(json['total_money'])
+          : null,
+    );
+  }
+}
+
+class OrderReturnLineItemModifier {
+  final String id;
+  final String sourceModifierId;
+  final String catalogObjectId;
+  final String name;
+  final Money basePriceMoney;
+  final Money totalPriceMoney;
+
+  OrderReturnLineItemModifier({
+    this.id,
+    this.sourceModifierId,
+    this.catalogObjectId,
+    this.name,
+    this.basePriceMoney,
+    this.totalPriceMoney
+  });
+
+  factory OrderReturnLineItemModifier.fromJson(Map<String, dynamic> json) {
+    return OrderReturnLineItemModifier(
+      id: json['uid'],
+      sourceModifierId: json['source_modifier_uid'],
+      catalogObjectId: json['catalog_object_id'],
+      name: json['name'],
+      basePriceMoney: json['base_price_money'] != null
+        ? Money.fromJson(json['base_price_money'])
+        : null,
+      totalPriceMoney: json['total_price_money'] != null
+        ? Money.fromJson(json['total_price_money'])
+        : null,
+    );
+  }
+}
+
+class OrderReturnTax {
+  final String id;
+  final String sourceTaxId;
+  final String catalogObjectId;
+  final String name;
+  final OrderLineItemTaxType type;
+  final double percentage;
+  final Money appliedMoney;
+  final OrderLineItemTaxScope scope;
+
+  OrderReturnTax({
+    this.id,
+    this.sourceTaxId,
+    this.catalogObjectId,
+    this.name,
+    this.type,
+    this.percentage,
+    this.appliedMoney,
+    this.scope
+  });
+
+  factory OrderReturnTax.fromJson(Map<String, dynamic> json) {
+    return OrderReturnTax(
+      id: json['uid'],
+      sourceTaxId: json['source_tax_uid'],
+      catalogObjectId: json['catalog_object_id'],
+      name: json['name'],
+      type: json['type'] != null
+        ? getOrderLineItemTaxTypeFromString(json['type'])
+        : null,
+      percentage: json['percentage'] != null
+        ? double.parse(json['percentage'])
+        : null,
+      appliedMoney: json['applied_money'] != null
+        ? Money.fromJson(json['applied_money'])
+        : null,
+      scope: json['scope'] != null
+        ? getOrderLineItemTaxScopeFromString(json['scope'])
+        : null,
+    );
+  }
+}
+
+class OrderReturnDiscount {
+  final String id;
+  final String sourceDiscountId;
+  final String catalogObjectId;
+  final String name;
+  final OrderLineItemDiscountType type;
+  final double percentage;
+  final Money amountMoney;
+  final Money appliedMoney;
+  final OrderLineItemDiscountScope scope;
+
+  OrderReturnDiscount({
+    this.id,
+    this.sourceDiscountId,
+    this.catalogObjectId,
+    this.name,
+    this.type,
+    this.percentage,
+    this.amountMoney,
+    this.appliedMoney,
+    this.scope
+  });
+
+  factory OrderReturnDiscount.fromJson(Map<String, dynamic> json) {
+    return OrderReturnDiscount(
+      id: json['uid'],
+      sourceDiscountId: json['source_discount_uid'],
+      catalogObjectId: json['catalog_object_id'],
+      name: json['name'],
+      type: json['type'] != null
+        ? getOrderLineItemDiscountTypeFromString(json['type'])
+        : null,
+      percentage: json['percentage'] != null
+        ? double.parse(json['percentage'])
+        : null,
+      amountMoney: json['amount_money'] != null
+        ? Money.fromJson(json['amount_money'])
+        : null,
+      appliedMoney: json['applied_money'] != null
+        ? Money.fromJson(json['applied_money'])
+        : null,
+      scope: json['scope'] != null
+        ? getOrderLineItemDiscountScopeFromString(json['scope'])
+        : null,
+    );
+  }
+}
+
+class OrderReturnServiceCharge {
+  final String id;
+  final String sourceServiceChargeId;
+  final String catalogObjectId;
+  final String name;
+  final double percentage;
+  final Money amountMoney;
+  final Money appliedMoney;
+  final Money totalMoney;
+  final Money totalTaxMoney;
+  final OrderServiceChargeCalculationPhase calculationPhase;
+  final bool taxable;
+  final List<OrderReturnTax> returnTaxes;
+
+  OrderReturnServiceCharge({
+    this.id,
+    this.sourceServiceChargeId,
+    this.catalogObjectId,
+    this.name,
+    this.percentage,
+    this.amountMoney,
+    this.appliedMoney,
+    this.totalMoney,
+    this.totalTaxMoney,
+    this.calculationPhase,
+    this.taxable,
+    this.returnTaxes
+  });
+
+  factory OrderReturnServiceCharge.fromJson(Map<String, dynamic> json) {
+    return OrderReturnServiceCharge(
+      id: json['uid'],
+      sourceServiceChargeId: json['source_service_charge_uid'],
+      catalogObjectId: json['catalog_object_id'],
+      name: json['name'],
+      percentage: json['percentage'] != null
+        ? double.parse(json['percentage'])
+        : null,
+      amountMoney: json['amount_money'] != null
+        ? Money.fromJson(json['amount_money'])
+        : null,
+      appliedMoney: json['applied_money'] != null
+        ? Money.fromJson(json['applied_money'])
+        : null,
+      totalMoney: json['total_money'] != null
+        ? Money.fromJson(json['total_money'])
+        : null,
+      totalTaxMoney: json['total_tax_money'] != null
+        ? Money.fromJson(json['total_tax_money'])
+        : null,
+      calculationPhase: json['calculation_phase'] != null
+        ? getOrderServiceChargeCalculationPhaseFromString(json['calculation_phase'])
+        : null,
+      taxable: json['taxable'],
+      returnTaxes: json['return_taxes'] != null
+        ? (json['return_taxes'] as List).map((item) => OrderReturnTax.fromJson(item)).toList()
+        : null,
+    );
   }
 }

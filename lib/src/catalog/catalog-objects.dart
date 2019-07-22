@@ -567,3 +567,20 @@ class MeasurementUnitCustom {
     );
   }
 }
+
+class CatalogIdMapping {
+  final String clientObjectId;
+  final String objectId;
+
+  CatalogIdMapping({
+    this.clientObjectId,
+    this.objectId
+  });
+
+  factory CatalogIdMapping.fromJson(Map<String, dynamic> json) {
+    return CatalogIdMapping(
+      clientObjectId: json['client_object_id'],
+      objectId: json['object_id'],
+    );
+  }
+}

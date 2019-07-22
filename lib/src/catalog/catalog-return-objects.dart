@@ -1,6 +1,6 @@
 import 'package:square_connect/square_connect.dart';
 
-/// Response from the [listCatalog()] method.
+/// Response from the [listCatalog()] method in the [CatalogApi].
 class ListCatalogResponse {
   /// List of errors returned from the API. If null, there were no errors.
   final List<SquareError> errors;
@@ -34,7 +34,7 @@ class ListCatalogResponse {
   }
 }
 
-/// Response from the [retrieveCatalogObject()] method.
+/// Response from the [retrieveCatalogObject()] method in the [CatalogApi].
 class RetrieveCatalogObjectResponse {
   /// List of errors returned from the API. If null, there were no errors.
   final List<SquareError> errors;
@@ -251,3 +251,86 @@ class SearchCatalogObjectsResponse {
     return errors != null;
   }
 }
+
+class UpdateItemModifierListsResponse {
+  final DateTime updatedAt;
+  final List<SquareError> errors;
+
+  UpdateItemModifierListsResponse(
+      {this.updatedAt, this.errors,});
+
+  factory UpdateItemModifierListsResponse.fromJson(Map<String, dynamic> json) {
+    return UpdateItemModifierListsResponse(
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      updatedAt: json['updated_at'] != null
+          ? DateTime.parse(json['updated_at'])
+          : null,
+    );
+  }
+
+  get hasErrors {
+    return errors != null;
+  }
+}
+
+class UpdateItemTaxesResponse {
+  final DateTime updatedAt;
+  final List<SquareError> errors;
+
+  UpdateItemTaxesResponse(
+      {this.updatedAt, this.errors,});
+
+  factory UpdateItemTaxesResponse.fromJson(Map<String, dynamic> json) {
+    return UpdateItemTaxesResponse(
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      updatedAt: json['updated_at'] != null
+          ? DateTime.parse(json['updated_at'])
+          : null,
+    );
+  }
+
+  get hasErrors {
+    return errors != null;
+  }
+}
+
+class UpsertCatalogObjectResponse {
+  final List<SquareError> errors;
+  final CatalogObject object;
+  final List<CatalogIdMapping> idMappings;
+
+  UpsertCatalogObjectResponse({
+    this.errors,
+    this.object,
+    this.idMappings
+  });
+
+  factory UpsertCatalogObjectResponse.fromJson(Map<String, dynamic> json) {
+    return UpsertCatalogObjectResponse(
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      object: json['catalog_object'] != null
+          ? CatalogObject.fromJson(json['catalog_object'])
+          : null,
+      idMappings: json['id_mappings'] != null
+        ? (json['id_mappings'] as List).map((item) => CatalogIdMapping.fromJson(item)).toList()
+        : null,
+    );
+  }
+
+  get hasErrors {
+    return errors != null;
+  }
+}
+

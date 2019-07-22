@@ -8,7 +8,6 @@ import 'package:uuid/uuid.dart';
 
 import '../shared-enums-converter.dart';
 
-
 /// An object containing all methods for the Labor API. Retrieve this object with `SquareConnect.instance.laborApi`.
 class LaborApi {
   final String _token;
@@ -29,15 +28,14 @@ class LaborApi {
     var breakType = Map<String, dynamic>();
     if (locationId != null) breakType['location_id'] = locationId;
     if (name != null) breakType['break_name'] = name;
-    if (expectedDuration != null) breakType['expected_duration'] = expectedDuration;
+    if (expectedDuration != null)
+      breakType['expected_duration'] = expectedDuration;
     if (isPaid != null) breakType['is_paid'] = isPaid;
 
-    if (
-      locationId != null ||
-      name != null ||
-      expectedDuration != null ||
-      isPaid != null
-    ) {
+    if (locationId != null ||
+        name != null ||
+        expectedDuration != null ||
+        isPaid != null) {
       body['break_type'] = breakType;
     }
 
@@ -72,18 +70,17 @@ class LaborApi {
     if (startAt != null) shift['start_at'] = startAt.toIso8601String();
     if (endAt != null) shift['end_at'] = endAt.toIso8601String();
     if (wage != null) shift['wage'] = wage.toJson();
-    if (breaks != null) shift['breaks'] = breaks.map((item) => item.toJson()).toList();
+    if (breaks != null)
+      shift['breaks'] = breaks.map((item) => item.toJson()).toList();
     if (status != null) shift['status'] = getStringFromShiftStatus(status);
 
-    if (
-      employeeId != null ||
-      locationId != null ||
-      startAt != null ||
-      endAt != null ||
-      wage != null ||
-      breaks != null ||
-      status != null
-    ) {
+    if (employeeId != null ||
+        locationId != null ||
+        startAt != null ||
+        endAt != null ||
+        wage != null ||
+        breaks != null ||
+        status != null) {
       body['shift'] = shift;
     }
 
@@ -154,7 +151,7 @@ class LaborApi {
     var response = await obj.makeCall();
     return GetEmployeeWageResponse.fromJson(json.decode(response.body));
   }
-  
+
   Future<GetShiftResponse> getShift({
     String shiftId,
   }) async {
@@ -175,18 +172,17 @@ class LaborApi {
     String cursor,
   }) async {
     var queryParams = [
-      if(locationId != null) QueryParam('location_id', locationId),
-      if(limit != null) QueryParam('limit', limit.toString()),
-      if(cursor != null) QueryParam('cursor', cursor),
+      if (locationId != null) QueryParam('location_id', locationId),
+      if (limit != null) QueryParam('limit', limit.toString()),
+      if (cursor != null) QueryParam('cursor', cursor),
     ];
 
     var obj = RequestObj(
-      token: _token,
-      path: '/v2/labor/break-types',
-      method: RequestMethod.get,
-      client: _client,
-      queryParams: queryParams
-    );
+        token: _token,
+        path: '/v2/labor/break-types',
+        method: RequestMethod.get,
+        client: _client,
+        queryParams: queryParams);
 
     var response = await obj.makeCall();
     return ListBreakTypesResponse.fromJson(json.decode(response.body));
@@ -198,18 +194,17 @@ class LaborApi {
     String cursor,
   }) async {
     var queryParams = [
-      if(employeeId != null) QueryParam('employee_id', employeeId),
-      if(limit != null) QueryParam('limit', limit.toString()),
-      if(cursor != null) QueryParam('cursor', cursor),
+      if (employeeId != null) QueryParam('employee_id', employeeId),
+      if (limit != null) QueryParam('limit', limit.toString()),
+      if (cursor != null) QueryParam('cursor', cursor),
     ];
 
     var obj = RequestObj(
-      token: _token,
-      path: '/v2/labor/employee-wages',
-      method: RequestMethod.get,
-      client: _client,
-      queryParams: queryParams
-    );
+        token: _token,
+        path: '/v2/labor/employee-wages',
+        method: RequestMethod.get,
+        client: _client,
+        queryParams: queryParams);
 
     var response = await obj.makeCall();
     return ListEmployeeWagesResponse.fromJson(json.decode(response.body));
@@ -220,17 +215,16 @@ class LaborApi {
     String cursor,
   }) async {
     var queryParams = [
-      if(limit != null) QueryParam('limit', limit.toString()),
-      if(cursor != null) QueryParam('cursor', cursor),
+      if (limit != null) QueryParam('limit', limit.toString()),
+      if (cursor != null) QueryParam('cursor', cursor),
     ];
 
     var obj = RequestObj(
-      token: _token,
-      path: '/v2/labor/workweek-configs',
-      method: RequestMethod.get,
-      client: _client,
-      queryParams: queryParams
-    );
+        token: _token,
+        path: '/v2/labor/workweek-configs',
+        method: RequestMethod.get,
+        client: _client,
+        queryParams: queryParams);
 
     var response = await obj.makeCall();
     return ListWorkweekConfigsResponse.fromJson(json.decode(response.body));
@@ -253,43 +247,39 @@ class LaborApi {
     if (cursor != null) body['cursor'] = cursor;
 
     var query = Map<String, dynamic>();
-    
+
     var sort = Map<String, dynamic>();
     if (sortOrder != null) sort['order'] = getStringFromSortOrder(sortOrder);
-    if (sortField != null) sort['field'] = getStringFromShiftSortField(sortField);
+    if (sortField != null)
+      sort['field'] = getStringFromShiftSortField(sortField);
 
     var filter = Map<String, dynamic>();
     if (locationIdFilter != null) filter['location_id'] = locationIdFilter;
     if (employeeIdFilter != null) filter['employee_id'] = employeeIdFilter;
-    if (statusFilter != null) filter['status'] = getStringFromShiftStatus(statusFilter);
+    if (statusFilter != null)
+      filter['status'] = getStringFromShiftStatus(statusFilter);
     if (startFilter != null) filter['start'] = startFilter.toJson();
     if (endFilter != null) filter['end'] = endFilter.toJson();
-    if (shiftWorkdayFilter != null) filter['workday'] = shiftWorkdayFilter.toJson();
+    if (shiftWorkdayFilter != null)
+      filter['workday'] = shiftWorkdayFilter.toJson();
 
-    if (
-      sortOrder != null ||
-      sortField != null
-    ) query['sort'] = sort;
+    if (sortOrder != null || sortField != null) query['sort'] = sort;
 
-    if (
-      locationIdFilter != null ||
-      employeeIdFilter != null ||
-      statusFilter != null ||
-      startFilter != null ||
-      endFilter != null ||
-      shiftWorkdayFilter != null
-    ) query['filter'] = filter;
+    if (locationIdFilter != null ||
+        employeeIdFilter != null ||
+        statusFilter != null ||
+        startFilter != null ||
+        endFilter != null ||
+        shiftWorkdayFilter != null) query['filter'] = filter;
 
-    if (
-      sortOrder != null ||
-      sortField != null ||
-      locationIdFilter != null ||
-      employeeIdFilter != null ||
-      statusFilter != null ||
-      startFilter != null ||
-      endFilter != null ||
-      shiftWorkdayFilter != null
-    ) body['query'] = query;
+    if (sortOrder != null ||
+        sortField != null ||
+        locationIdFilter != null ||
+        employeeIdFilter != null ||
+        statusFilter != null ||
+        startFilter != null ||
+        endFilter != null ||
+        shiftWorkdayFilter != null) body['query'] = query;
 
     var obj = RequestObj(
       token: _token,
@@ -315,15 +305,14 @@ class LaborApi {
     var breakType = Map<String, dynamic>();
     if (locationId != null) breakType['location_id'] = locationId;
     if (name != null) breakType['break_name'] = name;
-    if (expectedDuration != null) breakType['expected_duration'] = expectedDuration;
+    if (expectedDuration != null)
+      breakType['expected_duration'] = expectedDuration;
     if (isPaid != null) breakType['is_paid'] = isPaid;
 
-    if (
-      locationId != null ||
-      name != null ||
-      expectedDuration != null ||
-      isPaid != null
-    ) {
+    if (locationId != null ||
+        name != null ||
+        expectedDuration != null ||
+        isPaid != null) {
       body['break_type'] = breakType;
     }
 
@@ -357,18 +346,17 @@ class LaborApi {
     if (startAt != null) shift['start_at'] = startAt.toIso8601String();
     if (endAt != null) shift['end_at'] = endAt.toIso8601String();
     if (wage != null) shift['wage'] = wage.toJson();
-    if (breaks != null) shift['breaks'] = breaks.map((item) => item.toJson()).toList();
+    if (breaks != null)
+      shift['breaks'] = breaks.map((item) => item.toJson()).toList();
     if (status != null) shift['status'] = getStringFromShiftStatus(status);
 
-    if (
-      employeeId != null ||
-      locationId != null ||
-      startAt != null ||
-      endAt != null ||
-      wage != null ||
-      breaks != null ||
-      status != null
-    ) {
+    if (employeeId != null ||
+        locationId != null ||
+        startAt != null ||
+        endAt != null ||
+        wage != null ||
+        breaks != null ||
+        status != null) {
       body['shift'] = shift;
     }
 
@@ -392,14 +380,13 @@ class LaborApi {
     var body = Map<String, dynamic>();
 
     var workweekConfig = Map<String, dynamic>();
-    if (startOfWeek != null) workweekConfig['start_of_week'] = getStringFromDayOfWeek(startOfWeek);
-    if (startOfDayLocalTime != null) workweekConfig['start_of_day_local_time'] = startOfDayLocalTime.toString();
+    if (startOfWeek != null)
+      workweekConfig['start_of_week'] = getStringFromDayOfWeek(startOfWeek);
+    if (startOfDayLocalTime != null)
+      workweekConfig['start_of_day_local_time'] =
+          startOfDayLocalTime.toString();
 
-
-    if (
-      startOfWeek != null ||
-      startOfDayLocalTime != null
-    ) {
+    if (startOfWeek != null || startOfDayLocalTime != null) {
       body['workweek_config'] = workweekConfig;
     }
 

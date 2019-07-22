@@ -572,10 +572,7 @@ class CatalogIdMapping {
   final String clientObjectId;
   final String objectId;
 
-  CatalogIdMapping({
-    this.clientObjectId,
-    this.objectId
-  });
+  CatalogIdMapping({this.clientObjectId, this.objectId});
 
   factory CatalogIdMapping.fromJson(Map<String, dynamic> json) {
     return CatalogIdMapping(

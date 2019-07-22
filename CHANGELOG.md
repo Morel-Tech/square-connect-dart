@@ -1,3 +1,9 @@
+## 0.2.0
+* Adding full implementation for Labor API.
+    * Still need tests and documentation.
+* Finished out CatalogApi methods.
+* Added timerange and durations where appropriate.
+
 ## 0.1.3
 * Adding full implementation for Employees API.
     * Still needs tests.

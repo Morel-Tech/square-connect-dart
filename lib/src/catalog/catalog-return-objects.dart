@@ -256,8 +256,10 @@ class UpdateItemModifierListsResponse {
   final DateTime updatedAt;
   final List<SquareError> errors;
 
-  UpdateItemModifierListsResponse(
-      {this.updatedAt, this.errors,});
+  UpdateItemModifierListsResponse({
+    this.updatedAt,
+    this.errors,
+  });
 
   factory UpdateItemModifierListsResponse.fromJson(Map<String, dynamic> json) {
     return UpdateItemModifierListsResponse(
@@ -281,8 +283,10 @@ class UpdateItemTaxesResponse {
   final DateTime updatedAt;
   final List<SquareError> errors;
 
-  UpdateItemTaxesResponse(
-      {this.updatedAt, this.errors,});
+  UpdateItemTaxesResponse({
+    this.updatedAt,
+    this.errors,
+  });
 
   factory UpdateItemTaxesResponse.fromJson(Map<String, dynamic> json) {
     return UpdateItemTaxesResponse(
@@ -307,11 +311,7 @@ class UpsertCatalogObjectResponse {
   final CatalogObject object;
   final List<CatalogIdMapping> idMappings;
 
-  UpsertCatalogObjectResponse({
-    this.errors,
-    this.object,
-    this.idMappings
-  });
+  UpsertCatalogObjectResponse({this.errors, this.object, this.idMappings});
 
   factory UpsertCatalogObjectResponse.fromJson(Map<String, dynamic> json) {
     return UpsertCatalogObjectResponse(
@@ -324,8 +324,10 @@ class UpsertCatalogObjectResponse {
           ? CatalogObject.fromJson(json['catalog_object'])
           : null,
       idMappings: json['id_mappings'] != null
-        ? (json['id_mappings'] as List).map((item) => CatalogIdMapping.fromJson(item)).toList()
-        : null,
+          ? (json['id_mappings'] as List)
+              .map((item) => CatalogIdMapping.fromJson(item))
+              .toList()
+          : null,
     );
   }
 
@@ -333,4 +335,3 @@ class UpsertCatalogObjectResponse {
     return errors != null;
   }
 }
-

@@ -30,8 +30,8 @@ const _mapStringtoInventoryChangeType = {
 InventoryChangeType getInventoryChangeTypeFromString(String input) =>
     _mapStringtoInventoryChangeType[input];
 String getStringFromInventoryChangeType(InventoryChangeType input) =>
-    _mapStringtoInventoryChangeType.keys
-        .singleWhere((value) => _mapStringtoInventoryChangeType[value] == input);
+    _mapStringtoInventoryChangeType.keys.singleWhere(
+        (value) => _mapStringtoInventoryChangeType[value] == input);
 
 const _mapStringtoProduct = {
   'SQUARE_POS': Product.squarePos,
@@ -46,8 +46,6 @@ const _mapStringtoProduct = {
   'OTHER': Product.other,
 };
 
-Product getProductFromString(String input) =>
-    _mapStringtoProduct[input];
-String getStringFromProduct(Product input) =>
-    _mapStringtoProduct.keys
-        .singleWhere((value) => _mapStringtoProduct[value] == input);
+Product getProductFromString(String input) => _mapStringtoProduct[input];
+String getStringFromProduct(Product input) => _mapStringtoProduct.keys
+    .singleWhere((value) => _mapStringtoProduct[value] == input);

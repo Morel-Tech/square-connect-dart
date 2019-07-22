@@ -6,5 +6,4 @@ class InventoryApi {
   final Client _client;
 
   InventoryApi(this._token, this._client);
-
 }

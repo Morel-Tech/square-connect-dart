@@ -33,5 +33,5 @@ const _mapStringtoShiftWorkdayMatcher = {
 ShiftWorkdayMatcher getShiftWorkdayMatcherFromString(String input) =>
     _mapStringtoShiftWorkdayMatcher[input];
 String getStringFromShiftWorkdayMatcher(ShiftWorkdayMatcher input) =>
-    _mapStringtoShiftWorkdayMatcher.keys
-        .singleWhere((value) => _mapStringtoShiftWorkdayMatcher[value] == input);
+    _mapStringtoShiftWorkdayMatcher.keys.singleWhere(
+        (value) => _mapStringtoShiftWorkdayMatcher[value] == input);

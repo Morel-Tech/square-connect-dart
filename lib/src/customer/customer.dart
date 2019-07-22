@@ -230,9 +230,7 @@ class CustomersApi {
     if (limit != null) body['limit'] = limit;
 
     body['query'] = Map<String, dynamic>();
-    if (createdAt != null ||
-        updatedAt != null ||
-        creationSource != null)
+    if (createdAt != null || updatedAt != null || creationSource != null)
       body['query']['filter'] = Map<String, dynamic>();
     if (createdAt != null)
       body['query']['filter']['created_at'] = createdAt.toJson();

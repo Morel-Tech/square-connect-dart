@@ -20,8 +20,7 @@ class BatchChangeInventoryResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      counts:
-          json['counts'] != null
+      counts: json['counts'] != null
           ? (json['counts'] as List)
               .map((error) => InventoryCount.fromJson(error))
               .toList()
@@ -51,15 +50,15 @@ class BatchRetrieveInventoryChangesResponse {
     this.cursor,
   });
 
-  factory BatchRetrieveInventoryChangesResponse.fromJson(Map<String, dynamic> json) {
+  factory BatchRetrieveInventoryChangesResponse.fromJson(
+      Map<String, dynamic> json) {
     return BatchRetrieveInventoryChangesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      changes:
-          json['counts'] != null
+      changes: json['counts'] != null
           ? (json['counts'] as List)
               .map((error) => InventoryChange.fromJson(error))
               .toList()

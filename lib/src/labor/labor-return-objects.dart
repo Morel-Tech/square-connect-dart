@@ -8,8 +8,7 @@ class CreateBreakTypeResponse {
   /// The newly created [BreakType].
   final BreakType breakType;
 
-  CreateBreakTypeResponse(
-      {this.errors, this.breakType});
+  CreateBreakTypeResponse({this.errors, this.breakType});
 
   factory CreateBreakTypeResponse.fromJson(Map<String, dynamic> json) {
     return CreateBreakTypeResponse(
@@ -34,8 +33,7 @@ class DeleteBreakTypeResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
-  DeleteBreakTypeResponse(
-      {this.errors});
+  DeleteBreakTypeResponse({this.errors});
 
   factory DeleteBreakTypeResponse.fromJson(Map<String, dynamic> json) {
     return DeleteBreakTypeResponse(
@@ -60,8 +58,7 @@ class CreateShiftResponse {
   /// The newly created [Shift].
   final Shift shift;
 
-  CreateShiftResponse(
-      {this.errors, this.shift});
+  CreateShiftResponse({this.errors, this.shift});
 
   factory CreateShiftResponse.fromJson(Map<String, dynamic> json) {
     return CreateShiftResponse(
@@ -70,9 +67,7 @@ class CreateShiftResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      shift: json['shift'] != null
-          ? Shift.fromJson(json['shift'])
-          : null,
+      shift: json['shift'] != null ? Shift.fromJson(json['shift']) : null,
     );
   }
 
@@ -86,8 +81,7 @@ class DeleteShiftResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
-  DeleteShiftResponse(
-      {this.errors});
+  DeleteShiftResponse({this.errors});
 
   factory DeleteShiftResponse.fromJson(Map<String, dynamic> json) {
     return DeleteShiftResponse(
@@ -112,8 +106,7 @@ class GetBreakTypeResponse {
   /// The retrieved [BreakType].
   final BreakType breakType;
 
-  GetBreakTypeResponse(
-      {this.errors, this.breakType});
+  GetBreakTypeResponse({this.errors, this.breakType});
 
   factory GetBreakTypeResponse.fromJson(Map<String, dynamic> json) {
     return GetBreakTypeResponse(
@@ -141,8 +134,7 @@ class GetEmployeeWageResponse {
   /// The retrieved [EmployeeWage].
   final EmployeeWage employeeWage;
 
-  GetEmployeeWageResponse(
-      {this.errors, this.employeeWage});
+  GetEmployeeWageResponse({this.errors, this.employeeWage});
 
   factory GetEmployeeWageResponse.fromJson(Map<String, dynamic> json) {
     return GetEmployeeWageResponse(
@@ -170,8 +162,7 @@ class GetShiftResponse {
   /// The retrieved [Shift].
   final Shift shift;
 
-  GetShiftResponse(
-      {this.errors, this.shift});
+  GetShiftResponse({this.errors, this.shift});
 
   factory GetShiftResponse.fromJson(Map<String, dynamic> json) {
     return GetShiftResponse(
@@ -180,9 +171,7 @@ class GetShiftResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      shift: json['shift'] != null
-          ? Shift.fromJson(json['shift'])
-          : null,
+      shift: json['shift'] != null ? Shift.fromJson(json['shift']) : null,
     );
   }
 
@@ -199,11 +188,10 @@ class ListBreakTypesResponse {
   /// The retrieved list of [BreakType]s.
   final List<BreakType> breakTypes;
 
-   /// A pagination cursor to be used in a future call.
+  /// A pagination cursor to be used in a future call.
   final String cursor;
 
-  ListBreakTypesResponse(
-      {this.errors, this.breakTypes, this.cursor});
+  ListBreakTypesResponse({this.errors, this.breakTypes, this.cursor});
 
   factory ListBreakTypesResponse.fromJson(Map<String, dynamic> json) {
     return ListBreakTypesResponse(
@@ -234,11 +222,10 @@ class ListEmployeeWagesResponse {
   /// The retrieved list of [EmployeeWage]s.
   final List<EmployeeWage> employeeWages;
 
-   /// A pagination cursor to be used in a future call.
+  /// A pagination cursor to be used in a future call.
   final String cursor;
 
-  ListEmployeeWagesResponse(
-      {this.errors, this.employeeWages, this.cursor});
+  ListEmployeeWagesResponse({this.errors, this.employeeWages, this.cursor});
 
   factory ListEmployeeWagesResponse.fromJson(Map<String, dynamic> json) {
     return ListEmployeeWagesResponse(
@@ -269,11 +256,10 @@ class ListWorkweekConfigsResponse {
   /// The retrieved list of [WorkweekConfig]s.
   final List<WorkweekConfig> workweekConfigs;
 
-   /// A pagination cursor to be used in a future call.
+  /// A pagination cursor to be used in a future call.
   final String cursor;
 
-  ListWorkweekConfigsResponse(
-      {this.errors, this.workweekConfigs, this.cursor});
+  ListWorkweekConfigsResponse({this.errors, this.workweekConfigs, this.cursor});
 
   factory ListWorkweekConfigsResponse.fromJson(Map<String, dynamic> json) {
     return ListWorkweekConfigsResponse(
@@ -304,11 +290,10 @@ class SearchShiftsResponse {
   /// The retrieved list of [Shift]s.
   final List<Shift> shifts;
 
-   /// A pagination cursor to be used in a future call.
+  /// A pagination cursor to be used in a future call.
   final String cursor;
 
-  SearchShiftsResponse(
-      {this.errors, this.shifts, this.cursor});
+  SearchShiftsResponse({this.errors, this.shifts, this.cursor});
 
   factory SearchShiftsResponse.fromJson(Map<String, dynamic> json) {
     return SearchShiftsResponse(
@@ -339,8 +324,7 @@ class UpdateBreakTypeResponse {
   /// The updated [BreakType].
   final BreakType breakType;
 
-  UpdateBreakTypeResponse(
-      {this.errors, this.breakType});
+  UpdateBreakTypeResponse({this.errors, this.breakType});
 
   factory UpdateBreakTypeResponse.fromJson(Map<String, dynamic> json) {
     return UpdateBreakTypeResponse(
@@ -368,8 +352,7 @@ class UpdateShiftResponse {
   /// The updated [Shift].
   final Shift shift;
 
-  UpdateShiftResponse(
-      {this.errors, this.shift});
+  UpdateShiftResponse({this.errors, this.shift});
 
   factory UpdateShiftResponse.fromJson(Map<String, dynamic> json) {
     return UpdateShiftResponse(
@@ -378,9 +361,7 @@ class UpdateShiftResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      shift: json['shift'] != null
-          ? Shift.fromJson(json['shift'])
-          : null,
+      shift: json['shift'] != null ? Shift.fromJson(json['shift']) : null,
     );
   }
 
@@ -397,8 +378,7 @@ class UpdateWorkweekConfigResponse {
   /// The updated [WorkweekConfig].
   final WorkweekConfig workweekConfig;
 
-  UpdateWorkweekConfigResponse(
-      {this.errors, this.workweekConfig});
+  UpdateWorkweekConfigResponse({this.errors, this.workweekConfig});
 
   factory UpdateWorkweekConfigResponse.fromJson(Map<String, dynamic> json) {
     return UpdateWorkweekConfigResponse(

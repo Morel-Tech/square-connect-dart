@@ -268,10 +268,8 @@ class CatalogApi {
     List<String> modifierListsToEnable,
     List<String> modifierListsToDisable,
   }) async {
-
-    var body =  Map<String, dynamic>();
-    if (itemIds != null)
-      body['item_ids'] = itemIds;
+    var body = Map<String, dynamic>();
+    if (itemIds != null) body['item_ids'] = itemIds;
     if (modifierListsToEnable != null)
       body['modifier_lists_to_enable'] = itemIds;
     if (modifierListsToDisable != null)
@@ -285,8 +283,7 @@ class CatalogApi {
       client: _client,
     );
     var response = await obj.makeCall();
-    return UpdateItemModifierListsResponse.fromJson(
-        json.decode(response.body));
+    return UpdateItemModifierListsResponse.fromJson(json.decode(response.body));
   }
 
   Future<UpdateItemTaxesResponse> updateItemTaxes({
@@ -294,13 +291,10 @@ class CatalogApi {
     List<String> taxesToEnable,
     List<String> taxesToDisable,
   }) async {
-    var body =  Map<String, dynamic>();
-    if (itemIds != null)
-      body['item_ids'] = itemIds;
-    if (taxesToEnable != null)
-      body['taxes_to_enable'] = itemIds;
-    if (taxesToDisable!= null)
-      body['taxes_to_disable'] = itemIds;
+    var body = Map<String, dynamic>();
+    if (itemIds != null) body['item_ids'] = itemIds;
+    if (taxesToEnable != null) body['taxes_to_enable'] = itemIds;
+    if (taxesToDisable != null) body['taxes_to_disable'] = itemIds;
 
     var obj = RequestObj(
       path: '/v2/catalog/update-item-taxes',
@@ -310,18 +304,16 @@ class CatalogApi {
       client: _client,
     );
     var response = await obj.makeCall();
-    return UpdateItemTaxesResponse.fromJson(
-        json.decode(response.body));
+    return UpdateItemTaxesResponse.fromJson(json.decode(response.body));
   }
 
   Future<UpsertCatalogObjectResponse> upsertCatalogObject({
     final String idempotencyKey,
     final CatalogObject object,
   }) async {
-    var body =  Map<String, dynamic>();
+    var body = Map<String, dynamic>();
     body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
-    if (object != null)
-      body['item_ids'] = object;
+    if (object != null) body['item_ids'] = object;
 
     var obj = RequestObj(
       path: '/v2/catalog/update-item-taxes',
@@ -331,8 +323,6 @@ class CatalogApi {
       client: _client,
     );
     var response = await obj.makeCall();
-    return UpsertCatalogObjectResponse.fromJson(
-        json.decode(response.body));
+    return UpsertCatalogObjectResponse.fromJson(json.decode(response.body));
   }
 }
-

@@ -364,21 +364,15 @@ class TimeRange {
   final DateTime startAt;
   final DateTime endAt;
 
-  TimeRange({
-    this.startAt,
-    this.endAt
-  });
+  TimeRange({this.startAt, this.endAt});
 
   TimeRange.create({this.startAt, this.endAt});
 
   factory TimeRange.fromJson(Map<String, dynamic> json) {
     return TimeRange(
-      startAt: json['start_at'] != null
-        ? DateTime.parse(json['start_at'])
-        : null,
-      endAt: json['end_at'] != null
-        ? DateTime.parse(json['end_at'])
-        : null,
+      startAt:
+          json['start_at'] != null ? DateTime.parse(json['start_at']) : null,
+      endAt: json['end_at'] != null ? DateTime.parse(json['end_at']) : null,
     );
   }
 
@@ -394,19 +388,15 @@ class DateRange {
   final SquareDate startDate;
   final SquareDate endDate;
 
-  DateRange({
-    this.startDate,
-    this.endDate
-  });
+  DateRange({this.startDate, this.endDate});
 
   factory DateRange.fromJson(Map<String, dynamic> json) {
     return DateRange(
       startDate: json['start_date'] != null
-        ? SquareDate.parse(json['start_date'])
-        : null,
-      endDate: json['end_date'] != null
-        ? SquareDate.parse(json['end_date'])
-        : null,
+          ? SquareDate.parse(json['start_date'])
+          : null,
+      endDate:
+          json['end_date'] != null ? SquareDate.parse(json['end_date']) : null,
     );
   }
 
@@ -444,9 +434,10 @@ class SquareTimeOfDay {
   factory SquareTimeOfDay.parse(String input) {
     if (RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
       return SquareTimeOfDay(int.parse(input.substring(0, 2)),
-        int.parse(input.substring(3, 5)), int.parse(input.substring(6)));
+          int.parse(input.substring(3, 5)), int.parse(input.substring(6)));
     } else if (RegExp(r"[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
-      return SquareTimeOfDay(int.parse(input.substring(0, 2)),int.parse(input.substring(3, 5)), 0);
+      return SquareTimeOfDay(int.parse(input.substring(0, 2)),
+          int.parse(input.substring(3, 5)), 0);
     } else {
       throw ArgumentError.value(input, input, 'input is invalid time of day');
     }
@@ -493,14 +484,13 @@ class SquareDate {
   }
 
   /// Returns String in dD/mM/YYYY format.
-  get niceString =>
-      '${this.day}/${this.month}/${this.year}';
+  get niceString => '${this.day}/${this.month}/${this.year}';
 
   /// Creates SquareTimeOfDay from partial-time RFC3339 format.
   factory SquareDate.parse(String input) {
     if (RegExp(r"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]").hasMatch(input)) {
       return SquareDate(int.parse(input.substring(0, 4)),
-        int.parse(input.substring(5, 7)), int.parse(input.substring(8)));
+          int.parse(input.substring(5, 7)), int.parse(input.substring(8)));
     } else {
       throw ArgumentError.value(input, input, 'input is invalid date');
     }

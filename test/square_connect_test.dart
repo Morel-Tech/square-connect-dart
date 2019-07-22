@@ -333,7 +333,8 @@ void main() {
               limit: 5,
               sortField: CustomerSortField.createdAt,
               sortOrder: SortOrder.ascending,
-              createdAt: TimeRange(startAt: DateTime(2019, 1, 1), endAt: DateTime(2019, 6, 30)));
+              createdAt: TimeRange(
+                  startAt: DateTime(2019, 1, 1), endAt: DateTime(2019, 6, 30)));
           expect(item, isInstanceOf<SearchCustomersResponse>());
           expect(item.customers, isInstanceOf<List<Customer>>());
           expect(item.cursor,
@@ -363,7 +364,8 @@ void main() {
               limit: 5,
               sortField: CustomerSortField.createdAt,
               sortOrder: SortOrder.ascending,
-              createdAt: TimeRange(startAt: DateTime(2019, 1, 1), endAt: DateTime(2019, 6, 30)));
+              createdAt: TimeRange(
+                  startAt: DateTime(2019, 1, 1), endAt: DateTime(2019, 6, 30)));
           expect(item, isInstanceOf<SearchCustomersResponse>());
           expect(item.customers, null);
           expect(item.cursor, null);

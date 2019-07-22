@@ -13,16 +13,15 @@ class BreakType {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  BreakType({
-    this.id,
-    this.locationId,
-    this.name,
-    this.expectedDuration,
-    this.isPaid,
-    this.version,
-    this.createdAt,
-    this.updatedAt
-  });
+  BreakType(
+      {this.id,
+      this.locationId,
+      this.name,
+      this.expectedDuration,
+      this.isPaid,
+      this.version,
+      this.createdAt,
+      this.updatedAt});
 
   factory BreakType.fromJson(Map<String, dynamic> json) {
     return BreakType(
@@ -30,16 +29,16 @@ class BreakType {
       locationId: json['location_id'],
       name: json['break_name'],
       expectedDuration: json['expected_duration'] != null
-        ? parseDuration(json['expected_duration'])
-        : null,
+          ? parseDuration(json['expected_duration'])
+          : null,
       isPaid: json['is_paid'],
       version: json['version'],
       createdAt: json['created_at'] != null
-        ? DateTime.parse(json['created_at'])
-        : null,
+          ? DateTime.parse(json['created_at'])
+          : null,
       updatedAt: json['updated_at'] != null
-        ? DateTime.parse(json['updated_at'])
-        : null,  
+          ? DateTime.parse(json['updated_at'])
+          : null,
     );
   }
 }
@@ -53,15 +52,14 @@ class Break {
   final Duration expectedDuration;
   final bool isPaid;
 
-  Break({
-    this.id,
-    this.startAt,
-    this.endAt,
-    this.breakTypeId,
-    this.name,
-    this.expectedDuration,
-    this.isPaid
-  });
+  Break(
+      {this.id,
+      this.startAt,
+      this.endAt,
+      this.breakTypeId,
+      this.name,
+      this.expectedDuration,
+      this.isPaid});
 
   factory Break.creation({
     DateTime startAt,
@@ -75,20 +73,17 @@ class Break {
     );
   }
 
-  factory Break.fromJson(Map<String, dynamic> json){
+  factory Break.fromJson(Map<String, dynamic> json) {
     return Break(
       id: json['id'],
-      startAt: json['start_at'] != null
-        ? DateTime.parse(json['start_at'])
-        : null,
-      endAt: json['end_at'] != null
-        ? DateTime.parse(json['end_at'])
-        : null, 
+      startAt:
+          json['start_at'] != null ? DateTime.parse(json['start_at']) : null,
+      endAt: json['end_at'] != null ? DateTime.parse(json['end_at']) : null,
       breakTypeId: json['break_type_id'],
       name: json['name'],
       expectedDuration: json['expected_duration'] != null
-        ? parseDuration(json['expected_duration'])
-        : null,
+          ? parseDuration(json['expected_duration'])
+          : null,
       isPaid: json['is_paid'],
     );
   }
@@ -122,20 +117,19 @@ class Shift {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  Shift({
-    this.id,
-    this.employeeId,
-    this.locationId,
-    this.timezone,
-    this.startAt,
-    this.endAt,
-    this.wage,
-    this.breaks,
-    this.staus,
-    this.version,
-    this.createdAt,
-    this.updatedAt
-  });
+  Shift(
+      {this.id,
+      this.employeeId,
+      this.locationId,
+      this.timezone,
+      this.startAt,
+      this.endAt,
+      this.wage,
+      this.breaks,
+      this.staus,
+      this.version,
+      this.createdAt,
+      this.updatedAt});
 
   factory Shift.fromJson(Map<String, dynamic> json) {
     return Shift(
@@ -143,28 +137,25 @@ class Shift {
       employeeId: json['employee_id'],
       locationId: json['location_id'],
       timezone: json['timezone'],
-      startAt: json['start_at'] != null
-        ? DateTime.parse(json['start_at'])
-        : null,
-      endAt: json['end_at'] != null
-        ? DateTime.parse(json['end_at'])
-        : null, 
-      wage: json['wage'] != null
-        ? ShiftWage.fromJson(json['wage'])
-        : null,
+      startAt:
+          json['start_at'] != null ? DateTime.parse(json['start_at']) : null,
+      endAt: json['end_at'] != null ? DateTime.parse(json['end_at']) : null,
+      wage: json['wage'] != null ? ShiftWage.fromJson(json['wage']) : null,
       breaks: json['breaks'] != null
-        ? (json['breaks'] as List).map((item) => Break.fromJson(item)).toList()
-        : null,
+          ? (json['breaks'] as List)
+              .map((item) => Break.fromJson(item))
+              .toList()
+          : null,
       staus: json['status'] != null
-        ? getShiftStatusFromString(json['status'])
-        : null,
+          ? getShiftStatusFromString(json['status'])
+          : null,
       version: json['version'],
       createdAt: json['created_at'] != null
-        ? DateTime.parse(json['created_at'])
-        : null,
+          ? DateTime.parse(json['created_at'])
+          : null,
       updatedAt: json['updated_at'] != null
-        ? DateTime.parse(json['updated_at'])
-        : null,
+          ? DateTime.parse(json['updated_at'])
+          : null,
     );
   }
 }
@@ -173,17 +164,14 @@ class ShiftWage {
   final String title;
   final Money hourlyRate;
 
-  ShiftWage({
-    this.title,
-    this.hourlyRate
-  });
+  ShiftWage({this.title, this.hourlyRate});
 
   factory ShiftWage.fromJson(Map<String, dynamic> json) {
     return ShiftWage(
       title: json['title'],
       hourlyRate: json['hourly_rate'] != null
-        ? Money.fromJson(json['hourly_rate'])
-        : null,
+          ? Money.fromJson(json['hourly_rate'])
+          : null,
     );
   }
 
@@ -203,31 +191,30 @@ class WorkweekConfig {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  WorkweekConfig({
-    this.id,
-    this.startOfWeek,
-    this.startOfDayLocalTime,
-    this.version,
-    this.createdAt,
-    this.updatedAt
-  });
+  WorkweekConfig(
+      {this.id,
+      this.startOfWeek,
+      this.startOfDayLocalTime,
+      this.version,
+      this.createdAt,
+      this.updatedAt});
 
   factory WorkweekConfig.fromJson(Map<String, dynamic> json) {
     return WorkweekConfig(
       id: json['id'],
       startOfWeek: json['start_of_week'] != null
-        ? getDayOfWeekFromString(json['start_of_week'])
-        : null,
+          ? getDayOfWeekFromString(json['start_of_week'])
+          : null,
       startOfDayLocalTime: json['start_of_day_local_time'] != null
-        ? SquareTimeOfDay.parse(json['start_of_day_local_time'])
-        : null,
+          ? SquareTimeOfDay.parse(json['start_of_day_local_time'])
+          : null,
       version: json['version'],
       createdAt: json['created_at'] != null
-        ? DateTime.parse(json['created_at'])
-        : null,
+          ? DateTime.parse(json['created_at'])
+          : null,
       updatedAt: json['updated_at'] != null
-        ? DateTime.parse(json['updated_at'])
-        : null,
+          ? DateTime.parse(json['updated_at'])
+          : null,
     );
   }
 }
@@ -238,12 +225,7 @@ class EmployeeWage {
   final String title;
   final Money hourlyRate;
 
-  EmployeeWage({
-    this.id,
-    this.employeeId,
-    this.title,
-    this.hourlyRate
-  });
+  EmployeeWage({this.id, this.employeeId, this.title, this.hourlyRate});
 
   factory EmployeeWage.fromJson(Map<String, dynamic> json) {
     return EmployeeWage(
@@ -251,8 +233,8 @@ class EmployeeWage {
       employeeId: json['employee_id'],
       title: json['title'],
       hourlyRate: json['hourly_rate'] != null
-        ? Money.fromJson(json['hourly_rate'])
-        : null,
+          ? Money.fromJson(json['hourly_rate'])
+          : null,
     );
   }
 }
@@ -262,11 +244,7 @@ class ShiftWorkday {
   final ShiftWorkdayMatcher matchShiftsBy;
   final String defaultTimezone;
 
-  ShiftWorkday({
-    this.dateRange,
-    this.matchShiftsBy,
-    this.defaultTimezone
-  });
+  ShiftWorkday({this.dateRange, this.matchShiftsBy, this.defaultTimezone});
 
   Map<String, dynamic> toJson() {
     return {

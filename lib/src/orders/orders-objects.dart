@@ -1,4 +1,5 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/helper-classes.dart';
 import 'package:square_connect/src/orders/orders-enums-converter.dart';
 
 class Order {
@@ -487,11 +488,11 @@ class OrderFulfillment {
 class OrderFulfillmentPickupDetails {
   final OrderFulfillmentRecipient recipient;
   final DateTime expiresAt;
-  final String autoCompleteDuration;
+  final Duration autoCompleteDuration;
   final OrderFulfillmentPickupDetailsScheduleType scheduleType;
   final DateTime pickupAt;
-  final String pickupWindowDuration;
-  final String prepTimeDuration;
+  final Duration pickupWindowDuration;
+  final Duration prepTimeDuration;
   final String note;
   final DateTime placedAt;
   final DateTime acceptedAt;
@@ -528,15 +529,21 @@ class OrderFulfillmentPickupDetails {
       expiresAt: json['expires_at'] != null
           ? DateTime.parse(json['expires_at'])
           : null,
-      autoCompleteDuration: json['auto_complete_duration'],
+      autoCompleteDuration: json['auto_complete_duration'] != null
+        ? parseDuration(json['auto_complete_duration'])
+        : null,
       scheduleType: json['schedule_type'] != null
           ? getOrderFulfillmentPickupDetailsScheduleTypeFromString(
               json['schedule_type'])
           : null,
       pickupAt:
           json['pickup_at'] != null ? DateTime.parse(json['pickup_at']) : null,
-      pickupWindowDuration: json['pickup_window_duration'],
-      prepTimeDuration: json['prep_time_duration'],
+      pickupWindowDuration: json['pickup_window_duration'] != null
+        ? parseDuration(json['pickup_window_duration'])
+        : null,
+      prepTimeDuration: json['prep_time_duration'] != null
+        ? parseDuration(json['prep_time_duration'])
+        : null,
       note: json['note'],
       placedAt:
           json['placed_at'] != null ? DateTime.parse(json['placed_at']) : null,

@@ -4,8 +4,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
 import 'package:mockito/mockito.dart';
+import 'package:square_connect/src/helper-classes.dart';
 
 void main() {
+  test('parse duration', () {
+    var string = 'PT15M';
+    var duration = parseDuration(string);
+    expect(duration.inMinutes, 15);
+  });
   group('Square Connect Basics', () {
     test('sample test', () {
       var time = SquareTimeOfDay.parse('06:30:15');

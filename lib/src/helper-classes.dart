@@ -79,3 +79,45 @@ enum RequestMethod { post, get, put, delete }
 bool xor(bool a, bool b) {
   return (!a && b) || (a && !b);
 }
+
+Duration parseDuration(String formattedString) {
+  if (RegExp(r"P([0-9]+Y)?([0-9]+M)?([0-9]+D)?T([0-9]+H)?([0-9]+M)?([0-9]+S)?").hasMatch(formattedString)) {
+    int year, month, day, hour, minute, second;
+      // is formatted properly
+      var ans = formattedString.substring(1);
+      if (RegExp(r"[0-9]+Y.*T").hasMatch(ans)) {
+        // contains year
+        year = int.parse(ans.substring(0, ans.indexOf('Y')));
+        ans = ans.substring(ans.indexOf('Y') + 1);
+      }
+      if (RegExp(r"[0-9]+M.*T").hasMatch(ans)) {
+        // contains month
+        month = int.parse(ans.substring(0, ans.indexOf('M')));
+        ans = ans.substring(ans.indexOf('M') + 1);
+      }
+      if (RegExp(r"[0-9]+D").hasMatch(ans)) {
+        // contains day
+        day = int.parse(ans.substring(0, ans.indexOf('D')));
+        ans = ans.substring(ans.indexOf('D') + 1);
+      }
+      ans = ans.substring(1);
+      if (RegExp(r"[0-9]+H").hasMatch(ans)) {
+        // contains hour
+        hour = int.parse(ans.substring(0, ans.indexOf('H')));
+        ans = ans.substring(ans.indexOf('H') + 1);
+      }
+      if (RegExp(r"[0-9]+M").hasMatch(ans)) {
+        // contains minute
+        minute = int.parse(ans.substring(0, ans.indexOf('M')));
+        ans = ans.substring(ans.indexOf('M') + 1);
+      }
+      if (RegExp(r"[0-9]+S").hasMatch(ans)) {
+        // contains second
+        second = int.parse(ans.substring(0, ans.indexOf('S')));
+        ans = ans.substring(ans.indexOf('S') + 1);
+      }
+      return Duration(days: (((year ?? 0)*365) + ((month ?? 0)*30) + (day ?? 0)), hours: hour ?? 0, minutes: minute ?? 0, seconds: second ?? 0);
+  } else{
+    throw ArgumentError();
+  }
+}

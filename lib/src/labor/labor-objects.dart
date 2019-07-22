@@ -1,4 +1,5 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/helper-classes.dart';
 import 'package:square_connect/src/labor/labor-enums-converter.dart';
 import 'package:square_connect/src/shared-enums-converter.dart';
 
@@ -6,7 +7,7 @@ class BreakType {
   final String id;
   final String locationId;
   final String name;
-  final String expectedDuration; // TODO make a durration
+  final Duration expectedDuration;
   final bool isPaid;
   final int version;
   final DateTime createdAt;
@@ -28,7 +29,9 @@ class BreakType {
       id: json['id'],
       locationId: json['location_id'],
       name: json['break_name'],
-      expectedDuration: json['expected_duration'],
+      expectedDuration: json['expected_duration'] != null
+        ? parseDuration(json['expected_duration'])
+        : null,
       isPaid: json['is_paid'],
       version: json['version'],
       createdAt: json['created_at'] != null
@@ -47,7 +50,7 @@ class Break {
   final DateTime endAt;
   final String breakTypeId;
   final String name;
-  final String expectedDuration; // TODO make a durration
+  final Duration expectedDuration;
   final bool isPaid;
 
   Break({
@@ -83,7 +86,9 @@ class Break {
         : null, 
       breakTypeId: json['break_type_id'],
       name: json['name'],
-      expectedDuration: json['expected_duration'],
+      expectedDuration: json['expected_duration'] != null
+        ? parseDuration(json['expected_duration'])
+        : null,
       isPaid: json['is_paid'],
     );
   }

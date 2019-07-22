@@ -60,6 +60,18 @@ class Break {
     this.isPaid
   });
 
+  factory Break.creation({
+    DateTime startAt,
+    DateTime endAt,
+    String breakTimeId,
+  }) {
+    return Break(
+      startAt: startAt,
+      endAt: endAt,
+      breakTypeId: breakTimeId,
+    );
+  }
+
   factory Break.fromJson(Map<String, dynamic> json){
     return Break(
       id: json['id'],
@@ -74,6 +86,20 @@ class Break {
       expectedDuration: json['expected_duration'],
       isPaid: json['is_paid'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (id != null) body['id'] = id;
+    if (startAt != null) body['start_at'] = startAt.toIso8601String();
+    if (endAt != null) body['end_at'] = endAt.toIso8601String();
+    if (breakTypeId != null) body['break_type_id'] = breakTypeId;
+    if (name != null) body['name'] = name;
+    if (expectedDuration != null) body['expected_duration'] = expectedDuration;
+    if (isPaid != null) body['is_paid'] = isPaid;
+
+    return body;
   }
 }
 
@@ -155,6 +181,13 @@ class ShiftWage {
         : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'hourly_rate': hourlyRate.toJson(),
+    };
+  }
 }
 
 class WorkweekConfig {
@@ -216,5 +249,25 @@ class EmployeeWage {
         ? Money.fromJson(json['hourly_rate'])
         : null,
     );
+  }
+}
+
+class ShiftWorkday {
+  final DateRange dateRange;
+  final ShiftWorkdayMatcher matchShiftsBy;
+  final String defaultTimezone;
+
+  ShiftWorkday({
+    this.dateRange,
+    this.matchShiftsBy,
+    this.defaultTimezone
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'date_range': dateRange.toJson(),
+      'match_shifts_by': getStringFromShiftWorkdayMatcher(matchShiftsBy),
+      'default_timezone': defaultTimezone,
+    };
   }
 }

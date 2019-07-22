@@ -220,62 +220,6 @@ class BusinessHoursPeriod {
   }
 }
 
-/// An object representing a generic time of day devoid of date.
-class SquareTimeOfDay {
-  /// Hours starting in ranges 0-23.
-  final int hours;
-
-  /// Minutes starting in ranges 0-59.
-  final int minutes;
-
-  /// Seconds starting in ranges 0-59.
-  final int seconds;
-
-  SquareTimeOfDay(this.hours, this.minutes, this.seconds);
-
-  /// Returns String using partial-time RFC3339 format.
-  String toString() {
-    return '${this.hours < 10 ? '0' + this.hours.toString() : this.hours}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes}:${this.seconds < 10 ? '0' + this.seconds.toString() : this.seconds}';
-  }
-
-  /// Returns String in hH:mM AM/PM format.
-  get niceString =>
-      '${this.amPmHour}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes} ${this.isAm ? 'AM' : 'PM'}';
-
-  /// Creates SquareTimeOfDay from partial-time RFC3339 format.
-  factory SquareTimeOfDay.parse(String input) {
-    if (RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
-      return SquareTimeOfDay(int.parse(input.substring(0, 2)),
-        int.parse(input.substring(3, 5)), int.parse(input.substring(6)));
-    } else if (RegExp(r"[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
-      return SquareTimeOfDay(int.parse(input.substring(0, 2)),int.parse(input.substring(3, 5)), 0);
-    } else {
-      throw ArgumentError.value(input, input, 'input is invalid time of day');
-    }
-  }
-
-  /// GCreates SquareTimeOfDay from a DateTime object. Pulls hours, minutes, and seconds from Datetime and ignores the rest.
-  factory SquareTimeOfDay.fromDateTime(DateTime dateTime) {
-    return SquareTimeOfDay(dateTime.hour, dateTime.minute, dateTime.second);
-  }
-
-  /// Converts to DateTime with year, month, and day being 0
-  DateTime toDateTime() {
-    return DateTime(
-      0,
-      0,
-      0,
-      this.hours,
-      this.minutes,
-      this.seconds,
-    );
-  }
-
-  bool get isAm => hours < 12;
-  bool get isPm => hours >= 12;
-  int get amPmHour => this.isPm ? this.hours - 12 : this.hours;
-}
-
 class Coordinates {
   final double latitude;
   final double longitude;

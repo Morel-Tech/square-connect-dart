@@ -360,3 +360,166 @@ class Refund {
   }
 }
 
+class TimeRange {
+  final DateTime startAt;
+  final DateTime endAt;
+
+  TimeRange({
+    this.startAt,
+    this.endAt
+  });
+
+  TimeRange.create({this.startAt, this.endAt});
+
+  factory TimeRange.fromJson(Map<String, dynamic> json) {
+    return TimeRange(
+      startAt: json['start_at'] != null
+        ? DateTime.parse(json['start_at'])
+        : null,
+      endAt: json['end_at'] != null
+        ? DateTime.parse(json['end_at'])
+        : null,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'start_at': startAt.toIso8601String(),
+      'end_at': endAt.toIso8601String(),
+    };
+  }
+}
+
+class DateRange {
+  final SquareDate startDate;
+  final SquareDate endDate;
+
+  DateRange({
+    this.startDate,
+    this.endDate
+  });
+
+  factory DateRange.fromJson(Map<String, dynamic> json) {
+    return DateRange(
+      startDate: json['start_date'] != null
+        ? SquareDate.parse(json['start_date'])
+        : null,
+      endDate: json['end_date'] != null
+        ? SquareDate.parse(json['end_date'])
+        : null,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'start_date': startDate.toString(),
+      'end_date': endDate.toString(),
+    };
+  }
+}
+
+/// An object representing a generic time of day devoid of date.
+class SquareTimeOfDay {
+  /// Hours starting in ranges 0-23.
+  final int hours;
+
+  /// Minutes starting in ranges 0-59.
+  final int minutes;
+
+  /// Seconds starting in ranges 0-59.
+  final int seconds;
+
+  SquareTimeOfDay(this.hours, this.minutes, this.seconds);
+
+  /// Returns String using partial-time RFC3339 format.
+  String toString() {
+    return '${this.hours < 10 ? '0' + this.hours.toString() : this.hours}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes}:${this.seconds < 10 ? '0' + this.seconds.toString() : this.seconds}';
+  }
+
+  /// Returns String in hH:mM AM/PM format.
+  get niceString =>
+      '${this.amPmHour}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes} ${this.isAm ? 'AM' : 'PM'}';
+
+  /// Creates SquareTimeOfDay from partial-time RFC3339 format.
+  factory SquareTimeOfDay.parse(String input) {
+    if (RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
+      return SquareTimeOfDay(int.parse(input.substring(0, 2)),
+        int.parse(input.substring(3, 5)), int.parse(input.substring(6)));
+    } else if (RegExp(r"[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
+      return SquareTimeOfDay(int.parse(input.substring(0, 2)),int.parse(input.substring(3, 5)), 0);
+    } else {
+      throw ArgumentError.value(input, input, 'input is invalid time of day');
+    }
+  }
+
+  /// Creates SquareTimeOfDay from a DateTime object. Pulls hours, minutes, and seconds from Datetime and ignores the rest.
+  factory SquareTimeOfDay.fromDateTime(DateTime dateTime) {
+    return SquareTimeOfDay(dateTime.hour, dateTime.minute, dateTime.second);
+  }
+
+  /// Converts to DateTime with year, month, and day being 0
+  DateTime toDateTime() {
+    return DateTime(
+      0,
+      0,
+      0,
+      this.hours,
+      this.minutes,
+      this.seconds,
+    );
+  }
+
+  bool get isAm => hours < 12;
+  bool get isPm => hours >= 12;
+  int get amPmHour => this.isPm ? this.hours - 12 : this.hours;
+}
+
+/// An object representing a generic time of day devoid of date.
+class SquareDate {
+  /// Year of the date.
+  final int year;
+
+  /// Month in range 0-11.
+  final int month;
+
+  /// Days starting in range 0-31.
+  final int day;
+
+  SquareDate(this.year, this.month, this.day);
+
+  /// Returns String using partial-time RFC3339 format.
+  String toString() {
+    return '${this.year}-${this.month < 10 ? '0' + this.month.toString() : this.month}-${this.day < 10 ? '0' + this.day.toString() : this.day}';
+  }
+
+  /// Returns String in dD/mM/YYYY format.
+  get niceString =>
+      '${this.day}/${this.month}/${this.year}';
+
+  /// Creates SquareTimeOfDay from partial-time RFC3339 format.
+  factory SquareDate.parse(String input) {
+    if (RegExp(r"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]").hasMatch(input)) {
+      return SquareDate(int.parse(input.substring(0, 4)),
+        int.parse(input.substring(5, 7)), int.parse(input.substring(8)));
+    } else {
+      throw ArgumentError.value(input, input, 'input is invalid date');
+    }
+  }
+
+  /// Creates SquareDate from a DateTime object. Pulls year, month, and days from Datetime and ignores the rest.
+  factory SquareDate.fromDateTime(DateTime dateTime) {
+    return SquareDate(dateTime.year, dateTime.minute, dateTime.day);
+  }
+
+  /// Converts to DateTime with year, month, and day being 0
+  DateTime toDateTime() {
+    return DateTime(
+      this.year,
+      this.month,
+      this.day,
+      0,
+      0,
+      0,
+    );
+  }
+}

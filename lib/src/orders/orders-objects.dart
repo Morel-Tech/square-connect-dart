@@ -192,7 +192,9 @@ class OrderLineItem {
     return OrderLineItem(
       uid: json['uid'],
       name: json['name'],
-      quantity: json['quantity'],
+      quantity: json['quantity'] != null
+        ? double.parse(json['quantity'])
+        : null,
       orderQuantityUnit: json['quantity_unit'] != null
           ? OrderQuantityUnit.fromJson(json['quantity_unit'])
           : null,

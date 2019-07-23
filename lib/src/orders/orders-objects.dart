@@ -631,7 +631,7 @@ class OrderLineItemObjectRequest {
 
   Map<String, dynamic> toMap() {
     var body = Map<String, dynamic>();
-    if (quantity != null) body['quantity'] = quantity;
+    if (quantity != null) body['quantity'] = quantity.toString();
     if (note != null) body['note'] = note;
     if (catalogVariationId != null)
       body['catalog_object_id'] = catalogVariationId;

@@ -16,7 +16,7 @@ Currency getCurrencyFromString(String input) {
 
 String getStringFromCurrency(Currency input) {
   if (input == Currency.unknownCurrency) return 'UNKNOWN_CURRENCY';
-  return input.toString().substring(8);
+  return input.toString().substring(9);
 }
 
 const _mapStringtoErrorCategory = {

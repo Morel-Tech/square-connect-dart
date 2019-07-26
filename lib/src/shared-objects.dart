@@ -250,7 +250,7 @@ class TenderCardDetails {
           ? getTenderCardDetailsStatusFromString(json['status'])
           : null,
       card: json['card'] != null ? Card.fromJson(json['card']) : null,
-      entryMethod: json['entry_method']
+      entryMethod: json['entry_method'] != null
           ? getTenderCardDetailsEntryMethodFromString(json['entry_method'])
           : null,
     );

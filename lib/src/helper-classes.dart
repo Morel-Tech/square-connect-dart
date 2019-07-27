@@ -56,7 +56,7 @@ class RequestObj {
   }
 
   Future<Response> makeCall() async {
-    if (refreshToken != null) {
+    if (token == null || refreshToken != null) {
       var resp = await client.post('$_baseUrl/oauth2/token',
           body: json.encode({
             'client_id': clientId,

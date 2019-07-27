@@ -23,33 +23,32 @@ String getParamListString(List<QueryParam> list) {
 
 /// Helper class that contains the logic to make the actual calls for Square APIs.
 class RequestObj {
-  final String token;
-  final String cursor;
+  String token;
+  final String refreshToken;
   final String path;
   final List<QueryParam> queryParams;
   final RequestMethod method;
   final Map<String, dynamic> body;
   final Client client;
+  final String clientId;
+  final String clientSecret;
   final _baseUrl = 'https://connect.squareup.com';
 
   RequestObj(
       {this.token,
-      this.cursor,
       this.path,
       this.queryParams,
       this.method,
       this.body,
-      this.client})
+      this.client,
+      this.refreshToken,
+      this.clientId,
+      this.clientSecret})
       : assert(method != null),
         assert(client != null);
 
   get url {
-    if (this.cursor == null)
-      return _baseUrl + path + getParamListString(queryParams);
-    return _baseUrl +
-        path +
-        getParamListString(queryParams) +
-        '&cursor=${this.cursor}';
+    return _baseUrl + path + getParamListString(queryParams);
   }
 
   get headers {
@@ -57,20 +56,30 @@ class RequestObj {
   }
 
   Future<Response> makeCall() async {
-    switch (this.method) {
-      case RequestMethod.get:
-        return client.get(this.url, headers: this.headers);
-      case RequestMethod.post:
-        return client.post(this.url,
-            headers: this.headers, body: json.encode(this.body));
-      case RequestMethod.delete:
-        return client.delete(url, headers: this.headers);
-      case RequestMethod.put:
-        return client.put(this.url,
-            headers: this.headers, body: json.encode(this.body));
-      default:
-        throw ArgumentError('Method is unsuported');
+    if (refreshToken != null) {
+      var resp = await client.post('$_baseUrl/oauth2/token', body: json.encode({
+        'client_id': clientId,
+        'client_secret': clientSecret,
+        'grant_type': 'refresh_token',
+        'refresh_token': refreshToken,
+      }));
+      this.token = json.decode(resp.body)['access_token'];
     }
+
+    switch (this.method) {
+        case RequestMethod.get:
+          return client.get(this.url, headers: this.headers);
+        case RequestMethod.post:
+          return client.post(this.url,
+              headers: this.headers, body: json.encode(this.body));
+        case RequestMethod.delete:
+          return client.delete(url, headers: this.headers);
+        case RequestMethod.put:
+          return client.put(this.url,
+              headers: this.headers, body: json.encode(this.body));
+        default:
+          throw ArgumentError('Method is unsuported');
+      }
   }
 }
 

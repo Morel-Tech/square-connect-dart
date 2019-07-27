@@ -11,8 +11,11 @@ import 'package:uuid/uuid.dart';
 class OrdersApi {
   final String _token;
   final Client _client;
+  final String _refreshToken;
+  final String _clientId;
+  final String _clientSecret;
 
-  OrdersApi(this._token, this._client);
+  OrdersApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
 
   Future<CreateOrderResponse> createOrder({
     String locationId,
@@ -48,6 +51,9 @@ class OrdersApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -75,6 +81,9 @@ class OrdersApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -215,6 +224,9 @@ class OrdersApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();

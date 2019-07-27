@@ -12,8 +12,11 @@ import '../shared-enums-converter.dart';
 class LaborApi {
   final String _token;
   final Client _client;
+  final String _refreshToken;
+  final String _clientId;
+  final String _clientSecret;
 
-  LaborApi(this._token, this._client);
+  LaborApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
 
   Future<CreateBreakTypeResponse> createBreakType({
     String idempotencyKey,
@@ -45,6 +48,9 @@ class LaborApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -90,6 +96,9 @@ class LaborApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -104,6 +113,9 @@ class LaborApi {
       path: '/v2/labor/break-types/$breakTypeId',
       method: RequestMethod.delete,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -118,6 +130,9 @@ class LaborApi {
       path: '/v2/labor/shifts/$shiftId',
       method: RequestMethod.delete,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -132,6 +147,9 @@ class LaborApi {
       path: '/v2/labor/break-types/$breakTypeId',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -146,6 +164,9 @@ class LaborApi {
       path: '/v2/labor/employee-wages/$employeeWageId',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -160,6 +181,9 @@ class LaborApi {
       path: '/v2/labor/shifts/$shiftId',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -178,11 +202,15 @@ class LaborApi {
     ];
 
     var obj = RequestObj(
-        token: _token,
-        path: '/v2/labor/break-types',
-        method: RequestMethod.get,
-        client: _client,
-        queryParams: queryParams);
+      token: _token,
+      path: '/v2/labor/break-types',
+      method: RequestMethod.get,
+      client: _client,
+      queryParams: queryParams,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
+    );
 
     var response = await obj.makeCall();
     return ListBreakTypesResponse.fromJson(json.decode(response.body));
@@ -200,11 +228,15 @@ class LaborApi {
     ];
 
     var obj = RequestObj(
-        token: _token,
-        path: '/v2/labor/employee-wages',
-        method: RequestMethod.get,
-        client: _client,
-        queryParams: queryParams);
+      token: _token,
+      path: '/v2/labor/employee-wages',
+      method: RequestMethod.get,
+      client: _client,
+      queryParams: queryParams,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
+    );
 
     var response = await obj.makeCall();
     return ListEmployeeWagesResponse.fromJson(json.decode(response.body));
@@ -220,11 +252,15 @@ class LaborApi {
     ];
 
     var obj = RequestObj(
-        token: _token,
-        path: '/v2/labor/workweek-configs',
-        method: RequestMethod.get,
-        client: _client,
-        queryParams: queryParams);
+      token: _token,
+      path: '/v2/labor/workweek-configs',
+      method: RequestMethod.get,
+      client: _client,
+      queryParams: queryParams,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
+      );
 
     var response = await obj.makeCall();
     return ListWorkweekConfigsResponse.fromJson(json.decode(response.body));
@@ -287,6 +323,9 @@ class LaborApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -322,6 +361,9 @@ class LaborApi {
       method: RequestMethod.put,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -366,6 +408,9 @@ class LaborApi {
       method: RequestMethod.put,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -396,6 +441,9 @@ class LaborApi {
       method: RequestMethod.put,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();

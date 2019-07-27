@@ -10,8 +10,11 @@ import 'package:uuid/uuid.dart';
 class TransactionsApi {
   final String _token;
   final Client _client;
+  final String _refreshToken;
+  final String _clientId;
+  final String _clientSecret;
 
-  TransactionsApi(this._token, this._client);
+  TransactionsApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
 
   /// Captures a [Transaction] that was created with the `charge()` method with a `delayCapture` value of `true`.
   Future<CaptureTransactionResponse> captureTransaction({
@@ -27,6 +30,9 @@ class TransactionsApi {
       path: '/v2/locations/$locationId/transactions/$transactionId/capture',
       method: RequestMethod.post,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -79,6 +85,9 @@ class TransactionsApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -106,6 +115,9 @@ class TransactionsApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -135,6 +147,9 @@ class TransactionsApi {
       method: RequestMethod.get,
       queryParams: queryParams,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -164,6 +179,9 @@ class TransactionsApi {
       method: RequestMethod.get,
       queryParams: queryParams,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -180,6 +198,9 @@ class TransactionsApi {
       path: '/v2/locations/$locationId/transactions/$transactionId',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -200,6 +221,9 @@ class TransactionsApi {
       path: '/v2/locations/$locationId/transactions/$transactionId/void',
       method: RequestMethod.post,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();

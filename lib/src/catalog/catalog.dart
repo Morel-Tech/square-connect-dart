@@ -12,8 +12,11 @@ import 'package:square_connect/square_connect.dart';
 class CatalogApi {
   final String _token;
   final Client _client;
+  final String _refreshToken;
+  final String _clientId;
+  final String _clientSecret;
 
-  CatalogApi(this._token, this._client);
+  CatalogApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
 
   /// Lists all [CatalogObject]s fitting criteria.
   Future<ListCatalogResponse> listCatalog({
@@ -23,21 +26,21 @@ class CatalogApi {
     /// A pagination cursor from a previous call.
     String cursor,
   }) async {
-    var params = [
-      if (types != null)
-        QueryParam(
-            'types',
-            types
+    var queryParams = [
+      if (types != null) QueryParam('types', types
                 .map((type) => getStringFromCatalogObjectType(type))
                 .join(',')),
+      if (cursor != null) QueryParam('cursor', cursor),
     ];
     var obj = RequestObj(
-      cursor: cursor,
       token: _token,
       path: '/v2/catalog/list',
-      queryParams: params,
+      queryParams: queryParams,
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -67,6 +70,9 @@ class CatalogApi {
             ]
           : null,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return RetrieveCatalogObjectResponse.fromJson((json.decode(response.body)));
@@ -80,6 +86,9 @@ class CatalogApi {
       token: _token,
       method: RequestMethod.delete,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return DeleteCatalogObjectResponse.fromJson(json.decode(response.body));
@@ -94,6 +103,9 @@ class CatalogApi {
       method: RequestMethod.post,
       body: {'object_ids': objectIds},
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return BatchDeleteCatalogObjectsResponse.fromJson(
@@ -116,6 +128,9 @@ class CatalogApi {
       method: RequestMethod.post,
       body: body,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return BatchRetrieveCatalogObjectsResponse.fromJson(
@@ -138,6 +153,9 @@ class CatalogApi {
       method: RequestMethod.post,
       body: body,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return BatchUpsertCatalogObjectsResponse.fromJson(
@@ -150,6 +168,9 @@ class CatalogApi {
       path: '/v2/catalog/info',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -258,6 +279,9 @@ class CatalogApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return SearchCatalogObjectsResponse.fromJson(json.decode(response.body));
@@ -281,6 +305,9 @@ class CatalogApi {
       method: RequestMethod.post,
       body: body,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return UpdateItemModifierListsResponse.fromJson(json.decode(response.body));
@@ -302,6 +329,9 @@ class CatalogApi {
       method: RequestMethod.post,
       body: body,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return UpdateItemTaxesResponse.fromJson(json.decode(response.body));
@@ -321,6 +351,9 @@ class CatalogApi {
       method: RequestMethod.post,
       body: body,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return UpsertCatalogObjectResponse.fromJson(json.decode(response.body));

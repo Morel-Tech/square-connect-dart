@@ -57,6 +57,9 @@ export 'package:square_connect/src/shared-objects.dart';
 class SquareConnect {
   String _authToken;
   Client _client;
+  String _refreshToken;
+  String _clientId;
+  String _clientSecret;
 
   /// Object containing all API access. To obtain one, use `SquareConnect.instance`.
   SquareConnect() {
@@ -68,6 +71,13 @@ class SquareConnect {
     this._authToken = token;
   }
 
+  SquareConnect._withRefreshToken(String refreshToken, String clientId, String clientSecret) {
+    this._client = IOClient();
+    this._refreshToken = refreshToken;
+    this._clientId = clientId;
+    this._clientSecret = clientSecret;
+  }
+
   /// Entry point for API. Creates an API client to be reused for calls.
   static SquareConnect get instance {
     return SquareConnect();
@@ -76,6 +86,11 @@ class SquareConnect {
   /// Alternate Entry point for API. Creates an API client to be reused for calls without the need to call `setAuthToken()`
   static SquareConnect getInstanceWithToken(String token) {
     return SquareConnect._withToken(token);
+  }
+
+  /// Alternate Entry point for API. Creates an API client to be reused and get fresh auth token from refresh token
+  static SquareConnect getInstanceWithRefreshToken(String refreshToken, String clientId, String clientSecret) {
+    return SquareConnect._withRefreshToken(refreshToken, clientId, clientSecret);
   }
 
   /// Sets the authorization token of the client for use in all calls. Must be set before any other calls are made.
@@ -90,41 +105,41 @@ class SquareConnect {
 
   /// Getter for Catalog API methods.
   CatalogApi get catalogApi {
-    return CatalogApi(_authToken, _client);
+    return CatalogApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Customers API methods.
   CustomersApi get customersApi {
-    return CustomersApi(_authToken, _client);
+    return CustomersApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Locations API methods.
   LocationsApi get locationsApi {
-    return LocationsApi(_authToken, _client);
+    return LocationsApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Orders API methods.
   OrdersApi get ordersApi {
-    return OrdersApi(_authToken, _client);
+    return OrdersApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Transactions API methods.
   TransactionsApi get transactionsApi {
-    return TransactionsApi(_authToken, _client);
+    return TransactionsApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Employees API methods.
   EmployeesApi get employeesApi {
-    return EmployeesApi(_authToken, _client);
+    return EmployeesApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Labor API methods.
   LaborApi get laborApi {
-    return LaborApi(_authToken, _client);
+    return LaborApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 
   /// Getter for Inventory API methods.
   InventoryApi get inventoryApi {
-    return InventoryApi(_authToken, _client);
+    return InventoryApi(_authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
 }

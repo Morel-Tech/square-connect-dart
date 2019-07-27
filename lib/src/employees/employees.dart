@@ -9,8 +9,11 @@ import 'package:square_connect/src/helper-classes.dart';
 class EmployeesApi {
   final String _token;
   final Client _client;
+  final String _refreshToken;
+  final String _clientId;
+  final String _clientSecret;
 
-  EmployeesApi(this._token, this._client);
+  EmployeesApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
 
   /// Gets a list of [Employee] objects for a business.
   Future<ListEmployeesResponse> listEmployees({
@@ -33,6 +36,9 @@ class EmployeesApi {
       method: RequestMethod.get,
       queryParams: queryParams,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -48,6 +54,9 @@ class EmployeesApi {
       path: '/v2/employees/$employeeId',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();

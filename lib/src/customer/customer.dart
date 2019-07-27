@@ -13,8 +13,11 @@ import '../helper-classes.dart';
 class CustomersApi {
   final String _token;
   final Client _client;
+  final String _refreshToken;
+  final String _clientId;
+  final String _clientSecret;
 
-  CustomersApi(this._token, this._client);
+  CustomersApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
 
   /// Creates a customer with a business. Must provide at least one of: `given_name`, `family_name`, `company_name`, `email_address`, `phone_number`
   Future<CreateCustomerResponse> createCustomer({
@@ -72,6 +75,9 @@ class CustomersApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return CreateCustomerResponse.fromJson(json.decode(response.body));
@@ -108,6 +114,9 @@ class CustomersApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return CreateCustomerCardResponse.fromJson(json.decode(response.body));
@@ -124,6 +133,9 @@ class CustomersApi {
       path: '/v2/customers/$customerId',
       method: RequestMethod.delete,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -146,6 +158,9 @@ class CustomersApi {
       path: '/v2/customers/$customerId/cards/$cardId',
       method: RequestMethod.delete,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -163,21 +178,22 @@ class CustomersApi {
     /// The order the [Customer]s should be sorted on.
     SortOrder sortOrder,
   }) async {
-    List<QueryParam> queryParams = [];
-    if (sortOrder != null)
-      queryParams
-          .add(QueryParam('sort_order', getStringFromSortOrder(sortOrder)));
-    if (sortField != null)
-      queryParams.add(
-          QueryParam('sort_field', getStringFromCustomerSortField(sortField)));
+    List<QueryParam> queryParams = [
+      if (sortOrder != null) QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
+      if (sortField != null) QueryParam('sort_field', getStringFromCustomerSortField(sortField)),
+      if (cursor != null) QueryParam('cursor', cursor),
+    ];
+    
 
     var obj = RequestObj(
       token: _token,
-      cursor: cursor,
       path: '/v2/customers',
       method: RequestMethod.get,
       client: _client,
       queryParams: queryParams,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
 
     var response = await obj.makeCall();
@@ -196,6 +212,9 @@ class CustomersApi {
       path: '/v2/customers/$customerId',
       method: RequestMethod.get,
       client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return RetrieveCustomerResponse.fromJson(json.decode(response.body));
@@ -255,6 +274,9 @@ class CustomersApi {
       method: RequestMethod.post,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return SearchCustomersResponse.fromJson(json.decode(response.body));
@@ -314,6 +336,9 @@ class CustomersApi {
       method: RequestMethod.put,
       client: _client,
       body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
     );
     var response = await obj.makeCall();
     return UpdateCustomerResponse.fromJson(json.decode(response.body));

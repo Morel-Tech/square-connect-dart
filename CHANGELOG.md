@@ -1,4 +1,11 @@
 ## 0.2.0
+* Added option for using refresh tokens instead of auth token - consider this beta at this point.
+    * To use, call SquareConnect.getInstanceWithRefreshToken(refreshToken, clientId, clientSecret)
+    * **Make Sure You Secure Your Client Secret!**
+* Removed cursor from Requst Obj helper funciton. Won't change any API, just makes things simplier to maintain.
+
+
+## 0.2.0
 * Adding full implementation for Labor API.
     * Still need tests and documentation.
 * Finished out CatalogApi methods.

@@ -1,4 +1,4 @@
-## 0.2.0
+## 0.2.1
 * Added option for using refresh tokens instead of auth token - consider this beta at this point.
     * To use, call SquareConnect.getInstanceWithRefreshToken(refreshToken, clientId, clientSecret)
     * **Make Sure You Secure Your Client Secret!**

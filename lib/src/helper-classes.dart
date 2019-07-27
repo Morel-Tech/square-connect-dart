@@ -57,29 +57,30 @@ class RequestObj {
 
   Future<Response> makeCall() async {
     if (refreshToken != null) {
-      var resp = await client.post('$_baseUrl/oauth2/token', body: json.encode({
-        'client_id': clientId,
-        'client_secret': clientSecret,
-        'grant_type': 'refresh_token',
-        'refresh_token': refreshToken,
-      }));
+      var resp = await client.post('$_baseUrl/oauth2/token',
+          body: json.encode({
+            'client_id': clientId,
+            'client_secret': clientSecret,
+            'grant_type': 'refresh_token',
+            'refresh_token': refreshToken,
+          }));
       this.token = json.decode(resp.body)['access_token'];
     }
 
     switch (this.method) {
-        case RequestMethod.get:
-          return client.get(this.url, headers: this.headers);
-        case RequestMethod.post:
-          return client.post(this.url,
-              headers: this.headers, body: json.encode(this.body));
-        case RequestMethod.delete:
-          return client.delete(url, headers: this.headers);
-        case RequestMethod.put:
-          return client.put(this.url,
-              headers: this.headers, body: json.encode(this.body));
-        default:
-          throw ArgumentError('Method is unsuported');
-      }
+      case RequestMethod.get:
+        return client.get(this.url, headers: this.headers);
+      case RequestMethod.post:
+        return client.post(this.url,
+            headers: this.headers, body: json.encode(this.body));
+      case RequestMethod.delete:
+        return client.delete(url, headers: this.headers);
+      case RequestMethod.put:
+        return client.put(this.url,
+            headers: this.headers, body: json.encode(this.body));
+      default:
+        throw ArgumentError('Method is unsuported');
+    }
   }
 }
 

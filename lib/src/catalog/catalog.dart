@@ -16,7 +16,8 @@ class CatalogApi {
   final String _clientId;
   final String _clientSecret;
 
-  CatalogApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  CatalogApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   /// Lists all [CatalogObject]s fitting criteria.
   Future<ListCatalogResponse> listCatalog({
@@ -27,7 +28,10 @@ class CatalogApi {
     String cursor,
   }) async {
     var queryParams = [
-      if (types != null) QueryParam('types', types
+      if (types != null)
+        QueryParam(
+            'types',
+            types
                 .map((type) => getStringFromCatalogObjectType(type))
                 .join(',')),
       if (cursor != null) QueryParam('cursor', cursor),

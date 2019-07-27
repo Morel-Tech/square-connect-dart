@@ -8,5 +8,6 @@ class InventoryApi {
   final String _clientId;
   final String _clientSecret;
 
-  InventoryApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  InventoryApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 }

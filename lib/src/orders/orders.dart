@@ -15,7 +15,8 @@ class OrdersApi {
   final String _clientId;
   final String _clientSecret;
 
-  OrdersApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  OrdersApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   Future<CreateOrderResponse> createOrder({
     String locationId,

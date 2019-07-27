@@ -16,7 +16,8 @@ class LaborApi {
   final String _clientId;
   final String _clientSecret;
 
-  LaborApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  LaborApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   Future<CreateBreakTypeResponse> createBreakType({
     String idempotencyKey,
@@ -260,7 +261,7 @@ class LaborApi {
       refreshToken: _refreshToken,
       clientId: _clientId,
       clientSecret: _clientSecret,
-      );
+    );
 
     var response = await obj.makeCall();
     return ListWorkweekConfigsResponse.fromJson(json.decode(response.body));

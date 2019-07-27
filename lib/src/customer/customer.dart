@@ -17,7 +17,8 @@ class CustomersApi {
   final String _clientId;
   final String _clientSecret;
 
-  CustomersApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  CustomersApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   /// Creates a customer with a business. Must provide at least one of: `given_name`, `family_name`, `company_name`, `email_address`, `phone_number`
   Future<CreateCustomerResponse> createCustomer({
@@ -179,11 +180,12 @@ class CustomersApi {
     SortOrder sortOrder,
   }) async {
     List<QueryParam> queryParams = [
-      if (sortOrder != null) QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
-      if (sortField != null) QueryParam('sort_field', getStringFromCustomerSortField(sortField)),
+      if (sortOrder != null)
+        QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
+      if (sortField != null)
+        QueryParam('sort_field', getStringFromCustomerSortField(sortField)),
       if (cursor != null) QueryParam('cursor', cursor),
     ];
-    
 
     var obj = RequestObj(
       token: _token,

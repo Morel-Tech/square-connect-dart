@@ -120,10 +120,15 @@ class SquareConnect {
     String locale,
     bool session,
     String state,
-    }) {
+  }) {
     var queryParams = [
       if (clientId != null) QueryParam('client_id', clientId),
-      if (permissions != null) QueryParam('scope', permissions.map((permission) => getStringFromOAuthPermission(permission)).join(' ')),
+      if (permissions != null)
+        QueryParam(
+            'scope',
+            permissions
+                .map((permission) => getStringFromOAuthPermission(permission))
+                .join(' ')),
       if (locale != null) QueryParam('locale', locale),
       if (session != null) QueryParam('session', session.toString()),
       if (state != null) QueryParam('state', state),
@@ -136,9 +141,8 @@ class SquareConnect {
 
   Future<CreateMobileAuthorizationCodeResponse> createMobileAuthorizationCode({
     String locationId,
-  }) async{
-    if (locationId == null)
-      throw ArgumentError('locationId must not be null');
+  }) async {
+    if (locationId == null) throw ArgumentError('locationId must not be null');
 
     var obj = RequestObj(
       token: _authToken,
@@ -151,7 +155,8 @@ class SquareConnect {
     );
 
     var response = await obj.makeCall();
-    return CreateMobileAuthorizationCodeResponse.fromJson(json.decode(response.body));
+    return CreateMobileAuthorizationCodeResponse.fromJson(
+        json.decode(response.body));
   }
 
   /// Getter for Catalog API methods.

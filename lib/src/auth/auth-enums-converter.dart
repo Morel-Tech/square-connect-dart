@@ -15,7 +15,8 @@ const _mapStringtoOAuthPermission = {
   'ORDERS_WRITE': OAuthPermission.ordersWrite,
   'PAYMENTS_READ': OAuthPermission.paymentsRead,
   'PAYMENTS_WRITE': OAuthPermission.paymentsWrite,
-  'PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS': OAuthPermission.paymentsWriteAdditionalRecipients,
+  'PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS':
+      OAuthPermission.paymentsWriteAdditionalRecipients,
   'PAYMENTS_WRITE_IN_PERSON': OAuthPermission.paymentsWriteInPerson,
   'SETTLEMENTS_READ': OAuthPermission.settlementsRead,
   'TIMECARDS_READ': OAuthPermission.timecardsRead,

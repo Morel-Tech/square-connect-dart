@@ -64,8 +64,7 @@ class RequestObj {
             'grant_type': 'refresh_token',
             'refresh_token': refreshToken,
           }),
-          headers: {'Content-Type': 'application/json'}
-        );
+          headers: {'Content-Type': 'application/json'});
       this.token = json.decode(resp.body)['access_token'];
       switch (this.method) {
         case RequestMethod.get:

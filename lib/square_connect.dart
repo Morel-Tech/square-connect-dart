@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
+import 'package:square_connect/src/auth/auth-enums-converter.dart';
+import 'package:square_connect/src/auth/auth-enums.dart';
+import 'package:square_connect/src/auth/auth-return-objects.dart';
 
 import 'package:square_connect/src/catalog/catalog.dart';
 import 'package:square_connect/src/customer/customer.dart';
 import 'package:square_connect/src/employees/employees.dart';
+import 'package:square_connect/src/helper-classes.dart';
 import 'package:square_connect/src/inventory/inventory.dart';
 import 'package:square_connect/src/labor/labor.dart';
 import 'package:square_connect/src/locations/locations.dart';
@@ -52,6 +58,7 @@ export 'package:square_connect/src/inventory/inventory.dart';
 
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
+export 'package:square_connect/src/auth/auth-enums.dart';
 
 /// The Square Connect Client object. It should be obtained by `SquareConnect.instance` or `SquareConnect.getInstanceWithTokens(String token)`
 class SquareConnect {
@@ -104,6 +111,47 @@ class SquareConnect {
   /// Sets the [HttpClient] for use in making API calls. By default, [IOClient] is used.
   setClient({Client client}) {
     this._client = client;
+  }
+
+  /// Gets url for oauth permissions and authorizations.
+  String getAuthEndpoint({
+    String clientId,
+    List<OAuthPermission> permissions,
+    String locale,
+    bool session,
+    String state,
+    }) {
+    var queryParams = [
+      if (clientId != null) QueryParam('client_id', clientId),
+      if (permissions != null) QueryParam('scope', permissions.map((permission) => getStringFromOAuthPermission(permission)).join(' ')),
+      if (locale != null) QueryParam('locale', locale),
+      if (session != null) QueryParam('session', session.toString()),
+      if (state != null) QueryParam('state', state),
+    ];
+
+    var queryString = getParamListString(queryParams);
+
+    return 'https://connect.squareup.com/oauth2/authorize$queryString';
+  }
+
+  Future<CreateMobileAuthorizationCodeResponse> createMobileAuthorizationCode({
+    String locationId,
+  }) async{
+    if (locationId == null)
+      throw ArgumentError('locationId must not be null');
+
+    var obj = RequestObj(
+      token: _authToken,
+      path: '/mobile/authorization-code',
+      method: RequestMethod.post,
+      client: _client,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
+    );
+
+    var response = await obj.makeCall();
+    return CreateMobileAuthorizationCodeResponse.fromJson(json.decode(response.body));
   }
 
   /// Getter for Catalog API methods.

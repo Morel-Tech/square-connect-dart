@@ -63,23 +63,39 @@ class RequestObj {
             'client_secret': clientSecret,
             'grant_type': 'refresh_token',
             'refresh_token': refreshToken,
-          }));
+          }),
+          headers: {'Content-Type': 'application/json'}
+        );
       this.token = json.decode(resp.body)['access_token'];
-    }
-
-    switch (this.method) {
-      case RequestMethod.get:
-        return client.get(this.url, headers: this.headers);
-      case RequestMethod.post:
-        return client.post(this.url,
-            headers: this.headers, body: json.encode(this.body));
-      case RequestMethod.delete:
-        return client.delete(url, headers: this.headers);
-      case RequestMethod.put:
-        return client.put(this.url,
-            headers: this.headers, body: json.encode(this.body));
-      default:
-        throw ArgumentError('Method is unsuported');
+      switch (this.method) {
+        case RequestMethod.get:
+          return client.get(this.url, headers: this.headers);
+        case RequestMethod.post:
+          return client.post(this.url,
+              headers: this.headers, body: json.encode(this.body));
+        case RequestMethod.delete:
+          return client.delete(url, headers: this.headers);
+        case RequestMethod.put:
+          return client.put(this.url,
+              headers: this.headers, body: json.encode(this.body));
+        default:
+          throw ArgumentError('Method is unsuported');
+      }
+    } else {
+      switch (this.method) {
+        case RequestMethod.get:
+          return client.get(this.url, headers: this.headers);
+        case RequestMethod.post:
+          return client.post(this.url,
+              headers: this.headers, body: json.encode(this.body));
+        case RequestMethod.delete:
+          return client.delete(url, headers: this.headers);
+        case RequestMethod.put:
+          return client.put(this.url,
+              headers: this.headers, body: json.encode(this.body));
+        default:
+          throw ArgumentError('Method is unsuported');
+      }
     }
   }
 }

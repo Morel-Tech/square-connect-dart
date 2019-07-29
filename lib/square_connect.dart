@@ -144,6 +144,9 @@ class SquareConnect {
   }) async {
     if (locationId == null) throw ArgumentError('locationId must not be null');
 
+    var body = {'location_id': locationId};
+
+
     var obj = RequestObj(
       token: _authToken,
       path: '/mobile/authorization-code',
@@ -152,6 +155,7 @@ class SquareConnect {
       refreshToken: _refreshToken,
       clientId: _clientId,
       clientSecret: _clientSecret,
+      body: body,
     );
 
     var response = await obj.makeCall();

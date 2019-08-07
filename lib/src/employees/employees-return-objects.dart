@@ -1,7 +1,8 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// The response to the `listEmployees()` method in [EmployeesApi].
-class ListEmployeesResponse {
+class ListEmployeesResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -32,14 +33,10 @@ class ListEmployeesResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `retrieveEmployees()` method in [EmployeesApi].
-class RetrieveEmployeeResponse {
+class RetrieveEmployeeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -61,9 +58,5 @@ class RetrieveEmployeeResponse {
       employee:
           json['employee'] != null ? Employee.fromJson(json['employee']) : null,
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

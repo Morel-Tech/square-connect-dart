@@ -1,8 +1,9 @@
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// The response to the `createCustomer()` method in [CustomersApi].
-class CreateCustomerResponse {
+class CreateCustomerResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -23,14 +24,10 @@ class CreateCustomerResponse {
             ? Customer.fromJson(json['customer'])
             : null);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `createCustomerCard()` method in [CustomersApi].
-class CreateCustomerCardResponse {
+class CreateCustomerCardResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -50,14 +47,10 @@ class CreateCustomerCardResponse {
       card: json['card'] != null ? Card.fromJson(json['card']) : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `deleteCustomer()` method in [CustomersApi].
-class DeleteCustomerResponse {
+class DeleteCustomerResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -74,14 +67,10 @@ class DeleteCustomerResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `createCustomerCard()` method in [CustomersApi].
-class DeleteCustomerCardResponse {
+class DeleteCustomerCardResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -98,14 +87,10 @@ class DeleteCustomerCardResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `listCustomers()` method in [CustomersApi].
-class ListCustomersResponse {
+class ListCustomersResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -136,14 +121,10 @@ class ListCustomersResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `retrieveCustomer()` method in [CustomersApi].
-class RetrieveCustomerResponse {
+class RetrieveCustomerResponse  extends ApiResponse{
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -164,14 +145,10 @@ class RetrieveCustomerResponse {
             ? Customer.fromJson(json['customer'])
             : null);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `searchCustomers()` method in [CustomersApi].
-class SearchCustomersResponse {
+class SearchCustomersResponse  extends ApiResponse{
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -202,14 +179,10 @@ class SearchCustomersResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `updateCustomer()` method in [CustomersApi].
-class UpdateCustomerResponse {
+class UpdateCustomerResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -229,9 +202,5 @@ class UpdateCustomerResponse {
         customer: json['customer'] != null
             ? Customer.fromJson(json['customer'])
             : null);
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

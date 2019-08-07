@@ -146,7 +146,6 @@ class SquareConnect {
 
     var body = {'location_id': locationId};
 
-
     var obj = RequestObj(
       token: _authToken,
       path: '/mobile/authorization-code',

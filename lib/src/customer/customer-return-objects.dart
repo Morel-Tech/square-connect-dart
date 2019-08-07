@@ -124,7 +124,7 @@ class ListCustomersResponse extends ApiResponse {
 }
 
 /// The response to the `retrieveCustomer()` method in [CustomersApi].
-class RetrieveCustomerResponse  extends ApiResponse{
+class RetrieveCustomerResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -148,7 +148,7 @@ class RetrieveCustomerResponse  extends ApiResponse{
 }
 
 /// The response to the `searchCustomers()` method in [CustomersApi].
-class SearchCustomersResponse  extends ApiResponse{
+class SearchCustomersResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 

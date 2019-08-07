@@ -166,7 +166,7 @@ class RetrieveTransactionResponse extends ApiResponse {
 }
 
 /// The response to the `voidTransaction()` method in [TransactionsApi].
-class VoidTransactionResponse extends ApiResponse{
+class VoidTransactionResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 

@@ -6,8 +6,7 @@ import 'package:square_connect/square_connect.dart';
 import 'package:mockito/mockito.dart';
 
 void main() {
-  test('parse duration', () {
-  });
+  test('parse duration', () {});
   group('Square Connect Basics', () {
     test('sample test', () {
       var time = SquareTimeOfDay.parse('06:30:15');
@@ -17,7 +16,6 @@ void main() {
       expect(time.seconds, 15);
     });
   });
-
 }
 
 class MockClient extends Mock implements Client {}

@@ -145,8 +145,7 @@ class RetrieveInventoryChangesResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory RetrieveInventoryChangesResponse.fromJson(
-      Map<String, dynamic> json) {
+  factory RetrieveInventoryChangesResponse.fromJson(Map<String, dynamic> json) {
     return RetrieveInventoryChangesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -180,8 +179,7 @@ class RetrieveInventoryCountResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory RetrieveInventoryCountResponse.fromJson(
-      Map<String, dynamic> json) {
+  factory RetrieveInventoryCountResponse.fromJson(Map<String, dynamic> json) {
     return RetrieveInventoryCountResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

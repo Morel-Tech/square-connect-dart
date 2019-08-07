@@ -9,7 +9,7 @@ class CreateMobileAuthorizationCodeResponse extends ApiResponse {
 
   List<SquareError> get errors {
     if (error == null) return null;
-    return [ error ];
+    return [error];
   }
 
   CreateMobileAuthorizationCodeResponse(

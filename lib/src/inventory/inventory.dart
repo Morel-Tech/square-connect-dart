@@ -17,16 +17,15 @@ class InventoryApi {
   InventoryApi(this._token, this._client, this._refreshToken, this._clientId,
       this._clientSecret);
 
-  
-  Future<BatchChangeInventoryResponse> batchChangeInventory({
-    String idempotencyKey,
-    List<InventoryChange> changes,
-    bool ignoreUnchangedCounts
-  }) async {
+  Future<BatchChangeInventoryResponse> batchChangeInventory(
+      {String idempotencyKey,
+      List<InventoryChange> changes,
+      bool ignoreUnchangedCounts}) async {
     var body = Map<String, dynamic>();
     body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
     if (changes != null) body['location_ids'] = changes;
-    if (ignoreUnchangedCounts != null) body['ignore_unchanged_counts'] = ignoreUnchangedCounts;
+    if (ignoreUnchangedCounts != null)
+      body['ignore_unchanged_counts'] = ignoreUnchangedCounts;
 
     var obj = RequestObj(
       token: _token,
@@ -43,22 +42,26 @@ class InventoryApi {
     return BatchChangeInventoryResponse.fromJson(json.decode(response.body));
   }
 
-  Future<BatchRetrieveInventoryChangesResponse> batchRetrieveInventoryChanges({
-    List<String> catalogObjectIds,
-    List<String> locationIds,
-    List<InventoryChangeType> types,
-    List<InventoryState> states,
-    DateTime updatedAfter,
-    DateTime updatedBefore,
-    String cursor
-  }) async {
+  Future<BatchRetrieveInventoryChangesResponse> batchRetrieveInventoryChanges(
+      {List<String> catalogObjectIds,
+      List<String> locationIds,
+      List<InventoryChangeType> types,
+      List<InventoryState> states,
+      DateTime updatedAfter,
+      DateTime updatedBefore,
+      String cursor}) async {
     var body = Map<String, dynamic>();
     if (catalogObjectIds != null) body['catalog_object_ids'] = catalogObjectIds;
     if (locationIds != null) body['location_ids'] = locationIds;
-    if (types != null) body['types'] = types.map((type) => getStringFromInventoryChangeType(type));
-    if (states != null) body['states'] = states.map((state) => getStringFromInventoryState(state));
+    if (types != null)
+      body['types'] =
+          types.map((type) => getStringFromInventoryChangeType(type));
+    if (states != null)
+      body['states'] =
+          states.map((state) => getStringFromInventoryState(state));
     if (updatedAfter != null) body['updated_after'] = updatedAfter.toString();
-    if (updatedBefore != null) body['updated_before'] = updatedBefore.toString();
+    if (updatedBefore != null)
+      body['updated_before'] = updatedBefore.toString();
     if (cursor != null) body['cursor'] = cursor;
 
     var obj = RequestObj(
@@ -73,7 +76,8 @@ class InventoryApi {
     );
 
     var response = await obj.makeCall();
-    return BatchRetrieveInventoryChangesResponse.fromJson(json.decode(response.body));
+    return BatchRetrieveInventoryChangesResponse.fromJson(
+        json.decode(response.body));
   }
 
   Future<BatchRetrieveInventoryCountsResponse> batchRetrieveInventoryCounts({
@@ -100,12 +104,12 @@ class InventoryApi {
     );
 
     var response = await obj.makeCall();
-    return BatchRetrieveInventoryCountsResponse.fromJson(json.decode(response.body));
+    return BatchRetrieveInventoryCountsResponse.fromJson(
+        json.decode(response.body));
   }
-  
-  Future<RetrieveInventoryAdjustmentResponse> retrieveInventoryAdjustment({
-    String adjustmentId
-  }) async {
+
+  Future<RetrieveInventoryAdjustmentResponse> retrieveInventoryAdjustment(
+      {String adjustmentId}) async {
     var obj = RequestObj(
       token: _token,
       path: '/v2/inventory/adjustment/$adjustmentId',
@@ -117,14 +121,12 @@ class InventoryApi {
     );
 
     var response = await obj.makeCall();
-    return RetrieveInventoryAdjustmentResponse.fromJson(json.decode(response.body));
+    return RetrieveInventoryAdjustmentResponse.fromJson(
+        json.decode(response.body));
   }
 
-  Future<RetrieveInventoryChangesResponse> retrieveInventoryChanges({
-    String catalogObjectId,
-    List<String> locationIds,
-    String cursor
-  }) async {
+  Future<RetrieveInventoryChangesResponse> retrieveInventoryChanges(
+      {String catalogObjectId, List<String> locationIds, String cursor}) async {
     List<QueryParam> queryParams = [
       if (locationIds != null) QueryParam('location_id', locationIds.join(',')),
       if (cursor != null) QueryParam('cursor', cursor),
@@ -142,14 +144,12 @@ class InventoryApi {
     );
 
     var response = await obj.makeCall();
-    return RetrieveInventoryChangesResponse.fromJson(json.decode(response.body));
+    return RetrieveInventoryChangesResponse.fromJson(
+        json.decode(response.body));
   }
 
-  Future<RetrieveInventoryCountResponse> retrieveInventoryCount({
-    String catalogObjectId,
-    List<String> locationIds,
-    String cursor
-  }) async {
+  Future<RetrieveInventoryCountResponse> retrieveInventoryCount(
+      {String catalogObjectId, List<String> locationIds, String cursor}) async {
     List<QueryParam> queryParams = [
       if (locationIds != null) QueryParam('location_id', locationIds.join(',')),
       if (cursor != null) QueryParam('cursor', cursor),
@@ -170,7 +170,8 @@ class InventoryApi {
     return RetrieveInventoryCountResponse.fromJson(json.decode(response.body));
   }
 
-  Future<RetrieveInventoryPhysicalCountResponse> retrieveInventoryPhysicalCount({
+  Future<RetrieveInventoryPhysicalCountResponse>
+      retrieveInventoryPhysicalCount({
     String physicalCountId,
   }) async {
     var obj = RequestObj(
@@ -184,6 +185,7 @@ class InventoryApi {
     );
 
     var response = await obj.makeCall();
-    return RetrieveInventoryPhysicalCountResponse.fromJson(json.decode(response.body));
+    return RetrieveInventoryPhysicalCountResponse.fromJson(
+        json.decode(response.body));
   }
 }

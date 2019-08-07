@@ -274,7 +274,7 @@ class SearchShiftsResponse extends ApiResponse {
 }
 
 /// The response to the `updateBreakType()` method in [LaborApi].
-class UpdateBreakTypeResponse  extends ApiResponse{
+class UpdateBreakTypeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 

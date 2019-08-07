@@ -1,7 +1,8 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// The response to the `batchChangeInventory()` method in [InventoryApi].
-class BatchChangeInventoryResponse {
+class BatchChangeInventoryResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -27,14 +28,10 @@ class BatchChangeInventoryResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `batchRetrieveInventoryChanges()` method in [InventoryApi].
-class BatchRetrieveInventoryChangesResponse {
+class BatchRetrieveInventoryChangesResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -65,9 +62,5 @@ class BatchRetrieveInventoryChangesResponse {
           : null,
       cursor: json['cursor'],
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

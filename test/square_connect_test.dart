@@ -8,9 +8,6 @@ import 'package:square_connect/src/helper-classes.dart';
 
 void main() {
   test('parse duration', () {
-    var string = 'PT15M';
-    var duration = parseDuration(string);
-    expect(duration.inMinutes, 15);
   });
   group('Square Connect Basics', () {
     test('sample test', () {

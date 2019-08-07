@@ -1,7 +1,8 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// Response from the [listCatalog()] method in the [CatalogApi].
-class ListCatalogResponse {
+class ListCatalogResponse extends ApiResponse {
   /// List of errors returned from the API. If null, there were no errors.
   final List<SquareError> errors;
 
@@ -28,14 +29,10 @@ class ListCatalogResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// Response from the [retrieveCatalogObject()] method in the [CatalogApi].
-class RetrieveCatalogObjectResponse {
+class RetrieveCatalogObjectResponse extends ApiResponse {
   /// List of errors returned from the API. If null, there were no errors.
   final List<SquareError> errors;
 
@@ -63,13 +60,9 @@ class RetrieveCatalogObjectResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class DeleteCatalogObjectResponse {
+class DeleteCatalogObjectResponse extends ApiResponse {
   final List<SquareError> errors;
   final List<String> deletedObjectIds;
   final DateTime deletedAt;
@@ -92,13 +85,9 @@ class DeleteCatalogObjectResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class BatchDeleteCatalogObjectsResponse {
+class BatchDeleteCatalogObjectsResponse extends ApiResponse {
   final List<SquareError> errors;
   final List<String> deletedObjectIds;
   final DateTime deletedAt;
@@ -118,13 +107,9 @@ class BatchDeleteCatalogObjectsResponse {
       deletedObjectIds: List<String>.of(json['deleted_object_ids']),
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class BatchRetrieveCatalogObjectsResponse {
+class BatchRetrieveCatalogObjectsResponse extends ApiResponse {
   final List<SquareError> errors;
   final List<CatalogObject> objects;
   final List<CatalogObject> relatedObjects;
@@ -147,13 +132,9 @@ class BatchRetrieveCatalogObjectsResponse {
           .toList(),
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class BatchUpsertCatalogObjectsResponse {
+class BatchUpsertCatalogObjectsResponse extends ApiResponse {
   final List<SquareError> errors;
   final List<CatalogObject> objects;
   final DateTime updatedAt;
@@ -181,13 +162,9 @@ class BatchUpsertCatalogObjectsResponse {
       idMappings: mappingsMap,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class CatalogInfoResponse {
+class CatalogInfoResponse extends ApiResponse {
   final List<SquareError> errors;
   final CatalogInfoResponseLimits limits;
   final StandardUnitDescriptionGroup standardUnitDescriptionGroup;
@@ -211,13 +188,9 @@ class CatalogInfoResponse {
                     json['standard_unit_description_group'])
                 : null);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class SearchCatalogObjectsResponse {
+class SearchCatalogObjectsResponse extends ApiResponse {
   final String cursor;
   final List<SquareError> errors;
   final List<CatalogObject> objects;
@@ -246,13 +219,9 @@ class SearchCatalogObjectsResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class UpdateItemModifierListsResponse {
+class UpdateItemModifierListsResponse extends ApiResponse {
   final DateTime updatedAt;
   final List<SquareError> errors;
 
@@ -273,13 +242,9 @@ class UpdateItemModifierListsResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class UpdateItemTaxesResponse {
+class UpdateItemTaxesResponse extends ApiResponse {
   final DateTime updatedAt;
   final List<SquareError> errors;
 
@@ -300,13 +265,9 @@ class UpdateItemTaxesResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
-class UpsertCatalogObjectResponse {
+class UpsertCatalogObjectResponse extends ApiResponse {
   final List<SquareError> errors;
   final CatalogObject object;
   final List<CatalogIdMapping> idMappings;
@@ -329,9 +290,5 @@ class UpsertCatalogObjectResponse {
               .toList()
           : null,
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

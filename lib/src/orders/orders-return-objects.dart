@@ -1,8 +1,9 @@
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// The response to the `createOrder()` method in [OrdersApi].
-class CreateOrderResponse {
+class CreateOrderResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -22,14 +23,10 @@ class CreateOrderResponse {
       order: json['order'] != null ? Order.fromJson(json['order']) : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `batchRetrieveOrders()` method in [OrdersApi].
-class BatchRetrieveOrdersResponse {
+class BatchRetrieveOrdersResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -59,14 +56,10 @@ class BatchRetrieveOrdersResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `searchOrders()` method in [OrdersApi].
-class SearchOrdersResponse {
+class SearchOrdersResponse extends ApiResponse {
   /// A pagination cursor to be used in a future call.
   final String cursor;
 
@@ -111,9 +104,5 @@ class SearchOrdersResponse {
           : null,
       cursor: json['cursor'],
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

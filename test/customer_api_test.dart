@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 import 'square_connect_test.dart';
 
 void main () {
-    group('Customer API', () {
     group('methods', () {
       group('Create Customer Method', () {
         test(
@@ -563,5 +562,4 @@ void main () {
         });
       });
     });
-  });
 }

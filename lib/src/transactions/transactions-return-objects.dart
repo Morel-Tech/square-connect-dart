@@ -1,7 +1,9 @@
 import 'package:square_connect/square_connect.dart';
 
+import '../super-classes.dart';
+
 /// The response to the `captureTransaction()` method in [TransactionsApi].
-class CaptureTransactionResponse {
+class CaptureTransactionResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -18,14 +20,10 @@ class CaptureTransactionResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `charge()` method in [TransactionsApi].
-class ChargeResponse {
+class ChargeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -48,14 +46,10 @@ class ChargeResponse {
             ? Transaction.fromJson(json['transaction'])
             : null);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `createRefund()` method in [TransactionsApi].
-class CreateRefundResponse {
+class CreateRefundResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -77,14 +71,10 @@ class CreateRefundResponse {
         refund:
             json['refund'] != null ? Refund.fromJson(json['refund']) : null);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `listRefunds()` method in [TransactionsApi].
-class ListRefundsResponse {
+class ListRefundsResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -114,14 +104,10 @@ class ListRefundsResponse {
             : null,
         cursor: json['cursor']);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `listTransactions()` method in [TransactionsApi].
-class ListTransactionsResponse {
+class ListTransactionsResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -151,14 +137,10 @@ class ListTransactionsResponse {
             : null,
         cursor: json['cursor']);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `retrieveTransaction()` method in [TransactionsApi].
-class RetrieveTransactionResponse {
+class RetrieveTransactionResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -181,14 +163,10 @@ class RetrieveTransactionResponse {
             ? Transaction.fromJson(json['transaction'])
             : null);
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `voidTransaction()` method in [TransactionsApi].
-class VoidTransactionResponse {
+class VoidTransactionResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -204,9 +182,5 @@ class VoidTransactionResponse {
               .toList()
           : null,
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

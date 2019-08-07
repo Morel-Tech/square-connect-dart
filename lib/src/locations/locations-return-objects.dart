@@ -1,8 +1,9 @@
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// The response to the `listLocations()` method in [LocationsApi].
-class ListLocationsResponse {
+class ListLocationsResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -25,9 +26,5 @@ class ListLocationsResponse {
               .toList()
           : null,
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

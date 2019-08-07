@@ -13,7 +13,8 @@ class EmployeesApi {
   final String _clientId;
   final String _clientSecret;
 
-  EmployeesApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  EmployeesApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   /// Gets a list of [Employee] objects for a business.
   Future<ListEmployeesResponse> listEmployees({

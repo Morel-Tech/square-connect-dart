@@ -1,7 +1,8 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/super-classes.dart';
 
 /// The response to the `createBreakType()` method in [LaborApi].
-class CreateBreakTypeResponse {
+class CreateBreakTypeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -22,14 +23,10 @@ class CreateBreakTypeResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `deleteBreakType()` method in [LaborApi].
-class DeleteBreakTypeResponse {
+class DeleteBreakTypeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -44,14 +41,10 @@ class DeleteBreakTypeResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `createShift()` method in [LaborApi].
-class CreateShiftResponse {
+class CreateShiftResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -70,14 +63,10 @@ class CreateShiftResponse {
       shift: json['shift'] != null ? Shift.fromJson(json['shift']) : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `deleteShift()` method in [LaborApi].
-class DeleteShiftResponse {
+class DeleteShiftResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -92,14 +81,10 @@ class DeleteShiftResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `getBreakType()` method in [LaborApi].
-class GetBreakTypeResponse {
+class GetBreakTypeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -120,14 +105,10 @@ class GetBreakTypeResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `getEmployeeWage()` method in [LaborApi].
-class GetEmployeeWageResponse {
+class GetEmployeeWageResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -148,14 +129,10 @@ class GetEmployeeWageResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `getShift()` method in [LaborApi].
-class GetShiftResponse {
+class GetShiftResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -174,14 +151,10 @@ class GetShiftResponse {
       shift: json['shift'] != null ? Shift.fromJson(json['shift']) : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `listBreakTypes()` method in [LaborApi].
-class ListBreakTypesResponse {
+class ListBreakTypesResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -208,14 +181,10 @@ class ListBreakTypesResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `listEmployeeWages()` method in [LaborApi].
-class ListEmployeeWagesResponse {
+class ListEmployeeWagesResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -242,14 +211,10 @@ class ListEmployeeWagesResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `listWorkweekConfigs()` method in [LaborApi].
-class ListWorkweekConfigsResponse {
+class ListWorkweekConfigsResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -276,14 +241,10 @@ class ListWorkweekConfigsResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `searchShifts()` method in [LaborApi].
-class SearchShiftsResponse {
+class SearchShiftsResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -310,14 +271,10 @@ class SearchShiftsResponse {
       cursor: json['cursor'],
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `updateBreakType()` method in [LaborApi].
-class UpdateBreakTypeResponse {
+class UpdateBreakTypeResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -338,14 +295,10 @@ class UpdateBreakTypeResponse {
           : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `updateShift()` method in [LaborApi].
-class UpdateShiftResponse {
+class UpdateShiftResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -364,14 +317,10 @@ class UpdateShiftResponse {
       shift: json['shift'] != null ? Shift.fromJson(json['shift']) : null,
     );
   }
-
-  get hasErrors {
-    return errors != null;
-  }
 }
 
 /// The response to the `updateWorkweekConfig()` method in [LaborApi].
-class UpdateWorkweekConfigResponse {
+class UpdateWorkweekConfigResponse extends ApiResponse {
   /// The list of errors if any exist.
   final List<SquareError> errors;
 
@@ -391,9 +340,5 @@ class UpdateWorkweekConfigResponse {
           ? WorkweekConfig.fromJson(json['workweek_config'])
           : null,
     );
-  }
-
-  get hasErrors {
-    return errors != null;
   }
 }

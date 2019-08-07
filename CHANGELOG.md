@@ -1,4 +1,15 @@
-## 0.2.0
+## 0.2.3
+* Added full implementation of the Inventory API
+    * Still needs documentation and testing
+* Refactored how response objects work behind the scenes
+* Not code related, but added a bunch more to the github projects, including some issues for direction on helping.
+
+## 0.2.2
+* Added auth methods to help with OAuth and Reader SDK methods:
+    * Use `SquareConnect().getAuthEndpoint(clientId, permissions, locale, session, state)` to get the url for requesting permissions for OAuth.
+    * Use `SquareConnect().createMobileAuthorizationCode(locationId)` to get Mobile Auth Code.
+
+## 0.2.1
 * Added option for using refresh tokens instead of auth token - consider this beta at this point.
     * To use, call SquareConnect.getInstanceWithRefreshToken(refreshToken, clientId, clientSecret)
     * **Make Sure You Secure Your Client Secret!**

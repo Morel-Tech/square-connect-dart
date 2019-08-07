@@ -14,7 +14,8 @@ class TransactionsApi {
   final String _clientId;
   final String _clientSecret;
 
-  TransactionsApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  TransactionsApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   /// Captures a [Transaction] that was created with the `charge()` method with a `delayCapture` value of `true`.
   Future<CaptureTransactionResponse> captureTransaction({

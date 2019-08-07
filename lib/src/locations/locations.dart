@@ -12,7 +12,8 @@ class LocationsApi {
   final String _clientId;
   final String _clientSecret;
 
-  LocationsApi(this._token, this._client, this._refreshToken, this._clientId, this._clientSecret);
+  LocationsApi(this._token, this._client, this._refreshToken, this._clientId,
+      this._clientSecret);
 
   /// Lists all locations for a given merchant.
   Future<ListLocationsResponse> listLocations() async {

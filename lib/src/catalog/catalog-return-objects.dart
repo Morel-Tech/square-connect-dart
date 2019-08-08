@@ -126,7 +126,7 @@ class BatchRetrieveCatalogObjectsResponse extends ApiResponse {
               .toList()
           : null,
       objects:
-          (json['objects'] as List).map((item) => CatalogObject.fromJson(item)),
+          (json['objects'] as List).map((item) => CatalogObject.fromJson(item)).toList(),
       relatedObjects: (json['related_objects'] as List)
           .map((item) => CatalogObject.fromJson(item))
           .toList(),

@@ -83,7 +83,7 @@ class CatalogApi {
   }
 
   Future<DeleteCatalogObjectResponse> deleteCatalogObject(
-      {String objectId}) async {
+      {@required String objectId}) async {
     if (objectId == null) throw ArgumentError('objectId must not be null');
     var obj = RequestObj(
       path: '/v2/catalog/object/$objectId',
@@ -99,7 +99,7 @@ class CatalogApi {
   }
 
   Future<BatchDeleteCatalogObjectsResponse> batchDeleteCatalogObjects(
-      {List<String> objectIds}) async {
+      {@required List<String> objectIds}) async {
     if (objectIds == null) throw ArgumentError('objectIds must not be null');
     var obj = RequestObj(
       path: '/v2/catalog/batch-delete',
@@ -117,7 +117,7 @@ class CatalogApi {
   }
 
   Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObjects(
-      {List<String> objectIds, bool includeRelatedObjects}) async {
+      {@required List<String> objectIds, bool includeRelatedObjects}) async {
     if (objectIds == null) throw ArgumentError('objectIds must not be null');
 
     Map<String, dynamic> body = {
@@ -142,8 +142,8 @@ class CatalogApi {
   }
 
   Future<BatchUpsertCatalogObjectsResponse> batchUpsertCatalogObjects(
-      {List<CatalogObjectBatch> batches}) async {
-    if (batches == null) throw ArgumentError('objectIds must not be null');
+      {@required List<CatalogObjectBatch> batches}) async {
+    if (batches == null) throw ArgumentError('batches must not be null');
     var uuid = new Uuid();
 
     var body = {
@@ -188,7 +188,7 @@ class CatalogApi {
     bool includeRelatedObjects,
     DateTime beginTime,
     int limit,
-    CatalogQueryType queryType,
+    @required CatalogQueryType queryType,
     String attributeName,
     String initialAttributeValue,
     SortOrder sortOrder,
@@ -200,6 +200,33 @@ class CatalogApi {
     List<String> taxIds,
     List<String> modifierListIds,
   }) async {
+    if (queryType == null) throw ArgumentError('queryType must not be null');
+    switch (queryType) {
+      case CatalogQueryType.sortedAttributeQuery:
+        if (attributeName == null) throw ArgumentError('if query type is sortedAttributeQuery, attributeName must not be null');
+        break;
+      case CatalogQueryType.exactQuery:
+        if (attributeName == null) throw ArgumentError('if query type is exactQuery, attributeName must not be null');
+        if (attributeValue == null) throw ArgumentError('if query type is exactQuery, attributeValue must not be null');
+        break;
+      case CatalogQueryType.prefixQuery:
+        if (attributeName == null) throw ArgumentError('if query type is prefixQuery, attributeName must not be null');
+        if (attributePrefix == null) throw ArgumentError('if query type is prefixQuery, attributePrefix must not be null');
+        break;
+      case CatalogQueryType.rangeQuery:
+        if (attributeName == null) throw ArgumentError('if query type is rangeQuery, attributeName must not be null');
+        break;
+      case CatalogQueryType.textQuery:
+        if (keywords == null) throw ArgumentError('if query type is textQuery, keywords must not be null');
+        break;
+      case CatalogQueryType.itemsForTaxQuery:
+        if (taxIds == null) throw ArgumentError('if query type is itemsForTaxQuery, taxIds must not be null');
+        break;
+      case CatalogQueryType.itemsForModifierListQuery:
+        if (modifierListIds == null) throw ArgumentError('if query type is itemsForModifierListQuery, modifierListIds must not be null');
+        break;
+    }
+
     Map<String, dynamic> body = Map<String, dynamic>();
 
     if (cursor != null) body['cursor'] = cursor;
@@ -292,11 +319,14 @@ class CatalogApi {
   }
 
   Future<UpdateItemModifierListsResponse> updateItemModifierLists({
-    List<String> itemIds,
+    @required List<String> itemIds,
     List<String> modifierListsToEnable,
     List<String> modifierListsToDisable,
   }) async {
+    if (itemIds == null) throw ArgumentError('itemIds must not be null');
+
     var body = Map<String, dynamic>();
+
     if (itemIds != null) body['item_ids'] = itemIds;
     if (modifierListsToEnable != null)
       body['modifier_lists_to_enable'] = itemIds;
@@ -318,10 +348,12 @@ class CatalogApi {
   }
 
   Future<UpdateItemTaxesResponse> updateItemTaxes({
-    List<String> itemIds,
+    @required List<String> itemIds,
     List<String> taxesToEnable,
     List<String> taxesToDisable,
   }) async {
+    if (itemIds == null) throw ArgumentError('itemIds must not be null');
+
     var body = Map<String, dynamic>();
     if (itemIds != null) body['item_ids'] = itemIds;
     if (taxesToEnable != null) body['taxes_to_enable'] = itemIds;
@@ -343,8 +375,10 @@ class CatalogApi {
 
   Future<UpsertCatalogObjectResponse> upsertCatalogObject({
     final String idempotencyKey,
-    final CatalogObject object,
+    @required final CatalogObject object,
   }) async {
+    if(object == null) throw ArgumentError('object must not be null');
+
     var body = Map<String, dynamic>();
     body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
     if (object != null) body['item_ids'] = object;

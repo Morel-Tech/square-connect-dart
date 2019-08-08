@@ -1,3 +1,6 @@
+## 0.2.3+2
+*  Fixed bug in hasErrors method in new response superclass
+
 ## 0.2.3+1
 *  Fixed bug in BatchRetrieveCatalogObjectsResponse
 

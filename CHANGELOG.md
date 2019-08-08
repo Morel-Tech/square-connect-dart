@@ -1,3 +1,6 @@
+## 0.2.3+1
+*  Fixed bug in BatchRetrieveCatalogObjectsResponse
+
 ## 0.2.3
 * Added full implementation of the Inventory API
     * Still needs documentation and testing

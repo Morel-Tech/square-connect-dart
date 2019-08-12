@@ -62,4 +62,20 @@ class Employee {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (firstName != null) body['first_name'] = firstName;
+    if (lastName != null) body['last_name'] = lastName;
+    if (emailAddress != null) body['email'] = emailAddress;
+    if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (locationIds != null) body['location_ids'] = locationIds;
+    if (status != null) body['status'] = getStringFromEmployeeStatus(status);
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
+    
+    return body;
+  }
 }

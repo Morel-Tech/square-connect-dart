@@ -59,12 +59,16 @@ class Transaction {
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;
     if (createdAt != null) body['created_at'] = createdAt.toString();
-    if (tenders != null) body['tenders'] = tenders.map((item) => item.toJson()).toList();
-    if (refunds != null) body['refunds'] = refunds.map((item) => item.toJson()).toList();
+    if (tenders != null)
+      body['tenders'] = tenders.map((item) => item.toJson()).toList();
+    if (refunds != null)
+      body['refunds'] = refunds.map((item) => item.toJson()).toList();
     if (referenceId != null) body['reference_id'] = referenceId;
-    if (product != null) body['product'] = getStringFromTransactionProduct(product);
+    if (product != null)
+      body['product'] = getStringFromTransactionProduct(product);
     if (clientId != null) body['client_id'] = clientId;
-    if (shippingAddress != null) body['shipping_address'] = shippingAddress.toJson();
+    if (shippingAddress != null)
+      body['shipping_address'] = shippingAddress.toJson();
     if (orderId != null) body['order_id'] = orderId;
 
     return body;

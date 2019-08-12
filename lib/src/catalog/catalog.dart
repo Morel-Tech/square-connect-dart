@@ -203,27 +203,45 @@ class CatalogApi {
     if (queryType == null) throw ArgumentError('queryType must not be null');
     switch (queryType) {
       case CatalogQueryType.sortedAttributeQuery:
-        if (attributeName == null) throw ArgumentError('if query type is sortedAttributeQuery, attributeName must not be null');
+        if (attributeName == null)
+          throw ArgumentError(
+              'if query type is sortedAttributeQuery, attributeName must not be null');
         break;
       case CatalogQueryType.exactQuery:
-        if (attributeName == null) throw ArgumentError('if query type is exactQuery, attributeName must not be null');
-        if (attributeValue == null) throw ArgumentError('if query type is exactQuery, attributeValue must not be null');
+        if (attributeName == null)
+          throw ArgumentError(
+              'if query type is exactQuery, attributeName must not be null');
+        if (attributeValue == null)
+          throw ArgumentError(
+              'if query type is exactQuery, attributeValue must not be null');
         break;
       case CatalogQueryType.prefixQuery:
-        if (attributeName == null) throw ArgumentError('if query type is prefixQuery, attributeName must not be null');
-        if (attributePrefix == null) throw ArgumentError('if query type is prefixQuery, attributePrefix must not be null');
+        if (attributeName == null)
+          throw ArgumentError(
+              'if query type is prefixQuery, attributeName must not be null');
+        if (attributePrefix == null)
+          throw ArgumentError(
+              'if query type is prefixQuery, attributePrefix must not be null');
         break;
       case CatalogQueryType.rangeQuery:
-        if (attributeName == null) throw ArgumentError('if query type is rangeQuery, attributeName must not be null');
+        if (attributeName == null)
+          throw ArgumentError(
+              'if query type is rangeQuery, attributeName must not be null');
         break;
       case CatalogQueryType.textQuery:
-        if (keywords == null) throw ArgumentError('if query type is textQuery, keywords must not be null');
+        if (keywords == null)
+          throw ArgumentError(
+              'if query type is textQuery, keywords must not be null');
         break;
       case CatalogQueryType.itemsForTaxQuery:
-        if (taxIds == null) throw ArgumentError('if query type is itemsForTaxQuery, taxIds must not be null');
+        if (taxIds == null)
+          throw ArgumentError(
+              'if query type is itemsForTaxQuery, taxIds must not be null');
         break;
       case CatalogQueryType.itemsForModifierListQuery:
-        if (modifierListIds == null) throw ArgumentError('if query type is itemsForModifierListQuery, modifierListIds must not be null');
+        if (modifierListIds == null)
+          throw ArgumentError(
+              'if query type is itemsForModifierListQuery, modifierListIds must not be null');
         break;
     }
 
@@ -377,7 +395,7 @@ class CatalogApi {
     final String idempotencyKey,
     @required final CatalogObject object,
   }) async {
-    if(object == null) throw ArgumentError('object must not be null');
+    if (object == null) throw ArgumentError('object must not be null');
 
     var body = Map<String, dynamic>();
     body['idempotency_key'] = idempotencyKey ?? Uuid().v4();

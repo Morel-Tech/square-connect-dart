@@ -165,19 +165,19 @@ String durationToString(Duration duration) {
   var ans = 'P';
   var seconds = duration.inSeconds;
 
-  var years = (seconds/31536000).floor();
+  var years = (seconds / 31536000).floor();
   seconds = seconds - years * 31536000;
 
-  var months = (seconds/2592000).floor();
+  var months = (seconds / 2592000).floor();
   seconds = seconds - months * 2592000;
 
-  var days = (seconds/86400).floor();
+  var days = (seconds / 86400).floor();
   seconds = seconds - days * 86400;
 
-  var hours = (seconds/3600).floor();
+  var hours = (seconds / 3600).floor();
   seconds = seconds - hours * 3600;
 
-  var minutes = (seconds/60).floor();
+  var minutes = (seconds / 60).floor();
   seconds = seconds - minutes * 60;
 
   if (years > 0) ans += '${years}Y';

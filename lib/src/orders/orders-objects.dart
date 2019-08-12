@@ -145,25 +145,37 @@ class Order {
     if (referenceId != null) body['reference_id'] = referenceId;
     if (source != null) body['source'] = source.toJson();
     if (customerId != null) body['customer_id'] = customerId;
-    if (lineItems != null) body['line_items'] = lineItems.map((item) => item.toJson()).toList();
-    if (taxes != null) body['taxes'] = taxes.map((item) => item.toJson()).toList();
-    if (discounts != null) body['discounts'] = discounts.map((item) => item.toJson()).toList();
-    if (serviceCharges != null) body['service_charges'] = serviceCharges.map((item) => item.toJson()).toList();
-    if (fulfillments != null) body['fulfillments'] = fulfillments.map((item) => item.toJson()).toList();
-    if (returns != null) body['returns'] = returns.map((item) => item.toJson()).toList();
+    if (lineItems != null)
+      body['line_items'] = lineItems.map((item) => item.toJson()).toList();
+    if (taxes != null)
+      body['taxes'] = taxes.map((item) => item.toJson()).toList();
+    if (discounts != null)
+      body['discounts'] = discounts.map((item) => item.toJson()).toList();
+    if (serviceCharges != null)
+      body['service_charges'] =
+          serviceCharges.map((item) => item.toJson()).toList();
+    if (fulfillments != null)
+      body['fulfillments'] = fulfillments.map((item) => item.toJson()).toList();
+    if (returns != null)
+      body['returns'] = returns.map((item) => item.toJson()).toList();
     if (returnAmounts != null) body['return_amounts'] = returnAmounts.toJson();
     if (netAmounts != null) body['net_amounts'] = netAmounts.toJson();
-    if (roundingAdjustment != null) body['rounding_adjustment'] = roundingAdjustment.toJson();
-    if (tenders != null) body['tenders'] = tenders.map((item) => item.toJson()).toList();
-    if (refunds != null) body['refunds'] = refunds.map((item) => item.toJson()).toList();
+    if (roundingAdjustment != null)
+      body['rounding_adjustment'] = roundingAdjustment.toJson();
+    if (tenders != null)
+      body['tenders'] = tenders.map((item) => item.toJson()).toList();
+    if (refunds != null)
+      body['refunds'] = refunds.map((item) => item.toJson()).toList();
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (updatedAt != null) body['updated_at'] = updatedAt.toString();
     if (closedAt != null) body['closed_at'] = closedAt.toString();
     if (state != null) body['state'] = getStringFromOrderState(state);
     if (totalMoney != null) body['total_money'] = totalMoney.toJson();
     if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (totalDiscountMoney != null) body['total_discount_money'] = totalDiscountMoney.toJson();
-    if (totalServiceChargeMoney != null) body['total_service_charge_money'] = totalServiceChargeMoney.toJson();
+    if (totalDiscountMoney != null)
+      body['total_discount_money'] = totalDiscountMoney.toJson();
+    if (totalServiceChargeMoney != null)
+      body['total_service_charge_money'] = totalServiceChargeMoney.toJson();
 
     return body;
   }
@@ -282,18 +294,26 @@ class OrderLineItem {
     if (uid != null) body['uid'] = uid;
     if (name != null) body['name'] = name;
     if (quantity != null) body['quantity'] = quantity.toString();
-    if (orderQuantityUnit != null) body['quantity_unit'] = orderQuantityUnit.toJson();
+    if (orderQuantityUnit != null)
+      body['quantity_unit'] = orderQuantityUnit.toJson();
     if (note != null) body['note'] = note;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (variationName != null) body['variation_name'] = variationName;
-    if (modifiers != null) body['modifiers'] = modifiers.map((item) => item.toJson()).toList();
-    if (taxes != null) body['taxes'] = taxes.map((item) => item.toJson()).toList();
-    if (discounts != null) body['discounts'] = discounts.map((item) => item.toJson()).toList();
-    if (basePriceMoney != null) body['base_price_money'] = basePriceMoney.toJson();
-    if (variationTotalPriceMoney != null) body['variation_total_price_money'] = variationTotalPriceMoney.toJson();
-    if (grossSalesMoney != null) body['gross_sales_money'] = grossSalesMoney.toJson();
+    if (modifiers != null)
+      body['modifiers'] = modifiers.map((item) => item.toJson()).toList();
+    if (taxes != null)
+      body['taxes'] = taxes.map((item) => item.toJson()).toList();
+    if (discounts != null)
+      body['discounts'] = discounts.map((item) => item.toJson()).toList();
+    if (basePriceMoney != null)
+      body['base_price_money'] = basePriceMoney.toJson();
+    if (variationTotalPriceMoney != null)
+      body['variation_total_price_money'] = variationTotalPriceMoney.toJson();
+    if (grossSalesMoney != null)
+      body['gross_sales_money'] = grossSalesMoney.toJson();
     if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (totalDiscountMoney != null) body['total_discount_money'] = totalDiscountMoney.toJson();
+    if (totalDiscountMoney != null)
+      body['total_discount_money'] = totalDiscountMoney.toJson();
     if (totalMoney != null) body['total_money'] = totalMoney.toJson();
 
     return body;
@@ -346,7 +366,8 @@ class OrderLineItemTax {
     if (type != null) body['type'] = getStringFromOrderLineItemTaxType(type);
     if (percentage != null) body['percentage'] = percentage.toString();
     if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null) body['scope'] = getStringFromOrderLineItemTaxScope(scope);
+    if (scope != null)
+      body['scope'] = getStringFromOrderLineItemTaxScope(scope);
 
     return body;
   }
@@ -400,11 +421,13 @@ class OrderLineItemDiscount {
     if (uid != null) body['uid'] = uid;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (name != null) body['name'] = name;
-    if (type != null) body['type'] = getStringFromOrderLineItemDiscountType(type);
+    if (type != null)
+      body['type'] = getStringFromOrderLineItemDiscountType(type);
     if (percentage != null) body['percentage'] = percentage.toString();
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
     if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null) body['scope'] = getStringFromOrderLineItemDiscountScope(scope);
+    if (scope != null)
+      body['scope'] = getStringFromOrderLineItemDiscountScope(scope);
 
     return body;
   }
@@ -444,9 +467,11 @@ class OrderLineItemModifier {
     if (uid != null) body['uid'] = uid;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (name != null) body['name'] = name;
-    if (basePriceMoney != null) body['base_price_money'] = basePriceMoney.toJson();
-    if (totalPriceMoney != null) body['total_price_money'] = totalPriceMoney.toJson();
-    
+    if (basePriceMoney != null)
+      body['base_price_money'] = basePriceMoney.toJson();
+    if (totalPriceMoney != null)
+      body['total_price_money'] = totalPriceMoney.toJson();
+
     return body;
   }
 }
@@ -520,9 +545,12 @@ class OrderServiceCharge {
     if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
     if (totalMoney != null) body['total_money'] = totalMoney.toJson();
     if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (calculationPhase != null) body['calculation_phase'] = getStringFromOrderServiceChargeCalculationPhase(calculationPhase);
+    if (calculationPhase != null)
+      body['calculation_phase'] =
+          getStringFromOrderServiceChargeCalculationPhase(calculationPhase);
     if (taxable != null) body['taxable'] = taxable;
-    if (taxes != null) body['taxes'] = taxes.map((item) => item.toJson()).toList();
+    if (taxes != null)
+      body['taxes'] = taxes.map((item) => item.toJson()).toList();
 
     return body;
   }
@@ -567,7 +595,8 @@ class OrderMoneyAmounts {
     if (taxMoney != null) body['tax_money'] = taxMoney.toJson();
     if (discountMoney != null) body['discount_money'] = discountMoney.toJson();
     if (tipMoney != null) body['tip_money'] = tipMoney.toJson();
-    if (serviceChargeMoney != null) body['service_charge_money'] = serviceChargeMoney.toJson();
+    if (serviceChargeMoney != null)
+      body['service_charge_money'] = serviceChargeMoney.toJson();
 
     return body;
   }
@@ -614,7 +643,8 @@ class OrderQuantityUnit {
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
-    if (measurementUnit != null) body['measurement_unit'] = measurementUnit.toJson();
+    if (measurementUnit != null)
+      body['measurement_unit'] = measurementUnit.toJson();
     if (precision != null) body['precision'] = precision;
 
     return body;
@@ -646,7 +676,8 @@ class OrderFulfillment {
     var body = Map<String, dynamic>();
 
     if (type != null) body['type'] = getStringFromOrderFulfillmentType(type);
-    if (state != null) body['state'] = getStringFromOrderFulfillmentState(state);
+    if (state != null)
+      body['state'] = getStringFromOrderFulfillmentState(state);
     if (pickupDetails != null) body['pickup_details'] = pickupDetails.toJson();
 
     return body;
@@ -741,11 +772,16 @@ class OrderFulfillmentPickupDetails {
 
     if (recipient != null) body['recipient'] = recipient.toJson();
     if (expiresAt != null) body['expires_at'] = expiresAt.toString();
-    if (autoCompleteDuration != null) body['auto_complete_duration'] = durationToString(autoCompleteDuration);
-    if (scheduleType != null) body['schedule_type'] = getStringFromOrderFulfillmentPickupDetailsScheduleType(scheduleType);
+    if (autoCompleteDuration != null)
+      body['auto_complete_duration'] = durationToString(autoCompleteDuration);
+    if (scheduleType != null)
+      body['schedule_type'] =
+          getStringFromOrderFulfillmentPickupDetailsScheduleType(scheduleType);
     if (pickupAt != null) body['pickup_at'] = pickupAt.toString();
-    if (pickupWindowDuration != null) body['pickup_window_duration'] = durationToString(pickupWindowDuration);
-    if (prepTimeDuration != null) body['prep_time_duration'] = durationToString(prepTimeDuration);
+    if (pickupWindowDuration != null)
+      body['pickup_window_duration'] = durationToString(pickupWindowDuration);
+    if (prepTimeDuration != null)
+      body['prep_time_duration'] = durationToString(prepTimeDuration);
     if (note != null) body['note'] = note;
     if (placedAt != null) body['placed_at'] = placedAt.toString();
     if (acceptedAt != null) body['accepted_at'] = acceptedAt.toString();
@@ -869,20 +905,21 @@ class FulfillmentRequest {
   final Duration pickupWindowDuration;
   final Duration prepTimeDuration;
 
-  FulfillmentRequest(
-      {this.fulfillmentType,
-      this.fulfillmentState,
-      this.customerId,
-      this.displayName,
-      this.emailAddress,
-      this.phoneNumber,
-      this.expriesAt,
-      this.scheduleType,
-      this.pickupAt,
-      this.note,
-      this.autoCompleteDuration,
-      this.pickupWindowDuration,
-      this.prepTimeDuration,});
+  FulfillmentRequest({
+    this.fulfillmentType,
+    this.fulfillmentState,
+    this.customerId,
+    this.displayName,
+    this.emailAddress,
+    this.phoneNumber,
+    this.expriesAt,
+    this.scheduleType,
+    this.pickupAt,
+    this.note,
+    this.autoCompleteDuration,
+    this.pickupWindowDuration,
+    this.prepTimeDuration,
+  });
 
   Map<String, dynamic> toMap() {
     var body = Map<String, dynamic>();
@@ -911,9 +948,14 @@ class FulfillmentRequest {
     if (pickupAt != null)
       pickupDetails['pickup_at'] = pickupAt.toIso8601String();
     if (note != null) pickupDetails['note'] = note;
-    if (autoCompleteDuration != null) pickupDetails['auto_complete_duration'] = durationToString(autoCompleteDuration);
-    if (pickupWindowDuration != null) pickupDetails['pickup_window_duration'] = durationToString(pickupWindowDuration);
-    if (prepTimeDuration != null) pickupDetails['prep_time_duration'] = durationToString(prepTimeDuration);
+    if (autoCompleteDuration != null)
+      pickupDetails['auto_complete_duration'] =
+          durationToString(autoCompleteDuration);
+    if (pickupWindowDuration != null)
+      pickupDetails['pickup_window_duration'] =
+          durationToString(pickupWindowDuration);
+    if (prepTimeDuration != null)
+      pickupDetails['prep_time_duration'] = durationToString(prepTimeDuration);
 
     body['pickup_details'] = pickupDetails;
 
@@ -958,11 +1000,19 @@ class OrderReturn {
 
     if (id != null) body['uid'] = id;
     if (sourceOrderId != null) body['source_order_id'] = sourceOrderId;
-    if (returnLineItems != null) body['return_line_items'] = returnLineItems.map((item) => item.toJson()).toList();
-    if (returnServiceCharges != null) body['return_service_charges'] = returnServiceCharges.map((item) => item.toJson()).toList();
-    if (returnTaxes != null) body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
-    if (returnDiscounts != null) body['return_discounts'] = returnDiscounts.map((item) => item.toJson()).toList();
-    if (roundingAdjustment != null) body['rounding_adjustment'] = roundingAdjustment.toJson();
+    if (returnLineItems != null)
+      body['return_line_items'] =
+          returnLineItems.map((item) => item.toJson()).toList();
+    if (returnServiceCharges != null)
+      body['return_service_charges'] =
+          returnServiceCharges.map((item) => item.toJson()).toList();
+    if (returnTaxes != null)
+      body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
+    if (returnDiscounts != null)
+      body['return_discounts'] =
+          returnDiscounts.map((item) => item.toJson()).toList();
+    if (roundingAdjustment != null)
+      body['rounding_adjustment'] = roundingAdjustment.toJson();
     if (returnAmounts != null) body['return_amounts'] = returnAmounts.toJson();
 
     return body;
@@ -1060,21 +1110,31 @@ class OrderReturnLineItem {
     var body = Map<String, dynamic>();
 
     if (id != null) body['uid'] = id;
-    if (sourceLineItemId != null) body['source_line_item_uid'] = sourceLineItemId;
+    if (sourceLineItemId != null)
+      body['source_line_item_uid'] = sourceLineItemId;
     if (name != null) body['name'] = name;
     if (quantity != null) body['quantity'] = quantity.toString();
     if (quantityUnit != null) body['quantity_unit'] = quantityUnit.toJson();
     if (note != null) body['note'] = note;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (variationName != null) body['variation_name'] = variationName;
-    if (returnModifiers != null) body['return_modifiers'] = returnModifiers.map((item) => item.toJson()).toList();
-    if (returnTaxes != null) body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
-    if (returnDiscounts != null) body['return_discounts'] = returnDiscounts.map((item) => item.toJson()).toList();
-    if (basePriceMoney != null) body['base_price_money'] = basePriceMoney.toJson();
-    if (variationTotalPriceMoney != null) body['variation_total_price_money'] = variationTotalPriceMoney.toJson();
-    if (grossReturnMoney.toJson() != null) body['gross_return_money'] = grossReturnMoney.toJson();
+    if (returnModifiers != null)
+      body['return_modifiers'] =
+          returnModifiers.map((item) => item.toJson()).toList();
+    if (returnTaxes != null)
+      body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
+    if (returnDiscounts != null)
+      body['return_discounts'] =
+          returnDiscounts.map((item) => item.toJson()).toList();
+    if (basePriceMoney != null)
+      body['base_price_money'] = basePriceMoney.toJson();
+    if (variationTotalPriceMoney != null)
+      body['variation_total_price_money'] = variationTotalPriceMoney.toJson();
+    if (grossReturnMoney.toJson() != null)
+      body['gross_return_money'] = grossReturnMoney.toJson();
     if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (totalDiscountMoney != null) body['total_discount_money'] = totalDiscountMoney.toJson();
+    if (totalDiscountMoney != null)
+      body['total_discount_money'] = totalDiscountMoney.toJson();
     if (totalMoney != null) body['total_money'] = totalMoney.toJson();
 
     return body;
@@ -1116,11 +1176,14 @@ class OrderReturnLineItemModifier {
     var body = Map<String, dynamic>();
 
     if (id != null) body['uid'] = id;
-    if (sourceModifierId != null) body['source_modifier_uid'] = sourceModifierId;
+    if (sourceModifierId != null)
+      body['source_modifier_uid'] = sourceModifierId;
     if (name != null) body['name'] = name;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (basePriceMoney != null) body['base_price_money'] = basePriceMoney.toJson();
-    if (totalPriceMoney != null) body['total_price_money'] = totalPriceMoney.toJson();
+    if (basePriceMoney != null)
+      body['base_price_money'] = basePriceMoney.toJson();
+    if (totalPriceMoney != null)
+      body['total_price_money'] = totalPriceMoney.toJson();
 
     return body;
   }
@@ -1176,7 +1239,8 @@ class OrderReturnTax {
     if (type != null) body['type'] = getStringFromOrderLineItemTaxType(type);
     if (percentage != null) body['percentage'] = percentage.toString();
     if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null) body['scope'] = getStringFromOrderLineItemTaxScope(scope);
+    if (scope != null)
+      body['scope'] = getStringFromOrderLineItemTaxScope(scope);
 
     return body;
   }
@@ -1231,14 +1295,17 @@ class OrderReturnDiscount {
     var body = Map<String, dynamic>();
 
     if (id != null) body['uid'] = id;
-    if (sourceDiscountId != null) body['source_discount_uid'] = sourceDiscountId;
+    if (sourceDiscountId != null)
+      body['source_discount_uid'] = sourceDiscountId;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (name != null) body['name'] = name;
-    if (type != null) body['type'] = getStringFromOrderLineItemDiscountType(type);
+    if (type != null)
+      body['type'] = getStringFromOrderLineItemDiscountType(type);
     if (percentage != null) body['percentage'] = percentage.toString();
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
     if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null) body['scope'] = getStringFromOrderLineItemDiscountScope(scope);
+    if (scope != null)
+      body['scope'] = getStringFromOrderLineItemDiscountScope(scope);
 
     return body;
   }
@@ -1309,7 +1376,8 @@ class OrderReturnServiceCharge {
     var body = Map<String, dynamic>();
 
     if (id != null) body['uid'] = id;
-    if (sourceServiceChargeId != null) body['source_service_charge_uid'] = sourceServiceChargeId;
+    if (sourceServiceChargeId != null)
+      body['source_service_charge_uid'] = sourceServiceChargeId;
     if (name != null) body['name'] = name;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (percentage != null) body['percentage'] = percentage.toString();
@@ -1317,9 +1385,12 @@ class OrderReturnServiceCharge {
     if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
     if (totalMoney != null) body['total_money'] = totalMoney.toJson();
     if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (calculationPhase != null) body['calculation_phase'] = getStringFromOrderServiceChargeCalculationPhase(calculationPhase);
+    if (calculationPhase != null)
+      body['calculation_phase'] =
+          getStringFromOrderServiceChargeCalculationPhase(calculationPhase);
     if (taxable != null) body['taxable'] = taxable;
-    if (returnTaxes != null) body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
+    if (returnTaxes != null)
+      body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
 
     return body;
   }

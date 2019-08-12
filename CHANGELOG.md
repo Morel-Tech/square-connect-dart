@@ -1,3 +1,7 @@
+## 0.2.4
+*  Added toJson() methods to every data object so they can easily be saved in formats that require simple maps, such as Cloud Firestore. Can be converted back with fromJson().
+*  Added autoCompleteDuration, prepTimeDuration, and pickupWindowDuration to FulfillmentRequest.
+
 ## 0.2.3+2
 *  Fixed bug in hasErrors method in new response superclass
 

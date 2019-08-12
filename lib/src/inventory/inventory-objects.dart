@@ -39,10 +39,13 @@ class InventoryCount {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
-    if (inventoryState != null) body['state'] = getStringFromInventoryState(inventoryState);
+    if (catalogObjectType != null)
+      body['catalog_object_type'] =
+          getStringFromCatalogObjectType(catalogObjectType);
+    if (inventoryState != null)
+      body['state'] = getStringFromInventoryState(inventoryState);
     if (locationId != null) body['location_id'] = locationId;
     if (quantity != null) body['quantity'] = quantity.toString();
     if (calculatedAt != null) body['calculated_at'] = calculatedAt.toString();
@@ -79,7 +82,7 @@ class InventoryChange {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (type != null) body['type'] = getStringFromInventoryChangeType(type);
     if (physicalCount != null) body['physical_count'] = physicalCount.toJson();
     if (adjustment != null) body['adjustment'] = adjustment.toJson();
@@ -144,11 +147,13 @@ class InventoryPhysicalCount {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (referenceId != null) body['reference_id'] = referenceId;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (catalogObjectType != null)
+      body['catalog_object_type'] =
+          getStringFromCatalogObjectType(catalogObjectType);
     if (state != null) body['state'] = getStringFromInventoryState(state);
     if (locationId != null) body['location_id'] = locationId;
     if (quantity != null) body['quantity'] = quantity.toString();
@@ -238,16 +243,21 @@ class InventoryAdjustment {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (referenceId != null) body['reference_id'] = referenceId;
-    if (fromState != null) body['from_state'] = getStringFromInventoryState(fromState);
-    if (toState != null) body['to_state'] = getStringFromInventoryState(toState);
+    if (fromState != null)
+      body['from_state'] = getStringFromInventoryState(fromState);
+    if (toState != null)
+      body['to_state'] = getStringFromInventoryState(toState);
     if (locationId != null) body['location_id'] = locationId;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (catalogObjectType != null)
+      body['catalog_object_type'] =
+          getStringFromCatalogObjectType(catalogObjectType);
     if (quantity != null) body['quantity'] = quantity.toString();
-    if (totalPriceMoney != null) body['total_price_money'] = totalPriceMoney.toJson();
+    if (totalPriceMoney != null)
+      body['total_price_money'] = totalPriceMoney.toJson();
     if (occurredAt != null) body['occurred_at'] = occurredAt.toString();
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (source != null) body['source'] = source.toJson();
@@ -319,14 +329,16 @@ class InventoryTransfer {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (referenceId != null) body['reference_id'] = referenceId;
     if (state != null) body['state'] = getStringFromInventoryState(state);
     if (fromLocationId != null) body['from_location_id'] = fromLocationId;
     if (toLocationId != null) body['to_location_id'] = toLocationId;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (catalogObjectType != null)
+      body['catalog_object_type'] =
+          getStringFromCatalogObjectType(catalogObjectType);
     if (quantity != null) body['quantity'] = quantity.toString();
     if (occurredAt != null) body['occurred_at'] = occurredAt.toString();
     if (createdAt != null) body['created_at'] = createdAt.toString();
@@ -356,7 +368,7 @@ class SourceApplication {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (product != null) body['product'] = getStringFromProduct(product);
     if (applicationId != null) body['application_id'] = applicationId;
     if (name != null) body['name'] = name;

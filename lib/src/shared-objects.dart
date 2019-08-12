@@ -234,9 +234,7 @@ class Tender {
               .map((item) => AdditionalRecipient.fromJson(item))
               .toList()
           : null,
-      type: json['type'] != null
-        ? getTenderTypeFromString(json['type'])
-        : null,
+      type: json['type'] != null ? getTenderTypeFromString(json['type']) : null,
     );
   }
 
@@ -250,12 +248,15 @@ class Tender {
     if (note != null) body['note'] = note;
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
     if (tipMoney != null) body['tip_money'] = tipMoney.toJson();
-    if (processingFeeMoney != null) body['processing_fee_money'] = processingFeeMoney.toJson();
+    if (processingFeeMoney != null)
+      body['processing_fee_money'] = processingFeeMoney.toJson();
     if (customerId != null) body['customer_id'] = customerId;
     if (type != null) body['type'] = getStringFromTenderType(type);
     if (cardDetails != null) body['card_details'] = cardDetails.toJson();
     if (cashDetails != null) body['cash_details'] = cashDetails.toJson();
-    if (additionalRecipients != null) body['additional_recipients'] = additionalRecipients.map((item) => item.toJson()).toList();
+    if (additionalRecipients != null)
+      body['additional_recipients'] =
+          additionalRecipients.map((item) => item.toJson()).toList();
 
     return body;
   }
@@ -284,9 +285,12 @@ class TenderCardDetails {
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
-    if (status != null) body['precision'] = getStringFromTenderCardDetailsStatus(status);
+    if (status != null)
+      body['precision'] = getStringFromTenderCardDetailsStatus(status);
     if (card != null) body['precision'] = card.toJson();
-    if (entryMethod != null) body['precision'] = getStringFromTenderCardDetailsEntryMethod(entryMethod);
+    if (entryMethod != null)
+      body['precision'] =
+          getStringFromTenderCardDetailsEntryMethod(entryMethod);
 
     return body;
   }
@@ -313,8 +317,10 @@ class TenderCashDetails {
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
-    if (buyerTenderedMoney != null) body['buyer_tendered_money'] = buyerTenderedMoney.toJson();
-    if (changeBackMoney != null) body['change_back_money'] = changeBackMoney.toJson();
+    if (buyerTenderedMoney != null)
+      body['buyer_tendered_money'] = buyerTenderedMoney.toJson();
+    if (changeBackMoney != null)
+      body['change_back_money'] = changeBackMoney.toJson();
 
     return body;
   }
@@ -414,8 +420,11 @@ class Refund {
     if (reason != null) body['reason'] = reason;
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
     if (status != null) body['status'] = getStringFromRefundStatus(status);
-    if (processingFeeMoney != null) body['processing_fee_money'] = processingFeeMoney.toJson();
-    if (additionalRecipients != null) body['additional_recipients'] = additionalRecipients.map((item) => item.toJson()).toList();
+    if (processingFeeMoney != null)
+      body['processing_fee_money'] = processingFeeMoney.toJson();
+    if (additionalRecipients != null)
+      body['additional_recipients'] =
+          additionalRecipients.map((item) => item.toJson()).toList();
 
     return body;
   }

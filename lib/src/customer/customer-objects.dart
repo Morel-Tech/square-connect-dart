@@ -113,11 +113,12 @@ class Customer {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (updatedAt != null) body['updated_at'] = updatedAt.toString();
-    if (cards != null) body['cards'] = cards.map((item) => item.toJson()).toList();
+    if (cards != null)
+      body['cards'] = cards.map((item) => item.toJson()).toList();
     if (givenName != null) body['given_name'] = givenName;
     if (familyName != null) body['family_name'] = familyName;
     if (nickname != null) body['nickname'] = nickname;
@@ -129,9 +130,12 @@ class Customer {
     if (referenceId != null) body['reference_id'] = referenceId;
     if (note != null) body['note'] = note;
     if (preferences != null) body['preferences'] = preferences.toJson();
-    if (groups != null) body['groups'] = groups.map((item) => item.toJson()).toList();
-    if (creationSource != null) body['creation_source'] = getStringFromCustomerCreationSource(creationSource);
-    
+    if (groups != null)
+      body['groups'] = groups.map((item) => item.toJson()).toList();
+    if (creationSource != null)
+      body['creation_source'] =
+          getStringFromCustomerCreationSource(creationSource);
+
     return body;
   }
 }
@@ -190,16 +194,18 @@ class Card {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
-    if (cardBrand != null) body['card_brand'] = getStringFromCardBrand(cardBrand);
+    if (cardBrand != null)
+      body['card_brand'] = getStringFromCardBrand(cardBrand);
     if (last4 != null) body['last_4'] = last4;
     if (expMonth != null) body['exp_month'] = expMonth;
     if (expYear != null) body['exp_year'] = expYear;
     if (cardholderName != null) body['cardholder_name'] = cardholderName;
-    if (billingAddress != null) body['billing_address'] = billingAddress.toJson();
+    if (billingAddress != null)
+      body['billing_address'] = billingAddress.toJson();
     if (fingerprint != null) body['fingerprint'] = fingerprint;
-    
+
     return body;
   }
 }
@@ -218,9 +224,10 @@ class CustomerPreferences {
   }
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
-    if (emailUnsubscribed != null) body['email_unsubscribed'] = emailUnsubscribed;
-    
+
+    if (emailUnsubscribed != null)
+      body['email_unsubscribed'] = emailUnsubscribed;
+
     return body;
   }
 }
@@ -244,10 +251,10 @@ class CustomerGroupInfo {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (name != null) body['name'] = name;
-    
+
     return body;
   }
 }

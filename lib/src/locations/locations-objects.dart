@@ -146,7 +146,7 @@ class Location {
           : null,
     );
   }
-  
+
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
@@ -154,8 +154,12 @@ class Location {
     if (name != null) body['name'] = name;
     if (address != null) body['address'] = address.toJson();
     if (timezone != null) body['timezone'] = timezone;
-    if (capabilities != null) body['capabilities'] = capabilities.map((item) => getStringFromLocationCapability(item)).toList();
-    if (locationStatus != null) body['status'] = getStringFromLocationStatus(locationStatus);
+    if (capabilities != null)
+      body['capabilities'] = capabilities
+          .map((item) => getStringFromLocationCapability(item))
+          .toList();
+    if (locationStatus != null)
+      body['status'] = getStringFromLocationStatus(locationStatus);
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (merchantId != null) body['merchant_id'] = merchantId;
     if (country != null) body['country'] = country;
@@ -169,7 +173,8 @@ class Location {
     if (businessEmail != null) body['business_email'] = businessEmail;
     if (description != null) body['description'] = description;
     if (twitterUsername != null) body['twitter_username'] = twitterUsername;
-    if (instagramUsername != null) body['instagram_username'] = instagramUsername;
+    if (instagramUsername != null)
+      body['instagram_username'] = instagramUsername;
     if (facebookUrl != null) body['facebook_url'] = facebookUrl;
     if (coordinates != null) body['coordinates'] = coordinates.toJson();
 
@@ -223,7 +228,8 @@ class BusinessHours {
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
-    if (periods != null) body['periods'] = periods.map((item) => item.toJson()).toList();
+    if (periods != null)
+      body['periods'] = periods.map((item) => item.toJson()).toList();
 
     return body;
   }
@@ -259,9 +265,11 @@ class BusinessHoursPeriod {
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
-    if (startLocalTime != null) body['start_local_time'] = startLocalTime.toString();
+    if (startLocalTime != null)
+      body['start_local_time'] = startLocalTime.toString();
     if (endLocalTime != null) body['end_local_time'] = endLocalTime.toString();
-    if (dayOfWeek != null) body['day_of_week'] = getStringFromDayOfWeek(dayOfWeek);
+    if (dayOfWeek != null)
+      body['day_of_week'] = getStringFromDayOfWeek(dayOfWeek);
 
     return body;
   }

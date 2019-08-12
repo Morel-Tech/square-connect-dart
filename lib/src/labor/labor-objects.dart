@@ -44,11 +44,12 @@ class BreakType {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;
     if (name != null) body['break_name'] = name;
-    if (expectedDuration != null) body['expected_duration'] = durationToString(expectedDuration);
+    if (expectedDuration != null)
+      body['expected_duration'] = durationToString(expectedDuration);
     if (isPaid != null) body['is_paid'] = isPaid;
     if (version != null) body['version'] = version;
     if (updatedAt != null) body['updated_at'] = updatedAt.toString();
@@ -176,7 +177,7 @@ class Shift {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
     if (employeeId != null) body['employee_id'] = employeeId;
     if (locationId != null) body['location_id'] = locationId;
@@ -184,7 +185,8 @@ class Shift {
     if (startAt != null) body['start_at'] = startAt.toString();
     if (endAt != null) body['end_at'] = endAt.toString();
     if (wage != null) body['wage'] = wage.toJson();
-    if (breaks != null) body['breaks'] = breaks.map((item) => item.toJson()).toList();
+    if (breaks != null)
+      body['breaks'] = breaks.map((item) => item.toJson()).toList();
     if (version != null) body['version'] = version;
     if (status != null) body['status'] = getStringFromShiftStatus(status);
     if (createdAt != null) body['created_at'] = createdAt.toString();
@@ -254,10 +256,12 @@ class WorkweekConfig {
 
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
-    
+
     if (id != null) body['id'] = id;
-    if (startOfWeek != null) body['start_of_week'] = getStringFromDayOfWeek(startOfWeek);
-    if (startOfDayLocalTime != null) body['start_of_day_local_time'] = startOfDayLocalTime.toString();
+    if (startOfWeek != null)
+      body['start_of_week'] = getStringFromDayOfWeek(startOfWeek);
+    if (startOfDayLocalTime != null)
+      body['start_of_day_local_time'] = startOfDayLocalTime.toString();
     if (version != null) body['version'] = version;
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (updatedAt != null) body['updated_at'] = updatedAt.toString();

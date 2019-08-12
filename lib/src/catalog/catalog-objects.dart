@@ -45,7 +45,9 @@ class CatalogObject {
 
   factory CatalogObject.fromJson(Map<String, dynamic> json) {
     return CatalogObject(
-      type: getCatalogObjectTypeFromString(json['type']),
+      type: json['type'] != null 
+        ? getCatalogObjectTypeFromString(json['type'])
+        : null,
       id: json['id'],
       updatedAt: json['updated_at'] != null
           ? DateTime.parse(json['updated_at'])
@@ -88,6 +90,31 @@ class CatalogObject {
           ? CatalogMeasurementUnit.fromJson(json['measurement_unit_data'])
           : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (type != null) body['type'] = getStringFromCatalogObjectType(type);
+    if (id != null) body['id'] = id;
+    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
+    if (version != null) body['version'] = version;
+    if (isDeleted != null) body['is_deleted'] = isDeleted;
+    if (presentAtAllLocations != null) body['present_at_all_locations'] = presentAtAllLocations;
+    if (presentAtLocationIds != null) body['present_at_location_ids'] = presentAtLocationIds;
+    if (absentAtLocationIds != null) body['absent_at_location_ids'] = absentAtLocationIds;
+    if (imageId != null) body['image_id'] = imageId;
+    if (itemData != null) body['item_data'] = itemData.toJson();
+    if (categoryData != null) body['category_data'] = categoryData.toJson();
+    if (itemVariationData != null) body['item_variation_data'] = itemVariationData.toJson();
+    if (taxData != null) body['tax_data'] = taxData.toJson();
+    if (discountData != null) body['discount_data'] = discountData.toJson();
+    if (modifierListData != null) body['modifier_list_data'] = modifierListData.toJson();
+    if (modifierData != null) body['modifier_data'] = modifierData.toJson();
+    if (imageData != null) body['image_data'] = imageData.toJson();
+    if (measurementUnitData != null) body['measurement_unit_data'] = measurementUnitData.toJson();
+    
+    return body;
   }
 }
 
@@ -141,6 +168,26 @@ class CatalogItem {
       productType: getCatalogItemProductTypeFromString(json['product_type']),
       skipModifierScreen: json['skip_modifier_screen'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (description != null) body['description'] = description;
+    if (abbreviation != null) body['abbreviation'] = abbreviation;
+    if (labelColor != null) body['label_color'] = labelColor;
+    if (availableOnline != null) body['available_online'] = availableOnline;
+    if (availableForPickup != null) body['available_for_pickup'] = availableForPickup;
+    if (availableElectronically != null) body['available_electronically'] = availableElectronically;
+    if (categoryId != null) body['category_id'] = categoryId;
+    if (taxIds != null) body['tax_ids'] = taxIds;
+    if (modifierListInfo != null) body['modifier_list_info'] = modifierListInfo.map((item) => item.toJson());
+    if (variations != null) body['variations'] = variations.map((item) => item.toJson()).toList();
+    if (productType != null) body['product_type'] = getStringFromCatalogItemProductType(productType);
+    if (skipModifierScreen != null) body['skip_modifier_screen'] = skipModifierScreen;
+    
+    return body;
   }
 }
 
@@ -204,6 +251,27 @@ class CatalogItemVariation {
       measurementUnitId: json['measurement_unit_id'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (itemId != null) body['item_id'] = itemId;
+    if (name != null) body['name'] = name;
+    if (sku != null) body['sku'] = sku;
+    if (upc != null) body['upc'] = upc;
+    if (ordinal != null) body['ordinal'] = ordinal;
+    if (pricingType != null) body['pricing_type'] = getStringFromCatalogPricingType(pricingType);
+    if (priceMoney != null) body['price_money'] = priceMoney.toJson();
+    if (locationOverrides != null) body['location_overrides'] = locationOverrides.map((item) => item.toJson()).toList();
+    if (trackInventory != null) body['track_inventory'] = trackInventory;
+    if (inventoryAlertType != null) body['inventory_alert_type'] = getStringFromInventoryAlertType(inventoryAlertType);
+    if (inventoryAlertThreshold != null) body['inventory_alert_threshold'] = inventoryAlertThreshold;
+    if (userData != null) body['user_data'] = userData;
+    if (serviceDuration != null) body['service_duration'] = serviceDuration;
+    if (measurementUnitId != null) body['measurement_unit_id'] = measurementUnitId;
+    
+    return body;
+  }
 }
 
 class CatalogCategory {
@@ -215,6 +283,12 @@ class CatalogCategory {
     return CatalogCategory(
       name: json['name'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    if (name != null) body['name'] = name;
+    return body;
   }
 }
 
@@ -245,6 +319,19 @@ class CatalogTax {
       enabled: json['enabled'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (calculationPhase != null) body['calculation_phase'] = getStringFromTaxCalculationPhase(calculationPhase);
+    if (inclusionType != null) body['inclusion_type'] = getStringFromTaxInclusionType(inclusionType);
+    if (percentage != null) body['percentage'] = percentage.toString();
+    if (appliesToCustomAmounts != null) body['applies_to_custom_amounts'] = appliesToCustomAmounts;
+    if (enabled != null) body['enabled'] = enabled;
+    
+    return body;
+  }
 }
 
 class CatalogDiscount {
@@ -273,6 +360,19 @@ class CatalogDiscount {
       labelColor: json['label_color'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (discountType != null) body['discount_type'] = getStringFromCatalogDiscountType(discountType);
+    if (percentage != null) body['percentage'] = percentage.toString();
+    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
+    if (pinRequired != null) body['pin_required'] = pinRequired;
+    if (labelColor != null) body['label_color'] = labelColor;
+    
+    return body;
+  }
 }
 
 class CatalogModifierList {
@@ -294,6 +394,16 @@ class CatalogModifierList {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (selectionType != null) body['selection_type'] = getStringFromCatalogModifierListSelectionType(selectionType);
+    if (modifiers != null) body['modifiers'] = modifiers.map((item) => item.toJson()).toList();
+    
+    return body;
+  }
 }
 
 class CatalogModifier {
@@ -312,6 +422,17 @@ class CatalogModifier {
       ordinal: json['ordinal'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (priceMoney != null) body['discount_type'] = priceMoney.toJson();
+    if (onByDefault != null) body['percentage'] = onByDefault;
+    if (ordinal != null) body['amount_money'] = ordinal;
+
+    return body;
+  }
 }
 
 class CatalogImage {
@@ -324,6 +445,16 @@ class CatalogImage {
   factory CatalogImage.fromJson(Map<String, dynamic> json) {
     return CatalogImage(
         name: json['name'], url: json['url'], caption: json['caption']);
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (url != null) body['url'] = url;
+    if (caption != null) body['caption'] = caption;
+    
+    return body;
   }
 }
 
@@ -340,6 +471,15 @@ class CatalogMeasurementUnit {
           : null,
       precision: json['precision'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (measurementUnit != null) body['measurement_unit'] = measurementUnit.toJson();
+    if (precision != null) body['precision'] = precision;
+    
+    return body;
   }
 }
 
@@ -379,6 +519,19 @@ class MeasurementUnit {
       genericUnit: json['generic_unit'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (customUnit != null) body['measurement_unit'] = customUnit.toJson();
+    if (areaUnit != null) body['area_unit'] = getStringFromMeasurementUnitArea(areaUnit);
+    if (lengthUnit != null) body['length_unit'] = getStringFromMeasurementUnitLength(lengthUnit);
+    if (volumeUnit != null) body['volume_unit'] = getStringFromMeasurementUnitVolume(volumeUnit);
+    if (weightUnit != null) body['weight_unit'] = getStringFromMeasurementUnitWeight(weightUnit);
+    if (genericUnit != null) body['generic_unit'] = genericUnit;
+    
+    return body;
+  }
 }
 
 class ItemVariationLocationOverride {
@@ -407,6 +560,19 @@ class ItemVariationLocationOverride {
           getInventoryAlertTypeFromString(json['inventory_alert_type']),
       inventoryAlertThreshold: json['inventory_alert_threshold'],
     );
+  }
+  
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (locationId != null) body['location_id'] = locationId;
+    if (priceMoney != null) body['price_money'] = priceMoney.toJson();
+    if (pricingType != null) body['track_inventory'] = getStringFromCatalogPricingType(pricingType);
+    if (trackInventory != null) body['track_inventory'] = trackInventory;
+    if (inventoryAlertType != null) body['inventory_alert_type'] = getStringFromInventoryAlertType(inventoryAlertType);
+    if (inventoryAlertThreshold != null) body['inventory_alert_threshold'] = inventoryAlertThreshold;
+    
+    return body;
   }
 }
 
@@ -437,6 +603,18 @@ class CatalogItemModifierListInfo {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (modifierListId != null) body['modifier_list_id'] = modifierListId;
+    if (modifierOverrides != null) body['modifier_overrides'] = modifierOverrides.map((item) => item.toJson()).toList();
+    if (minSelectedModifiers != null) body['min_selected_modifiers'] = minSelectedModifiers;
+    if (maxSelectedModifiers != null) body['max_selected_modifiers'] = maxSelectedModifiers;
+    if (enabled != null) body['enabled'] = enabled;
+    
+    return body;
+  }
 }
 
 class CatalogModifierOverride {
@@ -454,6 +632,15 @@ class CatalogModifierOverride {
       onByDefault: json['on_by_default'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (modifierId != null) body['modifier_id'] = modifierId;
+    if (onByDefault!= null) body['on_by_default'] = onByDefault;
+    
+    return body;
+  }
 }
 
 class CatalogObjectBatch {
@@ -467,6 +654,14 @@ class CatalogObjectBatch {
           .map((item) => CatalogObject.fromJson(item))
           .toList(),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (objects != null) body['objects'] = objects.map((item) => item.toJson()).toList();
+    
+    return body;
   }
 }
 
@@ -516,6 +711,24 @@ class CatalogInfoResponseLimits {
           json['update_item_modifier_lists_max_modifier_lists_to_disable'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if(batchUpsertMaxObjectsPerBatch != null) body['batch_upsert_max_objects_per_batch'] = batchUpsertMaxObjectsPerBatch;
+    if(batchUpsertMaxTotalObjects != null) body['batch_upsert_max_total_objects'] = batchUpsertMaxTotalObjects;
+    if(batchRetrieveMaxObjectIds != null) body['batch_retrieve_max_object_ids'] = batchRetrieveMaxObjectIds;
+    if(searchMaxPageLimit != null) body['search_max_page_limit'] = searchMaxPageLimit;
+    if(batchDeleteMaxObjectIds != null) body['batch_delete_max_object_ids'] = batchDeleteMaxObjectIds;
+    if(updateItemTaxesMaxItemIds != null) body['update_item_taxes_max_item_ids'] = updateItemTaxesMaxItemIds;
+    if(updateItemTaxesMaxTaxesToEnable != null) body['update_item_taxes_max_taxes_to_enable'] = updateItemTaxesMaxTaxesToEnable;
+    if(updateItemTaxesMaxTaxesToDisable != null) body['update_item_taxes_max_taxes_to_disable'] = updateItemTaxesMaxTaxesToDisable;
+    if(updateItemModifierListsMaxItemIds != null) body['update_item_modifier_lists_max_item_ids'] = updateItemModifierListsMaxItemIds;
+    if(updateItemModifierListsMaxModifierListsToEnable != null) body['update_item_modifier_lists_max_modifier_lists_to_enable'] = updateItemModifierListsMaxModifierListsToEnable;
+    if(updateItemModifierListsMaxModifierListsToDisable != null) body['update_item_modifier_lists_max_modifier_lists_to_disable'] = updateItemModifierListsMaxModifierListsToDisable;
+
+    return body;
+  }
 }
 
 class StandardUnitDescriptionGroup {
@@ -535,6 +748,15 @@ class StandardUnitDescriptionGroup {
       languageCode: json['language_code'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (standardUnitDescriptions != null) body['standard_unit_descriptions'] = standardUnitDescriptions.map((item) => item.toJson()).toList();
+    if (languageCode != null) body['language_code'] = languageCode;
+    
+    return body;
+  }
 }
 
 class StandardUnitDescription {
@@ -552,6 +774,16 @@ class StandardUnitDescription {
       abbreviation: json['abbreviation'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (unit != null) body['unit'] = unit.toJson();
+    if (name!= null) body['name'] = name;
+    if (abbreviation!= null) body['abbreviation'] = abbreviation;
+    
+    return body;
+  }
 }
 
 class MeasurementUnitCustom {
@@ -566,6 +798,15 @@ class MeasurementUnitCustom {
       abbreviation: json['abbreviation'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (name != null) body['name'] = name;
+    if (abbreviation!= null) body['abbreviation'] = abbreviation;
+    
+    return body;
+  }
 }
 
 class CatalogIdMapping {
@@ -579,5 +820,14 @@ class CatalogIdMapping {
       clientObjectId: json['client_object_id'],
       objectId: json['object_id'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (clientObjectId != null) body['client_object_id'] = clientObjectId;
+    if (objectId!= null) body['object_id'] = objectId;
+    
+    return body;
   }
 }

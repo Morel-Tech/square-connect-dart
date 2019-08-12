@@ -36,6 +36,19 @@ class InventoryCount {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
+    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (inventoryState != null) body['state'] = getStringFromInventoryState(inventoryState);
+    if (locationId != null) body['location_id'] = locationId;
+    if (quantity != null) body['quantity'] = quantity.toString();
+    if (calculatedAt != null) body['calculated_at'] = calculatedAt.toString();
+
+    return body;
+  }
 }
 
 class InventoryChange {
@@ -62,6 +75,17 @@ class InventoryChange {
           ? InventoryTransfer.fromJson(json['transfer'])
           : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (type != null) body['type'] = getStringFromInventoryChangeType(type);
+    if (physicalCount != null) body['physical_count'] = physicalCount.toJson();
+    if (adjustment != null) body['adjustment'] = adjustment.toJson();
+    if (transfer != null) body['transfer'] = transfer.toJson();
+
+    return body;
   }
 }
 
@@ -116,6 +140,24 @@ class InventoryPhysicalCount {
           ? DateTime.parse(json['created_at'])
           : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
+    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (state != null) body['state'] = getStringFromInventoryState(state);
+    if (locationId != null) body['location_id'] = locationId;
+    if (quantity != null) body['quantity'] = quantity.toString();
+    if (source != null) body['source'] = source.toJson();
+    if (employeeId != null) body['employee_id'] = employeeId;
+    if (occurredAt != null) body['occurred_at'] = occurredAt.toString();
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+
+    return body;
   }
 }
 
@@ -193,6 +235,30 @@ class InventoryAdjustment {
       goodsReceiptId: json['goods_receipt_id'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (fromState != null) body['from_state'] = getStringFromInventoryState(fromState);
+    if (toState != null) body['to_state'] = getStringFromInventoryState(toState);
+    if (locationId != null) body['location_id'] = locationId;
+    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
+    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (quantity != null) body['quantity'] = quantity.toString();
+    if (totalPriceMoney != null) body['total_price_money'] = totalPriceMoney.toJson();
+    if (occurredAt != null) body['occurred_at'] = occurredAt.toString();
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (source != null) body['source'] = source.toJson();
+    if (employeeId != null) body['employee_id'] = employeeId;
+    if (transactionId != null) body['transaction_id'] = transactionId;
+    if (refundId != null) body['refund_id'] = refundId;
+    if (purchaseOrderId != null) body['purchase_order_id'] = purchaseOrderId;
+    if (goodsReceiptId != null) body['goods_receipt_id'] = goodsReceiptId;
+
+    return body;
+  }
 }
 
 class InventoryTransfer {
@@ -250,6 +316,25 @@ class InventoryTransfer {
       employeeId: json['employee_id'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (state != null) body['state'] = getStringFromInventoryState(state);
+    if (fromLocationId != null) body['from_location_id'] = fromLocationId;
+    if (toLocationId != null) body['to_location_id'] = toLocationId;
+    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
+    if (catalogObjectType != null) body['catalog_object_type'] = getStringFromCatalogObjectType(catalogObjectType);
+    if (quantity != null) body['quantity'] = quantity.toString();
+    if (occurredAt != null) body['occurred_at'] = occurredAt.toString();
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (source != null) body['source'] = source.toJson();
+    if (employeeId != null) body['employee_id'] = employeeId;
+
+    return body;
+  }
 }
 
 class SourceApplication {
@@ -267,5 +352,15 @@ class SourceApplication {
       applicationId: json['application_id'],
       name: json['name'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (product != null) body['product'] = getStringFromProduct(product);
+    if (applicationId != null) body['application_id'] = applicationId;
+    if (name != null) body['name'] = name;
+
+    return body;
   }
 }

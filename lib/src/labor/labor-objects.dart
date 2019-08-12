@@ -41,6 +41,21 @@ class BreakType {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (locationId != null) body['location_id'] = locationId;
+    if (name != null) body['break_name'] = name;
+    if (expectedDuration != null) body['expected_duration'] = durationToString(expectedDuration);
+    if (isPaid != null) body['is_paid'] = isPaid;
+    if (version != null) body['version'] = version;
+    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+
+    return body;
+  }
 }
 
 class Break {
@@ -112,7 +127,7 @@ class Shift {
   final DateTime endAt;
   final ShiftWage wage;
   final List<Break> breaks;
-  final ShiftStatus staus;
+  final ShiftStatus status;
   final int version;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -126,7 +141,7 @@ class Shift {
       this.endAt,
       this.wage,
       this.breaks,
-      this.staus,
+      this.status,
       this.version,
       this.createdAt,
       this.updatedAt});
@@ -146,7 +161,7 @@ class Shift {
               .map((item) => Break.fromJson(item))
               .toList()
           : null,
-      staus: json['status'] != null
+      status: json['status'] != null
           ? getShiftStatusFromString(json['status'])
           : null,
       version: json['version'],
@@ -157,6 +172,25 @@ class Shift {
           ? DateTime.parse(json['updated_at'])
           : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (employeeId != null) body['employee_id'] = employeeId;
+    if (locationId != null) body['location_id'] = locationId;
+    if (timezone != null) body['timezone'] = timezone;
+    if (startAt != null) body['start_at'] = startAt.toString();
+    if (endAt != null) body['end_at'] = endAt.toString();
+    if (wage != null) body['wage'] = wage.toJson();
+    if (breaks != null) body['breaks'] = breaks.map((item) => item.toJson()).toList();
+    if (version != null) body['version'] = version;
+    if (status != null) body['status'] = getStringFromShiftStatus(status);
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
+
+    return body;
   }
 }
 
@@ -217,6 +251,19 @@ class WorkweekConfig {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (startOfWeek != null) body['start_of_week'] = getStringFromDayOfWeek(startOfWeek);
+    if (startOfDayLocalTime != null) body['start_of_day_local_time'] = startOfDayLocalTime.toString();
+    if (version != null) body['version'] = version;
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
+
+    return body;
+  }
 }
 
 class EmployeeWage {
@@ -236,6 +283,17 @@ class EmployeeWage {
           ? Money.fromJson(json['hourly_rate'])
           : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (id != null) body['id'] = id;
+    if (employeeId != null) body['employee_id'] = employeeId;
+    if (title != null) body['title'] = title;
+    if (hourlyRate != null) body['hourly_rate'] = hourlyRate.toJson();
+
+    return body;
   }
 }
 

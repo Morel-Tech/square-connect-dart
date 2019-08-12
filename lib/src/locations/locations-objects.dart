@@ -146,6 +146,35 @@ class Location {
           : null,
     );
   }
+  
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (id != null) body['id'] = id;
+    if (name != null) body['name'] = name;
+    if (address != null) body['address'] = address.toJson();
+    if (timezone != null) body['timezone'] = timezone;
+    if (capabilities != null) body['capabilities'] = capabilities.map((item) => getStringFromLocationCapability(item)).toList();
+    if (locationStatus != null) body['status'] = getStringFromLocationStatus(locationStatus);
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (merchantId != null) body['merchant_id'] = merchantId;
+    if (country != null) body['country'] = country;
+    if (languageCode != null) body['language_code'] = languageCode;
+    if (currency != null) body['currency'] = getStringFromCurrency(currency);
+    if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (businessName != null) body['business_name'] = businessName;
+    if (type != null) body['type'] = getStringFromLocationType(type);
+    if (websiteUrl != null) body['website_url'] = websiteUrl;
+    if (businessHours != null) body['business_hours'] = businessHours.toJson();
+    if (businessEmail != null) body['business_email'] = businessEmail;
+    if (description != null) body['description'] = description;
+    if (twitterUsername != null) body['twitter_username'] = twitterUsername;
+    if (instagramUsername != null) body['instagram_username'] = instagramUsername;
+    if (facebookUrl != null) body['facebook_url'] = facebookUrl;
+    if (coordinates != null) body['coordinates'] = coordinates.toJson();
+
+    return body;
+  }
 }
 
 /// An object representing the full business hours for a location.
@@ -190,6 +219,14 @@ class BusinessHours {
                 .toList()
             : null);
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (periods != null) body['periods'] = periods.map((item) => item.toJson()).toList();
+
+    return body;
+  }
 }
 
 /// An object representing a period of business hours.
@@ -218,6 +255,16 @@ class BusinessHoursPeriod {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (startLocalTime != null) body['start_local_time'] = startLocalTime.toString();
+    if (endLocalTime != null) body['end_local_time'] = endLocalTime.toString();
+    if (dayOfWeek != null) body['day_of_week'] = getStringFromDayOfWeek(dayOfWeek);
+
+    return body;
+  }
 }
 
 class Coordinates {
@@ -231,5 +278,14 @@ class Coordinates {
       latitude: json['latitude'],
       longitude: json['longitude'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (latitude != null) body['latitude'] = latitude;
+    if (longitude != null) body['longitude'] = longitude;
+
+    return body;
   }
 }

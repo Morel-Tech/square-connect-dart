@@ -1,4 +1,5 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/transactions/transactions-enums-converter.dart';
 
 /// An object representing a transaction processed with Square, either with the Connect API or with Square Point of Sale.
 /// The `tenders` field of this object lists all methods of payment used to pay in the transaction.
@@ -50,5 +51,22 @@ class Transaction {
           : null,
       orderId: json['order_id'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (id != null) body['id'] = id;
+    if (locationId != null) body['location_id'] = locationId;
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (tenders != null) body['tenders'] = tenders.map((item) => item.toJson()).toList();
+    if (refunds != null) body['refunds'] = refunds.map((item) => item.toJson()).toList();
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (product != null) body['product'] = getStringFromTransactionProduct(product);
+    if (clientId != null) body['client_id'] = clientId;
+    if (shippingAddress != null) body['shipping_address'] = shippingAddress.toJson();
+    if (orderId != null) body['order_id'] = orderId;
+
+    return body;
   }
 }

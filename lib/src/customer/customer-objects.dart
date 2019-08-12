@@ -110,6 +110,30 @@ class Customer {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
+    if (cards != null) body['cards'] = cards.map((item) => item.toJson()).toList();
+    if (givenName != null) body['given_name'] = givenName;
+    if (familyName != null) body['family_name'] = familyName;
+    if (nickname != null) body['nickname'] = nickname;
+    if (companyName != null) body['company_name'] = companyName;
+    if (emailAddress != null) body['email_address'] = emailAddress;
+    if (address != null) body['address'] = address.toJson();
+    if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (birthday != null) body['birthday'] = birthday.toString();
+    if (referenceId != null) body['reference_id'] = referenceId;
+    if (note != null) body['note'] = note;
+    if (preferences != null) body['preferences'] = preferences.toJson();
+    if (groups != null) body['groups'] = groups.map((item) => item.toJson()).toList();
+    if (creationSource != null) body['creation_source'] = getStringFromCustomerCreationSource(creationSource);
+    
+    return body;
+  }
 }
 
 /// Represents a [Customer]'s card on file
@@ -163,6 +187,21 @@ class Card {
             : null,
         fingerprint: json['fingerprint']);
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (cardBrand != null) body['card_brand'] = getStringFromCardBrand(cardBrand);
+    if (last4 != null) body['last_4'] = last4;
+    if (expMonth != null) body['exp_month'] = expMonth;
+    if (expYear != null) body['exp_year'] = expYear;
+    if (cardholderName != null) body['cardholder_name'] = cardholderName;
+    if (billingAddress != null) body['billing_address'] = billingAddress.toJson();
+    if (fingerprint != null) body['fingerprint'] = fingerprint;
+    
+    return body;
+  }
 }
 
 /// An object representing a [Customer]'s preferences.
@@ -176,6 +215,13 @@ class CustomerPreferences {
     return CustomerPreferences(
       emailUnsubscribed: json['email_unsubscribed'],
     );
+  }
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (emailUnsubscribed != null) body['email_unsubscribed'] = emailUnsubscribed;
+    
+    return body;
   }
 }
 
@@ -194,5 +240,14 @@ class CustomerGroupInfo {
       id: json['id'],
       name: json['name'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+    
+    if (id != null) body['id'] = id;
+    if (name != null) body['name'] = name;
+    
+    return body;
   }
 }

@@ -188,6 +188,7 @@ class Tender {
   final TenderCardDetails cardDetails;
   final TenderCashDetails cashDetails;
   final List<AdditionalRecipient> additionalRecipients;
+  final TenderType type;
 
   Tender(
       {this.id,
@@ -201,7 +202,8 @@ class Tender {
       this.customerId,
       this.cardDetails,
       this.cashDetails,
-      this.additionalRecipients});
+      this.additionalRecipients,
+      this.type});
 
   factory Tender.fromJson(Map<String, dynamic> json) {
     return Tender(
@@ -232,7 +234,30 @@ class Tender {
               .map((item) => AdditionalRecipient.fromJson(item))
               .toList()
           : null,
+      type: json['type'] != null
+        ? getTenderTypeFromString(json['type'])
+        : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (id != null) body['id'] = id;
+    if (locationId != null) body['location_id'] = locationId;
+    if (transactionId != null) body['transaction_id'] = transactionId;
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (note != null) body['note'] = note;
+    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
+    if (tipMoney != null) body['tip_money'] = tipMoney.toJson();
+    if (processingFeeMoney != null) body['processing_fee_money'] = processingFeeMoney.toJson();
+    if (customerId != null) body['customer_id'] = customerId;
+    if (type != null) body['type'] = getStringFromTenderType(type);
+    if (cardDetails != null) body['card_details'] = cardDetails.toJson();
+    if (cashDetails != null) body['cash_details'] = cashDetails.toJson();
+    if (additionalRecipients != null) body['additional_recipients'] = additionalRecipients.map((item) => item.toJson()).toList();
+
+    return body;
   }
 }
 
@@ -255,6 +280,16 @@ class TenderCardDetails {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (status != null) body['precision'] = getStringFromTenderCardDetailsStatus(status);
+    if (card != null) body['precision'] = card.toJson();
+    if (entryMethod != null) body['precision'] = getStringFromTenderCardDetailsEntryMethod(entryMethod);
+
+    return body;
+  }
 }
 
 /// An object representing the details of a tender with `type` `CASH`.
@@ -273,6 +308,15 @@ class TenderCashDetails {
           ? Money.fromJson(json['change_back_money'])
           : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (buyerTenderedMoney != null) body['buyer_tendered_money'] = buyerTenderedMoney.toJson();
+    if (changeBackMoney != null) body['change_back_money'] = changeBackMoney.toJson();
+
+    return body;
   }
 }
 
@@ -358,6 +402,23 @@ class Refund {
           : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (id != null) body['id'] = id;
+    if (locationId != null) body['location_id'] = locationId;
+    if (transactionId != null) body['transaction_id'] = transactionId;
+    if (tenderId != null) body['tender_id'] = tenderId;
+    if (createdAt != null) body['created_at'] = createdAt.toString();
+    if (reason != null) body['reason'] = reason;
+    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
+    if (status != null) body['status'] = getStringFromRefundStatus(status);
+    if (processingFeeMoney != null) body['processing_fee_money'] = processingFeeMoney.toJson();
+    if (additionalRecipients != null) body['additional_recipients'] = additionalRecipients.map((item) => item.toJson()).toList();
+
+    return body;
+  }
 }
 
 class TimeRange {
@@ -378,8 +439,8 @@ class TimeRange {
 
   Map<String, dynamic> toJson() {
     return {
-      'start_at': startAt.toIso8601String(),
-      'end_at': endAt.toIso8601String(),
+      'start_at': startAt.toString(),
+      'end_at': endAt.toString(),
     };
   }
 }

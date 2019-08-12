@@ -865,6 +865,9 @@ class FulfillmentRequest {
   final OrderFulfillmentPickupDetailsScheduleType scheduleType;
   final DateTime pickupAt;
   final String note;
+  final Duration autoCompleteDuration;
+  final Duration pickupWindowDuration;
+  final Duration prepTimeDuration;
 
   FulfillmentRequest(
       {this.fulfillmentType,
@@ -876,7 +879,10 @@ class FulfillmentRequest {
       this.expriesAt,
       this.scheduleType,
       this.pickupAt,
-      this.note});
+      this.note,
+      this.autoCompleteDuration,
+      this.pickupWindowDuration,
+      this.prepTimeDuration,});
 
   Map<String, dynamic> toMap() {
     var body = Map<String, dynamic>();
@@ -905,6 +911,9 @@ class FulfillmentRequest {
     if (pickupAt != null)
       pickupDetails['pickup_at'] = pickupAt.toIso8601String();
     if (note != null) pickupDetails['note'] = note;
+    if (autoCompleteDuration != null) pickupDetails['auto_complete_duration'] = durationToString(autoCompleteDuration);
+    if (pickupWindowDuration != null) pickupDetails['pickup_window_duration'] = durationToString(pickupWindowDuration);
+    if (prepTimeDuration != null) pickupDetails['prep_time_duration'] = durationToString(prepTimeDuration);
 
     body['pickup_details'] = pickupDetails;
 

@@ -655,8 +655,10 @@ class OrderFulfillment {
   final OrderFulfillmentType type;
   final OrderFulfillmentState state;
   final OrderFulfillmentPickupDetails pickupDetails;
+  final OrderFulfillmentShipmentDetails shipmentDetails;
+  final String uid;
 
-  OrderFulfillment({this.type, this.state, this.pickupDetails});
+  OrderFulfillment({this.type, this.state, this.pickupDetails, this.shipmentDetails, this.uid});
 
   factory OrderFulfillment.fromJson(Map<String, dynamic> json) {
     return OrderFulfillment(
@@ -669,6 +671,10 @@ class OrderFulfillment {
       pickupDetails: json['pickup_details'] != null
           ? OrderFulfillmentPickupDetails.fromJson(json['pickup_details'])
           : null,
+      shipmentDetails: json['shipment_details'] != null
+          ? OrderFulfillmentShipmentDetails.fromJson(json['shipment_details'])
+          : null,
+      uid: json['uid'],
     );
   }
 
@@ -679,6 +685,8 @@ class OrderFulfillment {
     if (state != null)
       body['state'] = getStringFromOrderFulfillmentState(state);
     if (pickupDetails != null) body['pickup_details'] = pickupDetails.toJson();
+    if (shipmentDetails != null) body['shipment_details'] = shipmentDetails.toJson();
+    if (uid != null) body['uid'] = uid;
 
     return body;
   }
@@ -796,14 +804,113 @@ class OrderFulfillmentPickupDetails {
   }
 }
 
+class OrderFulfillmentShipmentDetails {
+  final String cancelReason;
+  final DateTime canceledAt;
+  final String carrier;
+  final DateTime expectedShippedAt;
+  final DateTime failedAt;
+  final DateTime failureReason;
+  final DateTime inProgressAt;
+  final DateTime packagedAt;
+  final DateTime placedAt;
+  final OrderFulfillmentRecipient recipient;
+  final DateTime shippedAt;
+  final String shippingNote;
+  final String shippingType;
+  final String trackingNumber;
+  final String trackingUrl;
+
+  OrderFulfillmentShipmentDetails({
+    this.cancelReason,
+    this.canceledAt,
+    this.carrier,
+    this.expectedShippedAt,
+    this.failedAt,
+    this.failureReason,
+    this.inProgressAt,
+    this.packagedAt,
+    this.placedAt,
+    this.recipient,
+    this.shippedAt,
+    this.shippingNote,
+    this.shippingType,
+    this.trackingNumber,
+    this.trackingUrl
+  });
+
+  factory OrderFulfillmentShipmentDetails.fromJson(Map<String, dynamic> json) {
+    return OrderFulfillmentShipmentDetails (
+      cancelReason: json['cancel_reason'],
+      canceledAt: json['canceled_at'] != null
+        ? DateTime.parse(json['canceled_at'])
+        : null,
+      carrier: json['carrier'],
+      expectedShippedAt: json['expected_shipped_at'] != null
+        ? DateTime.parse(json['expected_shipped_at'])
+        : null,
+      failedAt: json['failed_at'] != null
+        ? DateTime.parse(json['failed_at'])
+        : null,
+      failureReason: json['failure_reason'],
+      inProgressAt: json['in_progress_at'] != null
+        ? DateTime.parse(json['in_progress_at'])
+        : null,
+      packagedAt: json['packaged_at'] != null
+        ? DateTime.parse(json['packaged_at'])
+        : null,
+      placedAt: json['placed_at'] != null
+        ? DateTime.parse(json['placed_at'])
+        : null,
+      recipient: json['recipient'] != null
+        ? OrderFulfillmentRecipient.fromJson(json['recipient'])
+        : null,
+      shippedAt: json['shipped_at'] != null
+        ? DateTime.parse(json['shipped_at'])
+        : null,
+      shippingNote: json['shipping_note'],
+      shippingType: json['shipping_type'],
+      trackingNumber: json['tracking_number'],
+      trackingUrl: json['tracking_url'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (cancelReason != null) body['cancel_reason'] = cancelReason;
+    if (canceledAt != null) body['canceled_at'] = canceledAt.toString();
+    if (carrier != null) body['carrier'] = carrier;
+    if (expectedShippedAt != null) body['expected_shipped_at'] = expectedShippedAt.toString();
+    if (failedAt != null) body['failed_at'] = failedAt.toString();
+    if (failureReason != null) body['failure_reason'] = failureReason;
+    if (inProgressAt != null) body['in_progress_at'] = inProgressAt.toString();
+    if (packagedAt != null) body['packaged_at'] = packagedAt.toString();
+    if (placedAt != null) body['placed_at'] = placedAt.toString();
+    if (recipient != null) body['recipient'] = recipient.toJson();
+    if (shippingNote != null) body['shipping_note'] = shippingNote;
+    if (shippingType != null) body['shipping_type'] = shippingType;
+    if (trackingNumber != null) body['tracking_number'] = trackingNumber;
+    if (trackingUrl != null) body['tracking_url'] = trackingUrl;
+
+    return body;
+  }
+}
+
 class OrderFulfillmentRecipient {
   final String customerId;
   final String displayName;
   final String emailAddress;
   final String phoneNumber;
+  final Address address;
 
-  OrderFulfillmentRecipient(
-      {this.customerId, this.displayName, this.emailAddress, this.phoneNumber});
+  OrderFulfillmentRecipient({
+      this.customerId,
+      this.displayName,
+      this.emailAddress,
+      this.phoneNumber,
+      this.address
+    });
 
   factory OrderFulfillmentRecipient.fromJson(Map<String, dynamic> json) {
     return OrderFulfillmentRecipient(
@@ -811,6 +918,9 @@ class OrderFulfillmentRecipient {
       displayName: json['display_name'],
       emailAddress: json['email_address'],
       phoneNumber: json['phone_number'],
+      address: json['address'] != null
+        ? Address.fromJson(json['address'])
+        : null,
     );
   }
 
@@ -821,6 +931,7 @@ class OrderFulfillmentRecipient {
     if (displayName != null) body['display_name'] = displayName;
     if (emailAddress != null) body['email_address'] = emailAddress;
     if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (address != null) body['address'] = address.toJson();
 
     return body;
   }
@@ -890,6 +1001,7 @@ class OrderLineItemObjectRequest {
   }
 }
 
+/// Deprecated method
 class FulfillmentRequest {
   final OrderFulfillmentType fulfillmentType;
   final OrderFulfillmentState fulfillmentState;

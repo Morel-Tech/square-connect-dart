@@ -76,6 +76,7 @@ enum OrderServiceChargeCalculationPhase {
 /// The type of fulfillment.
 enum OrderFulfillmentType {
   pickup,
+  shipment,
 }
 
 /// The state of the fulfillment.

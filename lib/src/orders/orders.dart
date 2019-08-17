@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/helper-classes.dart';
@@ -235,5 +236,71 @@ class OrdersApi {
     var response = await obj.makeCall();
     return SearchOrdersResponse.fromJson(json.decode(response.body));
   }
-}
 
+Future<PayOrderResponse> payOrder({
+    @required String orderId,
+    String idempotencyKey,
+    int orderVersion,
+    List<String> paymentIds,
+  }) async {
+    if (orderId == null) throw ArgumentError('orderId must not be null');
+
+    var body = Map<String, dynamic>();
+    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
+    if (orderVersion != null) body['order_version'] = orderVersion;
+    if (paymentIds != null) body['payment_ids'] = paymentIds;
+
+    var obj = RequestObj(
+      token: _token,
+      path: '/v2/orders/$orderId/pay',
+      method: RequestMethod.post,
+      client: _client,
+      body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
+    );
+
+    var response = await obj.makeCall();
+    return PayOrderResponse.fromJson(json.decode(response.body));
+  }
+
+Future<UpdateOrderResponse> updateOrder({
+    @required String orderId,
+    String idempotencyKey,
+    int version,
+    @required String locationId,
+    Order sparseOrder,
+    List<String> fieldsToClear,
+  }) async {
+    if (orderId == null) throw ArgumentError('orderId must not be null');
+    if (locationId == null) throw ArgumentError('locationId must not be null');
+
+    Order updatedOrder;
+
+    if (version != null) {
+      var json = sparseOrder.toJson();
+      json['version'] = version;
+      updatedOrder = Order.fromJson(json);
+    }
+
+    var body = Map<String, dynamic>();
+    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
+    if (fieldsToClear != null) body['fields_to_clear'] = fieldsToClear;
+    if (updatedOrder != null) body['order'] = updatedOrder ?? sparseOrder;
+
+    var obj = RequestObj(
+      token: _token,
+      path: '/v2/locations/$locationId/orders/$orderId',
+      method: RequestMethod.post,
+      client: _client,
+      body: body,
+      refreshToken: _refreshToken,
+      clientId: _clientId,
+      clientSecret: _clientSecret,
+    );
+
+    var response = await obj.makeCall();
+    return UpdateOrderResponse.fromJson(json.decode(response.body));
+  }
+}

@@ -221,4 +221,16 @@ class SquareConnect {
     return InventoryApi(
         _authToken, _client, _refreshToken, _clientId, _clientSecret);
   }
+
+  /// Getter for Payments API methods.
+  PaymentsApi get paymentsApi {
+    return PaymentsApi(
+        _authToken, _client, _refreshToken, _clientId, _clientSecret);
+  }
+
+  /// Getter for Refunds API methods.
+  RefundsApi get refundsApi {
+    return RefundsApi(
+        _authToken, _client, _refreshToken, _clientId, _clientSecret);
+  }
 }

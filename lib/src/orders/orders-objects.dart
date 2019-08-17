@@ -894,9 +894,15 @@ class OrderFulfillmentRecipient {
   final String displayName;
   final String emailAddress;
   final String phoneNumber;
+  final Address address;
 
-  OrderFulfillmentRecipient(
-      {this.customerId, this.displayName, this.emailAddress, this.phoneNumber});
+  OrderFulfillmentRecipient({
+      this.customerId,
+      this.displayName,
+      this.emailAddress,
+      this.phoneNumber,
+      this.address
+    });
 
   factory OrderFulfillmentRecipient.fromJson(Map<String, dynamic> json) {
     return OrderFulfillmentRecipient(
@@ -904,6 +910,9 @@ class OrderFulfillmentRecipient {
       displayName: json['display_name'],
       emailAddress: json['email_address'],
       phoneNumber: json['phone_number'],
+      address: json['address'] != null
+        ? Address.fromJson(json['address'])
+        : null,
     );
   }
 
@@ -914,6 +923,7 @@ class OrderFulfillmentRecipient {
     if (displayName != null) body['display_name'] = displayName;
     if (emailAddress != null) body['email_address'] = emailAddress;
     if (phoneNumber != null) body['phone_number'] = phoneNumber;
+    if (address != null) body['address'] = address.toJson();
 
     return body;
   }

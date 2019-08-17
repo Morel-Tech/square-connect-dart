@@ -80,6 +80,7 @@ String getStringFromOrderServiceChargeCalculationPhase(
 
 const _mapStringtoOrderFulfillmentType = {
   'PICKUP': OrderFulfillmentType.pickup,
+  'SHIPMENT': OrderFulfillmentType.shipment,
 };
 
 OrderFulfillmentType getOrderFulfillmentTypeFromString(String input) =>

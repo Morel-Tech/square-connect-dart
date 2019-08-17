@@ -1001,6 +1001,7 @@ class OrderLineItemObjectRequest {
   }
 }
 
+/// Deprecated method
 class FulfillmentRequest {
   final OrderFulfillmentType fulfillmentType;
   final OrderFulfillmentState fulfillmentState;

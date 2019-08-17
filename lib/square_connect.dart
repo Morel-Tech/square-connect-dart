@@ -15,6 +15,8 @@ import 'package:square_connect/src/labor/labor.dart';
 import 'package:square_connect/src/locations/locations.dart';
 import 'package:square_connect/src/orders/orders.dart';
 import 'package:square_connect/src/transactions/transactions.dart';
+import 'package:square_connect/src/payments/payments.dart';
+import 'package:square_connect/src/refunds/refunds.dart';
 
 export 'package:square_connect/src/catalog/catalog-return-objects.dart';
 export 'package:square_connect/src/catalog/catalog-objects.dart';
@@ -55,6 +57,16 @@ export 'package:square_connect/src/inventory/inventory-return-objects.dart';
 export 'package:square_connect/src/inventory/inventory-objects.dart';
 export 'package:square_connect/src/inventory/inventory-enums.dart';
 export 'package:square_connect/src/inventory/inventory.dart';
+
+export 'package:square_connect/src/payments/payments-return-objects.dart';
+export 'package:square_connect/src/payments/payments-objects.dart';
+export 'package:square_connect/src/payments/payments-enums.dart';
+export 'package:square_connect/src/payments/payments.dart';
+
+export 'package:square_connect/src/refunds/refunds-return-objects.dart';
+export 'package:square_connect/src/refunds/refunds-objects.dart';
+export 'package:square_connect/src/refunds/refunds-enums.dart';
+export 'package:square_connect/src/refunds/refunds.dart';
 
 export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';

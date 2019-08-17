@@ -168,9 +168,20 @@ class SquareError {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    var body = Map<String, dynamic>();
+
+    if (category != null) body['category'] = getStringFromErrorCategory(category);
+    if (code != null) body['code'] = code;
+    if (detail != null) body['detail'] = detail;
+    if (field != null) body['field'] = field;
+
+    return body;
+  }
+
   @override
   String toString() {
-    return 'ERROR OF TYPE ${getStringFromErrorCategory(category)}: $code on field $field \n\n\t Detail: $detail';
+    return 'ERROR OF TYPE ${getStringFromErrorCategory(category)}: $code on field $field\nDetail: $detail';
   }
 }
 
@@ -357,78 +368,6 @@ class AdditionalRecipient {
   }
 }
 
-/// An object representing a refund processed for a Square transaction.
-class Refund {
-  final String id;
-  final String locationId;
-  final String transactionId;
-  final String tenderId;
-  final DateTime createdAt;
-  final String reason;
-  final Money amountMoney;
-  final RefundStatus status;
-  final Money processingFeeMoney;
-  final List<AdditionalRecipient> additionalRecipients;
-
-  Refund(
-      {this.id,
-      this.locationId,
-      this.transactionId,
-      this.tenderId,
-      this.createdAt,
-      this.reason,
-      this.amountMoney,
-      this.status,
-      this.processingFeeMoney,
-      this.additionalRecipients});
-
-  factory Refund.fromJson(Map<String, dynamic> json) {
-    return Refund(
-      id: json['id'],
-      locationId: json['location_id'],
-      transactionId: json['transaction_id'],
-      tenderId: json['tender_id'],
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : null,
-      reason: json['reason'],
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      status: json['status'] != null
-          ? getRefundStatusFromString(json['status'])
-          : null,
-      processingFeeMoney: json['processing_fee_money'] != null
-          ? Money.fromJson(json['processing_fee_money'])
-          : null,
-      additionalRecipients: json['additional_recipients'] != null
-          ? (json['additional_recipients'] as List)
-              .map((item) => AdditionalRecipient.fromJson(item))
-              .toList()
-          : null,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
-
-    if (id != null) body['id'] = id;
-    if (locationId != null) body['location_id'] = locationId;
-    if (transactionId != null) body['transaction_id'] = transactionId;
-    if (tenderId != null) body['tender_id'] = tenderId;
-    if (createdAt != null) body['created_at'] = createdAt.toString();
-    if (reason != null) body['reason'] = reason;
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (status != null) body['status'] = getStringFromRefundStatus(status);
-    if (processingFeeMoney != null)
-      body['processing_fee_money'] = processingFeeMoney.toJson();
-    if (additionalRecipients != null)
-      body['additional_recipients'] =
-          additionalRecipients.map((item) => item.toJson()).toList();
-
-    return body;
-  }
-}
 
 class TimeRange {
   final DateTime startAt;

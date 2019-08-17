@@ -26,7 +26,8 @@ class OrdersApi {
     List<OrderLineItemObjectRequest> items,
     List<String> taxIds,
     List<String> discountIds,
-    FulfillmentRequest fulfillment,
+    FulfillmentRequest fulfillmentRequest,
+    OrderFulfillment fulfillment,
   }) async {
     var body = Map<String, dynamic>();
     body['idempotency_key'] = Uuid().v4();
@@ -43,7 +44,8 @@ class OrdersApi {
     if (discountIds != null)
       order['discounts'] =
           discountIds.map((taxId) => {'catalog_object_id': taxId}).toList();
-    if (fulfillment != null) order['fulfillments'] = [fulfillment.toMap()];
+    if (fulfillmentRequest != null) order['fulfillments'] = [fulfillmentRequest.toMap()];
+    if (fulfillment != null) order['fulfillments'] = [fulfillment.toJson()];
     body['order'] = order;
 
     var obj = RequestObj(
@@ -234,3 +236,4 @@ class OrdersApi {
     return SearchOrdersResponse.fromJson(json.decode(response.body));
   }
 }
+

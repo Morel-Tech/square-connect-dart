@@ -41,7 +41,7 @@ class Refund {
           ? Money.fromJson(json['amount_money'])
           : null,
       status: json['status'] != null
-          ? getRefundStatusFromString(json['status'])
+          ? getPaymentRefundStatusFromString(json['status'])
           : null,
       processingFeeMoney: json['processing_fee_money'] != null
           ? Money.fromJson(json['processing_fee_money'])
@@ -64,7 +64,7 @@ class Refund {
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (reason != null) body['reason'] = reason;
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (status != null) body['status'] = getStringFromRefundStatus(status);
+    if (status != null) body['status'] = getStringFromPaymentRefundStatus(status);
     if (processingFeeMoney != null)
       body['processing_fee_money'] = processingFeeMoney.toJson();
     if (additionalRecipients != null)
@@ -122,7 +122,7 @@ class PaymentRefund {
         : null,
       reason: json['reason'],
       status: json['status'] != null
-        ? getRefundStatusFromString(json['status'])
+        ? getPaymentRefundStatusFromString(json['status'])
         : null,
       updatedAt: json['updated_at'] != null
         ? DateTime.parse(json['updated_at'])
@@ -142,7 +142,7 @@ class PaymentRefund {
     if (paymentId != null) body['payment_id'] = paymentId;
     if (processingFee != null) body['processing_fee'] = processingFee.map((item) => item.toJson()).toList();
     if (reason != null) body['reason'] = reason;
-    if (status != null) body['status'] = getStringFromRefundStatus(status);
+    if (status != null) body['status'] = getStringFromPaymentRefundStatus(status);
     if (updatedAt != null) body['updated_at'] = updatedAt;
 
     return body;

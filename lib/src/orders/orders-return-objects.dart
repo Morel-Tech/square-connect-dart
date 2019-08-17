@@ -106,3 +106,55 @@ class SearchOrdersResponse extends ApiResponse {
     );
   }
 }
+
+/// The response to the `payOrder()` method in [OrdersApi].
+class PayOrderResponse extends ApiResponse {
+  /// The list of errors if any exist.
+  final List<SquareError> errors;
+
+  /// The paid and updated [Order].
+  final Order order;
+
+  PayOrderResponse(
+      {this.errors,
+      this.order});
+
+  factory PayOrderResponse.fromJson(Map<String, dynamic> json) {
+    return PayOrderResponse(
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      order: json['orders'] != null
+          ? Order.fromJson(json['order'])
+          : null,
+    );
+  }
+}
+
+/// The response to the `updateOrder()` method in [OrdersApi].
+class UpdateOrderResponse extends ApiResponse {
+  /// The list of errors if any exist.
+  final List<SquareError> errors;
+
+  /// The updated [Order].
+  final Order order;
+
+  UpdateOrderResponse(
+      {this.errors,
+      this.order});
+
+  factory UpdateOrderResponse.fromJson(Map<String, dynamic> json) {
+    return UpdateOrderResponse(
+      errors: json['errors'] != null
+          ? (json['errors'] as List)
+              .map((error) => SquareError.fromJson(error))
+              .toList()
+          : null,
+      order: json['orders'] != null
+          ? Order.fromJson(json['order'])
+          : null,
+    );
+  }
+}

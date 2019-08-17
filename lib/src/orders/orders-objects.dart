@@ -27,6 +27,7 @@ class Order {
   final Money totalTaxMoney;
   final Money totalDiscountMoney;
   final Money totalServiceChargeMoney;
+  final int version;
 
   Order({
     this.id,
@@ -53,6 +54,7 @@ class Order {
     this.tenders,
     this.refunds,
     this.returns,
+    this.version,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
@@ -134,6 +136,7 @@ class Order {
               .map((item) => OrderReturn.fromJson(item))
               .toList()
           : null,
+      version: json['version'],
     );
   }
 
@@ -176,6 +179,7 @@ class Order {
       body['total_discount_money'] = totalDiscountMoney.toJson();
     if (totalServiceChargeMoney != null)
       body['total_service_charge_money'] = totalServiceChargeMoney.toJson();
+    if (version != null) body['version'] = version;
 
     return body;
   }
@@ -184,13 +188,15 @@ class Order {
 class OrderEntry {
   final String orderId;
   final String locationId;
+  final int version;
 
-  OrderEntry({this.orderId, this.locationId});
+  OrderEntry({this.orderId, this.locationId, this.version});
 
   factory OrderEntry.fromJson(Map<String, dynamic> json) {
     return OrderEntry(
       orderId: json['order_id'],
       locationId: json['location_id'],
+      version: json['version'],
     );
   }
 
@@ -199,6 +205,7 @@ class OrderEntry {
 
     if (orderId != null) body['order_id'] = orderId;
     if (locationId != null) body['location_id'] = locationId;
+    if (version != null) body['version'] = version;
 
     return body;
   }

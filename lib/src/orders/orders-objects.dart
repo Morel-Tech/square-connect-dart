@@ -655,8 +655,10 @@ class OrderFulfillment {
   final OrderFulfillmentType type;
   final OrderFulfillmentState state;
   final OrderFulfillmentPickupDetails pickupDetails;
+  final OrderFulfillmentShipmentDetails shipmentDetails;
+  final String uid;
 
-  OrderFulfillment({this.type, this.state, this.pickupDetails});
+  OrderFulfillment({this.type, this.state, this.pickupDetails, this.shipmentDetails, this.uid});
 
   factory OrderFulfillment.fromJson(Map<String, dynamic> json) {
     return OrderFulfillment(
@@ -669,6 +671,10 @@ class OrderFulfillment {
       pickupDetails: json['pickup_details'] != null
           ? OrderFulfillmentPickupDetails.fromJson(json['pickup_details'])
           : null,
+      shipmentDetails: json['shipment_details'] != null
+          ? OrderFulfillmentShipmentDetails.fromJson(json['shipment_details'])
+          : null,
+      uid: json['uid'],
     );
   }
 
@@ -679,6 +685,8 @@ class OrderFulfillment {
     if (state != null)
       body['state'] = getStringFromOrderFulfillmentState(state);
     if (pickupDetails != null) body['pickup_details'] = pickupDetails.toJson();
+    if (shipmentDetails != null) body['shipment_details'] = shipmentDetails.toJson();
+    if (uid != null) body['uid'] = uid;
 
     return body;
   }

@@ -11,7 +11,7 @@ class Refund {
   final DateTime createdAt;
   final String reason;
   final Money amountMoney;
-  final RefundStatus status;
+  final PaymentRefundStatus status;
   final Money processingFeeMoney;
   final List<AdditionalRecipient> additionalRecipients;
 
@@ -85,7 +85,7 @@ class PaymentRefund {
   final String paymentId;
   final List<ProcessingFee> processingFee;
   final String reason;
-  final RefundStatus status;
+  final PaymentRefundStatus status;
   final DateTime updatedAt;
 
   PaymentRefund({

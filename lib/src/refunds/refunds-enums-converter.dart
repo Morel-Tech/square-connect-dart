@@ -1,14 +1,14 @@
 import 'package:square_connect/square_connect.dart';
 
 const _mapStringtoRefundStatus = {
-  'PENDING': RefundStatus.pending,
-  'APPROVED': RefundStatus.approved,
-  'REJECTED': RefundStatus.rejected,
-  'FAILED': RefundStatus.failed,
+  'PENDING': PaymentRefundStatus.pending,
+  'APPROVED': PaymentRefundStatus.approved,
+  'REJECTED': PaymentRefundStatus.rejected,
+  'FAILED': PaymentRefundStatus.failed,
 };
 
-RefundStatus getRefundStatusFromString(String input) =>
+PaymentRefundStatus getRefundStatusFromString(String input) =>
     _mapStringtoRefundStatus[input];
-String getStringFromRefundStatus(RefundStatus input) =>
+String getStringFromRefundStatus(PaymentRefundStatus input) =>
     _mapStringtoRefundStatus.keys
         .singleWhere((value) => _mapStringtoRefundStatus[value] == input);

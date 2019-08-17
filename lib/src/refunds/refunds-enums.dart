@@ -1,5 +1,5 @@
 /// Indicates a refund's current status.
-enum RefundStatus {
+enum PaymentRefundStatus {
   /// The refund is pending.
   pending,
 

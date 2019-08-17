@@ -77,19 +77,6 @@ String getStringFromTenderCardDetailsEntryMethod(
     _mapStringtoTenderCardDetailsEntryMethod.keys.singleWhere(
         (value) => _mapStringtoTenderCardDetailsEntryMethod[value] == input);
 
-const _mapStringtoRefundStatus = {
-  'PENDING': RefundStatus.pending,
-  'APPROVED': RefundStatus.approved,
-  'REJECTED': RefundStatus.rejected,
-  'FAILED': RefundStatus.failed,
-};
-
-RefundStatus getRefundStatusFromString(String input) =>
-    _mapStringtoRefundStatus[input];
-String getStringFromRefundStatus(RefundStatus input) =>
-    _mapStringtoRefundStatus.keys
-        .singleWhere((value) => _mapStringtoRefundStatus[value] == input);
-
 const _mapStringtoDayOfWeek = {
   'SUN': DayOfWeek.sunday,
   'MON': DayOfWeek.monday,

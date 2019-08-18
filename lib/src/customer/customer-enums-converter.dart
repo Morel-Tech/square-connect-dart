@@ -1,4 +1,5 @@
 import 'package:square_connect/square_connect.dart';
+import 'package:square_in_app_payments/models.dart' as inapp;
 
 const _mapStringtoCardBrand = {
   'OTHER_BRAND': CardBrand.otherBrand,
@@ -15,6 +16,21 @@ const _mapStringtoCardBrand = {
 CardBrand getCardBrandFromString(String input) => _mapStringtoCardBrand[input];
 String getStringFromCardBrand(CardBrand input) => _mapStringtoCardBrand.keys
     .singleWhere((value) => _mapStringtoCardBrand[value] == input);
+
+const _mapCardBrandToInAppCardBrand = {
+  CardBrand.otherBrand: inapp.Brand.otherBrand,
+  CardBrand.visa: inapp.Brand.visa,
+  CardBrand.mastercard: inapp.Brand.mastercard,
+  CardBrand.americanExpress: inapp.Brand.americanExpress,
+  CardBrand.discover: inapp.Brand.discover,
+  CardBrand.discoverDiners: inapp.Brand.discoverDiners,
+  CardBrand.jcb: inapp.Brand.jcb,
+  CardBrand.chinaUnionpay: inapp.Brand.chinaUnionPay,
+};
+
+inapp.Brand getInAppCardBrandFromCardBrand(CardBrand input) => _mapCardBrandToInAppCardBrand[input];
+CardBrand getCardBrandFromInAppCardBrand(inapp.Brand input) => _mapCardBrandToInAppCardBrand.keys
+    .singleWhere((value) => _mapCardBrandToInAppCardBrand[value] == input);
 
 const _mapStringtoCustomerCreationSource = {
   'OTHER': CustomerCreationSource.other,

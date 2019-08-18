@@ -45,7 +45,8 @@ class OrdersApi {
     if (discountIds != null)
       order['discounts'] =
           discountIds.map((taxId) => {'catalog_object_id': taxId}).toList();
-    if (fulfillmentRequest != null) order['fulfillments'] = [fulfillmentRequest.toMap()];
+    if (fulfillmentRequest != null)
+      order['fulfillments'] = [fulfillmentRequest.toMap()];
     if (fulfillment != null) order['fulfillments'] = [fulfillment.toJson()];
     body['order'] = order;
 
@@ -237,7 +238,7 @@ class OrdersApi {
     return SearchOrdersResponse.fromJson(json.decode(response.body));
   }
 
-Future<PayOrderResponse> payOrder({
+  Future<PayOrderResponse> payOrder({
     @required String orderId,
     String idempotencyKey,
     int orderVersion,
@@ -246,7 +247,8 @@ Future<PayOrderResponse> payOrder({
     if (orderId == null) throw ArgumentError('orderId must not be null');
 
     var body = Map<String, dynamic>();
-    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
+    if (idempotencyKey != null)
+      body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
     if (orderVersion != null) body['order_version'] = orderVersion;
     if (paymentIds != null) body['payment_ids'] = paymentIds;
 
@@ -265,7 +267,7 @@ Future<PayOrderResponse> payOrder({
     return PayOrderResponse.fromJson(json.decode(response.body));
   }
 
-Future<UpdateOrderResponse> updateOrder({
+  Future<UpdateOrderResponse> updateOrder({
     @required String orderId,
     String idempotencyKey,
     int version,
@@ -285,7 +287,8 @@ Future<UpdateOrderResponse> updateOrder({
     }
 
     var body = Map<String, dynamic>();
-    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
+    if (idempotencyKey != null)
+      body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
     if (fieldsToClear != null) body['fields_to_clear'] = fieldsToClear;
     if (updatedOrder != null) body['order'] = updatedOrder ?? sparseOrder;
 

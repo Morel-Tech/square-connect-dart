@@ -51,9 +51,8 @@ class CreatePaymentResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      payment: json['payments'] != null
-          ? Payment.fromJson(json['payments'])
-          : null,
+      payment:
+          json['payments'] != null ? Payment.fromJson(json['payments']) : null,
     );
   }
 }
@@ -65,7 +64,8 @@ class CancelPaymentByIdempotencyKeyResponse extends ApiResponse {
 
   CancelPaymentByIdempotencyKeyResponse({this.errors});
 
-  factory CancelPaymentByIdempotencyKeyResponse.fromJson(Map<String, dynamic> json) {
+  factory CancelPaymentByIdempotencyKeyResponse.fromJson(
+      Map<String, dynamic> json) {
     return CancelPaymentByIdempotencyKeyResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -94,9 +94,8 @@ class GetPaymentResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      payment: json['payments'] != null
-          ? Payment.fromJson(json['payments'])
-          : null,
+      payment:
+          json['payments'] != null ? Payment.fromJson(json['payments']) : null,
     );
   }
 }
@@ -119,9 +118,8 @@ class CancelPaymentResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      payment: json['payments'] != null
-          ? Payment.fromJson(json['payments'])
-          : null,
+      payment:
+          json['payments'] != null ? Payment.fromJson(json['payments']) : null,
     );
   }
 }
@@ -144,9 +142,8 @@ class CompletePaymentResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      payment: json['payments'] != null
-          ? Payment.fromJson(json['payments'])
-          : null,
+      payment:
+          json['payments'] != null ? Payment.fromJson(json['payments']) : null,
     );
   }
 }

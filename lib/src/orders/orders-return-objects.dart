@@ -115,9 +115,7 @@ class PayOrderResponse extends ApiResponse {
   /// The paid and updated [Order].
   final Order order;
 
-  PayOrderResponse(
-      {this.errors,
-      this.order});
+  PayOrderResponse({this.errors, this.order});
 
   factory PayOrderResponse.fromJson(Map<String, dynamic> json) {
     return PayOrderResponse(
@@ -126,9 +124,7 @@ class PayOrderResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      order: json['orders'] != null
-          ? Order.fromJson(json['order'])
-          : null,
+      order: json['orders'] != null ? Order.fromJson(json['order']) : null,
     );
   }
 }
@@ -141,9 +137,7 @@ class UpdateOrderResponse extends ApiResponse {
   /// The updated [Order].
   final Order order;
 
-  UpdateOrderResponse(
-      {this.errors,
-      this.order});
+  UpdateOrderResponse({this.errors, this.order});
 
   factory UpdateOrderResponse.fromJson(Map<String, dynamic> json) {
     return UpdateOrderResponse(
@@ -152,9 +146,7 @@ class UpdateOrderResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      order: json['orders'] != null
-          ? Order.fromJson(json['order'])
-          : null,
+      order: json['orders'] != null ? Order.fromJson(json['order']) : null,
     );
   }
 }

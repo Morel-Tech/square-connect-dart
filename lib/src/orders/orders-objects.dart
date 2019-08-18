@@ -665,7 +665,12 @@ class OrderFulfillment {
   final OrderFulfillmentShipmentDetails shipmentDetails;
   final String uid;
 
-  OrderFulfillment({this.type, this.state, this.pickupDetails, this.shipmentDetails, this.uid});
+  OrderFulfillment(
+      {this.type,
+      this.state,
+      this.pickupDetails,
+      this.shipmentDetails,
+      this.uid});
 
   factory OrderFulfillment.fromJson(Map<String, dynamic> json) {
     return OrderFulfillment(
@@ -692,7 +697,8 @@ class OrderFulfillment {
     if (state != null)
       body['state'] = getStringFromOrderFulfillmentState(state);
     if (pickupDetails != null) body['pickup_details'] = pickupDetails.toJson();
-    if (shipmentDetails != null) body['shipment_details'] = shipmentDetails.toJson();
+    if (shipmentDetails != null)
+      body['shipment_details'] = shipmentDetails.toJson();
     if (uid != null) body['uid'] = uid;
 
     return body;
@@ -828,53 +834,50 @@ class OrderFulfillmentShipmentDetails {
   final String trackingNumber;
   final String trackingUrl;
 
-  OrderFulfillmentShipmentDetails({
-    this.cancelReason,
-    this.canceledAt,
-    this.carrier,
-    this.expectedShippedAt,
-    this.failedAt,
-    this.failureReason,
-    this.inProgressAt,
-    this.packagedAt,
-    this.placedAt,
-    this.recipient,
-    this.shippedAt,
-    this.shippingNote,
-    this.shippingType,
-    this.trackingNumber,
-    this.trackingUrl
-  });
+  OrderFulfillmentShipmentDetails(
+      {this.cancelReason,
+      this.canceledAt,
+      this.carrier,
+      this.expectedShippedAt,
+      this.failedAt,
+      this.failureReason,
+      this.inProgressAt,
+      this.packagedAt,
+      this.placedAt,
+      this.recipient,
+      this.shippedAt,
+      this.shippingNote,
+      this.shippingType,
+      this.trackingNumber,
+      this.trackingUrl});
 
   factory OrderFulfillmentShipmentDetails.fromJson(Map<String, dynamic> json) {
-    return OrderFulfillmentShipmentDetails (
+    return OrderFulfillmentShipmentDetails(
       cancelReason: json['cancel_reason'],
       canceledAt: json['canceled_at'] != null
-        ? DateTime.parse(json['canceled_at'])
-        : null,
+          ? DateTime.parse(json['canceled_at'])
+          : null,
       carrier: json['carrier'],
       expectedShippedAt: json['expected_shipped_at'] != null
-        ? DateTime.parse(json['expected_shipped_at'])
-        : null,
-      failedAt: json['failed_at'] != null
-        ? DateTime.parse(json['failed_at'])
-        : null,
+          ? DateTime.parse(json['expected_shipped_at'])
+          : null,
+      failedAt:
+          json['failed_at'] != null ? DateTime.parse(json['failed_at']) : null,
       failureReason: json['failure_reason'],
       inProgressAt: json['in_progress_at'] != null
-        ? DateTime.parse(json['in_progress_at'])
-        : null,
+          ? DateTime.parse(json['in_progress_at'])
+          : null,
       packagedAt: json['packaged_at'] != null
-        ? DateTime.parse(json['packaged_at'])
-        : null,
-      placedAt: json['placed_at'] != null
-        ? DateTime.parse(json['placed_at'])
-        : null,
+          ? DateTime.parse(json['packaged_at'])
+          : null,
+      placedAt:
+          json['placed_at'] != null ? DateTime.parse(json['placed_at']) : null,
       recipient: json['recipient'] != null
-        ? OrderFulfillmentRecipient.fromJson(json['recipient'])
-        : null,
+          ? OrderFulfillmentRecipient.fromJson(json['recipient'])
+          : null,
       shippedAt: json['shipped_at'] != null
-        ? DateTime.parse(json['shipped_at'])
-        : null,
+          ? DateTime.parse(json['shipped_at'])
+          : null,
       shippingNote: json['shipping_note'],
       shippingType: json['shipping_type'],
       trackingNumber: json['tracking_number'],
@@ -888,7 +891,8 @@ class OrderFulfillmentShipmentDetails {
     if (cancelReason != null) body['cancel_reason'] = cancelReason;
     if (canceledAt != null) body['canceled_at'] = canceledAt.toString();
     if (carrier != null) body['carrier'] = carrier;
-    if (expectedShippedAt != null) body['expected_shipped_at'] = expectedShippedAt.toString();
+    if (expectedShippedAt != null)
+      body['expected_shipped_at'] = expectedShippedAt.toString();
     if (failedAt != null) body['failed_at'] = failedAt.toString();
     if (failureReason != null) body['failure_reason'] = failureReason;
     if (inProgressAt != null) body['in_progress_at'] = inProgressAt.toString();
@@ -911,13 +915,12 @@ class OrderFulfillmentRecipient {
   final String phoneNumber;
   final Address address;
 
-  OrderFulfillmentRecipient({
-      this.customerId,
+  OrderFulfillmentRecipient(
+      {this.customerId,
       this.displayName,
       this.emailAddress,
       this.phoneNumber,
-      this.address
-    });
+      this.address});
 
   factory OrderFulfillmentRecipient.fromJson(Map<String, dynamic> json) {
     return OrderFulfillmentRecipient(
@@ -925,9 +928,8 @@ class OrderFulfillmentRecipient {
       displayName: json['display_name'],
       emailAddress: json['email_address'],
       phoneNumber: json['phone_number'],
-      address: json['address'] != null
-        ? Address.fromJson(json['address'])
-        : null,
+      address:
+          json['address'] != null ? Address.fromJson(json['address']) : null,
     );
   }
 

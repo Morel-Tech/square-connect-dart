@@ -82,8 +82,6 @@ enum TenderCardDetailsEntryMethod {
   contactless,
 }
 
-
-
 /// Indicates a day of a 7 day week.
 enum DayOfWeek {
   sunday,

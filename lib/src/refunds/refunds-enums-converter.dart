@@ -10,5 +10,5 @@ const _mapStringtoPaymentRefundStatus = {
 PaymentRefundStatus getPaymentRefundStatusFromString(String input) =>
     _mapStringtoPaymentRefundStatus[input];
 String getStringFromPaymentRefundStatus(PaymentRefundStatus input) =>
-    _mapStringtoPaymentRefundStatus.keys
-        .singleWhere((value) => _mapStringtoPaymentRefundStatus[value] == input);
+    _mapStringtoPaymentRefundStatus.keys.singleWhere(
+        (value) => _mapStringtoPaymentRefundStatus[value] == input);

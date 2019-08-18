@@ -32,5 +32,5 @@ const _mapStringtoBalancePaymentStatus = {
 BalancePaymentStatus getBalancePaymentStatusFromString(String input) =>
     _mapStringtoBalancePaymentStatus[input];
 String getStringFromBalancePaymentStatus(BalancePaymentStatus input) =>
-    _mapStringtoBalancePaymentStatus.keys
-        .singleWhere((value) => _mapStringtoBalancePaymentStatus[value] == input);
+    _mapStringtoBalancePaymentStatus.keys.singleWhere(
+        (value) => _mapStringtoBalancePaymentStatus[value] == input);

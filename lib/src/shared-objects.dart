@@ -171,7 +171,8 @@ class SquareError {
   Map<String, dynamic> toJson() {
     var body = Map<String, dynamic>();
 
-    if (category != null) body['category'] = getStringFromErrorCategory(category);
+    if (category != null)
+      body['category'] = getStringFromErrorCategory(category);
     if (code != null) body['code'] = code;
     if (detail != null) body['detail'] = detail;
     if (field != null) body['field'] = field;
@@ -367,7 +368,6 @@ class AdditionalRecipient {
     };
   }
 }
-
 
 class TimeRange {
   final DateTime startAt;

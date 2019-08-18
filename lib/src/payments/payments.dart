@@ -32,12 +32,14 @@ class PaymentsApi {
     var queryParams = [
       if (beginTime != null) QueryParam('begin_time', beginTime.toString()),
       if (endTime != null) QueryParam('end_time', endTime.toString()),
-      if (sortOrder != null) QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
+      if (sortOrder != null)
+        QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
       if (cursor != null) QueryParam('cursor', cursor),
       if (locationId != null) QueryParam('location_id', locationId),
       if (total != null) QueryParam('total', total.toString()),
       if (last4 != null) QueryParam('last_4', last4),
-      if (cardBrand != null) QueryParam('card_brand', getStringFromCardBrand(cardBrand)),
+      if (cardBrand != null)
+        QueryParam('card_brand', getStringFromCardBrand(cardBrand)),
     ];
 
     var obj = RequestObj(
@@ -76,21 +78,27 @@ class PaymentsApi {
     var body = Map<String, dynamic>();
 
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
+    if (idempotencyKey != null)
+      body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
     if (sourceId != null) body['source_id'] = sourceId;
-    if (acceptPartialAuthorization != null) body['accept_partial_authorization'] = acceptPartialAuthorization;
+    if (acceptPartialAuthorization != null)
+      body['accept_partial_authorization'] = acceptPartialAuthorization;
     if (appFeeMoney != null) body['app_fee_money'] = appFeeMoney.toJson();
     if (autocomplete != null) body['autocomplete'] = autocomplete;
-    if (billingAddress != null) body['billing_address'] = billingAddress.toJson();
-    if (buyerEmailAddress != null) body['buyer_email_address'] = buyerEmailAddress;
+    if (billingAddress != null)
+      body['billing_address'] = billingAddress.toJson();
+    if (buyerEmailAddress != null)
+      body['buyer_email_address'] = buyerEmailAddress;
     if (customerId != null) body['customer_id'] = customerId;
     if (locationid != null) body['location_id'] = locationid;
     if (note != null) body['note'] = note;
     if (orderId != null) body['order_id'] = orderId;
     if (referenceId != null) body['reference_id'] = referenceId;
-    if (shippingAddress != null) body['shipping_address'] = shippingAddress.toJson();
+    if (shippingAddress != null)
+      body['shipping_address'] = shippingAddress.toJson();
     if (tipMoney != null) body['tip_money'] = tipMoney.toJson();
-    if (verificationToken != null) body['verification_token'] = verificationToken;
+    if (verificationToken != null)
+      body['verification_token'] = verificationToken;
 
     var obj = RequestObj(
       token: _token,
@@ -110,7 +118,8 @@ class PaymentsApi {
   Future<CancelPaymentByIdempotencyKeyResponse> cancelPaymentByIdempotencyKey({
     @required String idempotencyKey,
   }) async {
-    if (idempotencyKey == null) throw ArgumentError('in this method, idempotencyKey must not be null');
+    if (idempotencyKey == null)
+      throw ArgumentError('in this method, idempotencyKey must not be null');
 
     var body = Map<String, dynamic>();
 
@@ -128,13 +137,14 @@ class PaymentsApi {
     );
 
     var response = await obj.makeCall();
-    return CancelPaymentByIdempotencyKeyResponse.fromJson(json.decode(response.body));
+    return CancelPaymentByIdempotencyKeyResponse.fromJson(
+        json.decode(response.body));
   }
 
   Future<GetPaymentResponse> getPayment({
     @required String paymentId,
   }) async {
-  if (paymentId == null) throw ArgumentError('paymentId must not be null');
+    if (paymentId == null) throw ArgumentError('paymentId must not be null');
 
     var obj = RequestObj(
       token: _token,

@@ -1,4 +1,3 @@
-
 import 'package:square_connect/square_connect.dart';
 import 'package:square_connect/src/refunds/refunds-enums-converter.dart';
 
@@ -64,7 +63,8 @@ class Refund {
     if (createdAt != null) body['created_at'] = createdAt.toString();
     if (reason != null) body['reason'] = reason;
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (status != null) body['status'] = getStringFromPaymentRefundStatus(status);
+    if (status != null)
+      body['status'] = getStringFromPaymentRefundStatus(status);
     if (processingFeeMoney != null)
       body['processing_fee_money'] = processingFeeMoney.toJson();
     if (additionalRecipients != null)
@@ -88,45 +88,46 @@ class PaymentRefund {
   final PaymentRefundStatus status;
   final DateTime updatedAt;
 
-  PaymentRefund({
-    this.id,
-    this.amountMoney,
-    this.appFeeMoney,
-    this.createdAt,
-    this.locationId,
-    this.orderId,
-    this.paymentId,
-    this.processingFee,
-    this.reason,
-    this.status,
-    this.updatedAt
-  });
+  PaymentRefund(
+      {this.id,
+      this.amountMoney,
+      this.appFeeMoney,
+      this.createdAt,
+      this.locationId,
+      this.orderId,
+      this.paymentId,
+      this.processingFee,
+      this.reason,
+      this.status,
+      this.updatedAt});
 
   factory PaymentRefund.fromJson(Map<String, dynamic> json) {
-    return PaymentRefund (
+    return PaymentRefund(
       id: json['id'],
       amountMoney: json['amount_money'] != null
-        ? Money.fromJson(json['amount_money'])
-        : null,
+          ? Money.fromJson(json['amount_money'])
+          : null,
       appFeeMoney: json['app_fee_money'] != null
-        ? Money.fromJson(json['app_fee_money'])
-        : null,
+          ? Money.fromJson(json['app_fee_money'])
+          : null,
       createdAt: json['created_at'] != null
-        ? DateTime.parse(json['created_at'])
-        : null,
+          ? DateTime.parse(json['created_at'])
+          : null,
       locationId: json['location_id'],
       orderId: json['order_id'],
       paymentId: json['payment_id'],
       processingFee: json['processing_fee'] != null
-        ? (json['processing_fee'] as List).map((item) => ProcessingFee.fromJson(item)).toList()
-        : null,
+          ? (json['processing_fee'] as List)
+              .map((item) => ProcessingFee.fromJson(item))
+              .toList()
+          : null,
       reason: json['reason'],
       status: json['status'] != null
-        ? getPaymentRefundStatusFromString(json['status'])
-        : null,
+          ? getPaymentRefundStatusFromString(json['status'])
+          : null,
       updatedAt: json['updated_at'] != null
-        ? DateTime.parse(json['updated_at'])
-        : null,
+          ? DateTime.parse(json['updated_at'])
+          : null,
     );
   }
 
@@ -140,9 +141,12 @@ class PaymentRefund {
     if (locationId != null) body['location_id'] = locationId;
     if (orderId != null) body['order_id'] = orderId;
     if (paymentId != null) body['payment_id'] = paymentId;
-    if (processingFee != null) body['processing_fee'] = processingFee.map((item) => item.toJson()).toList();
+    if (processingFee != null)
+      body['processing_fee'] =
+          processingFee.map((item) => item.toJson()).toList();
     if (reason != null) body['reason'] = reason;
-    if (status != null) body['status'] = getStringFromPaymentRefundStatus(status);
+    if (status != null)
+      body['status'] = getStringFromPaymentRefundStatus(status);
     if (updatedAt != null) body['updated_at'] = updatedAt;
 
     return body;

@@ -1,3 +1,11 @@
+## 0.2.5
+*  Added Refunds API and Payments API
+    * Initial implementation. Still needs documentation and tests.
+* Added changes to Orders API from 8/14 update
+    * Added `payOrder()` and `updateOrder()` methods, as well as shippment fulfillemnt type.
+* **BREAKING CHANGE:** Deprecated `FulfillmentRequest` and renamed input in `createOrder()` to `fulfillemntRequest`. `fulfillment` property now refers to a `OrderFulfillment` object.
+* Added a `Card` factory method from In App Payments `Card`.
+
 ## 0.2.4
 *  Added toJson() methods to every data object so they can easily be saved in formats that require simple maps, such as Cloud Firestore. Can be converted back with fromJson().
 *  Added autoCompleteDuration, prepTimeDuration, and pickupWindowDuration to FulfillmentRequest.

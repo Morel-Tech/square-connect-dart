@@ -31,10 +31,12 @@ class RefundsApi {
     var queryParams = [
       if (beginTime != null) QueryParam('begin_time', beginTime.toString()),
       if (endTime != null) QueryParam('end_time', endTime.toString()),
-      if (sortOrder != null) QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
+      if (sortOrder != null)
+        QueryParam('sort_order', getStringFromSortOrder(sortOrder)),
       if (cursor != null) QueryParam('cursor', cursor),
       if (locationId != null) QueryParam('location_id', locationId),
-      if (status != null) QueryParam('status', getStringFromPaymentRefundStatus(status)),
+      if (status != null)
+        QueryParam('status', getStringFromPaymentRefundStatus(status)),
       if (sourceType != null) QueryParam('source_type', sourceType),
     ];
 
@@ -60,12 +62,14 @@ class RefundsApi {
     String paymentId,
     String reason,
   }) async {
-    if (amountMoney == null) throw ArgumentError('amountMoney must not be null');
+    if (amountMoney == null)
+      throw ArgumentError('amountMoney must not be null');
 
     var body = Map<String, dynamic>();
 
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (idempotencyKey != null) body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
+    if (idempotencyKey != null)
+      body['idempotency_key'] = idempotencyKey ?? Uuid().v4();
     if (appFeeMoney != null) body['app_fee_money'] = appFeeMoney.toJson();
     if (paymentId != null) body['payment_id'] = paymentId;
     if (reason != null) body['reason'] = reason;
@@ -103,5 +107,4 @@ class RefundsApi {
     var response = await obj.makeCall();
     return GetPaymentRefundResponse.fromJson(json.decode(response.body));
   }
-
 }

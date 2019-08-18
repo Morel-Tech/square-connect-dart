@@ -28,9 +28,11 @@ const _mapCardBrandToInAppCardBrand = {
   CardBrand.chinaUnionpay: inapp.Brand.chinaUnionPay,
 };
 
-inapp.Brand getInAppCardBrandFromCardBrand(CardBrand input) => _mapCardBrandToInAppCardBrand[input];
-CardBrand getCardBrandFromInAppCardBrand(inapp.Brand input) => _mapCardBrandToInAppCardBrand.keys
-    .singleWhere((value) => _mapCardBrandToInAppCardBrand[value] == input);
+inapp.Brand getInAppCardBrandFromCardBrand(CardBrand input) =>
+    _mapCardBrandToInAppCardBrand[input];
+CardBrand getCardBrandFromInAppCardBrand(inapp.Brand input) =>
+    _mapCardBrandToInAppCardBrand.keys
+        .singleWhere((value) => _mapCardBrandToInAppCardBrand[value] == input);
 
 const _mapStringtoCustomerCreationSource = {
   'OTHER': CustomerCreationSource.other,

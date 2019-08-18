@@ -41,8 +41,10 @@ class RefundPaymentResponse extends ApiResponse {
   /// The newly created [PaymentRefund].
   final PaymentRefund refund;
 
-  RefundPaymentResponse({this.errors, this.refund,})
-      : assert(xor(errors == null, refund == null));
+  RefundPaymentResponse({
+    this.errors,
+    this.refund,
+  }) : assert(xor(errors == null, refund == null));
 
   factory RefundPaymentResponse.fromJson(Map<String, dynamic> json) {
     return RefundPaymentResponse(
@@ -66,8 +68,10 @@ class GetPaymentRefundResponse extends ApiResponse {
   /// The retrieved [PaymentRefund].
   final PaymentRefund refund;
 
-  GetPaymentRefundResponse({this.errors, this.refund,})
-      : assert(xor(errors == null, refund == null));
+  GetPaymentRefundResponse({
+    this.errors,
+    this.refund,
+  }) : assert(xor(errors == null, refund == null));
 
   factory GetPaymentRefundResponse.fromJson(Map<String, dynamic> json) {
     return GetPaymentRefundResponse(

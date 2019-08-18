@@ -3,7 +3,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/mtwichel/square-connect-flutter-library)
 # Square Connect Flutter
 
-This project is a wip extending the Square Connect APIs. You can learn more about them here https://developer.squareup.com/docs/api/connect/v2. At the moment, the CatalogAPI, CustomersAPI, LocationsAPI, OrdersAPI, TransactionsAPI, and EmployeesAPI are implemented.
+This project is a wip extending the Square Connect APIs. You can learn more about them here https://developer.squareup.com/docs/api/connect/v2.
 
 ## Getting Started
 
@@ -115,6 +115,11 @@ Method | Description
 `batchDeleteCatalogObjects(objectIds)` | Batch deletes catalog objects from list of ids.
 `getCatalogInfo()` | Gets metadata about catalog.
 `searchCatalogObjects(various inputs)` | Seaches catalog objects in a variety of ways. See documentation.
+`batchUpsertCatalogObjects(batches)` | Creates or updates catalog objects in bulk.
+`batchRetrieveCatalogObjects(objectIds, includeRelatedObjects)` | Retrieves Catalog Objects in bulk.
+`upsertCatalogObject(object)` | Creates or updates a catalog object.
+`updateItemModifierLists(itemIds, modifierListsToEnable, modifierListsToDisable)` | Seaches catalog objects in a variety of ways. See documentation.
+`updateItemTaxes(itemIds, taxesToEnable, taxesToDisable)` | Updates the taxes that apply to an item.
 
 ## Customer API (SquareConnect.customerApi)
 Method | Description
@@ -133,14 +138,70 @@ Method | Description
 --- | ---
 `listLocations()` | Lists all a merchant's locations.
 
-## Orders API (SquareConnect.locationsApi)
+## Orders API (SquareConnect.ordersApi)
 Method | Description
 --- | ---
 `createOrder(various inputs)` | Creates and order from Catalog ids. Custom line items not yet supported.
 `searchOrders(various inputs)` | Searches for orders with different filter and sorting options.
 `batchRetrieveOrders(locationId, orderIds)` | Retrieves one or more orders given their Order ID.
+`updateOrder(various inputs)` | Updates an order given a Order Id and version.
+`payOrder(various inputs)` | Pays for an order with either multiple payment ids or a 0 balance.
 
-## Transactions API (SquareConnect.locationsApi)
+## Payments API (SquareConnect.paymentsApi)
+Method | Description
+--- | ---
+`listPayments(various inputs)` | Lists payments meeting certain crieteria.
+`createPayment(various inputs)` | Creates and optionally processes a payment from card on file or in app payments sdk.
+`cancelPaymentByIdempotencyKey(idempotencyKey)` | Cancels a payment by given idempotency key.
+`getPayment(paymentId)` | Retrieves a payment given its id.
+`cancelPayment(paymentId)` | Cancels a payment given its id.
+`completePayment(paymentId)` | Completes a payment given its id.
+
+## Refunds API (SquareConnect.refundsApi)
+Method | Description
+--- | ---
+`listPaymentRefunds(various inputs)` | Lists payment refunds meeting certain crieteria.
+`refundPayment(various inputs)` | Refunds a payment given a payment id and amounts to refund.
+`getPaymentRefund(paymentRefundId)` | Retrieves a payment refund given its id.
+
+## Employees API (SquareConnect.employeesApi)
+Method | Description
+--- | ---
+`listEmployees(locationId, status, limit, cursor,)` | Gets a list of `Employee` objects for a business.
+`retrieveEmployee(employeeId)` | Gets an `Employee` from Employee Id.
+
+## Inventory API (SquareConnect.inventoryApi)
+Method | Description
+--- | ---
+`batchChangeInventory(various inputs)` | Changes the inventory of multiple items in bulk.
+`batchRetrieveInventoryChanges(various inputs)` | Retrieves inventory changes in bulk from various inputs.
+`batchRetrieveInventoryCounts(various inputs)` | Retrieves inventory counts in bulk from various inputs.
+`retrieveInventoryAdjustment(adjustmentId)` | Retrieves an inventory adjustment given its id.
+`retrieveInventoryChanges(catalogObjectId, locationIds)` | Retrieves inventory changes to a catalog object given its id some locations.
+`retrieveInventoryCount(catalogObjectId, locationIds)` | Retrieves inventory counts for a catalog object given its id some locations.
+`retrieveInventoryPhysicalCount(catalogObjectId, locationIds)` | Retrieves inventory counts for a catalog object given its id some locations.
+
+## Labor API (SquareConnect.laborApi)
+Method | Description
+--- | ---
+`createBreakType(various inputs)` | Creates a break type.
+`createShift(various inputs)` | Creates a shift for an employee.
+`deleteBreakType(breakTypeId)` | Deletes a break type by its id.
+`deleteShift(shiftId)` | Deletes a shift by its id.
+`getBreakType(breakTypeId)` | Retrieves a break type by its id.
+`getEmployeeWage(employeeWageId)` | Retrieves an employee wage by its id.
+`getShift(shiftId)` | Retrieves a shift by its id.
+`listBreakTypes(various inputs)` | Lists the break types at a location.
+`listEmployeeWages(various inputs)` | Lists the employee wages for an employee.
+`listWorkweekConfigs(limit, cursor)` | Lists the workweek configs for a business.
+`seachShifts(various inputs)` | Searches for shifts based on the inputs.
+`updateBreakType(various inputs)` | Updates a break type by its id.
+`updateShift(various inputs)` | Updates a shift by its id.
+`updateWorkweekConfig(various inputs)` | Updates a workweek config based on its id.
+
+
+## Transactions API (SquareConnect.transactionsApi)
+### NOTE: This set of APIs has been deprecated by Square.
 Method | Description
 --- | ---
 `captureTransaction(locationId, transactionId)` | Fully processes `Transaction` when `deloyCapture` is set to true in the `charge()` method.
@@ -150,9 +211,3 @@ Method | Description
 `listTransactions(various inputs)` | Lists transactions for a particular location.
 `retrieveTransaction(locationId, transactionId)` | Retrieves details for a single transaction.
 `listRefunds(various inputs)` | Cancels a `Transaction` that was created with the `charge()` method with a `delayCapture` value of `true`.
-
-## Employees API (SquareConnect.locationsApi)
-Method | Description
---- | ---
-`listEmployees(locationId, status, limit, cursor,)` | Gets a list of `Employee` objects for a business.
-`retrieveEmployee(employeeId)` | Gets an `Employee` from Employee Id.

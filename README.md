@@ -199,7 +199,6 @@ Method | Description
 `updateShift(various inputs)` | Updates a shift by its id.
 `updateWorkweekConfig(various inputs)` | Updates a workweek config based on its id.
 
-
 ## Transactions API (SquareConnect.transactionsApi)
 ### NOTE: This set of APIs has been deprecated by Square.
 Method | Description

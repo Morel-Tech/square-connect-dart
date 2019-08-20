@@ -51,16 +51,10 @@ class RequestObj {
     return _baseUrl + path + getParamListString(queryParams);
   }
 
-  get postHeaders {
-    return {
-      'Authorization': 'Bearer ' + this.token,
-      'Content-Type': 'application/json'
-    };
-  }
-
   get headers {
     return {
       'Authorization': 'Bearer ' + this.token,
+      'Content-Type': 'application/json'
     };
   }
 
@@ -80,12 +74,12 @@ class RequestObj {
           return client.get(this.url, headers: this.headers);
         case RequestMethod.post:
           return client.post(this.url,
-              headers: this.postHeaders, body: json.encode(this.body));
+              headers: this.headers, body: json.encode(this.body));
         case RequestMethod.delete:
           return client.delete(url, headers: this.headers);
         case RequestMethod.put:
           return client.put(this.url,
-              headers: this.postHeaders, body: json.encode(this.body));
+              headers: this.headers, body: json.encode(this.body));
         default:
           throw ArgumentError('Method is unsuported');
       }

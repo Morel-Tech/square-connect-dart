@@ -1,3 +1,6 @@
+## 0.2.5+1
+*  Fixed bug in UpdateOrder
+
 ## 0.2.5
 *  Added Refunds API and Payments API
     * Initial implementation. Still needs documentation and tests.

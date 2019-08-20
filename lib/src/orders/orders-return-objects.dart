@@ -124,7 +124,7 @@ class PayOrderResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      order: json['orders'] != null ? Order.fromJson(json['order']) : null,
+      order: json['order'] != null ? Order.fromJson(json['order']) : null,
     );
   }
 }
@@ -146,7 +146,7 @@ class UpdateOrderResponse extends ApiResponse {
               .map((error) => SquareError.fromJson(error))
               .toList()
           : null,
-      order: json['orders'] != null ? Order.fromJson(json['order']) : null,
+      order: json['order'] != null ? Order.fromJson(json['order']) : null,
     );
   }
 }

@@ -295,7 +295,7 @@ class OrdersApi {
     var obj = RequestObj(
       token: _token,
       path: '/v2/locations/$locationId/orders/$orderId',
-      method: RequestMethod.post,
+      method: RequestMethod.put,
       client: _client,
       body: body,
       refreshToken: _refreshToken,

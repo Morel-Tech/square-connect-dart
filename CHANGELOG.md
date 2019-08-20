@@ -1,3 +1,6 @@
+## 0.2.5+3
+*  Fixed bug in UpdateOrder - changed from POST request to PUT
+
 ## 0.2.5+2
 *  Fixed bug in UpdateOrder
 

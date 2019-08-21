@@ -1,3 +1,6 @@
+## 0.2.5+4
+*  Fixed bug in CatalogItem
+
 ## 0.2.5+3
 *  Fixed bug in UpdateOrder - changed from POST request to PUT
 

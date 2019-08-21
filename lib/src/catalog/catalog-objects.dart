@@ -164,7 +164,7 @@ class CatalogItem {
       availableForPickup: json['available_for_pickup'],
       availableElectronically: json['available_electronically'],
       categoryId: json['category_id'],
-      taxIds: json['tax_ids'] != null ? List<String>.of(json['tax_ids']) : null,
+      taxIds: json['tax_ids'] != null ? List<String>.from(json['tax_ids']) : null,
       modifierListInfo: (json['modifier_list_info'] as List)
           .map((item) => CatalogItemModifierListInfo.fromJson(item))
           .toList(),

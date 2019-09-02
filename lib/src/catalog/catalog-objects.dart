@@ -165,13 +165,13 @@ class CatalogItem {
       availableElectronically: json['available_electronically'],
       categoryId: json['category_id'],
       taxIds: json['tax_ids'] != null ? List<String>.from(json['tax_ids']) : null,
-      modifierListInfo: (json['modifier_list_info'] as List)
+      modifierListInfo: json['modifier_list_info'] != null  ? (json['modifier_list_info'] as List)
           .map((item) => CatalogItemModifierListInfo.fromJson(item))
-          .toList(),
-      variations: (json['variations'] as List)
+          .toList() : null,
+      variations: json['variations'] != null ? (json['variations'] as List)
           .map((item) => CatalogObject.fromJson(item))
-          .toList(),
-      productType: getCatalogItemProductTypeFromString(json['product_type']),
+          .toList() : null,
+      productType: json['product_type'] != null ? getCatalogItemProductTypeFromString(json['product_type']) : null,
       skipModifierScreen: json['skip_modifier_screen'],
     );
   }
@@ -586,11 +586,11 @@ class ItemVariationLocationOverride {
   factory ItemVariationLocationOverride.fromJson(Map<String, dynamic> json) {
     return ItemVariationLocationOverride(
       locationId: json['location_id'],
-      priceMoney: Money.fromJson(json['price_money']),
-      pricingType: getCatalogPricingTypeFromString(json['pricingType']),
+      priceMoney: json['price_money'] != null ? Money.fromJson(json['price_money']) : null,
+      pricingType: json['pricing_type'] != null ? getCatalogPricingTypeFromString(json['pricing_type']) : null,
       trackInventory: json['track_inventory'],
-      inventoryAlertType:
-          getInventoryAlertTypeFromString(json['inventory_alert_type']),
+      inventoryAlertType:json['inventory_alert_type'] != null ?
+          getInventoryAlertTypeFromString(json['inventory_alert_type']) : null,
       inventoryAlertThreshold: json['inventory_alert_threshold'],
     );
   }

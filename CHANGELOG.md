@@ -1,4 +1,8 @@
 ## 0.2.5+4
+* Fixed some bugs in Payments API
+* Removed InApp payments (and all realted converter methods) from this project as it was causing configuration problems.
+
+## 0.2.5+4
 *  Fixed bug in CatalogItem
 
 ## 0.2.5+3

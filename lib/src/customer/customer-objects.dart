@@ -1,6 +1,5 @@
 import 'package:square_connect/src/customer/customer-enums-converter.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_in_app_payments/models.dart' as inapp;
 
 /// An object representing a customer identity. The Customer's id field is used throught the apis.
 class Customer {
@@ -208,16 +207,6 @@ class Card {
     if (fingerprint != null) body['fingerprint'] = fingerprint;
 
     return body;
-  }
-
-  factory Card.fromInAppPaymentsCard(inapp.Card card) {
-    return Card(
-      last4: card.lastFourDigits,
-      expMonth: card.expirationMonth,
-      expYear: card.expirationYear,
-      cardBrand: getCardBrandFromInAppCardBrand(card.brand),
-      billingAddress: Address(postalCode: card.postalCode),
-    );
   }
 }
 

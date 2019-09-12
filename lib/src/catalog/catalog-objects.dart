@@ -164,14 +164,21 @@ class CatalogItem {
       availableForPickup: json['available_for_pickup'],
       availableElectronically: json['available_electronically'],
       categoryId: json['category_id'],
-      taxIds: json['tax_ids'] != null ? List<String>.from(json['tax_ids']) : null,
-      modifierListInfo: json['modifier_list_info'] != null  ? (json['modifier_list_info'] as List)
-          .map((item) => CatalogItemModifierListInfo.fromJson(item))
-          .toList() : null,
-      variations: json['variations'] != null ? (json['variations'] as List)
-          .map((item) => CatalogObject.fromJson(item))
-          .toList() : null,
-      productType: json['product_type'] != null ? getCatalogItemProductTypeFromString(json['product_type']) : null,
+      taxIds:
+          json['tax_ids'] != null ? List<String>.from(json['tax_ids']) : null,
+      modifierListInfo: json['modifier_list_info'] != null
+          ? (json['modifier_list_info'] as List)
+              .map((item) => CatalogItemModifierListInfo.fromJson(item))
+              .toList()
+          : null,
+      variations: json['variations'] != null
+          ? (json['variations'] as List)
+              .map((item) => CatalogObject.fromJson(item))
+              .toList()
+          : null,
+      productType: json['product_type'] != null
+          ? getCatalogItemProductTypeFromString(json['product_type'])
+          : null,
       skipModifierScreen: json['skip_modifier_screen'],
     );
   }
@@ -586,11 +593,16 @@ class ItemVariationLocationOverride {
   factory ItemVariationLocationOverride.fromJson(Map<String, dynamic> json) {
     return ItemVariationLocationOverride(
       locationId: json['location_id'],
-      priceMoney: json['price_money'] != null ? Money.fromJson(json['price_money']) : null,
-      pricingType: json['pricing_type'] != null ? getCatalogPricingTypeFromString(json['pricing_type']) : null,
+      priceMoney: json['price_money'] != null
+          ? Money.fromJson(json['price_money'])
+          : null,
+      pricingType: json['pricing_type'] != null
+          ? getCatalogPricingTypeFromString(json['pricing_type'])
+          : null,
       trackInventory: json['track_inventory'],
-      inventoryAlertType:json['inventory_alert_type'] != null ?
-          getInventoryAlertTypeFromString(json['inventory_alert_type']) : null,
+      inventoryAlertType: json['inventory_alert_type'] != null
+          ? getInventoryAlertTypeFromString(json['inventory_alert_type'])
+          : null,
       inventoryAlertThreshold: json['inventory_alert_threshold'],
     );
   }

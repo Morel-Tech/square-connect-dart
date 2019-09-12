@@ -1,4 +1,4 @@
-## 0.2.5+4
+## 0.2.6
 * Fixed some bugs in Payments API
 * Removed InApp payments (and all realted converter methods) from this project as it was causing configuration problems.
 

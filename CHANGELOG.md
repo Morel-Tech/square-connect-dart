@@ -1,3 +1,6 @@
+## 1.0.1
+* Removing Android and iOS folder as they aren't needed for this package.
+
 ## 1.0.0
 * **Big Changes in Direction on Package**, so I'm designating 1.0.0.
 * I suggest you read the updated readme, but TL;DR

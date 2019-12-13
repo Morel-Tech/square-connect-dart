@@ -1,9 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:mockito/mockito.dart';
 
 import 'square_connect_test.dart';
 

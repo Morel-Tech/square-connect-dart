@@ -1,3 +1,13 @@
+## 1.0.0
+* **Big Changes in Direction on Package**, so I'm designating 1.0.0.
+* I suggest you read the updated readme, but TL;DR
+    * There were some serious security concerns from Square on previous package implementation around storing your API key on the device. It belongs on a server you control.
+    * There is now no support for calling API functions directly from this package
+    * This also means no support for creating an instance of the API.
+    * It's primary purpose is a library of native Dart objects that mirror the conceptual objects used in the Square API.
+    * You can create these objects by specifiying `ObjectName.fromJson(response)`
+* If you have feedback on these changes, feel free to create an issue on https://github.com/mtwichel/square-connect-flutter-library/issues, or send them to marcust@citybrew.com
+
 ## 0.2.6
 * Fixed some bugs in Payments API
 * Removed InApp payments (and all realted converter methods) from this project as it was causing configuration problems.

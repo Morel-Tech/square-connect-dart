@@ -1,3 +1,6 @@
+## 1.0.2
+* Changed all Map<String, dynamic> to Map<dynaimc, dynamic> to reduce errors from JSON decoding
+
 ## 1.0.1
 * Removing Android and iOS folder as they aren't needed for this package.
 

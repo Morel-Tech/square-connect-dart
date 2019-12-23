@@ -145,7 +145,8 @@ class RetrieveInventoryChangesResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory RetrieveInventoryChangesResponse.fromJson(Map<dynamic, dynamic> json) {
+  factory RetrieveInventoryChangesResponse.fromJson(
+      Map<dynamic, dynamic> json) {
     return RetrieveInventoryChangesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

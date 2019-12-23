@@ -26,7 +26,7 @@ class Refund {
       this.processingFeeMoney,
       this.additionalRecipients});
 
-  factory Refund.fromJson(Map<String, dynamic> json) {
+  factory Refund.fromJson(Map<dynamic, dynamic> json) {
     return Refund(
       id: json['id'],
       locationId: json['location_id'],
@@ -53,8 +53,8 @@ class Refund {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;
@@ -101,7 +101,7 @@ class PaymentRefund {
       this.status,
       this.updatedAt});
 
-  factory PaymentRefund.fromJson(Map<String, dynamic> json) {
+  factory PaymentRefund.fromJson(Map<dynamic, dynamic> json) {
     return PaymentRefund(
       id: json['id'],
       amountMoney: json['amount_money'] != null
@@ -131,8 +131,8 @@ class PaymentRefund {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();

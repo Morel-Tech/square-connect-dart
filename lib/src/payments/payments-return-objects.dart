@@ -16,7 +16,7 @@ class ListPaymentsResponse extends ApiResponse {
   ListPaymentsResponse({this.errors, this.payments, this.cursor})
       : assert(xor(errors == null, payments == null));
 
-  factory ListPaymentsResponse.fromJson(Map<String, dynamic> json) {
+  factory ListPaymentsResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListPaymentsResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -44,7 +44,7 @@ class CreatePaymentResponse extends ApiResponse {
   CreatePaymentResponse({this.errors, this.payment})
       : assert(xor(errors == null, payment == null));
 
-  factory CreatePaymentResponse.fromJson(Map<String, dynamic> json) {
+  factory CreatePaymentResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreatePaymentResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -65,7 +65,7 @@ class CancelPaymentByIdempotencyKeyResponse extends ApiResponse {
   CancelPaymentByIdempotencyKeyResponse({this.errors});
 
   factory CancelPaymentByIdempotencyKeyResponse.fromJson(
-      Map<String, dynamic> json) {
+      Map<dynamic, dynamic> json) {
     return CancelPaymentByIdempotencyKeyResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -87,7 +87,7 @@ class GetPaymentResponse extends ApiResponse {
   GetPaymentResponse({this.errors, this.payment})
       : assert(xor(errors == null, payment == null));
 
-  factory GetPaymentResponse.fromJson(Map<String, dynamic> json) {
+  factory GetPaymentResponse.fromJson(Map<dynamic, dynamic> json) {
     return GetPaymentResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -111,7 +111,7 @@ class CancelPaymentResponse extends ApiResponse {
   CancelPaymentResponse({this.errors, this.payment})
       : assert(xor(errors == null, payment == null));
 
-  factory CancelPaymentResponse.fromJson(Map<String, dynamic> json) {
+  factory CancelPaymentResponse.fromJson(Map<dynamic, dynamic> json) {
     return CancelPaymentResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -135,7 +135,7 @@ class CompletePaymentResponse extends ApiResponse {
   CompletePaymentResponse({this.errors, this.payment})
       : assert(xor(errors == null, payment == null));
 
-  factory CompletePaymentResponse.fromJson(Map<String, dynamic> json) {
+  factory CompletePaymentResponse.fromJson(Map<dynamic, dynamic> json) {
     return CompletePaymentResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

@@ -16,7 +16,7 @@ class ListPaymentRefundsResponse extends ApiResponse {
   ListPaymentRefundsResponse({this.errors, this.refunds, this.cursor})
       : assert(xor(errors == null, refunds == null));
 
-  factory ListPaymentRefundsResponse.fromJson(Map<String, dynamic> json) {
+  factory ListPaymentRefundsResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListPaymentRefundsResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -46,7 +46,7 @@ class RefundPaymentResponse extends ApiResponse {
     this.refund,
   }) : assert(xor(errors == null, refund == null));
 
-  factory RefundPaymentResponse.fromJson(Map<String, dynamic> json) {
+  factory RefundPaymentResponse.fromJson(Map<dynamic, dynamic> json) {
     return RefundPaymentResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -73,7 +73,7 @@ class GetPaymentRefundResponse extends ApiResponse {
     this.refund,
   }) : assert(xor(errors == null, refund == null));
 
-  factory GetPaymentRefundResponse.fromJson(Map<String, dynamic> json) {
+  factory GetPaymentRefundResponse.fromJson(Map<dynamic, dynamic> json) {
     return GetPaymentRefundResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

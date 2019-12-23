@@ -16,7 +16,7 @@ class CreateMobileAuthorizationCodeResponse extends ApiResponse {
       {this.error, this.authorizationCode, this.expiresAt});
 
   factory CreateMobileAuthorizationCodeResponse.fromJson(
-      Map<String, dynamic> json) {
+      Map<dynamic, dynamic> json) {
     return CreateMobileAuthorizationCodeResponse(
       error: json['error'] != null ? SquareError.fromJson(json['error']) : null,
       expiresAt: json['expires_at'] != null

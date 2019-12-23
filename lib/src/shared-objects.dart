@@ -69,7 +69,7 @@ class Address {
       this.lastName,
       this.organization});
 
-  factory Address.fromJson(Map<String, dynamic> json) {
+  factory Address.fromJson(Map<dynamic, dynamic> json) {
     return Address(
       addressLine1: json['address_line_1'],
       addressLine2: json['address_line_2'],
@@ -129,13 +129,13 @@ class Money {
         assert(amount >= 0),
         assert(currency != null);
 
-  factory Money.fromJson(Map<String, dynamic> json) {
+  factory Money.fromJson(Map<dynamic, dynamic> json) {
     return Money(
         amount: json['amount'],
         currency: getCurrencyFromString(json['currency']));
   }
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'amount': amount,
       'currency': getStringFromCurrency(currency),
@@ -159,7 +159,7 @@ class SquareError {
 
   SquareError({this.category, this.code, this.detail, this.field});
 
-  factory SquareError.fromJson(Map<String, dynamic> json) {
+  factory SquareError.fromJson(Map<dynamic, dynamic> json) {
     return SquareError(
       category: getErrorCategoryFromString(json['category']),
       code: json['code'],
@@ -168,8 +168,8 @@ class SquareError {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (category != null)
       body['category'] = getStringFromErrorCategory(category);
@@ -217,7 +217,7 @@ class Tender {
       this.additionalRecipients,
       this.type});
 
-  factory Tender.fromJson(Map<String, dynamic> json) {
+  factory Tender.fromJson(Map<dynamic, dynamic> json) {
     return Tender(
       id: json['id'],
       locationId: json['location_id'],
@@ -250,8 +250,8 @@ class Tender {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;
@@ -282,7 +282,7 @@ class TenderCardDetails {
 
   TenderCardDetails({this.status, this.card, this.entryMethod});
 
-  factory TenderCardDetails.fromJson(Map<String, dynamic> json) {
+  factory TenderCardDetails.fromJson(Map<dynamic, dynamic> json) {
     return TenderCardDetails(
       status: json['status'] != null
           ? getTenderCardDetailsStatusFromString(json['status'])
@@ -294,8 +294,8 @@ class TenderCardDetails {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (status != null)
       body['precision'] = getStringFromTenderCardDetailsStatus(status);
@@ -315,7 +315,7 @@ class TenderCashDetails {
 
   TenderCashDetails({this.buyerTenderedMoney, this.changeBackMoney});
 
-  factory TenderCashDetails.fromJson(Map<String, dynamic> json) {
+  factory TenderCashDetails.fromJson(Map<dynamic, dynamic> json) {
     return TenderCashDetails(
       buyerTenderedMoney: json['buyer_tendered_money'] != null
           ? Money.fromJson(json['buyer_tendered_money'])
@@ -326,8 +326,8 @@ class TenderCashDetails {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (buyerTenderedMoney != null)
       body['buyer_tendered_money'] = buyerTenderedMoney.toJson();
@@ -348,7 +348,7 @@ class AdditionalRecipient {
   AdditionalRecipient(
       {this.locationId, this.description, this.amountMoney, this.receivableId});
 
-  factory AdditionalRecipient.fromJson(Map<String, dynamic> json) {
+  factory AdditionalRecipient.fromJson(Map<dynamic, dynamic> json) {
     return AdditionalRecipient(
       locationId: json['location_id'],
       description: json['description'],
@@ -359,7 +359,7 @@ class AdditionalRecipient {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'location_id': locationId,
       'description': description,
@@ -377,7 +377,7 @@ class TimeRange {
 
   TimeRange.create({this.startAt, this.endAt});
 
-  factory TimeRange.fromJson(Map<String, dynamic> json) {
+  factory TimeRange.fromJson(Map<dynamic, dynamic> json) {
     return TimeRange(
       startAt:
           json['start_at'] != null ? DateTime.parse(json['start_at']) : null,
@@ -385,7 +385,7 @@ class TimeRange {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'start_at': startAt.toString(),
       'end_at': endAt.toString(),
@@ -399,7 +399,7 @@ class DateRange {
 
   DateRange({this.startDate, this.endDate});
 
-  factory DateRange.fromJson(Map<String, dynamic> json) {
+  factory DateRange.fromJson(Map<dynamic, dynamic> json) {
     return DateRange(
       startDate: json['start_date'] != null
           ? SquareDate.parse(json['start_date'])
@@ -409,7 +409,7 @@ class DateRange {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'start_date': startDate.toString(),
       'end_date': endDate.toString(),

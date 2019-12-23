@@ -48,7 +48,7 @@ class Payment {
       this.totalMoney,
       this.updatedAt});
 
-  factory Payment.fromJson(Map<String, dynamic> json) {
+  factory Payment.fromJson(Map<dynamic, dynamic> json) {
     return Payment(
       id: json['id'],
       amountMoney: json['amount_money'] != null
@@ -101,8 +101,8 @@ class Payment {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
@@ -142,7 +142,7 @@ class ProcessingFee {
 
   ProcessingFee({this.amountMoney, this.effectiveAt, this.type});
 
-  factory ProcessingFee.fromJson(Map<String, dynamic> json) {
+  factory ProcessingFee.fromJson(Map<dynamic, dynamic> json) {
     return ProcessingFee(
       amountMoney: json['amount_money'] != null
           ? Money.fromJson(json['amount_money'])
@@ -156,8 +156,8 @@ class ProcessingFee {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
     if (effectiveAt != null) body['effective_at'] = effectiveAt.toString();
@@ -191,7 +191,7 @@ class CardPaymentDetails {
       this.errors,
       this.status});
 
-  factory CardPaymentDetails.fromJson(Map<String, dynamic> json) {
+  factory CardPaymentDetails.fromJson(Map<dynamic, dynamic> json) {
     return CardPaymentDetails(
       applicationCryptogram: json['application_cryptogram'],
       applicationIdentifier: json['application_identifier'],
@@ -214,8 +214,8 @@ class CardPaymentDetails {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (applicationCryptogram != null)
       body['application_cryptogram'] = applicationCryptogram;
@@ -244,7 +244,7 @@ class BalancePaymentDetails {
 
   BalancePaymentDetails({this.accountId, this.status});
 
-  factory BalancePaymentDetails.fromJson(Map<String, dynamic> json) {
+  factory BalancePaymentDetails.fromJson(Map<dynamic, dynamic> json) {
     return BalancePaymentDetails(
       accountId: json['account_id'],
       status: json['status'] != null
@@ -253,8 +253,8 @@ class BalancePaymentDetails {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (accountId != null) body['account_id'] = accountId;
     if (status != null)

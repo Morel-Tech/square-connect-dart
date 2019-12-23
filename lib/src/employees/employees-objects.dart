@@ -41,7 +41,7 @@ class Employee {
       this.createdAt,
       this.updatedAt});
 
-  factory Employee.fromJson(Map<String, dynamic> json) {
+  factory Employee.fromJson(Map<dynamic, dynamic> json) {
     return Employee(
       id: json['id'],
       firstName: json['first_name'],
@@ -63,8 +63,8 @@ class Employee {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (firstName != null) body['first_name'] = firstName;

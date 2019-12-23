@@ -11,7 +11,7 @@ class CreateBreakTypeResponse extends ApiResponse {
 
   CreateBreakTypeResponse({this.errors, this.breakType});
 
-  factory CreateBreakTypeResponse.fromJson(Map<String, dynamic> json) {
+  factory CreateBreakTypeResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreateBreakTypeResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -32,7 +32,7 @@ class DeleteBreakTypeResponse extends ApiResponse {
 
   DeleteBreakTypeResponse({this.errors});
 
-  factory DeleteBreakTypeResponse.fromJson(Map<String, dynamic> json) {
+  factory DeleteBreakTypeResponse.fromJson(Map<dynamic, dynamic> json) {
     return DeleteBreakTypeResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -53,7 +53,7 @@ class CreateShiftResponse extends ApiResponse {
 
   CreateShiftResponse({this.errors, this.shift});
 
-  factory CreateShiftResponse.fromJson(Map<String, dynamic> json) {
+  factory CreateShiftResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreateShiftResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -72,7 +72,7 @@ class DeleteShiftResponse extends ApiResponse {
 
   DeleteShiftResponse({this.errors});
 
-  factory DeleteShiftResponse.fromJson(Map<String, dynamic> json) {
+  factory DeleteShiftResponse.fromJson(Map<dynamic, dynamic> json) {
     return DeleteShiftResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -93,7 +93,7 @@ class GetBreakTypeResponse extends ApiResponse {
 
   GetBreakTypeResponse({this.errors, this.breakType});
 
-  factory GetBreakTypeResponse.fromJson(Map<String, dynamic> json) {
+  factory GetBreakTypeResponse.fromJson(Map<dynamic, dynamic> json) {
     return GetBreakTypeResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -117,7 +117,7 @@ class GetEmployeeWageResponse extends ApiResponse {
 
   GetEmployeeWageResponse({this.errors, this.employeeWage});
 
-  factory GetEmployeeWageResponse.fromJson(Map<String, dynamic> json) {
+  factory GetEmployeeWageResponse.fromJson(Map<dynamic, dynamic> json) {
     return GetEmployeeWageResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -141,7 +141,7 @@ class GetShiftResponse extends ApiResponse {
 
   GetShiftResponse({this.errors, this.shift});
 
-  factory GetShiftResponse.fromJson(Map<String, dynamic> json) {
+  factory GetShiftResponse.fromJson(Map<dynamic, dynamic> json) {
     return GetShiftResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -166,7 +166,7 @@ class ListBreakTypesResponse extends ApiResponse {
 
   ListBreakTypesResponse({this.errors, this.breakTypes, this.cursor});
 
-  factory ListBreakTypesResponse.fromJson(Map<String, dynamic> json) {
+  factory ListBreakTypesResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListBreakTypesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -196,7 +196,7 @@ class ListEmployeeWagesResponse extends ApiResponse {
 
   ListEmployeeWagesResponse({this.errors, this.employeeWages, this.cursor});
 
-  factory ListEmployeeWagesResponse.fromJson(Map<String, dynamic> json) {
+  factory ListEmployeeWagesResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListEmployeeWagesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -226,7 +226,7 @@ class ListWorkweekConfigsResponse extends ApiResponse {
 
   ListWorkweekConfigsResponse({this.errors, this.workweekConfigs, this.cursor});
 
-  factory ListWorkweekConfigsResponse.fromJson(Map<String, dynamic> json) {
+  factory ListWorkweekConfigsResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListWorkweekConfigsResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -256,7 +256,7 @@ class SearchShiftsResponse extends ApiResponse {
 
   SearchShiftsResponse({this.errors, this.shifts, this.cursor});
 
-  factory SearchShiftsResponse.fromJson(Map<String, dynamic> json) {
+  factory SearchShiftsResponse.fromJson(Map<dynamic, dynamic> json) {
     return SearchShiftsResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -283,7 +283,7 @@ class UpdateBreakTypeResponse extends ApiResponse {
 
   UpdateBreakTypeResponse({this.errors, this.breakType});
 
-  factory UpdateBreakTypeResponse.fromJson(Map<String, dynamic> json) {
+  factory UpdateBreakTypeResponse.fromJson(Map<dynamic, dynamic> json) {
     return UpdateBreakTypeResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -307,7 +307,7 @@ class UpdateShiftResponse extends ApiResponse {
 
   UpdateShiftResponse({this.errors, this.shift});
 
-  factory UpdateShiftResponse.fromJson(Map<String, dynamic> json) {
+  factory UpdateShiftResponse.fromJson(Map<dynamic, dynamic> json) {
     return UpdateShiftResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -329,7 +329,7 @@ class UpdateWorkweekConfigResponse extends ApiResponse {
 
   UpdateWorkweekConfigResponse({this.errors, this.workweekConfig});
 
-  factory UpdateWorkweekConfigResponse.fromJson(Map<String, dynamic> json) {
+  factory UpdateWorkweekConfigResponse.fromJson(Map<dynamic, dynamic> json) {
     return UpdateWorkweekConfigResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

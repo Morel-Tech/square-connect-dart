@@ -57,7 +57,7 @@ class Order {
     this.version,
   });
 
-  factory Order.fromJson(Map<String, dynamic> json) {
+  factory Order.fromJson(Map<dynamic, dynamic> json) {
     return Order(
       id: json['id'],
       locationId: json['location_id'],
@@ -140,8 +140,8 @@ class Order {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;
@@ -192,7 +192,7 @@ class OrderEntry {
 
   OrderEntry({this.orderId, this.locationId, this.version});
 
-  factory OrderEntry.fromJson(Map<String, dynamic> json) {
+  factory OrderEntry.fromJson(Map<dynamic, dynamic> json) {
     return OrderEntry(
       orderId: json['order_id'],
       locationId: json['location_id'],
@@ -200,8 +200,8 @@ class OrderEntry {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (orderId != null) body['order_id'] = orderId;
     if (locationId != null) body['location_id'] = locationId;
@@ -247,7 +247,7 @@ class OrderLineItem {
       this.totalDiscountMoney,
       this.totalMoney});
 
-  factory OrderLineItem.fromJson(Map<String, dynamic> json) {
+  factory OrderLineItem.fromJson(Map<dynamic, dynamic> json) {
     return OrderLineItem(
       uid: json['uid'],
       name: json['name'],
@@ -295,8 +295,8 @@ class OrderLineItem {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (uid != null) body['uid'] = uid;
     if (name != null) body['name'] = name;
@@ -345,7 +345,7 @@ class OrderLineItemTax {
       this.appliedMoney,
       this.scope});
 
-  factory OrderLineItemTax.fromJson(Map<String, dynamic> json) {
+  factory OrderLineItemTax.fromJson(Map<dynamic, dynamic> json) {
     return OrderLineItemTax(
       uid: json['uid'],
       catalogObjectId: json['catalog_object_id'],
@@ -364,8 +364,8 @@ class OrderLineItemTax {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (uid != null) body['uid'] = uid;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
@@ -400,7 +400,7 @@ class OrderLineItemDiscount {
       this.appliedMoney,
       this.scope});
 
-  factory OrderLineItemDiscount.fromJson(Map<String, dynamic> json) {
+  factory OrderLineItemDiscount.fromJson(Map<dynamic, dynamic> json) {
     return OrderLineItemDiscount(
       uid: json['uid'],
       catalogObjectId: json['catalog_object_id'],
@@ -422,8 +422,8 @@ class OrderLineItemDiscount {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (uid != null) body['uid'] = uid;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
@@ -454,7 +454,7 @@ class OrderLineItemModifier {
       this.basePriceMoney,
       this.totalPriceMoney});
 
-  factory OrderLineItemModifier.fromJson(Map<String, dynamic> json) {
+  factory OrderLineItemModifier.fromJson(Map<dynamic, dynamic> json) {
     return OrderLineItemModifier(
       uid: json['uid'],
       catalogObjectId: json['catalog_object_id'],
@@ -468,8 +468,8 @@ class OrderLineItemModifier {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (uid != null) body['uid'] = uid;
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
@@ -509,7 +509,7 @@ class OrderServiceCharge {
       this.taxable,
       this.taxes});
 
-  factory OrderServiceCharge.fromJson(Map<String, dynamic> json) {
+  factory OrderServiceCharge.fromJson(Map<dynamic, dynamic> json) {
     return OrderServiceCharge(
       uid: json['uid'],
       name: json['name'],
@@ -541,8 +541,8 @@ class OrderServiceCharge {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (uid != null) body['uid'] = uid;
     if (name != null) body['name'] = name;
@@ -577,7 +577,7 @@ class OrderMoneyAmounts {
       this.tipMoney,
       this.serviceChargeMoney});
 
-  factory OrderMoneyAmounts.fromJson(Map<String, dynamic> json) {
+  factory OrderMoneyAmounts.fromJson(Map<dynamic, dynamic> json) {
     return OrderMoneyAmounts(
       totalMoney: json['total_money'] != null
           ? Money.fromJson(json['total_money'])
@@ -595,8 +595,8 @@ class OrderMoneyAmounts {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (totalMoney != null) body['total_money'] = totalMoney.toJson();
     if (taxMoney != null) body['tax_money'] = taxMoney.toJson();
@@ -614,14 +614,14 @@ class OrderSource {
 
   OrderSource({this.name});
 
-  factory OrderSource.fromJson(Map<String, dynamic> json) {
+  factory OrderSource.fromJson(Map<dynamic, dynamic> json) {
     return OrderSource(
       name: json['name'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
 
@@ -638,7 +638,7 @@ class OrderQuantityUnit {
     this.precision,
   });
 
-  factory OrderQuantityUnit.fromJson(Map<String, dynamic> json) {
+  factory OrderQuantityUnit.fromJson(Map<dynamic, dynamic> json) {
     return OrderQuantityUnit(
       measurementUnit: json['measurement_unit'] != null
           ? MeasurementUnit.fromJson(json['measurement_unit'])
@@ -647,8 +647,8 @@ class OrderQuantityUnit {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (measurementUnit != null)
       body['measurement_unit'] = measurementUnit.toJson();
@@ -672,7 +672,7 @@ class OrderFulfillment {
       this.shipmentDetails,
       this.uid});
 
-  factory OrderFulfillment.fromJson(Map<String, dynamic> json) {
+  factory OrderFulfillment.fromJson(Map<dynamic, dynamic> json) {
     return OrderFulfillment(
       type: json['type'] != null
           ? getOrderFulfillmentTypeFromString(json['type'])
@@ -690,8 +690,8 @@ class OrderFulfillment {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (type != null) body['type'] = getStringFromOrderFulfillmentType(type);
     if (state != null)
@@ -741,7 +741,7 @@ class OrderFulfillmentPickupDetails {
       this.canceledAt,
       this.cancelReason});
 
-  factory OrderFulfillmentPickupDetails.fromJson(Map<String, dynamic> json) {
+  factory OrderFulfillmentPickupDetails.fromJson(Map<dynamic, dynamic> json) {
     return OrderFulfillmentPickupDetails(
       recipient: json['recipient'] != null
           ? OrderFulfillmentRecipient.fromJson(json['recipient'])
@@ -788,8 +788,8 @@ class OrderFulfillmentPickupDetails {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (recipient != null) body['recipient'] = recipient.toJson();
     if (expiresAt != null) body['expires_at'] = expiresAt.toString();
@@ -851,7 +851,7 @@ class OrderFulfillmentShipmentDetails {
       this.trackingNumber,
       this.trackingUrl});
 
-  factory OrderFulfillmentShipmentDetails.fromJson(Map<String, dynamic> json) {
+  factory OrderFulfillmentShipmentDetails.fromJson(Map<dynamic, dynamic> json) {
     return OrderFulfillmentShipmentDetails(
       cancelReason: json['cancel_reason'],
       canceledAt: json['canceled_at'] != null
@@ -885,8 +885,8 @@ class OrderFulfillmentShipmentDetails {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (cancelReason != null) body['cancel_reason'] = cancelReason;
     if (canceledAt != null) body['canceled_at'] = canceledAt.toString();
@@ -922,7 +922,7 @@ class OrderFulfillmentRecipient {
       this.phoneNumber,
       this.address});
 
-  factory OrderFulfillmentRecipient.fromJson(Map<String, dynamic> json) {
+  factory OrderFulfillmentRecipient.fromJson(Map<dynamic, dynamic> json) {
     return OrderFulfillmentRecipient(
       customerId: json['customer_id'],
       displayName: json['display_name'],
@@ -933,8 +933,8 @@ class OrderFulfillmentRecipient {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (customerId != null) body['customer_id'] = customerId;
     if (displayName != null) body['display_name'] = displayName;
@@ -953,7 +953,7 @@ class OrderRoundingAdjustment {
 
   OrderRoundingAdjustment({this.uid, this.name, this.amountMoney});
 
-  factory OrderRoundingAdjustment.fromJson(Map<String, dynamic> json) {
+  factory OrderRoundingAdjustment.fromJson(Map<dynamic, dynamic> json) {
     return OrderRoundingAdjustment(
       uid: json['uid'],
       name: json['name'],
@@ -963,8 +963,8 @@ class OrderRoundingAdjustment {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (uid != null) body['uid'] = uid;
     if (name != null) body['source_order_id'] = name;
@@ -991,8 +991,8 @@ class OrderLineItemObjectRequest {
       this.taxIds,
       this.discountIds});
 
-  Map<String, dynamic> toMap() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toMap() {
+    var body = Map<dynamic, dynamic>();
     if (quantity != null) body['quantity'] = quantity.toString();
     if (note != null) body['note'] = note;
     if (catalogVariationId != null)
@@ -1042,16 +1042,16 @@ class FulfillmentRequest {
     this.prepTimeDuration,
   });
 
-  Map<String, dynamic> toMap() {
-    var body = Map<String, dynamic>();
-    var pickupDetails = Map<String, dynamic>();
+  Map<dynamic, dynamic> toMap() {
+    var body = Map<dynamic, dynamic>();
+    var pickupDetails = Map<dynamic, dynamic>();
 
     if (fulfillmentType != null)
       body['type'] = getStringFromOrderFulfillmentType(fulfillmentType);
     if (fulfillmentState != null)
       body['state'] = getStringFromOrderFulfillmentState(fulfillmentState);
 
-    pickupDetails['recipient'] = Map<String, dynamic>();
+    pickupDetails['recipient'] = Map<dynamic, dynamic>();
     if (customerId != null)
       pickupDetails['recipient']['customer_id'] = customerId;
     if (displayName != null)
@@ -1104,7 +1104,7 @@ class OrderReturn {
       this.roundingAdjustment,
       this.returnAmounts});
 
-  factory OrderReturn.fromJson(Map<String, dynamic> json) {
+  factory OrderReturn.fromJson(Map<dynamic, dynamic> json) {
     return OrderReturn(
       id: json['uid'],
       sourceOrderId: json['source_order_id'],
@@ -1116,8 +1116,8 @@ class OrderReturn {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['uid'] = id;
     if (sourceOrderId != null) body['source_order_id'] = sourceOrderId;
@@ -1178,7 +1178,7 @@ class OrderReturnLineItem {
       this.totalDiscountMoney,
       this.totalMoney});
 
-  factory OrderReturnLineItem.fromJson(Map<String, dynamic> json) {
+  factory OrderReturnLineItem.fromJson(Map<dynamic, dynamic> json) {
     return OrderReturnLineItem(
       id: json['uid'],
       sourceLineItemId: json['source_line_item_uid'],
@@ -1227,8 +1227,8 @@ class OrderReturnLineItem {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['uid'] = id;
     if (sourceLineItemId != null)
@@ -1278,7 +1278,7 @@ class OrderReturnLineItemModifier {
       this.basePriceMoney,
       this.totalPriceMoney});
 
-  factory OrderReturnLineItemModifier.fromJson(Map<String, dynamic> json) {
+  factory OrderReturnLineItemModifier.fromJson(Map<dynamic, dynamic> json) {
     return OrderReturnLineItemModifier(
       id: json['uid'],
       sourceModifierId: json['source_modifier_uid'],
@@ -1293,8 +1293,8 @@ class OrderReturnLineItemModifier {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['uid'] = id;
     if (sourceModifierId != null)
@@ -1330,7 +1330,7 @@ class OrderReturnTax {
       this.appliedMoney,
       this.scope});
 
-  factory OrderReturnTax.fromJson(Map<String, dynamic> json) {
+  factory OrderReturnTax.fromJson(Map<dynamic, dynamic> json) {
     return OrderReturnTax(
       id: json['uid'],
       sourceTaxId: json['source_tax_uid'],
@@ -1350,8 +1350,8 @@ class OrderReturnTax {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['uid'] = id;
     if (sourceTaxId != null) body['source_tax_uid'] = sourceTaxId;
@@ -1389,7 +1389,7 @@ class OrderReturnDiscount {
       this.appliedMoney,
       this.scope});
 
-  factory OrderReturnDiscount.fromJson(Map<String, dynamic> json) {
+  factory OrderReturnDiscount.fromJson(Map<dynamic, dynamic> json) {
     return OrderReturnDiscount(
       id: json['uid'],
       sourceDiscountId: json['source_discount_uid'],
@@ -1412,8 +1412,8 @@ class OrderReturnDiscount {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['uid'] = id;
     if (sourceDiscountId != null)
@@ -1460,7 +1460,7 @@ class OrderReturnServiceCharge {
       this.taxable,
       this.returnTaxes});
 
-  factory OrderReturnServiceCharge.fromJson(Map<String, dynamic> json) {
+  factory OrderReturnServiceCharge.fromJson(Map<dynamic, dynamic> json) {
     return OrderReturnServiceCharge(
       id: json['uid'],
       sourceServiceChargeId: json['source_service_charge_uid'],
@@ -1493,8 +1493,8 @@ class OrderReturnServiceCharge {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['uid'] = id;
     if (sourceServiceChargeId != null)

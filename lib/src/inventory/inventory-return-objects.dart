@@ -14,7 +14,7 @@ class BatchChangeInventoryResponse extends ApiResponse {
     this.counts,
   });
 
-  factory BatchChangeInventoryResponse.fromJson(Map<String, dynamic> json) {
+  factory BatchChangeInventoryResponse.fromJson(Map<dynamic, dynamic> json) {
     return BatchChangeInventoryResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -48,7 +48,7 @@ class BatchRetrieveInventoryChangesResponse extends ApiResponse {
   });
 
   factory BatchRetrieveInventoryChangesResponse.fromJson(
-      Map<String, dynamic> json) {
+      Map<dynamic, dynamic> json) {
     return BatchRetrieveInventoryChangesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -83,7 +83,7 @@ class BatchRetrieveInventoryCountsResponse extends ApiResponse {
   });
 
   factory BatchRetrieveInventoryCountsResponse.fromJson(
-      Map<String, dynamic> json) {
+      Map<dynamic, dynamic> json) {
     return BatchRetrieveInventoryCountsResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -114,7 +114,7 @@ class RetrieveInventoryAdjustmentResponse extends ApiResponse {
   });
 
   factory RetrieveInventoryAdjustmentResponse.fromJson(
-      Map<String, dynamic> json) {
+      Map<dynamic, dynamic> json) {
     return RetrieveInventoryAdjustmentResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -145,7 +145,7 @@ class RetrieveInventoryChangesResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory RetrieveInventoryChangesResponse.fromJson(Map<String, dynamic> json) {
+  factory RetrieveInventoryChangesResponse.fromJson(Map<dynamic, dynamic> json) {
     return RetrieveInventoryChangesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -179,7 +179,7 @@ class RetrieveInventoryCountResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory RetrieveInventoryCountResponse.fromJson(Map<String, dynamic> json) {
+  factory RetrieveInventoryCountResponse.fromJson(Map<dynamic, dynamic> json) {
     return RetrieveInventoryCountResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -210,7 +210,7 @@ class RetrieveInventoryPhysicalCountResponse extends ApiResponse {
   });
 
   factory RetrieveInventoryPhysicalCountResponse.fromJson(
-      Map<String, dynamic> json) {
+      Map<dynamic, dynamic> json) {
     return RetrieveInventoryPhysicalCountResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

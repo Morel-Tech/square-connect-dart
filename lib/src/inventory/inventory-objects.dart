@@ -19,7 +19,7 @@ class InventoryCount {
     this.calculatedAt,
   });
 
-  factory InventoryCount.fromJson(Map<String, dynamic> json) {
+  factory InventoryCount.fromJson(Map<dynamic, dynamic> json) {
     return InventoryCount(
       catalogObjectId: json['catalog_object_id'],
       catalogObjectType: json['catalog_object_type'] != null
@@ -37,8 +37,8 @@ class InventoryCount {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
     if (catalogObjectType != null)
@@ -63,7 +63,7 @@ class InventoryChange {
   InventoryChange(
       {this.type, this.physicalCount, this.adjustment, this.transfer});
 
-  factory InventoryChange.fromJson(Map<String, dynamic> json) {
+  factory InventoryChange.fromJson(Map<dynamic, dynamic> json) {
     return InventoryChange(
       type: json['type'] != null
           ? getInventoryChangeTypeFromString(json['type'])
@@ -80,8 +80,8 @@ class InventoryChange {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (type != null) body['type'] = getStringFromInventoryChangeType(type);
     if (physicalCount != null) body['physical_count'] = physicalCount.toJson();
@@ -118,7 +118,7 @@ class InventoryPhysicalCount {
       this.occurredAt,
       this.createdAt});
 
-  factory InventoryPhysicalCount.fromJson(Map<String, dynamic> json) {
+  factory InventoryPhysicalCount.fromJson(Map<dynamic, dynamic> json) {
     return InventoryPhysicalCount(
       id: json['id'],
       referenceId: json['reference_id'],
@@ -145,8 +145,8 @@ class InventoryPhysicalCount {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (referenceId != null) body['reference_id'] = referenceId;
@@ -204,7 +204,7 @@ class InventoryAdjustment {
       this.purchaseOrderId,
       this.goodsReceiptId});
 
-  factory InventoryAdjustment.fromJson(Map<String, dynamic> json) {
+  factory InventoryAdjustment.fromJson(Map<dynamic, dynamic> json) {
     return InventoryAdjustment(
       id: json['id'],
       referenceId: json['reference_id'],
@@ -241,8 +241,8 @@ class InventoryAdjustment {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (referenceId != null) body['reference_id'] = referenceId;
@@ -299,7 +299,7 @@ class InventoryTransfer {
       this.source,
       this.employeeId});
 
-  factory InventoryTransfer.fromJson(Map<String, dynamic> json) {
+  factory InventoryTransfer.fromJson(Map<dynamic, dynamic> json) {
     return InventoryTransfer(
       id: json['id'],
       referenceId: json['reference_id'],
@@ -327,8 +327,8 @@ class InventoryTransfer {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (referenceId != null) body['reference_id'] = referenceId;
@@ -356,7 +356,7 @@ class SourceApplication {
 
   SourceApplication({this.product, this.applicationId, this.name});
 
-  factory SourceApplication.fromJson(Map<String, dynamic> json) {
+  factory SourceApplication.fromJson(Map<dynamic, dynamic> json) {
     return SourceApplication(
       product: json['product'] != null
           ? getProductFromString(json['product'])
@@ -366,8 +366,8 @@ class SourceApplication {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (product != null) body['product'] = getStringFromProduct(product);
     if (applicationId != null) body['application_id'] = applicationId;

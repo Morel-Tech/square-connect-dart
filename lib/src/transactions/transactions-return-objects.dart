@@ -11,7 +11,7 @@ class CaptureTransactionResponse extends ApiResponse {
     this.errors,
   });
 
-  factory CaptureTransactionResponse.fromJson(Map<String, dynamic> json) {
+  factory CaptureTransactionResponse.fromJson(Map<dynamic, dynamic> json) {
     return CaptureTransactionResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -35,7 +35,7 @@ class ChargeResponse extends ApiResponse {
     this.transaction,
   });
 
-  factory ChargeResponse.fromJson(Map<String, dynamic> json) {
+  factory ChargeResponse.fromJson(Map<dynamic, dynamic> json) {
     return ChargeResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -61,7 +61,7 @@ class CreateRefundResponse extends ApiResponse {
     this.refund,
   });
 
-  factory CreateRefundResponse.fromJson(Map<String, dynamic> json) {
+  factory CreateRefundResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreateRefundResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -90,7 +90,7 @@ class ListRefundsResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory ListRefundsResponse.fromJson(Map<String, dynamic> json) {
+  factory ListRefundsResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListRefundsResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -123,7 +123,7 @@ class ListTransactionsResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory ListTransactionsResponse.fromJson(Map<String, dynamic> json) {
+  factory ListTransactionsResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListTransactionsResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -152,7 +152,7 @@ class RetrieveTransactionResponse extends ApiResponse {
     this.transaction,
   });
 
-  factory RetrieveTransactionResponse.fromJson(Map<String, dynamic> json) {
+  factory RetrieveTransactionResponse.fromJson(Map<dynamic, dynamic> json) {
     return RetrieveTransactionResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -174,7 +174,7 @@ class VoidTransactionResponse extends ApiResponse {
     this.errors,
   });
 
-  factory VoidTransactionResponse.fromJson(Map<String, dynamic> json) {
+  factory VoidTransactionResponse.fromJson(Map<dynamic, dynamic> json) {
     return VoidTransactionResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

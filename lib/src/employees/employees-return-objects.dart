@@ -18,7 +18,7 @@ class ListEmployeesResponse extends ApiResponse {
     this.cursor,
   });
 
-  factory ListEmployeesResponse.fromJson(Map<String, dynamic> json) {
+  factory ListEmployeesResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListEmployeesResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -48,7 +48,7 @@ class RetrieveEmployeeResponse extends ApiResponse {
     this.employee,
   });
 
-  factory RetrieveEmployeeResponse.fromJson(Map<String, dynamic> json) {
+  factory RetrieveEmployeeResponse.fromJson(Map<dynamic, dynamic> json) {
     return RetrieveEmployeeResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

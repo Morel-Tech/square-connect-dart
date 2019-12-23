@@ -104,7 +104,7 @@ class Location {
       this.facebookUrl,
       this.coordinates});
 
-  factory Location.fromJson(Map<String, dynamic> json) {
+  factory Location.fromJson(Map<dynamic, dynamic> json) {
     return Location(
       id: json['id'],
       name: json['name'],
@@ -147,8 +147,8 @@ class Location {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (name != null) body['name'] = name;
@@ -216,7 +216,7 @@ class BusinessHours {
     };
   }
 
-  factory BusinessHours.fromJson(Map<String, dynamic> json) {
+  factory BusinessHours.fromJson(Map<dynamic, dynamic> json) {
     return BusinessHours(
         periods: json['periods'] != null
             ? (json['periods'] as List)
@@ -225,8 +225,8 @@ class BusinessHours {
             : null);
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (periods != null)
       body['periods'] = periods.map((item) => item.toJson()).toList();
@@ -248,7 +248,7 @@ class BusinessHoursPeriod {
 
   BusinessHoursPeriod({this.startLocalTime, this.endLocalTime, this.dayOfWeek});
 
-  factory BusinessHoursPeriod.fromJson(Map<String, dynamic> json) {
+  factory BusinessHoursPeriod.fromJson(Map<dynamic, dynamic> json) {
     return BusinessHoursPeriod(
       startLocalTime: json['start_local_time'] != null
           ? SquareTimeOfDay.parse(json['start_local_time'])
@@ -262,8 +262,8 @@ class BusinessHoursPeriod {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (startLocalTime != null)
       body['start_local_time'] = startLocalTime.toString();
@@ -281,15 +281,15 @@ class Coordinates {
 
   Coordinates({this.latitude, this.longitude});
 
-  factory Coordinates.fromJson(Map<String, dynamic> json) {
+  factory Coordinates.fromJson(Map<dynamic, dynamic> json) {
     return Coordinates(
       latitude: json['latitude'],
       longitude: json['longitude'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (latitude != null) body['latitude'] = latitude;
     if (longitude != null) body['longitude'] = longitude;

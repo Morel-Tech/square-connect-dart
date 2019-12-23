@@ -27,7 +27,7 @@ class Transaction {
       this.shippingAddress,
       this.orderId});
 
-  factory Transaction.fromJson(Map<String, dynamic> json) {
+  factory Transaction.fromJson(Map<dynamic, dynamic> json) {
     return Transaction(
       id: json['id'],
       locationId: json['location_id'],
@@ -53,8 +53,8 @@ class Transaction {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;

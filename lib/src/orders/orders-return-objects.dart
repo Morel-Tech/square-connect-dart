@@ -13,7 +13,7 @@ class CreateOrderResponse extends ApiResponse {
   CreateOrderResponse({this.errors, this.order})
       : assert(xor(errors == null, order == null));
 
-  factory CreateOrderResponse.fromJson(Map<String, dynamic> json) {
+  factory CreateOrderResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreateOrderResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -39,7 +39,7 @@ class BatchRetrieveOrdersResponse extends ApiResponse {
   BatchRetrieveOrdersResponse(
       {this.errors, this.orders, this.unconvertibleTransactionIds});
 
-  factory BatchRetrieveOrdersResponse.fromJson(Map<String, dynamic> json) {
+  factory BatchRetrieveOrdersResponse.fromJson(Map<dynamic, dynamic> json) {
     return BatchRetrieveOrdersResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -82,7 +82,7 @@ class SearchOrdersResponse extends ApiResponse {
       this.cursor,
       this.unconvertibleTransactionIds});
 
-  factory SearchOrdersResponse.fromJson(Map<String, dynamic> json) {
+  factory SearchOrdersResponse.fromJson(Map<dynamic, dynamic> json) {
     return SearchOrdersResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -117,7 +117,7 @@ class PayOrderResponse extends ApiResponse {
 
   PayOrderResponse({this.errors, this.order});
 
-  factory PayOrderResponse.fromJson(Map<String, dynamic> json) {
+  factory PayOrderResponse.fromJson(Map<dynamic, dynamic> json) {
     return PayOrderResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -139,7 +139,7 @@ class UpdateOrderResponse extends ApiResponse {
 
   UpdateOrderResponse({this.errors, this.order});
 
-  factory UpdateOrderResponse.fromJson(Map<String, dynamic> json) {
+  factory UpdateOrderResponse.fromJson(Map<dynamic, dynamic> json) {
     return UpdateOrderResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

@@ -73,7 +73,7 @@ class Customer {
       this.groups,
       this.creationSource});
 
-  factory Customer.fromJson(Map<String, dynamic> json) {
+  factory Customer.fromJson(Map<dynamic, dynamic> json) {
     return Customer(
       id: json['id'],
       createdAt: json['created_at'] != null
@@ -111,8 +111,8 @@ class Customer {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (createdAt != null) body['created_at'] = createdAt.toString();
@@ -176,7 +176,7 @@ class Card {
       this.billingAddress,
       this.fingerprint});
 
-  factory Card.fromJson(Map<String, dynamic> json) {
+  factory Card.fromJson(Map<dynamic, dynamic> json) {
     return Card(
         id: json['id'],
         cardBrand: json['card_brand'] != null
@@ -192,8 +192,8 @@ class Card {
         fingerprint: json['fingerprint']);
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (cardBrand != null)
@@ -217,13 +217,13 @@ class CustomerPreferences {
 
   CustomerPreferences({this.emailUnsubscribed});
 
-  factory CustomerPreferences.fromJson(Map<String, dynamic> json) {
+  factory CustomerPreferences.fromJson(Map<dynamic, dynamic> json) {
     return CustomerPreferences(
       emailUnsubscribed: json['email_unsubscribed'],
     );
   }
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (emailUnsubscribed != null)
       body['email_unsubscribed'] = emailUnsubscribed;
@@ -242,15 +242,15 @@ class CustomerGroupInfo {
 
   CustomerGroupInfo({this.id, this.name});
 
-  factory CustomerGroupInfo.fromJson(Map<String, dynamic> json) {
+  factory CustomerGroupInfo.fromJson(Map<dynamic, dynamic> json) {
     return CustomerGroupInfo(
       id: json['id'],
       name: json['name'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (name != null) body['name'] = name;

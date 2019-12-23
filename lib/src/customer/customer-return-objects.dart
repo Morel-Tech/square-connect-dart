@@ -13,7 +13,7 @@ class CreateCustomerResponse extends ApiResponse {
   CreateCustomerResponse({this.errors, this.customer})
       : assert(xor(errors == null, customer == null));
 
-  factory CreateCustomerResponse.fromJson(Map<String, dynamic> json) {
+  factory CreateCustomerResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreateCustomerResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -37,7 +37,7 @@ class CreateCustomerCardResponse extends ApiResponse {
   CreateCustomerCardResponse({this.errors, this.card})
       : assert(xor(errors == null, card == null));
 
-  factory CreateCustomerCardResponse.fromJson(Map<String, dynamic> json) {
+  factory CreateCustomerCardResponse.fromJson(Map<dynamic, dynamic> json) {
     return CreateCustomerCardResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -58,7 +58,7 @@ class DeleteCustomerResponse extends ApiResponse {
     this.errors,
   });
 
-  factory DeleteCustomerResponse.fromJson(Map<String, dynamic> json) {
+  factory DeleteCustomerResponse.fromJson(Map<dynamic, dynamic> json) {
     return DeleteCustomerResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -78,7 +78,7 @@ class DeleteCustomerCardResponse extends ApiResponse {
     this.errors,
   });
 
-  factory DeleteCustomerCardResponse.fromJson(Map<String, dynamic> json) {
+  factory DeleteCustomerCardResponse.fromJson(Map<dynamic, dynamic> json) {
     return DeleteCustomerCardResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -106,7 +106,7 @@ class ListCustomersResponse extends ApiResponse {
     this.cursor,
   }) : assert(xor(errors == null, customers == null));
 
-  factory ListCustomersResponse.fromJson(Map<String, dynamic> json) {
+  factory ListCustomersResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListCustomersResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -134,7 +134,7 @@ class RetrieveCustomerResponse extends ApiResponse {
   RetrieveCustomerResponse({this.errors, this.customer})
       : assert(xor(errors == null, customer == null));
 
-  factory RetrieveCustomerResponse.fromJson(Map<String, dynamic> json) {
+  factory RetrieveCustomerResponse.fromJson(Map<dynamic, dynamic> json) {
     return RetrieveCustomerResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)
@@ -164,7 +164,7 @@ class SearchCustomersResponse extends ApiResponse {
     this.cursor,
   }) : assert(xor(errors == null, customers == null));
 
-  factory SearchCustomersResponse.fromJson(Map<String, dynamic> json) {
+  factory SearchCustomersResponse.fromJson(Map<dynamic, dynamic> json) {
     return SearchCustomersResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)
@@ -192,7 +192,7 @@ class UpdateCustomerResponse extends ApiResponse {
   UpdateCustomerResponse({this.errors, this.customer})
       : assert(xor(errors == null, customer == null));
 
-  factory UpdateCustomerResponse.fromJson(Map<String, dynamic> json) {
+  factory UpdateCustomerResponse.fromJson(Map<dynamic, dynamic> json) {
     return UpdateCustomerResponse(
         errors: json['errors'] != null
             ? (json['errors'] as List)

@@ -23,7 +23,7 @@ class BreakType {
       this.createdAt,
       this.updatedAt});
 
-  factory BreakType.fromJson(Map<String, dynamic> json) {
+  factory BreakType.fromJson(Map<dynamic, dynamic> json) {
     return BreakType(
       id: json['id'],
       locationId: json['location_id'],
@@ -42,8 +42,8 @@ class BreakType {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (locationId != null) body['location_id'] = locationId;
@@ -89,7 +89,7 @@ class Break {
     );
   }
 
-  factory Break.fromJson(Map<String, dynamic> json) {
+  factory Break.fromJson(Map<dynamic, dynamic> json) {
     return Break(
       id: json['id'],
       startAt:
@@ -104,8 +104,8 @@ class Break {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (startAt != null) body['start_at'] = startAt.toIso8601String();
@@ -147,7 +147,7 @@ class Shift {
       this.createdAt,
       this.updatedAt});
 
-  factory Shift.fromJson(Map<String, dynamic> json) {
+  factory Shift.fromJson(Map<dynamic, dynamic> json) {
     return Shift(
       id: json['id'],
       employeeId: json['employee_id'],
@@ -175,8 +175,8 @@ class Shift {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (employeeId != null) body['employee_id'] = employeeId;
@@ -202,7 +202,7 @@ class ShiftWage {
 
   ShiftWage({this.title, this.hourlyRate});
 
-  factory ShiftWage.fromJson(Map<String, dynamic> json) {
+  factory ShiftWage.fromJson(Map<dynamic, dynamic> json) {
     return ShiftWage(
       title: json['title'],
       hourlyRate: json['hourly_rate'] != null
@@ -211,7 +211,7 @@ class ShiftWage {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'title': title,
       'hourly_rate': hourlyRate.toJson(),
@@ -235,7 +235,7 @@ class WorkweekConfig {
       this.createdAt,
       this.updatedAt});
 
-  factory WorkweekConfig.fromJson(Map<String, dynamic> json) {
+  factory WorkweekConfig.fromJson(Map<dynamic, dynamic> json) {
     return WorkweekConfig(
       id: json['id'],
       startOfWeek: json['start_of_week'] != null
@@ -254,8 +254,8 @@ class WorkweekConfig {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (startOfWeek != null)
@@ -278,7 +278,7 @@ class EmployeeWage {
 
   EmployeeWage({this.id, this.employeeId, this.title, this.hourlyRate});
 
-  factory EmployeeWage.fromJson(Map<String, dynamic> json) {
+  factory EmployeeWage.fromJson(Map<dynamic, dynamic> json) {
     return EmployeeWage(
       id: json['id'],
       employeeId: json['employee_id'],
@@ -289,8 +289,8 @@ class EmployeeWage {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (id != null) body['id'] = id;
     if (employeeId != null) body['employee_id'] = employeeId;
@@ -308,7 +308,7 @@ class ShiftWorkday {
 
   ShiftWorkday({this.dateRange, this.matchShiftsBy, this.defaultTimezone});
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'date_range': dateRange.toJson(),
       'match_shifts_by': getStringFromShiftWorkdayMatcher(matchShiftsBy),

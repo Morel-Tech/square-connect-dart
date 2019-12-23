@@ -13,7 +13,7 @@ class ListLocationsResponse extends ApiResponse {
   ListLocationsResponse({this.errors, this.locations})
       : assert(xor(errors == null, locations == null));
 
-  factory ListLocationsResponse.fromJson(Map<String, dynamic> json) {
+  factory ListLocationsResponse.fromJson(Map<dynamic, dynamic> json) {
     return ListLocationsResponse(
       errors: json['errors'] != null
           ? (json['errors'] as List)

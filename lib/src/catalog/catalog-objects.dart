@@ -43,7 +43,7 @@ class CatalogObject {
       this.imageData,
       this.measurementUnitData});
 
-  factory CatalogObject.fromJson(Map<String, dynamic> json) {
+  factory CatalogObject.fromJson(Map<dynamic, dynamic> json) {
     return CatalogObject(
       type: json['type'] != null
           ? getCatalogObjectTypeFromString(json['type'])
@@ -92,8 +92,8 @@ class CatalogObject {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (type != null) body['type'] = getStringFromCatalogObjectType(type);
     if (id != null) body['id'] = id;
@@ -154,7 +154,7 @@ class CatalogItem {
       this.productType,
       this.skipModifierScreen});
 
-  factory CatalogItem.fromJson(Map<String, dynamic> json) {
+  factory CatalogItem.fromJson(Map<dynamic, dynamic> json) {
     return CatalogItem(
       name: json['name'],
       description: json['description'],
@@ -183,8 +183,8 @@ class CatalogItem {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (description != null) body['description'] = description;
@@ -246,7 +246,7 @@ class CatalogItemVariation {
       this.measurementUnitId})
       : assert(name.length <= 255);
 
-  factory CatalogItemVariation.fromJson(Map<String, dynamic> json) {
+  factory CatalogItemVariation.fromJson(Map<dynamic, dynamic> json) {
     return CatalogItemVariation(
       itemId: json['item_id'],
       name: json['name'],
@@ -272,8 +272,8 @@ class CatalogItemVariation {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (itemId != null) body['item_id'] = itemId;
     if (name != null) body['name'] = name;
@@ -306,14 +306,14 @@ class CatalogCategory {
 
   CatalogCategory({this.name});
 
-  factory CatalogCategory.fromJson(Map<String, dynamic> json) {
+  factory CatalogCategory.fromJson(Map<dynamic, dynamic> json) {
     return CatalogCategory(
       name: json['name'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
     if (name != null) body['name'] = name;
     return body;
   }
@@ -335,7 +335,7 @@ class CatalogTax {
       this.appliesToCustomAmounts,
       this.enabled});
 
-  factory CatalogTax.fromJson(Map<String, dynamic> json) {
+  factory CatalogTax.fromJson(Map<dynamic, dynamic> json) {
     return CatalogTax(
       name: json['name'],
       calculationPhase:
@@ -347,8 +347,8 @@ class CatalogTax {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (calculationPhase != null)
@@ -381,7 +381,7 @@ class CatalogDiscount {
       this.pinRequired,
       this.labelColor});
 
-  factory CatalogDiscount.fromJson(Map<String, dynamic> json) {
+  factory CatalogDiscount.fromJson(Map<dynamic, dynamic> json) {
     return CatalogDiscount(
       name: json['name'],
       discountType: getCatalogDiscountTypeFromString(json['discount_type']),
@@ -392,8 +392,8 @@ class CatalogDiscount {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (discountType != null)
@@ -414,7 +414,7 @@ class CatalogModifierList {
 
   CatalogModifierList({this.name, this.selectionType, this.modifiers});
 
-  factory CatalogModifierList.fromJson(Map<String, dynamic> json) {
+  factory CatalogModifierList.fromJson(Map<dynamic, dynamic> json) {
     return CatalogModifierList(
       name: json['name'],
       selectionType:
@@ -427,8 +427,8 @@ class CatalogModifierList {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (selectionType != null)
@@ -449,7 +449,7 @@ class CatalogModifier {
 
   CatalogModifier({this.name, this.priceMoney, this.onByDefault, this.ordinal});
 
-  factory CatalogModifier.fromJson(Map<String, dynamic> json) {
+  factory CatalogModifier.fromJson(Map<dynamic, dynamic> json) {
     return CatalogModifier(
       name: json['name'],
       priceMoney: Money.fromJson(json['price_money']),
@@ -458,8 +458,8 @@ class CatalogModifier {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (priceMoney != null) body['discount_type'] = priceMoney.toJson();
@@ -477,13 +477,13 @@ class CatalogImage {
 
   CatalogImage({this.name, this.url, this.caption});
 
-  factory CatalogImage.fromJson(Map<String, dynamic> json) {
+  factory CatalogImage.fromJson(Map<dynamic, dynamic> json) {
     return CatalogImage(
         name: json['name'], url: json['url'], caption: json['caption']);
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (url != null) body['url'] = url;
@@ -499,7 +499,7 @@ class CatalogMeasurementUnit {
 
   CatalogMeasurementUnit({this.measurementUnit, this.precision});
 
-  factory CatalogMeasurementUnit.fromJson(Map<String, dynamic> json) {
+  factory CatalogMeasurementUnit.fromJson(Map<dynamic, dynamic> json) {
     return CatalogMeasurementUnit(
       measurementUnit: json['measurement_unit'] != null
           ? MeasurementUnit.fromJson(json['measurement_unit'])
@@ -508,8 +508,8 @@ class CatalogMeasurementUnit {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (measurementUnit != null)
       body['measurement_unit'] = measurementUnit.toJson();
@@ -535,7 +535,7 @@ class MeasurementUnit {
       this.weightUnit,
       this.genericUnit});
 
-  factory MeasurementUnit.fromJson(Map<String, dynamic> json) {
+  factory MeasurementUnit.fromJson(Map<dynamic, dynamic> json) {
     return MeasurementUnit(
       customUnit: json['custom_unit'] != null
           ? MeasurementUnitCustom.fromJson(json['custom_unit'])
@@ -556,8 +556,8 @@ class MeasurementUnit {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (customUnit != null) body['measurement_unit'] = customUnit.toJson();
     if (areaUnit != null)
@@ -590,7 +590,7 @@ class ItemVariationLocationOverride {
       this.inventoryAlertType,
       this.inventoryAlertThreshold});
 
-  factory ItemVariationLocationOverride.fromJson(Map<String, dynamic> json) {
+  factory ItemVariationLocationOverride.fromJson(Map<dynamic, dynamic> json) {
     return ItemVariationLocationOverride(
       locationId: json['location_id'],
       priceMoney: json['price_money'] != null
@@ -607,8 +607,8 @@ class ItemVariationLocationOverride {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (locationId != null) body['location_id'] = locationId;
     if (priceMoney != null) body['price_money'] = priceMoney.toJson();
@@ -639,7 +639,7 @@ class CatalogItemModifierListInfo {
       this.maxSelectedModifiers,
       this.enabled});
 
-  factory CatalogItemModifierListInfo.fromJson(Map<String, dynamic> json) {
+  factory CatalogItemModifierListInfo.fromJson(Map<dynamic, dynamic> json) {
     return CatalogItemModifierListInfo(
       modifierListId: json['modifier_list_id'],
       minSelectedModifiers: json['min_selected_modifiers'],
@@ -653,8 +653,8 @@ class CatalogItemModifierListInfo {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (modifierListId != null) body['modifier_list_id'] = modifierListId;
     if (modifierOverrides != null)
@@ -679,15 +679,15 @@ class CatalogModifierOverride {
 
   CatalogModifierOverride({this.modifierId, this.onByDefault});
 
-  factory CatalogModifierOverride.fromJson(Map<String, dynamic> json) {
+  factory CatalogModifierOverride.fromJson(Map<dynamic, dynamic> json) {
     return CatalogModifierOverride(
       modifierId: json['modifier_id'],
       onByDefault: json['on_by_default'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (modifierId != null) body['modifier_id'] = modifierId;
     if (onByDefault != null) body['on_by_default'] = onByDefault;
@@ -701,7 +701,7 @@ class CatalogObjectBatch {
 
   CatalogObjectBatch({this.objects});
 
-  factory CatalogObjectBatch.fromJson(Map<String, dynamic> json) {
+  factory CatalogObjectBatch.fromJson(Map<dynamic, dynamic> json) {
     return CatalogObjectBatch(
       objects: (json['objects'] as List)
           .map((item) => CatalogObject.fromJson(item))
@@ -709,8 +709,8 @@ class CatalogObjectBatch {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (objects != null)
       body['objects'] = objects.map((item) => item.toJson()).toList();
@@ -745,7 +745,7 @@ class CatalogInfoResponseLimits {
       this.updateItemModifierListsMaxModifierListsToEnable,
       this.updateItemModifierListsMaxModifierListsToDisable});
 
-  factory CatalogInfoResponseLimits.fromJson(Map<String, dynamic> json) {
+  factory CatalogInfoResponseLimits.fromJson(Map<dynamic, dynamic> json) {
     return CatalogInfoResponseLimits(
       batchUpsertMaxObjectsPerBatch: json['batch_upsert_max_objects_per_batch'],
       batchUpsertMaxTotalObjects: json['batch_upsert_max_total_objects'],
@@ -766,8 +766,8 @@ class CatalogInfoResponseLimits {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (batchUpsertMaxObjectsPerBatch != null)
       body['batch_upsert_max_objects_per_batch'] =
@@ -809,7 +809,7 @@ class StandardUnitDescriptionGroup {
   StandardUnitDescriptionGroup(
       {this.standardUnitDescriptions, this.languageCode});
 
-  factory StandardUnitDescriptionGroup.fromJson(Map<String, dynamic> json) {
+  factory StandardUnitDescriptionGroup.fromJson(Map<dynamic, dynamic> json) {
     return StandardUnitDescriptionGroup(
       standardUnitDescriptions: json['standard_unit_descriptions'] != null
           ? (json['standard_unit_descriptions'] as List)
@@ -820,8 +820,8 @@ class StandardUnitDescriptionGroup {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (standardUnitDescriptions != null)
       body['standard_unit_descriptions'] =
@@ -839,7 +839,7 @@ class StandardUnitDescription {
 
   StandardUnitDescription({this.unit, this.name, this.abbreviation});
 
-  factory StandardUnitDescription.fromJson(Map<String, dynamic> json) {
+  factory StandardUnitDescription.fromJson(Map<dynamic, dynamic> json) {
     return StandardUnitDescription(
       unit:
           json['unit'] != null ? MeasurementUnit.fromJson(json['unit']) : null,
@@ -848,8 +848,8 @@ class StandardUnitDescription {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (unit != null) body['unit'] = unit.toJson();
     if (name != null) body['name'] = name;
@@ -865,15 +865,15 @@ class MeasurementUnitCustom {
 
   MeasurementUnitCustom({this.name, this.abbreviation});
 
-  factory MeasurementUnitCustom.fromJson(Map<String, dynamic> json) {
+  factory MeasurementUnitCustom.fromJson(Map<dynamic, dynamic> json) {
     return MeasurementUnitCustom(
       name: json['name'],
       abbreviation: json['abbreviation'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (name != null) body['name'] = name;
     if (abbreviation != null) body['abbreviation'] = abbreviation;
@@ -888,15 +888,15 @@ class CatalogIdMapping {
 
   CatalogIdMapping({this.clientObjectId, this.objectId});
 
-  factory CatalogIdMapping.fromJson(Map<String, dynamic> json) {
+  factory CatalogIdMapping.fromJson(Map<dynamic, dynamic> json) {
     return CatalogIdMapping(
       clientObjectId: json['client_object_id'],
       objectId: json['object_id'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    var body = Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    var body = Map<dynamic, dynamic>();
 
     if (clientObjectId != null) body['client_object_id'] = clientObjectId;
     if (objectId != null) body['object_id'] = objectId;

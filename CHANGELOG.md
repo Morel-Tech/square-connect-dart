@@ -1,3 +1,6 @@
+## 1.1.0
+* Removed Flutter from the dependencies. This will allow to use the package as a pure Dart library (i.e. backend or AngularDart).
+
 ## 1.0.1
 * Removing Android and iOS folder as they aren't needed for this package.
 

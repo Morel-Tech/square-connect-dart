@@ -9,7 +9,3 @@ environment:
 dev_dependencies:
   test: ^1.6.0
 
-# The following section is specific to Flutter.
-flutter:
-  uses-material-design: false
-

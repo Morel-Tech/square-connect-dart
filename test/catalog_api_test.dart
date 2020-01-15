@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_test/flutter_test.dart';
 import 'package:square_connect/square_connect.dart';
+import 'package:test/test.dart';
 
 import 'square_connect_test.dart';
 

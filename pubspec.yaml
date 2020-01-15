@@ -6,13 +6,7 @@ homepage: https://github.com/mtwichel/square-connect-flutter-library
 environment:
   sdk: ">=2.2.2 <3.0.0"
 
-dependencies:
-  flutter:
-    sdk: flutter
-
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   test: ^1.6.0
 
 # The following section is specific to Flutter.

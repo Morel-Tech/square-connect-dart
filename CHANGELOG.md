@@ -1,5 +1,5 @@
-## 1.0.2
-* Changed all Map<String, dynamic> to Map<dynaimc, dynamic> to reduce errors from JSON decoding
+## 1.1.0
+* Removed Flutter from the dependencies. This will allow to use the package as a pure Dart library (i.e. backend or AngularDart).
 
 ## 1.0.1
 * Removing Android and iOS folder as they aren't needed for this package.

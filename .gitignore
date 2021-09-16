@@ -8,3 +8,8 @@ build/
 
 pubspec.lock
 flutter_export_environment.sh
+
+.flutter-plugins
+coverage
+.metadata
+.open

@@ -1,193 +1,34 @@
-import 'dart:convert';
-
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_connect/src/shared-enums-converter.dart';
 
-/// An object representing a physical address.
-class Address {
-  /// The first line of the address.
-  /// Fields that start with address_line provide the address's most specific details, like street number, street name, and building name.
-  /// They do not provide less specific details like city, state/province, or country (these details are provided in other fields).
-  final String addressLine1;
-
-  /// The second line of the address, if any.
-  final String addressLine2;
-
-  /// The third line of the address, if any.
-  final String addressLine3;
-
-  /// The city or town of the address.
-  final String locality;
-
-  /// A civil region within the address's locality, if any.
-  final String sublocality;
-
-  /// A civil region within the address's sublocality, if any.
-  final String sublocality2;
-
-  /// A civil region within the address's sublocality2, if any.
-  final String sublocality3;
-
-  /// A civil entity within the address's country. In the US, this is the state.
-  final String administrativeDistrictLevel1;
-
-  /// A civil entity within the address's administrativeDistrictLevel1. In the US, this is the county.
-  final String administrativeDistrictLevel2;
-
-  /// A civil entity within the address's administrative_district_level_2, if any.
-  final String administrativeDistrictLevel3;
-
-  /// The address's postal code.
-  final String postalCode;
-
-  /// The address's country, in ISO 3166-1-alpha-2 format.
-  final String country;
-
-  /// Optional first name when it's representing recipient.
-  final String firstName;
-
-  /// Optional last name when it's representing recipient.
-  final String lastName;
-
-  /// Optional organization name when it's representing recipient.
-  final String organization;
-
-  Address(
-      {this.addressLine1,
-      this.addressLine2,
-      this.addressLine3,
-      this.locality,
-      this.sublocality,
-      this.sublocality2,
-      this.sublocality3,
-      this.administrativeDistrictLevel1,
-      this.administrativeDistrictLevel2,
-      this.administrativeDistrictLevel3,
-      this.postalCode,
-      this.country,
-      this.firstName,
-      this.lastName,
-      this.organization});
-
-  factory Address.fromJson(Map<dynamic, dynamic> json) {
-    return Address(
-      addressLine1: json['address_line_1'],
-      addressLine2: json['address_line_2'],
-      addressLine3: json['address_line_3'],
-      locality: json['locality'],
-      sublocality: json['sublocality'],
-      sublocality2: json['sublocality_2'],
-      sublocality3: json['sublocality_3'],
-      administrativeDistrictLevel1: json['administrative_district_level_1'],
-      administrativeDistrictLevel2: json['administrative_district_level_2'],
-      administrativeDistrictLevel3: json['administrative_district_level_3'],
-      postalCode: json['postal_code'],
-      country: json['country'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      organization: json['organization'],
-    );
-  }
-
-  String toJson() {
-    Map<String, String> map = {};
-    if (this.addressLine1 != null) map['address_line_1'] = this.addressLine1;
-    if (this.addressLine2 != null) map['address_line_2'] = this.addressLine2;
-    if (this.addressLine3 != null) map['address_line_3'] = this.addressLine3;
-    if (this.locality != null) map['locality'] = this.locality;
-    if (this.sublocality != null) map['sublocality'] = this.sublocality;
-    if (this.sublocality2 != null) map['sublocality_2'] = this.sublocality2;
-    if (this.sublocality3 != null) map['sublocality_3'] = this.sublocality3;
-    if (this.administrativeDistrictLevel1 != null)
-      map['administrative_district_level_1'] =
-          this.administrativeDistrictLevel1;
-    if (this.administrativeDistrictLevel2 != null)
-      map['administrative_district_level_2'] =
-          this.administrativeDistrictLevel2;
-    if (this.administrativeDistrictLevel3 != null)
-      map['administrative_district_level_3'] =
-          this.administrativeDistrictLevel3;
-    if (this.postalCode != null) map['postal_code'] = this.postalCode;
-    if (this.country != null) map['country'] = this.country;
-    if (this.firstName != null) map['first_name'] = this.firstName;
-    if (this.lastName != null) map['last_name'] = this.lastName;
-    if (this.organization != null) map['organization'] = this.organization;
-    return json.encode(map);
-  }
-}
-
-/// An object representing an amount of money.
-class Money {
-  /// The amount of money, in the smallest denomination of the currency indicated by currency. For example, when currency is USD, amount is in cents. **NOTE:** Amount MUST be positive.
-  final int amount;
-
-  /// The type of currency.
-  final Currency currency;
-
-  Money({this.amount, this.currency})
-      : assert(amount != null),
-        assert(amount >= 0),
-        assert(currency != null);
-
-  factory Money.fromJson(Map<dynamic, dynamic> json) {
-    return Money(
-        amount: json['amount'],
-        currency: getCurrencyFromString(json['currency']));
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    return {
-      'amount': amount,
-      'currency': getStringFromCurrency(currency),
-    };
-  }
-}
-
-/// An object representing and error generated from any Square APIs.
-class SquareError {
-  /// The category this [Error] belongs to.
-  final ErrorCategory category;
-
-  /// The [Error]'s specific code.
-  final String code;
-
-  /// The human-readable description of the [Error].
-  final String detail;
-
-  /// The name of the field provided in the original request that the error pertains to, if any.
-  final String field;
-
-  SquareError({this.category, this.code, this.detail, this.field});
-
-  factory SquareError.fromJson(Map<dynamic, dynamic> json) {
-    return SquareError(
-      category: getErrorCategoryFromString(json['category']),
-      code: json['code'],
-      detail: json['detail'],
-      field: json['field'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (category != null)
-      body['category'] = getStringFromErrorCategory(category);
-    if (code != null) body['code'] = code;
-    if (detail != null) body['detail'] = detail;
-    if (field != null) body['field'] = field;
-
-    return body;
-  }
-
-  @override
-  String toString() {
-    return 'ERROR OF TYPE ${getStringFromErrorCategory(category)}: $code on field $field\nDetail: $detail';
-  }
-}
+part 'shared-objects.g.dart';
 
 /// An object representing a method of payment used in a [Transaction].
-class Tender {
+@JsonSerializable()
+class Tender extends Equatable {
+  const Tender({
+    required this.id,
+    required this.locationId,
+    required this.transactionId,
+    required this.createdAt,
+    required this.note,
+    required this.amountMoney,
+    required this.tipMoney,
+    required this.processingFeeMoney,
+    required this.customerId,
+    required this.cardDetails,
+    required this.cashDetails,
+    required this.additionalRecipients,
+    required this.type,
+  });
+
+  /// Converts a [Map] to an [Tender]
+  factory Tender.fromJson(Map<String, dynamic> json) => _$TenderFromJson(json);
+
+  /// Converts a [Tender] to a [Map]
+  Map<String, dynamic> toJson() => _$TenderToJson(this);
+
   final String id;
   final String locationId;
   final String transactionId;
@@ -202,280 +43,163 @@ class Tender {
   final List<AdditionalRecipient> additionalRecipients;
   final TenderType type;
 
-  Tender(
-      {this.id,
-      this.locationId,
-      this.transactionId,
-      this.createdAt,
-      this.note,
-      this.amountMoney,
-      this.tipMoney,
-      this.processingFeeMoney,
-      this.customerId,
-      this.cardDetails,
-      this.cashDetails,
-      this.additionalRecipients,
-      this.type});
-
-  factory Tender.fromJson(Map<dynamic, dynamic> json) {
-    return Tender(
-      id: json['id'],
-      locationId: json['location_id'],
-      transactionId: json['transaction_id'],
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : null,
-      note: json['note'],
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      tipMoney:
-          json['tip_money'] != null ? Money.fromJson(json['tip_money']) : null,
-      processingFeeMoney: json['processing_fee_money'] != null
-          ? Money.fromJson(json['processing_fee_money'])
-          : null,
-      customerId: json['customer_id'],
-      cardDetails: json['card_details'] != null
-          ? TenderCardDetails.fromJson(json['card_details'])
-          : null,
-      cashDetails: json['cash_details'] != null
-          ? TenderCashDetails.fromJson(json['cash_details'])
-          : null,
-      additionalRecipients: json['additional_recipients'] != null
-          ? (json['additional_recipients'] as List)
-              .map((item) => AdditionalRecipient.fromJson(item))
-              .toList()
-          : null,
-      type: json['type'] != null ? getTenderTypeFromString(json['type']) : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['id'] = id;
-    if (locationId != null) body['location_id'] = locationId;
-    if (transactionId != null) body['transaction_id'] = transactionId;
-    if (createdAt != null) body['created_at'] = createdAt.toString();
-    if (note != null) body['note'] = note;
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (tipMoney != null) body['tip_money'] = tipMoney.toJson();
-    if (processingFeeMoney != null)
-      body['processing_fee_money'] = processingFeeMoney.toJson();
-    if (customerId != null) body['customer_id'] = customerId;
-    if (type != null) body['type'] = getStringFromTenderType(type);
-    if (cardDetails != null) body['card_details'] = cardDetails.toJson();
-    if (cashDetails != null) body['cash_details'] = cashDetails.toJson();
-    if (additionalRecipients != null)
-      body['additional_recipients'] =
-          additionalRecipients.map((item) => item.toJson()).toList();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      locationId,
+      transactionId,
+      createdAt,
+      note,
+      amountMoney,
+      tipMoney,
+      processingFeeMoney,
+      customerId,
+      cardDetails,
+      cashDetails,
+      additionalRecipients,
+      type,
+    ];
   }
 }
 
-/// An object representing additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`.
-class TenderCardDetails {
+/// An object representing additional details of a tender with
+/// `type` `CARD` or `SQUARE_GIFT_CARD`.
+@JsonSerializable()
+class TenderCardDetails extends Equatable {
+  const TenderCardDetails({
+    required this.status,
+    required this.card,
+    required this.entryMethod,
+  });
+
+  /// Converts a [Map] to an [TenderCardDetails]
+  factory TenderCardDetails.fromJson(Map<String, dynamic> json) =>
+      _$TenderCardDetailsFromJson(json);
+
+  /// Converts a [TenderCardDetails] to a [Map]
+  Map<String, dynamic> toJson() => _$TenderCardDetailsToJson(this);
+
   final TenderCardDetailsStatus status;
   final Card card;
   final TenderCardDetailsEntryMethod entryMethod;
 
-  TenderCardDetails({this.status, this.card, this.entryMethod});
-
-  factory TenderCardDetails.fromJson(Map<dynamic, dynamic> json) {
-    return TenderCardDetails(
-      status: json['status'] != null
-          ? getTenderCardDetailsStatusFromString(json['status'])
-          : null,
-      card: json['card'] != null ? Card.fromJson(json['card']) : null,
-      entryMethod: json['entry_method'] != null
-          ? getTenderCardDetailsEntryMethodFromString(json['entry_method'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (status != null)
-      body['precision'] = getStringFromTenderCardDetailsStatus(status);
-    if (card != null) body['precision'] = card.toJson();
-    if (entryMethod != null)
-      body['precision'] =
-          getStringFromTenderCardDetailsEntryMethod(entryMethod);
-
-    return body;
-  }
+  @override
+  List<Object> get props => [status, card, entryMethod];
 }
 
 /// An object representing the details of a tender with `type` `CASH`.
-class TenderCashDetails {
+@JsonSerializable()
+class TenderCashDetails extends Equatable {
+  const TenderCashDetails({
+    required this.buyerTenderedMoney,
+    required this.changeBackMoney,
+  });
+
+  /// Converts a [Map] to an [TenderCashDetails]
+  factory TenderCashDetails.fromJson(Map<String, dynamic> json) =>
+      _$TenderCashDetailsFromJson(json);
+
+  /// Converts a [TenderCashDetails] to a [Map]
+  Map<String, dynamic> toJson() => _$TenderCashDetailsToJson(this);
+
   final Money buyerTenderedMoney;
   final Money changeBackMoney;
 
-  TenderCashDetails({this.buyerTenderedMoney, this.changeBackMoney});
-
-  factory TenderCashDetails.fromJson(Map<dynamic, dynamic> json) {
-    return TenderCashDetails(
-      buyerTenderedMoney: json['buyer_tendered_money'] != null
-          ? Money.fromJson(json['buyer_tendered_money'])
-          : null,
-      changeBackMoney: json['change_back_money'] != null
-          ? Money.fromJson(json['change_back_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (buyerTenderedMoney != null)
-      body['buyer_tendered_money'] = buyerTenderedMoney.toJson();
-    if (changeBackMoney != null)
-      body['change_back_money'] = changeBackMoney.toJson();
-
-    return body;
-  }
+  @override
+  List<Object> get props => [buyerTenderedMoney, changeBackMoney];
 }
 
-/// An object representing an additional recipient (other than the merchant) receiving a portion of this tender.
-class AdditionalRecipient {
+/// An object representing an additional recipient (other than the merchant)
+/// receiving a portion of this tender.
+@JsonSerializable()
+class AdditionalRecipient extends Equatable {
+  const AdditionalRecipient({
+    required this.locationId,
+    required this.description,
+    required this.amountMoney,
+    required this.receivableId,
+  });
+
+  /// Converts a [Map] to an [AdditionalRecipient]
+  factory AdditionalRecipient.fromJson(Map<String, dynamic> json) =>
+      _$AdditionalRecipientFromJson(json);
+
+  /// Converts a [AdditionalRecipient] to a [Map]
+  Map<String, dynamic> toJson() => _$AdditionalRecipientToJson(this);
+
   final String locationId;
   final String description;
   final Money amountMoney;
   final String receivableId;
 
-  AdditionalRecipient(
-      {this.locationId, this.description, this.amountMoney, this.receivableId});
-
-  factory AdditionalRecipient.fromJson(Map<dynamic, dynamic> json) {
-    return AdditionalRecipient(
-      locationId: json['location_id'],
-      description: json['description'],
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      receivableId: json['receivable_id'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    return {
-      'location_id': locationId,
-      'description': description,
-      'amount_money': amountMoney.toJson(),
-      'receivable_id': receivableId,
-    };
-  }
+  @override
+  List<Object> get props => [
+        locationId,
+        description,
+        amountMoney,
+        receivableId,
+      ];
 }
 
-class TimeRange {
+@JsonSerializable()
+class TimeRange extends Equatable {
+  const TimeRange({
+    required this.startAt,
+    required this.endAt,
+  });
+
+  /// Converts a [Map] to an [TimeRange]
+  factory TimeRange.fromJson(Map<String, dynamic> json) =>
+      _$TimeRangeFromJson(json);
+
+  /// Converts a [TimeRange] to a [Map]
+  Map<String, dynamic> toJson() => _$TimeRangeToJson(this);
+
   final DateTime startAt;
   final DateTime endAt;
 
-  TimeRange({this.startAt, this.endAt});
-
-  TimeRange.create({this.startAt, this.endAt});
-
-  factory TimeRange.fromJson(Map<dynamic, dynamic> json) {
-    return TimeRange(
-      startAt:
-          json['start_at'] != null ? DateTime.parse(json['start_at']) : null,
-      endAt: json['end_at'] != null ? DateTime.parse(json['end_at']) : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    return {
-      'start_at': startAt.toString(),
-      'end_at': endAt.toString(),
-    };
-  }
+  @override
+  List<Object> get props => [startAt, endAt];
 }
 
-class DateRange {
+@JsonSerializable()
+class DateRange extends Equatable {
+  const DateRange({
+    required this.startDate,
+    required this.endDate,
+  });
+
+  /// Converts a [Map] to an [DateRange]
+  factory DateRange.fromJson(Map<String, dynamic> json) =>
+      _$DateRangeFromJson(json);
+
+  /// Converts a [DateRange] to a [Map]
+  Map<String, dynamic> toJson() => _$DateRangeToJson(this);
+
   final SquareDate startDate;
   final SquareDate endDate;
 
-  DateRange({this.startDate, this.endDate});
-
-  factory DateRange.fromJson(Map<dynamic, dynamic> json) {
-    return DateRange(
-      startDate: json['start_date'] != null
-          ? SquareDate.parse(json['start_date'])
-          : null,
-      endDate:
-          json['end_date'] != null ? SquareDate.parse(json['end_date']) : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    return {
-      'start_date': startDate.toString(),
-      'end_date': endDate.toString(),
-    };
-  }
+  @override
+  List<Object> get props => [startDate, endDate];
 }
 
 /// An object representing a generic time of day devoid of date.
-class SquareTimeOfDay {
-  /// Hours starting in ranges 0-23.
-  final int hours;
+@JsonSerializable()
+class SquareDate extends Equatable {
+  const SquareDate({
+    required this.year,
+    required this.month,
+    required this.day,
+  });
 
-  /// Minutes starting in ranges 0-59.
-  final int minutes;
+  /// Converts a [Map] to an [SquareDate]
+  factory SquareDate.fromJson(Map<String, dynamic> json) =>
+      _$SquareDateFromJson(json);
 
-  /// Seconds starting in ranges 0-59.
-  final int seconds;
+  /// Converts a [SquareDate] to a [Map]
+  Map<String, dynamic> toJson() => _$SquareDateToJson(this);
 
-  SquareTimeOfDay(this.hours, this.minutes, this.seconds);
-
-  /// Returns String using partial-time RFC3339 format.
-  String toString() {
-    return '${this.hours < 10 ? '0' + this.hours.toString() : this.hours}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes}:${this.seconds < 10 ? '0' + this.seconds.toString() : this.seconds}';
-  }
-
-  /// Returns String in hH:mM AM/PM format.
-  get niceString =>
-      '${this.amPmHour}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes} ${this.isAm ? 'AM' : 'PM'}';
-
-  /// Creates SquareTimeOfDay from partial-time RFC3339 format.
-  factory SquareTimeOfDay.parse(String input) {
-    if (RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
-      return SquareTimeOfDay(int.parse(input.substring(0, 2)),
-          int.parse(input.substring(3, 5)), int.parse(input.substring(6)));
-    } else if (RegExp(r"[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
-      return SquareTimeOfDay(int.parse(input.substring(0, 2)),
-          int.parse(input.substring(3, 5)), 0);
-    } else {
-      throw ArgumentError.value(input, input, 'input is invalid time of day');
-    }
-  }
-
-  /// Creates SquareTimeOfDay from a DateTime object. Pulls hours, minutes, and seconds from Datetime and ignores the rest.
-  factory SquareTimeOfDay.fromDateTime(DateTime dateTime) {
-    return SquareTimeOfDay(dateTime.hour, dateTime.minute, dateTime.second);
-  }
-
-  /// Converts to DateTime with year, month, and day being 0
-  DateTime toDateTime() {
-    return DateTime(
-      0,
-      0,
-      0,
-      this.hours,
-      this.minutes,
-      this.seconds,
-    );
-  }
-
-  bool get isAm => hours < 12;
-  bool get isPm => hours >= 12;
-  int get amPmHour => this.isPm ? this.hours - 12 : this.hours;
-}
-
-/// An object representing a generic time of day devoid of date.
-class SquareDate {
   /// Year of the date.
   final int year;
 
@@ -485,40 +209,6 @@ class SquareDate {
   /// Days starting in range 0-31.
   final int day;
 
-  SquareDate(this.year, this.month, this.day);
-
-  /// Returns String using partial-time RFC3339 format.
-  String toString() {
-    return '${this.year}-${this.month < 10 ? '0' + this.month.toString() : this.month}-${this.day < 10 ? '0' + this.day.toString() : this.day}';
-  }
-
-  /// Returns String in dD/mM/YYYY format.
-  get niceString => '${this.day}/${this.month}/${this.year}';
-
-  /// Creates SquareTimeOfDay from partial-time RFC3339 format.
-  factory SquareDate.parse(String input) {
-    if (RegExp(r"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]").hasMatch(input)) {
-      return SquareDate(int.parse(input.substring(0, 4)),
-          int.parse(input.substring(5, 7)), int.parse(input.substring(8)));
-    } else {
-      throw ArgumentError.value(input, input, 'input is invalid date');
-    }
-  }
-
-  /// Creates SquareDate from a DateTime object. Pulls year, month, and days from Datetime and ignores the rest.
-  factory SquareDate.fromDateTime(DateTime dateTime) {
-    return SquareDate(dateTime.year, dateTime.minute, dateTime.day);
-  }
-
-  /// Converts to DateTime with year, month, and day being 0
-  DateTime toDateTime() {
-    return DateTime(
-      this.year,
-      this.month,
-      this.day,
-      0,
-      0,
-      0,
-    );
-  }
+  @override
+  List<Object> get props => [year, month, day];
 }

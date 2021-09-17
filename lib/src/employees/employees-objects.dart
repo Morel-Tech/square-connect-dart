@@ -1,8 +1,32 @@
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_connect/src/employees/employees-enums-converter.dart';
 
-/// An [Employee] created in the Square Dashboard account of a business. Used by the [LaborApi].
-class Employee {
+part 'employees-objects.g.dart';
+
+/// An [Employee] created in the Square Dashboard account of a business. Used
+/// by the LaborApi.
+@JsonSerializable()
+class Employee extends Equatable {
+  const Employee({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.emailAddress,
+    required this.phoneNumber,
+    required this.locationIds,
+    required this.status,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  /// Converts a [Map] to an [Employee]
+  factory Employee.fromJson(Map<String, dynamic> json) =>
+      _$EmployeeFromJson(json);
+
+  /// Converts a [Employee] to a [Map]
+  Map<String, dynamic> toJson() => _$EmployeeToJson(this);
+
   /// The [Employee]'s unique id in guid form.
   final String id;
 
@@ -30,52 +54,18 @@ class Employee {
   /// When the [Employee]'s was last updated.
   final DateTime updatedAt;
 
-  Employee(
-      {this.id,
-      this.firstName,
-      this.lastName,
-      this.emailAddress,
-      this.phoneNumber,
-      this.locationIds,
-      this.status,
-      this.createdAt,
-      this.updatedAt});
-
-  factory Employee.fromJson(Map<dynamic, dynamic> json) {
-    return Employee(
-      id: json['id'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      emailAddress: json['email'],
-      phoneNumber: json['phone_number'],
-      locationIds: json['location_ids'] != null
-          ? List<String>.from(json['location_ids'])
-          : null,
-      status: json['status'] != null
-          ? getEmployeeStatusFromString(json['status'])
-          : null,
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : null,
-      updatedAt: json['updated_at'] != null
-          ? DateTime.parse(json['updated_at'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['id'] = id;
-    if (firstName != null) body['first_name'] = firstName;
-    if (lastName != null) body['last_name'] = lastName;
-    if (emailAddress != null) body['email'] = emailAddress;
-    if (phoneNumber != null) body['phone_number'] = phoneNumber;
-    if (locationIds != null) body['location_ids'] = locationIds;
-    if (status != null) body['status'] = getStringFromEmployeeStatus(status);
-    if (createdAt != null) body['created_at'] = createdAt.toString();
-    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      locationIds,
+      status,
+      createdAt,
+      updatedAt,
+    ];
   }
 }

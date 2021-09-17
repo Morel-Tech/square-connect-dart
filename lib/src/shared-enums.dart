@@ -1,279 +1,139 @@
-/// The order (e.g., chronological or alphabetical) in which results from a request are returned.
+import 'package:json_annotation/json_annotation.dart';
+
+/// The order (e.g., chronological or alphabetical) in which results from a
+/// request are returned.
 enum SortOrder {
   /// The results are returned in ascending (e.g., oldest-first or A-Z) order.
+  @JsonValue('ASCENDING')
   ascending,
 
   /// The results are returned in descending (e.g., newest-first or Z-A) order.
+  @JsonValue('DESCENDING')
   descending,
 }
 
-/// Indicates which high-level category of error has occurred during a request to the Connect API.
+/// Indicates which high-level category of error has occurred during a request
+/// to the Connect API.
 enum ErrorCategory {
   /// An error occurred with the Connect API itself.
+  @JsonValue('API_ERROR')
   apiError,
 
-  /// An authentication error occurred. Most commonly, the request had a missing, malformed, or otherwise invalid Authorization header.
+  /// An authentication error occurred. Most commonly, the request had a
+  /// missing, malformed, or otherwise invalid Authorization header.
+  @JsonValue('AUTHENTICATION_ERROR')
   authenticationError,
 
-  /// The request was invalid. Most commonly, a required parameter was missing, or a provided parameter had an invalid value.
+  /// The request was invalid. Most commonly, a required parameter was missing,
+  /// or a provided parameter had an invalid value.
+  @JsonValue('INVALID_REQUEST_ERROR')
   invalidRequestError,
 
-  /// Your application reached the Connect API rate limit. Retry your request after a while.
+  /// Your application reached the Connect API rate limit. Retry your request
+  /// after a while.
+  @JsonValue('RATE_LIMIT_ERROR')
   rateLimitError,
 
-  /// An error occurred while processing a payment method. Most commonly, the details of the payment method were invalid (such as a card's CVV or expiration date).
+  /// An error occurred while processing a payment method. Most commonly, the
+  /// details of the payment method were invalid (such as a card's CVV or
+  /// expiration date).
+  @JsonValue('PAYMENT_METHOD_ERROR')
   paymentMethodError,
 
   /// An error occurred while attempting to process a refund.
+  @JsonValue('REFUND_ERROR')
   refundError,
 }
 
-/// Indicates the [Card] [Transaction]'s current status.
+/// Indicates the Card Transaction's current status.
 enum TenderCardDetailsStatus {
   /// The card transaction has been authorized but not yet captured.
+  @JsonValue('AUTHORIZED')
   authorized,
 
-  /// The card transaction was authorized and subsequently captured (i.e., completed).
+  /// The card transaction was authorized and subsequently
+  /// captured (i.e., completed).
+  @JsonValue('CAPTURED')
   captured,
 
-  /// The card transaction was authorized and subsequently voided (i.e., canceled).
+  /// The card transaction was authorized and subsequently
+  /// voided (i.e., canceled).
+  @JsonValue('VOIDED')
   voided,
 
   /// The card transaction failed.
+  @JsonValue('FAILED')
   failed,
 }
 
-/// Indicates the [Tender]'s type.
+/// Indicates the Tender's type.
 enum TenderType {
   /// A credit card.
+  @JsonValue('CARD')
   card,
 
   /// Cash.
+  @JsonValue('CASH')
   cash,
 
-  /// A credit card processed with a card processor other than Square. This value applies only to merchants in countries where Square does not yet provide card processing.
+  /// A credit card processed with a card processor other than Square. This
+  /// value applies only to merchants in countries where Square does not
+  /// yet provide card processing.
+  @JsonValue('THIRD_PARTY_CARD')
   thirdPartyCard,
 
   /// A Square gift card.
+  @JsonValue('SQUARE_GIFT_CARD')
   squareGiftCard,
 
   /// This tender represents the register being opened for a "no sale" event.
+  @JsonValue('NO_SALE')
   noSale,
 
   /// A form of tender that doesn't match any other.
+  @JsonValue('OTHER')
   other,
 }
 
 /// Indicates the method used to enter the card's details.
 enum TenderCardDetailsEntryMethod {
   /// The card was swiped through a Square hardware.
+  @JsonValue('SWIPED')
   swiped,
 
-  /// The card information was keyed manually into Square Point of Sale or a Square-hosted form.
+  /// The card information was keyed manually into Square Point of Sale or
+  /// a Square-hosted form.
+  @JsonValue('KEYED')
   keyed,
 
   /// The card was processed via EMV with a Square hardware.
+  @JsonValue('EMV')
   emv,
 
   /// The buyer's card details were already on file with Square.
+  @JsonValue('ON_FILE')
   onFile,
 
-  /// The card was processed via a contactless (i.e., NFC) transaction with a Square hardware.
+  /// The card was processed via a contactless (i.e., NFC) transaction
+  /// with a Square hardware.
+  @JsonValue('CONTACTLESS')
   contactless,
 }
 
 /// Indicates a day of a 7 day week.
 enum DayOfWeek {
+  @JsonValue('SUNDAY')
   sunday,
+  @JsonValue('MONDAY')
   monday,
+  @JsonValue('TUESDAY')
   tuesday,
+  @JsonValue('WEDNESDAY')
   wednesday,
+  @JsonValue('THURSDAY')
   thursday,
+  @JsonValue('FRIDAY')
   friday,
+  @JsonValue('SATURDAY')
   saturday,
-}
-
-/// Indicates the associated currency for an amount of money. Values correspond to ISO 4217.
-enum Currency {
-  unknownCurrency,
-  AED,
-  AFN,
-  ALL,
-  AMD,
-  ANG,
-  AOA,
-  ARS,
-  AUD,
-  AWG,
-  AZN,
-  BAM,
-  BBD,
-  BDT,
-  BGN,
-  BHD,
-  BIF,
-  BMD,
-  BND,
-  BOB,
-  BOV,
-  BRL,
-  BSD,
-  BTN,
-  BWP,
-  BYR,
-  BZD,
-  CAD,
-  CDF,
-  CHE,
-  CHF,
-  CHW,
-  CLF,
-  CLP,
-  CNY,
-  COP,
-  COU,
-  CRC,
-  CUC,
-  CUP,
-  CVE,
-  CZK,
-  DJF,
-  DKK,
-  DOP,
-  DZD,
-  EGP,
-  ERN,
-  ETB,
-  EUR,
-  FJD,
-  FKP,
-  GBP,
-  GEL,
-  GHS,
-  GIP,
-  GMD,
-  GNF,
-  GTQ,
-  GYD,
-  HKD,
-  HNL,
-  HRK,
-  HTG,
-  HUF,
-  IDR,
-  ILS,
-  INR,
-  IQD,
-  IRR,
-  ISK,
-  JMD,
-  JOD,
-  JPY,
-  KES,
-  KGS,
-  KHR,
-  KMF,
-  KPW,
-  KRW,
-  KWD,
-  KYD,
-  KZT,
-  LAK,
-  LBP,
-  LKR,
-  LRD,
-  LSL,
-  LTL,
-  LVL,
-  LYD,
-  MAD,
-  MDL,
-  MGA,
-  MKD,
-  MMK,
-  MNT,
-  MOP,
-  MRO,
-  MUR,
-  MVR,
-  MWK,
-  MXN,
-  MXV,
-  MYR,
-  MZN,
-  NAD,
-  NGN,
-  NIO,
-  NOK,
-  NPR,
-  NZD,
-  OMR,
-  PAB,
-  PEN,
-  PGK,
-  PHP,
-  PKR,
-  PLN,
-  PYG,
-  QAR,
-  RON,
-  RSD,
-  RUB,
-  RWF,
-  SAR,
-  SBD,
-  SCR,
-  SDG,
-  SEK,
-  SGD,
-  SHP,
-  SLL,
-  SOS,
-  SRD,
-  SSP,
-  STD,
-  SVC,
-  SYP,
-  SZL,
-  THB,
-  TJS,
-  TMT,
-  TND,
-  TOP,
-  TRY,
-  TTD,
-  TWD,
-  TZS,
-  UAH,
-  UGX,
-  USD,
-  USN,
-  USS,
-  UYI,
-  UYU,
-  UZS,
-  VEF,
-  VND,
-  VUV,
-  WST,
-  XAF,
-  XAG,
-  XAU,
-  XBA,
-  XBB,
-  XBC,
-  XBD,
-  XCD,
-  XDR,
-  XOF,
-  XPD,
-  XPF,
-  XPT,
-  XTS,
-  XXX,
-  YER,
-  ZAR,
-  ZMK,
-  ZMW,
-  BTC,
 }

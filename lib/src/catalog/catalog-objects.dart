@@ -1,9 +1,39 @@
-import 'dart:core';
-
-import 'package:square_connect/src/catalog/catalog-enums-converter.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-class CatalogObject {
+part 'catalog-objects.g.dart';
+
+@JsonSerializable()
+class CatalogObject extends Equatable {
+  const CatalogObject({
+    required this.type,
+    required this.id,
+    required this.updatedAt,
+    required this.version,
+    required this.isDeleted,
+    required this.presentAtAllLocations,
+    required this.presentAtLocationIds,
+    required this.absentAtLocationIds,
+    required this.imageId,
+    required this.itemData,
+    required this.itemVariationData,
+    required this.categoryData,
+    required this.taxData,
+    required this.discountData,
+    required this.modifierListData,
+    required this.modifierData,
+    required this.imageData,
+    required this.measurementUnitData,
+  });
+
+  /// Converts a [Map] to an [CatalogObject]
+  factory CatalogObject.fromJson(Map<String, dynamic> json) =>
+      _$CatalogObjectFromJson(json);
+
+  /// Converts a [CatalogObject] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogObjectToJson(this);
+
   final CatalogObjectType type;
   final String id;
   final DateTime updatedAt;
@@ -23,108 +53,56 @@ class CatalogObject {
   final CatalogImage imageData;
   final CatalogMeasurementUnit measurementUnitData;
 
-  CatalogObject(
-      {this.type,
-      this.id,
-      this.updatedAt,
-      this.version,
-      this.isDeleted,
-      this.presentAtAllLocations,
-      this.presentAtLocationIds,
-      this.absentAtLocationIds,
-      this.imageId,
-      this.itemData,
-      this.itemVariationData,
-      this.categoryData,
-      this.taxData,
-      this.discountData,
-      this.modifierListData,
-      this.modifierData,
-      this.imageData,
-      this.measurementUnitData});
-
-  factory CatalogObject.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogObject(
-      type: json['type'] != null
-          ? getCatalogObjectTypeFromString(json['type'])
-          : null,
-      id: json['id'],
-      updatedAt: json['updated_at'] != null
-          ? DateTime.parse(json['updated_at'])
-          : null,
-      version: json['version'],
-      isDeleted: json['is_deleted'],
-      presentAtAllLocations: json['present_at_all_locations'],
-      presentAtLocationIds: json['present_at_location_ids'] != null
-          ? List<String>.from(json['present_at_location_ids'])
-          : null,
-      absentAtLocationIds: json['absent_at_location_ids'] != null
-          ? List<String>.from(json['absent_at_location_ids'])
-          : null,
-      imageId: json['image_id'],
-      itemData: json['item_data'] != null
-          ? CatalogItem.fromJson(json['item_data'])
-          : null,
-      categoryData: json['category_data'] != null
-          ? CatalogCategory.fromJson(json['category_data'])
-          : null,
-      itemVariationData: json['item_variation_data'] != null
-          ? CatalogItemVariation.fromJson(json['item_variation_data'])
-          : null,
-      taxData: json['tax_data'] != null
-          ? CatalogTax.fromJson(json['tax_data'])
-          : null,
-      discountData: json['discount_data'] != null
-          ? CatalogDiscount.fromJson(json['discount_data'])
-          : null,
-      modifierListData: json['modifier_list_data'] != null
-          ? CatalogModifierList.fromJson(json['modifier_list_data'])
-          : null,
-      modifierData: json['modifier_data'] != null
-          ? CatalogModifier.fromJson(json['modifier_data'])
-          : null,
-      imageData: json['image_data'] != null
-          ? CatalogImage.fromJson(json['image_data'])
-          : null,
-      measurementUnitData: json['measurement_unit_data'] != null
-          ? CatalogMeasurementUnit.fromJson(json['measurement_unit_data'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (type != null) body['type'] = getStringFromCatalogObjectType(type);
-    if (id != null) body['id'] = id;
-    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
-    if (version != null) body['version'] = version;
-    if (isDeleted != null) body['is_deleted'] = isDeleted;
-    if (presentAtAllLocations != null)
-      body['present_at_all_locations'] = presentAtAllLocations;
-    if (presentAtLocationIds != null)
-      body['present_at_location_ids'] = presentAtLocationIds;
-    if (absentAtLocationIds != null)
-      body['absent_at_location_ids'] = absentAtLocationIds;
-    if (imageId != null) body['image_id'] = imageId;
-    if (itemData != null) body['item_data'] = itemData.toJson();
-    if (categoryData != null) body['category_data'] = categoryData.toJson();
-    if (itemVariationData != null)
-      body['item_variation_data'] = itemVariationData.toJson();
-    if (taxData != null) body['tax_data'] = taxData.toJson();
-    if (discountData != null) body['discount_data'] = discountData.toJson();
-    if (modifierListData != null)
-      body['modifier_list_data'] = modifierListData.toJson();
-    if (modifierData != null) body['modifier_data'] = modifierData.toJson();
-    if (imageData != null) body['image_data'] = imageData.toJson();
-    if (measurementUnitData != null)
-      body['measurement_unit_data'] = measurementUnitData.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      type,
+      id,
+      updatedAt,
+      version,
+      isDeleted,
+      presentAtAllLocations,
+      presentAtLocationIds,
+      absentAtLocationIds,
+      imageId,
+      itemData,
+      itemVariationData,
+      categoryData,
+      taxData,
+      discountData,
+      modifierListData,
+      modifierData,
+      imageData,
+      measurementUnitData,
+    ];
   }
 }
 
-class CatalogItem {
+@JsonSerializable()
+class CatalogItem extends Equatable {
+  const CatalogItem({
+    required this.name,
+    required this.description,
+    required this.abbreviation,
+    required this.labelColor,
+    required this.availableOnline,
+    required this.availableForPickup,
+    required this.availableElectronically,
+    required this.categoryId,
+    required this.taxIds,
+    required this.modifierListInfo,
+    required this.variations,
+    required this.productType,
+    required this.skipModifierScreen,
+  });
+
+  /// Converts a [Map] to an [CatalogItem]
+  factory CatalogItem.fromJson(Map<String, dynamic> json) =>
+      _$CatalogItemFromJson(json);
+
+  /// Converts a [CatalogItem] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogItemToJson(this);
+
   final String name;
   final String description;
   final String abbreviation;
@@ -139,79 +117,53 @@ class CatalogItem {
   final CatalogItemProductType productType;
   final bool skipModifierScreen;
 
-  CatalogItem(
-      {this.name,
-      this.description,
-      this.abbreviation,
-      this.labelColor,
-      this.availableOnline,
-      this.availableForPickup,
-      this.availableElectronically,
-      this.categoryId,
-      this.taxIds,
-      this.modifierListInfo,
-      this.variations,
-      this.productType,
-      this.skipModifierScreen});
-
-  factory CatalogItem.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogItem(
-      name: json['name'],
-      description: json['description'],
-      abbreviation: json['abbreviation'],
-      labelColor: json['label_color'],
-      availableOnline: json['available_online'],
-      availableForPickup: json['available_for_pickup'],
-      availableElectronically: json['available_electronically'],
-      categoryId: json['category_id'],
-      taxIds:
-          json['tax_ids'] != null ? List<String>.from(json['tax_ids']) : null,
-      modifierListInfo: json['modifier_list_info'] != null
-          ? (json['modifier_list_info'] as List)
-              .map((item) => CatalogItemModifierListInfo.fromJson(item))
-              .toList()
-          : null,
-      variations: json['variations'] != null
-          ? (json['variations'] as List)
-              .map((item) => CatalogObject.fromJson(item))
-              .toList()
-          : null,
-      productType: json['product_type'] != null
-          ? getCatalogItemProductTypeFromString(json['product_type'])
-          : null,
-      skipModifierScreen: json['skip_modifier_screen'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (description != null) body['description'] = description;
-    if (abbreviation != null) body['abbreviation'] = abbreviation;
-    if (labelColor != null) body['label_color'] = labelColor;
-    if (availableOnline != null) body['available_online'] = availableOnline;
-    if (availableForPickup != null)
-      body['available_for_pickup'] = availableForPickup;
-    if (availableElectronically != null)
-      body['available_electronically'] = availableElectronically;
-    if (categoryId != null) body['category_id'] = categoryId;
-    if (taxIds != null) body['tax_ids'] = taxIds;
-    if (modifierListInfo != null)
-      body['modifier_list_info'] =
-          modifierListInfo.map((item) => item.toJson());
-    if (variations != null)
-      body['variations'] = variations.map((item) => item.toJson()).toList();
-    if (productType != null)
-      body['product_type'] = getStringFromCatalogItemProductType(productType);
-    if (skipModifierScreen != null)
-      body['skip_modifier_screen'] = skipModifierScreen;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      name,
+      description,
+      abbreviation,
+      labelColor,
+      availableOnline,
+      availableForPickup,
+      availableElectronically,
+      categoryId,
+      taxIds,
+      modifierListInfo,
+      variations,
+      productType,
+      skipModifierScreen,
+    ];
   }
 }
 
-class CatalogItemVariation {
+@JsonSerializable()
+class CatalogItemVariation extends Equatable {
+  const CatalogItemVariation({
+    required this.itemId,
+    required this.name,
+    required this.sku,
+    required this.upc,
+    required this.ordinal,
+    required this.pricingType,
+    required this.priceMoney,
+    required this.locationOverrides,
+    required this.trackInventory,
+    required this.inventoryAlertType,
+    required this.inventoryAlertThreshold,
+    required this.userData,
+    required this.serviceDuration,
+    required this.catalogMeasurementUnitId,
+    required this.measurementUnitId,
+  });
+
+  /// Converts a [Map] to an [CatalogItemVariation]
+  factory CatalogItemVariation.fromJson(Map<String, dynamic> json) =>
+      _$CatalogItemVariationFromJson(json);
+
+  /// Converts a [CatalogItemVariation] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogItemVariationToJson(this);
+
   final String itemId;
   final String name;
   final String sku;
@@ -228,98 +180,65 @@ class CatalogItemVariation {
   final String catalogMeasurementUnitId;
   final String measurementUnitId;
 
-  CatalogItemVariation(
-      {this.itemId,
-      this.name,
-      this.sku,
-      this.upc,
-      this.ordinal,
-      this.pricingType,
-      this.priceMoney,
-      this.locationOverrides,
-      this.trackInventory,
-      this.inventoryAlertType,
-      this.inventoryAlertThreshold,
-      this.userData,
-      this.serviceDuration,
-      this.catalogMeasurementUnitId,
-      this.measurementUnitId})
-      : assert(name.length <= 255);
-
-  factory CatalogItemVariation.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogItemVariation(
-      itemId: json['item_id'],
-      name: json['name'],
-      sku: json['sku'],
-      upc: json['upc'],
-      ordinal: json['ordinal'],
-      pricingType: getCatalogPricingTypeFromString(json['pricing_type']),
-      priceMoney: Money.fromJson(json['price_money']),
-      locationOverrides: json['location_overrides'] != null
-          ? (json['location_overrides'] as List)
-              .map((item) => ItemVariationLocationOverride.fromJson(item))
-              .toList()
-          : null,
-      trackInventory: json['track_inventory'],
-      inventoryAlertType: json['inventory_alert_type'] != null
-          ? getInventoryAlertTypeFromString(json['inventory_alert_type'])
-          : null,
-      inventoryAlertThreshold: json['inventory_alert_threshold'],
-      userData: json['user_data'],
-      serviceDuration: json['service_duration'],
-      catalogMeasurementUnitId: json['catalog_measurement_unit_id'],
-      measurementUnitId: json['measurement_unit_id'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (itemId != null) body['item_id'] = itemId;
-    if (name != null) body['name'] = name;
-    if (sku != null) body['sku'] = sku;
-    if (upc != null) body['upc'] = upc;
-    if (ordinal != null) body['ordinal'] = ordinal;
-    if (pricingType != null)
-      body['pricing_type'] = getStringFromCatalogPricingType(pricingType);
-    if (priceMoney != null) body['price_money'] = priceMoney.toJson();
-    if (locationOverrides != null)
-      body['location_overrides'] =
-          locationOverrides.map((item) => item.toJson()).toList();
-    if (trackInventory != null) body['track_inventory'] = trackInventory;
-    if (inventoryAlertType != null)
-      body['inventory_alert_type'] =
-          getStringFromInventoryAlertType(inventoryAlertType);
-    if (inventoryAlertThreshold != null)
-      body['inventory_alert_threshold'] = inventoryAlertThreshold;
-    if (userData != null) body['user_data'] = userData;
-    if (serviceDuration != null) body['service_duration'] = serviceDuration;
-    if (measurementUnitId != null)
-      body['measurement_unit_id'] = measurementUnitId;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      itemId,
+      name,
+      sku,
+      upc,
+      ordinal,
+      pricingType,
+      priceMoney,
+      locationOverrides,
+      trackInventory,
+      inventoryAlertType,
+      inventoryAlertThreshold,
+      userData,
+      serviceDuration,
+      catalogMeasurementUnitId,
+      measurementUnitId,
+    ];
   }
 }
 
-class CatalogCategory {
+@JsonSerializable()
+class CatalogCategory extends Equatable {
+  const CatalogCategory({
+    required this.name,
+  });
+
+  /// Converts a [Map] to an [CatalogCategory]
+  factory CatalogCategory.fromJson(Map<String, dynamic> json) =>
+      _$CatalogCategoryFromJson(json);
+
+  /// Converts a [CatalogCategory] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogCategoryToJson(this);
+
   final String name;
 
-  CatalogCategory({this.name});
-
-  factory CatalogCategory.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogCategory(
-      name: json['name'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-    if (name != null) body['name'] = name;
-    return body;
-  }
+  @override
+  List<Object> get props => [name];
 }
 
-class CatalogTax {
+@JsonSerializable()
+class CatalogTax extends Equatable {
+  const CatalogTax({
+    required this.name,
+    required this.calculationPhase,
+    required this.inclusionType,
+    required this.percentage,
+    required this.appliesToCustomAmounts,
+    required this.enabled,
+  });
+
+  /// Converts a [Map] to an [CatalogTax]
+  factory CatalogTax.fromJson(Map<String, dynamic> json) =>
+      _$CatalogTaxFromJson(json);
+
+  /// Converts a [CatalogTax] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogTaxToJson(this);
+
   final String name;
   final TaxCalculationPhase calculationPhase;
   final TaxInclusionType inclusionType;
@@ -327,45 +246,37 @@ class CatalogTax {
   final bool appliesToCustomAmounts;
   final bool enabled;
 
-  CatalogTax(
-      {this.name,
-      this.calculationPhase,
-      this.inclusionType,
-      this.percentage,
-      this.appliesToCustomAmounts,
-      this.enabled});
-
-  factory CatalogTax.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogTax(
-      name: json['name'],
-      calculationPhase:
-          getTaxCalculationPhaseFromString(json['calculation_phase']),
-      inclusionType: getTaxInclusionTypeFromString(json['inclusion_type']),
-      percentage: double.parse(json['percentage']),
-      appliesToCustomAmounts: json['applies_to_custom_amounts'],
-      enabled: json['enabled'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (calculationPhase != null)
-      body['calculation_phase'] =
-          getStringFromTaxCalculationPhase(calculationPhase);
-    if (inclusionType != null)
-      body['inclusion_type'] = getStringFromTaxInclusionType(inclusionType);
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (appliesToCustomAmounts != null)
-      body['applies_to_custom_amounts'] = appliesToCustomAmounts;
-    if (enabled != null) body['enabled'] = enabled;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      name,
+      calculationPhase,
+      inclusionType,
+      percentage,
+      appliesToCustomAmounts,
+      enabled,
+    ];
   }
 }
 
-class CatalogDiscount {
+@JsonSerializable()
+class CatalogDiscount extends Equatable {
+  const CatalogDiscount({
+    required this.name,
+    required this.discountType,
+    required this.percentage,
+    required this.amountMoney,
+    required this.pinRequired,
+    required this.labelColor,
+  });
+
+  /// Converts a [Map] to an [CatalogDiscount]
+  factory CatalogDiscount.fromJson(Map<String, dynamic> json) =>
+      _$CatalogDiscountFromJson(json);
+
+  /// Converts a [CatalogDiscount] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogDiscountToJson(this);
+
   final String name;
   final CatalogDiscountType discountType;
   final double percentage;
@@ -373,153 +284,129 @@ class CatalogDiscount {
   final bool pinRequired;
   final String labelColor;
 
-  CatalogDiscount(
-      {this.name,
-      this.discountType,
-      this.percentage,
-      this.amountMoney,
-      this.pinRequired,
-      this.labelColor});
-
-  factory CatalogDiscount.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogDiscount(
-      name: json['name'],
-      discountType: getCatalogDiscountTypeFromString(json['discount_type']),
-      percentage: double.parse('percentage'),
-      amountMoney: Money.fromJson(json['amount_money']),
-      pinRequired: json['pin_required'],
-      labelColor: json['label_color'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (discountType != null)
-      body['discount_type'] = getStringFromCatalogDiscountType(discountType);
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (pinRequired != null) body['pin_required'] = pinRequired;
-    if (labelColor != null) body['label_color'] = labelColor;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      name,
+      discountType,
+      percentage,
+      amountMoney,
+      pinRequired,
+      labelColor,
+    ];
   }
 }
 
-class CatalogModifierList {
+@JsonSerializable()
+class CatalogModifierList extends Equatable {
+  const CatalogModifierList({
+    required this.name,
+    required this.selectionType,
+    required this.modifiers,
+  });
+
+  /// Converts a [Map] to an [CatalogModifierList]
+  factory CatalogModifierList.fromJson(Map<String, dynamic> json) =>
+      _$CatalogModifierListFromJson(json);
+
+  /// Converts a [CatalogModifierList] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogModifierListToJson(this);
+
   final String name;
   final CatalogModifierListSelectionType selectionType;
   final List<CatalogObject> modifiers;
 
-  CatalogModifierList({this.name, this.selectionType, this.modifiers});
-
-  factory CatalogModifierList.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogModifierList(
-      name: json['name'],
-      selectionType:
-          getCatalogModifierListSelectionTypeFromString(json['selection_type']),
-      modifiers: json['modifiers'] != null
-          ? (json['modifiers'] as List)
-              .map((item) => CatalogObject.fromJson(item))
-              .toList()
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (selectionType != null)
-      body['selection_type'] =
-          getStringFromCatalogModifierListSelectionType(selectionType);
-    if (modifiers != null)
-      body['modifiers'] = modifiers.map((item) => item.toJson()).toList();
-
-    return body;
-  }
+  @override
+  List<Object> get props => [name, selectionType, modifiers];
 }
 
-class CatalogModifier {
+@JsonSerializable()
+class CatalogModifier extends Equatable {
+  const CatalogModifier({
+    required this.name,
+    required this.priceMoney,
+    required this.onByDefault,
+    required this.ordinal,
+  });
+
+  /// Converts a [Map] to an [CatalogModifier]
+  factory CatalogModifier.fromJson(Map<String, dynamic> json) =>
+      _$CatalogModifierFromJson(json);
+
+  /// Converts a [CatalogModifier] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogModifierToJson(this);
+
   final String name;
   final Money priceMoney;
   final bool onByDefault;
   final int ordinal;
 
-  CatalogModifier({this.name, this.priceMoney, this.onByDefault, this.ordinal});
-
-  factory CatalogModifier.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogModifier(
-      name: json['name'],
-      priceMoney: Money.fromJson(json['price_money']),
-      onByDefault: json['on_by_default'],
-      ordinal: json['ordinal'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (priceMoney != null) body['discount_type'] = priceMoney.toJson();
-    if (onByDefault != null) body['percentage'] = onByDefault;
-    if (ordinal != null) body['amount_money'] = ordinal;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [name, priceMoney, onByDefault, ordinal];
 }
 
-class CatalogImage {
+@JsonSerializable()
+class CatalogImage extends Equatable {
+  const CatalogImage({
+    required this.name,
+    required this.url,
+    required this.caption,
+  });
+
+  /// Converts a [Map] to an [CatalogImage]
+  factory CatalogImage.fromJson(Map<String, dynamic> json) =>
+      _$CatalogImageFromJson(json);
+
+  /// Converts a [CatalogImage] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogImageToJson(this);
+
   final String name;
   final String url;
   final String caption;
 
-  CatalogImage({this.name, this.url, this.caption});
-
-  factory CatalogImage.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogImage(
-        name: json['name'], url: json['url'], caption: json['caption']);
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (url != null) body['url'] = url;
-    if (caption != null) body['caption'] = caption;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [name, url, caption];
 }
 
-class CatalogMeasurementUnit {
+@JsonSerializable()
+class CatalogMeasurementUnit extends Equatable {
+  const CatalogMeasurementUnit({
+    required this.measurementUnit,
+    required this.precision,
+  });
+
+  /// Converts a [Map] to an [CatalogMeasurementUnit]
+  factory CatalogMeasurementUnit.fromJson(Map<String, dynamic> json) =>
+      _$CatalogMeasurementUnitFromJson(json);
+
+  /// Converts a [CatalogMeasurementUnit] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogMeasurementUnitToJson(this);
+
   final MeasurementUnit measurementUnit;
   final int precision;
 
-  CatalogMeasurementUnit({this.measurementUnit, this.precision});
-
-  factory CatalogMeasurementUnit.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogMeasurementUnit(
-      measurementUnit: json['measurement_unit'] != null
-          ? MeasurementUnit.fromJson(json['measurement_unit'])
-          : null,
-      precision: json['precision'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (measurementUnit != null)
-      body['measurement_unit'] = measurementUnit.toJson();
-    if (precision != null) body['precision'] = precision;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [measurementUnit, precision];
 }
 
-class MeasurementUnit {
+@JsonSerializable()
+class MeasurementUnit extends Equatable {
+  const MeasurementUnit({
+    required this.customUnit,
+    required this.areaUnit,
+    required this.lengthUnit,
+    required this.volumeUnit,
+    required this.weightUnit,
+    required this.genericUnit,
+  });
+
+  /// Converts a [Map] to an [MeasurementUnit]
+  factory MeasurementUnit.fromJson(Map<String, dynamic> json) =>
+      _$MeasurementUnitFromJson(json);
+
+  /// Converts a [MeasurementUnit] to a [Map]
+  Map<String, dynamic> toJson() => _$MeasurementUnitToJson(this);
+
   final MeasurementUnitCustom customUnit;
   final MeasurementUnitArea areaUnit;
   final MeasurementUnitLength lengthUnit;
@@ -527,54 +414,37 @@ class MeasurementUnit {
   final MeasurementUnitWeight weightUnit;
   final String genericUnit;
 
-  MeasurementUnit(
-      {this.customUnit,
-      this.areaUnit,
-      this.lengthUnit,
-      this.volumeUnit,
-      this.weightUnit,
-      this.genericUnit});
-
-  factory MeasurementUnit.fromJson(Map<dynamic, dynamic> json) {
-    return MeasurementUnit(
-      customUnit: json['custom_unit'] != null
-          ? MeasurementUnitCustom.fromJson(json['custom_unit'])
-          : null,
-      areaUnit: json['area_unit'] != null
-          ? getMeasurementUnitAreaFromString(json['area_unit'])
-          : null,
-      lengthUnit: json['length_unit'] != null
-          ? getMeasurementUnitLengthFromString(json['length_unit'])
-          : null,
-      volumeUnit: json['volume_unit'] != null
-          ? getMeasurementUnitVolumeFromString(json['volume_unit'])
-          : null,
-      weightUnit: json['weight_unit'] != null
-          ? getMeasurementUnitWeightFromString(json['weight_unit'])
-          : null,
-      genericUnit: json['generic_unit'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (customUnit != null) body['measurement_unit'] = customUnit.toJson();
-    if (areaUnit != null)
-      body['area_unit'] = getStringFromMeasurementUnitArea(areaUnit);
-    if (lengthUnit != null)
-      body['length_unit'] = getStringFromMeasurementUnitLength(lengthUnit);
-    if (volumeUnit != null)
-      body['volume_unit'] = getStringFromMeasurementUnitVolume(volumeUnit);
-    if (weightUnit != null)
-      body['weight_unit'] = getStringFromMeasurementUnitWeight(weightUnit);
-    if (genericUnit != null) body['generic_unit'] = genericUnit;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      customUnit,
+      areaUnit,
+      lengthUnit,
+      volumeUnit,
+      weightUnit,
+      genericUnit,
+    ];
   }
 }
 
-class ItemVariationLocationOverride {
+@JsonSerializable()
+class ItemVariationLocationOverride extends Equatable {
+  const ItemVariationLocationOverride({
+    required this.locationId,
+    required this.priceMoney,
+    required this.pricingType,
+    required this.trackInventory,
+    required this.inventoryAlertType,
+    required this.inventoryAlertThreshold,
+  });
+
+  /// Converts a [Map] to an [ItemVariationLocationOverride]
+  factory ItemVariationLocationOverride.fromJson(Map<String, dynamic> json) =>
+      _$ItemVariationLocationOverrideFromJson(json);
+
+  /// Converts a [ItemVariationLocationOverride] to a [Map]
+  Map<String, dynamic> toJson() => _$ItemVariationLocationOverrideToJson(this);
+
   final String locationId;
   final Money priceMoney;
   final CatalogPricingType pricingType;
@@ -582,144 +452,121 @@ class ItemVariationLocationOverride {
   final InventoryAlertType inventoryAlertType;
   final int inventoryAlertThreshold;
 
-  ItemVariationLocationOverride(
-      {this.locationId,
-      this.priceMoney,
-      this.pricingType,
-      this.trackInventory,
-      this.inventoryAlertType,
-      this.inventoryAlertThreshold});
-
-  factory ItemVariationLocationOverride.fromJson(Map<dynamic, dynamic> json) {
-    return ItemVariationLocationOverride(
-      locationId: json['location_id'],
-      priceMoney: json['price_money'] != null
-          ? Money.fromJson(json['price_money'])
-          : null,
-      pricingType: json['pricing_type'] != null
-          ? getCatalogPricingTypeFromString(json['pricing_type'])
-          : null,
-      trackInventory: json['track_inventory'],
-      inventoryAlertType: json['inventory_alert_type'] != null
-          ? getInventoryAlertTypeFromString(json['inventory_alert_type'])
-          : null,
-      inventoryAlertThreshold: json['inventory_alert_threshold'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (locationId != null) body['location_id'] = locationId;
-    if (priceMoney != null) body['price_money'] = priceMoney.toJson();
-    if (pricingType != null)
-      body['track_inventory'] = getStringFromCatalogPricingType(pricingType);
-    if (trackInventory != null) body['track_inventory'] = trackInventory;
-    if (inventoryAlertType != null)
-      body['inventory_alert_type'] =
-          getStringFromInventoryAlertType(inventoryAlertType);
-    if (inventoryAlertThreshold != null)
-      body['inventory_alert_threshold'] = inventoryAlertThreshold;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      locationId,
+      priceMoney,
+      pricingType,
+      trackInventory,
+      inventoryAlertType,
+      inventoryAlertThreshold,
+    ];
   }
 }
 
-class CatalogItemModifierListInfo {
+@JsonSerializable()
+class CatalogItemModifierListInfo extends Equatable {
+  const CatalogItemModifierListInfo({
+    required this.modifierListId,
+    required this.modifierOverrides,
+    required this.minSelectedModifiers,
+    required this.maxSelectedModifiers,
+    required this.enabled,
+  });
+
+  /// Converts a [Map] to an [CatalogItemModifierListInfo]
+  factory CatalogItemModifierListInfo.fromJson(Map<String, dynamic> json) =>
+      _$CatalogItemModifierListInfoFromJson(json);
+
+  /// Converts a [CatalogItemModifierListInfo] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogItemModifierListInfoToJson(this);
+
   final String modifierListId;
   final List<CatalogModifierOverride> modifierOverrides;
   final int minSelectedModifiers;
   final int maxSelectedModifiers;
   final bool enabled;
 
-  CatalogItemModifierListInfo(
-      {this.modifierListId,
-      this.modifierOverrides,
-      this.minSelectedModifiers,
-      this.maxSelectedModifiers,
-      this.enabled});
-
-  factory CatalogItemModifierListInfo.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogItemModifierListInfo(
-      modifierListId: json['modifier_list_id'],
-      minSelectedModifiers: json['min_selected_modifiers'],
-      maxSelectedModifiers: json['max_selected_modifiers'],
-      enabled: json['enabled'],
-      modifierOverrides: json['modifier_overrides'] != null
-          ? (json['modifier_overrides'] as List)
-              .map((item) => CatalogModifierOverride.fromJson(item))
-              .toList()
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (modifierListId != null) body['modifier_list_id'] = modifierListId;
-    if (modifierOverrides != null)
-      body['modifier_overrides'] =
-          modifierOverrides.map((item) => item.toJson()).toList();
-    if (minSelectedModifiers != null)
-      body['min_selected_modifiers'] = minSelectedModifiers;
-    if (maxSelectedModifiers != null)
-      body['max_selected_modifiers'] = maxSelectedModifiers;
-    if (enabled != null) body['enabled'] = enabled;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      modifierListId,
+      modifierOverrides,
+      minSelectedModifiers,
+      maxSelectedModifiers,
+      enabled,
+    ];
   }
 }
 
-class CatalogModifierOverride {
-  /// The ID of the [CatalogModifier] whose default behavior is being overridden.
+@JsonSerializable()
+class CatalogModifierOverride extends Equatable {
+  const CatalogModifierOverride({
+    required this.modifierId,
+    required this.onByDefault,
+  });
+
+  /// Converts a [Map] to an [CatalogModifierOverride]
+  factory CatalogModifierOverride.fromJson(Map<String, dynamic> json) =>
+      _$CatalogModifierOverrideFromJson(json);
+
+  /// Converts a [CatalogModifierOverride] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogModifierOverrideToJson(this);
+
+  /// The ID of the [CatalogModifier] whose default behavior is being overridden
   final String modifierId;
 
-  /// If true, this [CatalogModifier] should be selected by default for this [CatalogItem].
+  /// If true, this [CatalogModifier] should be selected by default for this
+  /// [CatalogItem].
   final bool onByDefault;
 
-  CatalogModifierOverride({this.modifierId, this.onByDefault});
-
-  factory CatalogModifierOverride.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogModifierOverride(
-      modifierId: json['modifier_id'],
-      onByDefault: json['on_by_default'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (modifierId != null) body['modifier_id'] = modifierId;
-    if (onByDefault != null) body['on_by_default'] = onByDefault;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [modifierId, onByDefault];
 }
 
-class CatalogObjectBatch {
+@JsonSerializable()
+class CatalogObjectBatch extends Equatable {
+  const CatalogObjectBatch({
+    required this.objects,
+  });
+
+  /// Converts a [Map] to an [CatalogObjectBatch]
+  factory CatalogObjectBatch.fromJson(Map<String, dynamic> json) =>
+      _$CatalogObjectBatchFromJson(json);
+
+  /// Converts a [CatalogObjectBatch] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogObjectBatchToJson(this);
+
   final List<CatalogObject> objects;
 
-  CatalogObjectBatch({this.objects});
-
-  factory CatalogObjectBatch.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogObjectBatch(
-      objects: (json['objects'] as List)
-          .map((item) => CatalogObject.fromJson(item))
-          .toList(),
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (objects != null)
-      body['objects'] = objects.map((item) => item.toJson()).toList();
-
-    return body;
-  }
+  @override
+  List<Object> get props => [objects];
 }
 
-class CatalogInfoResponseLimits {
+@JsonSerializable()
+class CatalogInfoResponseLimits extends Equatable {
+  const CatalogInfoResponseLimits({
+    required this.batchUpsertMaxObjectsPerBatch,
+    required this.batchUpsertMaxTotalObjects,
+    required this.batchRetrieveMaxObjectIds,
+    required this.searchMaxPageLimit,
+    required this.batchDeleteMaxObjectIds,
+    required this.updateItemTaxesMaxItemIds,
+    required this.updateItemTaxesMaxTaxesToEnable,
+    required this.updateItemTaxesMaxTaxesToDisable,
+    required this.updateItemModifierListsMaxItemIds,
+    required this.updateItemModifierListsMaxModifierListsToEnable,
+    required this.updateItemModifierListsMaxModifierListsToDisable,
+  });
+
+  /// Converts a [Map] to an [CatalogInfoResponseLimits]
+  factory CatalogInfoResponseLimits.fromJson(Map<String, dynamic> json) =>
+      _$CatalogInfoResponseLimitsFromJson(json);
+
+  /// Converts a [CatalogInfoResponseLimits] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogInfoResponseLimitsToJson(this);
+
   final int batchUpsertMaxObjectsPerBatch;
   final int batchUpsertMaxTotalObjects;
   final int batchRetrieveMaxObjectIds;
@@ -732,175 +579,106 @@ class CatalogInfoResponseLimits {
   final int updateItemModifierListsMaxModifierListsToEnable;
   final int updateItemModifierListsMaxModifierListsToDisable;
 
-  CatalogInfoResponseLimits(
-      {this.batchUpsertMaxObjectsPerBatch,
-      this.batchUpsertMaxTotalObjects,
-      this.batchRetrieveMaxObjectIds,
-      this.searchMaxPageLimit,
-      this.batchDeleteMaxObjectIds,
-      this.updateItemTaxesMaxItemIds,
-      this.updateItemTaxesMaxTaxesToEnable,
-      this.updateItemTaxesMaxTaxesToDisable,
-      this.updateItemModifierListsMaxItemIds,
-      this.updateItemModifierListsMaxModifierListsToEnable,
-      this.updateItemModifierListsMaxModifierListsToDisable});
-
-  factory CatalogInfoResponseLimits.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogInfoResponseLimits(
-      batchUpsertMaxObjectsPerBatch: json['batch_upsert_max_objects_per_batch'],
-      batchUpsertMaxTotalObjects: json['batch_upsert_max_total_objects'],
-      batchRetrieveMaxObjectIds: json['batch_retrieve_max_object_ids'],
-      searchMaxPageLimit: json['search_max_page_limit'],
-      batchDeleteMaxObjectIds: json['batch_delete_max_object_ids'],
-      updateItemTaxesMaxItemIds: json['update_item_taxes_max_item_ids'],
-      updateItemTaxesMaxTaxesToEnable:
-          json['update_item_taxes_max_taxes_to_enable'],
-      updateItemTaxesMaxTaxesToDisable:
-          json['update_item_taxes_max_taxes_to_disable'],
-      updateItemModifierListsMaxItemIds:
-          json['update_item_modifier_lists_max_item_ids'],
-      updateItemModifierListsMaxModifierListsToEnable:
-          json['update_item_modifier_lists_max_modifier_lists_to_enable'],
-      updateItemModifierListsMaxModifierListsToDisable:
-          json['update_item_modifier_lists_max_modifier_lists_to_disable'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (batchUpsertMaxObjectsPerBatch != null)
-      body['batch_upsert_max_objects_per_batch'] =
-          batchUpsertMaxObjectsPerBatch;
-    if (batchUpsertMaxTotalObjects != null)
-      body['batch_upsert_max_total_objects'] = batchUpsertMaxTotalObjects;
-    if (batchRetrieveMaxObjectIds != null)
-      body['batch_retrieve_max_object_ids'] = batchRetrieveMaxObjectIds;
-    if (searchMaxPageLimit != null)
-      body['search_max_page_limit'] = searchMaxPageLimit;
-    if (batchDeleteMaxObjectIds != null)
-      body['batch_delete_max_object_ids'] = batchDeleteMaxObjectIds;
-    if (updateItemTaxesMaxItemIds != null)
-      body['update_item_taxes_max_item_ids'] = updateItemTaxesMaxItemIds;
-    if (updateItemTaxesMaxTaxesToEnable != null)
-      body['update_item_taxes_max_taxes_to_enable'] =
-          updateItemTaxesMaxTaxesToEnable;
-    if (updateItemTaxesMaxTaxesToDisable != null)
-      body['update_item_taxes_max_taxes_to_disable'] =
-          updateItemTaxesMaxTaxesToDisable;
-    if (updateItemModifierListsMaxItemIds != null)
-      body['update_item_modifier_lists_max_item_ids'] =
-          updateItemModifierListsMaxItemIds;
-    if (updateItemModifierListsMaxModifierListsToEnable != null)
-      body['update_item_modifier_lists_max_modifier_lists_to_enable'] =
-          updateItemModifierListsMaxModifierListsToEnable;
-    if (updateItemModifierListsMaxModifierListsToDisable != null)
-      body['update_item_modifier_lists_max_modifier_lists_to_disable'] =
-          updateItemModifierListsMaxModifierListsToDisable;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      batchUpsertMaxObjectsPerBatch,
+      batchUpsertMaxTotalObjects,
+      batchRetrieveMaxObjectIds,
+      searchMaxPageLimit,
+      batchDeleteMaxObjectIds,
+      updateItemTaxesMaxItemIds,
+      updateItemTaxesMaxTaxesToEnable,
+      updateItemTaxesMaxTaxesToDisable,
+      updateItemModifierListsMaxItemIds,
+      updateItemModifierListsMaxModifierListsToEnable,
+      updateItemModifierListsMaxModifierListsToDisable,
+    ];
   }
 }
 
-class StandardUnitDescriptionGroup {
+@JsonSerializable()
+class StandardUnitDescriptionGroup extends Equatable {
+  const StandardUnitDescriptionGroup({
+    required this.standardUnitDescriptions,
+    required this.languageCode,
+  });
+
+  /// Converts a [Map] to an [StandardUnitDescriptionGroup]
+  factory StandardUnitDescriptionGroup.fromJson(Map<String, dynamic> json) =>
+      _$StandardUnitDescriptionGroupFromJson(json);
+
+  /// Converts a [StandardUnitDescriptionGroup] to a [Map]
+  Map<String, dynamic> toJson() => _$StandardUnitDescriptionGroupToJson(this);
+
   final List<StandardUnitDescription> standardUnitDescriptions;
   final String languageCode;
 
-  StandardUnitDescriptionGroup(
-      {this.standardUnitDescriptions, this.languageCode});
-
-  factory StandardUnitDescriptionGroup.fromJson(Map<dynamic, dynamic> json) {
-    return StandardUnitDescriptionGroup(
-      standardUnitDescriptions: json['standard_unit_descriptions'] != null
-          ? (json['standard_unit_descriptions'] as List)
-              .map((item) => StandardUnitDescription.fromJson(item))
-              .toList()
-          : null,
-      languageCode: json['language_code'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (standardUnitDescriptions != null)
-      body['standard_unit_descriptions'] =
-          standardUnitDescriptions.map((item) => item.toJson()).toList();
-    if (languageCode != null) body['language_code'] = languageCode;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [standardUnitDescriptions, languageCode];
 }
 
-class StandardUnitDescription {
+@JsonSerializable()
+class StandardUnitDescription extends Equatable {
+  const StandardUnitDescription({
+    required this.unit,
+    required this.name,
+    required this.abbreviation,
+  });
+
+  /// Converts a [Map] to an [StandardUnitDescription]
+  factory StandardUnitDescription.fromJson(Map<String, dynamic> json) =>
+      _$StandardUnitDescriptionFromJson(json);
+
+  /// Converts a [StandardUnitDescription] to a [Map]
+  Map<String, dynamic> toJson() => _$StandardUnitDescriptionToJson(this);
+
   final MeasurementUnit unit;
   final String name;
   final String abbreviation;
 
-  StandardUnitDescription({this.unit, this.name, this.abbreviation});
-
-  factory StandardUnitDescription.fromJson(Map<dynamic, dynamic> json) {
-    return StandardUnitDescription(
-      unit:
-          json['unit'] != null ? MeasurementUnit.fromJson(json['unit']) : null,
-      name: json['name'],
-      abbreviation: json['abbreviation'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (unit != null) body['unit'] = unit.toJson();
-    if (name != null) body['name'] = name;
-    if (abbreviation != null) body['abbreviation'] = abbreviation;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [unit, name, abbreviation];
 }
 
-class MeasurementUnitCustom {
+@JsonSerializable()
+class MeasurementUnitCustom extends Equatable {
+  const MeasurementUnitCustom({
+    required this.name,
+    required this.abbreviation,
+  });
+
+  /// Converts a [Map] to an [MeasurementUnitCustom]
+  factory MeasurementUnitCustom.fromJson(Map<String, dynamic> json) =>
+      _$MeasurementUnitCustomFromJson(json);
+
+  /// Converts a [MeasurementUnitCustom] to a [Map]
+  Map<String, dynamic> toJson() => _$MeasurementUnitCustomToJson(this);
+
   final String name;
   final String abbreviation;
 
-  MeasurementUnitCustom({this.name, this.abbreviation});
-
-  factory MeasurementUnitCustom.fromJson(Map<dynamic, dynamic> json) {
-    return MeasurementUnitCustom(
-      name: json['name'],
-      abbreviation: json['abbreviation'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-    if (abbreviation != null) body['abbreviation'] = abbreviation;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [name, abbreviation];
 }
 
-class CatalogIdMapping {
+@JsonSerializable()
+class CatalogIdMapping extends Equatable {
+  const CatalogIdMapping({
+    required this.clientObjectId,
+    required this.objectId,
+  });
+
+  /// Converts a [Map] to an [CatalogIdMapping]
+  factory CatalogIdMapping.fromJson(Map<String, dynamic> json) =>
+      _$CatalogIdMappingFromJson(json);
+
+  /// Converts a [CatalogIdMapping] to a [Map]
+  Map<String, dynamic> toJson() => _$CatalogIdMappingToJson(this);
+
   final String clientObjectId;
   final String objectId;
 
-  CatalogIdMapping({this.clientObjectId, this.objectId});
-
-  factory CatalogIdMapping.fromJson(Map<dynamic, dynamic> json) {
-    return CatalogIdMapping(
-      clientObjectId: json['client_object_id'],
-      objectId: json['object_id'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (clientObjectId != null) body['client_object_id'] = clientObjectId;
-    if (objectId != null) body['object_id'] = objectId;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [clientObjectId, objectId];
 }

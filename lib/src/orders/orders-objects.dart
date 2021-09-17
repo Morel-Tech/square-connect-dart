@@ -1,8 +1,45 @@
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_connect/src/helper-classes.dart';
-import 'package:square_connect/src/orders/orders-enums-converter.dart';
 
-class Order {
+part 'orders-objects.g.dart';
+
+@JsonSerializable()
+class Order extends Equatable {
+  const Order({
+    required this.id,
+    required this.locationId,
+    required this.referenceId,
+    required this.source,
+    required this.customerId,
+    required this.lineItems,
+    required this.taxes,
+    required this.discounts,
+    required this.serviceCharges,
+    required this.fulfillments,
+    required this.returnAmounts,
+    required this.netAmounts,
+    required this.roundingAdjustment,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.closedAt,
+    required this.state,
+    required this.totalMoney,
+    required this.totalTaxMoney,
+    required this.totalDiscountMoney,
+    required this.totalServiceChargeMoney,
+    required this.tenders,
+    required this.refunds,
+    required this.returns,
+    required this.version,
+  });
+
+  /// Converts a [Map] to an [Order]
+  factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
+
+  /// Converts a [Order] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderToJson(this);
+
   final String id;
   final String locationId;
   final String referenceId;
@@ -29,189 +66,89 @@ class Order {
   final Money totalServiceChargeMoney;
   final int version;
 
-  Order({
-    this.id,
-    this.locationId,
-    this.referenceId,
-    this.source,
-    this.customerId,
-    this.lineItems,
-    this.taxes,
-    this.discounts,
-    this.serviceCharges,
-    this.fulfillments,
-    this.returnAmounts,
-    this.netAmounts,
-    this.roundingAdjustment,
-    this.createdAt,
-    this.updatedAt,
-    this.closedAt,
-    this.state,
-    this.totalMoney,
-    this.totalTaxMoney,
-    this.totalDiscountMoney,
-    this.totalServiceChargeMoney,
-    this.tenders,
-    this.refunds,
-    this.returns,
-    this.version,
-  });
-
-  factory Order.fromJson(Map<dynamic, dynamic> json) {
-    return Order(
-      id: json['id'],
-      locationId: json['location_id'],
-      referenceId: json['reference_id'],
-      source:
-          json['source'] != null ? OrderSource.fromJson(json['source']) : null,
-      customerId: json['customer_id'],
-      lineItems: json['line_items'] != null
-          ? (json['line_items'] as List)
-              .map((item) => OrderLineItem.fromJson(item))
-              .toList()
-          : null,
-      taxes: json['taxes'] != null
-          ? (json['taxes'] as List)
-              .map((item) => OrderLineItemTax.fromJson(item))
-              .toList()
-          : null,
-      discounts: json['discounts'] != null
-          ? (json['discounts'] as List)
-              .map((item) => OrderLineItemDiscount.fromJson(item))
-              .toList()
-          : null,
-      serviceCharges: json['service_charges'] != null
-          ? (json['service_charges'] as List)
-              .map((item) => OrderServiceCharge.fromJson(item))
-              .toList()
-          : null,
-      fulfillments: json['fulfillments'] != null
-          ? (json['fulfillments'] as List)
-              .map((item) => OrderFulfillment.fromJson(item))
-              .toList()
-          : null,
-      returnAmounts: json['return_amounts'] != null
-          ? OrderMoneyAmounts.fromJson(json['return_amounts'])
-          : null,
-      netAmounts: json['net_amounts'] != null
-          ? OrderMoneyAmounts.fromJson(json['net_amounts'])
-          : null,
-      roundingAdjustment: json['rounding_adjustment'] != null
-          ? OrderRoundingAdjustment.fromJson(json['rounding_adjustment'])
-          : null,
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : null,
-      updatedAt: json['updated_at'] != null
-          ? DateTime.parse(json['updated_at'])
-          : null,
-      closedAt:
-          json['closed_at'] != null ? DateTime.parse(json['closed_at']) : null,
-      state:
-          json['state'] != null ? getOrderStateFromString(json['state']) : null,
-      totalMoney: json['total_money'] != null
-          ? Money.fromJson(json['total_money'])
-          : null,
-      totalTaxMoney: json['total_tax_money'] != null
-          ? Money.fromJson(json['total_tax_money'])
-          : null,
-      totalDiscountMoney: json['total_discount_money'] != null
-          ? Money.fromJson(json['total_discount_money'])
-          : null,
-      totalServiceChargeMoney: json['total_service_charge_money'] != null
-          ? Money.fromJson(json['total_service_charge_money'])
-          : null,
-      tenders: json['tenders'] != null
-          ? (json['tenders'] as List)
-              .map((item) => Tender.fromJson(item))
-              .toList()
-          : null,
-      refunds: json['refunds'] != null
-          ? (json['refunds'] as List)
-              .map((item) => Refund.fromJson(item))
-              .toList()
-          : null,
-      returns: json['returns'] != null
-          ? (json['returns'] as List)
-              .map((item) => OrderReturn.fromJson(item))
-              .toList()
-          : null,
-      version: json['version'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['id'] = id;
-    if (locationId != null) body['location_id'] = locationId;
-    if (referenceId != null) body['reference_id'] = referenceId;
-    if (source != null) body['source'] = source.toJson();
-    if (customerId != null) body['customer_id'] = customerId;
-    if (lineItems != null)
-      body['line_items'] = lineItems.map((item) => item.toJson()).toList();
-    if (taxes != null)
-      body['taxes'] = taxes.map((item) => item.toJson()).toList();
-    if (discounts != null)
-      body['discounts'] = discounts.map((item) => item.toJson()).toList();
-    if (serviceCharges != null)
-      body['service_charges'] =
-          serviceCharges.map((item) => item.toJson()).toList();
-    if (fulfillments != null)
-      body['fulfillments'] = fulfillments.map((item) => item.toJson()).toList();
-    if (returns != null)
-      body['returns'] = returns.map((item) => item.toJson()).toList();
-    if (returnAmounts != null) body['return_amounts'] = returnAmounts.toJson();
-    if (netAmounts != null) body['net_amounts'] = netAmounts.toJson();
-    if (roundingAdjustment != null)
-      body['rounding_adjustment'] = roundingAdjustment.toJson();
-    if (tenders != null)
-      body['tenders'] = tenders.map((item) => item.toJson()).toList();
-    if (refunds != null)
-      body['refunds'] = refunds.map((item) => item.toJson()).toList();
-    if (createdAt != null) body['created_at'] = createdAt.toString();
-    if (updatedAt != null) body['updated_at'] = updatedAt.toString();
-    if (closedAt != null) body['closed_at'] = closedAt.toString();
-    if (state != null) body['state'] = getStringFromOrderState(state);
-    if (totalMoney != null) body['total_money'] = totalMoney.toJson();
-    if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (totalDiscountMoney != null)
-      body['total_discount_money'] = totalDiscountMoney.toJson();
-    if (totalServiceChargeMoney != null)
-      body['total_service_charge_money'] = totalServiceChargeMoney.toJson();
-    if (version != null) body['version'] = version;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      locationId,
+      referenceId,
+      source,
+      customerId,
+      lineItems,
+      taxes,
+      discounts,
+      serviceCharges,
+      fulfillments,
+      returns,
+      returnAmounts,
+      netAmounts,
+      roundingAdjustment,
+      tenders,
+      refunds,
+      createdAt,
+      updatedAt,
+      closedAt,
+      state,
+      totalMoney,
+      totalTaxMoney,
+      totalDiscountMoney,
+      totalServiceChargeMoney,
+      version,
+    ];
   }
 }
 
-class OrderEntry {
+@JsonSerializable()
+class OrderEntry extends Equatable {
+  const OrderEntry({
+    required this.orderId,
+    required this.locationId,
+    required this.version,
+  });
+
+  /// Converts a [Map] to an [OrderEntry]
+  factory OrderEntry.fromJson(Map<String, dynamic> json) =>
+      _$OrderEntryFromJson(json);
+
+  /// Converts a [OrderEntry] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderEntryToJson(this);
+
   final String orderId;
   final String locationId;
   final int version;
 
-  OrderEntry({this.orderId, this.locationId, this.version});
-
-  factory OrderEntry.fromJson(Map<dynamic, dynamic> json) {
-    return OrderEntry(
-      orderId: json['order_id'],
-      locationId: json['location_id'],
-      version: json['version'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (orderId != null) body['order_id'] = orderId;
-    if (locationId != null) body['location_id'] = locationId;
-    if (version != null) body['version'] = version;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [orderId, locationId, version];
 }
 
-class OrderLineItem {
+@JsonSerializable()
+class OrderLineItem extends Equatable {
+  const OrderLineItem({
+    required this.uid,
+    required this.name,
+    required this.quantity,
+    required this.orderQuantityUnit,
+    required this.note,
+    required this.catalogObjectId,
+    required this.variationName,
+    required this.modifiers,
+    required this.taxes,
+    required this.discounts,
+    required this.basePriceMoney,
+    required this.variationTotalPriceMoney,
+    required this.grossSalesMoney,
+    required this.totalTaxMoney,
+    required this.totalDiscountMoney,
+    required this.totalMoney,
+  });
+
+  /// Converts a [Map] to an [OrderLineItem]
+  factory OrderLineItem.fromJson(Map<String, dynamic> json) =>
+      _$OrderLineItemFromJson(json);
+
+  /// Converts a [OrderLineItem] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderLineItemToJson(this);
+
   final String uid;
   final String name;
   final double quantity;
@@ -229,105 +166,48 @@ class OrderLineItem {
   final Money totalDiscountMoney;
   final Money totalMoney;
 
-  OrderLineItem(
-      {this.uid,
-      this.name,
-      this.quantity,
-      this.orderQuantityUnit,
-      this.note,
-      this.catalogObjectId,
-      this.variationName,
-      this.modifiers,
-      this.taxes,
-      this.discounts,
-      this.basePriceMoney,
-      this.variationTotalPriceMoney,
-      this.grossSalesMoney,
-      this.totalTaxMoney,
-      this.totalDiscountMoney,
-      this.totalMoney});
-
-  factory OrderLineItem.fromJson(Map<dynamic, dynamic> json) {
-    return OrderLineItem(
-      uid: json['uid'],
-      name: json['name'],
-      quantity:
-          json['quantity'] != null ? double.parse(json['quantity']) : null,
-      orderQuantityUnit: json['quantity_unit'] != null
-          ? OrderQuantityUnit.fromJson(json['quantity_unit'])
-          : null,
-      note: json['note'],
-      catalogObjectId: json['catalog_object_id'],
-      variationName: json['variation_name'],
-      modifiers: json['modifiers'] != null
-          ? (json['modifiers'] as List)
-              .map((item) => OrderLineItemModifier.fromJson(item))
-              .toList()
-          : null,
-      taxes: json['taxes'] != null
-          ? (json['taxes'] as List)
-              .map((item) => OrderLineItemTax.fromJson(item))
-              .toList()
-          : null,
-      discounts: json['discounts'] != null
-          ? (json['discounts'] as List)
-              .map((item) => OrderLineItemDiscount.fromJson(item))
-              .toList()
-          : null,
-      basePriceMoney: json['base_price_money'] != null
-          ? Money.fromJson(json['base_price_money'])
-          : null,
-      variationTotalPriceMoney: json['variation_total_price_money'] != null
-          ? Money.fromJson(json['variation_total_price_money'])
-          : null,
-      grossSalesMoney: json['gross_sales_money'] != null
-          ? Money.fromJson(json['gross_sales_money'])
-          : null,
-      totalTaxMoney: json['total_tax_money'] != null
-          ? Money.fromJson(json['total_tax_money'])
-          : null,
-      totalDiscountMoney: json['total_discount_money'] != null
-          ? Money.fromJson(json['total_discount_money'])
-          : null,
-      totalMoney: json['total_money'] != null
-          ? Money.fromJson(json['total_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (uid != null) body['uid'] = uid;
-    if (name != null) body['name'] = name;
-    if (quantity != null) body['quantity'] = quantity.toString();
-    if (orderQuantityUnit != null)
-      body['quantity_unit'] = orderQuantityUnit.toJson();
-    if (note != null) body['note'] = note;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (variationName != null) body['variation_name'] = variationName;
-    if (modifiers != null)
-      body['modifiers'] = modifiers.map((item) => item.toJson()).toList();
-    if (taxes != null)
-      body['taxes'] = taxes.map((item) => item.toJson()).toList();
-    if (discounts != null)
-      body['discounts'] = discounts.map((item) => item.toJson()).toList();
-    if (basePriceMoney != null)
-      body['base_price_money'] = basePriceMoney.toJson();
-    if (variationTotalPriceMoney != null)
-      body['variation_total_price_money'] = variationTotalPriceMoney.toJson();
-    if (grossSalesMoney != null)
-      body['gross_sales_money'] = grossSalesMoney.toJson();
-    if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (totalDiscountMoney != null)
-      body['total_discount_money'] = totalDiscountMoney.toJson();
-    if (totalMoney != null) body['total_money'] = totalMoney.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      uid,
+      name,
+      quantity,
+      orderQuantityUnit,
+      note,
+      catalogObjectId,
+      variationName,
+      modifiers,
+      taxes,
+      discounts,
+      basePriceMoney,
+      variationTotalPriceMoney,
+      grossSalesMoney,
+      totalTaxMoney,
+      totalDiscountMoney,
+      totalMoney,
+    ];
   }
 }
 
-class OrderLineItemTax {
+@JsonSerializable()
+class OrderLineItemTax extends Equatable {
+  const OrderLineItemTax({
+    required this.uid,
+    required this.catalogObjectId,
+    required this.name,
+    required this.type,
+    required this.percentage,
+    required this.appliedMoney,
+    required this.scope,
+  });
+
+  /// Converts a [Map] to an [OrderLineItemTax]
+  factory OrderLineItemTax.fromJson(Map<String, dynamic> json) =>
+      _$OrderLineItemTaxFromJson(json);
+
+  /// Converts a [OrderLineItemTax] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderLineItemTaxToJson(this);
+
   final String uid;
   final String catalogObjectId;
   final String name;
@@ -336,51 +216,40 @@ class OrderLineItemTax {
   final Money appliedMoney;
   final OrderLineItemTaxScope scope;
 
-  OrderLineItemTax(
-      {this.uid,
-      this.catalogObjectId,
-      this.name,
-      this.type,
-      this.percentage,
-      this.appliedMoney,
-      this.scope});
-
-  factory OrderLineItemTax.fromJson(Map<dynamic, dynamic> json) {
-    return OrderLineItemTax(
-      uid: json['uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      type: json['type'] != null
-          ? getOrderLineItemTaxTypeFromString(json['type'])
-          : null,
-      percentage:
-          json['percentage'] != null ? double.parse(json['percentage']) : null,
-      appliedMoney: json['applied_money'] != null
-          ? Money.fromJson(json['applied_money'])
-          : null,
-      scope: json['scope'] != null
-          ? getOrderLineItemTaxScopeFromString(json['scope'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (uid != null) body['uid'] = uid;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (name != null) body['name'] = name;
-    if (type != null) body['type'] = getStringFromOrderLineItemTaxType(type);
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null)
-      body['scope'] = getStringFromOrderLineItemTaxScope(scope);
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      uid,
+      catalogObjectId,
+      name,
+      type,
+      percentage,
+      appliedMoney,
+      scope,
+    ];
   }
 }
 
-class OrderLineItemDiscount {
+@JsonSerializable()
+class OrderLineItemDiscount extends Equatable {
+  const OrderLineItemDiscount({
+    required this.uid,
+    required this.catalogObjectId,
+    required this.name,
+    required this.type,
+    required this.percentage,
+    required this.amountMoney,
+    required this.appliedMoney,
+    required this.scope,
+  });
+
+  /// Converts a [Map] to an [OrderLineItemDiscount]
+  factory OrderLineItemDiscount.fromJson(Map<String, dynamic> json) =>
+      _$OrderLineItemDiscountFromJson(json);
+
+  /// Converts a [OrderLineItemDiscount] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderLineItemDiscountToJson(this);
+
   final String uid;
   final String catalogObjectId;
   final String name;
@@ -390,100 +259,79 @@ class OrderLineItemDiscount {
   final Money appliedMoney;
   final OrderLineItemDiscountScope scope;
 
-  OrderLineItemDiscount(
-      {this.uid,
-      this.catalogObjectId,
-      this.name,
-      this.type,
-      this.percentage,
-      this.amountMoney,
-      this.appliedMoney,
-      this.scope});
-
-  factory OrderLineItemDiscount.fromJson(Map<dynamic, dynamic> json) {
-    return OrderLineItemDiscount(
-      uid: json['uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      type: json['type'] != null
-          ? getOrderLineItemDiscountTypeFromString(json['type'])
-          : null,
-      percentage:
-          json['percentage'] != null ? double.parse(json['percentage']) : null,
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      appliedMoney: json['applied_money'] != null
-          ? Money.fromJson(json['applied_money'])
-          : null,
-      scope: json['scope'] != null
-          ? getOrderLineItemDiscountScopeFromString(json['scope'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (uid != null) body['uid'] = uid;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (name != null) body['name'] = name;
-    if (type != null)
-      body['type'] = getStringFromOrderLineItemDiscountType(type);
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null)
-      body['scope'] = getStringFromOrderLineItemDiscountScope(scope);
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      uid,
+      catalogObjectId,
+      name,
+      type,
+      percentage,
+      amountMoney,
+      appliedMoney,
+      scope,
+    ];
   }
 }
 
-class OrderLineItemModifier {
+@JsonSerializable()
+class OrderLineItemModifier extends Equatable {
+  const OrderLineItemModifier({
+    required this.uid,
+    required this.catalogObjectId,
+    required this.name,
+    required this.basePriceMoney,
+    required this.totalPriceMoney,
+  });
+
+  /// Converts a [Map] to an [OrderLineItemModifier]
+  factory OrderLineItemModifier.fromJson(Map<String, dynamic> json) =>
+      _$OrderLineItemModifierFromJson(json);
+
+  /// Converts a [OrderLineItemModifier] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderLineItemModifierToJson(this);
+
   final String uid;
   final String catalogObjectId;
   final String name;
   final Money basePriceMoney;
   final Money totalPriceMoney;
 
-  OrderLineItemModifier(
-      {this.uid,
-      this.catalogObjectId,
-      this.name,
-      this.basePriceMoney,
-      this.totalPriceMoney});
-
-  factory OrderLineItemModifier.fromJson(Map<dynamic, dynamic> json) {
-    return OrderLineItemModifier(
-      uid: json['uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      basePriceMoney: json['base_price_money'] != null
-          ? Money.fromJson(json['base_price_money'])
-          : null,
-      totalPriceMoney: json['total_price_money'] != null
-          ? Money.fromJson(json['total_price_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (uid != null) body['uid'] = uid;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (name != null) body['name'] = name;
-    if (basePriceMoney != null)
-      body['base_price_money'] = basePriceMoney.toJson();
-    if (totalPriceMoney != null)
-      body['total_price_money'] = totalPriceMoney.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      uid,
+      catalogObjectId,
+      name,
+      basePriceMoney,
+      totalPriceMoney,
+    ];
   }
 }
 
-class OrderServiceCharge {
+@JsonSerializable()
+class OrderServiceCharge extends Equatable {
+  const OrderServiceCharge({
+    required this.uid,
+    required this.name,
+    required this.catalogObjectId,
+    required this.percentage,
+    required this.amountMoney,
+    required this.appliedMoney,
+    required this.totalMoney,
+    required this.totalTaxMoney,
+    required this.calculationPhase,
+    required this.taxable,
+    required this.taxes,
+  });
+
+  /// Converts a [Map] to an [OrderServiceCharge]
+  factory OrderServiceCharge.fromJson(Map<String, dynamic> json) =>
+      _$OrderServiceChargeFromJson(json);
+
+  /// Converts a [OrderServiceCharge] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderServiceChargeToJson(this);
+
   final String uid;
   final String name;
   final String catalogObjectId;
@@ -496,216 +344,162 @@ class OrderServiceCharge {
   final bool taxable;
   final List<OrderLineItemTax> taxes;
 
-  OrderServiceCharge(
-      {this.uid,
-      this.name,
-      this.catalogObjectId,
-      this.percentage,
-      this.amountMoney,
-      this.appliedMoney,
-      this.totalMoney,
-      this.totalTaxMoney,
-      this.calculationPhase,
-      this.taxable,
-      this.taxes});
-
-  factory OrderServiceCharge.fromJson(Map<dynamic, dynamic> json) {
-    return OrderServiceCharge(
-      uid: json['uid'],
-      name: json['name'],
-      catalogObjectId: json['catalog_object_id'],
-      percentage:
-          json['percentage'] != null ? double.parse(json['percentage']) : null,
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      appliedMoney: json['applied_money'] != null
-          ? Money.fromJson(json['applied_money'])
-          : null,
-      totalMoney: json['total_money'] != null
-          ? Money.fromJson(json['total_money'])
-          : null,
-      totalTaxMoney: json['total_tax_money'] != null
-          ? Money.fromJson(json['total_tax_money'])
-          : null,
-      calculationPhase: json['calculation_phase'] != null
-          ? getOrderServiceChargeCalculationPhaseFromString(
-              json['calculation_phase'])
-          : null,
-      taxable: json['taxable'],
-      taxes: json['taxes'] != null
-          ? (json['taxes'] as List)
-              .map((item) => OrderLineItemTax.fromJson(item))
-              .toList()
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (uid != null) body['uid'] = uid;
-    if (name != null) body['name'] = name;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (totalMoney != null) body['total_money'] = totalMoney.toJson();
-    if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (calculationPhase != null)
-      body['calculation_phase'] =
-          getStringFromOrderServiceChargeCalculationPhase(calculationPhase);
-    if (taxable != null) body['taxable'] = taxable;
-    if (taxes != null)
-      body['taxes'] = taxes.map((item) => item.toJson()).toList();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      uid,
+      name,
+      catalogObjectId,
+      percentage,
+      amountMoney,
+      appliedMoney,
+      totalMoney,
+      totalTaxMoney,
+      calculationPhase,
+      taxable,
+      taxes,
+    ];
   }
 }
 
-class OrderMoneyAmounts {
+@JsonSerializable()
+class OrderMoneyAmounts extends Equatable {
+  const OrderMoneyAmounts({
+    required this.totalMoney,
+    required this.taxMoney,
+    required this.discountMoney,
+    required this.tipMoney,
+    required this.serviceChargeMoney,
+  });
+
+  /// Converts a [Map] to an [OrderMoneyAmounts]
+  factory OrderMoneyAmounts.fromJson(Map<String, dynamic> json) =>
+      _$OrderMoneyAmountsFromJson(json);
+
+  /// Converts a [OrderMoneyAmounts] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderMoneyAmountsToJson(this);
+
   final Money totalMoney;
   final Money taxMoney;
   final Money discountMoney;
   final Money tipMoney;
   final Money serviceChargeMoney;
 
-  OrderMoneyAmounts(
-      {this.totalMoney,
-      this.taxMoney,
-      this.discountMoney,
-      this.tipMoney,
-      this.serviceChargeMoney});
-
-  factory OrderMoneyAmounts.fromJson(Map<dynamic, dynamic> json) {
-    return OrderMoneyAmounts(
-      totalMoney: json['total_money'] != null
-          ? Money.fromJson(json['total_money'])
-          : null,
-      taxMoney:
-          json['tax_money'] != null ? Money.fromJson(json['tax_money']) : null,
-      discountMoney: json['discount_money'] != null
-          ? Money.fromJson(json['discount_money'])
-          : null,
-      tipMoney:
-          json['tip_money'] != null ? Money.fromJson(json['tip_money']) : null,
-      serviceChargeMoney: json['service_charge_money'] != null
-          ? Money.fromJson(json['service_charge_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (totalMoney != null) body['total_money'] = totalMoney.toJson();
-    if (taxMoney != null) body['tax_money'] = taxMoney.toJson();
-    if (discountMoney != null) body['discount_money'] = discountMoney.toJson();
-    if (tipMoney != null) body['tip_money'] = tipMoney.toJson();
-    if (serviceChargeMoney != null)
-      body['service_charge_money'] = serviceChargeMoney.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      totalMoney,
+      taxMoney,
+      discountMoney,
+      tipMoney,
+      serviceChargeMoney,
+    ];
   }
 }
 
-class OrderSource {
+@JsonSerializable()
+class OrderSource extends Equatable {
+  const OrderSource({
+    required this.name,
+  });
+
+  /// Converts a [Map] to an [OrderSource]
+  factory OrderSource.fromJson(Map<String, dynamic> json) =>
+      _$OrderSourceFromJson(json);
+
+  /// Converts a [OrderSource] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderSourceToJson(this);
+
   final String name;
 
-  OrderSource({this.name});
-
-  factory OrderSource.fromJson(Map<dynamic, dynamic> json) {
-    return OrderSource(
-      name: json['name'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (name != null) body['name'] = name;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [name];
 }
 
-class OrderQuantityUnit {
+@JsonSerializable()
+class OrderQuantityUnit extends Equatable {
+  const OrderQuantityUnit({
+    required this.measurementUnit,
+    required this.precision,
+  });
+
+  /// Converts a [Map] to an [OrderQuantityUnit]
+  factory OrderQuantityUnit.fromJson(Map<String, dynamic> json) =>
+      _$OrderQuantityUnitFromJson(json);
+
+  /// Converts a [OrderQuantityUnit] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderQuantityUnitToJson(this);
+
   final MeasurementUnit measurementUnit;
   final int precision;
 
-  OrderQuantityUnit({
-    this.measurementUnit,
-    this.precision,
-  });
-
-  factory OrderQuantityUnit.fromJson(Map<dynamic, dynamic> json) {
-    return OrderQuantityUnit(
-      measurementUnit: json['measurement_unit'] != null
-          ? MeasurementUnit.fromJson(json['measurement_unit'])
-          : null,
-      precision: json['precision'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (measurementUnit != null)
-      body['measurement_unit'] = measurementUnit.toJson();
-    if (precision != null) body['precision'] = precision;
-
-    return body;
-  }
+  @override
+  List<Object> get props => [measurementUnit, precision];
 }
 
-class OrderFulfillment {
+@JsonSerializable()
+class OrderFulfillment extends Equatable {
+  const OrderFulfillment({
+    required this.type,
+    required this.state,
+    required this.pickupDetails,
+    required this.shipmentDetails,
+    required this.uid,
+  });
+
+  /// Converts a [Map] to an [OrderFulfillment]
+  factory OrderFulfillment.fromJson(Map<String, dynamic> json) =>
+      _$OrderFulfillmentFromJson(json);
+
+  /// Converts a [OrderFulfillment] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderFulfillmentToJson(this);
+
   final OrderFulfillmentType type;
   final OrderFulfillmentState state;
   final OrderFulfillmentPickupDetails pickupDetails;
   final OrderFulfillmentShipmentDetails shipmentDetails;
   final String uid;
 
-  OrderFulfillment(
-      {this.type,
-      this.state,
-      this.pickupDetails,
-      this.shipmentDetails,
-      this.uid});
-
-  factory OrderFulfillment.fromJson(Map<dynamic, dynamic> json) {
-    return OrderFulfillment(
-      type: json['type'] != null
-          ? getOrderFulfillmentTypeFromString(json['type'])
-          : null,
-      state: json['state'] != null
-          ? getOrderFulfillmentStateFromString(json['state'])
-          : null,
-      pickupDetails: json['pickup_details'] != null
-          ? OrderFulfillmentPickupDetails.fromJson(json['pickup_details'])
-          : null,
-      shipmentDetails: json['shipment_details'] != null
-          ? OrderFulfillmentShipmentDetails.fromJson(json['shipment_details'])
-          : null,
-      uid: json['uid'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (type != null) body['type'] = getStringFromOrderFulfillmentType(type);
-    if (state != null)
-      body['state'] = getStringFromOrderFulfillmentState(state);
-    if (pickupDetails != null) body['pickup_details'] = pickupDetails.toJson();
-    if (shipmentDetails != null)
-      body['shipment_details'] = shipmentDetails.toJson();
-    if (uid != null) body['uid'] = uid;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      type,
+      state,
+      pickupDetails,
+      shipmentDetails,
+      uid,
+    ];
   }
 }
 
-class OrderFulfillmentPickupDetails {
+@JsonSerializable()
+class OrderFulfillmentPickupDetails extends Equatable {
+  const OrderFulfillmentPickupDetails({
+    required this.recipient,
+    required this.expiresAt,
+    required this.autoCompleteDuration,
+    required this.scheduleType,
+    required this.pickupAt,
+    required this.pickupWindowDuration,
+    required this.prepTimeDuration,
+    required this.note,
+    required this.placedAt,
+    required this.acceptedAt,
+    required this.rejectedAt,
+    required this.readyAt,
+    required this.expiredAt,
+    required this.pickedUpAt,
+    required this.canceledAt,
+    required this.cancelReason,
+  });
+
+  /// Converts a [Map] to an [OrderFulfillmentPickupDetails]
+  factory OrderFulfillmentPickupDetails.fromJson(Map<String, dynamic> json) =>
+      _$OrderFulfillmentPickupDetailsFromJson(json);
+
+  /// Converts a [OrderFulfillmentPickupDetails] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderFulfillmentPickupDetailsToJson(this);
+
   final OrderFulfillmentRecipient recipient;
   final DateTime expiresAt;
   final Duration autoCompleteDuration;
@@ -723,101 +517,57 @@ class OrderFulfillmentPickupDetails {
   final DateTime canceledAt;
   final String cancelReason;
 
-  OrderFulfillmentPickupDetails(
-      {this.recipient,
-      this.expiresAt,
-      this.autoCompleteDuration,
-      this.scheduleType,
-      this.pickupAt,
-      this.pickupWindowDuration,
-      this.prepTimeDuration,
-      this.note,
-      this.placedAt,
-      this.acceptedAt,
-      this.rejectedAt,
-      this.readyAt,
-      this.expiredAt,
-      this.pickedUpAt,
-      this.canceledAt,
-      this.cancelReason});
-
-  factory OrderFulfillmentPickupDetails.fromJson(Map<dynamic, dynamic> json) {
-    return OrderFulfillmentPickupDetails(
-      recipient: json['recipient'] != null
-          ? OrderFulfillmentRecipient.fromJson(json['recipient'])
-          : null,
-      expiresAt: json['expires_at'] != null
-          ? DateTime.parse(json['expires_at'])
-          : null,
-      autoCompleteDuration: json['auto_complete_duration'] != null
-          ? parseDuration(json['auto_complete_duration'])
-          : null,
-      scheduleType: json['schedule_type'] != null
-          ? getOrderFulfillmentPickupDetailsScheduleTypeFromString(
-              json['schedule_type'])
-          : null,
-      pickupAt:
-          json['pickup_at'] != null ? DateTime.parse(json['pickup_at']) : null,
-      pickupWindowDuration: json['pickup_window_duration'] != null
-          ? parseDuration(json['pickup_window_duration'])
-          : null,
-      prepTimeDuration: json['prep_time_duration'] != null
-          ? parseDuration(json['prep_time_duration'])
-          : null,
-      note: json['note'],
-      placedAt:
-          json['placed_at'] != null ? DateTime.parse(json['placed_at']) : null,
-      acceptedAt: json['accepted_at'] != null
-          ? DateTime.parse(json['accepted_at'])
-          : null,
-      rejectedAt: json['rejected_at'] != null
-          ? DateTime.parse(json['rejected_at'])
-          : null,
-      readyAt:
-          json['ready_at'] != null ? DateTime.parse(json['ready_at']) : null,
-      expiredAt: json['expired_at'] != null
-          ? DateTime.parse(json['expired_at'])
-          : null,
-      pickedUpAt: json['picked_up_at'] != null
-          ? DateTime.parse(json['picked_up_at'])
-          : null,
-      canceledAt: json['canceled_at'] != null
-          ? DateTime.parse(json['canceled_at'])
-          : null,
-      cancelReason: json['cancel_reason'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (recipient != null) body['recipient'] = recipient.toJson();
-    if (expiresAt != null) body['expires_at'] = expiresAt.toString();
-    if (autoCompleteDuration != null)
-      body['auto_complete_duration'] = durationToString(autoCompleteDuration);
-    if (scheduleType != null)
-      body['schedule_type'] =
-          getStringFromOrderFulfillmentPickupDetailsScheduleType(scheduleType);
-    if (pickupAt != null) body['pickup_at'] = pickupAt.toString();
-    if (pickupWindowDuration != null)
-      body['pickup_window_duration'] = durationToString(pickupWindowDuration);
-    if (prepTimeDuration != null)
-      body['prep_time_duration'] = durationToString(prepTimeDuration);
-    if (note != null) body['note'] = note;
-    if (placedAt != null) body['placed_at'] = placedAt.toString();
-    if (acceptedAt != null) body['accepted_at'] = acceptedAt.toString();
-    if (rejectedAt != null) body['rejected_at'] = rejectedAt.toString();
-    if (readyAt != null) body['ready_at'] = readyAt.toString();
-    if (expiredAt != null) body['expired_at'] = expiredAt.toString();
-    if (pickedUpAt != null) body['picked_up_at'] = pickedUpAt.toString();
-    if (canceledAt != null) body['canceled_at'] = canceledAt.toString();
-    if (cancelReason != null) body['cancel_reason'] = cancelReason;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      recipient,
+      expiresAt,
+      autoCompleteDuration,
+      scheduleType,
+      pickupAt,
+      pickupWindowDuration,
+      prepTimeDuration,
+      note,
+      placedAt,
+      acceptedAt,
+      rejectedAt,
+      readyAt,
+      expiredAt,
+      pickedUpAt,
+      canceledAt,
+      cancelReason,
+    ];
   }
 }
 
-class OrderFulfillmentShipmentDetails {
+@JsonSerializable()
+class OrderFulfillmentShipmentDetails extends Equatable {
+  const OrderFulfillmentShipmentDetails({
+    required this.cancelReason,
+    required this.canceledAt,
+    required this.carrier,
+    required this.expectedShippedAt,
+    required this.failedAt,
+    required this.failureReason,
+    required this.inProgressAt,
+    required this.packagedAt,
+    required this.placedAt,
+    required this.recipient,
+    required this.shippedAt,
+    required this.shippingNote,
+    required this.shippingType,
+    required this.trackingNumber,
+    required this.trackingUrl,
+  });
+
+  /// Converts a [Map] to an [OrderFulfillmentShipmentDetails]
+  factory OrderFulfillmentShipmentDetails.fromJson(Map<String, dynamic> json) =>
+      _$OrderFulfillmentShipmentDetailsFromJson(json);
+
+  /// Converts a [OrderFulfillmentShipmentDetails] to a [Map]
+  Map<String, dynamic> toJson() =>
+      _$OrderFulfillmentShipmentDetailsToJson(this);
+
   final String cancelReason;
   final DateTime canceledAt;
   final String carrier;
@@ -834,257 +584,106 @@ class OrderFulfillmentShipmentDetails {
   final String trackingNumber;
   final String trackingUrl;
 
-  OrderFulfillmentShipmentDetails(
-      {this.cancelReason,
-      this.canceledAt,
-      this.carrier,
-      this.expectedShippedAt,
-      this.failedAt,
-      this.failureReason,
-      this.inProgressAt,
-      this.packagedAt,
-      this.placedAt,
-      this.recipient,
-      this.shippedAt,
-      this.shippingNote,
-      this.shippingType,
-      this.trackingNumber,
-      this.trackingUrl});
-
-  factory OrderFulfillmentShipmentDetails.fromJson(Map<dynamic, dynamic> json) {
-    return OrderFulfillmentShipmentDetails(
-      cancelReason: json['cancel_reason'],
-      canceledAt: json['canceled_at'] != null
-          ? DateTime.parse(json['canceled_at'])
-          : null,
-      carrier: json['carrier'],
-      expectedShippedAt: json['expected_shipped_at'] != null
-          ? DateTime.parse(json['expected_shipped_at'])
-          : null,
-      failedAt:
-          json['failed_at'] != null ? DateTime.parse(json['failed_at']) : null,
-      failureReason: json['failure_reason'],
-      inProgressAt: json['in_progress_at'] != null
-          ? DateTime.parse(json['in_progress_at'])
-          : null,
-      packagedAt: json['packaged_at'] != null
-          ? DateTime.parse(json['packaged_at'])
-          : null,
-      placedAt:
-          json['placed_at'] != null ? DateTime.parse(json['placed_at']) : null,
-      recipient: json['recipient'] != null
-          ? OrderFulfillmentRecipient.fromJson(json['recipient'])
-          : null,
-      shippedAt: json['shipped_at'] != null
-          ? DateTime.parse(json['shipped_at'])
-          : null,
-      shippingNote: json['shipping_note'],
-      shippingType: json['shipping_type'],
-      trackingNumber: json['tracking_number'],
-      trackingUrl: json['tracking_url'],
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (cancelReason != null) body['cancel_reason'] = cancelReason;
-    if (canceledAt != null) body['canceled_at'] = canceledAt.toString();
-    if (carrier != null) body['carrier'] = carrier;
-    if (expectedShippedAt != null)
-      body['expected_shipped_at'] = expectedShippedAt.toString();
-    if (failedAt != null) body['failed_at'] = failedAt.toString();
-    if (failureReason != null) body['failure_reason'] = failureReason;
-    if (inProgressAt != null) body['in_progress_at'] = inProgressAt.toString();
-    if (packagedAt != null) body['packaged_at'] = packagedAt.toString();
-    if (placedAt != null) body['placed_at'] = placedAt.toString();
-    if (recipient != null) body['recipient'] = recipient.toJson();
-    if (shippingNote != null) body['shipping_note'] = shippingNote;
-    if (shippingType != null) body['shipping_type'] = shippingType;
-    if (trackingNumber != null) body['tracking_number'] = trackingNumber;
-    if (trackingUrl != null) body['tracking_url'] = trackingUrl;
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      cancelReason,
+      canceledAt,
+      carrier,
+      expectedShippedAt,
+      failedAt,
+      failureReason,
+      inProgressAt,
+      packagedAt,
+      placedAt,
+      recipient,
+      shippedAt,
+      shippingNote,
+      shippingType,
+      trackingNumber,
+      trackingUrl,
+    ];
   }
 }
 
-class OrderFulfillmentRecipient {
+@JsonSerializable()
+class OrderFulfillmentRecipient extends Equatable {
+  const OrderFulfillmentRecipient({
+    required this.customerId,
+    required this.displayName,
+    required this.emailAddress,
+    required this.phoneNumber,
+    required this.address,
+  });
+
+  /// Converts a [Map] to an [OrderFulfillmentRecipient]
+  factory OrderFulfillmentRecipient.fromJson(Map<String, dynamic> json) =>
+      _$OrderFulfillmentRecipientFromJson(json);
+
+  /// Converts a [OrderFulfillmentRecipient] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderFulfillmentRecipientToJson(this);
+
   final String customerId;
   final String displayName;
   final String emailAddress;
   final String phoneNumber;
   final Address address;
 
-  OrderFulfillmentRecipient(
-      {this.customerId,
-      this.displayName,
-      this.emailAddress,
-      this.phoneNumber,
-      this.address});
-
-  factory OrderFulfillmentRecipient.fromJson(Map<dynamic, dynamic> json) {
-    return OrderFulfillmentRecipient(
-      customerId: json['customer_id'],
-      displayName: json['display_name'],
-      emailAddress: json['email_address'],
-      phoneNumber: json['phone_number'],
-      address:
-          json['address'] != null ? Address.fromJson(json['address']) : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (customerId != null) body['customer_id'] = customerId;
-    if (displayName != null) body['display_name'] = displayName;
-    if (emailAddress != null) body['email_address'] = emailAddress;
-    if (phoneNumber != null) body['phone_number'] = phoneNumber;
-    if (address != null) body['address'] = address.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      customerId,
+      displayName,
+      emailAddress,
+      phoneNumber,
+      address,
+    ];
   }
 }
 
-class OrderRoundingAdjustment {
+@JsonSerializable()
+class OrderRoundingAdjustment extends Equatable {
+  const OrderRoundingAdjustment({
+    required this.uid,
+    required this.name,
+    required this.amountMoney,
+  });
+
+  /// Converts a [Map] to an [OrderRoundingAdjustment]
+  factory OrderRoundingAdjustment.fromJson(Map<String, dynamic> json) =>
+      _$OrderRoundingAdjustmentFromJson(json);
+
+  /// Converts a [OrderRoundingAdjustment] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderRoundingAdjustmentToJson(this);
+
   final String uid;
   final String name;
   final Money amountMoney;
 
-  OrderRoundingAdjustment({this.uid, this.name, this.amountMoney});
-
-  factory OrderRoundingAdjustment.fromJson(Map<dynamic, dynamic> json) {
-    return OrderRoundingAdjustment(
-      uid: json['uid'],
-      name: json['name'],
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (uid != null) body['uid'] = uid;
-    if (name != null) body['source_order_id'] = name;
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-
-    return body;
-  }
+  @override
+  List<Object> get props => [uid, name, amountMoney];
 }
 
-/// Helper class to create order object line items.
-class OrderLineItemObjectRequest {
-  final double quantity;
-  final String note;
-  final String catalogVariationId;
-  final List<String> modifierIds;
-  final List<String> taxIds;
-  final List<String> discountIds;
-
-  OrderLineItemObjectRequest(
-      {this.quantity,
-      this.note,
-      this.catalogVariationId,
-      this.modifierIds,
-      this.taxIds,
-      this.discountIds});
-
-  Map<dynamic, dynamic> toMap() {
-    var body = Map<dynamic, dynamic>();
-    if (quantity != null) body['quantity'] = quantity.toString();
-    if (note != null) body['note'] = note;
-    if (catalogVariationId != null)
-      body['catalog_object_id'] = catalogVariationId;
-    if (modifierIds != null)
-      body['modifiers'] =
-          modifierIds.map((id) => {'catalog_object_id': id}).toList();
-    if (taxIds != null)
-      body['taxes'] = taxIds.map((id) => {'catalog_object_id': id}).toList();
-    if (discountIds != null)
-      body['discounts'] =
-          discountIds.map((id) => {'catalog_object_id': id}).toList();
-
-    return body;
-  }
-}
-
-/// Deprecated method
-class FulfillmentRequest {
-  final OrderFulfillmentType fulfillmentType;
-  final OrderFulfillmentState fulfillmentState;
-  final String customerId;
-  final String displayName;
-  final String emailAddress;
-  final String phoneNumber;
-  final DateTime expriesAt;
-  final OrderFulfillmentPickupDetailsScheduleType scheduleType;
-  final DateTime pickupAt;
-  final String note;
-  final Duration autoCompleteDuration;
-  final Duration pickupWindowDuration;
-  final Duration prepTimeDuration;
-
-  FulfillmentRequest({
-    this.fulfillmentType,
-    this.fulfillmentState,
-    this.customerId,
-    this.displayName,
-    this.emailAddress,
-    this.phoneNumber,
-    this.expriesAt,
-    this.scheduleType,
-    this.pickupAt,
-    this.note,
-    this.autoCompleteDuration,
-    this.pickupWindowDuration,
-    this.prepTimeDuration,
+@JsonSerializable()
+class OrderReturn extends Equatable {
+  const OrderReturn({
+    required this.id,
+    required this.sourceOrderId,
+    required this.returnLineItems,
+    required this.returnServiceCharges,
+    required this.returnTaxes,
+    required this.returnDiscounts,
+    required this.roundingAdjustment,
+    required this.returnAmounts,
   });
 
-  Map<dynamic, dynamic> toMap() {
-    var body = Map<dynamic, dynamic>();
-    var pickupDetails = Map<dynamic, dynamic>();
+  /// Converts a [Map] to an [OrderReturn]
+  factory OrderReturn.fromJson(Map<String, dynamic> json) =>
+      _$OrderReturnFromJson(json);
 
-    if (fulfillmentType != null)
-      body['type'] = getStringFromOrderFulfillmentType(fulfillmentType);
-    if (fulfillmentState != null)
-      body['state'] = getStringFromOrderFulfillmentState(fulfillmentState);
+  /// Converts a [OrderReturn] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderReturnToJson(this);
 
-    pickupDetails['recipient'] = Map<dynamic, dynamic>();
-    if (customerId != null)
-      pickupDetails['recipient']['customer_id'] = customerId;
-    if (displayName != null)
-      pickupDetails['recipient']['display_name'] = displayName;
-    if (emailAddress != null)
-      pickupDetails['recipient']['email_address'] = emailAddress;
-    if (phoneNumber != null)
-      pickupDetails['recipient']['phone_number'] = phoneNumber;
-
-    if (expriesAt != null)
-      pickupDetails['expires_at'] = expriesAt.toIso8601String();
-    if (scheduleType != null)
-      pickupDetails['schedule_type'] =
-          getStringFromOrderFulfillmentPickupDetailsScheduleType(scheduleType);
-    if (pickupAt != null)
-      pickupDetails['pickup_at'] = pickupAt.toIso8601String();
-    if (note != null) pickupDetails['note'] = note;
-    if (autoCompleteDuration != null)
-      pickupDetails['auto_complete_duration'] =
-          durationToString(autoCompleteDuration);
-    if (pickupWindowDuration != null)
-      pickupDetails['pickup_window_duration'] =
-          durationToString(pickupWindowDuration);
-    if (prepTimeDuration != null)
-      pickupDetails['prep_time_duration'] = durationToString(prepTimeDuration);
-
-    body['pickup_details'] = pickupDetails;
-
-    return body;
-  }
-}
-
-class OrderReturn {
   final String id;
   final String sourceOrderId;
   final List<OrderReturnLineItem> returnLineItems;
@@ -1094,53 +693,50 @@ class OrderReturn {
   final OrderRoundingAdjustment roundingAdjustment;
   final OrderMoneyAmounts returnAmounts;
 
-  OrderReturn(
-      {this.id,
-      this.sourceOrderId,
-      this.returnLineItems,
-      this.returnServiceCharges,
-      this.returnTaxes,
-      this.returnDiscounts,
-      this.roundingAdjustment,
-      this.returnAmounts});
-
-  factory OrderReturn.fromJson(Map<dynamic, dynamic> json) {
-    return OrderReturn(
-      id: json['uid'],
-      sourceOrderId: json['source_order_id'],
-      returnLineItems: json['return_line_items'] != null
-          ? (json['return_line_items'] as List)
-              .map((item) => OrderReturnLineItem.fromJson(item))
-              .toList()
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['uid'] = id;
-    if (sourceOrderId != null) body['source_order_id'] = sourceOrderId;
-    if (returnLineItems != null)
-      body['return_line_items'] =
-          returnLineItems.map((item) => item.toJson()).toList();
-    if (returnServiceCharges != null)
-      body['return_service_charges'] =
-          returnServiceCharges.map((item) => item.toJson()).toList();
-    if (returnTaxes != null)
-      body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
-    if (returnDiscounts != null)
-      body['return_discounts'] =
-          returnDiscounts.map((item) => item.toJson()).toList();
-    if (roundingAdjustment != null)
-      body['rounding_adjustment'] = roundingAdjustment.toJson();
-    if (returnAmounts != null) body['return_amounts'] = returnAmounts.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      sourceOrderId,
+      returnLineItems,
+      returnServiceCharges,
+      returnTaxes,
+      returnDiscounts,
+      roundingAdjustment,
+      returnAmounts,
+    ];
   }
 }
 
-class OrderReturnLineItem {
+@JsonSerializable()
+class OrderReturnLineItem extends Equatable {
+  const OrderReturnLineItem({
+    required this.id,
+    required this.sourceLineItemId,
+    required this.name,
+    required this.quantity,
+    required this.quantityUnit,
+    required this.note,
+    required this.catalogObjectId,
+    required this.variationName,
+    required this.returnModifiers,
+    required this.returnTaxes,
+    required this.returnDiscounts,
+    required this.basePriceMoney,
+    required this.variationTotalPriceMoney,
+    required this.grossReturnMoney,
+    required this.totalTaxMoney,
+    required this.totalDiscountMoney,
+    required this.totalMoney,
+  });
+
+  /// Converts a [Map] to an [OrderReturnLineItem]
+  factory OrderReturnLineItem.fromJson(Map<String, dynamic> json) =>
+      _$OrderReturnLineItemFromJson(json);
+
+  /// Converts a [OrderReturnLineItem] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderReturnLineItemToJson(this);
+
   final String id;
   final String sourceLineItemId;
   final String name;
@@ -1159,158 +755,76 @@ class OrderReturnLineItem {
   final Money totalDiscountMoney;
   final Money totalMoney;
 
-  OrderReturnLineItem(
-      {this.id,
-      this.sourceLineItemId,
-      this.name,
-      this.quantity,
-      this.quantityUnit,
-      this.note,
-      this.catalogObjectId,
-      this.variationName,
-      this.returnModifiers,
-      this.returnTaxes,
-      this.returnDiscounts,
-      this.basePriceMoney,
-      this.variationTotalPriceMoney,
-      this.grossReturnMoney,
-      this.totalTaxMoney,
-      this.totalDiscountMoney,
-      this.totalMoney});
-
-  factory OrderReturnLineItem.fromJson(Map<dynamic, dynamic> json) {
-    return OrderReturnLineItem(
-      id: json['uid'],
-      sourceLineItemId: json['source_line_item_uid'],
-      name: json['name'],
-      quantity:
-          json['quantity'] != null ? double.parse(json['quantity']) : null,
-      quantityUnit: json['quantity_unit'] != null
-          ? OrderQuantityUnit.fromJson(json['quantity_unit'])
-          : null,
-      note: json['note'],
-      catalogObjectId: json['catalog_object_id'],
-      variationName: json['variation_name'],
-      returnModifiers: json['return_modifiers'] != null
-          ? (json['return_modifiers'] as List)
-              .map((item) => OrderReturnLineItemModifier.fromJson(item))
-              .toList()
-          : null,
-      returnDiscounts: json['return_taxes'] != null
-          ? (json['return_taxes'] as List)
-              .map((item) => OrderReturnDiscount.fromJson(item))
-              .toList()
-          : null,
-      returnTaxes: json['return_discounts'] != null
-          ? (json['return_discounts'] as List)
-              .map((item) => OrderReturnTax.fromJson(item))
-              .toList()
-          : null,
-      basePriceMoney: json['base_price_money'] != null
-          ? Money.fromJson(json['base_price_money'])
-          : null,
-      variationTotalPriceMoney: json['variation_total_price_money'] != null
-          ? Money.fromJson(json['variation_total_price_money'])
-          : null,
-      grossReturnMoney: json['gross_return_money'] != null
-          ? Money.fromJson(json['gross_return_money'])
-          : null,
-      totalTaxMoney: json['total_tax_money'] != null
-          ? Money.fromJson(json['total_tax_money'])
-          : null,
-      totalDiscountMoney: json['total_discount_money'] != null
-          ? Money.fromJson(json['total_discount_money'])
-          : null,
-      totalMoney: json['total_money'] != null
-          ? Money.fromJson(json['total_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['uid'] = id;
-    if (sourceLineItemId != null)
-      body['source_line_item_uid'] = sourceLineItemId;
-    if (name != null) body['name'] = name;
-    if (quantity != null) body['quantity'] = quantity.toString();
-    if (quantityUnit != null) body['quantity_unit'] = quantityUnit.toJson();
-    if (note != null) body['note'] = note;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (variationName != null) body['variation_name'] = variationName;
-    if (returnModifiers != null)
-      body['return_modifiers'] =
-          returnModifiers.map((item) => item.toJson()).toList();
-    if (returnTaxes != null)
-      body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
-    if (returnDiscounts != null)
-      body['return_discounts'] =
-          returnDiscounts.map((item) => item.toJson()).toList();
-    if (basePriceMoney != null)
-      body['base_price_money'] = basePriceMoney.toJson();
-    if (variationTotalPriceMoney != null)
-      body['variation_total_price_money'] = variationTotalPriceMoney.toJson();
-    if (grossReturnMoney.toJson() != null)
-      body['gross_return_money'] = grossReturnMoney.toJson();
-    if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (totalDiscountMoney != null)
-      body['total_discount_money'] = totalDiscountMoney.toJson();
-    if (totalMoney != null) body['total_money'] = totalMoney.toJson();
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      sourceLineItemId,
+      name,
+      quantity,
+      quantityUnit,
+      note,
+      catalogObjectId,
+      variationName,
+      returnModifiers,
+      returnTaxes,
+      returnDiscounts,
+      basePriceMoney,
+      variationTotalPriceMoney,
+      grossReturnMoney,
+      totalTaxMoney,
+      totalDiscountMoney,
+      totalMoney,
+    ];
   }
 }
 
+@JsonSerializable()
 class OrderReturnLineItemModifier {
+  const OrderReturnLineItemModifier({
+    required this.id,
+    required this.sourceModifierId,
+    required this.catalogObjectId,
+    required this.name,
+    required this.basePriceMoney,
+    required this.totalPriceMoney,
+  });
+
+  /// Converts a [Map] to an [OrderReturnLineItemModifier]
+  factory OrderReturnLineItemModifier.fromJson(Map<String, dynamic> json) =>
+      _$OrderReturnLineItemModifierFromJson(json);
+
+  /// Converts a [OrderReturnLineItemModifier] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderReturnLineItemModifierToJson(this);
+
   final String id;
   final String sourceModifierId;
   final String catalogObjectId;
   final String name;
   final Money basePriceMoney;
   final Money totalPriceMoney;
-
-  OrderReturnLineItemModifier(
-      {this.id,
-      this.sourceModifierId,
-      this.catalogObjectId,
-      this.name,
-      this.basePriceMoney,
-      this.totalPriceMoney});
-
-  factory OrderReturnLineItemModifier.fromJson(Map<dynamic, dynamic> json) {
-    return OrderReturnLineItemModifier(
-      id: json['uid'],
-      sourceModifierId: json['source_modifier_uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      basePriceMoney: json['base_price_money'] != null
-          ? Money.fromJson(json['base_price_money'])
-          : null,
-      totalPriceMoney: json['total_price_money'] != null
-          ? Money.fromJson(json['total_price_money'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['uid'] = id;
-    if (sourceModifierId != null)
-      body['source_modifier_uid'] = sourceModifierId;
-    if (name != null) body['name'] = name;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (basePriceMoney != null)
-      body['base_price_money'] = basePriceMoney.toJson();
-    if (totalPriceMoney != null)
-      body['total_price_money'] = totalPriceMoney.toJson();
-
-    return body;
-  }
 }
 
-class OrderReturnTax {
+@JsonSerializable()
+class OrderReturnTax extends Equatable {
+  const OrderReturnTax({
+    required this.id,
+    required this.sourceTaxId,
+    required this.catalogObjectId,
+    required this.name,
+    required this.type,
+    required this.percentage,
+    required this.appliedMoney,
+    required this.scope,
+  });
+
+  /// Converts a [Map] to an [OrderReturnTax]
+  factory OrderReturnTax.fromJson(Map<String, dynamic> json) =>
+      _$OrderReturnTaxFromJson(json);
+
+  /// Converts a [OrderReturnTax] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderReturnTaxToJson(this);
+
   final String id;
   final String sourceTaxId;
   final String catalogObjectId;
@@ -1320,54 +834,42 @@ class OrderReturnTax {
   final Money appliedMoney;
   final OrderLineItemTaxScope scope;
 
-  OrderReturnTax(
-      {this.id,
-      this.sourceTaxId,
-      this.catalogObjectId,
-      this.name,
-      this.type,
-      this.percentage,
-      this.appliedMoney,
-      this.scope});
-
-  factory OrderReturnTax.fromJson(Map<dynamic, dynamic> json) {
-    return OrderReturnTax(
-      id: json['uid'],
-      sourceTaxId: json['source_tax_uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      type: json['type'] != null
-          ? getOrderLineItemTaxTypeFromString(json['type'])
-          : null,
-      percentage:
-          json['percentage'] != null ? double.parse(json['percentage']) : null,
-      appliedMoney: json['applied_money'] != null
-          ? Money.fromJson(json['applied_money'])
-          : null,
-      scope: json['scope'] != null
-          ? getOrderLineItemTaxScopeFromString(json['scope'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['uid'] = id;
-    if (sourceTaxId != null) body['source_tax_uid'] = sourceTaxId;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (name != null) body['name'] = name;
-    if (type != null) body['type'] = getStringFromOrderLineItemTaxType(type);
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null)
-      body['scope'] = getStringFromOrderLineItemTaxScope(scope);
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      sourceTaxId,
+      catalogObjectId,
+      name,
+      type,
+      percentage,
+      appliedMoney,
+      scope,
+    ];
   }
 }
 
-class OrderReturnDiscount {
+@JsonSerializable()
+class OrderReturnDiscount extends Equatable {
+  const OrderReturnDiscount({
+    required this.id,
+    required this.sourceDiscountId,
+    required this.catalogObjectId,
+    required this.name,
+    required this.type,
+    required this.percentage,
+    required this.amountMoney,
+    required this.appliedMoney,
+    required this.scope,
+  });
+
+  /// Converts a [Map] to an [OrderReturnDiscount]
+  factory OrderReturnDiscount.fromJson(Map<String, dynamic> json) =>
+      _$OrderReturnDiscountFromJson(json);
+
+  /// Converts a [OrderReturnDiscount] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderReturnDiscountToJson(this);
+
   final String id;
   final String sourceDiscountId;
   final String catalogObjectId;
@@ -1378,61 +880,46 @@ class OrderReturnDiscount {
   final Money appliedMoney;
   final OrderLineItemDiscountScope scope;
 
-  OrderReturnDiscount(
-      {this.id,
-      this.sourceDiscountId,
-      this.catalogObjectId,
-      this.name,
-      this.type,
-      this.percentage,
-      this.amountMoney,
-      this.appliedMoney,
-      this.scope});
-
-  factory OrderReturnDiscount.fromJson(Map<dynamic, dynamic> json) {
-    return OrderReturnDiscount(
-      id: json['uid'],
-      sourceDiscountId: json['source_discount_uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      type: json['type'] != null
-          ? getOrderLineItemDiscountTypeFromString(json['type'])
-          : null,
-      percentage:
-          json['percentage'] != null ? double.parse(json['percentage']) : null,
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      appliedMoney: json['applied_money'] != null
-          ? Money.fromJson(json['applied_money'])
-          : null,
-      scope: json['scope'] != null
-          ? getOrderLineItemDiscountScopeFromString(json['scope'])
-          : null,
-    );
-  }
-
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
-
-    if (id != null) body['uid'] = id;
-    if (sourceDiscountId != null)
-      body['source_discount_uid'] = sourceDiscountId;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (name != null) body['name'] = name;
-    if (type != null)
-      body['type'] = getStringFromOrderLineItemDiscountType(type);
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (scope != null)
-      body['scope'] = getStringFromOrderLineItemDiscountScope(scope);
-
-    return body;
+  @override
+  List<Object> get props {
+    return [
+      id,
+      sourceDiscountId,
+      catalogObjectId,
+      name,
+      type,
+      percentage,
+      amountMoney,
+      appliedMoney,
+      scope,
+    ];
   }
 }
 
-class OrderReturnServiceCharge {
+@JsonSerializable()
+class OrderReturnServiceCharge extends Equatable {
+  const OrderReturnServiceCharge({
+    required this.id,
+    required this.sourceServiceChargeId,
+    required this.catalogObjectId,
+    required this.name,
+    required this.percentage,
+    required this.amountMoney,
+    required this.appliedMoney,
+    required this.totalMoney,
+    required this.totalTaxMoney,
+    required this.calculationPhase,
+    required this.taxable,
+    required this.returnTaxes,
+  });
+
+  /// Converts a [Map] to an [OrderReturnServiceCharge]
+  factory OrderReturnServiceCharge.fromJson(Map<String, dynamic> json) =>
+      _$OrderReturnServiceChargeFromJson(json);
+
+  /// Converts a [OrderReturnServiceCharge] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderReturnServiceChargeToJson(this);
+
   final String id;
   final String sourceServiceChargeId;
   final String catalogObjectId;
@@ -1446,73 +933,163 @@ class OrderReturnServiceCharge {
   final bool taxable;
   final List<OrderReturnTax> returnTaxes;
 
-  OrderReturnServiceCharge(
-      {this.id,
-      this.sourceServiceChargeId,
-      this.catalogObjectId,
-      this.name,
-      this.percentage,
-      this.amountMoney,
-      this.appliedMoney,
-      this.totalMoney,
-      this.totalTaxMoney,
-      this.calculationPhase,
-      this.taxable,
-      this.returnTaxes});
-
-  factory OrderReturnServiceCharge.fromJson(Map<dynamic, dynamic> json) {
-    return OrderReturnServiceCharge(
-      id: json['uid'],
-      sourceServiceChargeId: json['source_service_charge_uid'],
-      catalogObjectId: json['catalog_object_id'],
-      name: json['name'],
-      percentage:
-          json['percentage'] != null ? double.parse(json['percentage']) : null,
-      amountMoney: json['amount_money'] != null
-          ? Money.fromJson(json['amount_money'])
-          : null,
-      appliedMoney: json['applied_money'] != null
-          ? Money.fromJson(json['applied_money'])
-          : null,
-      totalMoney: json['total_money'] != null
-          ? Money.fromJson(json['total_money'])
-          : null,
-      totalTaxMoney: json['total_tax_money'] != null
-          ? Money.fromJson(json['total_tax_money'])
-          : null,
-      calculationPhase: json['calculation_phase'] != null
-          ? getOrderServiceChargeCalculationPhaseFromString(
-              json['calculation_phase'])
-          : null,
-      taxable: json['taxable'],
-      returnTaxes: json['return_taxes'] != null
-          ? (json['return_taxes'] as List)
-              .map((item) => OrderReturnTax.fromJson(item))
-              .toList()
-          : null,
-    );
+  @override
+  List<Object> get props {
+    return [
+      id,
+      sourceServiceChargeId,
+      catalogObjectId,
+      name,
+      percentage,
+      amountMoney,
+      appliedMoney,
+      totalMoney,
+      totalTaxMoney,
+      calculationPhase,
+      taxable,
+      returnTaxes,
+    ];
   }
+}
 
-  Map<dynamic, dynamic> toJson() {
-    var body = Map<dynamic, dynamic>();
+/// Indicates how the tax is applied to the associated line item or order.
+enum OrderLineItemTaxType {
+  /// Used for reporting only. The original transaction tax type is currently
+  /// not supported by the API.
+  @JsonValue('UNKNOWN_TAX')
+  unknownTax,
 
-    if (id != null) body['uid'] = id;
-    if (sourceServiceChargeId != null)
-      body['source_service_charge_uid'] = sourceServiceChargeId;
-    if (name != null) body['name'] = name;
-    if (catalogObjectId != null) body['catalog_object_id'] = catalogObjectId;
-    if (percentage != null) body['percentage'] = percentage.toString();
-    if (amountMoney != null) body['amount_money'] = amountMoney.toJson();
-    if (appliedMoney != null) body['applied_money'] = appliedMoney.toJson();
-    if (totalMoney != null) body['total_money'] = totalMoney.toJson();
-    if (totalTaxMoney != null) body['total_tax_money'] = totalTaxMoney.toJson();
-    if (calculationPhase != null)
-      body['calculation_phase'] =
-          getStringFromOrderServiceChargeCalculationPhase(calculationPhase);
-    if (taxable != null) body['taxable'] = taxable;
-    if (returnTaxes != null)
-      body['return_taxes'] = returnTaxes.map((item) => item.toJson()).toList();
+  /// The tax is an additive tax. The tax amount is added on top of the price.
+  /// For example, a $1.00 item with a 10% additive tax would have a total cost
+  /// to the buyer of $1.10.
+  @JsonValue('ADDITIVE')
+  additive,
 
-    return body;
-  }
+  /// The tax is an inclusive tax. Inclusive taxes are already included in the
+  /// line item price or order total. For example, a $1.00 item with a 10%
+  /// inclusive tax would have a pre-tax cost of $0.91 (91 cents) and a $0.09
+  /// (9 cents) tax for a total cost of $1 to the buyer.
+  @JsonValue('INCLUSIVE')
+  inclusive,
+}
+
+/// Indicates whether this is a line item or order level tax.
+enum OrderLineItemTaxScope {
+  /// Used for reporting only. The original transaction tax scope is currently
+  /// not supported by the API.
+  @JsonValue('OTHER_TAX_SCOPE')
+  otherTaxScope,
+
+  /// The tax should be applied to a single line item.
+  @JsonValue('LINE_ITEM')
+  lineItem,
+
+  /// The tax should be applied to the entire order.
+  @JsonValue('ORDER')
+  order,
+}
+
+/// Indicates how the discount is applied to the associated line item or order.
+enum OrderLineItemDiscountType {
+  /// Used for reporting only. The original transaction discount type is
+  /// currently not supported by the API.
+  @JsonValue('UNKNOWN_DISCOUNT')
+  unknownDiscount,
+
+  /// Apply the discount as a fixed percentage (e.g., 5%) off the item price.
+  @JsonValue('FIXED_PERCENTAGE')
+  fixedPercentage,
+
+  /// Apply the discount as a fixed monetary value (e.g., $1.00) off the item
+  /// price.
+  @JsonValue('FIXED_AMOUNT')
+  fixedAmount,
+
+  /// Apply the discount as a variable percentage specified at time of the
+  /// purchase.
+  @JsonValue('VARIABLE_PERCENTAGE')
+  variablePercentage,
+
+  /// Apply the discount as a variable monetary value specified at time of the
+  /// purchase.
+  @JsonValue('VARIABLE_AMOUNT')
+  variableAmount,
+}
+
+/// Indicates whether this is a line item or order level discount.
+enum OrderLineItemDiscountScope {
+  /// Used for reporting only. The original transaction discount scope is
+  /// currently not supported by the API.
+  @JsonValue('OTHER_DISCOUNT_SCOPE')
+  otherDiscountScope,
+
+  /// The discount should be applied to a single line item.
+  @JsonValue('LINE_ITEM')
+  lineItem,
+
+  /// The discount should be applied to the entire order.
+  @JsonValue('ORDER')
+  order,
+}
+
+/// Indicates state of the order.
+enum OrderState {
+  /// Indicates the order is open. Open orders may be updated.
+  @JsonValue('OPEN')
+  open,
+
+  /// Indicates the order is completed. Completed orders are fully paid. This
+  /// is a terminal state.
+  @JsonValue('COMPLETED')
+  completed,
+
+  /// Indicates the order is canceled. Canceled orders are not paid. This is a
+  /// terminal state.
+  @JsonValue('CANCELED')
+  canceled,
+}
+
+/// Inidicates a phase in the process of calculating order totals. Service
+/// charges will be applied after the phase indicated.
+enum OrderServiceChargeCalculationPhase {
+  /// The service charge will be applied after discounts but before taxes.
+  @JsonValue('SUBTOTAL_PHASE')
+  subtotalPhase,
+
+  /// The service charge will be applied after both discounts and taxes are
+  ///  applied.
+  @JsonValue('TOTAL_PHASE')
+  totalPhase,
+}
+
+/// The type of fulfillment.
+enum OrderFulfillmentType {
+  @JsonValue('PICKUP')
+  pickup,
+  @JsonValue('SHIPMENT')
+  shipment,
+}
+
+/// The state of the fulfillment.
+enum OrderFulfillmentState {
+  @JsonValue('PROPOSED')
+  proposed,
+  @JsonValue('RESERVED')
+  reserved,
+  @JsonValue('PREPARED')
+  prepared,
+  @JsonValue('COMPLETED')
+  completed,
+  @JsonValue('CANCELED')
+  canceled,
+  @JsonValue('FAILED')
+  failed,
+}
+
+/// The schedule type of the pickup fulfillment.
+enum OrderFulfillmentPickupDetailsScheduleType {
+  @JsonValue('SCHEDULED')
+  scheduled,
+  @JsonValue('ASAP')
+  asap,
 }

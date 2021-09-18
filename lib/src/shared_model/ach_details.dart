@@ -3,12 +3,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'ach_details.g.dart';
 
-@JsonSerializable()
-
 /// {@template ach_details}
 /// ACH-specific details about BANK_ACCOUNT type payments with the
 /// transfer_type of ACH.
 /// {@endtemplate}
+@JsonSerializable()
 class AchDetails extends Equatable {
   /// @macro {@macro ach_details}
   const AchDetails({

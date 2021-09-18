@@ -79,6 +79,7 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) => Payment(
           : Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
       updatedAt: json['updatedAt'] as String?,
       versionToken: json['versionToken'] as String?,
+      delayDuration: json['delayDuration'] as String?,
     );
 
 Map<String, dynamic> _$PaymentToJson(Payment instance) => <String, dynamic>{
@@ -95,6 +96,7 @@ Map<String, dynamic> _$PaymentToJson(Payment instance) => <String, dynamic>{
       'createdAt': instance.createdAt,
       'customerId': instance.customerId,
       'delayAction': instance.delayAction,
+      'delayDuration': instance.delayDuration,
       'delayedUntil': instance.delayedUntil,
       'employeeId': instance.employeeId,
       'externalDetails': instance.externalDetails,

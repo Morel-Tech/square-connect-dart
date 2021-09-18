@@ -22,7 +22,7 @@ class BusinessHours extends Equatable {
   Map<String, dynamic> toJson() => _$BusinessHoursToJson(this);
 
   /// The list of business periods for a given location.
-  final List<BusinessHoursPeriod> periods;
+  final List<BusinessHoursPeriod>? periods;
 
   @override
   List<Object?> get props => [periods];

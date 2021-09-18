@@ -16,8 +16,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       capabilities: (json['capabilities'] as List<dynamic>?)
           ?.map((e) => _$enumDecode(_$LocationCapabilityEnumMap, e))
           .toList(),
-      locationStatus:
-          _$enumDecode(_$LocationStatusEnumMap, json['location_status']),
+      status: _$enumDecode(_$LocationStatusEnumMap, json['status']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -51,7 +50,7 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'capabilities': instance.capabilities
           ?.map((e) => _$LocationCapabilityEnumMap[e])
           .toList(),
-      'location_status': _$LocationStatusEnumMap[instance.locationStatus],
+      'status': _$LocationStatusEnumMap[instance.status],
       'created_at': instance.createdAt?.toIso8601String(),
       'merchant_id': instance.merchantId,
       'country': instance.country,

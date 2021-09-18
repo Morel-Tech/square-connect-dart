@@ -17,7 +17,7 @@ class Location extends Equatable {
     this.address,
     this.timezone,
     this.capabilities,
-    required this.locationStatus,
+    required this.status,
     this.createdAt,
     required this.merchantId,
     this.country,
@@ -59,7 +59,7 @@ class Location extends Equatable {
   final List<LocationCapability>? capabilities;
 
   /// Whether the [Location] is active or inactive.
-  final LocationStatus locationStatus;
+  final LocationStatus status;
 
   /// When the [Location] was created.
   final DateTime? createdAt;
@@ -117,7 +117,7 @@ class Location extends Equatable {
       address,
       timezone,
       capabilities,
-      locationStatus,
+      status,
       createdAt,
       merchantId,
       country,

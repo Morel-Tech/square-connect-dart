@@ -39,23 +39,29 @@ class Address extends Equatable {
   /// details, like street number, street name, and building name. They do not
   /// provide less specific details like city, state/province, or country
   /// (these details are provided in other fields).
+  @JsonKey(name: 'address_line_1')
   final String? addressLine1;
 
   /// The second line of the address, if any.
+  @JsonKey(name: 'address_line_2')
   final String? addressLine2;
 
   /// The third line of the address, if any.
+  @JsonKey(name: 'address_line_3')
   final String? addressLine3;
 
   /// A civil entity within the address's country. In the US, this is the state.
+  @JsonKey(name: 'administrative_district_level_1')
   final String? administrativeDistrictLevel1;
 
   /// A civil entity within the address's administrative_district_level_1. In
   /// the US, this is the county.
+  @JsonKey(name: 'administrative_district_level_2')
   final String? administrativeDistrictLevel2;
 
   /// A civil entity within the address's administrative_district_level_2, if
   /// any.
+  @JsonKey(name: 'administrative_district_level_3')
   final String? administrativeDistrictLevel3;
 
   /// The address's country, in ISO 3166-1-alpha-2 format.
@@ -81,9 +87,11 @@ class Address extends Equatable {
   final String? sublocality;
 
   /// A civil region within the address's sublocality, if any.
+  @JsonKey(name: 'sublocality_2')
   final String? sublocality2;
 
   /// A civil region within the address's sublocality_2, if any.
+  @JsonKey(name: 'sublocality_3')
   final String? sublocality3;
 
   @override

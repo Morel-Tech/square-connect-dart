@@ -122,18 +122,18 @@ enum TenderCardDetailsEntryMethod {
 
 /// Indicates a day of a 7 day week.
 enum DayOfWeek {
-  @JsonValue('SUNDAY')
+  @JsonValue('SUN')
   sunday,
-  @JsonValue('MONDAY')
+  @JsonValue('MON')
   monday,
-  @JsonValue('TUESDAY')
+  @JsonValue('TUE')
   tuesday,
-  @JsonValue('WEDNESDAY')
+  @JsonValue('WED')
   wednesday,
-  @JsonValue('THURSDAY')
+  @JsonValue('THU')
   thursday,
-  @JsonValue('FRIDAY')
+  @JsonValue('FRI')
   friday,
-  @JsonValue('SATURDAY')
+  @JsonValue('SAT')
   saturday,
 }

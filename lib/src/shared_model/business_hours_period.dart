@@ -24,13 +24,13 @@ class BusinessHoursPeriod extends Equatable {
   Map<String, dynamic> toJson() => _$BusinessHoursPeriodToJson(this);
 
   /// The start time of the period.
-  final SquareTimeOfDay startLocalTime;
+  final SquareTimeOfDay? startLocalTime;
 
   /// The end time of the period.
-  final SquareTimeOfDay endLocalTime;
+  final SquareTimeOfDay? endLocalTime;
 
   /// The day of the week this period takes place in.
-  final DayOfWeek dayOfWeek;
+  final DayOfWeek? dayOfWeek;
 
   @override
   List<Object?> get props => [startLocalTime, endLocalTime, dayOfWeek];

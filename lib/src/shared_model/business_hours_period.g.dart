@@ -8,18 +8,20 @@ part of 'business_hours_period.dart';
 
 BusinessHoursPeriod _$BusinessHoursPeriodFromJson(Map<String, dynamic> json) =>
     BusinessHoursPeriod(
-      startLocalTime: SquareTimeOfDay.fromJson(
-          json['start_local_time'] as Map<String, dynamic>),
-      endLocalTime: SquareTimeOfDay.fromJson(
-          json['end_local_time'] as Map<String, dynamic>),
-      dayOfWeek: _$enumDecode(_$DayOfWeekEnumMap, json['day_of_week']),
+      startLocalTime: json['start_local_time'] == null
+          ? null
+          : SquareTimeOfDay.fromJson(json['start_local_time'] as String),
+      endLocalTime: json['end_local_time'] == null
+          ? null
+          : SquareTimeOfDay.fromJson(json['end_local_time'] as String),
+      dayOfWeek: _$enumDecodeNullable(_$DayOfWeekEnumMap, json['day_of_week']),
     );
 
 Map<String, dynamic> _$BusinessHoursPeriodToJson(
         BusinessHoursPeriod instance) =>
     <String, dynamic>{
-      'start_local_time': instance.startLocalTime.toJson(),
-      'end_local_time': instance.endLocalTime.toJson(),
+      'start_local_time': instance.startLocalTime?.toJson(),
+      'end_local_time': instance.endLocalTime?.toJson(),
       'day_of_week': _$DayOfWeekEnumMap[instance.dayOfWeek],
     };
 
@@ -49,12 +51,23 @@ K _$enumDecode<K, V>(
   ).key;
 }
 
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
+  dynamic source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    return null;
+  }
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
+}
+
 const _$DayOfWeekEnumMap = {
-  DayOfWeek.sunday: 'SUNDAY',
-  DayOfWeek.monday: 'MONDAY',
-  DayOfWeek.tuesday: 'TUESDAY',
-  DayOfWeek.wednesday: 'WEDNESDAY',
-  DayOfWeek.thursday: 'THURSDAY',
-  DayOfWeek.friday: 'FRIDAY',
-  DayOfWeek.saturday: 'SATURDAY',
+  DayOfWeek.sunday: 'SUN',
+  DayOfWeek.monday: 'MON',
+  DayOfWeek.tuesday: 'TUE',
+  DayOfWeek.wednesday: 'WED',
+  DayOfWeek.thursday: 'THU',
+  DayOfWeek.friday: 'FRI',
+  DayOfWeek.saturday: 'SAT',
 };

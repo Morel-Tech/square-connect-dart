@@ -127,8 +127,8 @@ WorkweekConfig _$WorkweekConfigFromJson(Map<String, dynamic> json) =>
     WorkweekConfig(
       id: json['id'] as String,
       startOfWeek: _$enumDecode(_$DayOfWeekEnumMap, json['start_of_week']),
-      startOfDayLocalTime: SquareTimeOfDay.fromJson(
-          json['start_of_day_local_time'] as Map<String, dynamic>),
+      startOfDayLocalTime:
+          SquareTimeOfDay.fromJson(json['start_of_day_local_time'] as String),
       version: json['version'] as int,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
@@ -145,13 +145,13 @@ Map<String, dynamic> _$WorkweekConfigToJson(WorkweekConfig instance) =>
     };
 
 const _$DayOfWeekEnumMap = {
-  DayOfWeek.sunday: 'SUNDAY',
-  DayOfWeek.monday: 'MONDAY',
-  DayOfWeek.tuesday: 'TUESDAY',
-  DayOfWeek.wednesday: 'WEDNESDAY',
-  DayOfWeek.thursday: 'THURSDAY',
-  DayOfWeek.friday: 'FRIDAY',
-  DayOfWeek.saturday: 'SATURDAY',
+  DayOfWeek.sunday: 'SUN',
+  DayOfWeek.monday: 'MON',
+  DayOfWeek.tuesday: 'TUE',
+  DayOfWeek.wednesday: 'WED',
+  DayOfWeek.thursday: 'THU',
+  DayOfWeek.friday: 'FRI',
+  DayOfWeek.saturday: 'SAT',
 };
 
 EmployeeWage _$EmployeeWageFromJson(Map<String, dynamic> json) => EmployeeWage(

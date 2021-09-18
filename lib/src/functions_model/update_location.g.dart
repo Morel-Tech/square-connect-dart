@@ -18,8 +18,8 @@ UpdateLocationResponse _$UpdateLocationResponseFromJson(
 Map<String, dynamic> _$UpdateLocationResponseToJson(
         UpdateLocationResponse instance) =>
     <String, dynamic>{
-      'errors': instance.errors,
-      'location': instance.location,
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
+      'location': instance.location.toJson(),
     };
 
 UpdateLocationInput _$UpdateLocationInputFromJson(Map<String, dynamic> json) =>
@@ -30,5 +30,5 @@ UpdateLocationInput _$UpdateLocationInputFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$UpdateLocationInputToJson(
         UpdateLocationInput instance) =>
     <String, dynamic>{
-      'location': instance.location,
+      'location': instance.location.toJson(),
     };

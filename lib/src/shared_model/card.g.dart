@@ -8,40 +8,40 @@ part of 'card.dart';
 
 Card _$CardFromJson(Map<String, dynamic> json) => Card(
       id: json['id'] as String?,
-      billingAddress: json['billingAddress'] == null
+      billingAddress: json['billing_address'] == null
           ? null
-          : Address.fromJson(json['billingAddress'] as Map<String, dynamic>),
+          : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
       bin: json['bin'] as String?,
-      cardBrand: _$enumDecodeNullable(_$CardBrandEnumMap, json['cardBrand']),
-      cardType: _$enumDecodeNullable(_$CardBrandEnumMap, json['cardType']),
-      cardholderName: json['cardholderName'] as String?,
-      customerId: json['customerId'] as String?,
+      cardBrand: _$enumDecodeNullable(_$CardBrandEnumMap, json['card_brand']),
+      cardType: _$enumDecodeNullable(_$CardBrandEnumMap, json['card_type']),
+      cardholderName: json['cardholder_name'] as String?,
+      customerId: json['customer_id'] as String?,
       enabled: json['enabled'] as bool?,
-      expMonth: json['expMonth'] as int?,
-      expYear: json['expYear'] as int?,
+      expMonth: json['exp_month'] as int?,
+      expYear: json['exp_year'] as int?,
       fingerprint: json['fingerprint'] as String?,
       last_4: json['last_4'] as String?,
       prepaidType:
-          _$enumDecodeNullable(_$CardPrepaidTypeEnumMap, json['prepaidType']),
-      referenceId: json['referenceId'] as String?,
+          _$enumDecodeNullable(_$CardPrepaidTypeEnumMap, json['prepaid_type']),
+      referenceId: json['reference_id'] as String?,
       version: json['version'] as int?,
     );
 
 Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
       'id': instance.id,
-      'billingAddress': instance.billingAddress,
+      'billing_address': instance.billingAddress?.toJson(),
       'bin': instance.bin,
-      'cardBrand': _$CardBrandEnumMap[instance.cardBrand],
-      'cardType': _$CardBrandEnumMap[instance.cardType],
-      'cardholderName': instance.cardholderName,
-      'customerId': instance.customerId,
+      'card_brand': _$CardBrandEnumMap[instance.cardBrand],
+      'card_type': _$CardBrandEnumMap[instance.cardType],
+      'cardholder_name': instance.cardholderName,
+      'customer_id': instance.customerId,
       'enabled': instance.enabled,
-      'expMonth': instance.expMonth,
-      'expYear': instance.expYear,
+      'exp_month': instance.expMonth,
+      'exp_year': instance.expYear,
       'fingerprint': instance.fingerprint,
       'last_4': instance.last_4,
-      'prepaidType': _$CardPrepaidTypeEnumMap[instance.prepaidType],
-      'referenceId': instance.referenceId,
+      'prepaid_type': _$CardPrepaidTypeEnumMap[instance.prepaidType],
+      'reference_id': instance.referenceId,
       'version': instance.version,
     };
 

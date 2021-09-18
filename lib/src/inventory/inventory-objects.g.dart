@@ -8,25 +8,25 @@ part of 'inventory-objects.dart';
 
 InventoryCount _$InventoryCountFromJson(Map<String, dynamic> json) =>
     InventoryCount(
-      catalogObjectId: json['catalogObjectId'] as String,
+      catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalogObjectType']),
+          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       inventoryState:
-          _$enumDecode(_$InventoryStateEnumMap, json['inventoryState']),
-      locationId: json['locationId'] as String,
+          _$enumDecode(_$InventoryStateEnumMap, json['inventory_state']),
+      locationId: json['location_id'] as String,
       quantity: (json['quantity'] as num).toDouble(),
-      calculatedAt: DateTime.parse(json['calculatedAt'] as String),
+      calculatedAt: DateTime.parse(json['calculated_at'] as String),
     );
 
 Map<String, dynamic> _$InventoryCountToJson(InventoryCount instance) =>
     <String, dynamic>{
-      'catalogObjectId': instance.catalogObjectId,
-      'catalogObjectType':
+      'catalog_object_id': instance.catalogObjectId,
+      'catalog_object_type':
           _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
-      'inventoryState': _$InventoryStateEnumMap[instance.inventoryState],
-      'locationId': instance.locationId,
+      'inventory_state': _$InventoryStateEnumMap[instance.inventoryState],
+      'location_id': instance.locationId,
       'quantity': instance.quantity,
-      'calculatedAt': instance.calculatedAt.toIso8601String(),
+      'calculated_at': instance.calculatedAt.toIso8601String(),
     };
 
 K _$enumDecode<K, V>(
@@ -88,7 +88,7 @@ InventoryChange _$InventoryChangeFromJson(Map<String, dynamic> json) =>
     InventoryChange(
       type: _$enumDecode(_$InventoryChangeTypeEnumMap, json['type']),
       physicalCount: InventoryPhysicalCount.fromJson(
-          json['physicalCount'] as Map<String, dynamic>),
+          json['physical_count'] as Map<String, dynamic>),
       adjustment: InventoryAdjustment.fromJson(
           json['adjustment'] as Map<String, dynamic>),
       transfer:
@@ -98,9 +98,9 @@ InventoryChange _$InventoryChangeFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$InventoryChangeToJson(InventoryChange instance) =>
     <String, dynamic>{
       'type': _$InventoryChangeTypeEnumMap[instance.type],
-      'physicalCount': instance.physicalCount,
-      'adjustment': instance.adjustment,
-      'transfer': instance.transfer,
+      'physical_count': instance.physicalCount.toJson(),
+      'adjustment': instance.adjustment.toJson(),
+      'transfer': instance.transfer.toJson(),
     };
 
 const _$InventoryChangeTypeEnumMap = {
@@ -113,130 +113,130 @@ InventoryPhysicalCount _$InventoryPhysicalCountFromJson(
         Map<String, dynamic> json) =>
     InventoryPhysicalCount(
       id: json['id'] as String,
-      referenceId: json['referenceId'] as String,
-      catalogObjectId: json['catalogObjectId'] as String,
+      referenceId: json['reference_id'] as String,
+      catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalogObjectType']),
+          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       state: _$enumDecode(_$InventoryStateEnumMap, json['state']),
-      locationId: json['locationId'] as String,
+      locationId: json['location_id'] as String,
       quantity: (json['quantity'] as num).toDouble(),
       source:
           SourceApplication.fromJson(json['source'] as Map<String, dynamic>),
-      employeeId: json['employeeId'] as String,
-      occurredAt: DateTime.parse(json['occurredAt'] as String),
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      employeeId: json['employee_id'] as String,
+      occurredAt: DateTime.parse(json['occurred_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
     );
 
 Map<String, dynamic> _$InventoryPhysicalCountToJson(
         InventoryPhysicalCount instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'referenceId': instance.referenceId,
-      'catalogObjectId': instance.catalogObjectId,
-      'catalogObjectType':
+      'reference_id': instance.referenceId,
+      'catalog_object_id': instance.catalogObjectId,
+      'catalog_object_type':
           _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
       'state': _$InventoryStateEnumMap[instance.state],
-      'locationId': instance.locationId,
+      'location_id': instance.locationId,
       'quantity': instance.quantity,
-      'source': instance.source,
-      'employeeId': instance.employeeId,
-      'occurredAt': instance.occurredAt.toIso8601String(),
-      'createdAt': instance.createdAt.toIso8601String(),
+      'source': instance.source.toJson(),
+      'employee_id': instance.employeeId,
+      'occurred_at': instance.occurredAt.toIso8601String(),
+      'created_at': instance.createdAt.toIso8601String(),
     };
 
 InventoryAdjustment _$InventoryAdjustmentFromJson(Map<String, dynamic> json) =>
     InventoryAdjustment(
       id: json['id'] as String,
-      referenceId: json['referenceId'] as String,
-      fromState: _$enumDecode(_$InventoryStateEnumMap, json['fromState']),
-      toState: _$enumDecode(_$InventoryStateEnumMap, json['toState']),
-      locationId: json['locationId'] as String,
-      catalogObjectId: json['catalogObjectId'] as String,
+      referenceId: json['reference_id'] as String,
+      fromState: _$enumDecode(_$InventoryStateEnumMap, json['from_state']),
+      toState: _$enumDecode(_$InventoryStateEnumMap, json['to_state']),
+      locationId: json['location_id'] as String,
+      catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalogObjectType']),
+          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       quantity: (json['quantity'] as num).toDouble(),
       totalPriceMoney:
-          Money.fromJson(json['totalPriceMoney'] as Map<String, dynamic>),
-      occurredAt: DateTime.parse(json['occurredAt'] as String),
-      createdAt: DateTime.parse(json['createdAt'] as String),
+          Money.fromJson(json['total_price_money'] as Map<String, dynamic>),
+      occurredAt: DateTime.parse(json['occurred_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
       source:
           SourceApplication.fromJson(json['source'] as Map<String, dynamic>),
-      employeeId: json['employeeId'] as String,
-      transactionId: json['transactionId'] as String,
-      refundId: json['refundId'] as String,
-      purchaseOrderId: json['purchaseOrderId'] as String,
-      goodsReceiptId: json['goodsReceiptId'] as String,
+      employeeId: json['employee_id'] as String,
+      transactionId: json['transaction_id'] as String,
+      refundId: json['refund_id'] as String,
+      purchaseOrderId: json['purchase_order_id'] as String,
+      goodsReceiptId: json['goods_receipt_id'] as String,
     );
 
 Map<String, dynamic> _$InventoryAdjustmentToJson(
         InventoryAdjustment instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'referenceId': instance.referenceId,
-      'fromState': _$InventoryStateEnumMap[instance.fromState],
-      'toState': _$InventoryStateEnumMap[instance.toState],
-      'locationId': instance.locationId,
-      'catalogObjectId': instance.catalogObjectId,
-      'catalogObjectType':
+      'reference_id': instance.referenceId,
+      'from_state': _$InventoryStateEnumMap[instance.fromState],
+      'to_state': _$InventoryStateEnumMap[instance.toState],
+      'location_id': instance.locationId,
+      'catalog_object_id': instance.catalogObjectId,
+      'catalog_object_type':
           _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
       'quantity': instance.quantity,
-      'totalPriceMoney': instance.totalPriceMoney,
-      'occurredAt': instance.occurredAt.toIso8601String(),
-      'createdAt': instance.createdAt.toIso8601String(),
-      'source': instance.source,
-      'employeeId': instance.employeeId,
-      'transactionId': instance.transactionId,
-      'refundId': instance.refundId,
-      'purchaseOrderId': instance.purchaseOrderId,
-      'goodsReceiptId': instance.goodsReceiptId,
+      'total_price_money': instance.totalPriceMoney.toJson(),
+      'occurred_at': instance.occurredAt.toIso8601String(),
+      'created_at': instance.createdAt.toIso8601String(),
+      'source': instance.source.toJson(),
+      'employee_id': instance.employeeId,
+      'transaction_id': instance.transactionId,
+      'refund_id': instance.refundId,
+      'purchase_order_id': instance.purchaseOrderId,
+      'goods_receipt_id': instance.goodsReceiptId,
     };
 
 InventoryTransfer _$InventoryTransferFromJson(Map<String, dynamic> json) =>
     InventoryTransfer(
       id: json['id'] as String,
-      referenceId: json['referenceId'] as String,
+      referenceId: json['reference_id'] as String,
       state: _$enumDecode(_$InventoryStateEnumMap, json['state']),
-      fromLocationId: json['fromLocationId'] as String,
-      toLocationId: json['toLocationId'] as String,
-      catalogObjectId: json['catalogObjectId'] as String,
+      fromLocationId: json['from_location_id'] as String,
+      toLocationId: json['to_location_id'] as String,
+      catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalogObjectType']),
+          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       quantity: (json['quantity'] as num).toDouble(),
-      occurredAt: DateTime.parse(json['occurredAt'] as String),
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      occurredAt: DateTime.parse(json['occurred_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
       source:
           SourceApplication.fromJson(json['source'] as Map<String, dynamic>),
-      employeeId: json['employeeId'] as String,
+      employeeId: json['employee_id'] as String,
     );
 
 Map<String, dynamic> _$InventoryTransferToJson(InventoryTransfer instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'referenceId': instance.referenceId,
+      'reference_id': instance.referenceId,
       'state': _$InventoryStateEnumMap[instance.state],
-      'fromLocationId': instance.fromLocationId,
-      'toLocationId': instance.toLocationId,
-      'catalogObjectId': instance.catalogObjectId,
-      'catalogObjectType':
+      'from_location_id': instance.fromLocationId,
+      'to_location_id': instance.toLocationId,
+      'catalog_object_id': instance.catalogObjectId,
+      'catalog_object_type':
           _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
       'quantity': instance.quantity,
-      'occurredAt': instance.occurredAt.toIso8601String(),
-      'createdAt': instance.createdAt.toIso8601String(),
-      'source': instance.source,
-      'employeeId': instance.employeeId,
+      'occurred_at': instance.occurredAt.toIso8601String(),
+      'created_at': instance.createdAt.toIso8601String(),
+      'source': instance.source.toJson(),
+      'employee_id': instance.employeeId,
     };
 
 SourceApplication _$SourceApplicationFromJson(Map<String, dynamic> json) =>
     SourceApplication(
       product: _$enumDecode(_$ProductEnumMap, json['product']),
-      applicationId: json['applicationId'] as String,
+      applicationId: json['application_id'] as String,
       name: json['name'] as String,
     );
 
 Map<String, dynamic> _$SourceApplicationToJson(SourceApplication instance) =>
     <String, dynamic>{
       'product': _$ProductEnumMap[instance.product],
-      'applicationId': instance.applicationId,
+      'application_id': instance.applicationId,
       'name': instance.name,
     };
 

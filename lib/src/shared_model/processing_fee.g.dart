@@ -8,16 +8,16 @@ part of 'processing_fee.dart';
 
 ProcessingFee _$ProcessingFeeFromJson(Map<String, dynamic> json) =>
     ProcessingFee(
-      amountMoney: json['amountMoney'] == null
+      amountMoney: json['amount_money'] == null
           ? null
-          : Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      effectiveAt: json['effectiveAt'] as String?,
+          : Money.fromJson(json['amount_money'] as Map<String, dynamic>),
+      effectiveAt: json['effective_at'] as String?,
       type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$ProcessingFeeToJson(ProcessingFee instance) =>
     <String, dynamic>{
-      'amountMoney': instance.amountMoney,
-      'effectiveAt': instance.effectiveAt,
+      'amount_money': instance.amountMoney?.toJson(),
+      'effective_at': instance.effectiveAt,
       'type': instance.type,
     };

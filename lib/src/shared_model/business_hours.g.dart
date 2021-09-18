@@ -15,5 +15,5 @@ BusinessHours _$BusinessHoursFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BusinessHoursToJson(BusinessHours instance) =>
     <String, dynamic>{
-      'periods': instance.periods,
+      'periods': instance.periods.map((e) => e.toJson()).toList(),
     };

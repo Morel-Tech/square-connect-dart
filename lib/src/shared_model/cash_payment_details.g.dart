@@ -9,14 +9,14 @@ part of 'cash_payment_details.dart';
 CashPaymentDetails _$CashPaymentDetailsFromJson(Map<String, dynamic> json) =>
     CashPaymentDetails(
       buyerSuppliedMoney:
-          Money.fromJson(json['buyerSuppliedMoney'] as Map<String, dynamic>),
-      changeBackMoney: json['changeBackMoney'] == null
+          Money.fromJson(json['buyer_supplied_money'] as Map<String, dynamic>),
+      changeBackMoney: json['change_back_money'] == null
           ? null
-          : Money.fromJson(json['changeBackMoney'] as Map<String, dynamic>),
+          : Money.fromJson(json['change_back_money'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CashPaymentDetailsToJson(CashPaymentDetails instance) =>
     <String, dynamic>{
-      'buyerSuppliedMoney': instance.buyerSuppliedMoney,
-      'changeBackMoney': instance.changeBackMoney,
+      'buyer_supplied_money': instance.buyerSuppliedMoney.toJson(),
+      'change_back_money': instance.changeBackMoney?.toJson(),
     };

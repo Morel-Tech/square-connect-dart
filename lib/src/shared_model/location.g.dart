@@ -17,27 +17,27 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
           ?.map((e) => _$enumDecode(_$LocationCapabilityEnumMap, e))
           .toList(),
       locationStatus:
-          _$enumDecodeNullable(_$LocationStatusEnumMap, json['locationStatus']),
-      createdAt: json['createdAt'] == null
+          _$enumDecode(_$LocationStatusEnumMap, json['location_status']),
+      createdAt: json['created_at'] == null
           ? null
-          : DateTime.parse(json['createdAt'] as String),
-      merchantId: json['merchantId'] as String,
+          : DateTime.parse(json['created_at'] as String),
+      merchantId: json['merchant_id'] as String?,
       country: json['country'] as String?,
-      languageCode: json['languageCode'] as String?,
+      languageCode: json['language_code'] as String?,
       currency: json['currency'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
-      businessName: json['businessName'] as String?,
-      type: _$enumDecodeNullable(_$LocationTypeEnumMap, json['type']),
-      websiteUrl: json['websiteUrl'] as String?,
-      businessHours: json['businessHours'] == null
+      phoneNumber: json['phone_number'] as String?,
+      businessName: json['business_name'] as String?,
+      type: _$enumDecode(_$LocationTypeEnumMap, json['type']),
+      websiteUrl: json['website_url'] as String?,
+      businessHours: json['business_hours'] == null
           ? null
           : BusinessHours.fromJson(
-              json['businessHours'] as Map<String, dynamic>),
-      businessEmail: json['businessEmail'] as String?,
+              json['business_hours'] as Map<String, dynamic>),
+      businessEmail: json['business_email'] as String?,
       description: json['description'] as String?,
-      twitterUsername: json['twitterUsername'] as String?,
-      instagramUsername: json['instagramUsername'] as String?,
-      facebookUrl: json['facebookUrl'] as String?,
+      twitterUsername: json['twitter_username'] as String?,
+      instagramUsername: json['instagram_username'] as String?,
+      facebookUrl: json['facebook_url'] as String?,
       coordinates: json['coordinates'] == null
           ? null
           : Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
@@ -46,28 +46,28 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
 Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'address': instance.address,
+      'address': instance.address?.toJson(),
       'timezone': instance.timezone,
       'capabilities': instance.capabilities
           ?.map((e) => _$LocationCapabilityEnumMap[e])
           .toList(),
-      'locationStatus': _$LocationStatusEnumMap[instance.locationStatus],
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'merchantId': instance.merchantId,
+      'location_status': _$LocationStatusEnumMap[instance.locationStatus],
+      'created_at': instance.createdAt?.toIso8601String(),
+      'merchant_id': instance.merchantId,
       'country': instance.country,
-      'languageCode': instance.languageCode,
+      'language_code': instance.languageCode,
       'currency': instance.currency,
-      'phoneNumber': instance.phoneNumber,
-      'businessName': instance.businessName,
+      'phone_number': instance.phoneNumber,
+      'business_name': instance.businessName,
       'type': _$LocationTypeEnumMap[instance.type],
-      'websiteUrl': instance.websiteUrl,
-      'businessHours': instance.businessHours,
-      'businessEmail': instance.businessEmail,
+      'website_url': instance.websiteUrl,
+      'business_hours': instance.businessHours?.toJson(),
+      'business_email': instance.businessEmail,
       'description': instance.description,
-      'twitterUsername': instance.twitterUsername,
-      'instagramUsername': instance.instagramUsername,
-      'facebookUrl': instance.facebookUrl,
-      'coordinates': instance.coordinates,
+      'twitter_username': instance.twitterUsername,
+      'instagram_username': instance.instagramUsername,
+      'facebook_url': instance.facebookUrl,
+      'coordinates': instance.coordinates?.toJson(),
     };
 
 K _$enumDecode<K, V>(
@@ -100,17 +100,6 @@ const _$LocationCapabilityEnumMap = {
   LocationCapability.creditCardProcessing: 'CREDIT_CARD_PROCESSING',
   LocationCapability.automaticTransfers: 'AUTOMATIC_TRANSFERS',
 };
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$LocationStatusEnumMap = {
   LocationStatus.active: 'ACTIVE',

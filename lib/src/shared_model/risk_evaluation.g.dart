@@ -8,12 +8,12 @@ part of 'risk_evaluation.dart';
 
 RiskEvaluation _$RiskEvaluationFromJson(Map<String, dynamic> json) =>
     RiskEvaluation(
-      createdAt: json['createdAt'] as String?,
-      riskLevel: json['riskLevel'] as String?,
+      createdAt: json['created_at'] as String?,
+      riskLevel: json['risk_level'] as String?,
     );
 
 Map<String, dynamic> _$RiskEvaluationToJson(RiskEvaluation instance) =>
     <String, dynamic>{
-      'createdAt': instance.createdAt,
-      'riskLevel': instance.riskLevel,
+      'created_at': instance.createdAt,
+      'risk_level': instance.riskLevel,
     };

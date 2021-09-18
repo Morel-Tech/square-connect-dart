@@ -11,10 +11,10 @@ ExternalPaymentDetails _$ExternalPaymentDetailsFromJson(
     ExternalPaymentDetails(
       source: json['source'] as String,
       type: json['type'] as String,
-      sourceFeeMoney: json['sourceFeeMoney'] == null
+      sourceFeeMoney: json['source_fee_money'] == null
           ? null
-          : Money.fromJson(json['sourceFeeMoney'] as Map<String, dynamic>),
-      sourceId: json['sourceId'] as String?,
+          : Money.fromJson(json['source_fee_money'] as Map<String, dynamic>),
+      sourceId: json['source_id'] as String?,
     );
 
 Map<String, dynamic> _$ExternalPaymentDetailsToJson(
@@ -22,6 +22,6 @@ Map<String, dynamic> _$ExternalPaymentDetailsToJson(
     <String, dynamic>{
       'source': instance.source,
       'type': instance.type,
-      'sourceFeeMoney': instance.sourceFeeMoney,
-      'sourceId': instance.sourceId,
+      'source_fee_money': instance.sourceFeeMoney?.toJson(),
+      'source_id': instance.sourceId,
     };

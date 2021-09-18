@@ -12,50 +12,50 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
           ? null
           : Address.fromJson(json['address'] as Map<String, dynamic>),
       birthday: json['birthday'] as String?,
-      companyName: json['companyName'] as String?,
-      createdAt: json['createdAt'] as String?,
+      companyName: json['company_name'] as String?,
+      createdAt: json['created_at'] as String?,
       creationSource: _$enumDecodeNullable(
-          _$CustomerCreationSourceEnumMap, json['creationSource']),
-      emailAddress: json['emailAddress'] as String?,
-      familyName: json['familyName'] as String?,
-      givenName: json['givenName'] as String?,
-      groupIds: (json['groupIds'] as List<dynamic>?)
+          _$CustomerCreationSourceEnumMap, json['creation_source']),
+      emailAddress: json['email_address'] as String?,
+      familyName: json['family_name'] as String?,
+      givenName: json['given_name'] as String?,
+      groupIds: (json['group_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       nickname: json['nickname'] as String?,
       note: json['note'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
+      phoneNumber: json['phone_number'] as String?,
       preferences: json['preferences'] == null
           ? null
           : CustomerPreferences.fromJson(
               json['preferences'] as Map<String, dynamic>),
-      referenceId: json['referenceId'] as String?,
-      segmentIds: (json['segmentIds'] as List<dynamic>?)
+      referenceId: json['reference_id'] as String?,
+      segmentIds: (json['segment_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      updatedAt: json['updatedAt'] as String?,
+      updatedAt: json['updated_at'] as String?,
       version: json['version'] as int?,
     );
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
       'id': instance.id,
-      'address': instance.address,
+      'address': instance.address?.toJson(),
       'birthday': instance.birthday,
-      'companyName': instance.companyName,
-      'createdAt': instance.createdAt,
-      'creationSource':
+      'company_name': instance.companyName,
+      'created_at': instance.createdAt,
+      'creation_source':
           _$CustomerCreationSourceEnumMap[instance.creationSource],
-      'emailAddress': instance.emailAddress,
-      'familyName': instance.familyName,
-      'givenName': instance.givenName,
-      'groupIds': instance.groupIds,
+      'email_address': instance.emailAddress,
+      'family_name': instance.familyName,
+      'given_name': instance.givenName,
+      'group_ids': instance.groupIds,
       'nickname': instance.nickname,
       'note': instance.note,
-      'phoneNumber': instance.phoneNumber,
-      'preferences': instance.preferences,
-      'referenceId': instance.referenceId,
-      'segmentIds': instance.segmentIds,
-      'updatedAt': instance.updatedAt,
+      'phone_number': instance.phoneNumber,
+      'preferences': instance.preferences?.toJson(),
+      'reference_id': instance.referenceId,
+      'segment_ids': instance.segmentIds,
+      'updated_at': instance.updatedAt,
       'version': instance.version,
     };
 

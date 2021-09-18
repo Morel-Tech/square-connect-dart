@@ -18,8 +18,8 @@ CreateLocationResponse _$CreateLocationResponseFromJson(
 Map<String, dynamic> _$CreateLocationResponseToJson(
         CreateLocationResponse instance) =>
     <String, dynamic>{
-      'errors': instance.errors,
-      'location': instance.location,
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
+      'location': instance.location.toJson(),
     };
 
 CreateLocationInput _$CreateLocationInputFromJson(Map<String, dynamic> json) =>
@@ -30,5 +30,5 @@ CreateLocationInput _$CreateLocationInputFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CreateLocationInputToJson(
         CreateLocationInput instance) =>
     <String, dynamic>{
-      'location': instance.location,
+      'location': instance.location.toJson(),
     };

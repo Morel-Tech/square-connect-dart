@@ -8,14 +8,14 @@ part of 'device_details.dart';
 
 DeviceDetails _$DeviceDetailsFromJson(Map<String, dynamic> json) =>
     DeviceDetails(
-      deviceId: json['deviceId'] as String?,
-      deviceInstallationId: json['deviceInstallationId'] as String?,
-      deviceName: json['deviceName'] as String?,
+      deviceId: json['device_id'] as String?,
+      deviceInstallationId: json['device_installation_id'] as String?,
+      deviceName: json['device_name'] as String?,
     );
 
 Map<String, dynamic> _$DeviceDetailsToJson(DeviceDetails instance) =>
     <String, dynamic>{
-      'deviceId': instance.deviceId,
-      'deviceInstallationId': instance.deviceInstallationId,
-      'deviceName': instance.deviceName,
+      'device_id': instance.deviceId,
+      'device_installation_id': instance.deviceInstallationId,
+      'device_name': instance.deviceName,
     };

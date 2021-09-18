@@ -1,8 +1,4 @@
-## 2.0.0-dev.2
-
-- Fixes to objects
-
-## 2.0.0-dev.1
+3
 
 **New Direction for Package:**
 

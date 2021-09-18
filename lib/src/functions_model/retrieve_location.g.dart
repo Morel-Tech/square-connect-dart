@@ -18,6 +18,6 @@ RetrieveLocationResponse _$RetrieveLocationResponseFromJson(
 Map<String, dynamic> _$RetrieveLocationResponseToJson(
         RetrieveLocationResponse instance) =>
     <String, dynamic>{
-      'errors': instance.errors,
-      'location': instance.location,
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
+      'location': instance.location.toJson(),
     };

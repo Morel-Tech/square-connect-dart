@@ -8,28 +8,28 @@ part of 'employees-objects.dart';
 
 Employee _$EmployeeFromJson(Map<String, dynamic> json) => Employee(
       id: json['id'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      emailAddress: json['emailAddress'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      locationIds: (json['locationIds'] as List<dynamic>)
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
+      emailAddress: json['email_address'] as String,
+      phoneNumber: json['phone_number'] as String,
+      locationIds: (json['location_ids'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       status: _$enumDecode(_$EmployeeStatusEnumMap, json['status']),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
+      updatedAt: DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$EmployeeToJson(Employee instance) => <String, dynamic>{
       'id': instance.id,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'emailAddress': instance.emailAddress,
-      'phoneNumber': instance.phoneNumber,
-      'locationIds': instance.locationIds,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
+      'email_address': instance.emailAddress,
+      'phone_number': instance.phoneNumber,
+      'location_ids': instance.locationIds,
       'status': _$EmployeeStatusEnumMap[instance.status],
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'created_at': instance.createdAt.toIso8601String(),
+      'updated_at': instance.updatedAt.toIso8601String(),
     };
 
 K _$enumDecode<K, V>(

@@ -12,40 +12,41 @@ CardPaymentDetails _$CardPaymentDetailsFromJson(Map<String, dynamic> json) =>
       card: json['card'] == null
           ? null
           : Card.fromJson(json['card'] as Map<String, dynamic>),
-      entryMethod: json['entryMethod'] as String?,
-      cvvStatus: json['cvvStatus'] as String?,
-      avsStatus: json['avsStatus'] as String?,
-      authResultCode: json['authResultCode'] as String?,
-      applicationIdentifier: json['applicationIdentifier'] as String?,
-      applicationName: json['applicationName'] as String?,
-      applicationCryptogram: json['applicationCryptogram'] as String?,
-      verificationMethod: json['verificationMethod'] as String?,
-      verificationResults: json['verificationResults'] as String?,
-      statementDescription: json['statementDescription'] as String?,
-      deviceDetails: json['deviceDetails'] == null
+      entryMethod: json['entry_method'] as String?,
+      cvvStatus: json['cvv_status'] as String?,
+      avsStatus: json['avs_status'] as String?,
+      authResultCode: json['auth_result_code'] as String?,
+      applicationIdentifier: json['application_identifier'] as String?,
+      applicationName: json['application_name'] as String?,
+      applicationCryptogram: json['application_cryptogram'] as String?,
+      verificationMethod: json['verification_method'] as String?,
+      verificationResults: json['verification_results'] as String?,
+      statementDescription: json['statement_description'] as String?,
+      deviceDetails: json['device_details'] == null
           ? null
           : DeviceDetails.fromJson(
-              json['deviceDetails'] as Map<String, dynamic>),
-      refundRequiresCardPresence: json['refundRequiresCardPresence'] == null
+              json['device_details'] as Map<String, dynamic>),
+      refundRequiresCardPresence: json['refund_requires_card_presence'] == null
           ? null
           : DeviceDetails.fromJson(
-              json['refundRequiresCardPresence'] as Map<String, dynamic>),
+              json['refund_requires_card_presence'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CardPaymentDetailsToJson(CardPaymentDetails instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'card': instance.card,
-      'entryMethod': instance.entryMethod,
-      'cvvStatus': instance.cvvStatus,
-      'avsStatus': instance.avsStatus,
-      'authResultCode': instance.authResultCode,
-      'applicationIdentifier': instance.applicationIdentifier,
-      'applicationName': instance.applicationName,
-      'applicationCryptogram': instance.applicationCryptogram,
-      'verificationMethod': instance.verificationMethod,
-      'verificationResults': instance.verificationResults,
-      'statementDescription': instance.statementDescription,
-      'deviceDetails': instance.deviceDetails,
-      'refundRequiresCardPresence': instance.refundRequiresCardPresence,
+      'card': instance.card?.toJson(),
+      'entry_method': instance.entryMethod,
+      'cvv_status': instance.cvvStatus,
+      'avs_status': instance.avsStatus,
+      'auth_result_code': instance.authResultCode,
+      'application_identifier': instance.applicationIdentifier,
+      'application_name': instance.applicationName,
+      'application_cryptogram': instance.applicationCryptogram,
+      'verification_method': instance.verificationMethod,
+      'verification_results': instance.verificationResults,
+      'statement_description': instance.statementDescription,
+      'device_details': instance.deviceDetails?.toJson(),
+      'refund_requires_card_presence':
+          instance.refundRequiresCardPresence?.toJson(),
     };

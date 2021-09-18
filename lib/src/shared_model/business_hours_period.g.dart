@@ -9,18 +9,18 @@ part of 'business_hours_period.dart';
 BusinessHoursPeriod _$BusinessHoursPeriodFromJson(Map<String, dynamic> json) =>
     BusinessHoursPeriod(
       startLocalTime: SquareTimeOfDay.fromJson(
-          json['startLocalTime'] as Map<String, dynamic>),
+          json['start_local_time'] as Map<String, dynamic>),
       endLocalTime: SquareTimeOfDay.fromJson(
-          json['endLocalTime'] as Map<String, dynamic>),
-      dayOfWeek: _$enumDecode(_$DayOfWeekEnumMap, json['dayOfWeek']),
+          json['end_local_time'] as Map<String, dynamic>),
+      dayOfWeek: _$enumDecode(_$DayOfWeekEnumMap, json['day_of_week']),
     );
 
 Map<String, dynamic> _$BusinessHoursPeriodToJson(
         BusinessHoursPeriod instance) =>
     <String, dynamic>{
-      'startLocalTime': instance.startLocalTime,
-      'endLocalTime': instance.endLocalTime,
-      'dayOfWeek': _$DayOfWeekEnumMap[instance.dayOfWeek],
+      'start_local_time': instance.startLocalTime.toJson(),
+      'end_local_time': instance.endLocalTime.toJson(),
+      'day_of_week': _$DayOfWeekEnumMap[instance.dayOfWeek],
     };
 
 K _$enumDecode<K, V>(

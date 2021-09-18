@@ -14,7 +14,7 @@ SquareErrors _$SquareErrorsFromJson(Map<String, dynamic> json) => SquareErrors(
 
 Map<String, dynamic> _$SquareErrorsToJson(SquareErrors instance) =>
     <String, dynamic>{
-      'errors': instance.errors,
+      'errors': instance.errors.map((e) => e.toJson()).toList(),
     };
 
 SquareError _$SquareErrorFromJson(Map<String, dynamic> json) => SquareError(

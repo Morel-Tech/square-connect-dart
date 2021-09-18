@@ -8,34 +8,34 @@ part of 'transactions-objects.dart';
 
 Transaction _$TransactionFromJson(Map<String, dynamic> json) => Transaction(
       id: json['id'] as String,
-      locationId: json['locationId'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      locationId: json['location_id'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
       tenders: (json['tenders'] as List<dynamic>)
           .map((e) => Tender.fromJson(e as Map<String, dynamic>))
           .toList(),
       refunds: (json['refunds'] as List<dynamic>)
           .map((e) => Refund.fromJson(e as Map<String, dynamic>))
           .toList(),
-      referenceId: json['referenceId'] as String,
+      referenceId: json['reference_id'] as String,
       product: _$enumDecode(_$TransactionProductEnumMap, json['product']),
-      clientId: json['clientId'] as String,
+      clientId: json['client_id'] as String,
       shippingAddress:
-          Address.fromJson(json['shippingAddress'] as Map<String, dynamic>),
-      orderId: json['orderId'] as String,
+          Address.fromJson(json['shipping_address'] as Map<String, dynamic>),
+      orderId: json['order_id'] as String,
     );
 
 Map<String, dynamic> _$TransactionToJson(Transaction instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'locationId': instance.locationId,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'tenders': instance.tenders,
-      'refunds': instance.refunds,
-      'referenceId': instance.referenceId,
+      'location_id': instance.locationId,
+      'created_at': instance.createdAt.toIso8601String(),
+      'tenders': instance.tenders.map((e) => e.toJson()).toList(),
+      'refunds': instance.refunds.map((e) => e.toJson()).toList(),
+      'reference_id': instance.referenceId,
       'product': _$TransactionProductEnumMap[instance.product],
-      'clientId': instance.clientId,
-      'shippingAddress': instance.shippingAddress,
-      'orderId': instance.orderId,
+      'client_id': instance.clientId,
+      'shipping_address': instance.shippingAddress.toJson(),
+      'order_id': instance.orderId,
     };
 
 K _$enumDecode<K, V>(

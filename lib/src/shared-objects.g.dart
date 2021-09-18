@@ -8,20 +8,20 @@ part of 'shared-objects.dart';
 
 Tender _$TenderFromJson(Map<String, dynamic> json) => Tender(
       id: json['id'] as String,
-      locationId: json['locationId'] as String,
-      transactionId: json['transactionId'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      locationId: json['location_id'] as String,
+      transactionId: json['transaction_id'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
       note: json['note'] as String,
-      amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      tipMoney: Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+      amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
+      tipMoney: Money.fromJson(json['tip_money'] as Map<String, dynamic>),
       processingFeeMoney:
-          Money.fromJson(json['processingFeeMoney'] as Map<String, dynamic>),
-      customerId: json['customerId'] as String,
+          Money.fromJson(json['processing_fee_money'] as Map<String, dynamic>),
+      customerId: json['customer_id'] as String,
       cardDetails: TenderCardDetails.fromJson(
-          json['cardDetails'] as Map<String, dynamic>),
+          json['card_details'] as Map<String, dynamic>),
       cashDetails: TenderCashDetails.fromJson(
-          json['cashDetails'] as Map<String, dynamic>),
-      additionalRecipients: (json['additionalRecipients'] as List<dynamic>)
+          json['cash_details'] as Map<String, dynamic>),
+      additionalRecipients: (json['additional_recipients'] as List<dynamic>)
           .map((e) => AdditionalRecipient.fromJson(e as Map<String, dynamic>))
           .toList(),
       type: _$enumDecode(_$TenderTypeEnumMap, json['type']),
@@ -29,17 +29,18 @@ Tender _$TenderFromJson(Map<String, dynamic> json) => Tender(
 
 Map<String, dynamic> _$TenderToJson(Tender instance) => <String, dynamic>{
       'id': instance.id,
-      'locationId': instance.locationId,
-      'transactionId': instance.transactionId,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'location_id': instance.locationId,
+      'transaction_id': instance.transactionId,
+      'created_at': instance.createdAt.toIso8601String(),
       'note': instance.note,
-      'amountMoney': instance.amountMoney,
-      'tipMoney': instance.tipMoney,
-      'processingFeeMoney': instance.processingFeeMoney,
-      'customerId': instance.customerId,
-      'cardDetails': instance.cardDetails,
-      'cashDetails': instance.cashDetails,
-      'additionalRecipients': instance.additionalRecipients,
+      'amount_money': instance.amountMoney.toJson(),
+      'tip_money': instance.tipMoney.toJson(),
+      'processing_fee_money': instance.processingFeeMoney.toJson(),
+      'customer_id': instance.customerId,
+      'card_details': instance.cardDetails.toJson(),
+      'cash_details': instance.cashDetails.toJson(),
+      'additional_recipients':
+          instance.additionalRecipients.map((e) => e.toJson()).toList(),
       'type': _$TenderTypeEnumMap[instance.type],
     };
 
@@ -83,14 +84,14 @@ TenderCardDetails _$TenderCardDetailsFromJson(Map<String, dynamic> json) =>
       status: _$enumDecode(_$TenderCardDetailsStatusEnumMap, json['status']),
       card: Card.fromJson(json['card'] as Map<String, dynamic>),
       entryMethod: _$enumDecode(
-          _$TenderCardDetailsEntryMethodEnumMap, json['entryMethod']),
+          _$TenderCardDetailsEntryMethodEnumMap, json['entry_method']),
     );
 
 Map<String, dynamic> _$TenderCardDetailsToJson(TenderCardDetails instance) =>
     <String, dynamic>{
       'status': _$TenderCardDetailsStatusEnumMap[instance.status],
-      'card': instance.card,
-      'entryMethod':
+      'card': instance.card.toJson(),
+      'entry_method':
           _$TenderCardDetailsEntryMethodEnumMap[instance.entryMethod],
     };
 
@@ -112,52 +113,53 @@ const _$TenderCardDetailsEntryMethodEnumMap = {
 TenderCashDetails _$TenderCashDetailsFromJson(Map<String, dynamic> json) =>
     TenderCashDetails(
       buyerTenderedMoney:
-          Money.fromJson(json['buyerTenderedMoney'] as Map<String, dynamic>),
+          Money.fromJson(json['buyer_tendered_money'] as Map<String, dynamic>),
       changeBackMoney:
-          Money.fromJson(json['changeBackMoney'] as Map<String, dynamic>),
+          Money.fromJson(json['change_back_money'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$TenderCashDetailsToJson(TenderCashDetails instance) =>
     <String, dynamic>{
-      'buyerTenderedMoney': instance.buyerTenderedMoney,
-      'changeBackMoney': instance.changeBackMoney,
+      'buyer_tendered_money': instance.buyerTenderedMoney.toJson(),
+      'change_back_money': instance.changeBackMoney.toJson(),
     };
 
 AdditionalRecipient _$AdditionalRecipientFromJson(Map<String, dynamic> json) =>
     AdditionalRecipient(
-      locationId: json['locationId'] as String,
+      locationId: json['location_id'] as String,
       description: json['description'] as String,
-      amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      receivableId: json['receivableId'] as String,
+      amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
+      receivableId: json['receivable_id'] as String,
     );
 
 Map<String, dynamic> _$AdditionalRecipientToJson(
         AdditionalRecipient instance) =>
     <String, dynamic>{
-      'locationId': instance.locationId,
+      'location_id': instance.locationId,
       'description': instance.description,
-      'amountMoney': instance.amountMoney,
-      'receivableId': instance.receivableId,
+      'amount_money': instance.amountMoney.toJson(),
+      'receivable_id': instance.receivableId,
     };
 
 TimeRange _$TimeRangeFromJson(Map<String, dynamic> json) => TimeRange(
-      startAt: DateTime.parse(json['startAt'] as String),
-      endAt: DateTime.parse(json['endAt'] as String),
+      startAt: DateTime.parse(json['start_at'] as String),
+      endAt: DateTime.parse(json['end_at'] as String),
     );
 
 Map<String, dynamic> _$TimeRangeToJson(TimeRange instance) => <String, dynamic>{
-      'startAt': instance.startAt.toIso8601String(),
-      'endAt': instance.endAt.toIso8601String(),
+      'start_at': instance.startAt.toIso8601String(),
+      'end_at': instance.endAt.toIso8601String(),
     };
 
 DateRange _$DateRangeFromJson(Map<String, dynamic> json) => DateRange(
-      startDate: SquareDate.fromJson(json['startDate'] as Map<String, dynamic>),
-      endDate: SquareDate.fromJson(json['endDate'] as Map<String, dynamic>),
+      startDate:
+          SquareDate.fromJson(json['start_date'] as Map<String, dynamic>),
+      endDate: SquareDate.fromJson(json['end_date'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$DateRangeToJson(DateRange instance) => <String, dynamic>{
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
+      'start_date': instance.startDate.toJson(),
+      'end_date': instance.endDate.toJson(),
     };
 
 SquareDate _$SquareDateFromJson(Map<String, dynamic> json) => SquareDate(

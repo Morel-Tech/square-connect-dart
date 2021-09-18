@@ -8,11 +8,11 @@ part of 'customer_preferences.dart';
 
 CustomerPreferences _$CustomerPreferencesFromJson(Map<String, dynamic> json) =>
     CustomerPreferences(
-      emailUnsubscribed: json['emailUnsubscribed'] as bool?,
+      emailUnsubscribed: json['email_unsubscribed'] as bool?,
     );
 
 Map<String, dynamic> _$CustomerPreferencesToJson(
         CustomerPreferences instance) =>
     <String, dynamic>{
-      'emailUnsubscribed': instance.emailUnsubscribed,
+      'email_unsubscribed': instance.emailUnsubscribed,
     };

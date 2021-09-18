@@ -7,14 +7,14 @@ part of 'ach_details.dart';
 // **************************************************************************
 
 AchDetails _$AchDetailsFromJson(Map<String, dynamic> json) => AchDetails(
-      accountNumberSuffix: json['accountNumberSuffix'] as String?,
-      accountType: json['accountType'] as String?,
-      routingNumber: json['routingNumber'] as String?,
+      accountNumberSuffix: json['account_number_suffix'] as String?,
+      accountType: json['account_type'] as String?,
+      routingNumber: json['routing_number'] as String?,
     );
 
 Map<String, dynamic> _$AchDetailsToJson(AchDetails instance) =>
     <String, dynamic>{
-      'accountNumberSuffix': instance.accountNumberSuffix,
-      'accountType': instance.accountType,
-      'routingNumber': instance.routingNumber,
+      'account_number_suffix': instance.accountNumberSuffix,
+      'account_type': instance.accountType,
+      'routing_number': instance.routingNumber,
     };

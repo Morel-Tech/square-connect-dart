@@ -14,66 +14,64 @@ class _SquareApiClient implements SquareApiClient {
   String? baseUrl;
 
   @override
-  Future<List<Location>> listLocations() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<Location>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/v2/locations',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => Location.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
-  Future<Location> retrieveLocation(locationId) async {
+  Future<ListLocationsResponse> listLocations() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Location>(
+        _setStreamType<ListLocationsResponse>(
+            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, '/v2/locations',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ListLocationsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RetrieveLocationResponse> retrieveLocation(locationId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RetrieveLocationResponse>(
             Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
                 .compose(_dio.options, '/v2/locations/$locationId',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Location.fromJson(_result.data!);
+    final value = RetrieveLocationResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Location> createLocation(location) async {
+  Future<CreateLocationResponse> createLocation(input) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(location.toJson());
+    _data.addAll(input.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Location>(
+        _setStreamType<CreateLocationResponse>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
                 .compose(_dio.options, '/v2/locations',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Location.fromJson(_result.data!);
+    final value = CreateLocationResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Location> updateLocation(locationId, location) async {
+  Future<UpdateLocationResponse> updateLocation(locationId, input) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(location.toJson());
+    _data.addAll(input.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Location>(
+        _setStreamType<UpdateLocationResponse>(
             Options(method: 'PUT', headers: <String, dynamic>{}, extra: _extra)
                 .compose(_dio.options, 'v2/locations/$locationId',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Location.fromJson(_result.data!);
+    final value = UpdateLocationResponse.fromJson(_result.data!);
     return value;
   }
 

@@ -15,5 +15,7 @@ export 'package:square_connect/src/shared-enums.dart';
 export 'package:square_connect/src/shared-objects.dart';
 export 'package:square_connect/src/transactions/transactions-enums.dart';
 export 'package:square_connect/src/transactions/transactions-objects.dart';
-export 'src/shared_model/shared_model.dart';
+
 export 'src/square_api_client.dart';
+export 'src/shared_model/shared_model.dart';
+export 'src/functions_model/functions_model.dart';

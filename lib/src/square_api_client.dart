@@ -7,41 +7,37 @@ part 'square_api_client.g.dart';
 @RestApi()
 abstract class SquareApiClient {
   factory SquareApiClient({
-    Dio? client,
-    String? accessToken,
+    required String accessToken,
     String? apiVersion,
-  }) {
-    assert(
-      client != null && accessToken != null,
-      'If client is null, accessToken must be provided',
-    );
-    return _SquareApiClient(
-      Dio(
-        BaseOptions(
-          baseUrl: 'https://connect.squareup.com',
-          headers: <String, dynamic>{
-            if (accessToken != null) 'Authorization': 'Bearer $accessToken',
-            if (apiVersion != null) 'Square-Version': apiVersion,
-          },
-          contentType: 'application/json',
-          responseType: ResponseType.json,
+  }) =>
+      _SquareApiClient(
+        Dio(
+          BaseOptions(
+            baseUrl: 'https://connect.squareup.com',
+            headers: <String, dynamic>{
+              'Authorization': 'Bearer $accessToken',
+              if (apiVersion != null) 'Square-Version': apiVersion,
+            },
+            contentType: 'application/json',
+            responseType: ResponseType.json,
+          ),
         ),
-      ),
-    );
-  }
+      );
 
   @GET('/v2/locations')
-  Future<List<Location>> listLocations();
+  Future<ListLocationsResponse> listLocations();
 
   @GET('/v2/locations/{locationId}')
-  Future<Location> retrieveLocation(@Path() String locationId);
+  Future<RetrieveLocationResponse> retrieveLocation(@Path() String locationId);
 
   @POST('/v2/locations')
-  Future<Location> createLocation(@Body() Location location);
+  Future<CreateLocationResponse> createLocation(
+    @Body() CreateLocationInput input,
+  );
 
   @PUT('v2/locations/{locationId}')
-  Future<Location> updateLocation(
+  Future<UpdateLocationResponse> updateLocation(
     @Path() String locationId,
-    @Body() Location location,
+    @Body() UpdateLocationInput input,
   );
 }

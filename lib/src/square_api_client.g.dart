@@ -62,7 +62,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<Location> updateLocation(LocationId, location) async {
+  Future<Location> updateLocation(locationId, location) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -70,7 +70,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Location>(
             Options(method: 'PUT', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, 'v2/locations/{locationId}',
+                .compose(_dio.options, 'v2/locations/$locationId',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Location.fromJson(_result.data!);

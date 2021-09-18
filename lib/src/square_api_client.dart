@@ -41,7 +41,7 @@ abstract class SquareApiClient {
 
   @PUT('v2/locations/{locationId}')
   Future<Location> updateLocation(
-    @Path() String LocationId,
+    @Path() String locationId,
     @Body() Location location,
   );
 }

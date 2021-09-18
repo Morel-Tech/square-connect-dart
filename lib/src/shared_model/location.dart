@@ -17,15 +17,15 @@ class Location extends Equatable {
     this.address,
     this.timezone,
     this.capabilities,
-    required this.locationStatus,
+    this.locationStatus,
     this.createdAt,
     required this.merchantId,
-    required this.country,
-    required this.languageCode,
-    required this.currency,
+    this.country,
+    this.languageCode,
+    this.currency,
     this.phoneNumber,
     this.businessName,
-    required this.type,
+    this.type,
     this.websiteUrl,
     this.businessHours,
     this.businessEmail,
@@ -59,7 +59,7 @@ class Location extends Equatable {
   final List<LocationCapability>? capabilities;
 
   /// Whether the [Location] is active or inactive.
-  final LocationStatus locationStatus;
+  final LocationStatus? locationStatus;
 
   /// When the [Location] was created.
   final DateTime? createdAt;
@@ -68,13 +68,13 @@ class Location extends Equatable {
   final String merchantId;
 
   /// The [Location]'s country in ISO 3166-1-alpha-2 format.
-  final String country;
+  final String? country;
 
   /// The [Location]'s language in BCP 47 format.
-  final String languageCode;
+  final String? languageCode;
 
   /// The currency the [Location] uses.
-  final String currency;
+  final String? currency;
 
   /// The [Location]'s phone number.
   final String? phoneNumber;
@@ -83,7 +83,7 @@ class Location extends Equatable {
   final String? businessName;
 
   /// Whether the [Location] is physical or mobile.
-  final LocationType type;
+  final LocationType? type;
 
   /// The website url for the [Location].
   final String? websiteUrl;

@@ -17,17 +17,17 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
           ?.map((e) => _$enumDecode(_$LocationCapabilityEnumMap, e))
           .toList(),
       locationStatus:
-          _$enumDecode(_$LocationStatusEnumMap, json['locationStatus']),
+          _$enumDecodeNullable(_$LocationStatusEnumMap, json['locationStatus']),
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
       merchantId: json['merchantId'] as String,
-      country: json['country'] as String,
-      languageCode: json['languageCode'] as String,
-      currency: json['currency'] as String,
+      country: json['country'] as String?,
+      languageCode: json['languageCode'] as String?,
+      currency: json['currency'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       businessName: json['businessName'] as String?,
-      type: _$enumDecode(_$LocationTypeEnumMap, json['type']),
+      type: _$enumDecodeNullable(_$LocationTypeEnumMap, json['type']),
       websiteUrl: json['websiteUrl'] as String?,
       businessHours: json['businessHours'] == null
           ? null
@@ -100,6 +100,17 @@ const _$LocationCapabilityEnumMap = {
   LocationCapability.creditCardProcessing: 'CREDIT_CARD_PROCESSING',
   LocationCapability.automaticTransfers: 'AUTOMATIC_TRANSFERS',
 };
+
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
+  dynamic source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    return null;
+  }
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
+}
 
 const _$LocationStatusEnumMap = {
   LocationStatus.active: 'ACTIVE',

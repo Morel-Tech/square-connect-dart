@@ -25,5 +25,5 @@ class BusinessHours extends Equatable {
   final List<BusinessHoursPeriod> periods;
 
   @override
-  List<Object> get props => [periods];
+  List<Object?> get props => [periods];
 }

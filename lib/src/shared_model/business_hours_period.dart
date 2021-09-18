@@ -33,5 +33,5 @@ class BusinessHoursPeriod extends Equatable {
   final DayOfWeek dayOfWeek;
 
   @override
-  List<Object> get props => [startLocalTime, endLocalTime, dayOfWeek];
+  List<Object?> get props => [startLocalTime, endLocalTime, dayOfWeek];
 }

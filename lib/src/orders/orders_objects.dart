@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-part 'orders-objects.g.dart';
+part 'orders_objects.g.dart';
 
 @JsonSerializable()
 class Order extends Equatable {

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'employees-objects.dart';
+part of 'employees_objects.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-part 'employees-objects.g.dart';
+part 'employees_objects.g.dart';
 
 /// An [Employee] created in the Square Dashboard account of a business. Used
 /// by the LaborApi.

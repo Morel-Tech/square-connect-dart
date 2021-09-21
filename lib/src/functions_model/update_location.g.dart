@@ -22,13 +22,14 @@ Map<String, dynamic> _$UpdateLocationResponseToJson(
       'location': instance.location.toJson(),
     };
 
-UpdateLocationInput _$UpdateLocationInputFromJson(Map<String, dynamic> json) =>
-    UpdateLocationInput(
+UpdateLocationRequest _$UpdateLocationRequestFromJson(
+        Map<String, dynamic> json) =>
+    UpdateLocationRequest(
       location: Location.fromJson(json['location'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UpdateLocationInputToJson(
-        UpdateLocationInput instance) =>
+Map<String, dynamic> _$UpdateLocationRequestToJson(
+        UpdateLocationRequest instance) =>
     <String, dynamic>{
       'location': instance.location.toJson(),
     };

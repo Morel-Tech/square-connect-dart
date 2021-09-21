@@ -14,6 +14,8 @@ export 'device_details.dart';
 export 'external_payment_details.dart';
 export 'location.dart';
 export 'money.dart';
+export 'oauth_grant_type.dart';
+export 'oauth_scope.dart';
 export 'payment.dart';
 export 'processing_fee.dart';
 export 'risk_evaluation.dart';

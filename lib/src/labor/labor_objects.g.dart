@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'labor-objects.dart';
+part of 'labor_objects.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

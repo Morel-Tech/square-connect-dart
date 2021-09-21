@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'shared-objects.dart';
+part of 'shared_objects.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

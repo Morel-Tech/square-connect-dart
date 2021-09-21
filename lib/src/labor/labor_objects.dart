@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-part 'labor-objects.g.dart';
+part 'labor_objects.g.dart';
 
 @JsonSerializable()
 class BreakType extends Equatable {

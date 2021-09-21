@@ -68,10 +68,42 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<UpdateLocationResponse>(
             Options(method: 'PUT', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, 'v2/locations/$locationId',
+                .compose(_dio.options, '/v2/locations/$locationId',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = UpdateLocationResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ObtainTokenResponse> obtainToken(request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ObtainTokenResponse>(
+            Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, '/oauth2/token',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ObtainTokenResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RevokeTokenResponse> revokeToken(request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RevokeTokenResponse>(
+            Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, '/oauth2/revoke',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RevokeTokenResponse.fromJson(_result.data!);
     return value;
   }
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'refunds-objects.dart';
+part of 'refunds_objects.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

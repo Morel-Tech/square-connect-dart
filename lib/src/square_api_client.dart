@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/functions_model/revoke_token.dart';
 
 part 'square_api_client.g.dart';
 
@@ -19,7 +20,6 @@ abstract class SquareApiClient {
               if (apiVersion != null) 'Square-Version': apiVersion,
             },
             contentType: 'application/json',
-            responseType: ResponseType.json,
           ),
         ),
       );
@@ -32,12 +32,18 @@ abstract class SquareApiClient {
 
   @POST('/v2/locations')
   Future<CreateLocationResponse> createLocation(
-    @Body() CreateLocationInput input,
+    @Body() CreateLocationRequest input,
   );
 
-  @PUT('v2/locations/{locationId}')
+  @PUT('/v2/locations/{locationId}')
   Future<UpdateLocationResponse> updateLocation(
     @Path() String locationId,
-    @Body() UpdateLocationInput input,
+    @Body() UpdateLocationRequest input,
   );
+
+  @POST('/oauth2/token')
+  Future<ObtainTokenResponse> obtainToken(@Body() ObtainTokenRequest request);
+
+  @POST('/oauth2/revoke')
+  Future<RevokeTokenResponse> revokeToken(@Body() RevokeTokenRequest request);
 }

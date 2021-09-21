@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'inventory-objects.dart';
+part of 'inventory_objects.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

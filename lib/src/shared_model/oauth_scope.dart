@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-enum OAuthPermission {
+enum OAuthScope {
   @JsonValue('BANK_ACCOUNTS_READ')
   bankAccountsRead,
 

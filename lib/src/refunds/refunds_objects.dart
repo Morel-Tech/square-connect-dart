@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-part 'refunds-objects.g.dart';
+part 'refunds_objects.g.dart';
 
 /// An object representing a refund processed for a Square transaction.
 @JsonSerializable()

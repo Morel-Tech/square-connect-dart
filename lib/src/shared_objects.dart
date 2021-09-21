@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-part 'shared-objects.g.dart';
+part 'shared_objects.g.dart';
 
 /// An object representing a method of payment used in a [Transaction].
 @JsonSerializable()

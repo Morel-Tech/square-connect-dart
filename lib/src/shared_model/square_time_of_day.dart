@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_raw_strings
 import 'package:equatable/equatable.dart';
 
 /// {@template square_time_of_day}
@@ -13,13 +14,13 @@ class SquareTimeOfDay extends Equatable {
 
   /// Converts a [Map] to an [SquareTimeOfDay]
   factory SquareTimeOfDay.fromJson(String input) {
-    if (RegExp(r"[0-9][0-9]:[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
+    if (RegExp(r'[0-9][0-9]:[0-9][0-9]:[0-9][0-9]').hasMatch(input)) {
       return SquareTimeOfDay(
         hours: int.parse(input.substring(0, 2)),
         minutes: int.parse(input.substring(3, 5)),
         seconds: int.parse(input.substring(6)),
       );
-    } else if (RegExp(r"[0-9][0-9]:[0-9][0-9]").hasMatch(input)) {
+    } else if (RegExp(r'[0-9][0-9]:[0-9][0-9]').hasMatch(input)) {
       return SquareTimeOfDay(
         hours: int.parse(input.substring(0, 2)),
         minutes: int.parse(input.substring(3, 5)),
@@ -32,7 +33,8 @@ class SquareTimeOfDay extends Equatable {
 
   /// Converts a [SquareTimeOfDay] to a [Map]
   String toJson() =>
-      '${this.hours < 10 ? '0' + this.hours.toString() : this.hours}:${this.minutes < 10 ? '0' + this.minutes.toString() : this.minutes}:${this.seconds < 10 ? '0' + this.seconds.toString() : this.seconds}';
+      // ignore: lines_longer_than_80_chars
+      '${hours < 10 ? '0$hours' : hours}:${minutes < 10 ? '0$minutes' : minutes}:${seconds < 10 ? '0$seconds' : seconds}';
 
   /// Hours starting in ranges 0-23.
   final int hours;

@@ -33,20 +33,20 @@ class UpdateLocationResponse extends SquareResponse {
 /// Input object for update location method.
 /// {@endtemplate}
 @JsonSerializable()
-class UpdateLocationInput extends Equatable {
+class UpdateLocationRequest extends Equatable {
   /// {@macro update_location_input}
-  const UpdateLocationInput({
+  const UpdateLocationRequest({
     required this.location,
   });
 
+  /// Converts a [Map] to an [UpdateLocationRequest]
+  factory UpdateLocationRequest.fromJson(Map<String, dynamic> json) =>
+      _$UpdateLocationRequestFromJson(json);
+
+  /// Converts a [UpdateLocationRequest] to a [Map]
+  Map<String, dynamic> toJson() => _$UpdateLocationRequestToJson(this);
+
   final Location location;
-
-  /// Converts a [Map] to an [UpdateLocationInput]
-  factory UpdateLocationInput.fromJson(Map<String, dynamic> json) =>
-      _$UpdateLocationInputFromJson(json);
-
-  /// Converts a [UpdateLocationInput] to a [Map]
-  Map<String, dynamic> toJson() => _$UpdateLocationInputToJson(this);
 
   @override
   List<Object> get props => [location];

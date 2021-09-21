@@ -22,13 +22,14 @@ Map<String, dynamic> _$CreateLocationResponseToJson(
       'location': instance.location.toJson(),
     };
 
-CreateLocationInput _$CreateLocationInputFromJson(Map<String, dynamic> json) =>
-    CreateLocationInput(
+CreateLocationRequest _$CreateLocationRequestFromJson(
+        Map<String, dynamic> json) =>
+    CreateLocationRequest(
       location: Location.fromJson(json['location'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CreateLocationInputToJson(
-        CreateLocationInput instance) =>
+Map<String, dynamic> _$CreateLocationRequestToJson(
+        CreateLocationRequest instance) =>
     <String, dynamic>{
       'location': instance.location.toJson(),
     };

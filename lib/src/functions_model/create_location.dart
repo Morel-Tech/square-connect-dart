@@ -33,20 +33,20 @@ class CreateLocationResponse extends SquareResponse {
 /// Input object for create location method.
 /// {@endtemplate}
 @JsonSerializable()
-class CreateLocationInput extends Equatable {
+class CreateLocationRequest extends Equatable {
   /// {@macro create_location_input}
-  const CreateLocationInput({
+  const CreateLocationRequest({
     required this.location,
   });
 
+  /// Converts a [Map] to an [CreateLocationRequest]
+  factory CreateLocationRequest.fromJson(Map<String, dynamic> json) =>
+      _$CreateLocationRequestFromJson(json);
+
+  /// Converts a [CreateLocationRequest] to a [Map]
+  Map<String, dynamic> toJson() => _$CreateLocationRequestToJson(this);
+
   final Location location;
-
-  /// Converts a [Map] to an [CreateLocationInput]
-  factory CreateLocationInput.fromJson(Map<String, dynamic> json) =>
-      _$CreateLocationInputFromJson(json);
-
-  /// Converts a [CreateLocationInput] to a [Map]
-  Map<String, dynamic> toJson() => _$CreateLocationInputToJson(this);
 
   @override
   List<Object> get props => [location];

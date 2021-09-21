@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
-part 'transactions-objects.g.dart';
+part 'transactions_objects.g.dart';
 
 /// An object representing a transaction processed with Square, either with the
 /// Connect API or with Square Point of Sale.

@@ -6,150 +6,6 @@ part of 'catalog_objects.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
-    CatalogObject(
-      type: _$enumDecode(_$CatalogObjectTypeEnumMap, json['type']),
-      id: json['id'] as String,
-      updatedAt: DateTime.parse(json['updated_at'] as String),
-      version: json['version'] as int,
-      isDeleted: json['is_deleted'] as bool,
-      presentAtAllLocations: json['present_at_all_locations'] as bool,
-      presentAtLocationIds: (json['present_at_location_ids'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      absentAtLocationIds: (json['absent_at_location_ids'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      imageId: json['image_id'] as String,
-      itemData: CatalogItem.fromJson(json['item_data'] as Map<String, dynamic>),
-      itemVariationData: CatalogItemVariation.fromJson(
-          json['item_variation_data'] as Map<String, dynamic>),
-      categoryData: CatalogCategory.fromJson(
-          json['category_data'] as Map<String, dynamic>),
-      taxData: CatalogTax.fromJson(json['tax_data'] as Map<String, dynamic>),
-      discountData: CatalogDiscount.fromJson(
-          json['discount_data'] as Map<String, dynamic>),
-      modifierListData: CatalogModifierList.fromJson(
-          json['modifier_list_data'] as Map<String, dynamic>),
-      modifierData: CatalogModifier.fromJson(
-          json['modifier_data'] as Map<String, dynamic>),
-      imageData:
-          CatalogImage.fromJson(json['image_data'] as Map<String, dynamic>),
-      measurementUnitData: CatalogMeasurementUnit.fromJson(
-          json['measurement_unit_data'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
-    <String, dynamic>{
-      'type': _$CatalogObjectTypeEnumMap[instance.type],
-      'id': instance.id,
-      'updated_at': instance.updatedAt.toIso8601String(),
-      'version': instance.version,
-      'is_deleted': instance.isDeleted,
-      'present_at_all_locations': instance.presentAtAllLocations,
-      'present_at_location_ids': instance.presentAtLocationIds,
-      'absent_at_location_ids': instance.absentAtLocationIds,
-      'image_id': instance.imageId,
-      'item_data': instance.itemData.toJson(),
-      'item_variation_data': instance.itemVariationData.toJson(),
-      'category_data': instance.categoryData.toJson(),
-      'tax_data': instance.taxData.toJson(),
-      'discount_data': instance.discountData.toJson(),
-      'modifier_list_data': instance.modifierListData.toJson(),
-      'modifier_data': instance.modifierData.toJson(),
-      'image_data': instance.imageData.toJson(),
-      'measurement_unit_data': instance.measurementUnitData.toJson(),
-    };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-const _$CatalogObjectTypeEnumMap = {
-  CatalogObjectType.item: 'ITEM',
-  CatalogObjectType.itemVariation: 'ITEM_VARIATION',
-  CatalogObjectType.modifier: 'MODIFIER',
-  CatalogObjectType.modifierList: 'MODIFIER_LIST',
-  CatalogObjectType.category: 'CATEGORY',
-  CatalogObjectType.discount: 'DISCOUNT',
-  CatalogObjectType.tax: 'TAX',
-  CatalogObjectType.image: 'IMAGE',
-  CatalogObjectType.pricingRule: 'PRICING_RULE',
-  CatalogObjectType.productSet: 'PRODUCT_SET',
-  CatalogObjectType.timePeriod: 'TIME_PERIOD',
-};
-
-CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
-      name: json['name'] as String,
-      description: json['description'] as String,
-      abbreviation: json['abbreviation'] as String,
-      labelColor: json['label_color'] as String,
-      availableOnline: json['available_online'] as bool,
-      availableForPickup: json['available_for_pickup'] as bool,
-      availableElectronically: json['available_electronically'] as bool,
-      categoryId: json['category_id'] as String,
-      taxIds:
-          (json['tax_ids'] as List<dynamic>).map((e) => e as String).toList(),
-      modifierListInfo: (json['modifier_list_info'] as List<dynamic>)
-          .map((e) =>
-              CatalogItemModifierListInfo.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      variations: (json['variations'] as List<dynamic>)
-          .map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      productType:
-          _$enumDecode(_$CatalogItemProductTypeEnumMap, json['product_type']),
-      skipModifierScreen: json['skip_modifier_screen'] as bool,
-    );
-
-Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'description': instance.description,
-      'abbreviation': instance.abbreviation,
-      'label_color': instance.labelColor,
-      'available_online': instance.availableOnline,
-      'available_for_pickup': instance.availableForPickup,
-      'available_electronically': instance.availableElectronically,
-      'category_id': instance.categoryId,
-      'tax_ids': instance.taxIds,
-      'modifier_list_info':
-          instance.modifierListInfo.map((e) => e.toJson()).toList(),
-      'variations': instance.variations.map((e) => e.toJson()).toList(),
-      'product_type': _$CatalogItemProductTypeEnumMap[instance.productType],
-      'skip_modifier_screen': instance.skipModifierScreen,
-    };
-
-const _$CatalogItemProductTypeEnumMap = {
-  CatalogItemProductType.regular: 'REGULAR',
-  CatalogItemProductType.giftCard: 'GIFT_CARD',
-  CatalogItemProductType.appointmentsService: 'APPOINTMENTS_SERVICE',
-  CatalogItemProductType.retailItem: 'RETAIL_ITEM',
-  CatalogItemProductType.restaurantItem: 'RESTAURANT_ITEM',
-};
-
 CatalogItemVariation _$CatalogItemVariationFromJson(
         Map<String, dynamic> json) =>
     CatalogItemVariation(
@@ -197,6 +53,32 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
       'measurement_unit_id': instance.measurementUnitId,
     };
 
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
+  }
+
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
+}
+
 const _$CatalogPricingTypeEnumMap = {
   CatalogPricingType.fixedPricing: 'FIXED_PRICING',
   CatalogPricingType.variablePricing: 'VARIABLE_PRICING',
@@ -206,16 +88,6 @@ const _$InventoryAlertTypeEnumMap = {
   InventoryAlertType.none: 'NONE',
   InventoryAlertType.lowQuantity: 'LOW_QUANTITY',
 };
-
-CatalogCategory _$CatalogCategoryFromJson(Map<String, dynamic> json) =>
-    CatalogCategory(
-      name: json['name'] as String,
-    );
-
-Map<String, dynamic> _$CatalogCategoryToJson(CatalogCategory instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
 
 CatalogTax _$CatalogTaxFromJson(Map<String, dynamic> json) => CatalogTax(
       name: json['name'] as String,

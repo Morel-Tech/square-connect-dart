@@ -52,4 +52,11 @@ abstract class SquareApiClient {
 
   @GET('/v2/merchants')
   Future<ListMerchantsResponse> listMerchants(@Query('cursor') int? cursor);
+
+  @GET('/v2/catalog/list')
+  Future<ListCatalogResponse> listCatalog({
+    @Query('cursor') String? cursor,
+    @Query('types') String? types,
+    @Query('catalog_version') int? catalogVersion,
+  });
 }

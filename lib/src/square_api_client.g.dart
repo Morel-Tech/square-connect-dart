@@ -115,7 +115,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveMerchantResponse>(
             Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/v2/merchants/{merchant_id}',
+                .compose(_dio.options, '/v2/merchants/$merchantId',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RetrieveMerchantResponse.fromJson(_result.data!);

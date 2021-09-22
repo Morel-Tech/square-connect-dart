@@ -47,7 +47,7 @@ abstract class SquareApiClient {
   @POST('/oauth2/revoke')
   Future<RevokeTokenResponse> revokeToken(@Body() RevokeTokenRequest request);
 
-  @GET('/v2/merchants/{merchant_id}')
+  @GET('/v2/merchants/{merchantId}')
   Future<RetrieveMerchantResponse> retrieveMerchant(@Path() String merchantId);
 
   @GET('/v2/merchants')

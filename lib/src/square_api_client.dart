@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_connect/src/functions_model/revoke_token.dart';
+import 'package:square_connect/src/functions_model/list_merchants.dart';
 
 part 'square_api_client.g.dart';
 
@@ -46,4 +46,10 @@ abstract class SquareApiClient {
 
   @POST('/oauth2/revoke')
   Future<RevokeTokenResponse> revokeToken(@Body() RevokeTokenRequest request);
+
+  @GET('/v2/merchants/{merchant_id}')
+  Future<RetrieveMerchantResponse> retrieveMerchant(@Path() String merchantId);
+
+  @GET('/v2/merchants')
+  Future<ListMerchantsResponse> listMerchants(@Query('cursor') int? cursor);
 }

@@ -25,10 +25,14 @@ Map<String, dynamic> _$RevokeTokenRequestToJson(RevokeTokenRequest instance) =>
 RevokeTokenResponse _$RevokeTokenResponseFromJson(Map<String, dynamic> json) =>
     RevokeTokenResponse(
       success: json['success'] as bool,
+      errors: (json['errors'] as List<dynamic>?)
+          ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$RevokeTokenResponseToJson(
         RevokeTokenResponse instance) =>
     <String, dynamic>{
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'success': instance.success,
     };

@@ -107,6 +107,37 @@ class _SquareApiClient implements SquareApiClient {
     return value;
   }
 
+  @override
+  Future<RetrieveMerchantResponse> retrieveMerchant(merchantId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RetrieveMerchantResponse>(
+            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, '/v2/merchants/{merchant_id}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RetrieveMerchantResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ListMerchantsResponse> listMerchants(cursor) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'cursor': cursor};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ListMerchantsResponse>(
+            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, '/v2/merchants',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ListMerchantsResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

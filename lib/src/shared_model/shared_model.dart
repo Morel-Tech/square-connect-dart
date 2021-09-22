@@ -13,6 +13,7 @@ export 'customer_preferences.dart';
 export 'device_details.dart';
 export 'external_payment_details.dart';
 export 'location.dart';
+export 'merchant.dart';
 export 'money.dart';
 export 'oauth_grant_type.dart';
 export 'oauth_scope.dart';

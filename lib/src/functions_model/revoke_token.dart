@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:square_connect/square_connect.dart';
 
 part 'revoke_token.g.dart';
 
@@ -34,10 +35,11 @@ class RevokeTokenRequest extends Equatable {
 }
 
 @JsonSerializable()
-class RevokeTokenResponse extends Equatable {
+class RevokeTokenResponse extends SquareResponse {
   const RevokeTokenResponse({
     required this.success,
-  });
+    List<SquareError>? errors,
+  }) : super(errors: errors);
 
   /// Converts a [Map] to an [RevokeTokenResponse]
   factory RevokeTokenResponse.fromJson(Map<String, dynamic> json) =>
@@ -49,5 +51,5 @@ class RevokeTokenResponse extends Equatable {
   final bool success;
 
   @override
-  List<Object> get props => [success];
+  List<Object?> get props => [success, errors];
 }

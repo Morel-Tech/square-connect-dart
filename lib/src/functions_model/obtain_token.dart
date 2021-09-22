@@ -53,7 +53,7 @@ class ObtainTokenRequest extends Equatable {
 }
 
 @JsonSerializable()
-class ObtainTokenResponse extends Equatable {
+class ObtainTokenResponse extends SquareResponse {
   const ObtainTokenResponse({
     required this.accessToken,
     required this.tokenType,
@@ -64,7 +64,8 @@ class ObtainTokenResponse extends Equatable {
     this.idToken,
     required this.refreshToken,
     this.shortLived,
-  });
+    List<SquareError>? errors,
+  }) : super(errors: errors);
 
   /// Converts a [Map] to an [ObtainTokenResponse]
   factory ObtainTokenResponse.fromJson(Map<String, dynamic> json) =>
@@ -95,6 +96,7 @@ class ObtainTokenResponse extends Equatable {
       idToken,
       refreshToken,
       shortLived,
+      errors,
     ];
   }
 }

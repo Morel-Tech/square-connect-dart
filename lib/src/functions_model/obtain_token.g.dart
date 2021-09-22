@@ -102,11 +102,15 @@ ObtainTokenResponse _$ObtainTokenResponseFromJson(Map<String, dynamic> json) =>
       idToken: json['id_token'] as String?,
       refreshToken: json['refresh_token'] as String,
       shortLived: json['short_lived'] as bool?,
+      errors: (json['errors'] as List<dynamic>?)
+          ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ObtainTokenResponseToJson(
         ObtainTokenResponse instance) =>
     <String, dynamic>{
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'access_token': instance.accessToken,
       'token_type': instance.tokenType,
       'expires_at': instance.expiresAt.toIso8601String(),

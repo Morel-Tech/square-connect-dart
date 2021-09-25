@@ -40,7 +40,7 @@ class CatalogItem extends Equatable {
   final bool? availableElectronically;
   final String? categoryId;
   final List<String>? taxIds;
-  final List<CatalogItemModifierListInfo> modifierListInfo;
+  final List<CatalogItemModifierListInfo>? modifierListInfo;
   final List<CatalogObject> variations;
   final CatalogItemProductType? productType;
   final bool? skipModifierScreen;

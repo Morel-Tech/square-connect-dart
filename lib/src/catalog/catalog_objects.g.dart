@@ -6,51 +6,26 @@ part of 'catalog_objects.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CatalogItemVariation _$CatalogItemVariationFromJson(
-        Map<String, dynamic> json) =>
-    CatalogItemVariation(
-      itemId: json['item_id'] as String,
+CatalogTax _$CatalogTaxFromJson(Map<String, dynamic> json) => CatalogTax(
       name: json['name'] as String,
-      sku: json['sku'] as String,
-      upc: json['upc'] as String,
-      ordinal: json['ordinal'] as int,
-      pricingType:
-          _$enumDecode(_$CatalogPricingTypeEnumMap, json['pricing_type']),
-      priceMoney: Money.fromJson(json['price_money'] as Map<String, dynamic>),
-      locationOverrides: (json['location_overrides'] as List<dynamic>)
-          .map((e) =>
-              ItemVariationLocationOverride.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      trackInventory: json['track_inventory'] as bool,
-      inventoryAlertType: _$enumDecode(
-          _$InventoryAlertTypeEnumMap, json['inventory_alert_type']),
-      inventoryAlertThreshold: json['inventory_alert_threshold'] as int,
-      userData: json['user_data'] as String,
-      serviceDuration: json['service_duration'] as int,
-      catalogMeasurementUnitId: json['catalog_measurement_unit_id'] as String,
-      measurementUnitId: json['measurement_unit_id'] as String,
+      calculationPhase:
+          _$enumDecode(_$TaxCalculationPhaseEnumMap, json['calculation_phase']),
+      inclusionType:
+          _$enumDecode(_$TaxInclusionTypeEnumMap, json['inclusion_type']),
+      percentage: (json['percentage'] as num).toDouble(),
+      appliesToCustomAmounts: json['applies_to_custom_amounts'] as bool,
+      enabled: json['enabled'] as bool,
     );
 
-Map<String, dynamic> _$CatalogItemVariationToJson(
-        CatalogItemVariation instance) =>
+Map<String, dynamic> _$CatalogTaxToJson(CatalogTax instance) =>
     <String, dynamic>{
-      'item_id': instance.itemId,
       'name': instance.name,
-      'sku': instance.sku,
-      'upc': instance.upc,
-      'ordinal': instance.ordinal,
-      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
-      'price_money': instance.priceMoney.toJson(),
-      'location_overrides':
-          instance.locationOverrides.map((e) => e.toJson()).toList(),
-      'track_inventory': instance.trackInventory,
-      'inventory_alert_type':
-          _$InventoryAlertTypeEnumMap[instance.inventoryAlertType],
-      'inventory_alert_threshold': instance.inventoryAlertThreshold,
-      'user_data': instance.userData,
-      'service_duration': instance.serviceDuration,
-      'catalog_measurement_unit_id': instance.catalogMeasurementUnitId,
-      'measurement_unit_id': instance.measurementUnitId,
+      'calculation_phase':
+          _$TaxCalculationPhaseEnumMap[instance.calculationPhase],
+      'inclusion_type': _$TaxInclusionTypeEnumMap[instance.inclusionType],
+      'percentage': instance.percentage,
+      'applies_to_custom_amounts': instance.appliesToCustomAmounts,
+      'enabled': instance.enabled,
     };
 
 K _$enumDecode<K, V>(
@@ -78,38 +53,6 @@ K _$enumDecode<K, V>(
     },
   ).key;
 }
-
-const _$CatalogPricingTypeEnumMap = {
-  CatalogPricingType.fixedPricing: 'FIXED_PRICING',
-  CatalogPricingType.variablePricing: 'VARIABLE_PRICING',
-};
-
-const _$InventoryAlertTypeEnumMap = {
-  InventoryAlertType.none: 'NONE',
-  InventoryAlertType.lowQuantity: 'LOW_QUANTITY',
-};
-
-CatalogTax _$CatalogTaxFromJson(Map<String, dynamic> json) => CatalogTax(
-      name: json['name'] as String,
-      calculationPhase:
-          _$enumDecode(_$TaxCalculationPhaseEnumMap, json['calculation_phase']),
-      inclusionType:
-          _$enumDecode(_$TaxInclusionTypeEnumMap, json['inclusion_type']),
-      percentage: (json['percentage'] as num).toDouble(),
-      appliesToCustomAmounts: json['applies_to_custom_amounts'] as bool,
-      enabled: json['enabled'] as bool,
-    );
-
-Map<String, dynamic> _$CatalogTaxToJson(CatalogTax instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'calculation_phase':
-          _$TaxCalculationPhaseEnumMap[instance.calculationPhase],
-      'inclusion_type': _$TaxInclusionTypeEnumMap[instance.inclusionType],
-      'percentage': instance.percentage,
-      'applies_to_custom_amounts': instance.appliesToCustomAmounts,
-      'enabled': instance.enabled,
-    };
 
 const _$TaxCalculationPhaseEnumMap = {
   TaxCalculationPhase.taxSubtotalPhase: 'TAX_SUBTOTAL_PHASE',
@@ -285,69 +228,6 @@ const _$MeasurementUnitWeightEnumMap = {
   MeasurementUnitWeight.metricGram: 'METRIC_GRAM',
   MeasurementUnitWeight.metricKilogram: 'METRIC_KILOGRAM',
 };
-
-ItemVariationLocationOverride _$ItemVariationLocationOverrideFromJson(
-        Map<String, dynamic> json) =>
-    ItemVariationLocationOverride(
-      locationId: json['location_id'] as String,
-      priceMoney: Money.fromJson(json['price_money'] as Map<String, dynamic>),
-      pricingType:
-          _$enumDecode(_$CatalogPricingTypeEnumMap, json['pricing_type']),
-      trackInventory: json['track_inventory'] as bool,
-      inventoryAlertType: _$enumDecode(
-          _$InventoryAlertTypeEnumMap, json['inventory_alert_type']),
-      inventoryAlertThreshold: json['inventory_alert_threshold'] as int,
-    );
-
-Map<String, dynamic> _$ItemVariationLocationOverrideToJson(
-        ItemVariationLocationOverride instance) =>
-    <String, dynamic>{
-      'location_id': instance.locationId,
-      'price_money': instance.priceMoney.toJson(),
-      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
-      'track_inventory': instance.trackInventory,
-      'inventory_alert_type':
-          _$InventoryAlertTypeEnumMap[instance.inventoryAlertType],
-      'inventory_alert_threshold': instance.inventoryAlertThreshold,
-    };
-
-CatalogItemModifierListInfo _$CatalogItemModifierListInfoFromJson(
-        Map<String, dynamic> json) =>
-    CatalogItemModifierListInfo(
-      modifierListId: json['modifier_list_id'] as String,
-      modifierOverrides: (json['modifier_overrides'] as List<dynamic>)
-          .map((e) =>
-              CatalogModifierOverride.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      minSelectedModifiers: json['min_selected_modifiers'] as int,
-      maxSelectedModifiers: json['max_selected_modifiers'] as int,
-      enabled: json['enabled'] as bool,
-    );
-
-Map<String, dynamic> _$CatalogItemModifierListInfoToJson(
-        CatalogItemModifierListInfo instance) =>
-    <String, dynamic>{
-      'modifier_list_id': instance.modifierListId,
-      'modifier_overrides':
-          instance.modifierOverrides.map((e) => e.toJson()).toList(),
-      'min_selected_modifiers': instance.minSelectedModifiers,
-      'max_selected_modifiers': instance.maxSelectedModifiers,
-      'enabled': instance.enabled,
-    };
-
-CatalogModifierOverride _$CatalogModifierOverrideFromJson(
-        Map<String, dynamic> json) =>
-    CatalogModifierOverride(
-      modifierId: json['modifier_id'] as String,
-      onByDefault: json['on_by_default'] as bool,
-    );
-
-Map<String, dynamic> _$CatalogModifierOverrideToJson(
-        CatalogModifierOverride instance) =>
-    <String, dynamic>{
-      'modifier_id': instance.modifierId,
-      'on_by_default': instance.onByDefault,
-    };
 
 CatalogObjectBatch _$CatalogObjectBatchFromJson(Map<String, dynamic> json) =>
     CatalogObjectBatch(

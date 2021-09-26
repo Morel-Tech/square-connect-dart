@@ -17,8 +17,8 @@ CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
       categoryId: json['category_id'] as String?,
       taxIds:
           (json['tax_ids'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      modifierListInfo: (json['modifier_list_info'] as List<dynamic>)
-          .map((e) =>
+      modifierListInfo: (json['modifier_list_info'] as List<dynamic>?)
+          ?.map((e) =>
               CatalogItemModifierListInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
       variations: (json['variations'] as List<dynamic>)
@@ -46,7 +46,7 @@ Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
       'category_id': instance.categoryId,
       'tax_ids': instance.taxIds,
       'modifier_list_info':
-          instance.modifierListInfo.map((e) => e.toJson()).toList(),
+          instance.modifierListInfo?.map((e) => e.toJson()).toList(),
       'variations': instance.variations.map((e) => e.toJson()).toList(),
       'product_type': _$CatalogItemProductTypeEnumMap[instance.productType],
       'skip_modifier_screen': instance.skipModifierScreen,

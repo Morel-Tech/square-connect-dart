@@ -19,7 +19,10 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
       priceMoney: json['price_money'] == null
           ? null
           : Money.fromJson(json['price_money'] as Map<String, dynamic>),
-      locationOverrides: json['location_overrides'] as List<dynamic>?,
+      locationOverrides: (json['location_overrides'] as List<dynamic>?)
+          ?.map((e) =>
+              ItemVariationLocationOverride.fromJson(e as Map<String, dynamic>))
+          .toList(),
       trackInventory: json['track_inventory'] as bool?,
       inventoryAlertType: _$enumDecodeNullable(
           _$InventoryAlertTypeEnumMap, json['inventory_alert_type']),
@@ -52,7 +55,8 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
       'ordinal': instance.ordinal,
       'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
       'price_money': instance.priceMoney?.toJson(),
-      'location_overrides': instance.locationOverrides,
+      'location_overrides':
+          instance.locationOverrides?.map((e) => e.toJson()).toList(),
       'track_inventory': instance.trackInventory,
       'inventory_alert_type':
           _$InventoryAlertTypeEnumMap[instance.inventoryAlertType],

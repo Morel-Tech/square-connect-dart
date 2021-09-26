@@ -92,59 +92,6 @@ const _$CatalogDiscountTypeEnumMap = {
   CatalogDiscountType.variableAmount: 'VARIABLE_AMOUNT',
 };
 
-CatalogModifierList _$CatalogModifierListFromJson(Map<String, dynamic> json) =>
-    CatalogModifierList(
-      name: json['name'] as String,
-      selectionType: _$enumDecode(
-          _$CatalogModifierListSelectionTypeEnumMap, json['selection_type']),
-      modifiers: (json['modifiers'] as List<dynamic>)
-          .map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$CatalogModifierListToJson(
-        CatalogModifierList instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'selection_type':
-          _$CatalogModifierListSelectionTypeEnumMap[instance.selectionType],
-      'modifiers': instance.modifiers.map((e) => e.toJson()).toList(),
-    };
-
-const _$CatalogModifierListSelectionTypeEnumMap = {
-  CatalogModifierListSelectionType.single: 'SINGLE',
-  CatalogModifierListSelectionType.multiple: 'MULTIPLE',
-};
-
-CatalogModifier _$CatalogModifierFromJson(Map<String, dynamic> json) =>
-    CatalogModifier(
-      name: json['name'] as String,
-      priceMoney: Money.fromJson(json['price_money'] as Map<String, dynamic>),
-      onByDefault: json['on_by_default'] as bool,
-      ordinal: json['ordinal'] as int,
-    );
-
-Map<String, dynamic> _$CatalogModifierToJson(CatalogModifier instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'price_money': instance.priceMoney.toJson(),
-      'on_by_default': instance.onByDefault,
-      'ordinal': instance.ordinal,
-    };
-
-CatalogImage _$CatalogImageFromJson(Map<String, dynamic> json) => CatalogImage(
-      name: json['name'] as String,
-      url: json['url'] as String,
-      caption: json['caption'] as String,
-    );
-
-Map<String, dynamic> _$CatalogImageToJson(CatalogImage instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'url': instance.url,
-      'caption': instance.caption,
-    };
-
 CatalogMeasurementUnit _$CatalogMeasurementUnitFromJson(
         Map<String, dynamic> json) =>
     CatalogMeasurementUnit(

@@ -6,83 +6,40 @@ part of 'orders_objects.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Order _$OrderFromJson(Map<String, dynamic> json) => Order(
-      id: json['id'] as String,
+OrderEntry _$OrderEntryFromJson(Map<String, dynamic> json) => OrderEntry(
+      orderId: json['order_id'] as String,
       locationId: json['location_id'] as String,
-      referenceId: json['reference_id'] as String,
-      source: OrderSource.fromJson(json['source'] as Map<String, dynamic>),
-      customerId: json['customer_id'] as String,
-      lineItems: (json['line_items'] as List<dynamic>)
-          .map((e) => OrderLineItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      taxes: (json['taxes'] as List<dynamic>)
-          .map((e) => OrderLineItemTax.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      discounts: (json['discounts'] as List<dynamic>)
-          .map((e) => OrderLineItemDiscount.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      serviceCharges: (json['service_charges'] as List<dynamic>)
-          .map((e) => OrderServiceCharge.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      fulfillments: (json['fulfillments'] as List<dynamic>)
-          .map((e) => OrderFulfillment.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      returnAmounts: OrderMoneyAmounts.fromJson(
-          json['return_amounts'] as Map<String, dynamic>),
-      netAmounts: OrderMoneyAmounts.fromJson(
-          json['net_amounts'] as Map<String, dynamic>),
-      roundingAdjustment: OrderRoundingAdjustment.fromJson(
-          json['rounding_adjustment'] as Map<String, dynamic>),
-      createdAt: DateTime.parse(json['created_at'] as String),
-      updatedAt: DateTime.parse(json['updated_at'] as String),
-      closedAt: DateTime.parse(json['closed_at'] as String),
-      state: _$enumDecode(_$OrderStateEnumMap, json['state']),
-      totalMoney: Money.fromJson(json['total_money'] as Map<String, dynamic>),
-      totalTaxMoney:
-          Money.fromJson(json['total_tax_money'] as Map<String, dynamic>),
-      totalDiscountMoney:
-          Money.fromJson(json['total_discount_money'] as Map<String, dynamic>),
-      totalServiceChargeMoney: Money.fromJson(
-          json['total_service_charge_money'] as Map<String, dynamic>),
-      tenders: (json['tenders'] as List<dynamic>)
-          .map((e) => Tender.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      refunds: (json['refunds'] as List<dynamic>)
-          .map((e) => Refund.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      returns: (json['returns'] as List<dynamic>)
-          .map((e) => OrderReturn.fromJson(e as Map<String, dynamic>))
-          .toList(),
       version: json['version'] as int,
     );
 
-Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
-      'id': instance.id,
+Map<String, dynamic> _$OrderEntryToJson(OrderEntry instance) =>
+    <String, dynamic>{
+      'order_id': instance.orderId,
       'location_id': instance.locationId,
-      'reference_id': instance.referenceId,
-      'source': instance.source.toJson(),
-      'customer_id': instance.customerId,
-      'line_items': instance.lineItems.map((e) => e.toJson()).toList(),
-      'taxes': instance.taxes.map((e) => e.toJson()).toList(),
-      'discounts': instance.discounts.map((e) => e.toJson()).toList(),
-      'service_charges':
-          instance.serviceCharges.map((e) => e.toJson()).toList(),
-      'fulfillments': instance.fulfillments.map((e) => e.toJson()).toList(),
-      'returns': instance.returns.map((e) => e.toJson()).toList(),
-      'return_amounts': instance.returnAmounts.toJson(),
-      'net_amounts': instance.netAmounts.toJson(),
-      'rounding_adjustment': instance.roundingAdjustment.toJson(),
-      'tenders': instance.tenders.map((e) => e.toJson()).toList(),
-      'refunds': instance.refunds.map((e) => e.toJson()).toList(),
-      'created_at': instance.createdAt.toIso8601String(),
-      'updated_at': instance.updatedAt.toIso8601String(),
-      'closed_at': instance.closedAt.toIso8601String(),
-      'state': _$OrderStateEnumMap[instance.state],
-      'total_money': instance.totalMoney.toJson(),
-      'total_tax_money': instance.totalTaxMoney.toJson(),
-      'total_discount_money': instance.totalDiscountMoney.toJson(),
-      'total_service_charge_money': instance.totalServiceChargeMoney.toJson(),
       'version': instance.version,
+    };
+
+OrderLineItemTax _$OrderLineItemTaxFromJson(Map<String, dynamic> json) =>
+    OrderLineItemTax(
+      uid: json['uid'] as String,
+      catalogObjectId: json['catalog_object_id'] as String,
+      name: json['name'] as String,
+      type: _$enumDecode(_$OrderLineItemTaxTypeEnumMap, json['type']),
+      percentage: (json['percentage'] as num).toDouble(),
+      appliedMoney:
+          Money.fromJson(json['applied_money'] as Map<String, dynamic>),
+      scope: _$enumDecode(_$OrderLineItemTaxScopeEnumMap, json['scope']),
+    );
+
+Map<String, dynamic> _$OrderLineItemTaxToJson(OrderLineItemTax instance) =>
+    <String, dynamic>{
+      'uid': instance.uid,
+      'catalog_object_id': instance.catalogObjectId,
+      'name': instance.name,
+      'type': _$OrderLineItemTaxTypeEnumMap[instance.type],
+      'percentage': instance.percentage,
+      'applied_money': instance.appliedMoney.toJson(),
+      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
     };
 
 K _$enumDecode<K, V>(
@@ -110,100 +67,6 @@ K _$enumDecode<K, V>(
     },
   ).key;
 }
-
-const _$OrderStateEnumMap = {
-  OrderState.open: 'OPEN',
-  OrderState.completed: 'COMPLETED',
-  OrderState.canceled: 'CANCELED',
-};
-
-OrderEntry _$OrderEntryFromJson(Map<String, dynamic> json) => OrderEntry(
-      orderId: json['order_id'] as String,
-      locationId: json['location_id'] as String,
-      version: json['version'] as int,
-    );
-
-Map<String, dynamic> _$OrderEntryToJson(OrderEntry instance) =>
-    <String, dynamic>{
-      'order_id': instance.orderId,
-      'location_id': instance.locationId,
-      'version': instance.version,
-    };
-
-OrderLineItem _$OrderLineItemFromJson(Map<String, dynamic> json) =>
-    OrderLineItem(
-      uid: json['uid'] as String,
-      name: json['name'] as String,
-      quantity: (json['quantity'] as num).toDouble(),
-      orderQuantityUnit: OrderQuantityUnit.fromJson(
-          json['order_quantity_unit'] as Map<String, dynamic>),
-      note: json['note'] as String,
-      catalogObjectId: json['catalog_object_id'] as String,
-      variationName: json['variation_name'] as String,
-      modifiers: (json['modifiers'] as List<dynamic>)
-          .map((e) => OrderLineItemModifier.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      taxes: (json['taxes'] as List<dynamic>)
-          .map((e) => OrderLineItemTax.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      discounts: (json['discounts'] as List<dynamic>)
-          .map((e) => OrderLineItemDiscount.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      basePriceMoney:
-          Money.fromJson(json['base_price_money'] as Map<String, dynamic>),
-      variationTotalPriceMoney: Money.fromJson(
-          json['variation_total_price_money'] as Map<String, dynamic>),
-      grossSalesMoney:
-          Money.fromJson(json['gross_sales_money'] as Map<String, dynamic>),
-      totalTaxMoney:
-          Money.fromJson(json['total_tax_money'] as Map<String, dynamic>),
-      totalDiscountMoney:
-          Money.fromJson(json['total_discount_money'] as Map<String, dynamic>),
-      totalMoney: Money.fromJson(json['total_money'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$OrderLineItemToJson(OrderLineItem instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'name': instance.name,
-      'quantity': instance.quantity,
-      'order_quantity_unit': instance.orderQuantityUnit.toJson(),
-      'note': instance.note,
-      'catalog_object_id': instance.catalogObjectId,
-      'variation_name': instance.variationName,
-      'modifiers': instance.modifiers.map((e) => e.toJson()).toList(),
-      'taxes': instance.taxes.map((e) => e.toJson()).toList(),
-      'discounts': instance.discounts.map((e) => e.toJson()).toList(),
-      'base_price_money': instance.basePriceMoney.toJson(),
-      'variation_total_price_money': instance.variationTotalPriceMoney.toJson(),
-      'gross_sales_money': instance.grossSalesMoney.toJson(),
-      'total_tax_money': instance.totalTaxMoney.toJson(),
-      'total_discount_money': instance.totalDiscountMoney.toJson(),
-      'total_money': instance.totalMoney.toJson(),
-    };
-
-OrderLineItemTax _$OrderLineItemTaxFromJson(Map<String, dynamic> json) =>
-    OrderLineItemTax(
-      uid: json['uid'] as String,
-      catalogObjectId: json['catalog_object_id'] as String,
-      name: json['name'] as String,
-      type: _$enumDecode(_$OrderLineItemTaxTypeEnumMap, json['type']),
-      percentage: (json['percentage'] as num).toDouble(),
-      appliedMoney:
-          Money.fromJson(json['applied_money'] as Map<String, dynamic>),
-      scope: _$enumDecode(_$OrderLineItemTaxScopeEnumMap, json['scope']),
-    );
-
-Map<String, dynamic> _$OrderLineItemTaxToJson(OrderLineItemTax instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'type': _$OrderLineItemTaxTypeEnumMap[instance.type],
-      'percentage': instance.percentage,
-      'applied_money': instance.appliedMoney.toJson(),
-      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
-    };
 
 const _$OrderLineItemTaxTypeEnumMap = {
   OrderLineItemTaxType.unknownTax: 'UNKNOWN_TAX',
@@ -342,116 +205,6 @@ Map<String, dynamic> _$OrderMoneyAmountsToJson(OrderMoneyAmounts instance) =>
       'service_charge_money': instance.serviceChargeMoney.toJson(),
     };
 
-OrderSource _$OrderSourceFromJson(Map<String, dynamic> json) => OrderSource(
-      name: json['name'] as String,
-    );
-
-Map<String, dynamic> _$OrderSourceToJson(OrderSource instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
-
-OrderQuantityUnit _$OrderQuantityUnitFromJson(Map<String, dynamic> json) =>
-    OrderQuantityUnit(
-      measurementUnit: MeasurementUnit.fromJson(
-          json['measurement_unit'] as Map<String, dynamic>),
-      precision: json['precision'] as int,
-    );
-
-Map<String, dynamic> _$OrderQuantityUnitToJson(OrderQuantityUnit instance) =>
-    <String, dynamic>{
-      'measurement_unit': instance.measurementUnit.toJson(),
-      'precision': instance.precision,
-    };
-
-OrderFulfillment _$OrderFulfillmentFromJson(Map<String, dynamic> json) =>
-    OrderFulfillment(
-      type: _$enumDecode(_$OrderFulfillmentTypeEnumMap, json['type']),
-      state: _$enumDecode(_$OrderFulfillmentStateEnumMap, json['state']),
-      pickupDetails: OrderFulfillmentPickupDetails.fromJson(
-          json['pickup_details'] as Map<String, dynamic>),
-      shipmentDetails: OrderFulfillmentShipmentDetails.fromJson(
-          json['shipment_details'] as Map<String, dynamic>),
-      uid: json['uid'] as String,
-    );
-
-Map<String, dynamic> _$OrderFulfillmentToJson(OrderFulfillment instance) =>
-    <String, dynamic>{
-      'type': _$OrderFulfillmentTypeEnumMap[instance.type],
-      'state': _$OrderFulfillmentStateEnumMap[instance.state],
-      'pickup_details': instance.pickupDetails.toJson(),
-      'shipment_details': instance.shipmentDetails.toJson(),
-      'uid': instance.uid,
-    };
-
-const _$OrderFulfillmentTypeEnumMap = {
-  OrderFulfillmentType.pickup: 'PICKUP',
-  OrderFulfillmentType.shipment: 'SHIPMENT',
-};
-
-const _$OrderFulfillmentStateEnumMap = {
-  OrderFulfillmentState.proposed: 'PROPOSED',
-  OrderFulfillmentState.reserved: 'RESERVED',
-  OrderFulfillmentState.prepared: 'PREPARED',
-  OrderFulfillmentState.completed: 'COMPLETED',
-  OrderFulfillmentState.canceled: 'CANCELED',
-  OrderFulfillmentState.failed: 'FAILED',
-};
-
-OrderFulfillmentPickupDetails _$OrderFulfillmentPickupDetailsFromJson(
-        Map<String, dynamic> json) =>
-    OrderFulfillmentPickupDetails(
-      recipient: OrderFulfillmentRecipient.fromJson(
-          json['recipient'] as Map<String, dynamic>),
-      expiresAt: DateTime.parse(json['expires_at'] as String),
-      autoCompleteDuration:
-          Duration(microseconds: json['auto_complete_duration'] as int),
-      scheduleType: _$enumDecode(
-          _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap,
-          json['schedule_type']),
-      pickupAt: DateTime.parse(json['pickup_at'] as String),
-      pickupWindowDuration:
-          Duration(microseconds: json['pickup_window_duration'] as int),
-      prepTimeDuration:
-          Duration(microseconds: json['prep_time_duration'] as int),
-      note: json['note'] as String,
-      placedAt: DateTime.parse(json['placed_at'] as String),
-      acceptedAt: DateTime.parse(json['accepted_at'] as String),
-      rejectedAt: DateTime.parse(json['rejected_at'] as String),
-      readyAt: DateTime.parse(json['ready_at'] as String),
-      expiredAt: DateTime.parse(json['expired_at'] as String),
-      pickedUpAt: DateTime.parse(json['picked_up_at'] as String),
-      canceledAt: DateTime.parse(json['canceled_at'] as String),
-      cancelReason: json['cancel_reason'] as String,
-    );
-
-Map<String, dynamic> _$OrderFulfillmentPickupDetailsToJson(
-        OrderFulfillmentPickupDetails instance) =>
-    <String, dynamic>{
-      'recipient': instance.recipient.toJson(),
-      'expires_at': instance.expiresAt.toIso8601String(),
-      'auto_complete_duration': instance.autoCompleteDuration.inMicroseconds,
-      'schedule_type': _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap[
-          instance.scheduleType],
-      'pickup_at': instance.pickupAt.toIso8601String(),
-      'pickup_window_duration': instance.pickupWindowDuration.inMicroseconds,
-      'prep_time_duration': instance.prepTimeDuration.inMicroseconds,
-      'note': instance.note,
-      'placed_at': instance.placedAt.toIso8601String(),
-      'accepted_at': instance.acceptedAt.toIso8601String(),
-      'rejected_at': instance.rejectedAt.toIso8601String(),
-      'ready_at': instance.readyAt.toIso8601String(),
-      'expired_at': instance.expiredAt.toIso8601String(),
-      'picked_up_at': instance.pickedUpAt.toIso8601String(),
-      'canceled_at': instance.canceledAt.toIso8601String(),
-      'cancel_reason': instance.cancelReason,
-    };
-
-const _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap = {
-  OrderFulfillmentPickupDetailsScheduleType.scheduled: 'SCHEDULED',
-  OrderFulfillmentPickupDetailsScheduleType.asap: 'ASAP',
-};
-
 OrderFulfillmentShipmentDetails _$OrderFulfillmentShipmentDetailsFromJson(
         Map<String, dynamic> json) =>
     OrderFulfillmentShipmentDetails(
@@ -491,26 +244,6 @@ Map<String, dynamic> _$OrderFulfillmentShipmentDetailsToJson(
       'shipping_type': instance.shippingType,
       'tracking_number': instance.trackingNumber,
       'tracking_url': instance.trackingUrl,
-    };
-
-OrderFulfillmentRecipient _$OrderFulfillmentRecipientFromJson(
-        Map<String, dynamic> json) =>
-    OrderFulfillmentRecipient(
-      customerId: json['customer_id'] as String,
-      displayName: json['display_name'] as String,
-      emailAddress: json['email_address'] as String,
-      phoneNumber: json['phone_number'] as String,
-      address: Address.fromJson(json['address'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$OrderFulfillmentRecipientToJson(
-        OrderFulfillmentRecipient instance) =>
-    <String, dynamic>{
-      'customer_id': instance.customerId,
-      'display_name': instance.displayName,
-      'email_address': instance.emailAddress,
-      'phone_number': instance.phoneNumber,
-      'address': instance.address.toJson(),
     };
 
 OrderRoundingAdjustment _$OrderRoundingAdjustmentFromJson(

@@ -59,4 +59,15 @@ abstract class SquareApiClient {
     @Query('types') String? types,
     @Query('catalog_version') int? catalogVersion,
   });
+
+  @POST('/v2/orders')
+  Future<CreateOrderResponse> createOrder({
+    @Body() CreateOrderRequest createOrderRequest,
+  });
+
+  @PUT('/v2/orders/{orderId}')
+  Future<UpdateOrderResponse> updateOrder({
+    @Body() UpdateOrderRequest updateOrderRequest,
+    @Path() String orderId,
+  });
 }

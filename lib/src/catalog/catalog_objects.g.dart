@@ -107,75 +107,6 @@ Map<String, dynamic> _$CatalogMeasurementUnitToJson(
       'precision': instance.precision,
     };
 
-MeasurementUnit _$MeasurementUnitFromJson(Map<String, dynamic> json) =>
-    MeasurementUnit(
-      customUnit: MeasurementUnitCustom.fromJson(
-          json['custom_unit'] as Map<String, dynamic>),
-      areaUnit: _$enumDecode(_$MeasurementUnitAreaEnumMap, json['area_unit']),
-      lengthUnit:
-          _$enumDecode(_$MeasurementUnitLengthEnumMap, json['length_unit']),
-      volumeUnit:
-          _$enumDecode(_$MeasurementUnitVolumeEnumMap, json['volume_unit']),
-      weightUnit:
-          _$enumDecode(_$MeasurementUnitWeightEnumMap, json['weight_unit']),
-      genericUnit: json['generic_unit'] as String,
-    );
-
-Map<String, dynamic> _$MeasurementUnitToJson(MeasurementUnit instance) =>
-    <String, dynamic>{
-      'custom_unit': instance.customUnit.toJson(),
-      'area_unit': _$MeasurementUnitAreaEnumMap[instance.areaUnit],
-      'length_unit': _$MeasurementUnitLengthEnumMap[instance.lengthUnit],
-      'volume_unit': _$MeasurementUnitVolumeEnumMap[instance.volumeUnit],
-      'weight_unit': _$MeasurementUnitWeightEnumMap[instance.weightUnit],
-      'generic_unit': instance.genericUnit,
-    };
-
-const _$MeasurementUnitAreaEnumMap = {
-  MeasurementUnitArea.imperialAcre: 'IMPERIAL_ACRE',
-  MeasurementUnitArea.imperialSquareInch: 'IMPERIAL_SQUARE_INCH',
-  MeasurementUnitArea.imperialSquareFoot: 'IMPERIAL_SQUARE_FOOT',
-  MeasurementUnitArea.imperialSquareYard: 'IMPERIAL_SQUARE_YARD',
-  MeasurementUnitArea.imperialSquareMile: 'IMPERIAL_SQUARE_MILE',
-  MeasurementUnitArea.metricSquareCentimeter: 'METRIC_SQUARE_CENTIMETER',
-  MeasurementUnitArea.metricSquareMeter: 'METRIC_SQUARE_METER',
-  MeasurementUnitArea.metricSquareKilometer: 'METRIC_SQUARE_KILOMETER',
-};
-
-const _$MeasurementUnitLengthEnumMap = {
-  MeasurementUnitLength.imperialInch: 'IMPERIAL_INCH',
-  MeasurementUnitLength.imperialFoot: 'IMPERIAL_FOOT',
-  MeasurementUnitLength.imperialYard: 'IMPERIAL_YARD',
-  MeasurementUnitLength.imperialMile: 'IMPERIAL_MILE',
-  MeasurementUnitLength.metricMillimeter: 'METRIC_MILLIMETER',
-  MeasurementUnitLength.metricCentimeter: 'METRIC_CENTIMETER',
-  MeasurementUnitLength.metricMeter: 'METRIC_METER',
-  MeasurementUnitLength.metricKilometer: 'METRIC_KILOMETER',
-};
-
-const _$MeasurementUnitVolumeEnumMap = {
-  MeasurementUnitVolume.genericFluidOunce: 'GENERIC_FLUID_OUNCE',
-  MeasurementUnitVolume.genericShot: 'GENERIC_SHOT',
-  MeasurementUnitVolume.genericCup: 'GENERIC_CUP',
-  MeasurementUnitVolume.genericPint: 'GENERIC_PINT',
-  MeasurementUnitVolume.genericQuart: 'GENERIC_QUART',
-  MeasurementUnitVolume.genericGallon: 'GENERIC_GALLON',
-  MeasurementUnitVolume.imperialCubicInch: 'IMPERIAL_CUBIC_INCH',
-  MeasurementUnitVolume.imperialCubicFoot: 'IMPERIAL_CUBIC_FOOT',
-  MeasurementUnitVolume.imperialCubicYard: 'IMPERIAL_CUBIC_YARD',
-  MeasurementUnitVolume.metricMilliliter: 'METRIC_MILLILITER',
-  MeasurementUnitVolume.metricLiter: 'METRIC_LITER',
-};
-
-const _$MeasurementUnitWeightEnumMap = {
-  MeasurementUnitWeight.imperialWeightOunce: 'IMPERIAL_WEIGHT_OUNCE',
-  MeasurementUnitWeight.imperialPound: 'IMPERIAL_POUND',
-  MeasurementUnitWeight.imperialStone: 'IMPERIAL_STONE',
-  MeasurementUnitWeight.metricMilligram: 'METRIC_MILLIGRAM',
-  MeasurementUnitWeight.metricGram: 'METRIC_GRAM',
-  MeasurementUnitWeight.metricKilogram: 'METRIC_KILOGRAM',
-};
-
 CatalogObjectBatch _$CatalogObjectBatchFromJson(Map<String, dynamic> json) =>
     CatalogObjectBatch(
       objects: (json['objects'] as List<dynamic>)
@@ -265,20 +196,6 @@ Map<String, dynamic> _$StandardUnitDescriptionToJson(
         StandardUnitDescription instance) =>
     <String, dynamic>{
       'unit': instance.unit.toJson(),
-      'name': instance.name,
-      'abbreviation': instance.abbreviation,
-    };
-
-MeasurementUnitCustom _$MeasurementUnitCustomFromJson(
-        Map<String, dynamic> json) =>
-    MeasurementUnitCustom(
-      name: json['name'] as String,
-      abbreviation: json['abbreviation'] as String,
-    );
-
-Map<String, dynamic> _$MeasurementUnitCustomToJson(
-        MeasurementUnitCustom instance) =>
-    <String, dynamic>{
       'name': instance.name,
       'abbreviation': instance.abbreviation,
     };

@@ -14,7 +14,7 @@ CatalogModifierList _$CatalogModifierListFromJson(Map<String, dynamic> json) =>
       modifiers: (json['modifiers'] as List<dynamic>)
           .map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
           .toList(),
-      ordinal: json['ordinal'] as int,
+      ordinal: json['ordinal'] as int?,
     );
 
 Map<String, dynamic> _$CatalogModifierListToJson(

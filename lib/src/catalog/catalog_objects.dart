@@ -102,44 +102,6 @@ class CatalogMeasurementUnit extends Equatable {
 }
 
 @JsonSerializable()
-class MeasurementUnit extends Equatable {
-  const MeasurementUnit({
-    required this.customUnit,
-    required this.areaUnit,
-    required this.lengthUnit,
-    required this.volumeUnit,
-    required this.weightUnit,
-    required this.genericUnit,
-  });
-
-  /// Converts a [Map] to an [MeasurementUnit]
-  factory MeasurementUnit.fromJson(Map<String, dynamic> json) =>
-      _$MeasurementUnitFromJson(json);
-
-  /// Converts a [MeasurementUnit] to a [Map]
-  Map<String, dynamic> toJson() => _$MeasurementUnitToJson(this);
-
-  final MeasurementUnitCustom customUnit;
-  final MeasurementUnitArea areaUnit;
-  final MeasurementUnitLength lengthUnit;
-  final MeasurementUnitVolume volumeUnit;
-  final MeasurementUnitWeight weightUnit;
-  final String genericUnit;
-
-  @override
-  List<Object> get props {
-    return [
-      customUnit,
-      areaUnit,
-      lengthUnit,
-      volumeUnit,
-      weightUnit,
-      genericUnit,
-    ];
-  }
-}
-
-@JsonSerializable()
 class CatalogObjectBatch extends Equatable {
   const CatalogObjectBatch({
     required this.objects,
@@ -253,27 +215,6 @@ class StandardUnitDescription extends Equatable {
 
   @override
   List<Object> get props => [unit, name, abbreviation];
-}
-
-@JsonSerializable()
-class MeasurementUnitCustom extends Equatable {
-  const MeasurementUnitCustom({
-    required this.name,
-    required this.abbreviation,
-  });
-
-  /// Converts a [Map] to an [MeasurementUnitCustom]
-  factory MeasurementUnitCustom.fromJson(Map<String, dynamic> json) =>
-      _$MeasurementUnitCustomFromJson(json);
-
-  /// Converts a [MeasurementUnitCustom] to a [Map]
-  Map<String, dynamic> toJson() => _$MeasurementUnitCustomToJson(this);
-
-  final String name;
-  final String abbreviation;
-
-  @override
-  List<Object> get props => [name, abbreviation];
 }
 
 @JsonSerializable()

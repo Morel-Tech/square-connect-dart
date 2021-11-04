@@ -36,7 +36,7 @@ class OrderLineItem extends Equatable {
 
   final String? uid;
   final String? name;
-  final num quantity;
+  final String quantity;
   final OrderQuantityUnit? quantityUnit;
   final String? note;
   final String? catalogObjectId;

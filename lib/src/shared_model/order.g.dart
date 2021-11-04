@@ -8,9 +8,11 @@ part of 'order.dart';
 
 Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       id: json['id'] as String?,
-      locationId: json['location_id'] as String,
+      locationId: json['location_id'] as String?,
       referenceId: json['reference_id'] as String?,
-      source: OrderSource.fromJson(json['source'] as Map<String, dynamic>),
+      source: json['source'] == null
+          ? null
+          : OrderSource.fromJson(json['source'] as Map<String, dynamic>),
       customerId: json['customer_id'] as String?,
       lineItems: (json['line_items'] as List<dynamic>?)
           ?.map((e) => OrderLineItem.fromJson(e as Map<String, dynamic>))
@@ -49,7 +51,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       closedAt: json['closed_at'] == null
           ? null
           : DateTime.parse(json['closed_at'] as String),
-      state: _$enumDecode(_$OrderStateEnumMap, json['state']),
+      state: _$enumDecodeNullable(_$OrderStateEnumMap, json['state']),
       totalMoney: json['total_money'] == null
           ? null
           : Money.fromJson(json['total_money'] as Map<String, dynamic>),
@@ -80,7 +82,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'id': instance.id,
       'location_id': instance.locationId,
       'reference_id': instance.referenceId,
-      'source': instance.source.toJson(),
+      'source': instance.source?.toJson(),
       'customer_id': instance.customerId,
       'line_items': instance.lineItems?.map((e) => e.toJson()).toList(),
       'taxes': instance.taxes?.map((e) => e.toJson()).toList(),
@@ -129,6 +131,17 @@ K _$enumDecode<K, V>(
       return MapEntry(unknownValue, enumValues.values.first);
     },
   ).key;
+}
+
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
+  dynamic source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    return null;
+  }
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$OrderStateEnumMap = {

@@ -9,12 +9,13 @@ part 'square_api_client.g.dart';
 abstract class SquareApiClient {
   factory SquareApiClient({
     required String accessToken,
+    String baseUrl = 'https://connect.squareup.com',
     String? apiVersion,
   }) =>
       _SquareApiClient(
         Dio(
           BaseOptions(
-            baseUrl: 'https://connect.squareup.com',
+            baseUrl: baseUrl,
             headers: <String, dynamic>{
               'Authorization': 'Bearer $accessToken',
               if (apiVersion != null) 'Square-Version': apiVersion,
@@ -61,13 +62,13 @@ abstract class SquareApiClient {
   });
 
   @POST('/v2/orders')
-  Future<CreateOrderResponse> createOrder({
+  Future<CreateOrderResponse> createOrder(
     @Body() CreateOrderRequest createOrderRequest,
-  });
+  );
 
   @PUT('/v2/orders/{orderId}')
-  Future<UpdateOrderResponse> updateOrder({
-    @Body() UpdateOrderRequest updateOrderRequest,
+  Future<UpdateOrderResponse> updateOrder(
     @Path() String orderId,
-  });
+    @Body() UpdateOrderRequest updateOrderRequest,
+  );
 }

@@ -47,6 +47,7 @@ export 'order_fulfillment_recipient.dart';
 export 'order_fulfillment_state.dart';
 export 'order_fulfillment_type.dart';
 export 'order_line_item.dart';
+export 'order_line_item_modifier.dart';
 export 'order_line_item_type.dart';
 export 'order_quantity_unit.dart';
 export 'order_source.dart';

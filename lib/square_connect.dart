@@ -15,6 +15,8 @@ export 'package:square_connect/src/shared_objects.dart';
 export 'package:square_connect/src/transactions/transactions_enums.dart';
 export 'package:square_connect/src/transactions/transactions_objects.dart';
 
+export 'package:dio/dio.dart' show DioError;
+
 export 'src/functions_model/functions_model.dart';
 export 'src/shared_model/shared_model.dart';
 export 'src/square_api_client.dart';

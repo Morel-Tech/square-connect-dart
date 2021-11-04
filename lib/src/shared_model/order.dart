@@ -7,31 +7,31 @@ part 'order.g.dart';
 @JsonSerializable()
 class Order extends Equatable {
   const Order({
-    required this.id,
-    required this.locationId,
-    required this.referenceId,
-    required this.source,
-    required this.customerId,
-    required this.lineItems,
-    required this.taxes,
-    required this.discounts,
-    required this.serviceCharges,
-    required this.fulfillments,
-    required this.returnAmounts,
-    required this.netAmounts,
-    required this.roundingAdjustment,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.closedAt,
-    required this.state,
-    required this.totalMoney,
-    required this.totalTaxMoney,
-    required this.totalDiscountMoney,
-    required this.totalServiceChargeMoney,
-    required this.tenders,
-    required this.refunds,
-    required this.returns,
-    required this.version,
+    this.id,
+    this.locationId,
+    this.referenceId,
+    this.source,
+    this.customerId,
+    this.lineItems,
+    this.taxes,
+    this.discounts,
+    this.serviceCharges,
+    this.fulfillments,
+    this.returnAmounts,
+    this.netAmounts,
+    this.roundingAdjustment,
+    this.createdAt,
+    this.updatedAt,
+    this.closedAt,
+    this.state,
+    this.totalMoney,
+    this.totalTaxMoney,
+    this.totalDiscountMoney,
+    this.totalServiceChargeMoney,
+    this.tenders,
+    this.refunds,
+    this.returns,
+    this.version,
   });
 
   /// Converts a [Map] to an [Order]
@@ -41,9 +41,9 @@ class Order extends Equatable {
   Map<String, dynamic> toJson() => _$OrderToJson(this);
 
   final String? id;
-  final String locationId;
+  final String? locationId;
   final String? referenceId;
-  final OrderSource source;
+  final OrderSource? source;
   final String? customerId;
   final List<OrderLineItem>? lineItems;
   final List<OrderLineItemTax>? taxes;
@@ -59,7 +59,7 @@ class Order extends Equatable {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final DateTime? closedAt;
-  final OrderState state;
+  final OrderState? state;
   final Money? totalMoney;
   final Money? totalTaxMoney;
   final Money? totalDiscountMoney;

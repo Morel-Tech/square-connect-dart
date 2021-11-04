@@ -112,40 +112,7 @@ class OrderLineItemDiscount extends Equatable {
   }
 }
 
-@JsonSerializable()
-class OrderLineItemModifier extends Equatable {
-  const OrderLineItemModifier({
-    required this.uid,
-    required this.catalogObjectId,
-    required this.name,
-    required this.basePriceMoney,
-    required this.totalPriceMoney,
-  });
 
-  /// Converts a [Map] to an [OrderLineItemModifier]
-  factory OrderLineItemModifier.fromJson(Map<String, dynamic> json) =>
-      _$OrderLineItemModifierFromJson(json);
-
-  /// Converts a [OrderLineItemModifier] to a [Map]
-  Map<String, dynamic> toJson() => _$OrderLineItemModifierToJson(this);
-
-  final String uid;
-  final String catalogObjectId;
-  final String name;
-  final Money basePriceMoney;
-  final Money totalPriceMoney;
-
-  @override
-  List<Object> get props {
-    return [
-      uid,
-      catalogObjectId,
-      name,
-      basePriceMoney,
-      totalPriceMoney,
-    ];
-  }
-}
 
 @JsonSerializable()
 class OrderServiceCharge extends Equatable {

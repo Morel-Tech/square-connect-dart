@@ -160,7 +160,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateOrderResponse> createOrder({required createOrderRequest}) async {
+  Future<CreateOrderResponse> createOrder(createOrderRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -176,8 +176,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<UpdateOrderResponse> updateOrder(
-      {required updateOrderRequest, required orderId}) async {
+  Future<UpdateOrderResponse> updateOrder(orderId, updateOrderRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};

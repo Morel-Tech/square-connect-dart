@@ -71,4 +71,15 @@ abstract class SquareApiClient {
     @Path() String orderId,
     @Body() UpdateOrderRequest updateOrderRequest,
   );
+
+  @POST('/v2/orders/{orderId}/pay')
+  Future<PayOrderResponse> payOrder(
+    @Path() String orderId,
+    @Body() PayOrderRequest payOrderRequest,
+  );
+
+  @POST('/v2/payments')
+  Future<CreatePaymentResponse> createPayment(
+    @Body() CreatePaymentRequest createPaymentRequest,
+  );
 }

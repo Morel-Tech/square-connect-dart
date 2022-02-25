@@ -13,7 +13,7 @@ Card _$CardFromJson(Map<String, dynamic> json) => Card(
           : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
       bin: json['bin'] as String?,
       cardBrand: _$enumDecodeNullable(_$CardBrandEnumMap, json['card_brand']),
-      cardType: _$enumDecodeNullable(_$CardBrandEnumMap, json['card_type']),
+      cardType: _$enumDecodeNullable(_$CardTypeEnumMap, json['card_type']),
       cardholderName: json['cardholder_name'] as String?,
       customerId: json['customer_id'] as String?,
       enabled: json['enabled'] as bool?,
@@ -32,7 +32,7 @@ Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
       'billing_address': instance.billingAddress?.toJson(),
       'bin': instance.bin,
       'card_brand': _$CardBrandEnumMap[instance.cardBrand],
-      'card_type': _$CardBrandEnumMap[instance.cardType],
+      'card_type': _$CardTypeEnumMap[instance.cardType],
       'cardholder_name': instance.cardholderName,
       'customer_id': instance.customerId,
       'enabled': instance.enabled,
@@ -97,6 +97,12 @@ const _$CardBrandEnumMap = {
   CardBrand.eftpos: 'EFTPOS',
   CardBrand.felica: 'FELICA',
   CardBrand.ebt: 'EBT',
+};
+
+const _$CardTypeEnumMap = {
+  CardType.unknownCardType: 'UNKNOWN_CARD_TYPE',
+  CardType.credit: 'CREDIT',
+  CardType.debit: 'DEBIT',
 };
 
 const _$CardPrepaidTypeEnumMap = {

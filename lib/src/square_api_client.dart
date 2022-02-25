@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_connect/src/functions_model/list_merchants.dart';
 
 part 'square_api_client.g.dart';
 
@@ -61,6 +60,11 @@ abstract class SquareApiClient {
     @Query('catalog_version') int? catalogVersion,
   });
 
+  @GET('/v2/orders/{orderId}')
+  Future<RetrieveOrderResponse> retrieveOrder(
+    @Path() String orderId,
+  );
+
   @POST('/v2/orders')
   Future<CreateOrderResponse> createOrder(
     @Body() CreateOrderRequest createOrderRequest,
@@ -81,5 +85,24 @@ abstract class SquareApiClient {
   @POST('/v2/payments')
   Future<CreatePaymentResponse> createPayment(
     @Body() CreatePaymentRequest createPaymentRequest,
+  );
+
+  // Customers API
+  @GET('/v2/customers')
+  Future<ListCustomersResponse> listCustomers(
+    @Query('cursor') String? cursor,
+    @Query('limit') int? limit,
+    @Query('sort_field') CustomerSortField? sortField,
+    @Query('sort_order') SortOrder? sortOrder,
+  );
+
+  @POST('/v2/customers')
+  Future<CreateCustomerResponse> createCustomer(
+    @Body() CreateCustomerRequest createCustomerRequest,
+  );
+
+  @POST('/v2/customers/search')
+  Future<SearchCustomersResponse> searchCustomers(
+    @Body() SearchCustomersRequest searchCustomersRequest,
   );
 }

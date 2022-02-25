@@ -8,8 +8,8 @@ part of 'pay_order.dart';
 
 PayOrderRequest _$PayOrderRequestFromJson(Map<String, dynamic> json) =>
     PayOrderRequest(
-      idempontencyKey: json['idempontency_key'] as String,
-      itemVersion: json['item_version'] as int?,
+      idempotencyKey: json['idempotency_key'] as String,
+      orderVersion: json['order_version'] as int?,
       paymentIds: (json['payment_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -17,8 +17,8 @@ PayOrderRequest _$PayOrderRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PayOrderRequestToJson(PayOrderRequest instance) =>
     <String, dynamic>{
-      'idempontency_key': instance.idempontencyKey,
-      'item_version': instance.itemVersion,
+      'idempotency_key': instance.idempotencyKey,
+      'order_version': instance.orderVersion,
       'payment_ids': instance.paymentIds,
     };
 

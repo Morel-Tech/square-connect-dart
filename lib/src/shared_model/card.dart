@@ -48,7 +48,7 @@ class Card extends Equatable {
   final CardBrand? cardBrand;
 
   /// Read only The card's brand.
-  final CardBrand? cardType;
+  final CardType? cardType;
 
   /// The name of the cardholder.
   final String? cardholderName;

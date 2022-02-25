@@ -8,8 +8,8 @@ part 'pay_order.g.dart';
 @JsonSerializable()
 class PayOrderRequest extends Equatable {
   const PayOrderRequest({
-    required this.idempontencyKey,
-    this.itemVersion,
+    required this.idempotencyKey,
+    this.orderVersion,
     this.paymentIds,
   });
 
@@ -20,12 +20,16 @@ class PayOrderRequest extends Equatable {
   /// Converts a [PayOrderRequest] to a [Map]
   Map<String, dynamic> toJson() => _$PayOrderRequestToJson(this);
 
-  final String idempontencyKey;
-  final int? itemVersion;
+  final String idempotencyKey;
+  final int? orderVersion;
   final List<String>? paymentIds;
 
   @override
-  List<Object?> get props => [idempontencyKey, itemVersion, paymentIds];
+  List<Object?> get props => [
+        idempotencyKey,
+        orderVersion,
+        paymentIds,
+      ];
 }
 
 @JsonSerializable()

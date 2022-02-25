@@ -1,16 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-/// The order (e.g., chronological or alphabetical) in which results from a
-/// request are returned.
-enum SortOrder {
-  /// The results are returned in ascending (e.g., oldest-first or A-Z) order.
-  @JsonValue('ASCENDING')
-  ascending,
 
-  /// The results are returned in descending (e.g., newest-first or Z-A) order.
-  @JsonValue('DESCENDING')
-  descending,
-}
 
 /// Indicates which high-level category of error has occurred during a request
 /// to the Connect API.

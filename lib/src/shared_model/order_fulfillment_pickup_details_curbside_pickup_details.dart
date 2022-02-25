@@ -13,7 +13,8 @@ class OrderFulfillmentPickupDetailsCurbsidePickupDetails extends Equatable {
   /// Converts a [Map] to an
   /// [OrderFulfillmentPickupDetailsCurbsidePickupDetails]
   factory OrderFulfillmentPickupDetailsCurbsidePickupDetails.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$OrderFulfillmentPickupDetailsCurbsidePickupDetailsFromJson(json);
 
   /// Converts a [OrderFulfillmentPickupDetailsCurbsidePickupDetails] to a [Map]

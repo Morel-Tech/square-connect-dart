@@ -12,7 +12,8 @@ class CatalogItemOptionValueForItemVariation extends Equatable {
 
   /// Converts a [Map] to an [CatalogItemOptionValueForItemVariation]
   factory CatalogItemOptionValueForItemVariation.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$CatalogItemOptionValueForItemVariationFromJson(json);
 
   /// Converts a [CatalogItemOptionValueForItemVariation] to a [Map]

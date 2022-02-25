@@ -44,7 +44,8 @@ class OrderFulfillmentUpdatedWebhookData extends Equatable {
 
   /// Converts a [Map] to an [OrderFulfillmentUpdatedWebhookData]
   factory OrderFulfillmentUpdatedWebhookData.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$OrderFulfillmentUpdatedWebhookDataFromJson(json);
 
   /// Converts a [OrderFulfillmentUpdatedWebhookData] to a [Map]

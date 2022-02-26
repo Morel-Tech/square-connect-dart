@@ -6,8 +6,8 @@ part 'customer_text_filter.g.dart';
 @JsonSerializable()
 class CustomerTextFilter extends Equatable {
   const CustomerTextFilter({
-    required this.exact,
-    required this.fuzzy,
+    this.exact,
+    this.fuzzy,
   });
 
   /// Converts a [Map]<[String], [dynamic]> to a [CustomerTextFilter]

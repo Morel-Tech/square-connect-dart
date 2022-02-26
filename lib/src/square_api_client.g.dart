@@ -280,7 +280,8 @@ class _SquareApiClient implements SquareApiClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = createCustomerRequest;
+    final _data = <String, dynamic>{};
+    _data.addAll(createCustomerRequest.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<CreateCustomerResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
@@ -297,7 +298,8 @@ class _SquareApiClient implements SquareApiClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = searchCustomersRequest;
+    final _data = <String, dynamic>{};
+    _data.addAll(searchCustomersRequest.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<SearchCustomersResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)

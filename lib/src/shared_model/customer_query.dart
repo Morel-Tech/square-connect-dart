@@ -7,8 +7,8 @@ part 'customer_query.g.dart';
 @JsonSerializable()
 class CustomerQuery extends Equatable {
   const CustomerQuery({
-    required this.filter,
-    required this.sort,
+    this.filter,
+    this.sort,
   });
 
   /// Converts a [Map]<[String], [dynamic]> to a [CustomerQuery]

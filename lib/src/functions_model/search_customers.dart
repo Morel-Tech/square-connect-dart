@@ -1,13 +1,23 @@
 import 'package:equatable/equatable.dart';
-
+import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
+part 'search_customers.g.dart';
+
+@JsonSerializable()
 class SearchCustomersRequest extends Equatable {
   const SearchCustomersRequest({
     this.cursor,
     this.limit,
     required this.query,
   });
+
+  /// Converts a [Map] to an [SearchCustomersRequest]
+  factory SearchCustomersRequest.fromJson(Map<String, dynamic> json) =>
+      _$SearchCustomersRequestFromJson(json);
+
+  /// Converts a [SearchCustomersRequest] to a [Map]
+  Map<String, dynamic> toJson() => _$SearchCustomersRequestToJson(this);
 
   /// Include the pagination cursor in subsequent calls to this endpoint to
   /// retrieve the next set of results associated with the original query.

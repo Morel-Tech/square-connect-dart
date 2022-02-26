@@ -1,7 +1,11 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'package:square_connect/square_connect.dart';
 
+part 'create_customer.g.dart';
+
+@JsonSerializable()
 class CreateCustomerRequest extends Equatable {
   const CreateCustomerRequest({
     this.idempotencyKey,
@@ -17,6 +21,13 @@ class CreateCustomerRequest extends Equatable {
     this.birthday,
     this.taxIds,
   });
+
+  /// Converts a [Map] to an [CreateCustomerRequest]
+  factory CreateCustomerRequest.fromJson(Map<String, dynamic> json) =>
+      _$CreateCustomerRequestFromJson(json);
+
+  /// Converts a [CreateCustomerRequest] to a [Map]
+  Map<String, dynamic> toJson() => _$CreateCustomerRequestToJson(this);
 
   /// The idempotency key for the request
   final String? idempotencyKey;
@@ -83,11 +94,19 @@ class CreateCustomerRequest extends Equatable {
   }
 }
 
+@JsonSerializable()
 class CreateCustomerResponse extends SquareResponse {
   const CreateCustomerResponse({
     List<SquareError>? errors,
     this.customer,
   }) : super(errors: errors);
+
+  /// Converts a [Map] to an [CreateCustomerResponse]
+  factory CreateCustomerResponse.fromJson(Map<String, dynamic> json) =>
+      _$CreateCustomerResponseFromJson(json);
+
+  /// Converts a [CreateCustomerResponse] to a [Map]
+  Map<String, dynamic> toJson() => _$CreateCustomerResponseToJson(this);
 
   /// The created customer profile.
   final Customer? customer;

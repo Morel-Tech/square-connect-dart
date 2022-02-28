@@ -25,6 +25,7 @@ class OrderLineItem extends Equatable {
     this.totalMoney,
     this.itemType,
     this.metadata,
+    this.pricingBlocklists,
   });
 
   /// Converts a [Map] to an [OrderLineItem]
@@ -52,7 +53,10 @@ class OrderLineItem extends Equatable {
   final Money? totalMoney;
   final OrderLineItemType? itemType;
   final Map<String, String>? metadata;
-  // TODO pricing_blocklists
+
+  /// Describes pricing adjustments that are blocked from manual and automatic
+  /// application to a line item.
+  final OrderLineItemPricingBlocklists? pricingBlocklists;
 
   @override
   List<Object?> get props => [
@@ -74,5 +78,6 @@ class OrderLineItem extends Equatable {
         totalMoney,
         itemType,
         metadata,
+        pricingBlocklists,
       ];
 }

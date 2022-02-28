@@ -54,6 +54,10 @@ OrderLineItem _$OrderLineItemFromJson(Map<String, dynamic> json) =>
       metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
+      pricingBlocklists: json['pricing_blocklists'] == null
+          ? null
+          : OrderLineItemPricingBlocklists.fromJson(
+              json['pricing_blocklists'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OrderLineItemToJson(OrderLineItem instance) =>
@@ -78,6 +82,7 @@ Map<String, dynamic> _$OrderLineItemToJson(OrderLineItem instance) =>
       'total_money': instance.totalMoney?.toJson(),
       'item_type': _$OrderLineItemTypeEnumMap[instance.itemType],
       'metadata': instance.metadata,
+      'pricing_blocklists': instance.pricingBlocklists?.toJson(),
     };
 
 K _$enumDecode<K, V>(

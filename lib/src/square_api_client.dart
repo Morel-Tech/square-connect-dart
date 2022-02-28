@@ -105,4 +105,14 @@ abstract class SquareApiClient {
   Future<SearchCustomersResponse> searchCustomers(
     @Body() SearchCustomersRequest searchCustomersRequest,
   );
+
+  @DELETE('/v2/customers/{customerId}')
+  Future<DeleteCustomerResponse> deleteCustomer(
+    @Path() String customerId,
+  );
+
+  @GET('/v2/customers/{customerId}')
+  Future<RetrieveCustomerResponse> retrieveCustomer(
+    @Path() String customerId,
+  );
 }

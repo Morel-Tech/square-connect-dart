@@ -38,12 +38,20 @@ class SearchCustomersRequest extends Equatable {
   List<Object?> get props => [cursor, limit, query];
 }
 
+@JsonSerializable()
 class SearchCustomersResponse extends SquareResponse with EquatableMixin {
   const SearchCustomersResponse({
     List<SquareError>? error,
     this.cursor,
     this.customers,
   }) : super(errors: error);
+
+  /// Converts a [Map] to an [SearchCustomersResponse]
+  factory SearchCustomersResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchCustomersResponseFromJson(json);
+
+  /// Converts a [SearchCustomersResponse] to a [Map]
+  Map<String, dynamic> toJson() => _$SearchCustomersResponseToJson(this);
 
   final List<Customer>? customers;
   final String? cursor;

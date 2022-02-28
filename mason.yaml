@@ -1,3 +1,7 @@
 bricks:
   shared_object:
     path: bricks/shared_object
+  webhook_event:
+    path: bricks/webhook_event
+  functions_objects:
+    path: bricks/functions_objects

@@ -1,5 +1,9 @@
+export 'customer_created.dart';
+export 'customer_deleted.dart';
+export 'customer_updated.dart';
 export 'location_created_event.dart';
 export 'location_updated_event.dart';
+export 'oauth_authorization_revoked.dart';
 export 'order_created_event.dart';
 export 'order_updated_event.dart';
 export 'webhook_event.dart';

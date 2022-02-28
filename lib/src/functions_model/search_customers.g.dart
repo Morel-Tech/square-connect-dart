@@ -21,3 +21,19 @@ Map<String, dynamic> _$SearchCustomersRequestToJson(
       'limit': instance.limit,
       'query': instance.query.toJson(),
     };
+
+SearchCustomersResponse _$SearchCustomersResponseFromJson(
+        Map<String, dynamic> json) =>
+    SearchCustomersResponse(
+      cursor: json['cursor'] as String?,
+      customers: (json['customers'] as List<dynamic>?)
+          ?.map((e) => Customer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SearchCustomersResponseToJson(
+        SearchCustomersResponse instance) =>
+    <String, dynamic>{
+      'customers': instance.customers?.map((e) => e.toJson()).toList(),
+      'cursor': instance.cursor,
+    };

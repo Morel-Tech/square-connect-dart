@@ -48,38 +48,42 @@ CustomerDeletedWebhookObject _$CustomerDeletedWebhookObjectFromJson(
         Map<String, dynamic> json) =>
     CustomerDeletedWebhookObject(
       customer: Customer.fromJson(json['customer'] as Map<String, dynamic>),
-      eventContext: CustomerDeletedWebhookEventContext.fromJson(
-          json['event_context'] as Map<String, dynamic>),
+      eventContext: json['event_context'] == null
+          ? null
+          : CustomerDeletedWebhookEventContext.fromJson(
+              json['event_context'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CustomerDeletedWebhookObjectToJson(
         CustomerDeletedWebhookObject instance) =>
     <String, dynamic>{
       'customer': instance.customer.toJson(),
-      'event_context': instance.eventContext.toJson(),
+      'event_context': instance.eventContext?.toJson(),
     };
 
 CustomerDeletedWebhookEventContext _$CustomerDeletedWebhookEventContextFromJson(
         Map<String, dynamic> json) =>
     CustomerDeletedWebhookEventContext(
-      merge: CustomerDeletedWebhookEventContextMerge.fromJson(
-          json['merge'] as Map<String, dynamic>),
+      merge: json['merge'] == null
+          ? null
+          : CustomerDeletedWebhookEventContextMerge.fromJson(
+              json['merge'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CustomerDeletedWebhookEventContextToJson(
         CustomerDeletedWebhookEventContext instance) =>
     <String, dynamic>{
-      'merge': instance.merge.toJson(),
+      'merge': instance.merge?.toJson(),
     };
 
 CustomerDeletedWebhookEventContextMerge
     _$CustomerDeletedWebhookEventContextMergeFromJson(
             Map<String, dynamic> json) =>
         CustomerDeletedWebhookEventContextMerge(
-          fromCustomerIds: (json['from_customer_ids'] as List<dynamic>)
-              .map((e) => e as String)
+          fromCustomerIds: (json['from_customer_ids'] as List<dynamic>?)
+              ?.map((e) => e as String)
               .toList(),
-          toCustomerId: json['to_customer_id'] as String,
+          toCustomerId: json['to_customer_id'] as String?,
         );
 
 Map<String, dynamic> _$CustomerDeletedWebhookEventContextMergeToJson(

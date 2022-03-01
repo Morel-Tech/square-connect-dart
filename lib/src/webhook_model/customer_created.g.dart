@@ -48,38 +48,42 @@ CustomerCreatedWebhookObject _$CustomerCreatedWebhookObjectFromJson(
         Map<String, dynamic> json) =>
     CustomerCreatedWebhookObject(
       customer: Customer.fromJson(json['customer'] as Map<String, dynamic>),
-      eventContext: CustomerCreatedWebhookEventContext.fromJson(
-          json['event_context'] as Map<String, dynamic>),
+      eventContext: json['event_context'] == null
+          ? null
+          : CustomerCreatedWebhookEventContext.fromJson(
+              json['event_context'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CustomerCreatedWebhookObjectToJson(
         CustomerCreatedWebhookObject instance) =>
     <String, dynamic>{
       'customer': instance.customer.toJson(),
-      'event_context': instance.eventContext.toJson(),
+      'event_context': instance.eventContext?.toJson(),
     };
 
 CustomerCreatedWebhookEventContext _$CustomerCreatedWebhookEventContextFromJson(
         Map<String, dynamic> json) =>
     CustomerCreatedWebhookEventContext(
-      merge: CustomerCreatedWebhookEventContextMerge.fromJson(
-          json['merge'] as Map<String, dynamic>),
+      merge: json['merge'] == null
+          ? null
+          : CustomerCreatedWebhookEventContextMerge.fromJson(
+              json['merge'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CustomerCreatedWebhookEventContextToJson(
         CustomerCreatedWebhookEventContext instance) =>
     <String, dynamic>{
-      'merge': instance.merge.toJson(),
+      'merge': instance.merge?.toJson(),
     };
 
 CustomerCreatedWebhookEventContextMerge
     _$CustomerCreatedWebhookEventContextMergeFromJson(
             Map<String, dynamic> json) =>
         CustomerCreatedWebhookEventContextMerge(
-          fromCustomerIds: (json['from_customer_ids'] as List<dynamic>)
-              .map((e) => e as String)
+          fromCustomerIds: (json['from_customer_ids'] as List<dynamic>?)
+              ?.map((e) => e as String)
               .toList(),
-          toCustomerId: json['to_customer_id'] as String,
+          toCustomerId: json['to_customer_id'] as String?,
         );
 
 Map<String, dynamic> _$CustomerCreatedWebhookEventContextMergeToJson(

@@ -13,6 +13,8 @@ CustomerUpdatedEvent _$CustomerUpdatedEventFromJson(
       type: json['type'] as String,
       eventId: json['event_id'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
+      data: CustomerUpdatedWebhookData.fromJson(
+          json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CustomerUpdatedEventToJson(
@@ -22,6 +24,7 @@ Map<String, dynamic> _$CustomerUpdatedEventToJson(
       'type': instance.type,
       'event_id': instance.eventId,
       'created_at': instance.createdAt.toIso8601String(),
+      'data': instance.data.toJson(),
     };
 
 CustomerUpdatedWebhookData _$CustomerUpdatedWebhookDataFromJson(

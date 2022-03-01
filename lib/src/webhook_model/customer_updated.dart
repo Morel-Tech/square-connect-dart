@@ -12,6 +12,7 @@ class CustomerUpdatedEvent extends WebhookEvent {
     required String type,
     required String eventId,
     required DateTime createdAt,
+    required this.data,
   }) : super(
           merchantId: merchantId,
           type: type,
@@ -27,8 +28,10 @@ class CustomerUpdatedEvent extends WebhookEvent {
   @override
   Map<String, dynamic> toJson() => _$CustomerUpdatedEventToJson(this);
 
+  final CustomerUpdatedWebhookData data;
+
   @override
-  List<Object> get props => [super.props];
+  List<Object> get props => [super.props, data];
 }
 
 @JsonSerializable()

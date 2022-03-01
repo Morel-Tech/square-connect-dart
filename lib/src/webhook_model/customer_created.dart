@@ -64,7 +64,7 @@ class CustomerCreatedWebhookData extends Equatable {
 class CustomerCreatedWebhookObject extends Equatable {
   const CustomerCreatedWebhookObject({
     required this.customer,
-    required this.eventContext,
+    this.eventContext,
   });
 
   /// Converts a [Map] to an [CustomerCreatedWebhookObject]
@@ -75,16 +75,16 @@ class CustomerCreatedWebhookObject extends Equatable {
   Map<String, dynamic> toJson() => _$CustomerCreatedWebhookObjectToJson(this);
 
   final Customer customer;
-  final CustomerCreatedWebhookEventContext eventContext;
+  final CustomerCreatedWebhookEventContext? eventContext;
 
   @override
-  List<Object> get props => [customer, eventContext];
+  List<Object?> get props => [customer, eventContext];
 }
 
 @JsonSerializable()
 class CustomerCreatedWebhookEventContext extends Equatable {
   const CustomerCreatedWebhookEventContext({
-    required this.merge,
+    this.merge,
   });
 
   /// Converts a [Map] to an [CustomerCreatedWebhookEventContext]
@@ -97,17 +97,17 @@ class CustomerCreatedWebhookEventContext extends Equatable {
   Map<String, dynamic> toJson() =>
       _$CustomerCreatedWebhookEventContextToJson(this);
 
-  final CustomerCreatedWebhookEventContextMerge merge;
+  final CustomerCreatedWebhookEventContextMerge? merge;
 
   @override
-  List<Object> get props => [merge];
+  List<Object?> get props => [merge];
 }
 
 @JsonSerializable()
 class CustomerCreatedWebhookEventContextMerge extends Equatable {
   const CustomerCreatedWebhookEventContextMerge({
-    required this.fromCustomerIds,
-    required this.toCustomerId,
+    this.fromCustomerIds,
+    this.toCustomerId,
   });
 
   /// Converts a [Map] to an [CustomerCreatedWebhookEventContextMerge]
@@ -121,11 +121,11 @@ class CustomerCreatedWebhookEventContextMerge extends Equatable {
       _$CustomerCreatedWebhookEventContextMergeToJson(this);
 
   /// The IDs of the existing customers that were merged and then deleted.
-  final List<String> fromCustomerIds;
+  final List<String>? fromCustomerIds;
 
   /// The ID of the new customer created by the merge.
-  final String toCustomerId;
+  final String? toCustomerId;
 
   @override
-  List<Object> get props => [fromCustomerIds, toCustomerId];
+  List<Object?> get props => [fromCustomerIds, toCustomerId];
 }

@@ -63,6 +63,7 @@ K _$enumDecode<K, V>(
 const _$OrderFulfillmentTypeEnumMap = {
   OrderFulfillmentType.pickup: 'PICKUP',
   OrderFulfillmentType.shipment: 'SHIPMENT',
+  OrderFulfillmentType.delivery: 'DELIVERY',
 };
 
 const _$OrderFulfillmentStateEnumMap = {

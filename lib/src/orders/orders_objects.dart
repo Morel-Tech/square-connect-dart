@@ -28,47 +28,6 @@ class OrderEntry extends Equatable {
 }
 
 @JsonSerializable()
-class OrderLineItemTax extends Equatable {
-  const OrderLineItemTax({
-    required this.uid,
-    required this.catalogObjectId,
-    required this.name,
-    required this.type,
-    required this.percentage,
-    required this.appliedMoney,
-    required this.scope,
-  });
-
-  /// Converts a [Map] to an [OrderLineItemTax]
-  factory OrderLineItemTax.fromJson(Map<String, dynamic> json) =>
-      _$OrderLineItemTaxFromJson(json);
-
-  /// Converts a [OrderLineItemTax] to a [Map]
-  Map<String, dynamic> toJson() => _$OrderLineItemTaxToJson(this);
-
-  final String uid;
-  final String catalogObjectId;
-  final String name;
-  final OrderLineItemTaxType type;
-  final double percentage;
-  final Money appliedMoney;
-  final OrderLineItemTaxScope scope;
-
-  @override
-  List<Object> get props {
-    return [
-      uid,
-      catalogObjectId,
-      name,
-      type,
-      percentage,
-      appliedMoney,
-      scope,
-    ];
-  }
-}
-
-@JsonSerializable()
 class OrderLineItemDiscount extends Equatable {
   const OrderLineItemDiscount({
     required this.uid,
@@ -111,8 +70,6 @@ class OrderLineItemDiscount extends Equatable {
     ];
   }
 }
-
-
 
 @JsonSerializable()
 class OrderServiceCharge extends Equatable {
@@ -577,43 +534,6 @@ class OrderReturnServiceCharge extends Equatable {
       returnTaxes,
     ];
   }
-}
-
-/// Indicates how the tax is applied to the associated line item or order.
-enum OrderLineItemTaxType {
-  /// Used for reporting only. The original transaction tax type is currently
-  /// not supported by the API.
-  @JsonValue('UNKNOWN_TAX')
-  unknownTax,
-
-  /// The tax is an additive tax. The tax amount is added on top of the price.
-  /// For example, a $1.00 item with a 10% additive tax would have a total cost
-  /// to the buyer of $1.10.
-  @JsonValue('ADDITIVE')
-  additive,
-
-  /// The tax is an inclusive tax. Inclusive taxes are already included in the
-  /// line item price or order total. For example, a $1.00 item with a 10%
-  /// inclusive tax would have a pre-tax cost of $0.91 (91 cents) and a $0.09
-  /// (9 cents) tax for a total cost of $1 to the buyer.
-  @JsonValue('INCLUSIVE')
-  inclusive,
-}
-
-/// Indicates whether this is a line item or order level tax.
-enum OrderLineItemTaxScope {
-  /// Used for reporting only. The original transaction tax scope is currently
-  /// not supported by the API.
-  @JsonValue('OTHER_TAX_SCOPE')
-  otherTaxScope,
-
-  /// The tax should be applied to a single line item.
-  @JsonValue('LINE_ITEM')
-  lineItem,
-
-  /// The tax should be applied to the entire order.
-  @JsonValue('ORDER')
-  order,
 }
 
 /// Indicates how the discount is applied to the associated line item or order.

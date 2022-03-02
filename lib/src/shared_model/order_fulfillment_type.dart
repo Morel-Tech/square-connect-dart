@@ -6,4 +6,6 @@ enum OrderFulfillmentType {
   pickup,
   @JsonValue('SHIPMENT')
   shipment,
+  @JsonValue('DELIVERY')
+  delivery,
 }

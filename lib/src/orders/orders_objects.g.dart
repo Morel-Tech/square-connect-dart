@@ -19,27 +19,31 @@ Map<String, dynamic> _$OrderEntryToJson(OrderEntry instance) =>
       'version': instance.version,
     };
 
-OrderLineItemTax _$OrderLineItemTaxFromJson(Map<String, dynamic> json) =>
-    OrderLineItemTax(
+OrderLineItemDiscount _$OrderLineItemDiscountFromJson(
+        Map<String, dynamic> json) =>
+    OrderLineItemDiscount(
       uid: json['uid'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       name: json['name'] as String,
-      type: _$enumDecode(_$OrderLineItemTaxTypeEnumMap, json['type']),
+      type: _$enumDecode(_$OrderLineItemDiscountTypeEnumMap, json['type']),
       percentage: (json['percentage'] as num).toDouble(),
+      amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
       appliedMoney:
           Money.fromJson(json['applied_money'] as Map<String, dynamic>),
-      scope: _$enumDecode(_$OrderLineItemTaxScopeEnumMap, json['scope']),
+      scope: _$enumDecode(_$OrderLineItemDiscountScopeEnumMap, json['scope']),
     );
 
-Map<String, dynamic> _$OrderLineItemTaxToJson(OrderLineItemTax instance) =>
+Map<String, dynamic> _$OrderLineItemDiscountToJson(
+        OrderLineItemDiscount instance) =>
     <String, dynamic>{
       'uid': instance.uid,
       'catalog_object_id': instance.catalogObjectId,
       'name': instance.name,
-      'type': _$OrderLineItemTaxTypeEnumMap[instance.type],
+      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type],
       'percentage': instance.percentage,
+      'amount_money': instance.amountMoney.toJson(),
       'applied_money': instance.appliedMoney.toJson(),
-      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
+      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope],
     };
 
 K _$enumDecode<K, V>(
@@ -67,45 +71,6 @@ K _$enumDecode<K, V>(
     },
   ).key;
 }
-
-const _$OrderLineItemTaxTypeEnumMap = {
-  OrderLineItemTaxType.unknownTax: 'UNKNOWN_TAX',
-  OrderLineItemTaxType.additive: 'ADDITIVE',
-  OrderLineItemTaxType.inclusive: 'INCLUSIVE',
-};
-
-const _$OrderLineItemTaxScopeEnumMap = {
-  OrderLineItemTaxScope.otherTaxScope: 'OTHER_TAX_SCOPE',
-  OrderLineItemTaxScope.lineItem: 'LINE_ITEM',
-  OrderLineItemTaxScope.order: 'ORDER',
-};
-
-OrderLineItemDiscount _$OrderLineItemDiscountFromJson(
-        Map<String, dynamic> json) =>
-    OrderLineItemDiscount(
-      uid: json['uid'] as String,
-      catalogObjectId: json['catalog_object_id'] as String,
-      name: json['name'] as String,
-      type: _$enumDecode(_$OrderLineItemDiscountTypeEnumMap, json['type']),
-      percentage: (json['percentage'] as num).toDouble(),
-      amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
-      appliedMoney:
-          Money.fromJson(json['applied_money'] as Map<String, dynamic>),
-      scope: _$enumDecode(_$OrderLineItemDiscountScopeEnumMap, json['scope']),
-    );
-
-Map<String, dynamic> _$OrderLineItemDiscountToJson(
-        OrderLineItemDiscount instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type],
-      'percentage': instance.percentage,
-      'amount_money': instance.amountMoney.toJson(),
-      'applied_money': instance.appliedMoney.toJson(),
-      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope],
-    };
 
 const _$OrderLineItemDiscountTypeEnumMap = {
   OrderLineItemDiscountType.unknownDiscount: 'UNKNOWN_DISCOUNT',
@@ -383,6 +348,18 @@ Map<String, dynamic> _$OrderReturnTaxToJson(OrderReturnTax instance) =>
       'applied_money': instance.appliedMoney.toJson(),
       'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
     };
+
+const _$OrderLineItemTaxTypeEnumMap = {
+  OrderLineItemTaxType.unknownTax: 'UNKNOWN_TAX',
+  OrderLineItemTaxType.additive: 'ADDITIVE',
+  OrderLineItemTaxType.inclusive: 'INCLUSIVE',
+};
+
+const _$OrderLineItemTaxScopeEnumMap = {
+  OrderLineItemTaxScope.otherTaxScope: 'OTHER_TAX_SCOPE',
+  OrderLineItemTaxScope.lineItem: 'LINE_ITEM',
+  OrderLineItemTaxScope.order: 'ORDER',
+};
 
 OrderReturnDiscount _$OrderReturnDiscountFromJson(Map<String, dynamic> json) =>
     OrderReturnDiscount(

@@ -12,7 +12,7 @@ OrderLineItemTax _$OrderLineItemTaxFromJson(Map<String, dynamic> json) =>
       catalogObjectId: json['catalog_object_id'] as String?,
       name: json['name'] as String?,
       type: _$enumDecodeNullable(_$OrderLineItemTaxTypeEnumMap, json['type']),
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       appliedMoney: json['applied_money'] == null
           ? null
           : Money.fromJson(json['applied_money'] as Map<String, dynamic>),

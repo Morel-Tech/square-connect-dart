@@ -29,7 +29,7 @@ class OrderLineItemTax extends Equatable {
   final String? catalogObjectId;
   final String? name;
   final OrderLineItemTaxType? type;
-  final double? percentage;
+  final String? percentage;
   final Map<String, String>? metadata;
   final Money? appliedMoney;
   final OrderLineItemTaxScope? scope;

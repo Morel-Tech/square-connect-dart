@@ -15,7 +15,6 @@ class CatalogObject extends Equatable {
     required this.presentAtAllLocations,
     this.presentAtLocationIds,
     this.absentAtLocationIds,
-    this.imageId,
     this.itemData,
     this.itemVariationData,
     this.categoryData,
@@ -51,7 +50,6 @@ class CatalogObject extends Equatable {
   final bool presentAtAllLocations;
   final List<String>? presentAtLocationIds;
   final List<String>? absentAtLocationIds;
-  final String? imageId;
   final CatalogItem? itemData;
   final CatalogItemVariation? itemVariationData;
   final CatalogCategory? categoryData;
@@ -82,7 +80,6 @@ class CatalogObject extends Equatable {
       presentAtAllLocations,
       presentAtLocationIds,
       absentAtLocationIds,
-      imageId,
       itemData,
       itemVariationData,
       categoryData,

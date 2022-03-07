@@ -20,7 +20,6 @@ CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
       absentAtLocationIds: (json['absent_at_location_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      imageId: json['image_id'] as String?,
       itemData: json['item_data'] == null
           ? null
           : CatalogItem.fromJson(json['item_data'] as Map<String, dynamic>),
@@ -66,7 +65,6 @@ Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
       'present_at_all_locations': instance.presentAtAllLocations,
       'present_at_location_ids': instance.presentAtLocationIds,
       'absent_at_location_ids': instance.absentAtLocationIds,
-      'image_id': instance.imageId,
       'item_data': instance.itemData?.toJson(),
       'item_variation_data': instance.itemVariationData?.toJson(),
       'category_data': instance.categoryData?.toJson(),

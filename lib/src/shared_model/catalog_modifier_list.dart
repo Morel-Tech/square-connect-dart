@@ -11,6 +11,7 @@ class CatalogModifierList extends Equatable {
     required this.selectionType,
     required this.modifiers,
     this.ordinal,
+    this.imageIds,
   });
 
   /// Converts a [Map] to an [CatalogModifierList]
@@ -24,6 +25,7 @@ class CatalogModifierList extends Equatable {
   final CatalogModifierListSelectionType selectionType;
   final List<CatalogObject> modifiers;
   final int? ordinal;
+  final List<String>? imageIds;
 
   @override
   List<Object?> get props => [
@@ -31,5 +33,6 @@ class CatalogModifierList extends Equatable {
         selectionType,
         modifiers,
         ordinal,
+        imageIds,
       ];
 }

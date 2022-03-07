@@ -15,6 +15,9 @@ CatalogModifierList _$CatalogModifierListFromJson(Map<String, dynamic> json) =>
           .map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
           .toList(),
       ordinal: json['ordinal'] as int?,
+      imageIds: (json['image_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$CatalogModifierListToJson(
@@ -25,6 +28,7 @@ Map<String, dynamic> _$CatalogModifierListToJson(
           _$CatalogModifierListSelectionTypeEnumMap[instance.selectionType],
       'modifiers': instance.modifiers.map((e) => e.toJson()).toList(),
       'ordinal': instance.ordinal,
+      'image_ids': instance.imageIds,
     };
 
 K _$enumDecode<K, V>(

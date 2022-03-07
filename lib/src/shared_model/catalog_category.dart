@@ -7,6 +7,7 @@ part 'catalog_category.g.dart';
 class CatalogCategory extends Equatable {
   const CatalogCategory({
     required this.name,
+    this.imageIds,
   });
 
   /// Converts a [Map] to an [CatalogCategory]
@@ -17,7 +18,11 @@ class CatalogCategory extends Equatable {
   Map<String, dynamic> toJson() => _$CatalogCategoryToJson(this);
 
   final String name;
+  final List<String>? imageIds;
 
   @override
-  List<Object> get props => [name];
+  List<Object?> get props => [
+        name,
+        imageIds,
+      ];
 }

@@ -66,6 +66,7 @@ export 'order_line_item_tax_scope.dart';
 export 'order_line_item_tax_type.dart';
 export 'order_line_item_type.dart';
 export 'order_quantity_unit.dart';
+export 'order_service_charge.dart';
 export 'order_source.dart';
 export 'order_state.dart';
 export 'payment.dart';

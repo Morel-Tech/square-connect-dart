@@ -26,6 +26,7 @@ class CatalogItemVariation extends Equatable {
     this.stockable,
     this.stockableConversion,
     this.teamMemberIds,
+    this.imageIds,
   });
 
   /// Converts a [Map] to an [CatalogItemVariation]
@@ -54,6 +55,7 @@ class CatalogItemVariation extends Equatable {
   final bool? stockable;
   final CatalogStockConversion? stockableConversion;
   final List<String>? teamMemberIds;
+  final List<String>? imageIds;
 
   @override
   List<Object?> get props {
@@ -72,6 +74,7 @@ class CatalogItemVariation extends Equatable {
       userData,
       serviceDuration,
       measurementUnitId,
+      imageIds,
     ];
   }
 }

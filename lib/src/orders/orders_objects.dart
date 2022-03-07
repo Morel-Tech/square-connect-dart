@@ -72,59 +72,6 @@ class OrderLineItemDiscount extends Equatable {
 }
 
 @JsonSerializable()
-class OrderServiceCharge extends Equatable {
-  const OrderServiceCharge({
-    required this.uid,
-    required this.name,
-    required this.catalogObjectId,
-    required this.percentage,
-    required this.amountMoney,
-    required this.appliedMoney,
-    required this.totalMoney,
-    required this.totalTaxMoney,
-    required this.calculationPhase,
-    required this.taxable,
-    required this.taxes,
-  });
-
-  /// Converts a [Map] to an [OrderServiceCharge]
-  factory OrderServiceCharge.fromJson(Map<String, dynamic> json) =>
-      _$OrderServiceChargeFromJson(json);
-
-  /// Converts a [OrderServiceCharge] to a [Map]
-  Map<String, dynamic> toJson() => _$OrderServiceChargeToJson(this);
-
-  final String uid;
-  final String name;
-  final String catalogObjectId;
-  final double percentage;
-  final Money amountMoney;
-  final Money appliedMoney;
-  final Money totalMoney;
-  final Money totalTaxMoney;
-  final OrderServiceChargeCalculationPhase calculationPhase;
-  final bool taxable;
-  final List<OrderLineItemTax> taxes;
-
-  @override
-  List<Object> get props {
-    return [
-      uid,
-      name,
-      catalogObjectId,
-      percentage,
-      amountMoney,
-      appliedMoney,
-      totalMoney,
-      totalTaxMoney,
-      calculationPhase,
-      taxable,
-      taxes,
-    ];
-  }
-}
-
-@JsonSerializable()
 class OrderMoneyAmounts extends Equatable {
   const OrderMoneyAmounts({
     required this.totalMoney,

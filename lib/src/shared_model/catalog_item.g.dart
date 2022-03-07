@@ -32,6 +32,9 @@ CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
               CatalogItemOptionForItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       sortName: json['sort_name'] as String?,
+      imageIds: (json['image_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
@@ -52,6 +55,7 @@ Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
       'skip_modifier_screen': instance.skipModifierScreen,
       'item_options': instance.itemOptions?.map((e) => e.toJson()).toList(),
       'sort_name': instance.sortName,
+      'image_ids': instance.imageIds,
     };
 
 K _$enumDecode<K, V>(

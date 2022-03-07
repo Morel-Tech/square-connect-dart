@@ -43,6 +43,9 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
       teamMemberIds: (json['team_member_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      imageIds: (json['image_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$CatalogItemVariationToJson(
@@ -70,6 +73,7 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
       'stockable': instance.stockable,
       'stockable_conversion': instance.stockableConversion?.toJson(),
       'team_member_ids': instance.teamMemberIds,
+      'image_ids': instance.imageIds,
     };
 
 K _$enumDecode<K, V>(

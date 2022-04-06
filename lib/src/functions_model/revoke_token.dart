@@ -8,8 +8,8 @@ part 'revoke_token.g.dart';
 class RevokeTokenRequest extends Equatable {
   const RevokeTokenRequest({
     required this.clientId,
-    required this.accessToken,
-    required this.merchantId,
+    this.accessToken,
+    this.merchantId,
     this.revokeOnlyAccessToken,
   });
 
@@ -21,8 +21,8 @@ class RevokeTokenRequest extends Equatable {
   Map<String, dynamic> toJson() => _$RevokeTokenRequestToJson(this);
 
   final String clientId;
-  final String accessToken;
-  final String merchantId;
+  final String? accessToken;
+  final String? merchantId;
   final bool? revokeOnlyAccessToken;
 
   @override

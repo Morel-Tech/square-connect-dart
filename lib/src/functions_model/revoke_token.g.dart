@@ -9,8 +9,8 @@ part of 'revoke_token.dart';
 RevokeTokenRequest _$RevokeTokenRequestFromJson(Map<String, dynamic> json) =>
     RevokeTokenRequest(
       clientId: json['client_id'] as String,
-      accessToken: json['access_token'] as String,
-      merchantId: json['merchant_id'] as String,
+      accessToken: json['access_token'] as String?,
+      merchantId: json['merchant_id'] as String?,
       revokeOnlyAccessToken: json['revoke_only_access_token'] as bool?,
     );
 

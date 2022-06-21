@@ -62,13 +62,7 @@ abstract class SquareApiClient {
 
   @GET('/v2/catalog/search')
   Future<ListCatalogResponse> searchCatalog({
-    @Query('cursor') String? cursor,
-    @Query('object_types') List<String>? objectTypes,
-    @Query('include_deleted_objects') bool? includeDeletedObjects,
-    @Query('include_related_objects') bool? includeRelatedObjects,
-    @Query('begin_time') String? beginTime,
-    @Query('query') CatalogQueryType? query,
-    @Query('limit') int? limit,
+    @Body() SearchCatalogRequest? searchCatalogRequest,
   });
 
   @GET('/v2/orders/{orderId}')

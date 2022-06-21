@@ -169,27 +169,13 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<ListCatalogResponse> searchCatalog(
-      {cursor,
-      objectTypes,
-      includeDeletedObjects,
-      includeRelatedObjects,
-      beginTime,
-      query,
-      limit}) async {
+  Future<ListCatalogResponse> searchCatalog({searchCatalogRequest}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'cursor': cursor,
-      r'object_types': objectTypes,
-      r'include_deleted_objects': includeDeletedObjects,
-      r'include_related_objects': includeRelatedObjects,
-      r'begin_time': beginTime,
-      r'query': query?.toJson(),
-      r'limit': limit
-    };
+    final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(searchCatalogRequest?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListCatalogResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)

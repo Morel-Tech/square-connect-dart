@@ -60,9 +60,9 @@ abstract class SquareApiClient {
     @Query('catalog_version') int? catalogVersion,
   });
 
-  @GET('/v2/catalog/search')
+  @POST('/v2/catalog/search')
   Future<ListCatalogResponse> searchCatalog({
-    @Body() SearchCatalogRequest? searchCatalogRequest,
+    @Body() SearchCatalogRequest searchCatalogRequest,
   });
 
   @GET('/v2/orders/{orderId}')

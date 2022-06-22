@@ -11,7 +11,7 @@ class CatalogItemVariation extends Equatable {
     required this.name,
     this.sku,
     this.upc,
-    required this.ordinal,
+    this.ordinal,
     required this.pricingType,
     this.priceMoney,
     this.locationOverrides,
@@ -40,7 +40,7 @@ class CatalogItemVariation extends Equatable {
   final String name;
   final String? sku;
   final String? upc;
-  final int ordinal;
+  final int? ordinal;
   final CatalogPricingType pricingType;
   final Money? priceMoney;
   final List<ItemVariationLocationOverride>? locationOverrides;

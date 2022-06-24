@@ -28,7 +28,7 @@ class SearchCatalogRequest extends Equatable {
   final bool? includeDeletedObjects;
   final bool? includeRelatedObjects;
   final String? beginTime;
-  final CatalogQueryType? query;
+  final CatalogQuery? query;
   final int? limit;
 
   @override

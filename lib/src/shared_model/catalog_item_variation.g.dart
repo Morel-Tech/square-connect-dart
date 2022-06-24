@@ -13,7 +13,7 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
       name: json['name'] as String,
       sku: json['sku'] as String?,
       upc: json['upc'] as String?,
-      ordinal: json['ordinal'] as int,
+      ordinal: json['ordinal'] as int?,
       pricingType:
           _$enumDecode(_$CatalogPricingTypeEnumMap, json['pricing_type']),
       priceMoney: json['price_money'] == null

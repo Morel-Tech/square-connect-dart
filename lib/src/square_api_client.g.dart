@@ -97,10 +97,11 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<RevokeTokenResponse> revokeToken(request) async {
+  Future<RevokeTokenResponse> revokeToken(request, applicationSecret) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': applicationSecret};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(

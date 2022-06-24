@@ -23,6 +23,7 @@ export 'catalog_object_type.dart';
 export 'catalog_query.dart';
 export 'catalog_query_exact.dart';
 export 'catalog_query_items_for_item_option_values_query.dart';
+export 'catalog_query_items_for_item_option_values_query.dart';
 export 'catalog_query_items_for_item_options.dart';
 export 'catalog_query_items_for_modifier_list.dart';
 export 'catalog_query_items_for_tax.dart';

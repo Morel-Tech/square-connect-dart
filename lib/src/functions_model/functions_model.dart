@@ -14,6 +14,7 @@ export 'retrieve_location.dart';
 export 'retrieve_merchant.dart';
 export 'retrieve_order.dart';
 export 'revoke_token.dart';
+export 'search_catalog.dart';
 export 'search_customers.dart';
 export 'update_location.dart';
 export 'update_order.dart';

@@ -15,8 +15,8 @@ class CatalogQuery extends Equatable {
     this.textQuery,
     this.itemsForTaxQuery,
     this.itemsForModifierListQuery,
-    this.itemsForItemOptionsQuery,
     this.itemVariationsForItemOptionValuesQuery,
+    this.itemsForItemOptionsQuery,
   });
 
   /// Converts a [Map] to an [CatalogQuery]

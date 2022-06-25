@@ -19,8 +19,8 @@ class CatalogQueryItemVariationsForItemOptionValues extends Equatable {
   Map<String, dynamic> toJson() =>
       _$CatalogQueryItemVariationsForItemOptionValuesToJson(this);
 
-  /// A set of CatalogItemOptionValue IDs to be used to find associated 
-  /// CatalogItemVariations. All ItemVariations that contain all of the given 
+  /// A set of CatalogItemOptionValue IDs to be used to find associated
+  /// CatalogItemVariations. All ItemVariations that contain all of the given
   /// Item Option Values (in any order) will be returned.
   final List<String>? itemOptionValueIds;
 

@@ -170,8 +170,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<ListCatalogResponse> searchCatalog(
-      {required searchCatalogRequest}) async {
+  Future<ListCatalogResponse> searchCatalog(searchCatalogRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

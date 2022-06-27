@@ -16,8 +16,8 @@ class CatalogItem extends Equatable {
     this.availableElectronically,
     this.categoryId,
     this.taxIds,
-    required this.modifierListInfo,
-    required this.variations,
+    this.modifierListInfo,
+    this.variations,
     this.productType,
     this.skipModifierScreen,
     this.itemOptions,
@@ -42,7 +42,7 @@ class CatalogItem extends Equatable {
   final String? categoryId;
   final List<String>? taxIds;
   final List<CatalogItemModifierListInfo>? modifierListInfo;
-  final List<CatalogObject> variations;
+  final List<CatalogObject>? variations;
   final CatalogItemProductType? productType;
   final bool? skipModifierScreen;
   final List<CatalogItemOptionForItem>? itemOptions;

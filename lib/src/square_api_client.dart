@@ -64,9 +64,9 @@ abstract class SquareApiClient {
   });
 
   @POST('/v2/catalog/search')
-  Future<ListCatalogResponse> searchCatalog({
+  Future<ListCatalogResponse> searchCatalog(
     @Body() SearchCatalogRequest searchCatalogRequest,
-  });
+  );
 
   @GET('/v2/orders/{orderId}')
   Future<RetrieveOrderResponse> retrieveOrder(

@@ -38,16 +38,16 @@ CatalogQuery _$CatalogQueryFromJson(Map<String, dynamic> json) => CatalogQuery(
           ? null
           : CatalogQueryItemsForModifierList.fromJson(
               json['items_for_modifier_list_query'] as Map<String, dynamic>),
-      itemsForItemOptionsQuery: json['items_for_item_options_query'] == null
-          ? null
-          : CatalogQueryItemsForItemOptions.fromJson(
-              json['items_for_item_options_query'] as Map<String, dynamic>),
       itemVariationsForItemOptionValuesQuery:
           json['item_variations_for_item_option_values_query'] == null
               ? null
               : CatalogQueryItemVariationsForItemOptionValues.fromJson(
                   json['item_variations_for_item_option_values_query']
                       as Map<String, dynamic>),
+      itemsForItemOptionsQuery: json['items_for_item_options_query'] == null
+          ? null
+          : CatalogQueryItemsForItemOptions.fromJson(
+              json['items_for_item_options_query'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CatalogQueryToJson(CatalogQuery instance) =>

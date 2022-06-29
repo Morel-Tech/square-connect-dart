@@ -8,7 +8,7 @@ part of 'catalog_image.dart';
 
 CatalogImage _$CatalogImageFromJson(Map<String, dynamic> json) => CatalogImage(
       name: json['name'] as String?,
-      url: json['url'] as String,
+      url: json['url'] as String?,
       caption: json['caption'] as String?,
     );
 

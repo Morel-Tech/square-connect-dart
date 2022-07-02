@@ -13,12 +13,12 @@ MeasurementUnit _$MeasurementUnitFromJson(Map<String, dynamic> json) =>
           : MeasurementUnitCustom.fromJson(
               json['custom_unit'] as Map<String, dynamic>),
       areaUnit:
-          _$enumDecodeNullable(_$MeasurementUnitAreaEnumMap, json['area_unit']),
-      lengthUnit: _$enumDecodeNullable(
+          $enumDecodeNullable(_$MeasurementUnitAreaEnumMap, json['area_unit']),
+      lengthUnit: $enumDecodeNullable(
           _$MeasurementUnitLengthEnumMap, json['length_unit']),
-      volumeUnit: _$enumDecodeNullable(
+      volumeUnit: $enumDecodeNullable(
           _$MeasurementUnitVolumeEnumMap, json['volume_unit']),
-      weightUnit: _$enumDecodeNullable(
+      weightUnit: $enumDecodeNullable(
           _$MeasurementUnitWeightEnumMap, json['weight_unit']),
       genericUnit: json['generic_unit'] as String?,
     );
@@ -32,43 +32,6 @@ Map<String, dynamic> _$MeasurementUnitToJson(MeasurementUnit instance) =>
       'weight_unit': _$MeasurementUnitWeightEnumMap[instance.weightUnit],
       'generic_unit': instance.genericUnit,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$MeasurementUnitAreaEnumMap = {
   MeasurementUnitArea.imperialAcre: 'IMPERIAL_ACRE',

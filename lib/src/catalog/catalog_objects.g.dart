@@ -9,9 +9,9 @@ part of 'catalog_objects.dart';
 CatalogTax _$CatalogTaxFromJson(Map<String, dynamic> json) => CatalogTax(
       name: json['name'] as String,
       calculationPhase:
-          _$enumDecode(_$TaxCalculationPhaseEnumMap, json['calculation_phase']),
+          $enumDecode(_$TaxCalculationPhaseEnumMap, json['calculation_phase']),
       inclusionType:
-          _$enumDecode(_$TaxInclusionTypeEnumMap, json['inclusion_type']),
+          $enumDecode(_$TaxInclusionTypeEnumMap, json['inclusion_type']),
       percentage: (json['percentage'] as num).toDouble(),
       appliesToCustomAmounts: json['applies_to_custom_amounts'] as bool,
       enabled: json['enabled'] as bool,
@@ -28,32 +28,6 @@ Map<String, dynamic> _$CatalogTaxToJson(CatalogTax instance) =>
       'enabled': instance.enabled,
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
 const _$TaxCalculationPhaseEnumMap = {
   TaxCalculationPhase.taxSubtotalPhase: 'TAX_SUBTOTAL_PHASE',
   TaxCalculationPhase.taxTotalPhase: 'TAX_TOTAL_PHASE',
@@ -68,7 +42,7 @@ CatalogDiscount _$CatalogDiscountFromJson(Map<String, dynamic> json) =>
     CatalogDiscount(
       name: json['name'] as String,
       discountType:
-          _$enumDecode(_$CatalogDiscountTypeEnumMap, json['discount_type']),
+          $enumDecode(_$CatalogDiscountTypeEnumMap, json['discount_type']),
       percentage: (json['percentage'] as num).toDouble(),
       amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
       pinRequired: json['pin_required'] as bool,

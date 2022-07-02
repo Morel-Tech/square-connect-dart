@@ -36,7 +36,7 @@ Tender _$TenderFromJson(Map<String, dynamic> json) => Tender(
       additionalRecipients: (json['additional_recipients'] as List<dynamic>?)
           ?.map((e) => AdditionalRecipient.fromJson(e as Map<String, dynamic>))
           .toList(),
-      type: _$enumDecode(_$TenderTypeEnumMap, json['type']),
+      type: $enumDecode(_$TenderTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$TenderToJson(Tender instance) => <String, dynamic>{
@@ -55,32 +55,6 @@ Map<String, dynamic> _$TenderToJson(Tender instance) => <String, dynamic>{
           instance.additionalRecipients?.map((e) => e.toJson()).toList(),
       'type': _$TenderTypeEnumMap[instance.type],
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$TenderTypeEnumMap = {
   TenderType.card: 'CARD',

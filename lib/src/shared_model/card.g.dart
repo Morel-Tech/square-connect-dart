@@ -12,8 +12,8 @@ Card _$CardFromJson(Map<String, dynamic> json) => Card(
           ? null
           : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
       bin: json['bin'] as String?,
-      cardBrand: _$enumDecodeNullable(_$CardBrandEnumMap, json['card_brand']),
-      cardType: _$enumDecodeNullable(_$CardTypeEnumMap, json['card_type']),
+      cardBrand: $enumDecodeNullable(_$CardBrandEnumMap, json['card_brand']),
+      cardType: $enumDecodeNullable(_$CardTypeEnumMap, json['card_type']),
       cardholderName: json['cardholder_name'] as String?,
       customerId: json['customer_id'] as String?,
       enabled: json['enabled'] as bool?,
@@ -22,7 +22,7 @@ Card _$CardFromJson(Map<String, dynamic> json) => Card(
       fingerprint: json['fingerprint'] as String?,
       last_4: json['last_4'] as String?,
       prepaidType:
-          _$enumDecodeNullable(_$CardPrepaidTypeEnumMap, json['prepaid_type']),
+          $enumDecodeNullable(_$CardPrepaidTypeEnumMap, json['prepaid_type']),
       referenceId: json['reference_id'] as String?,
       version: json['version'] as int?,
     );
@@ -44,43 +44,6 @@ Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
       'reference_id': instance.referenceId,
       'version': instance.version,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$CardBrandEnumMap = {
   CardBrand.otherBrand: 'OTHER_BRAND',

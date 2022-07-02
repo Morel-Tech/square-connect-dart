@@ -17,7 +17,7 @@ OrderFulfillmentPickupDetails _$OrderFulfillmentPickupDetailsFromJson(
           ? null
           : DateTime.parse(json['expires_at'] as String),
       autoCompleteDuration: json['auto_complete_duration'] as String?,
-      scheduleType: _$enumDecodeNullable(
+      scheduleType: $enumDecodeNullable(
           _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap,
           json['schedule_type']),
       pickupAt: json['pickup_at'] == null
@@ -78,43 +78,6 @@ Map<String, dynamic> _$OrderFulfillmentPickupDetailsToJson(
       'is_curbside_pickup': instance.isCurbsidePickup,
       'curbside_pickup_details': instance.curbsidePickupDetails?.toJson(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap = {
   OrderFulfillmentPickupDetailsScheduleType.scheduled: 'SCHEDULED',

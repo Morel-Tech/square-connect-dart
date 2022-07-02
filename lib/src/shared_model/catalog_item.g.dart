@@ -24,7 +24,7 @@ CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
       variations: (json['variations'] as List<dynamic>?)
           ?.map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
           .toList(),
-      productType: _$enumDecodeNullable(
+      productType: $enumDecodeNullable(
           _$CatalogItemProductTypeEnumMap, json['product_type']),
       skipModifierScreen: json['skip_modifier_screen'] as bool?,
       itemOptions: (json['item_options'] as List<dynamic>?)
@@ -57,43 +57,6 @@ Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
       'sort_name': instance.sortName,
       'image_ids': instance.imageIds,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$CatalogItemProductTypeEnumMap = {
   CatalogItemProductType.regular: 'REGULAR',

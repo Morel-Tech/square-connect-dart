@@ -9,7 +9,7 @@ part of 'catalog_modifier_list.dart';
 CatalogModifierList _$CatalogModifierListFromJson(Map<String, dynamic> json) =>
     CatalogModifierList(
       name: json['name'] as String?,
-      selectionType: _$enumDecodeNullable(
+      selectionType: $enumDecodeNullable(
           _$CatalogModifierListSelectionTypeEnumMap, json['selection_type']),
       modifiers: (json['modifiers'] as List<dynamic>?)
           ?.map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
@@ -30,43 +30,6 @@ Map<String, dynamic> _$CatalogModifierListToJson(
       'ordinal': instance.ordinal,
       'image_ids': instance.imageIds,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$CatalogModifierListSelectionTypeEnumMap = {
   CatalogModifierListSelectionType.single: 'SINGLE',

@@ -8,7 +8,7 @@ part of 'catalog_object.dart';
 
 CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
     CatalogObject(
-      type: _$enumDecode(_$CatalogObjectTypeEnumMap, json['type']),
+      type: $enumDecode(_$CatalogObjectTypeEnumMap, json['type']),
       id: json['id'] as String,
       updatedAt: DateTime.parse(json['updated_at'] as String),
       version: json['version'] as int,
@@ -75,32 +75,6 @@ Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
       'image_data': instance.imageData?.toJson(),
       'measurement_unit_data': instance.measurementUnitData?.toJson(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.item: 'ITEM',

@@ -14,9 +14,9 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
           : Address.fromJson(json['address'] as Map<String, dynamic>),
       timezone: json['timezone'] as String?,
       capabilities: (json['capabilities'] as List<dynamic>?)
-          ?.map((e) => _$enumDecode(_$LocationCapabilityEnumMap, e))
+          ?.map((e) => $enumDecode(_$LocationCapabilityEnumMap, e))
           .toList(),
-      status: _$enumDecode(_$LocationStatusEnumMap, json['status']),
+      status: $enumDecode(_$LocationStatusEnumMap, json['status']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -26,7 +26,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       currency: json['currency'] as String?,
       phoneNumber: json['phone_number'] as String?,
       businessName: json['business_name'] as String?,
-      type: _$enumDecode(_$LocationTypeEnumMap, json['type']),
+      type: $enumDecode(_$LocationTypeEnumMap, json['type']),
       websiteUrl: json['website_url'] as String?,
       businessHours: json['business_hours'] == null
           ? null
@@ -68,32 +68,6 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'facebook_url': instance.facebookUrl,
       'coordinates': instance.coordinates?.toJson(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$LocationCapabilityEnumMap = {
   LocationCapability.creditCardProcessing: 'CREDIT_CARD_PROCESSING',

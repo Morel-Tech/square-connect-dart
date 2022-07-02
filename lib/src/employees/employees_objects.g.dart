@@ -15,7 +15,7 @@ Employee _$EmployeeFromJson(Map<String, dynamic> json) => Employee(
       locationIds: (json['location_ids'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      status: _$enumDecode(_$EmployeeStatusEnumMap, json['status']),
+      status: $enumDecode(_$EmployeeStatusEnumMap, json['status']),
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
     );
@@ -31,32 +31,6 @@ Map<String, dynamic> _$EmployeeToJson(Employee instance) => <String, dynamic>{
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$EmployeeStatusEnumMap = {
   EmployeeStatus.active: 'ACTIVE',

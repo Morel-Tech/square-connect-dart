@@ -15,7 +15,7 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
       upc: json['upc'] as String?,
       ordinal: json['ordinal'] as int?,
       pricingType:
-          _$enumDecode(_$CatalogPricingTypeEnumMap, json['pricing_type']),
+          $enumDecode(_$CatalogPricingTypeEnumMap, json['pricing_type']),
       priceMoney: json['price_money'] == null
           ? null
           : Money.fromJson(json['price_money'] as Map<String, dynamic>),
@@ -24,7 +24,7 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
               ItemVariationLocationOverride.fromJson(e as Map<String, dynamic>))
           .toList(),
       trackInventory: json['track_inventory'] as bool?,
-      inventoryAlertType: _$enumDecodeNullable(
+      inventoryAlertType: $enumDecodeNullable(
           _$InventoryAlertTypeEnumMap, json['inventory_alert_type']),
       inventoryAlertThreshold: json['inventory_alert_threshold'] as int?,
       userData: json['user_data'] as String?,
@@ -76,47 +76,10 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
       'image_ids': instance.imageIds,
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
 const _$CatalogPricingTypeEnumMap = {
   CatalogPricingType.fixedPricing: 'FIXED_PRICING',
   CatalogPricingType.variablePricing: 'VARIABLE_PRICING',
 };
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$InventoryAlertTypeEnumMap = {
   InventoryAlertType.none: 'NONE',

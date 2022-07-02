@@ -14,7 +14,7 @@ Refund _$RefundFromJson(Map<String, dynamic> json) => Refund(
       createdAt: DateTime.parse(json['created_at'] as String),
       reason: json['reason'] as String,
       amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
-      status: _$enumDecode(_$PaymentRefundStatusEnumMap, json['status']),
+      status: $enumDecode(_$PaymentRefundStatusEnumMap, json['status']),
       processingFeeMoney:
           Money.fromJson(json['processing_fee_money'] as Map<String, dynamic>),
       additionalRecipients: (json['additional_recipients'] as List<dynamic>)
@@ -35,32 +35,6 @@ Map<String, dynamic> _$RefundToJson(Refund instance) => <String, dynamic>{
       'additional_recipients':
           instance.additionalRecipients.map((e) => e.toJson()).toList(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$PaymentRefundStatusEnumMap = {
   PaymentRefundStatus.pending: 'PENDING',
@@ -83,7 +57,7 @@ PaymentRefund _$PaymentRefundFromJson(Map<String, dynamic> json) =>
           .map((e) => ProcessingFee.fromJson(e as Map<String, dynamic>))
           .toList(),
       reason: json['reason'] as String,
-      status: _$enumDecode(_$PaymentRefundStatusEnumMap, json['status']),
+      status: $enumDecode(_$PaymentRefundStatusEnumMap, json['status']),
       updatedAt: DateTime.parse(json['updated_at'] as String),
     );
 

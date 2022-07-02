@@ -16,7 +16,7 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
           json['administrative_district_level_2'] as String?,
       administrativeDistrictLevel3:
           json['administrative_district_level_3'] as String?,
-      country: _$enumDecodeNullable(_$CountryEnumMap, json['country'],
+      country: $enumDecodeNullable(_$CountryEnumMap, json['country'],
           unknownValue: Country.unknown),
       firstName: json['first_name'] as String?,
       lastName: json['last_name'] as String?,
@@ -45,43 +45,6 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'sublocality_2': instance.sublocality2,
       'sublocality_3': instance.sublocality3,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$CountryEnumMap = {
   Country.unknown: 'ZZ',

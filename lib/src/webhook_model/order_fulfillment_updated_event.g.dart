@@ -67,7 +67,7 @@ OrderFulfillmentUpdated _$OrderFulfillmentUpdatedFromJson(
           .toList(),
       locationId: json['location_id'] as String,
       orderId: json['order_id'] as String,
-      state: _$enumDecode(_$OrderStateEnumMap, json['state']),
+      state: $enumDecode(_$OrderStateEnumMap, json['state']),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       version: json['version'] as int,
     );
@@ -85,32 +85,6 @@ Map<String, dynamic> _$OrderFulfillmentUpdatedToJson(
       'version': instance.version,
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
 const _$OrderStateEnumMap = {
   OrderState.open: 'OPEN',
   OrderState.completed: 'COMPLETED',
@@ -122,8 +96,8 @@ OrderFulfillmentUpdatedUpdate _$OrderFulfillmentUpdatedUpdateFromJson(
         Map<String, dynamic> json) =>
     OrderFulfillmentUpdatedUpdate(
       fulfillmentUid: json['fulfillment_uid'] as String,
-      newState: _$enumDecode(_$OrderFulfillmentStateEnumMap, json['new_state']),
-      oldState: _$enumDecode(_$OrderFulfillmentStateEnumMap, json['old_state']),
+      newState: $enumDecode(_$OrderFulfillmentStateEnumMap, json['new_state']),
+      oldState: $enumDecode(_$OrderFulfillmentStateEnumMap, json['old_state']),
     );
 
 Map<String, dynamic> _$OrderFulfillmentUpdatedUpdateToJson(

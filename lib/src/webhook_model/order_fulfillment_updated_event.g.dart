@@ -80,7 +80,7 @@ Map<String, dynamic> _$OrderFulfillmentUpdatedToJson(
           instance.fulfillmentUpdate.map((e) => e.toJson()).toList(),
       'location_id': instance.locationId,
       'order_id': instance.orderId,
-      'state': _$OrderStateEnumMap[instance.state],
+      'state': _$OrderStateEnumMap[instance.state]!,
       'updated_at': instance.updatedAt.toIso8601String(),
       'version': instance.version,
     };
@@ -104,8 +104,8 @@ Map<String, dynamic> _$OrderFulfillmentUpdatedUpdateToJson(
         OrderFulfillmentUpdatedUpdate instance) =>
     <String, dynamic>{
       'fulfillment_uid': instance.fulfillmentUid,
-      'new_state': _$OrderFulfillmentStateEnumMap[instance.newState],
-      'old_state': _$OrderFulfillmentStateEnumMap[instance.oldState],
+      'new_state': _$OrderFulfillmentStateEnumMap[instance.newState]!,
+      'old_state': _$OrderFulfillmentStateEnumMap[instance.oldState]!,
     };
 
 const _$OrderFulfillmentStateEnumMap = {

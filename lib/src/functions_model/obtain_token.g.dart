@@ -27,10 +27,10 @@ Map<String, dynamic> _$ObtainTokenRequestToJson(ObtainTokenRequest instance) =>
       'client_secret': instance.clientSecret,
       'code': instance.code,
       'redirect_uri': instance.redirectUri,
-      'grant_type': _$OAuthGrantTypeEnumMap[instance.grantType],
+      'grant_type': _$OAuthGrantTypeEnumMap[instance.grantType]!,
       'refresh_token': instance.refreshToken,
       'migration_token': instance.migrationToken,
-      'scopes': instance.scopes?.map((e) => _$OAuthScopeEnumMap[e]).toList(),
+      'scopes': instance.scopes?.map((e) => _$OAuthScopeEnumMap[e]!).toList(),
       'short_lived': instance.shortLived,
     };
 

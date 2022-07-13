@@ -23,6 +23,7 @@ class CatalogQueryRange extends Equatable {
 
   /// The desired maximum value for the search attribute (inclusive).
   final int? attributeMaxValue;
+
   /// The desired minimum value for the search attribute (inclusive).
   final int? attributeMinValue;
 
@@ -32,5 +33,4 @@ class CatalogQueryRange extends Equatable {
         attributeMaxValue,
         attributeMinValue,
       ];
-
 }

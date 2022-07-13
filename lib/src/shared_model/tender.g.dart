@@ -53,7 +53,7 @@ Map<String, dynamic> _$TenderToJson(Tender instance) => <String, dynamic>{
       'cash_details': instance.cashDetails?.toJson(),
       'additional_recipients':
           instance.additionalRecipients?.map((e) => e.toJson()).toList(),
-      'type': _$TenderTypeEnumMap[instance.type],
+      'type': _$TenderTypeEnumMap[instance.type]!,
     };
 
 const _$TenderTypeEnumMap = {

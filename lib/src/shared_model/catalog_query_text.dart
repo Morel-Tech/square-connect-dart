@@ -16,7 +16,7 @@ class CatalogQueryText extends Equatable {
   /// Converts a [CatalogQueryText] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogQueryTextToJson(this);
 
-  /// A list of 1, 2, or 3 search keywords. Keywords with fewer than 3 
+  /// A list of 1, 2, or 3 search keywords. Keywords with fewer than 3
   /// characters are ignored.
   final List<String> keywords;
 

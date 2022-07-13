@@ -26,7 +26,7 @@ class OrderFulfillmentUpdatedEvent extends WebhookEvent {
   final OrderFulfillmentUpdatedWebhookData data;
 
   @override
-  List<Object> get props => [super.props, data];
+  List<Object> get props => [...super.props, data];
 }
 
 @JsonSerializable()

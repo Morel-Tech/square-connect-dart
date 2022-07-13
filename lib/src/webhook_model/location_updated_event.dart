@@ -25,7 +25,7 @@ class LocationUpdatedEvent extends WebhookEvent {
   final LocationUpdatedEventData data;
 
   @override
-  List<Object> get props => [super.props, data];
+  List<Object> get props => [...super.props, data];
 }
 
 @JsonSerializable()

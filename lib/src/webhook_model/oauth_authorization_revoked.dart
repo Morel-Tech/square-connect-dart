@@ -26,7 +26,7 @@ class OauthAuthorizationRevokedEvent extends WebhookEvent {
   final OauthAuthorizationRevokedWebhookData data;
 
   @override
-  List<Object> get props => [super.props, data];
+  List<Object> get props => [...super.props, data];
 }
 
 @JsonSerializable()

@@ -76,7 +76,7 @@ Map<String, dynamic> _$ShiftToJson(Shift instance) => <String, dynamic>{
       'end_at': instance.endAt.toIso8601String(),
       'wage': instance.wage.toJson(),
       'breaks': instance.breaks.map((e) => e.toJson()).toList(),
-      'status': _$ShiftStatusEnumMap[instance.status],
+      'status': _$ShiftStatusEnumMap[instance.status]!,
       'version': instance.version,
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
@@ -111,7 +111,7 @@ WorkweekConfig _$WorkweekConfigFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$WorkweekConfigToJson(WorkweekConfig instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'start_of_week': _$DayOfWeekEnumMap[instance.startOfWeek],
+      'start_of_week': _$DayOfWeekEnumMap[instance.startOfWeek]!,
       'start_of_day_local_time': instance.startOfDayLocalTime.toJson(),
       'version': instance.version,
       'created_at': instance.createdAt.toIso8601String(),
@@ -153,7 +153,7 @@ ShiftWorkday _$ShiftWorkdayFromJson(Map<String, dynamic> json) => ShiftWorkday(
 Map<String, dynamic> _$ShiftWorkdayToJson(ShiftWorkday instance) =>
     <String, dynamic>{
       'date_range': instance.dateRange.toJson(),
-      'match_shifts_by': _$ShiftWorkdayMatcherEnumMap[instance.matchShiftsBy],
+      'match_shifts_by': _$ShiftWorkdayMatcherEnumMap[instance.matchShiftsBy]!,
       'default_timezone': instance.defaultTimezone,
     };
 

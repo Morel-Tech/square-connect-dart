@@ -17,7 +17,7 @@ class CatalogQueryExact extends Equatable {
   /// Converts a [CatalogQueryExact] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogQueryExactToJson(this);
 
-  /// The name of the attribute to be searched. Matching of the attribute name 
+  /// The name of the attribute to be searched. Matching of the attribute name
   /// is exact.
   final String attributeName;
 

@@ -26,8 +26,8 @@ OrderFulfillment _$OrderFulfillmentFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OrderFulfillmentToJson(OrderFulfillment instance) =>
     <String, dynamic>{
-      'type': _$OrderFulfillmentTypeEnumMap[instance.type],
-      'state': _$OrderFulfillmentStateEnumMap[instance.state],
+      'type': _$OrderFulfillmentTypeEnumMap[instance.type]!,
+      'state': _$OrderFulfillmentStateEnumMap[instance.state]!,
       'pickup_details': instance.pickupDetails?.toJson(),
       'shipment_details': instance.shipmentDetails?.toJson(),
       'uid': instance.uid,

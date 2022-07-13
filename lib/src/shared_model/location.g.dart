@@ -48,9 +48,9 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'address': instance.address?.toJson(),
       'timezone': instance.timezone,
       'capabilities': instance.capabilities
-          ?.map((e) => _$LocationCapabilityEnumMap[e])
+          ?.map((e) => _$LocationCapabilityEnumMap[e]!)
           .toList(),
-      'status': _$LocationStatusEnumMap[instance.status],
+      'status': _$LocationStatusEnumMap[instance.status]!,
       'created_at': instance.createdAt?.toIso8601String(),
       'merchant_id': instance.merchantId,
       'country': instance.country,
@@ -58,7 +58,7 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'currency': instance.currency,
       'phone_number': instance.phoneNumber,
       'business_name': instance.businessName,
-      'type': _$LocationTypeEnumMap[instance.type],
+      'type': _$LocationTypeEnumMap[instance.type]!,
       'website_url': instance.websiteUrl,
       'business_hours': instance.businessHours?.toJson(),
       'business_email': instance.businessEmail,

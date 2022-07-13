@@ -48,8 +48,8 @@ class SearchCatalogResponse extends SquareResponse {
   const SearchCatalogResponse({
     this.cursor,
     required this.objects,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [SearchCatalogResponse]
   factory SearchCatalogResponse.fromJson(Map<String, dynamic> json) =>

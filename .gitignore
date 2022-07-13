@@ -14,3 +14,4 @@ coverage
 .metadata
 .open
 .mason
+mason-lock.json

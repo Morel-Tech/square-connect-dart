@@ -7,7 +7,7 @@ part 'catalog_image.g.dart';
 class CatalogImage extends Equatable {
   const CatalogImage({
     this.name,
-    required this.url,
+    this.url,
     this.caption,
   });
 
@@ -19,7 +19,7 @@ class CatalogImage extends Equatable {
   Map<String, dynamic> toJson() => _$CatalogImageToJson(this);
 
   final String? name;
-  final String url;
+  final String? url;
   final String? caption;
 
   @override

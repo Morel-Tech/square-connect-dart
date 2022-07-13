@@ -7,9 +7,9 @@ part 'catalog_modifier_list.g.dart';
 @JsonSerializable()
 class CatalogModifierList extends Equatable {
   const CatalogModifierList({
-    required this.name,
-    required this.selectionType,
-    required this.modifiers,
+    this.name,
+    this.selectionType,
+    this.modifiers,
     this.ordinal,
     this.imageIds,
   });
@@ -21,9 +21,9 @@ class CatalogModifierList extends Equatable {
   /// Converts a [CatalogModifierList] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogModifierListToJson(this);
 
-  final String name;
-  final CatalogModifierListSelectionType selectionType;
-  final List<CatalogObject> modifiers;
+  final String? name;
+  final CatalogModifierListSelectionType? selectionType;
+  final List<CatalogObject>? modifiers;
   final int? ordinal;
   final List<String>? imageIds;
 

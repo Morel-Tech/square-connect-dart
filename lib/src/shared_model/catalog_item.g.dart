@@ -21,8 +21,8 @@ CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
           ?.map((e) =>
               CatalogItemModifierListInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
-      variations: (json['variations'] as List<dynamic>)
-          .map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
+      variations: (json['variations'] as List<dynamic>?)
+          ?.map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
           .toList(),
       productType: $enumDecodeNullable(
           _$CatalogItemProductTypeEnumMap, json['product_type']),
@@ -50,7 +50,7 @@ Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
       'tax_ids': instance.taxIds,
       'modifier_list_info':
           instance.modifierListInfo?.map((e) => e.toJson()).toList(),
-      'variations': instance.variations.map((e) => e.toJson()).toList(),
+      'variations': instance.variations?.map((e) => e.toJson()).toList(),
       'product_type': _$CatalogItemProductTypeEnumMap[instance.productType],
       'skip_modifier_screen': instance.skipModifierScreen,
       'item_options': instance.itemOptions?.map((e) => e.toJson()).toList(),

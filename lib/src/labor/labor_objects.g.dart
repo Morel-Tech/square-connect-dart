@@ -61,7 +61,7 @@ Shift _$ShiftFromJson(Map<String, dynamic> json) => Shift(
       breaks: (json['breaks'] as List<dynamic>)
           .map((e) => Break.fromJson(e as Map<String, dynamic>))
           .toList(),
-      status: _$enumDecode(_$ShiftStatusEnumMap, json['status']),
+      status: $enumDecode(_$ShiftStatusEnumMap, json['status']),
       version: json['version'] as int,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
@@ -82,32 +82,6 @@ Map<String, dynamic> _$ShiftToJson(Shift instance) => <String, dynamic>{
       'updated_at': instance.updatedAt.toIso8601String(),
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
 const _$ShiftStatusEnumMap = {
   ShiftStatus.open: 'OPEN',
   ShiftStatus.closed: 'CLOSED',
@@ -126,7 +100,7 @@ Map<String, dynamic> _$ShiftWageToJson(ShiftWage instance) => <String, dynamic>{
 WorkweekConfig _$WorkweekConfigFromJson(Map<String, dynamic> json) =>
     WorkweekConfig(
       id: json['id'] as String,
-      startOfWeek: _$enumDecode(_$DayOfWeekEnumMap, json['start_of_week']),
+      startOfWeek: $enumDecode(_$DayOfWeekEnumMap, json['start_of_week']),
       startOfDayLocalTime:
           SquareTimeOfDay.fromJson(json['start_of_day_local_time'] as String),
       version: json['version'] as int,
@@ -172,7 +146,7 @@ Map<String, dynamic> _$EmployeeWageToJson(EmployeeWage instance) =>
 ShiftWorkday _$ShiftWorkdayFromJson(Map<String, dynamic> json) => ShiftWorkday(
       dateRange: DateRange.fromJson(json['date_range'] as Map<String, dynamic>),
       matchShiftsBy:
-          _$enumDecode(_$ShiftWorkdayMatcherEnumMap, json['match_shifts_by']),
+          $enumDecode(_$ShiftWorkdayMatcherEnumMap, json['match_shifts_by']),
       defaultTimezone: json['default_timezone'] as String,
     );
 

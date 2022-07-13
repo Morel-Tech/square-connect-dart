@@ -25,12 +25,12 @@ OrderLineItemDiscount _$OrderLineItemDiscountFromJson(
       uid: json['uid'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       name: json['name'] as String,
-      type: _$enumDecode(_$OrderLineItemDiscountTypeEnumMap, json['type']),
+      type: $enumDecode(_$OrderLineItemDiscountTypeEnumMap, json['type']),
       percentage: (json['percentage'] as num).toDouble(),
       amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
       appliedMoney:
           Money.fromJson(json['applied_money'] as Map<String, dynamic>),
-      scope: _$enumDecode(_$OrderLineItemDiscountScopeEnumMap, json['scope']),
+      scope: $enumDecode(_$OrderLineItemDiscountScopeEnumMap, json['scope']),
     );
 
 Map<String, dynamic> _$OrderLineItemDiscountToJson(
@@ -45,32 +45,6 @@ Map<String, dynamic> _$OrderLineItemDiscountToJson(
       'applied_money': instance.appliedMoney.toJson(),
       'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope],
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$OrderLineItemDiscountTypeEnumMap = {
   OrderLineItemDiscountType.unknownDiscount: 'UNKNOWN_DISCOUNT',
@@ -288,11 +262,11 @@ OrderReturnTax _$OrderReturnTaxFromJson(Map<String, dynamic> json) =>
       sourceTaxId: json['source_tax_id'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       name: json['name'] as String,
-      type: _$enumDecode(_$OrderLineItemTaxTypeEnumMap, json['type']),
+      type: $enumDecode(_$OrderLineItemTaxTypeEnumMap, json['type']),
       percentage: (json['percentage'] as num).toDouble(),
       appliedMoney:
           Money.fromJson(json['applied_money'] as Map<String, dynamic>),
-      scope: _$enumDecode(_$OrderLineItemTaxScopeEnumMap, json['scope']),
+      scope: $enumDecode(_$OrderLineItemTaxScopeEnumMap, json['scope']),
     );
 
 Map<String, dynamic> _$OrderReturnTaxToJson(OrderReturnTax instance) =>
@@ -325,12 +299,12 @@ OrderReturnDiscount _$OrderReturnDiscountFromJson(Map<String, dynamic> json) =>
       sourceDiscountId: json['source_discount_id'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       name: json['name'] as String,
-      type: _$enumDecode(_$OrderLineItemDiscountTypeEnumMap, json['type']),
+      type: $enumDecode(_$OrderLineItemDiscountTypeEnumMap, json['type']),
       percentage: (json['percentage'] as num).toDouble(),
       amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
       appliedMoney:
           Money.fromJson(json['applied_money'] as Map<String, dynamic>),
-      scope: _$enumDecode(_$OrderLineItemDiscountScopeEnumMap, json['scope']),
+      scope: $enumDecode(_$OrderLineItemDiscountScopeEnumMap, json['scope']),
     );
 
 Map<String, dynamic> _$OrderReturnDiscountToJson(
@@ -361,8 +335,7 @@ OrderReturnServiceCharge _$OrderReturnServiceChargeFromJson(
       totalMoney: Money.fromJson(json['total_money'] as Map<String, dynamic>),
       totalTaxMoney:
           Money.fromJson(json['total_tax_money'] as Map<String, dynamic>),
-      calculationPhase: _$enumDecode(
-          _$OrderServiceChargeCalculationPhaseEnumMap,
+      calculationPhase: $enumDecode(_$OrderServiceChargeCalculationPhaseEnumMap,
           json['calculation_phase']),
       taxable: json['taxable'] as bool,
       returnTaxes: (json['return_taxes'] as List<dynamic>)

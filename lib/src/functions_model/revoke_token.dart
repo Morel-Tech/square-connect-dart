@@ -38,8 +38,8 @@ class RevokeTokenRequest extends Equatable {
 class RevokeTokenResponse extends SquareResponse {
   const RevokeTokenResponse({
     required this.success,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [RevokeTokenResponse]
   factory RevokeTokenResponse.fromJson(Map<String, dynamic> json) =>

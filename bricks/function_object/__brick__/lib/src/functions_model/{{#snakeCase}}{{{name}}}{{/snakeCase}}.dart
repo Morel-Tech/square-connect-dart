@@ -16,16 +16,12 @@ class {{#pascalCase}}{{{name}}}{{/pascalCase}}Request extends Equatable {
   Map<String, dynamic> toJson() => _${{#pascalCase}}{{{name}}}{{/pascalCase}}RequestToJson(this);
 
   @override
-  List<Object?> get props {
-    return [];
-  }
+  List<Object?> get props => [];
 }
 
 @JsonSerializable()
 class {{#pascalCase}}{{{name}}}{{/pascalCase}}Response extends SquareResponse {
-  const {{#pascalCase}}{{{name}}}{{/pascalCase}}Response({
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+  const {{#pascalCase}}{{{name}}}{{/pascalCase}}Response({super.errors});
 
   /// Converts a [Map] to an [{{#pascalCase}}{{{name}}}{{/pascalCase}}Response]
   factory {{#pascalCase}}{{{name}}}{{/pascalCase}}Response.fromJson(Map<String, dynamic> json) =>

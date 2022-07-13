@@ -8,17 +8,12 @@ part 'customer_deleted.g.dart';
 @JsonSerializable()
 class CustomerDeletedEvent extends WebhookEvent {
   const CustomerDeletedEvent({
-    required String merchantId,
-    required String type,
-    required String eventId,
-    required DateTime createdAt,
+    required super.merchantId,
+    required super.type,
+    required super.eventId,
+    required super.createdAt,
     required this.data,
-  }) : super(
-          merchantId: merchantId,
-          type: type,
-          eventId: eventId,
-          createdAt: createdAt,
-        );
+  });
 
   /// Converts a [Map] to an [CustomerDeletedEvent]
   factory CustomerDeletedEvent.fromJson(Map<String, dynamic> json) =>

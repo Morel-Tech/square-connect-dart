@@ -8,8 +8,8 @@ part of 'order_fulfillment.dart';
 
 OrderFulfillment _$OrderFulfillmentFromJson(Map<String, dynamic> json) =>
     OrderFulfillment(
-      type: _$enumDecode(_$OrderFulfillmentTypeEnumMap, json['type']),
-      state: _$enumDecode(_$OrderFulfillmentStateEnumMap, json['state']),
+      type: $enumDecode(_$OrderFulfillmentTypeEnumMap, json['type']),
+      state: $enumDecode(_$OrderFulfillmentStateEnumMap, json['state']),
       pickupDetails: json['pickup_details'] == null
           ? null
           : OrderFulfillmentPickupDetails.fromJson(
@@ -33,32 +33,6 @@ Map<String, dynamic> _$OrderFulfillmentToJson(OrderFulfillment instance) =>
       'uid': instance.uid,
       'metadata': instance.metadata,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$OrderFulfillmentTypeEnumMap = {
   OrderFulfillmentType.pickup: 'PICKUP',

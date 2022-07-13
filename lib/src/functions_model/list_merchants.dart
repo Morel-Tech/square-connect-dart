@@ -9,8 +9,8 @@ class ListMerchantsResponse extends SquareResponse {
   const ListMerchantsResponse({
     required this.merchants,
     this.cursor,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [ListMerchantsResponse]
   factory ListMerchantsResponse.fromJson(Map<String, dynamic> json) =>

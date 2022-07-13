@@ -10,9 +10,9 @@ InventoryCount _$InventoryCountFromJson(Map<String, dynamic> json) =>
     InventoryCount(
       catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
+          $enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       inventoryState:
-          _$enumDecode(_$InventoryStateEnumMap, json['inventory_state']),
+          $enumDecode(_$InventoryStateEnumMap, json['inventory_state']),
       locationId: json['location_id'] as String,
       quantity: (json['quantity'] as num).toDouble(),
       calculatedAt: DateTime.parse(json['calculated_at'] as String),
@@ -28,32 +28,6 @@ Map<String, dynamic> _$InventoryCountToJson(InventoryCount instance) =>
       'quantity': instance.quantity,
       'calculated_at': instance.calculatedAt.toIso8601String(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.item: 'ITEM',
@@ -86,7 +60,7 @@ const _$InventoryStateEnumMap = {
 
 InventoryChange _$InventoryChangeFromJson(Map<String, dynamic> json) =>
     InventoryChange(
-      type: _$enumDecode(_$InventoryChangeTypeEnumMap, json['type']),
+      type: $enumDecode(_$InventoryChangeTypeEnumMap, json['type']),
       physicalCount: InventoryPhysicalCount.fromJson(
           json['physical_count'] as Map<String, dynamic>),
       adjustment: InventoryAdjustment.fromJson(
@@ -116,8 +90,8 @@ InventoryPhysicalCount _$InventoryPhysicalCountFromJson(
       referenceId: json['reference_id'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
-      state: _$enumDecode(_$InventoryStateEnumMap, json['state']),
+          $enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
+      state: $enumDecode(_$InventoryStateEnumMap, json['state']),
       locationId: json['location_id'] as String,
       quantity: (json['quantity'] as num).toDouble(),
       source:
@@ -148,12 +122,12 @@ InventoryAdjustment _$InventoryAdjustmentFromJson(Map<String, dynamic> json) =>
     InventoryAdjustment(
       id: json['id'] as String,
       referenceId: json['reference_id'] as String,
-      fromState: _$enumDecode(_$InventoryStateEnumMap, json['from_state']),
-      toState: _$enumDecode(_$InventoryStateEnumMap, json['to_state']),
+      fromState: $enumDecode(_$InventoryStateEnumMap, json['from_state']),
+      toState: $enumDecode(_$InventoryStateEnumMap, json['to_state']),
       locationId: json['location_id'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
+          $enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       quantity: (json['quantity'] as num).toDouble(),
       totalPriceMoney:
           Money.fromJson(json['total_price_money'] as Map<String, dynamic>),
@@ -195,12 +169,12 @@ InventoryTransfer _$InventoryTransferFromJson(Map<String, dynamic> json) =>
     InventoryTransfer(
       id: json['id'] as String,
       referenceId: json['reference_id'] as String,
-      state: _$enumDecode(_$InventoryStateEnumMap, json['state']),
+      state: $enumDecode(_$InventoryStateEnumMap, json['state']),
       fromLocationId: json['from_location_id'] as String,
       toLocationId: json['to_location_id'] as String,
       catalogObjectId: json['catalog_object_id'] as String,
       catalogObjectType:
-          _$enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
+          $enumDecode(_$CatalogObjectTypeEnumMap, json['catalog_object_type']),
       quantity: (json['quantity'] as num).toDouble(),
       occurredAt: DateTime.parse(json['occurred_at'] as String),
       createdAt: DateTime.parse(json['created_at'] as String),
@@ -228,7 +202,7 @@ Map<String, dynamic> _$InventoryTransferToJson(InventoryTransfer instance) =>
 
 SourceApplication _$SourceApplicationFromJson(Map<String, dynamic> json) =>
     SourceApplication(
-      product: _$enumDecode(_$ProductEnumMap, json['product']),
+      product: $enumDecode(_$ProductEnumMap, json['product']),
       applicationId: json['application_id'] as String,
       name: json['name'] as String,
     );

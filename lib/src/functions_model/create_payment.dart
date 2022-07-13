@@ -86,8 +86,8 @@ class CreatePaymentRequest extends Equatable {
 class CreatePaymentResponse extends SquareResponse {
   const CreatePaymentResponse({
     this.payment,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [CreatePaymentResponse]
   factory CreatePaymentResponse.fromJson(Map<String, dynamic> json) =>

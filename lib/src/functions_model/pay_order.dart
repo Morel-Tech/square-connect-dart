@@ -36,8 +36,8 @@ class PayOrderRequest extends Equatable {
 class PayOrderResponse extends SquareResponse with EquatableMixin {
   const PayOrderResponse({
     this.order,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [PayOrderResponse]
   factory PayOrderResponse.fromJson(Map<String, dynamic> json) =>

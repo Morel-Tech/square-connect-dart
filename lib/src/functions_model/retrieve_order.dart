@@ -7,8 +7,8 @@ part 'retrieve_order.g.dart';
 class RetrieveOrderResponse extends SquareResponse {
   const RetrieveOrderResponse({
     required this.order,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [RetrieveOrderResponse]
   factory RetrieveOrderResponse.fromJson(Map<String, dynamic> json) =>

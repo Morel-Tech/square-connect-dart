@@ -8,50 +8,13 @@ part of 'money.dart';
 
 Money _$MoneyFromJson(Map<String, dynamic> json) => Money(
       amount: json['amount'] as int?,
-      currency: _$enumDecodeNullable(_$CurrencyEnumMap, json['currency']),
+      currency: $enumDecodeNullable(_$CurrencyEnumMap, json['currency']),
     );
 
 Map<String, dynamic> _$MoneyToJson(Money instance) => <String, dynamic>{
       'amount': instance.amount,
       'currency': _$CurrencyEnumMap[instance.currency],
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$CurrencyEnumMap = {
   Currency.unknownCurrency: 'UNKNOWN_CURRENCY',

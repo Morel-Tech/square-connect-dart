@@ -9,9 +9,9 @@ part of 'customer_creation_source_filter.dart';
 CustomerCreationSourceFilter _$CustomerCreationSourceFilterFromJson(
         Map<String, dynamic> json) =>
     CustomerCreationSourceFilter(
-      rule: _$enumDecode(_$CustomerInclusionExclusionEnumMap, json['rule']),
+      rule: $enumDecode(_$CustomerInclusionExclusionEnumMap, json['rule']),
       values: (json['values'] as List<dynamic>)
-          .map((e) => _$enumDecode(_$CustomerCreationSourceEnumMap, e))
+          .map((e) => $enumDecode(_$CustomerCreationSourceEnumMap, e))
           .toList(),
     );
 
@@ -23,32 +23,6 @@ Map<String, dynamic> _$CustomerCreationSourceFilterToJson(
           .map((e) => _$CustomerCreationSourceEnumMap[e])
           .toList(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$CustomerInclusionExclusionEnumMap = {
   CustomerInclusionExclusion.include: 'INCLUE',

@@ -24,7 +24,7 @@ OrderServiceCharge _$OrderServiceChargeFromJson(Map<String, dynamic> json) =>
       totalTaxMoney: json['total_tax_money'] == null
           ? null
           : Money.fromJson(json['total_tax_money'] as Map<String, dynamic>),
-      calculationPhase: _$enumDecodeNullable(
+      calculationPhase: $enumDecodeNullable(
           _$OrderServiceChargeCalculationPhaseEnumMap,
           json['calculation_phase']),
       taxable: json['taxable'] as bool?,
@@ -48,43 +48,6 @@ Map<String, dynamic> _$OrderServiceChargeToJson(OrderServiceCharge instance) =>
       'taxable': instance.taxable,
       'taxes': instance.taxes?.map((e) => e.toJson()).toList(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$OrderServiceChargeCalculationPhaseEnumMap = {
   OrderServiceChargeCalculationPhase.subtotalPhase: 'SUBTOTAL_PHASE',

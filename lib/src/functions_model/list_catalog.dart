@@ -8,8 +8,8 @@ class ListCatalogResponse extends SquareResponse {
   const ListCatalogResponse({
     this.cursor,
     required this.objects,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [ListCatalogResponse]
   factory ListCatalogResponse.fromJson(Map<String, dynamic> json) =>

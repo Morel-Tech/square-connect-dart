@@ -3,5 +3,6 @@ bricks:
     path: bricks/shared_object
   webhook_event:
     path: bricks/webhook_event
-  functions_objects:
-    path: bricks/functions_objects
+  function_object:
+    path: bricks/function_object
+  github_actions_dart: ^0.0.7

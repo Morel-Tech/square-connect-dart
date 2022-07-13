@@ -7,8 +7,8 @@ part 'retrieve_merchant.g.dart';
 class RetrieveMerchantResponse extends SquareResponse {
   const RetrieveMerchantResponse({
     required this.merchant,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [RetrieveMerchantResponse]
   factory RetrieveMerchantResponse.fromJson(Map<String, dynamic> json) =>

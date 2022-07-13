@@ -13,8 +13,8 @@ class CreateLocationResponse extends SquareResponse {
   /// {@macro create_location_response}
   const CreateLocationResponse({
     required this.location,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [CreateLocationResponse]
   factory CreateLocationResponse.fromJson(Map<String, dynamic> json) =>

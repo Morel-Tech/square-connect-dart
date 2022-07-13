@@ -5,9 +5,7 @@ part 'delete_customer.g.dart';
 
 @JsonSerializable()
 class DeleteCustomerResponse extends SquareResponse {
-  const DeleteCustomerResponse({
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+  const DeleteCustomerResponse({super.errors});
 
   /// Converts a [Map] to an [DeleteCustomerResponse]
   factory DeleteCustomerResponse.fromJson(Map<String, dynamic> json) =>

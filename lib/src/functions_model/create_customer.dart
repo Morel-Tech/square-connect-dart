@@ -97,9 +97,9 @@ class CreateCustomerRequest extends Equatable {
 @JsonSerializable()
 class CreateCustomerResponse extends SquareResponse {
   const CreateCustomerResponse({
-    List<SquareError>? errors,
+    super.errors,
     this.customer,
-  }) : super(errors: errors);
+  });
 
   /// Converts a [Map] to an [CreateCustomerResponse]
   factory CreateCustomerResponse.fromJson(Map<String, dynamic> json) =>

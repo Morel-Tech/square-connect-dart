@@ -6,6 +6,8 @@ part of 'square_api_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 class _SquareApiClient implements SquareApiClient {
   _SquareApiClient(this._dio, {this.baseUrl});
 
@@ -38,7 +40,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveLocationResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/locations/$locationId',
+                .compose(_dio.options, '/v2/locations/${locationId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RetrieveLocationResponse.fromJson(_result.data!);
@@ -72,7 +74,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<UpdateLocationResponse>(
             Options(method: 'PUT', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/locations/$locationId',
+                .compose(_dio.options, '/v2/locations/${locationId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = UpdateLocationResponse.fromJson(_result.data!);
@@ -123,7 +125,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveMerchantResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/merchants/$merchantId',
+                .compose(_dio.options, '/v2/merchants/${merchantId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RetrieveMerchantResponse.fromJson(_result.data!);
@@ -178,7 +180,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveOrderResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/orders/$orderId',
+                .compose(_dio.options, '/v2/orders/${orderId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RetrieveOrderResponse.fromJson(_result.data!);
@@ -212,7 +214,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<UpdateOrderResponse>(
             Options(method: 'PUT', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/orders/$orderId',
+                .compose(_dio.options, '/v2/orders/${orderId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = UpdateOrderResponse.fromJson(_result.data!);
@@ -229,7 +231,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PayOrderResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/orders/$orderId/pay',
+                .compose(_dio.options, '/v2/orders/${orderId}/pay',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PayOrderResponse.fromJson(_result.data!);
@@ -320,7 +322,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DeleteCustomerResponse>(
             Options(method: 'DELETE', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/customers/$customerId',
+                .compose(_dio.options, '/v2/customers/${customerId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DeleteCustomerResponse.fromJson(_result.data!);
@@ -336,10 +338,27 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveCustomerResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/customers/$customerId',
+                .compose(_dio.options, '/v2/customers/${customerId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RetrieveCustomerResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CreateCheckoutResponse> createCheckout(locationId, request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CreateCheckoutResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/v2/locations/${locationId}/checkouts',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CreateCheckoutResponse.fromJson(_result.data!);
     return value;
   }
 

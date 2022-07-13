@@ -12,11 +12,11 @@ ObtainTokenRequest _$ObtainTokenRequestFromJson(Map<String, dynamic> json) =>
       clientSecret: json['client_secret'] as String,
       code: json['code'] as String?,
       redirectUri: json['redirect_uri'] as String?,
-      grantType: _$enumDecode(_$OAuthGrantTypeEnumMap, json['grant_type']),
+      grantType: $enumDecode(_$OAuthGrantTypeEnumMap, json['grant_type']),
       refreshToken: json['refresh_token'] as String?,
       migrationToken: json['migration_token'] as String?,
       scopes: (json['scopes'] as List<dynamic>?)
-          ?.map((e) => _$enumDecode(_$OAuthScopeEnumMap, e))
+          ?.map((e) => $enumDecode(_$OAuthScopeEnumMap, e))
           .toList(),
       shortLived: json['short_lived'] as bool?,
     );
@@ -33,32 +33,6 @@ Map<String, dynamic> _$ObtainTokenRequestToJson(ObtainTokenRequest instance) =>
       'scopes': instance.scopes?.map((e) => _$OAuthScopeEnumMap[e]).toList(),
       'short_lived': instance.shortLived,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$OAuthGrantTypeEnumMap = {
   OAuthGrantType.authorizationCode: 'authorization_code',

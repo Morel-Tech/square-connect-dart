@@ -5,22 +5,24 @@ import 'package:square_connect/square_connect.dart';
 part 'item_location_override.g.dart';
 
 @JsonSerializable()
-class ItemVariationLocationOverride extends Equatable {
-  const ItemVariationLocationOverride({
+class ItemVariationLocationOverrides extends Equatable {
+  const ItemVariationLocationOverrides({
     required this.locationId,
     this.priceMoney,
     this.pricingType,
     this.trackInventory,
     this.inventoryAlertType,
     this.inventoryAlertThreshold,
+    this.soldOut,
+    this.soldOutValidUntil,
   });
 
-  /// Converts a [Map] to an [ItemVariationLocationOverride]
-  factory ItemVariationLocationOverride.fromJson(Map<String, dynamic> json) =>
-      _$ItemVariationLocationOverrideFromJson(json);
+  /// Converts a [Map] to an [ItemVariationLocationOverrides]
+  factory ItemVariationLocationOverrides.fromJson(Map<String, dynamic> json) =>
+      _$ItemVariationLocationOverridesFromJson(json);
 
-  /// Converts a [ItemVariationLocationOverride] to a [Map]
-  Map<String, dynamic> toJson() => _$ItemVariationLocationOverrideToJson(this);
+  /// Converts a [ItemVariationLocationOverrides] to a [Map]
+  Map<String, dynamic> toJson() => _$ItemVariationLocationOverridesToJson(this);
 
   final String locationId;
   final Money? priceMoney;
@@ -28,6 +30,8 @@ class ItemVariationLocationOverride extends Equatable {
   final bool? trackInventory;
   final InventoryAlertType? inventoryAlertType;
   final int? inventoryAlertThreshold;
+  final bool? soldOut;
+  final String? soldOutValidUntil;
 
   @override
   List<Object?> get props {
@@ -38,6 +42,8 @@ class ItemVariationLocationOverride extends Equatable {
       trackInventory,
       inventoryAlertType,
       inventoryAlertThreshold,
+      soldOut,
+      soldOutValidUntil,
     ];
   }
 }

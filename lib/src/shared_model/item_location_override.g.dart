@@ -6,9 +6,9 @@ part of 'item_location_override.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ItemVariationLocationOverride _$ItemVariationLocationOverrideFromJson(
+ItemVariationLocationOverrides _$ItemVariationLocationOverridesFromJson(
         Map<String, dynamic> json) =>
-    ItemVariationLocationOverride(
+    ItemVariationLocationOverrides(
       locationId: json['location_id'] as String,
       priceMoney: json['price_money'] == null
           ? null
@@ -19,10 +19,12 @@ ItemVariationLocationOverride _$ItemVariationLocationOverrideFromJson(
       inventoryAlertType: $enumDecodeNullable(
           _$InventoryAlertTypeEnumMap, json['inventory_alert_type']),
       inventoryAlertThreshold: json['inventory_alert_threshold'] as int?,
+      soldOut: json['sold_out'] as bool?,
+      soldOutValidUntil: json['sold_out_valid_until'] as String?,
     );
 
-Map<String, dynamic> _$ItemVariationLocationOverrideToJson(
-        ItemVariationLocationOverride instance) =>
+Map<String, dynamic> _$ItemVariationLocationOverridesToJson(
+        ItemVariationLocationOverrides instance) =>
     <String, dynamic>{
       'location_id': instance.locationId,
       'price_money': instance.priceMoney?.toJson(),
@@ -31,6 +33,8 @@ Map<String, dynamic> _$ItemVariationLocationOverrideToJson(
       'inventory_alert_type':
           _$InventoryAlertTypeEnumMap[instance.inventoryAlertType],
       'inventory_alert_threshold': instance.inventoryAlertThreshold,
+      'sold_out': instance.soldOut,
+      'sold_out_valid_until': instance.soldOutValidUntil,
     };
 
 const _$CatalogPricingTypeEnumMap = {

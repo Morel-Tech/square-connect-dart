@@ -43,7 +43,7 @@ class CatalogItemVariation extends Equatable {
   final int? ordinal;
   final CatalogPricingType pricingType;
   final Money? priceMoney;
-  final List<ItemVariationLocationOverride>? locationOverrides;
+  final List<ItemVariationLocationOverrides>? locationOverrides;
   final bool? trackInventory;
   final InventoryAlertType? inventoryAlertType;
   final int? inventoryAlertThreshold;

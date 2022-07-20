@@ -1,3 +1,4 @@
+export 'create_checkout.dart';
 export 'create_customer.dart';
 export 'create_location.dart';
 export 'create_order.dart';
@@ -7,6 +8,7 @@ export 'list_catalog.dart';
 export 'list_customers.dart';
 export 'list_locations.dart';
 export 'list_merchants.dart';
+export 'list_payment.dart';
 export 'obtain_token.dart';
 export 'pay_order.dart';
 export 'retrieve_customer.dart';

@@ -27,5 +27,5 @@ class {{#pascalCase}}{{{name}}}{{/pascalCase}}Event extends WebhookEvent {
 
 
   @override
-  List<Object> get props => [super.props];
+  List<Object> get props => [...super.props];
 }

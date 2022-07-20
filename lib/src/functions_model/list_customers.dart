@@ -6,10 +6,10 @@ part 'list_customers.g.dart';
 @JsonSerializable()
 class ListCustomersResponse extends SquareResponse {
   const ListCustomersResponse({
-    List<SquareError>? errors,
+    super.errors,
     this.customers,
     this.cursor,
-  }) : super(errors: errors);
+  });
 
   /// Converts a [Map] to an [ListCustomersResponse]
   factory ListCustomersResponse.fromJson(Map<String, dynamic> json) =>

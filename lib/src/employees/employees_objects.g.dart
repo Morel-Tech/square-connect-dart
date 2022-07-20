@@ -27,7 +27,7 @@ Map<String, dynamic> _$EmployeeToJson(Employee instance) => <String, dynamic>{
       'email_address': instance.emailAddress,
       'phone_number': instance.phoneNumber,
       'location_ids': instance.locationIds,
-      'status': _$EmployeeStatusEnumMap[instance.status],
+      'status': _$EmployeeStatusEnumMap[instance.status]!,
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
     };

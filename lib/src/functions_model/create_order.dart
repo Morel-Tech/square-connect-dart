@@ -8,8 +8,8 @@ part 'create_order.g.dart';
 class CreateOrderResponse extends SquareResponse {
   const CreateOrderResponse({
     this.order,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [CreateOrderResponse]
   factory CreateOrderResponse.fromJson(Map<String, dynamic> json) =>

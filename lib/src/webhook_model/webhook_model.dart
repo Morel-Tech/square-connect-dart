@@ -1,3 +1,4 @@
+export 'catalog_version_updated.dart';
 export 'customer_created.dart';
 export 'customer_deleted.dart';
 export 'customer_updated.dart';

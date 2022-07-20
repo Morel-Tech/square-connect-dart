@@ -11,8 +11,8 @@ class RetrieveLocationResponse extends SquareResponse {
   /// {@macro retrieve_location_response}
   const RetrieveLocationResponse({
     required this.location,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [RetrieveLocationResponse]
   factory RetrieveLocationResponse.fromJson(Map<String, dynamic> json) =>

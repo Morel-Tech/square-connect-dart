@@ -13,3 +13,5 @@ flutter_export_environment.sh
 coverage
 .metadata
 .open
+.mason
+mason-lock.json

@@ -123,4 +123,16 @@ abstract class SquareApiClient {
   Future<RetrieveCustomerResponse> retrieveCustomer(
     @Path() String customerId,
   );
+
+  @POST('/v2/locations/{locationId}/checkouts')
+  Future<CreateCheckoutResponse> createCheckout(
+    @Path() String locationId,
+    @Body() CreateCheckoutRequest request,
+  );
+
+  @GET('/v2/online-checkout/payment-links')
+  Future<ListPaymentResponse> listPaymentLinks({
+    @Query('cursor') String? cursor,
+    @Query('limit') int? limit,
+  });
 }

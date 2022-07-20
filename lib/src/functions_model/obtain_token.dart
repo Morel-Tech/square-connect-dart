@@ -64,8 +64,8 @@ class ObtainTokenResponse extends SquareResponse {
     this.idToken,
     required this.refreshToken,
     this.shortLived,
-    List<SquareError>? errors,
-  }) : super(errors: errors);
+    super.errors,
+  });
 
   /// Converts a [Map] to an [ObtainTokenResponse]
   factory ObtainTokenResponse.fromJson(Map<String, dynamic> json) =>

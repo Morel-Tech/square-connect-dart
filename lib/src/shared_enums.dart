@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-
-
 /// Indicates which high-level category of error has occurred during a request
 /// to the Connect API.
 enum ErrorCategory {

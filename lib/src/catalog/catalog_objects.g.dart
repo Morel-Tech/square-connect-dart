@@ -21,8 +21,8 @@ Map<String, dynamic> _$CatalogTaxToJson(CatalogTax instance) =>
     <String, dynamic>{
       'name': instance.name,
       'calculation_phase':
-          _$TaxCalculationPhaseEnumMap[instance.calculationPhase]!,
-      'inclusion_type': _$TaxInclusionTypeEnumMap[instance.inclusionType]!,
+          _$TaxCalculationPhaseEnumMap[instance.calculationPhase],
+      'inclusion_type': _$TaxInclusionTypeEnumMap[instance.inclusionType],
       'percentage': instance.percentage,
       'applies_to_custom_amounts': instance.appliesToCustomAmounts,
       'enabled': instance.enabled,
@@ -52,7 +52,7 @@ CatalogDiscount _$CatalogDiscountFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CatalogDiscountToJson(CatalogDiscount instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'discount_type': _$CatalogDiscountTypeEnumMap[instance.discountType]!,
+      'discount_type': _$CatalogDiscountTypeEnumMap[instance.discountType],
       'percentage': instance.percentage,
       'amount_money': instance.amountMoney.toJson(),
       'pin_required': instance.pinRequired,

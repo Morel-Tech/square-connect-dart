@@ -66,7 +66,7 @@ Map<String, dynamic> _$OrderCreatedToJson(OrderCreated instance) =>
       'created_at': instance.createdAt.toIso8601String(),
       'location_id': instance.locationId,
       'order_id': instance.orderId,
-      'state': _$OrderStateEnumMap[instance.state]!,
+      'state': _$OrderStateEnumMap[instance.state],
       'version': instance.version,
     };
 

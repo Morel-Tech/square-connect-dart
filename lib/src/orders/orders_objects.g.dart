@@ -39,11 +39,11 @@ Map<String, dynamic> _$OrderLineItemDiscountToJson(
       'uid': instance.uid,
       'catalog_object_id': instance.catalogObjectId,
       'name': instance.name,
-      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type]!,
+      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type],
       'percentage': instance.percentage,
       'amount_money': instance.amountMoney.toJson(),
       'applied_money': instance.appliedMoney.toJson(),
-      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope]!,
+      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope],
     };
 
 const _$OrderLineItemDiscountTypeEnumMap = {
@@ -275,10 +275,10 @@ Map<String, dynamic> _$OrderReturnTaxToJson(OrderReturnTax instance) =>
       'source_tax_id': instance.sourceTaxId,
       'catalog_object_id': instance.catalogObjectId,
       'name': instance.name,
-      'type': _$OrderLineItemTaxTypeEnumMap[instance.type]!,
+      'type': _$OrderLineItemTaxTypeEnumMap[instance.type],
       'percentage': instance.percentage,
       'applied_money': instance.appliedMoney.toJson(),
-      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope]!,
+      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
     };
 
 const _$OrderLineItemTaxTypeEnumMap = {
@@ -314,11 +314,11 @@ Map<String, dynamic> _$OrderReturnDiscountToJson(
       'source_discount_id': instance.sourceDiscountId,
       'catalog_object_id': instance.catalogObjectId,
       'name': instance.name,
-      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type]!,
+      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type],
       'percentage': instance.percentage,
       'amount_money': instance.amountMoney.toJson(),
       'applied_money': instance.appliedMoney.toJson(),
-      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope]!,
+      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope],
     };
 
 OrderReturnServiceCharge _$OrderReturnServiceChargeFromJson(
@@ -356,7 +356,7 @@ Map<String, dynamic> _$OrderReturnServiceChargeToJson(
       'total_money': instance.totalMoney.toJson(),
       'total_tax_money': instance.totalTaxMoney.toJson(),
       'calculation_phase': _$OrderServiceChargeCalculationPhaseEnumMap[
-          instance.calculationPhase]!,
+          instance.calculationPhase],
       'taxable': instance.taxable,
       'return_taxes': instance.returnTaxes.map((e) => e.toJson()).toList(),
     };

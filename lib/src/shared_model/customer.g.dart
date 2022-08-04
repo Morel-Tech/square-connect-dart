@@ -11,9 +11,13 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       address: json['address'] == null
           ? null
           : Address.fromJson(json['address'] as Map<String, dynamic>),
-      birthday: json['birthday'] as String?,
+      birthday: json['birthday'] == null
+          ? null
+          : DateTime.parse(json['birthday'] as String),
       companyName: json['company_name'] as String?,
-      createdAt: json['created_at'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
       creationSource: $enumDecodeNullable(
           _$CustomerCreationSourceEnumMap, json['creation_source']),
       emailAddress: json['email_address'] as String?,
@@ -33,16 +37,18 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       segmentIds: (json['segment_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      updatedAt: json['updated_at'] as String?,
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
       version: json['version'] as int?,
     );
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
       'id': instance.id,
       'address': instance.address?.toJson(),
-      'birthday': instance.birthday,
+      'birthday': instance.birthday?.toIso8601String(),
       'company_name': instance.companyName,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt?.toIso8601String(),
       'creation_source':
           _$CustomerCreationSourceEnumMap[instance.creationSource],
       'email_address': instance.emailAddress,
@@ -55,7 +61,7 @@ Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
       'preferences': instance.preferences?.toJson(),
       'reference_id': instance.referenceId,
       'segment_ids': instance.segmentIds,
-      'updated_at': instance.updatedAt,
+      'updated_at': instance.updatedAt?.toIso8601String(),
       'version': instance.version,
     };
 

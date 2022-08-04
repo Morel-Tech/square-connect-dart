@@ -30,7 +30,7 @@ Map<String, dynamic> _$RefundToJson(Refund instance) => <String, dynamic>{
       'created_at': instance.createdAt.toIso8601String(),
       'reason': instance.reason,
       'amount_money': instance.amountMoney.toJson(),
-      'status': _$PaymentRefundStatusEnumMap[instance.status]!,
+      'status': _$PaymentRefundStatusEnumMap[instance.status],
       'processing_fee_money': instance.processingFeeMoney.toJson(),
       'additional_recipients':
           instance.additionalRecipients.map((e) => e.toJson()).toList(),
@@ -72,6 +72,6 @@ Map<String, dynamic> _$PaymentRefundToJson(PaymentRefund instance) =>
       'payment_id': instance.paymentId,
       'processing_fee': instance.processingFee.map((e) => e.toJson()).toList(),
       'reason': instance.reason,
-      'status': _$PaymentRefundStatusEnumMap[instance.status]!,
+      'status': _$PaymentRefundStatusEnumMap[instance.status],
       'updated_at': instance.updatedAt.toIso8601String(),
     };

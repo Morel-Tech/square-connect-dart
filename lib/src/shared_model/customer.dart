@@ -49,7 +49,7 @@ class Customer extends Equatable {
   /// The year is optional. The timezone and time are not allowed. For example,
   /// 0000-09-21T00:00:00-00:00 represents a birthday on September 21 and
   /// 1998-09-21T00:00:00-00:00 represents a birthday on September 21, 1998.
-  final String? birthday;
+  final DateTime? birthday;
 
   /// A business name associated with the customer profile.
   final String? companyName;
@@ -58,7 +58,7 @@ class Customer extends Equatable {
   /// 3339 format. Examples for January 25th, 2020 6:25:34pm Pacific Standard
   /// Time: UTC: 2020-01-26T02:25:34Z Pacific Standard Time with UTC offset:
   /// 2020-01-25T18:25:34-08:00
-  final String? createdAt;
+  final DateTime? createdAt;
 
   /// A creation source represents the method used to create the customer
   /// profile.
@@ -97,7 +97,7 @@ class Customer extends Equatable {
 
   /// Read only The timestamp when the customer profile was last updated, in
   /// RFC 3339 format.
-  final String? updatedAt;
+  final DateTime? updatedAt;
 
   /// he Square-assigned version number of the customer profile. The version
   /// number is incremented each time an update is committed to the customer

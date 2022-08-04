@@ -26,8 +26,8 @@ SquareError _$SquareErrorFromJson(Map<String, dynamic> json) => SquareError(
 
 Map<String, dynamic> _$SquareErrorToJson(SquareError instance) =>
     <String, dynamic>{
-      'category': _$CategoryEnumMap[instance.category]!,
-      'code': _$ErrorCodeEnumMap[instance.code]!,
+      'category': _$CategoryEnumMap[instance.category],
+      'code': _$ErrorCodeEnumMap[instance.code],
       'detail': instance.detail,
       'field': instance.field,
     };

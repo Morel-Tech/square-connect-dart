@@ -56,7 +56,7 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
       'sku': instance.sku,
       'upc': instance.upc,
       'ordinal': instance.ordinal,
-      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType]!,
+      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
       'price_money': instance.priceMoney?.toJson(),
       'location_overrides':
           instance.locationOverrides?.map((e) => e.toJson()).toList(),

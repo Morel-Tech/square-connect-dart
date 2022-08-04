@@ -73,7 +73,7 @@ Map<String, dynamic> _$OauthAuthorizationRevokedWebhookRevocationObjectToJson(
     <String, dynamic>{
       'revoked_at': instance.revokedAt.toIso8601String(),
       'revoker_type': _$OauthAuthorizationRevokedWebhookRevokerTypeEnumMap[
-          instance.revokerType]!,
+          instance.revokerType],
     };
 
 const _$OauthAuthorizationRevokedWebhookRevokerTypeEnumMap = {

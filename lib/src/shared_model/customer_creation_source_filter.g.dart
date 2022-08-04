@@ -18,9 +18,9 @@ CustomerCreationSourceFilter _$CustomerCreationSourceFilterFromJson(
 Map<String, dynamic> _$CustomerCreationSourceFilterToJson(
         CustomerCreationSourceFilter instance) =>
     <String, dynamic>{
-      'rule': _$CustomerInclusionExclusionEnumMap[instance.rule]!,
+      'rule': _$CustomerInclusionExclusionEnumMap[instance.rule],
       'values': instance.values
-          .map((e) => _$CustomerCreationSourceEnumMap[e]!)
+          .map((e) => _$CustomerCreationSourceEnumMap[e])
           .toList(),
     };
 

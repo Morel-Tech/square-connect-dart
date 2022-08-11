@@ -89,6 +89,7 @@ export 'payment.dart';
 export 'payment_link.dart';
 export 'pre_populated_data.dart';
 export 'processing_fee.dart';
+export 'quick_pay.dart';
 export 'risk_evaluation.dart';
 export 'sort_order.dart';
 export 'square_error.dart';

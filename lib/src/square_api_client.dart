@@ -135,4 +135,9 @@ abstract class SquareApiClient {
     @Query('cursor') String? cursor,
     @Query('limit') int? limit,
   });
+
+  @POST('/v2/online-checkout/payment-links')
+  Future<CreatePaymentLinkResponse> createPaymentLink({
+    @Body() CreatePaymentLinkRequest request,
+  });
 }

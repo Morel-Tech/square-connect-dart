@@ -68,7 +68,7 @@ Map<String, dynamic> _$OrderUpdatedToJson(OrderUpdated instance) =>
       'updated_at': instance.updatedAt.toIso8601String(),
       'location_id': instance.locationId,
       'order_id': instance.orderId,
-      'state': _$OrderStateEnumMap[instance.state],
+      'state': _$OrderStateEnumMap[instance.state]!,
       'version': instance.version,
     };
 

@@ -58,7 +58,7 @@ CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'type': _$CatalogObjectTypeEnumMap[instance.type],
+      'type': _$CatalogObjectTypeEnumMap[instance.type]!,
       'updated_at': instance.updatedAt.toIso8601String(),
       'version': instance.version,
       'is_deleted': instance.isDeleted,

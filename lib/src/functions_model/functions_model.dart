@@ -3,6 +3,7 @@ export 'create_customer.dart';
 export 'create_location.dart';
 export 'create_order.dart';
 export 'create_payment.dart';
+export 'create_payment_link.dart';
 export 'delete_customer.dart';
 export 'list_catalog.dart';
 export 'list_customers.dart';

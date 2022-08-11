@@ -15,5 +15,5 @@ void run(HookContext context) async {
     runInShell: true,
   );
 
-  finish();
+  finish.complete();
 }

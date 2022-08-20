@@ -8,12 +8,14 @@ part of 'payment_link.dart';
 
 PaymentLink _$PaymentLinkFromJson(Map<String, dynamic> json) => PaymentLink(
       id: json['id'] as String,
-      version: json['version'] as int,
+      version: json['version'] as int?,
       checkoutOptions: json['checkout_options'] == null
           ? null
           : CheckoutOptions.fromJson(
               json['checkout_options'] as Map<String, dynamic>),
-      createdAt: DateTime.parse(json['created_at'] as String),
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
       description: json['description'] as String?,
       orderId: json['order_id'] as String?,
       paymentNote: json['payment_note'] as String?,
@@ -21,8 +23,10 @@ PaymentLink _$PaymentLinkFromJson(Map<String, dynamic> json) => PaymentLink(
           ? null
           : PrePopulatedData.fromJson(
               json['pre_populated_data'] as Map<String, dynamic>),
-      updatedAt: DateTime.parse(json['updated_at'] as String),
-      url: json['url'] as String,
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$PaymentLinkToJson(PaymentLink instance) =>
@@ -30,11 +34,11 @@ Map<String, dynamic> _$PaymentLinkToJson(PaymentLink instance) =>
       'id': instance.id,
       'version': instance.version,
       'checkout_options': instance.checkoutOptions?.toJson(),
-      'created_at': instance.createdAt.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
       'description': instance.description,
       'order_id': instance.orderId,
       'payment_note': instance.paymentNote,
       'pre_populated_data': instance.prePopulatedData?.toJson(),
-      'updated_at': instance.updatedAt.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
       'url': instance.url,
     };

@@ -7,7 +7,7 @@ part 'catalog_item.g.dart';
 @JsonSerializable()
 class CatalogItem extends Equatable {
   const CatalogItem({
-    required this.name,
+    this.name,
     this.description,
     this.abbreviation,
     this.labelColor,
@@ -32,7 +32,7 @@ class CatalogItem extends Equatable {
   /// Converts a [CatalogItem] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogItemToJson(this);
 
-  final String name;
+  final String? name;
   final String? description;
   final String? abbreviation;
   final String? labelColor;

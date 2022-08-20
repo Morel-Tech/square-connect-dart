@@ -1,6 +1,6 @@
 name: square_connect
 description: A wrapper for the Square Connect APIs. It's intended use is in a flutter application to manage inventory, catalog, customers, labor, and more on the Square platform.
-version: 2.0.0-dev.58
+version: 2.0.0-dev.66
 homepage: https://github.com/mtwichel/square-connect-flutter-library
 
 environment:
@@ -10,7 +10,7 @@ dependencies:
   crypto: ^3.0.1
   dio: ^4.0.0
   equatable: ^2.0.3
-  json_annotation: ^4.5.0
+  json_annotation: ^4.6.0
   retrofit: ^3.0.1
 
 dev_dependencies:

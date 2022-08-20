@@ -7,12 +7,12 @@ part 'catalog_item_variation.g.dart';
 @JsonSerializable()
 class CatalogItemVariation extends Equatable {
   const CatalogItemVariation({
-    required this.itemId,
-    required this.name,
+    this.itemId,
+    this.name,
     this.sku,
     this.upc,
     this.ordinal,
-    required this.pricingType,
+    this.pricingType,
     this.priceMoney,
     this.locationOverrides,
     this.trackInventory,
@@ -36,12 +36,12 @@ class CatalogItemVariation extends Equatable {
   /// Converts a [CatalogItemVariation] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogItemVariationToJson(this);
 
-  final String itemId;
-  final String name;
+  final String? itemId;
+  final String? name;
   final String? sku;
   final String? upc;
   final int? ordinal;
-  final CatalogPricingType pricingType;
+  final CatalogPricingType? pricingType;
   final Money? priceMoney;
   final List<ItemVariationLocationOverrides>? locationOverrides;
   final bool? trackInventory;

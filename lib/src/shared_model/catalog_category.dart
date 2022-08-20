@@ -6,7 +6,7 @@ part 'catalog_category.g.dart';
 @JsonSerializable()
 class CatalogCategory extends Equatable {
   const CatalogCategory({
-    required this.name,
+    this.name,
     this.imageIds,
   });
 
@@ -17,7 +17,7 @@ class CatalogCategory extends Equatable {
   /// Converts a [CatalogCategory] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogCategoryToJson(this);
 
-  final String name;
+  final String? name;
   final List<String>? imageIds;
 
   @override

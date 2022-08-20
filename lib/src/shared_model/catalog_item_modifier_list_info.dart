@@ -9,9 +9,9 @@ class CatalogItemModifierListInfo extends Equatable {
   const CatalogItemModifierListInfo({
     required this.modifierListId,
     this.modifierOverrides,
-    required this.minSelectedModifiers,
-    required this.maxSelectedModifiers,
-    required this.enabled,
+    this.minSelectedModifiers,
+    this.maxSelectedModifiers,
+    this.enabled,
   });
 
   /// Converts a [Map] to an [CatalogItemModifierListInfo]
@@ -23,9 +23,9 @@ class CatalogItemModifierListInfo extends Equatable {
 
   final String modifierListId;
   final List<CatalogModifierOverride>? modifierOverrides;
-  final int minSelectedModifiers;
-  final int maxSelectedModifiers;
-  final bool enabled;
+  final int? minSelectedModifiers;
+  final int? maxSelectedModifiers;
+  final bool? enabled;
 
   @override
   List<Object?> get props {

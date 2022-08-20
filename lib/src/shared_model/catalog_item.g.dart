@@ -7,7 +7,7 @@ part of 'catalog_item.dart';
 // **************************************************************************
 
 CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
-      name: json['name'] as String,
+      name: json['name'] as String?,
       description: json['description'] as String?,
       abbreviation: json['abbreviation'] as String?,
       labelColor: json['label_color'] as String?,

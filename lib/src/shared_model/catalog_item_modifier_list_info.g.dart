@@ -14,9 +14,9 @@ CatalogItemModifierListInfo _$CatalogItemModifierListInfoFromJson(
           ?.map((e) =>
               CatalogModifierOverride.fromJson(e as Map<String, dynamic>))
           .toList(),
-      minSelectedModifiers: json['min_selected_modifiers'] as int,
-      maxSelectedModifiers: json['max_selected_modifiers'] as int,
-      enabled: json['enabled'] as bool,
+      minSelectedModifiers: json['min_selected_modifiers'] as int?,
+      maxSelectedModifiers: json['max_selected_modifiers'] as int?,
+      enabled: json['enabled'] as bool?,
     );
 
 Map<String, dynamic> _$CatalogItemModifierListInfoToJson(

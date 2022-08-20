@@ -9,13 +9,13 @@ part of 'catalog_item_variation.dart';
 CatalogItemVariation _$CatalogItemVariationFromJson(
         Map<String, dynamic> json) =>
     CatalogItemVariation(
-      itemId: json['item_id'] as String,
-      name: json['name'] as String,
+      itemId: json['item_id'] as String?,
+      name: json['name'] as String?,
       sku: json['sku'] as String?,
       upc: json['upc'] as String?,
       ordinal: json['ordinal'] as int?,
-      pricingType:
-          $enumDecode(_$CatalogPricingTypeEnumMap, json['pricing_type']),
+      pricingType: $enumDecodeNullable(
+          _$CatalogPricingTypeEnumMap, json['pricing_type']),
       priceMoney: json['price_money'] == null
           ? null
           : Money.fromJson(json['price_money'] as Map<String, dynamic>),
@@ -56,7 +56,7 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
       'sku': instance.sku,
       'upc': instance.upc,
       'ordinal': instance.ordinal,
-      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType]!,
+      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
       'price_money': instance.priceMoney?.toJson(),
       'location_overrides':
           instance.locationOverrides?.map((e) => e.toJson()).toList(),

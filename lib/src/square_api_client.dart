@@ -124,6 +124,12 @@ abstract class SquareApiClient {
     @Path() String customerId,
   );
 
+  @PUT('/v2/customers/{customerId}')
+  Future<UpdateCustomerResponse> updateCustomer(
+    @Path() String customerId,
+    @Body() UpdateCustomerRequest request,
+  );
+
   @POST('/v2/locations/{locationId}/checkouts')
   Future<CreateCheckoutResponse> createCheckout(
     @Path() String locationId,
@@ -138,6 +144,6 @@ abstract class SquareApiClient {
 
   @POST('/v2/online-checkout/payment-links')
   Future<CreatePaymentLinkResponse> createPaymentLink({
-    @Body() CreatePaymentLinkRequest request,
+    @Body() required CreatePaymentLinkRequest request,
   });
 }

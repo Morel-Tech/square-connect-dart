@@ -146,4 +146,28 @@ abstract class SquareApiClient {
   Future<CreatePaymentLinkResponse> createPaymentLink({
     @Body() required CreatePaymentLinkRequest request,
   });
+
+  @GET('/v2/cards')
+  Future<ListCardsResponse> listCards({
+    @Query('cursor') String? cursor,
+    @Query('customer_id') String? customerId,
+    @Query('include_disabled') bool? includeDisabled,
+    @Query('reference_id') String? referenceId,
+    @Query('sort_order') String? sortOrder,
+  });
+
+  @POST('/v2/cards')
+  Future<CreateCardRequest> createCard(
+    @Body() CreateCardRequest request,
+  );
+
+  @GET('/v2/cards/{cardId}')
+  Future<RetrieveCardResponse> retrieveCard({
+    @Path() required String cardId,
+  });
+
+  @POST('/v2/cards/{cardId}/disable')
+  Future<DisableCardResponse> disableCard({
+    @Path() required String cardId,
+  });
 }

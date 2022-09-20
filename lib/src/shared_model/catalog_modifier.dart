@@ -7,10 +7,10 @@ part 'catalog_modifier.g.dart';
 @JsonSerializable()
 class CatalogModifier extends Equatable {
   const CatalogModifier({
-    required this.name,
+    this.name,
     this.priceMoney,
-    required this.ordinal,
-    required this.modifierListId,
+    this.ordinal,
+    this.modifierListId,
   });
 
   /// Converts a [Map] to an [CatalogModifier]
@@ -20,10 +20,10 @@ class CatalogModifier extends Equatable {
   /// Converts a [CatalogModifier] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogModifierToJson(this);
 
-  final String name;
+  final String? name;
   final Money? priceMoney;
-  final int ordinal;
-  final String modifierListId;
+  final int? ordinal;
+  final String? modifierListId;
 
   @override
   List<Object?> get props => [

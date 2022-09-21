@@ -157,7 +157,7 @@ abstract class SquareApiClient {
   });
 
   @POST('/v2/cards')
-  Future<CreateCardRequest> createCard(
+  Future<CreateCardResponse> createCard(
     @Body() CreateCardRequest request,
   );
 

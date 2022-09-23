@@ -170,4 +170,36 @@ abstract class SquareApiClient {
   Future<DisableCardResponse> disableCard({
     @Path() required String cardId,
   });
+
+  @POST('/v2/loyalty/accounts')
+  Future<CreateLoyaltyAccountResponse> createLoyaltyAccount({
+    @Body() required CreateLoyaltyAccountRequest request,
+  });
+
+  @POST('/v2/loyalty/accounts/search')
+  Future<SearchLoyaltyAccountsResponse> searchLoyaltyAccounts({
+    @Body() required SearchLoyaltyAccountsRequest request,
+  });
+
+  @GET('/v2/loyalty/accounts/{accountId}')
+  Future<RetrieveLoyaltyAccountResponse> retrieveLoyaltyAccount({
+    @Path() required String accountId,
+  });
+
+  @POST('/v2/loyalty/accounts/{accountId}/accumulate')
+  Future<AccumulateLoyaltyPointsResponse> accumulateLoyaltyPoints({
+    @Body() required AccumulateLoyaltyPointsRequest request,
+    @Path() required String accountId,
+  });
+
+  @POST('/v2/loyalty/accounts/{accountId}/adjust')
+  Future<AdjustLoyaltyPointsResponse> adjustLoyaltyPoints({
+    @Body() required AdjustLoyaltyPointsRequest request,
+    @Path() required String accountId,
+  });
+
+  @GET('/v2/loyalty/programs/{programId}')
+  Future<RetrieveLoyaltyProgramResponse> retrieveLoyaltyProgram({
+    @Path() required String programId,
+  });
 }

@@ -6,16 +6,11 @@ part '{{#snakeCase}}{{{name}}}{{/snakeCase}}.g.dart';
 @JsonSerializable()
 class {{#pascalCase}}{{{name}}}{{/pascalCase}}Event extends WebhookEvent {
   const {{#pascalCase}}{{{name}}}{{/pascalCase}}Event({
-    required String merchantId,
-    required String type,
-    required String eventId,
-    required DateTime createdAt,
-  }) : super(
-          merchantId: merchantId,
-          type: type,
-          eventId: eventId,
-          createdAt: createdAt,
-        );
+    required super.merchantId,
+    required super.type,
+    required super.eventId,
+    required super.createdAt,
+  });
 
   /// Converts a [Map] to an [{{#pascalCase}}{{{name}}}{{/pascalCase}}Event]
   factory {{#pascalCase}}{{{name}}}{{/pascalCase}}Event.fromJson(Map<String, dynamic> json) =>

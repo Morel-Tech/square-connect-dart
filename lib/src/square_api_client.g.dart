@@ -670,14 +670,14 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateCardRequest> createCard(request) async {
+  Future<CreateCardResponse> createCard(request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CreateCardRequest>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<CreateCardResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -689,7 +689,7 @@ class _SquareApiClient implements SquareApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CreateCardRequest.fromJson(_result.data!);
+    final value = CreateCardResponse.fromJson(_result.data!);
     return value;
   }
 
@@ -736,6 +736,158 @@ class _SquareApiClient implements SquareApiClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DisableCardResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CreateLoyaltyAccountResponse> createLoyaltyAccount(
+      {required request}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CreateLoyaltyAccountResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/loyalty/accounts',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CreateLoyaltyAccountResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SearchLoyaltyAccountsResponse> searchLoyaltyAccounts(
+      {required request}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SearchLoyaltyAccountsResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/loyalty/accounts/search',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SearchLoyaltyAccountsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RetrieveLoyaltyAccountResponse> retrieveLoyaltyAccount(
+      {required accountId}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RetrieveLoyaltyAccountResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/loyalty/accounts/${accountId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RetrieveLoyaltyAccountResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AccumulateLoyaltyPointsResponse> accumulateLoyaltyPoints({
+    required request,
+    required accountId,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AccumulateLoyaltyPointsResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/loyalty/accounts/${accountId}/accumulate',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AccumulateLoyaltyPointsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AdjustLoyaltyPointsResponse> adjustLoyaltyPoints({
+    required request,
+    required accountId,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AdjustLoyaltyPointsResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/loyalty/accounts/${accountId}/adjust',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AdjustLoyaltyPointsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RetrieveLoyaltyProgramResponse> retrieveLoyaltyProgram(
+      {required programId}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RetrieveLoyaltyProgramResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/loyalty/programs/${programId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RetrieveLoyaltyProgramResponse.fromJson(_result.data!);
     return value;
   }
 

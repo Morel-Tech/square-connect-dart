@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
@@ -25,14 +24,14 @@ class LocationCreatedEvent extends WebhookEvent {
   final LocationCreatedEventData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class LocationCreatedEventData extends Equatable {
+class LocationCreatedEventData extends WebhookData {
   const LocationCreatedEventData({
-    required this.id,
-    required this.type,
+    required super.id,
+    required super.type,
   });
 
   /// Converts a [Map] to an [LocationCreatedEventData]
@@ -40,14 +39,9 @@ class LocationCreatedEventData extends Equatable {
       _$LocationCreatedEventDataFromJson(json);
 
   /// Converts a [LocationCreatedEventData] to a [Map]
+  @override
   Map<String, dynamic> toJson() => _$LocationCreatedEventDataToJson(this);
 
-  /// ID of the updated Location.
-  final String id;
-
-  /// Name of the affected object’s type, "location".
-  final String type;
-
   @override
-  List<Object> get props => [id, type];
+  List<Object?> get props => [...super.props];
 }

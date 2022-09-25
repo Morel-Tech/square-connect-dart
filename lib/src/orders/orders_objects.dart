@@ -24,7 +24,7 @@ class OrderEntry extends Equatable {
   final int version;
 
   @override
-  List<Object> get props => [orderId, locationId, version];
+  List<Object?> get props => [orderId, locationId, version];
 }
 
 @JsonSerializable()
@@ -57,7 +57,7 @@ class OrderLineItemDiscount extends Equatable {
   final OrderLineItemDiscountScope scope;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       uid,
       catalogObjectId,
@@ -95,7 +95,7 @@ class OrderMoneyAmounts extends Equatable {
   final Money serviceChargeMoney;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       totalMoney,
       taxMoney,
@@ -151,7 +151,7 @@ class OrderFulfillmentShipmentDetails extends Equatable {
   final String trackingUrl;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       cancelReason,
       canceledAt,
@@ -192,7 +192,7 @@ class OrderRoundingAdjustment extends Equatable {
   final Money amountMoney;
 
   @override
-  List<Object> get props => [uid, name, amountMoney];
+  List<Object?> get props => [uid, name, amountMoney];
 }
 
 @JsonSerializable()
@@ -225,7 +225,7 @@ class OrderReturn extends Equatable {
   final OrderMoneyAmounts returnAmounts;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       sourceOrderId,
@@ -287,7 +287,7 @@ class OrderReturnLineItem extends Equatable {
   final Money totalMoney;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       sourceLineItemId,
@@ -366,7 +366,7 @@ class OrderReturnTax extends Equatable {
   final OrderLineItemTaxScope scope;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       sourceTaxId,
@@ -412,7 +412,7 @@ class OrderReturnDiscount extends Equatable {
   final OrderLineItemDiscountScope scope;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       sourceDiscountId,
@@ -465,7 +465,7 @@ class OrderReturnServiceCharge extends Equatable {
   final List<OrderReturnTax> returnTaxes;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       sourceServiceChargeId,

@@ -20,5 +20,5 @@ class CatalogQueryItemsForTax extends Equatable {
   final List<String> taxIds;
 
   @override
-  List<Object> get props => [taxIds];
+  List<Object?> get props => [taxIds];
 }

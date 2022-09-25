@@ -26,14 +26,14 @@ class OauthAuthorizationRevokedEvent extends WebhookEvent {
   final OauthAuthorizationRevokedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class OauthAuthorizationRevokedWebhookData extends Equatable {
+class OauthAuthorizationRevokedWebhookData extends WebhookData {
   const OauthAuthorizationRevokedWebhookData({
-    required this.id,
-    required this.type,
+    required super.id,
+    required super.type,
     required this.object,
   });
 
@@ -44,16 +44,14 @@ class OauthAuthorizationRevokedWebhookData extends Equatable {
       _$OauthAuthorizationRevokedWebhookDataFromJson(json);
 
   /// Converts a [OauthAuthorizationRevokedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() =>
       _$OauthAuthorizationRevokedWebhookDataToJson(this);
 
-  /// Not applicable, revocation is not an object
-  final String id;
-  final String type;
   final OauthAuthorizationRevokedWebhookObject object;
 
   @override
-  List<Object> get props => [id, type, object];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()
@@ -77,7 +75,7 @@ class OauthAuthorizationRevokedWebhookObject extends Equatable {
   final OauthAuthorizationRevokedWebhookRevocationObject revocation;
 
   @override
-  List<Object> get props => [revocation];
+  List<Object?> get props => [revocation];
 }
 
 @JsonSerializable()
@@ -101,7 +99,7 @@ class OauthAuthorizationRevokedWebhookRevocationObject extends Equatable {
   final OauthAuthorizationRevokedWebhookRevokerType revokerType;
 
   @override
-  List<Object> get props => [revokedAt, revokerType];
+  List<Object?> get props => [revokedAt, revokerType];
 }
 
 enum OauthAuthorizationRevokedWebhookRevokerType {

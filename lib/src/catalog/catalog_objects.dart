@@ -30,7 +30,7 @@ class CatalogTax extends Equatable {
   final bool enabled;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       name,
       calculationPhase,
@@ -68,7 +68,7 @@ class CatalogDiscount extends Equatable {
   final String labelColor;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       name,
       discountType,
@@ -98,7 +98,7 @@ class CatalogMeasurementUnit extends Equatable {
   final int precision;
 
   @override
-  List<Object> get props => [measurementUnit, precision];
+  List<Object?> get props => [measurementUnit, precision];
 }
 
 @JsonSerializable()
@@ -117,7 +117,7 @@ class CatalogObjectBatch extends Equatable {
   final List<CatalogObject> objects;
 
   @override
-  List<Object> get props => [objects];
+  List<Object?> get props => [objects];
 }
 
 @JsonSerializable()
@@ -156,7 +156,7 @@ class CatalogInfoResponseLimits extends Equatable {
   final int updateItemModifierListsMaxModifierListsToDisable;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       batchUpsertMaxObjectsPerBatch,
       batchUpsertMaxTotalObjects,
@@ -191,7 +191,7 @@ class StandardUnitDescriptionGroup extends Equatable {
   final String languageCode;
 
   @override
-  List<Object> get props => [standardUnitDescriptions, languageCode];
+  List<Object?> get props => [standardUnitDescriptions, languageCode];
 }
 
 @JsonSerializable()
@@ -214,7 +214,7 @@ class StandardUnitDescription extends Equatable {
   final String abbreviation;
 
   @override
-  List<Object> get props => [unit, name, abbreviation];
+  List<Object?> get props => [unit, name, abbreviation];
 }
 
 @JsonSerializable()
@@ -235,5 +235,5 @@ class CatalogIdMapping extends Equatable {
   final String objectId;
 
   @override
-  List<Object> get props => [clientObjectId, objectId];
+  List<Object?> get props => [clientObjectId, objectId];
 }

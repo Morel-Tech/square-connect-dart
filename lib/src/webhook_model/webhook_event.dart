@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -32,5 +33,26 @@ class WebhookEvent extends Equatable {
   final DateTime createdAt;
 
   @override
-  List<Object> get props => [merchantId, type, eventId, createdAt];
+  List<Object?> get props => [merchantId, type, eventId, createdAt];
+}
+
+@JsonSerializable()
+class WebhookData extends Equatable {
+  const WebhookData({
+    required this.id,
+    required this.type,
+  });
+
+  /// Converts a [Map] to an [WebhookData]
+  factory WebhookData.fromJson(Map<String, dynamic> json) =>
+      _$WebhookDataFromJson(json);
+
+  /// Converts a [WebhookData] to a [Map]
+  Map<String, dynamic> toJson() => _$WebhookDataToJson(this);
+
+  final String id;
+  final String type;
+
+  @override
+  List<Object?> get props => [id, type];
 }

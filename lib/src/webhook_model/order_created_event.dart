@@ -26,15 +26,15 @@ class OrderCreatedEvent extends WebhookEvent {
   final OrderCreatedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class OrderCreatedWebhookData extends Equatable {
+class OrderCreatedWebhookData extends WebhookData {
   const OrderCreatedWebhookData({
-    required this.id,
+    required super.id,
+    required super.type,
     required this.object,
-    required this.type,
   });
 
   /// Converts a [Map] to an [OrderCreatedWebhookData]
@@ -42,19 +42,14 @@ class OrderCreatedWebhookData extends Equatable {
       _$OrderCreatedWebhookDataFromJson(json);
 
   /// Converts a [OrderCreatedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() => _$OrderCreatedWebhookDataToJson(this);
-
-  /// ID of the affected order.
-  final String id;
 
   /// An object containing information about the created Order.
   final OrderCreatedObject object;
 
-  /// Name of the affected object’s type, `"order"`.
-  final String type;
-
   @override
-  List<Object> get props => [id, object, type];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()
@@ -74,7 +69,7 @@ class OrderCreatedObject extends Equatable {
   final OrderCreated orderCreated;
 
   @override
-  List<Object> get props => [orderCreated];
+  List<Object?> get props => [orderCreated];
 }
 
 @JsonSerializable()
@@ -111,7 +106,7 @@ class OrderCreated extends Equatable {
   final int version;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       createdAt,
       locationId,

@@ -21,5 +21,5 @@ class TimeRange extends Equatable {
   final DateTime endAt;
 
   @override
-  List<Object> get props => [startAt, endAt];
+  List<Object?> get props => [startAt, endAt];
 }

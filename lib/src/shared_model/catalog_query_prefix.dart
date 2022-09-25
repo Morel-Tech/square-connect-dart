@@ -24,7 +24,7 @@ class CatalogQueryPrefix extends Equatable {
   final String attributePrefix;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         attributeName,
         attributePrefix,
       ];

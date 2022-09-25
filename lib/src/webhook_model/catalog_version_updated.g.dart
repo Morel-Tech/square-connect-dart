@@ -40,8 +40,8 @@ Map<String, dynamic> _$CatalogVersionUpdatedWebhookDataToJson(
         CatalogVersionUpdatedWebhookData instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'object': instance.object.toJson(),
       'type': instance.type,
+      'object': instance.object.toJson(),
     };
 
 CatalogVersionUpdatedWebhookObject _$CatalogVersionUpdatedWebhookObjectFromJson(

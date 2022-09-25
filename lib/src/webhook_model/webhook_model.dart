@@ -1,3 +1,8 @@
+export 'card_automatically_updated.dart';
+export 'card_created.dart';
+export 'card_disabled.dart';
+export 'card_forgotten.dart';
+export 'card_updated.dart';
 export 'catalog_version_updated.dart';
 export 'customer_created.dart';
 export 'customer_deleted.dart';

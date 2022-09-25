@@ -26,14 +26,14 @@ class CustomerUpdatedEvent extends WebhookEvent {
   final CustomerUpdatedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class CustomerUpdatedWebhookData extends Equatable {
+class CustomerUpdatedWebhookData extends WebhookData {
   const CustomerUpdatedWebhookData({
-    required this.id,
-    required this.type,
+    required super.id,
+    required super.type,
     required this.object,
   });
 
@@ -42,15 +42,13 @@ class CustomerUpdatedWebhookData extends Equatable {
       _$CustomerUpdatedWebhookDataFromJson(json);
 
   /// Converts a [CustomerUpdatedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() => _$CustomerUpdatedWebhookDataToJson(this);
 
-  /// The ID of the updated customer.
-  final String id;
-  final String type;
   final CustomerUpdatedWebhookObject object;
 
   @override
-  List<Object> get props => [id, type, object];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()
@@ -69,5 +67,5 @@ class CustomerUpdatedWebhookObject extends Equatable {
   final Customer customer;
 
   @override
-  List<Object> get props => [customer];
+  List<Object?> get props => [customer];
 }

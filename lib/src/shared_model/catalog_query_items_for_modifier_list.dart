@@ -24,5 +24,5 @@ class CatalogQueryItemsForModifierList extends Equatable {
   final List<String> modifierListIds;
 
   @override
-  List<Object> get props => [modifierListIds];
+  List<Object?> get props => [modifierListIds];
 }

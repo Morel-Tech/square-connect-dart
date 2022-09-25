@@ -42,5 +42,5 @@ class CreateOrderRequest extends Equatable {
   final String idempotencyKey;
 
   @override
-  List<Object> get props => [order, idempotencyKey];
+  List<Object?> get props => [order, idempotencyKey];
 }

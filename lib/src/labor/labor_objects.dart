@@ -34,7 +34,7 @@ class BreakType extends Equatable {
   final DateTime updatedAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       locationId,
@@ -75,7 +75,7 @@ class Break extends Equatable {
   final bool isPaid;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       startAt,
@@ -125,7 +125,7 @@ class Shift extends Equatable {
   final DateTime updatedAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       employeeId,
@@ -161,7 +161,7 @@ class ShiftWage extends Equatable {
   final Money hourlyRate;
 
   @override
-  List<Object> get props => [title, hourlyRate];
+  List<Object?> get props => [title, hourlyRate];
 }
 
 @JsonSerializable()
@@ -190,7 +190,7 @@ class WorkweekConfig extends Equatable {
   final DateTime updatedAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       startOfWeek,
@@ -224,7 +224,7 @@ class EmployeeWage extends Equatable {
   final Money hourlyRate;
 
   @override
-  List<Object> get props => [id, employeeId, title, hourlyRate];
+  List<Object?> get props => [id, employeeId, title, hourlyRate];
 }
 
 @JsonSerializable()
@@ -247,5 +247,5 @@ class ShiftWorkday extends Equatable {
   final String defaultTimezone;
 
   @override
-  List<Object> get props => [dateRange, matchShiftsBy, defaultTimezone];
+  List<Object?> get props => [dateRange, matchShiftsBy, defaultTimezone];
 }

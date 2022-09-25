@@ -46,5 +46,5 @@ class SquareTimeOfDay extends Equatable {
   final int seconds;
 
   @override
-  List<Object> get props => [hours, minutes, seconds];
+  List<Object?> get props => [hours, minutes, seconds];
 }

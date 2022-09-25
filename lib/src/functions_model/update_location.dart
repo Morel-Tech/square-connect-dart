@@ -49,5 +49,5 @@ class UpdateLocationRequest extends Equatable {
   final Location location;
 
   @override
-  List<Object> get props => [location];
+  List<Object?> get props => [location];
 }

@@ -23,7 +23,7 @@ class CatalogStockConversion extends Equatable {
   final String stockableQuantity;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         nonstockableQuantity,
         stockableItemVariationId,
         stockableQuantity,

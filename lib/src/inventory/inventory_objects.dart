@@ -30,7 +30,7 @@ class InventoryCount extends Equatable {
   final DateTime calculatedAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       catalogObjectId,
       catalogObjectType,
@@ -64,7 +64,7 @@ class InventoryChange extends Equatable {
   final InventoryTransfer transfer;
 
   @override
-  List<Object> get props => [type, physicalCount, adjustment, transfer];
+  List<Object?> get props => [type, physicalCount, adjustment, transfer];
 }
 
 @JsonSerializable()
@@ -103,7 +103,7 @@ class InventoryPhysicalCount extends Equatable {
   final DateTime createdAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       referenceId,
@@ -168,7 +168,7 @@ class InventoryAdjustment extends Equatable {
   final String goodsReceiptId;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       referenceId,
@@ -229,7 +229,7 @@ class InventoryTransfer extends Equatable {
   final String employeeId;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       referenceId,
@@ -267,5 +267,5 @@ class SourceApplication extends Equatable {
   final String name;
 
   @override
-  List<Object> get props => [product, applicationId, name];
+  List<Object?> get props => [product, applicationId, name];
 }

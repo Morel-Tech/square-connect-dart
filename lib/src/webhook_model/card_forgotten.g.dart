@@ -1,24 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'loyalty_account_updated.dart';
+part of 'card_forgotten.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoyaltyAccountUpdatedEvent _$LoyaltyAccountUpdatedEventFromJson(
-        Map<String, dynamic> json) =>
-    LoyaltyAccountUpdatedEvent(
+CardForgottenEvent _$CardForgottenEventFromJson(Map<String, dynamic> json) =>
+    CardForgottenEvent(
       merchantId: json['merchant_id'] as String,
       type: json['type'] as String,
       eventId: json['event_id'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
-      data: LoyaltyAccountUpdatedWebhookData.fromJson(
+      data: CardForgottenWebhookData.fromJson(
           json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LoyaltyAccountUpdatedEventToJson(
-        LoyaltyAccountUpdatedEvent instance) =>
+Map<String, dynamic> _$CardForgottenEventToJson(CardForgottenEvent instance) =>
     <String, dynamic>{
       'merchant_id': instance.merchantId,
       'type': instance.type,
@@ -27,18 +25,31 @@ Map<String, dynamic> _$LoyaltyAccountUpdatedEventToJson(
       'data': instance.data.toJson(),
     };
 
-LoyaltyAccountUpdatedWebhookData _$LoyaltyAccountUpdatedWebhookDataFromJson(
+CardForgottenWebhookData _$CardForgottenWebhookDataFromJson(
         Map<String, dynamic> json) =>
-    LoyaltyAccountUpdatedWebhookData(
+    CardForgottenWebhookData(
       id: json['id'] as String,
-      object: LoyaltyAccount.fromJson(json['object'] as Map<String, dynamic>),
       type: json['type'] as String,
+      object: CardForgottenWebhookObject.fromJson(
+          json['object'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LoyaltyAccountUpdatedWebhookDataToJson(
-        LoyaltyAccountUpdatedWebhookData instance) =>
+Map<String, dynamic> _$CardForgottenWebhookDataToJson(
+        CardForgottenWebhookData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'object': instance.object.toJson(),
+    };
+
+CardForgottenWebhookObject _$CardForgottenWebhookObjectFromJson(
+        Map<String, dynamic> json) =>
+    CardForgottenWebhookObject(
+      card: Card.fromJson(json['card'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CardForgottenWebhookObjectToJson(
+        CardForgottenWebhookObject instance) =>
+    <String, dynamic>{
+      'card': instance.card.toJson(),
     };

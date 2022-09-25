@@ -29,17 +29,17 @@ OrderUpdatedWebhookData _$OrderUpdatedWebhookDataFromJson(
         Map<String, dynamic> json) =>
     OrderUpdatedWebhookData(
       id: json['id'] as String,
+      type: json['type'] as String,
       object:
           OrderUpdatedObject.fromJson(json['object'] as Map<String, dynamic>),
-      type: json['type'] as String,
     );
 
 Map<String, dynamic> _$OrderUpdatedWebhookDataToJson(
         OrderUpdatedWebhookData instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'object': instance.object.toJson(),
       'type': instance.type,
+      'object': instance.object.toJson(),
     };
 
 OrderUpdatedObject _$OrderUpdatedObjectFromJson(Map<String, dynamic> json) =>

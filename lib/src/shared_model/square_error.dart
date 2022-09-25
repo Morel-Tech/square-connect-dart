@@ -23,7 +23,7 @@ class SquareErrors extends Error with EquatableMixin {
   final List<SquareError> errors;
 
   @override
-  List<Object> get props => [errors];
+  List<Object?> get props => [errors];
 }
 
 /// {@template square_error}

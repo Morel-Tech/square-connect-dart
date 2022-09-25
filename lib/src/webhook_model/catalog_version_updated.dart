@@ -26,15 +26,15 @@ class CatalogVersionUpdatedEvent extends WebhookEvent {
   final CatalogVersionUpdatedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class CatalogVersionUpdatedWebhookData extends Equatable {
+class CatalogVersionUpdatedWebhookData extends WebhookData {
   const CatalogVersionUpdatedWebhookData({
-    required this.id,
+    required super.id,
     required this.object,
-    required this.type,
+    required super.type,
   });
 
   /// Converts a [Map] to an [CatalogVersionUpdatedWebhookData]
@@ -44,15 +44,14 @@ class CatalogVersionUpdatedWebhookData extends Equatable {
       _$CatalogVersionUpdatedWebhookDataFromJson(json);
 
   /// Converts a [CatalogVersionUpdatedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() =>
       _$CatalogVersionUpdatedWebhookDataToJson(this);
 
-  final String id;
   final CatalogVersionUpdatedWebhookObject object;
-  final String type;
 
   @override
-  List<Object> get props => [id, object, type];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()
@@ -74,7 +73,7 @@ class CatalogVersionUpdatedWebhookObject extends Equatable {
   final CatalogVersionUpdatedWebhookCatalogVersion catalogVersion;
 
   @override
-  List<Object> get props => [catalogVersion];
+  List<Object?> get props => [catalogVersion];
 }
 
 @JsonSerializable()
@@ -96,5 +95,5 @@ class CatalogVersionUpdatedWebhookCatalogVersion extends Equatable {
   final DateTime updatedAt;
 
   @override
-  List<Object> get props => [updatedAt];
+  List<Object?> get props => [updatedAt];
 }

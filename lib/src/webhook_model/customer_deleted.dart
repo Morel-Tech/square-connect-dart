@@ -26,14 +26,14 @@ class CustomerDeletedEvent extends WebhookEvent {
   final CustomerDeletedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class CustomerDeletedWebhookData extends Equatable {
+class CustomerDeletedWebhookData extends WebhookData {
   const CustomerDeletedWebhookData({
-    required this.id,
-    required this.type,
+    required super.id,
+    required super.type,
     required this.object,
   });
 
@@ -42,17 +42,13 @@ class CustomerDeletedWebhookData extends Equatable {
       _$CustomerDeletedWebhookDataFromJson(json);
 
   /// Converts a [CustomerDeletedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() => _$CustomerDeletedWebhookDataToJson(this);
-
-  /// The ID of the deleted customer.
-  final String id;
-
-  final String type;
 
   final CustomerDeletedWebhookObject object;
 
   @override
-  List<Object> get props => [id, type, object];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()

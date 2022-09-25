@@ -28,7 +28,7 @@ class AdditionalRecipient extends Equatable {
   final String receivableId;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         locationId,
         description,
         amountMoney,
@@ -54,7 +54,7 @@ class DateRange extends Equatable {
   final SquareDate endDate;
 
   @override
-  List<Object> get props => [startDate, endDate];
+  List<Object?> get props => [startDate, endDate];
 }
 
 /// An object representing a generic time of day devoid of date.
@@ -83,5 +83,5 @@ class SquareDate extends Equatable {
   final int day;
 
   @override
-  List<Object> get props => [year, month, day];
+  List<Object?> get props => [year, month, day];
 }

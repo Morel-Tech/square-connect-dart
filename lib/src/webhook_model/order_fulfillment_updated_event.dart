@@ -26,14 +26,14 @@ class OrderFulfillmentUpdatedEvent extends WebhookEvent {
   final OrderFulfillmentUpdatedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props, data];
+  List<Object?> get props => [...super.props, data];
 }
 
 @JsonSerializable()
-class OrderFulfillmentUpdatedWebhookData extends Equatable {
+class OrderFulfillmentUpdatedWebhookData extends WebhookData {
   const OrderFulfillmentUpdatedWebhookData({
-    required this.id,
-    required this.type,
+    required super.id,
+    required super.type,
     required this.object,
   });
 
@@ -44,20 +44,15 @@ class OrderFulfillmentUpdatedWebhookData extends Equatable {
       _$OrderFulfillmentUpdatedWebhookDataFromJson(json);
 
   /// Converts a [OrderFulfillmentUpdatedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() =>
       _$OrderFulfillmentUpdatedWebhookDataToJson(this);
-
-  /// ID of the affected order.
-  final String id;
-
-  /// Name of the affected object’s type, `"order"`.
-  final String type;
 
   /// An object containing information about the updated Order.
   final OrderFulfillmentUpdatedObject object;
 
   @override
-  List<Object> get props => [id, type, object];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()
@@ -77,7 +72,7 @@ class OrderFulfillmentUpdatedObject extends Equatable {
   final OrderFulfillmentUpdated orderFulfillmentUpdated;
 
   @override
-  List<Object> get props => [orderFulfillmentUpdated];
+  List<Object?> get props => [orderFulfillmentUpdated];
 }
 
 @JsonSerializable()
@@ -122,7 +117,7 @@ class OrderFulfillmentUpdated extends Equatable {
   final int version;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       createdAt,
       fulfillmentUpdate,
@@ -163,5 +158,5 @@ class OrderFulfillmentUpdatedUpdate extends Equatable {
   final OrderFulfillmentState oldState;
 
   @override
-  List<Object> get props => [fulfillmentUid, newState, oldState];
+  List<Object?> get props => [fulfillmentUid, newState, oldState];
 }

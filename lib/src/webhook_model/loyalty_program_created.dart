@@ -27,15 +27,15 @@ class LoyaltyProgramCreatedEvent extends WebhookEvent {
   final LoyaltyProgramCreatedWebhookData data;
 
   @override
-  List<Object> get props => [...super.props];
+  List<Object?> get props => [...super.props];
 }
 
 @JsonSerializable()
-class LoyaltyProgramCreatedWebhookData extends Equatable {
+class LoyaltyProgramCreatedWebhookData extends WebhookData {
   const LoyaltyProgramCreatedWebhookData({
-    required this.id,
+    required super.id,
     required this.object,
-    required this.type,
+    required super.type,
   });
 
   /// Converts a [Map] to an [LoyaltyProgramCreatedWebhookData]
@@ -45,15 +45,14 @@ class LoyaltyProgramCreatedWebhookData extends Equatable {
       _$LoyaltyProgramCreatedWebhookDataFromJson(json);
 
   /// Converts a [LoyaltyProgramCreatedWebhookData] to a [Map]
+  @override
   Map<String, dynamic> toJson() =>
       _$LoyaltyProgramCreatedWebhookDataToJson(this);
 
-  final String id;
   final LoyaltyProgramCreatedWebhookObject object;
-  final String type;
 
   @override
-  List<Object> get props => [id, object, type];
+  List<Object?> get props => [...super.props, object];
 }
 
 @JsonSerializable()
@@ -75,5 +74,5 @@ class LoyaltyProgramCreatedWebhookObject extends Equatable {
   final LoyaltyProgram loyaltyProgram;
 
   @override
-  List<Object> get props => [loyaltyProgram];
+  List<Object?> get props => [loyaltyProgram];
 }

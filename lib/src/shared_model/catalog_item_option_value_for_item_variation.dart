@@ -24,5 +24,5 @@ class CatalogItemOptionValueForItemVariation extends Equatable {
   final String itemOptionValueId;
 
   @override
-  List<Object> get props => [itemOptionId, itemOptionValueId];
+  List<Object?> get props => [itemOptionId, itemOptionValueId];
 }

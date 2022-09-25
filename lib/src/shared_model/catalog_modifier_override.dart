@@ -26,5 +26,5 @@ class CatalogModifierOverride extends Equatable {
   final bool onByDefault;
 
   @override
-  List<Object> get props => [modifierId, onByDefault];
+  List<Object?> get props => [modifierId, onByDefault];
 }

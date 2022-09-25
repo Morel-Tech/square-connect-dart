@@ -31,7 +31,7 @@ class Merchant extends Equatable {
   final String status;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       country,

@@ -55,7 +55,7 @@ class Employee extends Equatable {
   final DateTime updatedAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       firstName,

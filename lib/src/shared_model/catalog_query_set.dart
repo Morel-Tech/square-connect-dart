@@ -27,7 +27,7 @@ class CatalogQuerySet extends Equatable {
   final String attributeValues;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         attributeName,
         attributeValues,
       ];

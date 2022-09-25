@@ -21,5 +21,5 @@ class MeasurementUnitCustom extends Equatable {
   final String abbreviation;
 
   @override
-  List<Object> get props => [name, abbreviation];
+  List<Object?> get props => [name, abbreviation];
 }

@@ -38,7 +38,7 @@ class Refund extends Equatable {
   final List<AdditionalRecipient> additionalRecipients;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       locationId,
@@ -90,7 +90,7 @@ class PaymentRefund extends Equatable {
   final DateTime updatedAt;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       amountMoney,

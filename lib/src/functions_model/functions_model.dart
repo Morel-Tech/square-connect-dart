@@ -29,6 +29,7 @@ export 'revoke_token.dart';
 export 'search_catalog.dart';
 export 'search_customers.dart';
 export 'search_loyalty_accounts.dart';
+export 'search_loyalty_events.dart';
 export 'update_customer.dart';
 export 'update_location.dart';
 export 'update_order.dart';

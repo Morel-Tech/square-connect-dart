@@ -198,6 +198,11 @@ abstract class SquareApiClient {
     @Path() required String accountId,
   });
 
+  @POST('/v2/loyalty/events/search')
+  Future<SearchLoyaltyEventsResponse> searchLoyaltyEvents({
+    @Body() required SearchLoyaltyEventsRequest request,
+  });
+
   @GET('/v2/loyalty/programs/{programId}')
   Future<RetrieveLoyaltyProgramResponse> retrieveLoyaltyProgram({
     @Path() required String programId,

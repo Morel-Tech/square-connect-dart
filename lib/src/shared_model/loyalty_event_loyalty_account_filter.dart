@@ -9,13 +9,15 @@ class LoyaltyEventLoyaltyAccountFilter extends Equatable {
     required this.loyaltyAccountId,
   });
 
-  /// Converts a [Map]<[String], [dynamic]> to a [LoyaltyEventLoyaltyAccountFilter]
+  /// Converts a [Map]<[String], [dynamic]> to a
+  /// [LoyaltyEventLoyaltyAccountFilter]
   factory LoyaltyEventLoyaltyAccountFilter.fromJson(
     Map<String, dynamic> json,
   ) =>
       _$LoyaltyEventLoyaltyAccountFilterFromJson(json);
 
-  /// Converts a [LoyaltyEventLoyaltyAccountFilter] to a [Map]<[String], [dynamic]>
+  /// Converts a [LoyaltyEventLoyaltyAccountFilter] to a
+  /// [Map]<[String], [dynamic]>
   Map<String, dynamic> toJson() =>
       _$LoyaltyEventLoyaltyAccountFilterToJson(this);
 

@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:square_connect/square_connect.dart';
@@ -49,30 +48,8 @@ class CardAutomaticallyUpdatedWebhookData extends WebhookData {
   Map<String, dynamic> toJson() =>
       _$CardAutomaticallyUpdatedWebhookDataToJson(this);
 
-  final CardAutomaticallyUpdatedWebhookObject object;
+  final Card object;
 
   @override
   List<Object?> get props => [...super.props, object];
-}
-
-@JsonSerializable()
-class CardAutomaticallyUpdatedWebhookObject extends Equatable {
-  const CardAutomaticallyUpdatedWebhookObject({
-    required this.card,
-  });
-
-  /// Converts a [Map] to an [CardAutomaticallyUpdatedWebhookObject]
-  factory CardAutomaticallyUpdatedWebhookObject.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$CardAutomaticallyUpdatedWebhookObjectFromJson(json);
-
-  /// Converts a [CardAutomaticallyUpdatedWebhookObject] to a [Map]
-  Map<String, dynamic> toJson() =>
-      _$CardAutomaticallyUpdatedWebhookObjectToJson(this);
-
-  final Card card;
-
-  @override
-  List<Object?> get props => [card];
 }

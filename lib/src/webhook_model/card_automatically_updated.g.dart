@@ -32,8 +32,7 @@ CardAutomaticallyUpdatedWebhookData
         CardAutomaticallyUpdatedWebhookData(
           id: json['id'] as String,
           type: json['type'] as String,
-          object: CardAutomaticallyUpdatedWebhookObject.fromJson(
-              json['object'] as Map<String, dynamic>),
+          object: Card.fromJson(json['object'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$CardAutomaticallyUpdatedWebhookDataToJson(
@@ -42,17 +41,4 @@ Map<String, dynamic> _$CardAutomaticallyUpdatedWebhookDataToJson(
       'id': instance.id,
       'type': instance.type,
       'object': instance.object.toJson(),
-    };
-
-CardAutomaticallyUpdatedWebhookObject
-    _$CardAutomaticallyUpdatedWebhookObjectFromJson(
-            Map<String, dynamic> json) =>
-        CardAutomaticallyUpdatedWebhookObject(
-          card: Card.fromJson(json['card'] as Map<String, dynamic>),
-        );
-
-Map<String, dynamic> _$CardAutomaticallyUpdatedWebhookObjectToJson(
-        CardAutomaticallyUpdatedWebhookObject instance) =>
-    <String, dynamic>{
-      'card': instance.card.toJson(),
     };

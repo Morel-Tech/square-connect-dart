@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:square_connect/square_connect.dart';
 
@@ -44,29 +43,8 @@ class CardCreatedWebhookData extends WebhookData {
   @override
   Map<String, dynamic> toJson() => _$CardCreatedWebhookDataToJson(this);
 
-  final CardCreatedWebhookObject object;
+  final Card object;
 
   @override
   List<Object?> get props => [...super.props, object];
-}
-
-@JsonSerializable()
-class CardCreatedWebhookObject extends Equatable {
-  const CardCreatedWebhookObject({
-    required this.card,
-  });
-
-  /// Converts a [Map] to an [CardCreatedWebhookObject]
-  factory CardCreatedWebhookObject.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$CardCreatedWebhookObjectFromJson(json);
-
-  /// Converts a [CardCreatedWebhookObject] to a [Map]
-  Map<String, dynamic> toJson() => _$CardCreatedWebhookObjectToJson(this);
-
-  final Card card;
-
-  @override
-  List<Object?> get props => [card];
 }

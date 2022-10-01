@@ -30,8 +30,7 @@ CardForgottenWebhookData _$CardForgottenWebhookDataFromJson(
     CardForgottenWebhookData(
       id: json['id'] as String,
       type: json['type'] as String,
-      object: CardForgottenWebhookObject.fromJson(
-          json['object'] as Map<String, dynamic>),
+      object: Card.fromJson(json['object'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CardForgottenWebhookDataToJson(
@@ -40,16 +39,4 @@ Map<String, dynamic> _$CardForgottenWebhookDataToJson(
       'id': instance.id,
       'type': instance.type,
       'object': instance.object.toJson(),
-    };
-
-CardForgottenWebhookObject _$CardForgottenWebhookObjectFromJson(
-        Map<String, dynamic> json) =>
-    CardForgottenWebhookObject(
-      card: Card.fromJson(json['card'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$CardForgottenWebhookObjectToJson(
-        CardForgottenWebhookObject instance) =>
-    <String, dynamic>{
-      'card': instance.card.toJson(),
     };

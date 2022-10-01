@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:square_connect/square_connect.dart';
@@ -52,4 +53,26 @@ class LoyaltyAccountDeletedWebhookData extends WebhookData {
 
   @override
   List<Object?> get props => [...super.props, object];
+}
+
+@JsonSerializable()
+class LoyaltyAccountDeletedWebhookDataObject extends Equatable {
+  const LoyaltyAccountDeletedWebhookDataObject({
+    required this.loyaltyAccount,
+  });
+
+  /// Converts a [Map] to an [LoyaltyAccountDeletedWebhookDataObject]
+  factory LoyaltyAccountDeletedWebhookDataObject.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$LoyaltyAccountDeletedWebhookDataObjectFromJson(json);
+
+  /// Converts a [LoyaltyAccountDeletedWebhookDataObject] to a [Map]
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyAccountDeletedWebhookDataObjectToJson(this);
+
+  final LoyaltyAccount loyaltyAccount;
+
+  @override
+  List<Object> get props => [loyaltyAccount];
 }

@@ -30,8 +30,7 @@ CardDisabledWebhookData _$CardDisabledWebhookDataFromJson(
     CardDisabledWebhookData(
       id: json['id'] as String,
       type: json['type'] as String,
-      object: CardDisabledWebhookObject.fromJson(
-          json['object'] as Map<String, dynamic>),
+      object: Card.fromJson(json['object'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CardDisabledWebhookDataToJson(
@@ -40,16 +39,4 @@ Map<String, dynamic> _$CardDisabledWebhookDataToJson(
       'id': instance.id,
       'type': instance.type,
       'object': instance.object.toJson(),
-    };
-
-CardDisabledWebhookObject _$CardDisabledWebhookObjectFromJson(
-        Map<String, dynamic> json) =>
-    CardDisabledWebhookObject(
-      card: Card.fromJson(json['card'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$CardDisabledWebhookObjectToJson(
-        CardDisabledWebhookObject instance) =>
-    <String, dynamic>{
-      'card': instance.card.toJson(),
     };

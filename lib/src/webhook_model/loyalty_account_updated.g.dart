@@ -31,7 +31,8 @@ LoyaltyAccountUpdatedWebhookData _$LoyaltyAccountUpdatedWebhookDataFromJson(
         Map<String, dynamic> json) =>
     LoyaltyAccountUpdatedWebhookData(
       id: json['id'] as String,
-      object: LoyaltyAccount.fromJson(json['object'] as Map<String, dynamic>),
+      object: LoyaltyAccountUpdatedWebhookDataObject.fromJson(
+          json['object'] as Map<String, dynamic>),
       type: json['type'] as String,
     );
 
@@ -41,4 +42,18 @@ Map<String, dynamic> _$LoyaltyAccountUpdatedWebhookDataToJson(
       'id': instance.id,
       'type': instance.type,
       'object': instance.object.toJson(),
+    };
+
+LoyaltyAccountUpdatedWebhookDataObject
+    _$LoyaltyAccountUpdatedWebhookDataObjectFromJson(
+            Map<String, dynamic> json) =>
+        LoyaltyAccountUpdatedWebhookDataObject(
+          loyaltyAccount: LoyaltyAccount.fromJson(
+              json['loyalty_account'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$LoyaltyAccountUpdatedWebhookDataObjectToJson(
+        LoyaltyAccountUpdatedWebhookDataObject instance) =>
+    <String, dynamic>{
+      'loyalty_account': instance.loyaltyAccount.toJson(),
     };

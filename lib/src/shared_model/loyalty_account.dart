@@ -7,7 +7,7 @@ part 'loyalty_account.g.dart';
 @JsonSerializable()
 class LoyaltyAccount extends Equatable {
   const LoyaltyAccount({
-    required this.id,
+    this.id,
     required this.programId,
     this.balance,
     this.createdAt,
@@ -26,7 +26,7 @@ class LoyaltyAccount extends Equatable {
   /// Converts a [LoyaltyAccount] to a [Map]<[String], [dynamic]>
   Map<String, dynamic> toJson() => _$LoyaltyAccountToJson(this);
 
-  final String id;
+  final String? id;
   final String programId;
   final int? balance;
   final DateTime? createdAt;

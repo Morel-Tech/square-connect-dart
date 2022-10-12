@@ -9,7 +9,7 @@ part of 'loyalty_account_mapping.dart';
 LoyaltyAccountMapping _$LoyaltyAccountMappingFromJson(
         Map<String, dynamic> json) =>
     LoyaltyAccountMapping(
-      id: json['id'] as String,
+      id: json['id'] as String?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

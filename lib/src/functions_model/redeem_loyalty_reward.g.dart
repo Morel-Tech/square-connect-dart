@@ -26,12 +26,14 @@ RedeemLoyaltyRewardResponse _$RedeemLoyaltyRewardResponseFromJson(
       errors: (json['errors'] as List<dynamic>?)
           ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
           .toList(),
-      event: LoyaltyEvent.fromJson(json['event'] as Map<String, dynamic>),
+      event: json['event'] == null
+          ? null
+          : LoyaltyEvent.fromJson(json['event'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$RedeemLoyaltyRewardResponseToJson(
         RedeemLoyaltyRewardResponse instance) =>
     <String, dynamic>{
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'event': instance.event.toJson(),
+      'event': instance.event?.toJson(),
     };

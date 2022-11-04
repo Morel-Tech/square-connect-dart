@@ -83,6 +83,7 @@ export 'loyalty_program_accrual_rule_visit_data.dart';
 export 'loyalty_program_expiration_policy.dart';
 export 'loyalty_program_reward_tier.dart';
 export 'loyalty_program_terminology.dart';
+export 'loyalty_reward.dart';
 export 'measurement_unit.dart';
 export 'measurement_unit_area.dart';
 export 'measurement_unit_custom.dart';

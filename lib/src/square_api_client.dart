@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:square_connect/square_connect.dart';
-import 'package:square_connect/src/functions_model/redeem_loyalty_reward.dart';
 
 part 'square_api_client.g.dart';
 
@@ -221,11 +220,11 @@ abstract class SquareApiClient {
   });
 
   @DELETE('/v2/loyalty/rewards/{reward_id}')
-  Future<DeleteLoyaltyRewardResponse> deleteLoyaltyReward({
+  Future<SquareResponse> deleteLoyaltyReward({
     @Path() required String rewardId,
   });
 
-  @DELETE('/v2/loyalty/rewards/{reward_id}')
+  @POST('/v2/loyalty/rewards/{reward_id}')
   Future<CalculateLoyaltyPointsResponse> calculateLoyaltyPoints({
     @Path() required String programId,
     @Body() CalculateLoyaltyPointsRequest request,

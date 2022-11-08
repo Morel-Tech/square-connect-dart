@@ -11,6 +11,7 @@ export 'create_order.dart';
 export 'create_payment.dart';
 export 'create_payment_link.dart';
 export 'delete_customer.dart';
+export 'delete_loyalty_reward.dart';
 export 'disable_card.dart';
 export 'list_cards.dart';
 export 'list_catalog.dart';

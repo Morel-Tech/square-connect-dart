@@ -220,7 +220,7 @@ abstract class SquareApiClient {
   });
 
   @DELETE('/v2/loyalty/rewards/{reward_id}')
-  Future<SquareResponse> deleteLoyaltyReward({
+  Future<DeleteLoyaltyReward> deleteLoyaltyReward({
     @Path() required String rewardId,
   });
 

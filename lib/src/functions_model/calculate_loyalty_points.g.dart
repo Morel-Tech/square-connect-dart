@@ -9,7 +9,7 @@ part of 'calculate_loyalty_points.dart';
 CalculateLoyaltyPointsRequest _$CalculateLoyaltyPointsRequestFromJson(
         Map<String, dynamic> json) =>
     CalculateLoyaltyPointsRequest(
-      orderId: json['order_id'] as int?,
+      orderId: json['order_id'] as String?,
       transactionAmountMoney: json['transaction_amount_money'] == null
           ? null
           : Money.fromJson(

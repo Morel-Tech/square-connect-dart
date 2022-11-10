@@ -19,7 +19,7 @@ class CalculateLoyaltyPointsRequest extends Equatable {
   /// Converts a [CalculateLoyaltyPointsRequest] to a [Map]
   Map<String, dynamic> toJson() => _$CalculateLoyaltyPointsRequestToJson(this);
 
-  final int? orderId;
+  final String? orderId;
   final Money? transactionAmountMoney;
   final String? loyaltyAccountId;
 

@@ -208,7 +208,7 @@ abstract class SquareApiClient {
     @Path() required String programId,
   });
 
-  @POST('/v2/loyalty/rewards/{reward_id}/redeem')
+  @POST('/v2/loyalty/rewards/{rewardId}/redeem')
   Future<RedeemLoyaltyRewardResponse> redeemLoyaltyReward({
     @Path() required String rewardId,
     @Body() required RedeemLoyaltyRewardRequest request,
@@ -219,12 +219,12 @@ abstract class SquareApiClient {
     @Body() required CreateLoyaltyRewardRequest request,
   });
 
-  @DELETE('/v2/loyalty/rewards/{reward_id}')
+  @DELETE('/v2/loyalty/rewards/{rewardId}')
   Future<DeleteLoyaltyReward> deleteLoyaltyReward({
     @Path() required String rewardId,
   });
 
-  @POST('/v2/loyalty/programs/{program_id}/calculate')
+  @POST('/v2/loyalty/programs/{programId}/calculate')
   Future<CalculateLoyaltyPointsResponse> calculateLoyaltyPoints({
     @Path() required String programId,
     @Body() required CalculateLoyaltyPointsRequest request,

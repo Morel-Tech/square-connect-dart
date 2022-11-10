@@ -644,7 +644,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RedeemLoyaltyRewardResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/loyalty/rewards/{reward_id}/redeem',
+                .compose(_dio.options, '/v2/loyalty/rewards/${rewardId}/redeem',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RedeemLoyaltyRewardResponse.fromJson(_result.data!);
@@ -678,7 +678,7 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DeleteLoyaltyReward>(
             Options(method: 'DELETE', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/loyalty/rewards/{reward_id}',
+                .compose(_dio.options, '/v2/loyalty/rewards/${rewardId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DeleteLoyaltyReward.fromJson(_result.data!);
@@ -697,7 +697,7 @@ class _SquareApiClient implements SquareApiClient {
         _setStreamType<CalculateLoyaltyPointsResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(
-                    _dio.options, '/v2/loyalty/programs/{program_id}/calculate',
+                    _dio.options, '/v2/loyalty/programs/${programId}/calculate',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = CalculateLoyaltyPointsResponse.fromJson(_result.data!);

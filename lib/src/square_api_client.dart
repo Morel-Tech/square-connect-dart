@@ -224,7 +224,7 @@ abstract class SquareApiClient {
     @Path() required String rewardId,
   });
 
-  @POST('/v2/loyalty/rewards/{reward_id}')
+  @POST('/v2/loyalty/programs/{program_id}/calculate')
   Future<CalculateLoyaltyPointsResponse> calculateLoyaltyPoints({
     @Path() required String programId,
     @Body() required CalculateLoyaltyPointsRequest request,

@@ -696,7 +696,8 @@ class _SquareApiClient implements SquareApiClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<CalculateLoyaltyPointsResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/v2/loyalty/rewards/{reward_id}',
+                .compose(
+                    _dio.options, '/v2/loyalty/programs/{program_id}/calculate',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = CalculateLoyaltyPointsResponse.fromJson(_result.data!);

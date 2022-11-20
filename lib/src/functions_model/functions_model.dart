@@ -24,6 +24,7 @@ export 'obtain_token.dart';
 export 'pay_order.dart';
 export 'redeem_loyalty_reward.dart';
 export 'retrieve_card.dart';
+export 'retrieve_catalog_objects.dart';
 export 'retrieve_customer.dart';
 export 'retrieve_location.dart';
 export 'retrieve_loyalty_account.dart';

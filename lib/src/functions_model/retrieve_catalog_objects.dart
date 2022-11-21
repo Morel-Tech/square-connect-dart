@@ -4,29 +4,28 @@ import 'package:square_connect/square_connect.dart';
 part 'retrieve_catalog_objects.g.dart';
 
 @JsonSerializable()
-class RetrieveCatalogObjectsResponse extends SquareResponse {
-  const RetrieveCatalogObjectsResponse({
-    required this.objects,
+class RetrieveCatalogObjectResponse extends SquareResponse {
+  const RetrieveCatalogObjectResponse({
+    required this.object,
     required this.relatedObjects,
     super.errors,
   });
 
-  /// Converts a [Map] to an [RetrieveCatalogObjectsResponse]
-  factory RetrieveCatalogObjectsResponse.fromJson(
+  /// Converts a [Map] to an [RetrieveCatalogObjectResponse]
+  factory RetrieveCatalogObjectResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$RetrieveCatalogObjectsResponseFromJson(json);
+      _$RetrieveCatalogObjectResponseFromJson(json);
 
-  /// Converts a [RetrieveCatalogObjectsResponse] to a [Map]
-  Map<String, dynamic> toJson() =>
-      _$RetrieveCatalogObjectsResponseToJson(this);
+  /// Converts a [RetrieveCatalogObjectResponse] to a [Map]
+  Map<String, dynamic> toJson() => _$RetrieveCatalogObjectResponseToJson(this);
 
-  final List<CatalogObject> objects;
+  final CatalogObject object;
   final List<CatalogObject> relatedObjects;
 
   @override
   List<Object?> get props => [
-        objects,
+        object,
         relatedObjects,
         errors,
       ];

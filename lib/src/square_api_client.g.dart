@@ -172,7 +172,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<RetrieveCatalogObjectsResponse> retrieveCatalogObject(
+  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject(
       {required objectId, includeRelatedObjects, catalogVersion}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -183,12 +183,12 @@ class _SquareApiClient implements SquareApiClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<RetrieveCatalogObjectsResponse>(
+        _setStreamType<RetrieveCatalogObjectResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/v2/catalog/object/${objectId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = RetrieveCatalogObjectsResponse.fromJson(_result.data!);
+    final value = RetrieveCatalogObjectResponse.fromJson(_result.data!);
     return value;
   }
 

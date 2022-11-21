@@ -29,7 +29,12 @@ class BatchRetrieveCatalogObjectsRequest extends Equatable {
   final bool? includeDeletedObjects;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        objectIds,
+        includeRelatedObjects,
+        catalogVersion,
+        includeDeletedObjects,
+      ];
 }
 
 @JsonSerializable()

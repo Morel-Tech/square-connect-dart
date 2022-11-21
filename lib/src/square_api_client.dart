@@ -64,7 +64,7 @@ abstract class SquareApiClient {
   });
 
   @GET('/v2/catalog/object/{objectId}')
-  Future<RetrieveCatalogObjectsResponse> retrieveCatalogObject({
+  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({
     @Path() String objectId,
     @Query('include_related_objects') bool? includeRelatedObjects,
     @Query('catalog_version') int? catalogVersion,

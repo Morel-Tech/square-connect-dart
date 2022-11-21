@@ -104,11 +104,3 @@ enum CatalogQueryType {
   @JsonValue('ITEMS_FOR_MODIFIER_LIST_QUERY')
   itemsForModifierListQuery,
 }
-
-// /// Indicates whether the modify tax basis
-// enum CatalogDiscountModifyTaxBasis {
-//   @JsonValue('MODIFY_TAX_BASIS')
-//   modifyTaxBasis,
-//   @JsonValue('DO_NOT_MODIFY_TAX_BASIS')
-//   doNotModifyTaxBasis,
-// }

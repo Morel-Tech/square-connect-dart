@@ -28,7 +28,7 @@ class CatalogObject extends Equatable {
     // this.customAttributeValues,
     // this.itemOptionData,
     // this.itemOptionValueData,
-    // this.pricingRuleData,
+    this.pricingRuleData,
     // this.productSetData,
     // this.quickAmountsSettingsData,
     // this.subscriptionPlanData,
@@ -63,7 +63,7 @@ class CatalogObject extends Equatable {
   // final Map<String, CatalogCustomAttributeValue>? customAttributeValues;
   // final CatalogItemOption? itemOptionData;
   // final CatalogItemOptionValue? itemOptionValueData;
-  // final CatalogPricingRule? pricingRuleData;
+  final CatalogPricingRule? pricingRuleData;
   // final CatalogProductSet? productSetData;
   // final CatalogQuickAmountsSettings? quickAmountsSettingsData;
   // final CatalogSubscriptionPlan? subscriptionPlanData;
@@ -93,7 +93,7 @@ class CatalogObject extends Equatable {
       // customAttributeValues,
       // itemOptionData,
       // itemOptionValueData,
-      // pricingRuleData,
+      pricingRuleData,
       // productSetData,
       // quickAmountsSettingsData,
       // subscriptionPlanData,

@@ -53,6 +53,10 @@ CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
           ? null
           : CatalogMeasurementUnit.fromJson(
               json['measurement_unit_data'] as Map<String, dynamic>),
+      pricingRuleData: json['pricing_rule_data'] == null
+          ? null
+          : CatalogPricingRule.fromJson(
+              json['pricing_rule_data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
@@ -74,6 +78,7 @@ Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
       'modifier_data': instance.modifierData?.toJson(),
       'image_data': instance.imageData?.toJson(),
       'measurement_unit_data': instance.measurementUnitData?.toJson(),
+      'pricing_rule_data': instance.pricingRuleData?.toJson(),
     };
 
 const _$CatalogObjectTypeEnumMap = {

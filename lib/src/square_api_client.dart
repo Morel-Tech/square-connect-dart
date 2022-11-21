@@ -65,15 +65,16 @@ abstract class SquareApiClient {
 
   @GET('/v2/catalog/object/{objectId}')
   Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({
-    @Path() String objectId,
+    @Path() required String objectId,
     @Query('include_related_objects') bool? includeRelatedObjects,
     @Query('catalog_version') int? catalogVersion,
   });
 
   @POST('/v2/catalog/batch-retrieve')
-  Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObject({
+  Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObjects({
     @Body()
-        BatchRetrieveCatalogObjectsRequest batchRetrieveCatalogObjectsRequest,
+        required BatchRetrieveCatalogObjectsRequest
+            batchRetrieveCatalogObjectsRequest,
   });
 
   @POST('/v2/catalog/search')

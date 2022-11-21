@@ -193,7 +193,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObject(
+  Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObjects(
       {required batchRetrieveCatalogObjectsRequest}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

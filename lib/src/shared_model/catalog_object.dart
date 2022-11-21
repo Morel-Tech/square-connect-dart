@@ -29,7 +29,7 @@ class CatalogObject extends Equatable {
     // this.itemOptionData,
     // this.itemOptionValueData,
     this.pricingRuleData,
-    // this.productSetData,
+    this.productSetData,
     // this.quickAmountsSettingsData,
     // this.subscriptionPlanData,
     // this.timePeriodData,
@@ -64,7 +64,7 @@ class CatalogObject extends Equatable {
   // final CatalogItemOption? itemOptionData;
   // final CatalogItemOptionValue? itemOptionValueData;
   final CatalogPricingRule? pricingRuleData;
-  // final CatalogProductSet? productSetData;
+  final CatalogProductSet? productSetData;
   // final CatalogQuickAmountsSettings? quickAmountsSettingsData;
   // final CatalogSubscriptionPlan? subscriptionPlanData;
   // final CatalogTimePeriod? timePeriodData;
@@ -94,7 +94,7 @@ class CatalogObject extends Equatable {
       // itemOptionData,
       // itemOptionValueData,
       pricingRuleData,
-      // productSetData,
+      productSetData,
       // quickAmountsSettingsData,
       // subscriptionPlanData,
       // timePeriodData,

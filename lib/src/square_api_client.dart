@@ -72,7 +72,8 @@ abstract class SquareApiClient {
 
   @POST('/v2/catalog/batch-retrieve')
   Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObject({
-    @Body() BatchRetrieveCatalogObjectsRequest searchCatalogRequest,
+    @Body()
+        BatchRetrieveCatalogObjectsRequest batchRetrieveCatalogObjectsRequest,
   });
 
   @POST('/v2/catalog/search')

@@ -194,12 +194,12 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObject(
-      {required searchCatalogRequest}) async {
+      {required batchRetrieveCatalogObjectsRequest}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(searchCatalogRequest.toJson());
+    _data.addAll(batchRetrieveCatalogObjectsRequest.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BatchRetrieveCatalogObjectsResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)

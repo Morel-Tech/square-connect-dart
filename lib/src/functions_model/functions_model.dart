@@ -1,5 +1,6 @@
 export 'accumulate_loyalty_points.dart';
 export 'adjust_loyalty_points.dart';
+export 'batch_retrieve_catalog_objects.dart';
 export 'calculate_loyalty_points.dart';
 export 'create_card.dart';
 export 'create_checkout.dart';
@@ -23,6 +24,7 @@ export 'obtain_token.dart';
 export 'pay_order.dart';
 export 'redeem_loyalty_reward.dart';
 export 'retrieve_card.dart';
+export 'retrieve_catalog_objects.dart';
 export 'retrieve_customer.dart';
 export 'retrieve_location.dart';
 export 'retrieve_loyalty_account.dart';

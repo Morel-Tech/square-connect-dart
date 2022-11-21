@@ -172,6 +172,45 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
+  Future<RetrieveCatalogObjectResponse> retrieveCatalogObject(
+      {required objectId, includeRelatedObjects, catalogVersion}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'include_related_objects': includeRelatedObjects,
+      r'catalog_version': catalogVersion
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RetrieveCatalogObjectResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/v2/catalog/object/${objectId}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RetrieveCatalogObjectResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObject(
+      {required searchCatalogRequest}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(searchCatalogRequest.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BatchRetrieveCatalogObjectsResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/v2/catalog/batch-retrieve',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BatchRetrieveCatalogObjectsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<ListCatalogResponse> searchCatalog(searchCatalogRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

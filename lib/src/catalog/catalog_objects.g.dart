@@ -207,6 +207,8 @@ CatalogPricingRule _$CatalogPricingRuleFromJson(Map<String, dynamic> json) =>
       validFromLocalTime: json['valid_from_local_time'] as String?,
       validUntilDate: json['valid_until_date'] as String?,
       validUntilLocalTime: json['valid_until_local_time'] as String?,
+      discountTargetScope: $enumDecodeNullable(
+          _$DiscountTargetScopeTypeEnumMap, json['discount_target_scope']),
     );
 
 Map<String, dynamic> _$CatalogPricingRuleToJson(CatalogPricingRule instance) =>
@@ -224,7 +226,14 @@ Map<String, dynamic> _$CatalogPricingRuleToJson(CatalogPricingRule instance) =>
       'valid_from_local_time': instance.validFromLocalTime,
       'valid_until_date': instance.validUntilDate,
       'valid_until_local_time': instance.validUntilLocalTime,
+      'discount_target_scope':
+          _$DiscountTargetScopeTypeEnumMap[instance.discountTargetScope],
     };
+
+const _$DiscountTargetScopeTypeEnumMap = {
+  DiscountTargetScopeType.wholePurchase: 'WHOLE_PURCHASE',
+  DiscountTargetScopeType.lineItem: 'LINE_ITEM',
+};
 
 CatalogProductSet _$CatalogProductSetFromJson(Map<String, dynamic> json) =>
     CatalogProductSet(

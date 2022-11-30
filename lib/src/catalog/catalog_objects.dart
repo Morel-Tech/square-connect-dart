@@ -253,6 +253,7 @@ class CatalogPricingRule extends Equatable {
     this.validFromLocalTime,
     this.validUntilDate,
     this.validUntilLocalTime,
+    this.discountTargetScope,
   });
 
   /// Converts a [Map] to an [CatalogPricingRule]
@@ -274,6 +275,7 @@ class CatalogPricingRule extends Equatable {
   final String? validFromLocalTime;
   final String? validUntilDate;
   final String? validUntilLocalTime;
+  final DiscountTargetScopeType? discountTargetScope;
 
   @override
   List<Object?> get props => [
@@ -289,6 +291,7 @@ class CatalogPricingRule extends Equatable {
         validFromLocalTime,
         validUntilDate,
         validUntilLocalTime,
+        discountTargetScope,
       ];
 }
 

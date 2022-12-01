@@ -43,7 +43,7 @@ CatalogDiscount _$CatalogDiscountFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       discountType:
           $enumDecode(_$CatalogDiscountTypeEnumMap, json['discount_type']),
-      percentage: (json['percentage'] as num).toDouble(),
+      percentage: json['percentage'] as String,
       amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
       pinRequired: json['pin_required'] as bool,
       labelColor: json['label_color'] as String,

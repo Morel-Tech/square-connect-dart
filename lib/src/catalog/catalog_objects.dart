@@ -62,7 +62,7 @@ class CatalogDiscount extends Equatable {
 
   final String name;
   final CatalogDiscountType discountType;
-  final double percentage;
+  final String percentage;
   final Money amountMoney;
   final bool pinRequired;
   final String labelColor;

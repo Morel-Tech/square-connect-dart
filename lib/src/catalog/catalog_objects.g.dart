@@ -7,22 +7,22 @@ part of 'catalog_objects.dart';
 // **************************************************************************
 
 CatalogTax _$CatalogTaxFromJson(Map<String, dynamic> json) => CatalogTax(
-      name: json['name'] as String,
-      calculationPhase:
-          $enumDecode(_$TaxCalculationPhaseEnumMap, json['calculation_phase']),
-      inclusionType:
-          $enumDecode(_$TaxInclusionTypeEnumMap, json['inclusion_type']),
-      percentage: (json['percentage'] as num).toDouble(),
-      appliesToCustomAmounts: json['applies_to_custom_amounts'] as bool,
-      enabled: json['enabled'] as bool,
+      name: json['name'] as String?,
+      calculationPhase: $enumDecodeNullable(
+          _$TaxCalculationPhaseEnumMap, json['calculation_phase']),
+      inclusionType: $enumDecodeNullable(
+          _$TaxInclusionTypeEnumMap, json['inclusion_type']),
+      percentage: (json['percentage'] as num?)?.toDouble(),
+      appliesToCustomAmounts: json['applies_to_custom_amounts'] as bool?,
+      enabled: json['enabled'] as bool?,
     );
 
 Map<String, dynamic> _$CatalogTaxToJson(CatalogTax instance) =>
     <String, dynamic>{
       'name': instance.name,
       'calculation_phase':
-          _$TaxCalculationPhaseEnumMap[instance.calculationPhase]!,
-      'inclusion_type': _$TaxInclusionTypeEnumMap[instance.inclusionType]!,
+          _$TaxCalculationPhaseEnumMap[instance.calculationPhase],
+      'inclusion_type': _$TaxInclusionTypeEnumMap[instance.inclusionType],
       'percentage': instance.percentage,
       'applies_to_custom_amounts': instance.appliesToCustomAmounts,
       'enabled': instance.enabled,
@@ -40,21 +40,23 @@ const _$TaxInclusionTypeEnumMap = {
 
 CatalogDiscount _$CatalogDiscountFromJson(Map<String, dynamic> json) =>
     CatalogDiscount(
-      name: json['name'] as String,
-      discountType:
-          $enumDecode(_$CatalogDiscountTypeEnumMap, json['discount_type']),
-      percentage: json['percentage'] as String,
-      amountMoney: Money.fromJson(json['amount_money'] as Map<String, dynamic>),
-      pinRequired: json['pin_required'] as bool,
-      labelColor: json['label_color'] as String,
+      name: json['name'] as String?,
+      discountType: $enumDecodeNullable(
+          _$CatalogDiscountTypeEnumMap, json['discount_type']),
+      percentage: json['percentage'] as String?,
+      amountMoney: json['amount_money'] == null
+          ? null
+          : Money.fromJson(json['amount_money'] as Map<String, dynamic>),
+      pinRequired: json['pin_required'] as bool?,
+      labelColor: json['label_color'] as String?,
     );
 
 Map<String, dynamic> _$CatalogDiscountToJson(CatalogDiscount instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'discount_type': _$CatalogDiscountTypeEnumMap[instance.discountType]!,
+      'discount_type': _$CatalogDiscountTypeEnumMap[instance.discountType],
       'percentage': instance.percentage,
-      'amount_money': instance.amountMoney.toJson(),
+      'amount_money': instance.amountMoney?.toJson(),
       'pin_required': instance.pinRequired,
       'label_color': instance.labelColor,
     };
@@ -69,15 +71,17 @@ const _$CatalogDiscountTypeEnumMap = {
 CatalogMeasurementUnit _$CatalogMeasurementUnitFromJson(
         Map<String, dynamic> json) =>
     CatalogMeasurementUnit(
-      measurementUnit: MeasurementUnit.fromJson(
-          json['measurement_unit'] as Map<String, dynamic>),
-      precision: json['precision'] as int,
+      measurementUnit: json['measurement_unit'] == null
+          ? null
+          : MeasurementUnit.fromJson(
+              json['measurement_unit'] as Map<String, dynamic>),
+      precision: json['precision'] as int?,
     );
 
 Map<String, dynamic> _$CatalogMeasurementUnitToJson(
         CatalogMeasurementUnit instance) =>
     <String, dynamic>{
-      'measurement_unit': instance.measurementUnit.toJson(),
+      'measurement_unit': instance.measurementUnit?.toJson(),
       'precision': instance.precision,
     };
 
@@ -97,24 +101,25 @@ CatalogInfoResponseLimits _$CatalogInfoResponseLimitsFromJson(
         Map<String, dynamic> json) =>
     CatalogInfoResponseLimits(
       batchUpsertMaxObjectsPerBatch:
-          json['batch_upsert_max_objects_per_batch'] as int,
-      batchUpsertMaxTotalObjects: json['batch_upsert_max_total_objects'] as int,
-      batchRetrieveMaxObjectIds: json['batch_retrieve_max_object_ids'] as int,
-      searchMaxPageLimit: json['search_max_page_limit'] as int,
-      batchDeleteMaxObjectIds: json['batch_delete_max_object_ids'] as int,
-      updateItemTaxesMaxItemIds: json['update_item_taxes_max_item_ids'] as int,
+          json['batch_upsert_max_objects_per_batch'] as int?,
+      batchUpsertMaxTotalObjects:
+          json['batch_upsert_max_total_objects'] as int?,
+      batchRetrieveMaxObjectIds: json['batch_retrieve_max_object_ids'] as int?,
+      searchMaxPageLimit: json['search_max_page_limit'] as int?,
+      batchDeleteMaxObjectIds: json['batch_delete_max_object_ids'] as int?,
+      updateItemTaxesMaxItemIds: json['update_item_taxes_max_item_ids'] as int?,
       updateItemTaxesMaxTaxesToEnable:
-          json['update_item_taxes_max_taxes_to_enable'] as int,
+          json['update_item_taxes_max_taxes_to_enable'] as int?,
       updateItemTaxesMaxTaxesToDisable:
-          json['update_item_taxes_max_taxes_to_disable'] as int,
+          json['update_item_taxes_max_taxes_to_disable'] as int?,
       updateItemModifierListsMaxItemIds:
-          json['update_item_modifier_lists_max_item_ids'] as int,
+          json['update_item_modifier_lists_max_item_ids'] as int?,
       updateItemModifierListsMaxModifierListsToEnable:
           json['update_item_modifier_lists_max_modifier_lists_to_enable']
-              as int,
+              as int?,
       updateItemModifierListsMaxModifierListsToDisable:
           json['update_item_modifier_lists_max_modifier_lists_to_disable']
-              as int,
+              as int?,
     );
 
 Map<String, dynamic> _$CatalogInfoResponseLimitsToJson(
@@ -143,41 +148,43 @@ StandardUnitDescriptionGroup _$StandardUnitDescriptionGroupFromJson(
         Map<String, dynamic> json) =>
     StandardUnitDescriptionGroup(
       standardUnitDescriptions:
-          (json['standard_unit_descriptions'] as List<dynamic>)
-              .map((e) =>
+          (json['standard_unit_descriptions'] as List<dynamic>?)
+              ?.map((e) =>
                   StandardUnitDescription.fromJson(e as Map<String, dynamic>))
               .toList(),
-      languageCode: json['language_code'] as String,
+      languageCode: json['language_code'] as String?,
     );
 
 Map<String, dynamic> _$StandardUnitDescriptionGroupToJson(
         StandardUnitDescriptionGroup instance) =>
     <String, dynamic>{
       'standard_unit_descriptions':
-          instance.standardUnitDescriptions.map((e) => e.toJson()).toList(),
+          instance.standardUnitDescriptions?.map((e) => e.toJson()).toList(),
       'language_code': instance.languageCode,
     };
 
 StandardUnitDescription _$StandardUnitDescriptionFromJson(
         Map<String, dynamic> json) =>
     StandardUnitDescription(
-      unit: MeasurementUnit.fromJson(json['unit'] as Map<String, dynamic>),
-      name: json['name'] as String,
-      abbreviation: json['abbreviation'] as String,
+      unit: json['unit'] == null
+          ? null
+          : MeasurementUnit.fromJson(json['unit'] as Map<String, dynamic>),
+      name: json['name'] as String?,
+      abbreviation: json['abbreviation'] as String?,
     );
 
 Map<String, dynamic> _$StandardUnitDescriptionToJson(
         StandardUnitDescription instance) =>
     <String, dynamic>{
-      'unit': instance.unit.toJson(),
+      'unit': instance.unit?.toJson(),
       'name': instance.name,
       'abbreviation': instance.abbreviation,
     };
 
 CatalogIdMapping _$CatalogIdMappingFromJson(Map<String, dynamic> json) =>
     CatalogIdMapping(
-      clientObjectId: json['client_object_id'] as String,
-      objectId: json['object_id'] as String,
+      clientObjectId: json['client_object_id'] as String?,
+      objectId: json['object_id'] as String?,
     );
 
 Map<String, dynamic> _$CatalogIdMappingToJson(CatalogIdMapping instance) =>

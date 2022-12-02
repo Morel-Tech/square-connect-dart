@@ -7,12 +7,12 @@ part 'catalog_objects.g.dart';
 @JsonSerializable()
 class CatalogTax extends Equatable {
   const CatalogTax({
-    required this.name,
-    required this.calculationPhase,
-    required this.inclusionType,
-    required this.percentage,
-    required this.appliesToCustomAmounts,
-    required this.enabled,
+    this.name,
+    this.calculationPhase,
+    this.inclusionType,
+    this.percentage,
+    this.appliesToCustomAmounts,
+    this.enabled,
   });
 
   /// Converts a [Map] to an [CatalogTax]
@@ -22,12 +22,12 @@ class CatalogTax extends Equatable {
   /// Converts a [CatalogTax] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogTaxToJson(this);
 
-  final String name;
-  final TaxCalculationPhase calculationPhase;
-  final TaxInclusionType inclusionType;
-  final double percentage;
-  final bool appliesToCustomAmounts;
-  final bool enabled;
+  final String? name;
+  final TaxCalculationPhase? calculationPhase;
+  final TaxInclusionType? inclusionType;
+  final double? percentage;
+  final bool? appliesToCustomAmounts;
+  final bool? enabled;
 
   @override
   List<Object?> get props {
@@ -45,12 +45,12 @@ class CatalogTax extends Equatable {
 @JsonSerializable()
 class CatalogDiscount extends Equatable {
   const CatalogDiscount({
-    required this.name,
-    required this.discountType,
-    required this.percentage,
-    required this.amountMoney,
-    required this.pinRequired,
-    required this.labelColor,
+    this.name,
+    this.discountType,
+    this.percentage,
+    this.amountMoney,
+    this.pinRequired,
+    this.labelColor,
   });
 
   /// Converts a [Map] to an [CatalogDiscount]
@@ -60,12 +60,12 @@ class CatalogDiscount extends Equatable {
   /// Converts a [CatalogDiscount] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogDiscountToJson(this);
 
-  final String name;
-  final CatalogDiscountType discountType;
-  final String percentage;
-  final Money amountMoney;
-  final bool pinRequired;
-  final String labelColor;
+  final String? name;
+  final CatalogDiscountType? discountType;
+  final String? percentage;
+  final Money? amountMoney;
+  final bool? pinRequired;
+  final String? labelColor;
 
   @override
   List<Object?> get props {
@@ -83,8 +83,8 @@ class CatalogDiscount extends Equatable {
 @JsonSerializable()
 class CatalogMeasurementUnit extends Equatable {
   const CatalogMeasurementUnit({
-    required this.measurementUnit,
-    required this.precision,
+    this.measurementUnit,
+    this.precision,
   });
 
   /// Converts a [Map] to an [CatalogMeasurementUnit]
@@ -94,8 +94,8 @@ class CatalogMeasurementUnit extends Equatable {
   /// Converts a [CatalogMeasurementUnit] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogMeasurementUnitToJson(this);
 
-  final MeasurementUnit measurementUnit;
-  final int precision;
+  final MeasurementUnit? measurementUnit;
+  final int? precision;
 
   @override
   List<Object?> get props => [measurementUnit, precision];
@@ -123,17 +123,17 @@ class CatalogObjectBatch extends Equatable {
 @JsonSerializable()
 class CatalogInfoResponseLimits extends Equatable {
   const CatalogInfoResponseLimits({
-    required this.batchUpsertMaxObjectsPerBatch,
-    required this.batchUpsertMaxTotalObjects,
-    required this.batchRetrieveMaxObjectIds,
-    required this.searchMaxPageLimit,
-    required this.batchDeleteMaxObjectIds,
-    required this.updateItemTaxesMaxItemIds,
-    required this.updateItemTaxesMaxTaxesToEnable,
-    required this.updateItemTaxesMaxTaxesToDisable,
-    required this.updateItemModifierListsMaxItemIds,
-    required this.updateItemModifierListsMaxModifierListsToEnable,
-    required this.updateItemModifierListsMaxModifierListsToDisable,
+    this.batchUpsertMaxObjectsPerBatch,
+    this.batchUpsertMaxTotalObjects,
+    this.batchRetrieveMaxObjectIds,
+    this.searchMaxPageLimit,
+    this.batchDeleteMaxObjectIds,
+    this.updateItemTaxesMaxItemIds,
+    this.updateItemTaxesMaxTaxesToEnable,
+    this.updateItemTaxesMaxTaxesToDisable,
+    this.updateItemModifierListsMaxItemIds,
+    this.updateItemModifierListsMaxModifierListsToEnable,
+    this.updateItemModifierListsMaxModifierListsToDisable,
   });
 
   /// Converts a [Map] to an [CatalogInfoResponseLimits]
@@ -143,17 +143,17 @@ class CatalogInfoResponseLimits extends Equatable {
   /// Converts a [CatalogInfoResponseLimits] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogInfoResponseLimitsToJson(this);
 
-  final int batchUpsertMaxObjectsPerBatch;
-  final int batchUpsertMaxTotalObjects;
-  final int batchRetrieveMaxObjectIds;
-  final int searchMaxPageLimit;
-  final int batchDeleteMaxObjectIds;
-  final int updateItemTaxesMaxItemIds;
-  final int updateItemTaxesMaxTaxesToEnable;
-  final int updateItemTaxesMaxTaxesToDisable;
-  final int updateItemModifierListsMaxItemIds;
-  final int updateItemModifierListsMaxModifierListsToEnable;
-  final int updateItemModifierListsMaxModifierListsToDisable;
+  final int? batchUpsertMaxObjectsPerBatch;
+  final int? batchUpsertMaxTotalObjects;
+  final int? batchRetrieveMaxObjectIds;
+  final int? searchMaxPageLimit;
+  final int? batchDeleteMaxObjectIds;
+  final int? updateItemTaxesMaxItemIds;
+  final int? updateItemTaxesMaxTaxesToEnable;
+  final int? updateItemTaxesMaxTaxesToDisable;
+  final int? updateItemModifierListsMaxItemIds;
+  final int? updateItemModifierListsMaxModifierListsToEnable;
+  final int? updateItemModifierListsMaxModifierListsToDisable;
 
   @override
   List<Object?> get props {
@@ -176,8 +176,8 @@ class CatalogInfoResponseLimits extends Equatable {
 @JsonSerializable()
 class StandardUnitDescriptionGroup extends Equatable {
   const StandardUnitDescriptionGroup({
-    required this.standardUnitDescriptions,
-    required this.languageCode,
+    this.standardUnitDescriptions,
+    this.languageCode,
   });
 
   /// Converts a [Map] to an [StandardUnitDescriptionGroup]
@@ -187,8 +187,8 @@ class StandardUnitDescriptionGroup extends Equatable {
   /// Converts a [StandardUnitDescriptionGroup] to a [Map]
   Map<String, dynamic> toJson() => _$StandardUnitDescriptionGroupToJson(this);
 
-  final List<StandardUnitDescription> standardUnitDescriptions;
-  final String languageCode;
+  final List<StandardUnitDescription>? standardUnitDescriptions;
+  final String? languageCode;
 
   @override
   List<Object?> get props => [standardUnitDescriptions, languageCode];
@@ -197,9 +197,9 @@ class StandardUnitDescriptionGroup extends Equatable {
 @JsonSerializable()
 class StandardUnitDescription extends Equatable {
   const StandardUnitDescription({
-    required this.unit,
-    required this.name,
-    required this.abbreviation,
+    this.unit,
+    this.name,
+    this.abbreviation,
   });
 
   /// Converts a [Map] to an [StandardUnitDescription]
@@ -209,9 +209,9 @@ class StandardUnitDescription extends Equatable {
   /// Converts a [StandardUnitDescription] to a [Map]
   Map<String, dynamic> toJson() => _$StandardUnitDescriptionToJson(this);
 
-  final MeasurementUnit unit;
-  final String name;
-  final String abbreviation;
+  final MeasurementUnit? unit;
+  final String? name;
+  final String? abbreviation;
 
   @override
   List<Object?> get props => [unit, name, abbreviation];
@@ -220,8 +220,8 @@ class StandardUnitDescription extends Equatable {
 @JsonSerializable()
 class CatalogIdMapping extends Equatable {
   const CatalogIdMapping({
-    required this.clientObjectId,
-    required this.objectId,
+    this.clientObjectId,
+    this.objectId,
   });
 
   /// Converts a [Map] to an [CatalogIdMapping]
@@ -231,8 +231,8 @@ class CatalogIdMapping extends Equatable {
   /// Converts a [CatalogIdMapping] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogIdMappingToJson(this);
 
-  final String clientObjectId;
-  final String objectId;
+  final String? clientObjectId;
+  final String? objectId;
 
   @override
   List<Object?> get props => [clientObjectId, objectId];

@@ -10,8 +10,6 @@ This package allows Dart developers to easily interact with [Square APIs](https:
 
 Due to the way Square authenticates it's API, **DO NOT** use this package in Flutter apps! There is currently no supported way to securely store API tokens on the client device. This package is entirely for server-side Dart applicatations like those created with the [Dart Functions Framework](https://pub.dev/packages/functions_framework).
 
-Currently only Locations API is supported, but plans are to have all Square APIs supported.
-
 ## Usage
 
 1. Create Square API Client.
@@ -57,4 +55,4 @@ If pagination is supported/needed, the response object will contain a cursor str
 
 ## Contributions
 
-If you have any feedback on how to improve the package for usablility, or bugs to report, please do so at https://github.com/mtwichel/square-connect-flutter-library/issues.
+If you have any feedback on how to improve the package for usablility, or bugs to report, please do so at https://github.com/morel-tech/square-connect-dart/issues.

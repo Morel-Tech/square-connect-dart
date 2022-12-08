@@ -7,9 +7,9 @@ part 'orders_objects.g.dart';
 @JsonSerializable()
 class OrderEntry extends Equatable {
   const OrderEntry({
-    required this.orderId,
-    required this.locationId,
-    required this.version,
+    this.orderId,
+    this.locationId,
+    this.version,
   });
 
   /// Converts a [Map] to an [OrderEntry]
@@ -19,9 +19,9 @@ class OrderEntry extends Equatable {
   /// Converts a [OrderEntry] to a [Map]
   Map<String, dynamic> toJson() => _$OrderEntryToJson(this);
 
-  final String orderId;
-  final String locationId;
-  final int version;
+  final String? orderId;
+  final String? locationId;
+  final int? version;
 
   @override
   List<Object?> get props => [orderId, locationId, version];
@@ -30,14 +30,14 @@ class OrderEntry extends Equatable {
 @JsonSerializable()
 class OrderLineItemDiscount extends Equatable {
   const OrderLineItemDiscount({
-    required this.uid,
-    required this.catalogObjectId,
-    required this.name,
-    required this.type,
-    required this.percentage,
-    required this.amountMoney,
-    required this.appliedMoney,
-    required this.scope,
+    this.uid,
+    this.catalogObjectId,
+    this.name,
+    this.type,
+    this.percentage,
+    this.amountMoney,
+    this.appliedMoney,
+    this.scope,
   });
 
   /// Converts a [Map] to an [OrderLineItemDiscount]
@@ -47,14 +47,14 @@ class OrderLineItemDiscount extends Equatable {
   /// Converts a [OrderLineItemDiscount] to a [Map]
   Map<String, dynamic> toJson() => _$OrderLineItemDiscountToJson(this);
 
-  final String uid;
-  final String catalogObjectId;
-  final String name;
-  final OrderLineItemDiscountType type;
-  final double percentage;
-  final Money amountMoney;
-  final Money appliedMoney;
-  final OrderLineItemDiscountScope scope;
+  final String? uid;
+  final String? catalogObjectId;
+  final String? name;
+  final OrderLineItemDiscountType? type;
+  final double? percentage;
+  final Money? amountMoney;
+  final Money? appliedMoney;
+  final OrderLineItemDiscountScope? scope;
 
   @override
   List<Object?> get props {
@@ -74,11 +74,11 @@ class OrderLineItemDiscount extends Equatable {
 @JsonSerializable()
 class OrderMoneyAmounts extends Equatable {
   const OrderMoneyAmounts({
-    required this.totalMoney,
-    required this.taxMoney,
-    required this.discountMoney,
-    required this.tipMoney,
-    required this.serviceChargeMoney,
+    this.totalMoney,
+    this.taxMoney,
+    this.discountMoney,
+    this.tipMoney,
+    this.serviceChargeMoney,
   });
 
   /// Converts a [Map] to an [OrderMoneyAmounts]
@@ -88,11 +88,11 @@ class OrderMoneyAmounts extends Equatable {
   /// Converts a [OrderMoneyAmounts] to a [Map]
   Map<String, dynamic> toJson() => _$OrderMoneyAmountsToJson(this);
 
-  final Money totalMoney;
-  final Money taxMoney;
-  final Money discountMoney;
-  final Money tipMoney;
-  final Money serviceChargeMoney;
+  final Money? totalMoney;
+  final Money? taxMoney;
+  final Money? discountMoney;
+  final Money? tipMoney;
+  final Money? serviceChargeMoney;
 
   @override
   List<Object?> get props {
@@ -109,21 +109,21 @@ class OrderMoneyAmounts extends Equatable {
 @JsonSerializable()
 class OrderFulfillmentShipmentDetails extends Equatable {
   const OrderFulfillmentShipmentDetails({
-    required this.cancelReason,
-    required this.canceledAt,
-    required this.carrier,
-    required this.expectedShippedAt,
-    required this.failedAt,
-    required this.failureReason,
-    required this.inProgressAt,
-    required this.packagedAt,
-    required this.placedAt,
-    required this.recipient,
-    required this.shippedAt,
-    required this.shippingNote,
-    required this.shippingType,
-    required this.trackingNumber,
-    required this.trackingUrl,
+    this.cancelReason,
+    this.canceledAt,
+    this.carrier,
+    this.expectedShippedAt,
+    this.failedAt,
+    this.failureReason,
+    this.inProgressAt,
+    this.packagedAt,
+    this.placedAt,
+    this.recipient,
+    this.shippedAt,
+    this.shippingNote,
+    this.shippingType,
+    this.trackingNumber,
+    this.trackingUrl,
   });
 
   /// Converts a [Map] to an [OrderFulfillmentShipmentDetails]
@@ -134,21 +134,21 @@ class OrderFulfillmentShipmentDetails extends Equatable {
   Map<String, dynamic> toJson() =>
       _$OrderFulfillmentShipmentDetailsToJson(this);
 
-  final String cancelReason;
-  final DateTime canceledAt;
-  final String carrier;
-  final DateTime expectedShippedAt;
-  final DateTime failedAt;
-  final DateTime failureReason;
-  final DateTime inProgressAt;
-  final DateTime packagedAt;
-  final DateTime placedAt;
-  final OrderFulfillmentRecipient recipient;
-  final DateTime shippedAt;
-  final String shippingNote;
-  final String shippingType;
-  final String trackingNumber;
-  final String trackingUrl;
+  final String? cancelReason;
+  final DateTime? canceledAt;
+  final String? carrier;
+  final DateTime? expectedShippedAt;
+  final DateTime? failedAt;
+  final DateTime? failureReason;
+  final DateTime? inProgressAt;
+  final DateTime? packagedAt;
+  final DateTime? placedAt;
+  final OrderFulfillmentRecipient? recipient;
+  final DateTime? shippedAt;
+  final String? shippingNote;
+  final String? shippingType;
+  final String? trackingNumber;
+  final String? trackingUrl;
 
   @override
   List<Object?> get props {
@@ -175,9 +175,9 @@ class OrderFulfillmentShipmentDetails extends Equatable {
 @JsonSerializable()
 class OrderRoundingAdjustment extends Equatable {
   const OrderRoundingAdjustment({
-    required this.uid,
-    required this.name,
-    required this.amountMoney,
+    this.uid,
+    this.name,
+    this.amountMoney,
   });
 
   /// Converts a [Map] to an [OrderRoundingAdjustment]
@@ -187,9 +187,9 @@ class OrderRoundingAdjustment extends Equatable {
   /// Converts a [OrderRoundingAdjustment] to a [Map]
   Map<String, dynamic> toJson() => _$OrderRoundingAdjustmentToJson(this);
 
-  final String uid;
-  final String name;
-  final Money amountMoney;
+  final String? uid;
+  final String? name;
+  final Money? amountMoney;
 
   @override
   List<Object?> get props => [uid, name, amountMoney];
@@ -198,14 +198,14 @@ class OrderRoundingAdjustment extends Equatable {
 @JsonSerializable()
 class OrderReturn extends Equatable {
   const OrderReturn({
-    required this.id,
-    required this.sourceOrderId,
-    required this.returnLineItems,
-    required this.returnServiceCharges,
-    required this.returnTaxes,
-    required this.returnDiscounts,
-    required this.roundingAdjustment,
-    required this.returnAmounts,
+    this.id,
+    this.sourceOrderId,
+    this.returnLineItems,
+    this.returnServiceCharges,
+    this.returnTaxes,
+    this.returnDiscounts,
+    this.roundingAdjustment,
+    this.returnAmounts,
   });
 
   /// Converts a [Map] to an [OrderReturn]
@@ -215,14 +215,14 @@ class OrderReturn extends Equatable {
   /// Converts a [OrderReturn] to a [Map]
   Map<String, dynamic> toJson() => _$OrderReturnToJson(this);
 
-  final String id;
-  final String sourceOrderId;
-  final List<OrderReturnLineItem> returnLineItems;
-  final List<OrderReturnServiceCharge> returnServiceCharges;
-  final List<OrderReturnTax> returnTaxes;
-  final List<OrderReturnDiscount> returnDiscounts;
-  final OrderRoundingAdjustment roundingAdjustment;
-  final OrderMoneyAmounts returnAmounts;
+  final String? id;
+  final String? sourceOrderId;
+  final List<OrderReturnLineItem>? returnLineItems;
+  final List<OrderReturnServiceCharge>? returnServiceCharges;
+  final List<OrderReturnTax>? returnTaxes;
+  final List<OrderReturnDiscount>? returnDiscounts;
+  final OrderRoundingAdjustment? roundingAdjustment;
+  final OrderMoneyAmounts? returnAmounts;
 
   @override
   List<Object?> get props {
@@ -242,23 +242,23 @@ class OrderReturn extends Equatable {
 @JsonSerializable()
 class OrderReturnLineItem extends Equatable {
   const OrderReturnLineItem({
-    required this.id,
-    required this.sourceLineItemId,
-    required this.name,
-    required this.quantity,
-    required this.quantityUnit,
-    required this.note,
-    required this.catalogObjectId,
-    required this.variationName,
-    required this.returnModifiers,
-    required this.returnTaxes,
-    required this.returnDiscounts,
-    required this.basePriceMoney,
-    required this.variationTotalPriceMoney,
-    required this.grossReturnMoney,
-    required this.totalTaxMoney,
-    required this.totalDiscountMoney,
-    required this.totalMoney,
+    this.id,
+    this.sourceLineItemId,
+    this.name,
+    this.quantity,
+    this.quantityUnit,
+    this.note,
+    this.catalogObjectId,
+    this.variationName,
+    this.returnModifiers,
+    this.returnTaxes,
+    this.returnDiscounts,
+    this.basePriceMoney,
+    this.variationTotalPriceMoney,
+    this.grossReturnMoney,
+    this.totalTaxMoney,
+    this.totalDiscountMoney,
+    this.totalMoney,
   });
 
   /// Converts a [Map] to an [OrderReturnLineItem]
@@ -268,23 +268,23 @@ class OrderReturnLineItem extends Equatable {
   /// Converts a [OrderReturnLineItem] to a [Map]
   Map<String, dynamic> toJson() => _$OrderReturnLineItemToJson(this);
 
-  final String id;
-  final String sourceLineItemId;
-  final String name;
-  final double quantity;
-  final OrderQuantityUnit quantityUnit;
-  final String note;
-  final String catalogObjectId;
-  final String variationName;
-  final List<OrderReturnLineItemModifier> returnModifiers;
-  final List<OrderReturnTax> returnTaxes;
-  final List<OrderReturnDiscount> returnDiscounts;
-  final Money basePriceMoney;
-  final Money variationTotalPriceMoney;
-  final Money grossReturnMoney;
-  final Money totalTaxMoney;
-  final Money totalDiscountMoney;
-  final Money totalMoney;
+  final String? id;
+  final String? sourceLineItemId;
+  final String? name;
+  final double? quantity;
+  final OrderQuantityUnit? quantityUnit;
+  final String? note;
+  final String? catalogObjectId;
+  final String? variationName;
+  final List<OrderReturnLineItemModifier>? returnModifiers;
+  final List<OrderReturnTax>? returnTaxes;
+  final List<OrderReturnDiscount>? returnDiscounts;
+  final Money? basePriceMoney;
+  final Money? variationTotalPriceMoney;
+  final Money? grossReturnMoney;
+  final Money? totalTaxMoney;
+  final Money? totalDiscountMoney;
+  final Money? totalMoney;
 
   @override
   List<Object?> get props {
@@ -313,12 +313,12 @@ class OrderReturnLineItem extends Equatable {
 @JsonSerializable()
 class OrderReturnLineItemModifier {
   const OrderReturnLineItemModifier({
-    required this.id,
-    required this.sourceModifierId,
-    required this.catalogObjectId,
-    required this.name,
-    required this.basePriceMoney,
-    required this.totalPriceMoney,
+    this.id,
+    this.sourceModifierId,
+    this.catalogObjectId,
+    this.name,
+    this.basePriceMoney,
+    this.totalPriceMoney,
   });
 
   /// Converts a [Map] to an [OrderReturnLineItemModifier]
@@ -328,25 +328,25 @@ class OrderReturnLineItemModifier {
   /// Converts a [OrderReturnLineItemModifier] to a [Map]
   Map<String, dynamic> toJson() => _$OrderReturnLineItemModifierToJson(this);
 
-  final String id;
-  final String sourceModifierId;
-  final String catalogObjectId;
-  final String name;
-  final Money basePriceMoney;
-  final Money totalPriceMoney;
+  final String? id;
+  final String? sourceModifierId;
+  final String? catalogObjectId;
+  final String? name;
+  final Money? basePriceMoney;
+  final Money? totalPriceMoney;
 }
 
 @JsonSerializable()
 class OrderReturnTax extends Equatable {
   const OrderReturnTax({
-    required this.id,
-    required this.sourceTaxId,
-    required this.catalogObjectId,
-    required this.name,
-    required this.type,
-    required this.percentage,
-    required this.appliedMoney,
-    required this.scope,
+    this.id,
+    this.sourceTaxId,
+    this.catalogObjectId,
+    this.name,
+    this.type,
+    this.percentage,
+    this.appliedMoney,
+    this.scope,
   });
 
   /// Converts a [Map] to an [OrderReturnTax]
@@ -356,14 +356,14 @@ class OrderReturnTax extends Equatable {
   /// Converts a [OrderReturnTax] to a [Map]
   Map<String, dynamic> toJson() => _$OrderReturnTaxToJson(this);
 
-  final String id;
-  final String sourceTaxId;
-  final String catalogObjectId;
-  final String name;
-  final OrderLineItemTaxType type;
-  final double percentage;
-  final Money appliedMoney;
-  final OrderLineItemTaxScope scope;
+  final String? id;
+  final String? sourceTaxId;
+  final String? catalogObjectId;
+  final String? name;
+  final OrderLineItemTaxType? type;
+  final double? percentage;
+  final Money? appliedMoney;
+  final OrderLineItemTaxScope? scope;
 
   @override
   List<Object?> get props {
@@ -383,15 +383,15 @@ class OrderReturnTax extends Equatable {
 @JsonSerializable()
 class OrderReturnDiscount extends Equatable {
   const OrderReturnDiscount({
-    required this.id,
-    required this.sourceDiscountId,
-    required this.catalogObjectId,
-    required this.name,
-    required this.type,
-    required this.percentage,
-    required this.amountMoney,
-    required this.appliedMoney,
-    required this.scope,
+    this.id,
+    this.sourceDiscountId,
+    this.catalogObjectId,
+    this.name,
+    this.type,
+    this.percentage,
+    this.amountMoney,
+    this.appliedMoney,
+    this.scope,
   });
 
   /// Converts a [Map] to an [OrderReturnDiscount]
@@ -401,15 +401,15 @@ class OrderReturnDiscount extends Equatable {
   /// Converts a [OrderReturnDiscount] to a [Map]
   Map<String, dynamic> toJson() => _$OrderReturnDiscountToJson(this);
 
-  final String id;
-  final String sourceDiscountId;
-  final String catalogObjectId;
-  final String name;
-  final OrderLineItemDiscountType type;
-  final double percentage;
-  final Money amountMoney;
-  final Money appliedMoney;
-  final OrderLineItemDiscountScope scope;
+  final String? id;
+  final String? sourceDiscountId;
+  final String? catalogObjectId;
+  final String? name;
+  final OrderLineItemDiscountType? type;
+  final double? percentage;
+  final Money? amountMoney;
+  final Money? appliedMoney;
+  final OrderLineItemDiscountScope? scope;
 
   @override
   List<Object?> get props {
@@ -430,18 +430,18 @@ class OrderReturnDiscount extends Equatable {
 @JsonSerializable()
 class OrderReturnServiceCharge extends Equatable {
   const OrderReturnServiceCharge({
-    required this.id,
-    required this.sourceServiceChargeId,
-    required this.catalogObjectId,
-    required this.name,
-    required this.percentage,
-    required this.amountMoney,
-    required this.appliedMoney,
-    required this.totalMoney,
-    required this.totalTaxMoney,
-    required this.calculationPhase,
-    required this.taxable,
-    required this.returnTaxes,
+    this.id,
+    this.sourceServiceChargeId,
+    this.catalogObjectId,
+    this.name,
+    this.percentage,
+    this.amountMoney,
+    this.appliedMoney,
+    this.totalMoney,
+    this.totalTaxMoney,
+    this.calculationPhase,
+    this.taxable,
+    this.returnTaxes,
   });
 
   /// Converts a [Map] to an [OrderReturnServiceCharge]
@@ -451,18 +451,18 @@ class OrderReturnServiceCharge extends Equatable {
   /// Converts a [OrderReturnServiceCharge] to a [Map]
   Map<String, dynamic> toJson() => _$OrderReturnServiceChargeToJson(this);
 
-  final String id;
-  final String sourceServiceChargeId;
-  final String catalogObjectId;
-  final String name;
-  final double percentage;
-  final Money amountMoney;
-  final Money appliedMoney;
-  final Money totalMoney;
-  final Money totalTaxMoney;
-  final OrderServiceChargeCalculationPhase calculationPhase;
-  final bool taxable;
-  final List<OrderReturnTax> returnTaxes;
+  final String? id;
+  final String? sourceServiceChargeId;
+  final String? catalogObjectId;
+  final String? name;
+  final double? percentage;
+  final Money? amountMoney;
+  final Money? appliedMoney;
+  final Money? totalMoney;
+  final Money? totalTaxMoney;
+  final OrderServiceChargeCalculationPhase? calculationPhase;
+  final bool? taxable;
+  final List<OrderReturnTax>? returnTaxes;
 
   @override
   List<Object?> get props {

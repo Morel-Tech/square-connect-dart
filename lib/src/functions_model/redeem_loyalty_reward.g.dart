@@ -9,14 +9,14 @@ part of 'redeem_loyalty_reward.dart';
 RedeemLoyaltyRewardRequest _$RedeemLoyaltyRewardRequestFromJson(
         Map<String, dynamic> json) =>
     RedeemLoyaltyRewardRequest(
-      idempotenceKey: json['idempotence_key'] as String,
+      idempotencyKey: json['idempotency_key'] as String,
       locationId: json['location_id'] as String,
     );
 
 Map<String, dynamic> _$RedeemLoyaltyRewardRequestToJson(
         RedeemLoyaltyRewardRequest instance) =>
     <String, dynamic>{
-      'idempotence_key': instance.idempotenceKey,
+      'idempotency_key': instance.idempotencyKey,
       'location_id': instance.locationId,
     };
 

@@ -8,7 +8,7 @@ part 'create_loyalty_reward.g.dart';
 class CreateLoyaltyRewardRequest extends Equatable {
   const CreateLoyaltyRewardRequest({
     required this.reward,
-    required this.idempotenceKey,
+    required this.idempotencyKey,
   });
 
   /// Converts a [Map] to an [CreateLoyaltyRewardRequest]
@@ -19,10 +19,10 @@ class CreateLoyaltyRewardRequest extends Equatable {
   Map<String, dynamic> toJson() => _$CreateLoyaltyRewardRequestToJson(this);
 
   final LoyaltyReward reward;
-  final String idempotenceKey;
+  final String idempotencyKey;
 
   @override
-  List<Object?> get props => [reward, idempotenceKey];
+  List<Object?> get props => [reward, idempotencyKey];
 }
 
 @JsonSerializable()

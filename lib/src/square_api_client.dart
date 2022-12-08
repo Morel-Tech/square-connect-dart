@@ -238,6 +238,11 @@ abstract class SquareApiClient {
     @Path() required String rewardId,
   });
 
+  @GET('/v2/loyalty/rewards/{rewardId}')
+  Future<RetrieveLoyaltyRewardResponse> retrieveLoyaltyReward({
+    @Path() required String rewardId,
+  });
+
   @POST('/v2/loyalty/programs/{programId}/calculate')
   Future<CalculateLoyaltyPointsResponse> calculateLoyaltyPoints({
     @Path() required String programId,

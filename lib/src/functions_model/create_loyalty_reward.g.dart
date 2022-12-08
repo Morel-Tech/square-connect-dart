@@ -10,14 +10,14 @@ CreateLoyaltyRewardRequest _$CreateLoyaltyRewardRequestFromJson(
         Map<String, dynamic> json) =>
     CreateLoyaltyRewardRequest(
       reward: LoyaltyReward.fromJson(json['reward'] as Map<String, dynamic>),
-      idempotenceKey: json['idempotence_key'] as String,
+      idempotencyKey: json['idempotency_key'] as String,
     );
 
 Map<String, dynamic> _$CreateLoyaltyRewardRequestToJson(
         CreateLoyaltyRewardRequest instance) =>
     <String, dynamic>{
       'reward': instance.reward.toJson(),
-      'idempotence_key': instance.idempotenceKey,
+      'idempotency_key': instance.idempotencyKey,
     };
 
 CreateLoyaltyRewardResponse _$CreateLoyaltyRewardResponseFromJson(

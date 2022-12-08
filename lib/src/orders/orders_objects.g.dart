@@ -27,7 +27,7 @@ OrderLineItemDiscount _$OrderLineItemDiscountFromJson(
       name: json['name'] as String?,
       type:
           $enumDecodeNullable(_$OrderLineItemDiscountTypeEnumMap, json['type']),
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       amountMoney: json['amount_money'] == null
           ? null
           : Money.fromJson(json['amount_money'] as Map<String, dynamic>),

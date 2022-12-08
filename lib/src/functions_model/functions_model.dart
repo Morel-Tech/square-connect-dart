@@ -29,6 +29,7 @@ export 'retrieve_customer.dart';
 export 'retrieve_location.dart';
 export 'retrieve_loyalty_account.dart';
 export 'retrieve_loyalty_program.dart';
+export 'retrieve_loyalty_reward.dart';
 export 'retrieve_merchant.dart';
 export 'retrieve_order.dart';
 export 'revoke_token.dart';

@@ -2,7 +2,7 @@
 [![GitHub](https://img.shields.io/github/license/mtwichel/square-connect-flutter-library.svg?style=flat-square)](https://github.com/mtwichel/square-connect-flutter-library/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/mtwichel/square-connect-flutter-library)
 
-# Square Connect Flutter
+# Dart Client for Square APIs
 
 This package allows Dart developers to easily interact with [Square APIs](https://developer.squareup.com/reference/square).
 

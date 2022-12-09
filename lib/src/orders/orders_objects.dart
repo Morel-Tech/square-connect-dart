@@ -51,7 +51,7 @@ class OrderLineItemDiscount extends Equatable {
   final String? catalogObjectId;
   final String? name;
   final OrderLineItemDiscountType? type;
-  final double? percentage;
+  final String? percentage;
   final Money? amountMoney;
   final Money? appliedMoney;
   final OrderLineItemDiscountScope? scope;

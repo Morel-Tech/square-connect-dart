@@ -1,6 +1,4 @@
 export 'package:dio/dio.dart' show DioError;
-export 'package:square_connect/src/catalog/catalog_enums.dart';
-export 'package:square_connect/src/catalog/catalog_objects.dart';
 export 'package:square_connect/src/employees/employees_enums.dart';
 export 'package:square_connect/src/employees/employees_objects.dart';
 export 'package:square_connect/src/inventory/inventory_enums.dart';

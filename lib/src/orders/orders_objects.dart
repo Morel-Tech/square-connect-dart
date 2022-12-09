@@ -51,7 +51,7 @@ class OrderLineItemDiscount extends Equatable {
   final String? catalogObjectId;
   final String? name;
   final OrderLineItemDiscountType? type;
-  final double? percentage;
+  final String? percentage;
   final Money? amountMoney;
   final Money? appliedMoney;
   final OrderLineItemDiscountScope? scope;
@@ -361,7 +361,7 @@ class OrderReturnTax extends Equatable {
   final String? catalogObjectId;
   final String? name;
   final OrderLineItemTaxType? type;
-  final double? percentage;
+  final String? percentage;
   final Money? appliedMoney;
   final OrderLineItemTaxScope? scope;
 
@@ -455,7 +455,7 @@ class OrderReturnServiceCharge extends Equatable {
   final String? sourceServiceChargeId;
   final String? catalogObjectId;
   final String? name;
-  final double? percentage;
+  final String? percentage;
   final Money? amountMoney;
   final Money? appliedMoney;
   final Money? totalMoney;
@@ -479,6 +479,32 @@ class OrderReturnServiceCharge extends Equatable {
       calculationPhase,
       taxable,
       returnTaxes,
+    ];
+  }
+}
+
+@JsonSerializable()
+class OrderReward extends Equatable {
+  const OrderReward({
+    required this.id,
+    required this.rewardTierId,
+  });
+
+  /// Converts a [Map] to an [OrderReward]
+  factory OrderReward.fromJson(Map<String, dynamic> json) =>
+      _$OrderRewardFromJson(json);
+
+  /// Converts a [OrderReward] to a [Map]
+  Map<String, dynamic> toJson() => _$OrderRewardToJson(this);
+
+  final String id;
+  final String rewardTierId;
+
+  @override
+  List<Object?> get props {
+    return [
+      id,
+      rewardTierId,
     ];
   }
 }

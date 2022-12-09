@@ -27,7 +27,7 @@ OrderLineItemDiscount _$OrderLineItemDiscountFromJson(
       name: json['name'] as String?,
       type:
           $enumDecodeNullable(_$OrderLineItemDiscountTypeEnumMap, json['type']),
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       amountMoney: json['amount_money'] == null
           ? null
           : Money.fromJson(json['amount_money'] as Map<String, dynamic>),
@@ -315,7 +315,7 @@ OrderReturnTax _$OrderReturnTaxFromJson(Map<String, dynamic> json) =>
       catalogObjectId: json['catalog_object_id'] as String?,
       name: json['name'] as String?,
       type: $enumDecodeNullable(_$OrderLineItemTaxTypeEnumMap, json['type']),
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       appliedMoney: json['applied_money'] == null
           ? null
           : Money.fromJson(json['applied_money'] as Map<String, dynamic>),
@@ -386,7 +386,7 @@ OrderReturnServiceCharge _$OrderReturnServiceChargeFromJson(
       sourceServiceChargeId: json['source_service_charge_id'] as String?,
       catalogObjectId: json['catalog_object_id'] as String?,
       name: json['name'] as String?,
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       amountMoney: json['amount_money'] == null
           ? null
           : Money.fromJson(json['amount_money'] as Map<String, dynamic>),
@@ -430,3 +430,14 @@ const _$OrderServiceChargeCalculationPhaseEnumMap = {
   OrderServiceChargeCalculationPhase.subtotalPhase: 'SUBTOTAL_PHASE',
   OrderServiceChargeCalculationPhase.totalPhase: 'TOTAL_PHASE',
 };
+
+OrderReward _$OrderRewardFromJson(Map<String, dynamic> json) => OrderReward(
+      id: json['id'] as String,
+      rewardTierId: json['reward_tier_id'] as String,
+    );
+
+Map<String, dynamic> _$OrderRewardToJson(OrderReward instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'reward_tier_id': instance.rewardTierId,
+    };

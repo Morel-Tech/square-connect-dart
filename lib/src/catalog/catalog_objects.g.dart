@@ -12,7 +12,7 @@ CatalogTax _$CatalogTaxFromJson(Map<String, dynamic> json) => CatalogTax(
           _$TaxCalculationPhaseEnumMap, json['calculation_phase']),
       inclusionType: $enumDecodeNullable(
           _$TaxInclusionTypeEnumMap, json['inclusion_type']),
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       appliesToCustomAmounts: json['applies_to_custom_amounts'] as bool?,
       enabled: json['enabled'] as bool?,
     );

@@ -25,7 +25,7 @@ class CatalogTax extends Equatable {
   final String? name;
   final TaxCalculationPhase? calculationPhase;
   final TaxInclusionType? inclusionType;
-  final double? percentage;
+  final String? percentage;
   final bool? appliesToCustomAmounts;
   final bool? enabled;
 

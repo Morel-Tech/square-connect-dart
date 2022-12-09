@@ -103,6 +103,10 @@ abstract class SquareApiClient {
     @Path() String orderId,
     @Body() PayOrderRequest payOrderRequest,
   );
+  @POST('/v2/orders/calculate')
+  Future<PayOrderResponse> calculateOrder(
+    @Body() CalculateOrderRequest payOrderRequest,
+  );
 
   @POST('/v2/payments')
   Future<CreatePaymentResponse> createPayment(

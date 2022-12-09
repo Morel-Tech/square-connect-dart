@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'package:square_connect/square_connect.dart';
 
 part 'calculate_order.g.dart';
@@ -9,7 +8,7 @@ part 'calculate_order.g.dart';
 class CalculateOrderRequest extends Equatable {
   const CalculateOrderRequest({
     required this.order,
-    required this.orderReward,
+    this.proposedReward,
   });
 
   /// Converts a [Map] to an [CalculateOrderRequest]
@@ -20,17 +19,17 @@ class CalculateOrderRequest extends Equatable {
   Map<String, dynamic> toJson() => _$CalculateOrderRequestToJson(this);
 
   final Order order;
-  final List<OrderReward>? orderReward;
+  final List<OrderReward>? proposedReward;
 
   @override
   List<Object?> get props => [
         order,
-        orderReward,
+        proposedReward,
       ];
 }
 
 @JsonSerializable()
-class CalculateOrderResponse extends SquareResponse with EquatableMixin {
+class CalculateOrderResponse extends SquareResponse {
   const CalculateOrderResponse({
     this.order,
     super.errors,

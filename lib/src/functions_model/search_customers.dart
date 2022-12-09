@@ -39,7 +39,7 @@ class SearchCustomersRequest extends Equatable {
 }
 
 @JsonSerializable()
-class SearchCustomersResponse extends SquareResponse with EquatableMixin {
+class SearchCustomersResponse extends SquareResponse {
   const SearchCustomersResponse({
     List<SquareError>? error,
     this.cursor,

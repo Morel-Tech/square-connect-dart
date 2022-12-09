@@ -295,19 +295,19 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<PayOrderResponse> calculateOrder(payOrderRequest) async {
+  Future<CalculateOrderResponse> calculateOrder(payOrderRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(payOrderRequest.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<PayOrderResponse>(
+        _setStreamType<CalculateOrderResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/v2/orders/calculate',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = PayOrderResponse.fromJson(_result.data!);
+    final value = CalculateOrderResponse.fromJson(_result.data!);
     return value;
   }
 

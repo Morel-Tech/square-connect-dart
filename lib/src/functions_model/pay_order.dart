@@ -33,7 +33,7 @@ class PayOrderRequest extends Equatable {
 }
 
 @JsonSerializable()
-class PayOrderResponse extends SquareResponse with EquatableMixin {
+class PayOrderResponse extends SquareResponse {
   const PayOrderResponse({
     this.order,
     super.errors,

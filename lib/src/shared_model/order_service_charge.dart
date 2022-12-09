@@ -30,7 +30,7 @@ class OrderServiceCharge extends Equatable {
   final String uid;
   final String? name;
   final String? catalogObjectId;
-  final double? percentage;
+  final String? percentage;
   final Money? amountMoney;
   final Money? appliedMoney;
   final Money? totalMoney;

@@ -11,7 +11,7 @@ OrderServiceCharge _$OrderServiceChargeFromJson(Map<String, dynamic> json) =>
       uid: json['uid'] as String,
       name: json['name'] as String?,
       catalogObjectId: json['catalog_object_id'] as String?,
-      percentage: (json['percentage'] as num?)?.toDouble(),
+      percentage: json['percentage'] as String?,
       amountMoney: json['amount_money'] == null
           ? null
           : Money.fromJson(json['amount_money'] as Map<String, dynamic>),

@@ -8,7 +8,7 @@ part 'calculate_order.g.dart';
 class CalculateOrderRequest extends Equatable {
   const CalculateOrderRequest({
     required this.order,
-    this.proposedReward,
+    this.proposedRewards,
   });
 
   /// Converts a [Map] to an [CalculateOrderRequest]
@@ -19,12 +19,12 @@ class CalculateOrderRequest extends Equatable {
   Map<String, dynamic> toJson() => _$CalculateOrderRequestToJson(this);
 
   final Order order;
-  final List<OrderReward>? proposedReward;
+  final List<OrderReward>? proposedRewards;
 
   @override
   List<Object?> get props => [
         order,
-        proposedReward,
+        proposedRewards,
       ];
 }
 

@@ -10,7 +10,7 @@ CalculateOrderRequest _$CalculateOrderRequestFromJson(
         Map<String, dynamic> json) =>
     CalculateOrderRequest(
       order: Order.fromJson(json['order'] as Map<String, dynamic>),
-      proposedReward: (json['proposed_reward'] as List<dynamic>?)
+      proposedRewards: (json['proposed_rewards'] as List<dynamic>?)
           ?.map((e) => OrderReward.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -19,8 +19,8 @@ Map<String, dynamic> _$CalculateOrderRequestToJson(
         CalculateOrderRequest instance) =>
     <String, dynamic>{
       'order': instance.order.toJson(),
-      'proposed_reward':
-          instance.proposedReward?.map((e) => e.toJson()).toList(),
+      'proposed_rewards':
+          instance.proposedRewards?.map((e) => e.toJson()).toList(),
     };
 
 CalculateOrderResponse _$CalculateOrderResponseFromJson(

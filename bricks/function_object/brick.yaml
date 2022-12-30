@@ -8,5 +8,5 @@ environment:
 vars:
   name:
     type: string
-    description: The object name
-    prompt: What is the object called?
+    description: The endpoint name
+    prompt: What is the endpoint called?

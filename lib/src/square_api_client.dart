@@ -253,4 +253,95 @@ abstract class SquareApiClient {
     @Path() required String programId,
     @Body() required CalculateLoyaltyPointsRequest request,
   });
+
+  /// Creates a subscription to a subscription plan by a customer.
+  ///
+  /// If you provide a card on file in the request, Square charges the card
+  /// for the subscription. Otherwise, Square bills an invoice to the
+  /// customer's email address. The subscription starts immediately, unless
+  /// the request includes the optional start_date. Each individual
+  /// subscription is associated with a particular location.
+  @POST('/v2/subscriptions')
+  Future<CreateSubscriptionRequest> createSubscription({
+    @Body() required CreateSubscriptionRequest request,
+  });
+
+  /// Searches for subscriptions.
+  ///
+  /// Results are ordered chronologically by subscription creation date. If
+  /// the request specifies more than one location ID, the endpoint orders the
+  /// result by location ID, and then by creation date within each location.
+  /// If no locations are given in the query, all locations are searched.
+  ///
+  /// You can also optionally specify customer_ids to search by customer.
+  /// If left unset, all customers associated with the specified locations a
+  /// re returned. If the request specifies customer IDs, the endpoint orders
+  /// results first by location, within location by customer ID, and within
+  /// customer by subscription creation date.
+  @POST('/v2/subscriptions/search')
+  Future<SearchSubscriptionsResponse> searchSubscriptions({
+    @Body() required SearchSubscriptionsRequest request,
+  });
+
+  /// Retrieves a subscription.
+  @GET('v2/subscriptions/{subscriptionId')
+  Future<RetrieveSubscriptionResponse> retrieveSubscription({
+    @Path() required String subscriptionId,
+    @Query('include') String? include,
+  });
+
+  /// Updates a subscription.SquareApiClient
+  ///
+  /// You can set, modify, and clear the subscription field values.
+  @PUT('/v2/subscriptions/{subscriptionId}')
+  Future<UpdateSubscriptionResponse> updateSubscription({
+    @Path() required String subscriptionId,
+    @Body() required UpdateSubscriptionRequest request,
+  });
+
+  /// Deletes a scheduled action for a subscription.
+  @DELETE('/v2/subscriptions/{subscriptionId}/actions/{actionId}')
+  Future<DeleteSubscriptionActionResponse> deleteSubscriptionAction({
+    @Path() required String subscriptionId,
+    @Path() required String actionId,
+  });
+
+  /// Schedules a `CANCEL` action to cancel an active subscription by setting
+  /// the `canceled_date` field to the end of the active billing period and
+  /// changing the subscription status from ACTIVE to CANCELED after this date.
+  @POST('/v2/subscriptions/{subscriptionId}/cancel')
+  Future<CancelSubscriptionResponse> cancelSubscription({
+    @Path() required String subscriptionId,
+  });
+
+  /// Lists all events for a specific subscription.
+  @GET('/v2/subscriptions/{subscriptionId}/events')
+  Future<ListSubscriptionEventsResponse> listSubscriptionEvents({
+    @Path() required String subscriptionId,
+    @Query('cursor') String? cursor,
+    @Query('limit') String? limit,
+  });
+
+  /// Schedules a `PAUSE` action to pause an active subscription.
+  @POST('/v2/subscriptions/{subscriptionId}/pause')
+  Future<PauseSubscriptionResponse> pauseSubscription({
+    @Path() required String subscriptionId,
+    @Body() required PauseSubscriptionRequest request,
+  });
+
+  /// Schedules a `RESUME` action to resume a paused or a deactivated
+  /// subscription.
+  @POST('/v2/subscriptions/{subscriptionId}/resume')
+  Future<ResumeSubscriptionResponse> resumeSubscription({
+    @Path() required String subscriptionId,
+    @Body() required ResumeSubscriptionRequest request,
+  });
+
+  /// Schedules a `SWAP_PLAN` action to swap a subscription plan in an
+  /// existing subscription.
+  @POST('/v2/subscriptions/{subscriptionId}/swap-plan')
+  Future<SwapPlanResponse> swapPlan({
+    @Path() required String subscriptionId,
+    @Body() required SwapPlanResponse request,
+  });
 }

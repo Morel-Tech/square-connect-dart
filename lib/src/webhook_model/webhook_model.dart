@@ -17,4 +17,6 @@ export 'loyalty_program_updated.dart';
 export 'oauth_authorization_revoked.dart';
 export 'order_created_event.dart';
 export 'order_updated_event.dart';
+export 'subscription_created.dart';
+export 'subscription_updated.dart';
 export 'webhook_event.dart';

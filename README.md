@@ -8,7 +8,7 @@ This package allows Dart developers to easily interact with [Square APIs](https:
 
 ## NOTE!
 
-Due to the way Square authenticates it's API, **DO NOT** use this package in Flutter apps! There is currently no supported way to securely store API tokens on the client device. This package is entirely for server-side Dart applicatations like those created with the [Dart Functions Framework](https://pub.dev/packages/functions_framework).
+Due to the way Square authenticates it's API, **DO NOT** use this package in Flutter apps! There is currently no supported way to securely store API tokens on the client device. This package is entirely for server-side Dart applications like those created with the [Dart Functions Framework](https://pub.dev/packages/functions_framework) or APIs like [Dart Frog](https://pub.dev/packages/dart_frog).
 
 ## Usage
 
@@ -17,7 +17,7 @@ Due to the way Square authenticates it's API, **DO NOT** use this package in Flu
 ```dart
 final client = SquareApiClient(
   accessToken: 'ACCESS_TOKEN', // Make SURE this is kept secret
-  apiVersion: '2021-09-15', // Optional. If ommited latest api will be used.
+  apiVersion: '2021-09-15', // Optional. If omitted latest api will be used.
 );
 ```
 
@@ -39,7 +39,7 @@ import 'package:square_connect/square_connect.dart';
 async listCustomers() {
   String response = await CustomBackend.listCustomers();
 
-  var responseObj = ListCustomersResponse.fromJson(json.decode(reponse));
+  var responseObj = ListCustomersResponse.fromJson(json.decode(response));
 
   if (responseObj.hasErrors) {
     throw new Error(responseObj.errors)
@@ -55,4 +55,26 @@ If pagination is supported/needed, the response object will contain a cursor str
 
 ## Contributions
 
-If you have any feedback on how to improve the package for usablility, or bugs to report, please do so at https://github.com/morel-tech/square-connect-dart/issues.
+If you have any feedback on how to improve the package for usability, or bugs to report, please do so at https://github.com/morel-tech/square-connect-dart/issues.
+
+### Using Mason
+
+This package uses [mason](https://pub.dev/packages/mason_cli) to generate new files. Run the appropriate command depending on what you want to generate, and be sure to append to the appropriate barrel file when prompted.
+
+**Shared Model**
+
+```bash
+mason make shared_object
+```
+
+**Functions Model**
+
+```bash
+mason make function_object
+```
+
+**Webhook Model**
+
+```bash
+mason make webhook_event
+```

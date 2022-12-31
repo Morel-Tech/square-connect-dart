@@ -300,7 +300,7 @@ abstract class SquareApiClient {
   });
 
   /// Deletes a scheduled action for a subscription.
-  @DELETE('/v2/subscriptions/{subscriptionId}/actions{actionId}')
+  @DELETE('/v2/subscriptions/{subscriptionId}/actions/{actionId}')
   Future<DeleteSubscriptionActionResponse> deleteSubscriptionAction({
     @Path() required String subscriptionId,
     @Path() required String actionId,

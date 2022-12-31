@@ -339,7 +339,7 @@ abstract class SquareApiClient {
 
   /// Schedules a `SWAP_PLAN` action to swap a subscription plan in an
   /// existing subscription.
-  @POST('/v2//subscriptions/{subscriptionId}/swap-plan')
+  @POST('/v2/subscriptions/{subscriptionId}/swap-plan')
   Future<SwapPlanResponse> swapPlan({
     @Path() required String subscriptionId,
     @Body() required SwapPlanResponse request,

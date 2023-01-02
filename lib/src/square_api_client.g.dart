@@ -1123,7 +1123,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateSubscriptionRequest> createSubscription(
+  Future<CreateSubscriptionResponse> createSubscription(
       {required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1131,7 +1131,7 @@ class _SquareApiClient implements SquareApiClient {
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CreateSubscriptionRequest>(Options(
+        _setStreamType<CreateSubscriptionResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -1143,7 +1143,7 @@ class _SquareApiClient implements SquareApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CreateSubscriptionRequest.fromJson(_result.data!);
+    final value = CreateSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
 
@@ -1243,7 +1243,7 @@ class _SquareApiClient implements SquareApiClient {
     )
             .compose(
               _dio.options,
-              '/v2/subscriptions/${subscriptionId}/actions${actionId}',
+              '/v2/subscriptions/${subscriptionId}/actions/${actionId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -1379,7 +1379,7 @@ class _SquareApiClient implements SquareApiClient {
     )
             .compose(
               _dio.options,
-              '/v2//subscriptions/${subscriptionId}/swap-plan',
+              '/v2/subscriptions/${subscriptionId}/swap-plan',
               queryParameters: queryParameters,
               data: _data,
             )

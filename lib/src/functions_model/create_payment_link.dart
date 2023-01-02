@@ -13,7 +13,6 @@ class CreatePaymentLinkRequest extends Equatable {
     this.order,
     this.checkoutOptions,
     this.prePopulatedData,
-    this.source,
     this.paymentNote,
   });
 
@@ -30,7 +29,6 @@ class CreatePaymentLinkRequest extends Equatable {
   final Order? order;
   final CheckoutOptions? checkoutOptions;
   final PrePopulatedData? prePopulatedData;
-  final String? source;
   final String? paymentNote;
 
   @override
@@ -41,7 +39,6 @@ class CreatePaymentLinkRequest extends Equatable {
         order,
         checkoutOptions,
         prePopulatedData,
-        source,
         paymentNote
       ];
 }
@@ -51,6 +48,7 @@ class CreatePaymentLinkResponse extends SquareResponse {
   const CreatePaymentLinkResponse({
     super.errors,
     this.paymentLink,
+    this.relatedResources,
   });
 
   /// Converts a [Map] to an [CreatePaymentLinkResponse]
@@ -61,7 +59,8 @@ class CreatePaymentLinkResponse extends SquareResponse {
   Map<String, dynamic> toJson() => _$CreatePaymentLinkResponseToJson(this);
 
   final PaymentLink? paymentLink;
+  final PaymentLinkRelatedResources? relatedResources;
 
   @override
-  List<Object?> get props => [errors, paymentLink];
+  List<Object?> get props => [errors, paymentLink, relatedResources];
 }

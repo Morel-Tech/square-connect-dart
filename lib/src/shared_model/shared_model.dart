@@ -166,6 +166,7 @@ export 'order_source.dart';
 export 'order_state.dart';
 export 'payment.dart';
 export 'payment_link.dart';
+export 'payment_link_related_resources.dart';
 export 'payment_refund.dart';
 export 'payment_refund_status.dart';
 export 'pre_populated_data.dart';

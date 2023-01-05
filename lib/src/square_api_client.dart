@@ -262,7 +262,7 @@ abstract class SquareApiClient {
   /// the request includes the optional start_date. Each individual
   /// subscription is associated with a particular location.
   @POST('/v2/subscriptions')
-  Future<CreateSubscriptionRequest> createSubscription({
+  Future<CreateSubscriptionResponse> createSubscription({
     @Body() required CreateSubscriptionRequest request,
   });
 

@@ -25,7 +25,6 @@ CreatePaymentLinkRequest _$CreatePaymentLinkRequestFromJson(
           ? null
           : PrePopulatedData.fromJson(
               json['pre_populated_data'] as Map<String, dynamic>),
-      source: json['source'] as String?,
       paymentNote: json['payment_note'] as String?,
     );
 
@@ -38,7 +37,6 @@ Map<String, dynamic> _$CreatePaymentLinkRequestToJson(
       'order': instance.order?.toJson(),
       'checkout_options': instance.checkoutOptions?.toJson(),
       'pre_populated_data': instance.prePopulatedData?.toJson(),
-      'source': instance.source,
       'payment_note': instance.paymentNote,
     };
 
@@ -51,6 +49,7 @@ CreatePaymentLinkResponse _$CreatePaymentLinkResponseFromJson(
       paymentLink: json['payment_link'] == null
           ? null
           : PaymentLink.fromJson(json['payment_link'] as Map<String, dynamic>),
+      relatedResources: json['related_resources'],
     );
 
 Map<String, dynamic> _$CreatePaymentLinkResponseToJson(
@@ -58,4 +57,5 @@ Map<String, dynamic> _$CreatePaymentLinkResponseToJson(
     <String, dynamic>{
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
       'payment_link': instance.paymentLink?.toJson(),
+      'related_resources': instance.relatedResources,
     };

@@ -7,8 +7,8 @@ part 'payment_link_related_resources.g.dart';
 @JsonSerializable()
 class PaymentLinkRelatedResources extends Equatable {
   const PaymentLinkRelatedResources({
-    required this.orders,
-    required this.subscriptionPlans,
+    this.orders,
+    this.subscriptionPlans,
   });
 
   /// Converts a [Map] to an [PaymentLinkRelatedResources]
@@ -18,8 +18,8 @@ class PaymentLinkRelatedResources extends Equatable {
   /// Converts a [PaymentLinkRelatedResources] to a [Map]
   Map<String, dynamic> toJson() => _$PaymentLinkRelatedResourcesToJson(this);
 
-  final List<Order> orders;
-  final List<CatalogObject> subscriptionPlans;
+  final List<Order>? orders;
+  final List<CatalogObject>? subscriptionPlans;
 
   @override
   List<Object?> get props {

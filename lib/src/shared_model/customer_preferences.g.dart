@@ -11,8 +11,15 @@ CustomerPreferences _$CustomerPreferencesFromJson(Map<String, dynamic> json) =>
       emailUnsubscribed: json['email_unsubscribed'] as bool?,
     );
 
-Map<String, dynamic> _$CustomerPreferencesToJson(
-        CustomerPreferences instance) =>
-    <String, dynamic>{
-      'email_unsubscribed': instance.emailUnsubscribed,
-    };
+Map<String, dynamic> _$CustomerPreferencesToJson(CustomerPreferences instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('email_unsubscribed', instance.emailUnsubscribed);
+  return val;
+}

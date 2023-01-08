@@ -15,9 +15,17 @@ LoyaltyEventAccumulatePoints _$LoyaltyEventAccumulatePointsFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyEventAccumulatePointsToJson(
-        LoyaltyEventAccumulatePoints instance) =>
-    <String, dynamic>{
-      'loyalty_program_id': instance.loyaltyProgramId,
-      'order_id': instance.orderId,
-      'points': instance.points,
-    };
+    LoyaltyEventAccumulatePoints instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('loyalty_program_id', instance.loyaltyProgramId);
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('points', instance.points);
+  return val;
+}

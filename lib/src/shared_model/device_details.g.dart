@@ -13,9 +13,17 @@ DeviceDetails _$DeviceDetailsFromJson(Map<String, dynamic> json) =>
       deviceName: json['device_name'] as String?,
     );
 
-Map<String, dynamic> _$DeviceDetailsToJson(DeviceDetails instance) =>
-    <String, dynamic>{
-      'device_id': instance.deviceId,
-      'device_installation_id': instance.deviceInstallationId,
-      'device_name': instance.deviceName,
-    };
+Map<String, dynamic> _$DeviceDetailsToJson(DeviceDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('device_id', instance.deviceId);
+  writeNotNull('device_installation_id', instance.deviceInstallationId);
+  writeNotNull('device_name', instance.deviceName);
+  return val;
+}

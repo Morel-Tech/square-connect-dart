@@ -29,22 +29,30 @@ InventoryTransfer _$InventoryTransferFromJson(Map<String, dynamic> json) =>
       employeeId: json['employee_id'] as String?,
     );
 
-Map<String, dynamic> _$InventoryTransferToJson(InventoryTransfer instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'reference_id': instance.referenceId,
-      'state': _$InventoryStateEnumMap[instance.state],
-      'from_location_id': instance.fromLocationId,
-      'to_location_id': instance.toLocationId,
-      'catalog_object_id': instance.catalogObjectId,
-      'catalog_object_type':
-          _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
-      'quantity': instance.quantity,
-      'occurred_at': instance.occurredAt?.toIso8601String(),
-      'created_at': instance.createdAt?.toIso8601String(),
-      'source': instance.source?.toJson(),
-      'employee_id': instance.employeeId,
-    };
+Map<String, dynamic> _$InventoryTransferToJson(InventoryTransfer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('state', _$InventoryStateEnumMap[instance.state]);
+  writeNotNull('from_location_id', instance.fromLocationId);
+  writeNotNull('to_location_id', instance.toLocationId);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('catalog_object_type',
+      _$CatalogObjectTypeEnumMap[instance.catalogObjectType]);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('occurred_at', instance.occurredAt?.toIso8601String());
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('employee_id', instance.employeeId);
+  return val;
+}
 
 const _$InventoryStateEnumMap = {
   InventoryState.custom: 'CUSTOM',

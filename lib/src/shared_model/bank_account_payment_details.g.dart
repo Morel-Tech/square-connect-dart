@@ -21,13 +21,21 @@ BankAccountPaymentDetails _$BankAccountPaymentDetailsFromJson(
     );
 
 Map<String, dynamic> _$BankAccountPaymentDetailsToJson(
-        BankAccountPaymentDetails instance) =>
-    <String, dynamic>{
-      'account_ownership_type': instance.accountOwnershipType,
-      'ach_details': instance.achDetails?.toJson(),
-      'bank_name': instance.bankName,
-      'country': instance.country,
-      'fingerprint': instance.fingerprint,
-      'statement_description': instance.statementDescription,
-      'transfer_type': instance.transferType,
-    };
+    BankAccountPaymentDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('account_ownership_type', instance.accountOwnershipType);
+  writeNotNull('ach_details', instance.achDetails?.toJson());
+  writeNotNull('bank_name', instance.bankName);
+  writeNotNull('country', instance.country);
+  writeNotNull('fingerprint', instance.fingerprint);
+  writeNotNull('statement_description', instance.statementDescription);
+  writeNotNull('transfer_type', instance.transferType);
+  return val;
+}

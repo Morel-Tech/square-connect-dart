@@ -13,8 +13,15 @@ DeleteLoyaltyReward _$DeleteLoyaltyRewardFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$DeleteLoyaltyRewardToJson(
-        DeleteLoyaltyReward instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$DeleteLoyaltyRewardToJson(DeleteLoyaltyReward instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  return val;
+}

@@ -13,9 +13,18 @@ CatalogQueryRange _$CatalogQueryRangeFromJson(Map<String, dynamic> json) =>
       attributeMinValue: json['attribute_min_value'] as int?,
     );
 
-Map<String, dynamic> _$CatalogQueryRangeToJson(CatalogQueryRange instance) =>
-    <String, dynamic>{
-      'attribute_name': instance.attributeName,
-      'attribute_max_value': instance.attributeMaxValue,
-      'attribute_min_value': instance.attributeMinValue,
-    };
+Map<String, dynamic> _$CatalogQueryRangeToJson(CatalogQueryRange instance) {
+  final val = <String, dynamic>{
+    'attribute_name': instance.attributeName,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('attribute_max_value', instance.attributeMaxValue);
+  writeNotNull('attribute_min_value', instance.attributeMinValue);
+  return val;
+}

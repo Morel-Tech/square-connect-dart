@@ -19,11 +19,19 @@ OrderFulfillmentRecipient _$OrderFulfillmentRecipientFromJson(
     );
 
 Map<String, dynamic> _$OrderFulfillmentRecipientToJson(
-        OrderFulfillmentRecipient instance) =>
-    <String, dynamic>{
-      'customer_id': instance.customerId,
-      'display_name': instance.displayName,
-      'email_address': instance.emailAddress,
-      'phone_number': instance.phoneNumber,
-      'address': instance.address?.toJson(),
-    };
+    OrderFulfillmentRecipient instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('display_name', instance.displayName);
+  writeNotNull('email_address', instance.emailAddress);
+  writeNotNull('phone_number', instance.phoneNumber);
+  writeNotNull('address', instance.address?.toJson());
+  return val;
+}

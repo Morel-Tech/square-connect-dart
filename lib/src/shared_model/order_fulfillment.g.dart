@@ -24,15 +24,24 @@ OrderFulfillment _$OrderFulfillmentFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$OrderFulfillmentToJson(OrderFulfillment instance) =>
-    <String, dynamic>{
-      'type': _$OrderFulfillmentTypeEnumMap[instance.type]!,
-      'state': _$OrderFulfillmentStateEnumMap[instance.state]!,
-      'pickup_details': instance.pickupDetails?.toJson(),
-      'shipment_details': instance.shipmentDetails?.toJson(),
-      'uid': instance.uid,
-      'metadata': instance.metadata,
-    };
+Map<String, dynamic> _$OrderFulfillmentToJson(OrderFulfillment instance) {
+  final val = <String, dynamic>{
+    'type': _$OrderFulfillmentTypeEnumMap[instance.type]!,
+    'state': _$OrderFulfillmentStateEnumMap[instance.state]!,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('pickup_details', instance.pickupDetails?.toJson());
+  writeNotNull('shipment_details', instance.shipmentDetails?.toJson());
+  writeNotNull('uid', instance.uid);
+  writeNotNull('metadata', instance.metadata);
+  return val;
+}
 
 const _$OrderFulfillmentTypeEnumMap = {
   OrderFulfillmentType.pickup: 'PICKUP',

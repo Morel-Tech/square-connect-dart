@@ -17,8 +17,16 @@ TenderCashDetails _$TenderCashDetailsFromJson(Map<String, dynamic> json) =>
           : Money.fromJson(json['change_back_money'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$TenderCashDetailsToJson(TenderCashDetails instance) =>
-    <String, dynamic>{
-      'buyer_tendered_money': instance.buyerTenderedMoney?.toJson(),
-      'change_back_money': instance.changeBackMoney?.toJson(),
-    };
+Map<String, dynamic> _$TenderCashDetailsToJson(TenderCashDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('buyer_tendered_money', instance.buyerTenderedMoney?.toJson());
+  writeNotNull('change_back_money', instance.changeBackMoney?.toJson());
+  return val;
+}

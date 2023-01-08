@@ -55,11 +55,20 @@ CustomerCreatedWebhookObject _$CustomerCreatedWebhookObjectFromJson(
     );
 
 Map<String, dynamic> _$CustomerCreatedWebhookObjectToJson(
-        CustomerCreatedWebhookObject instance) =>
-    <String, dynamic>{
-      'customer': instance.customer.toJson(),
-      'event_context': instance.eventContext?.toJson(),
-    };
+    CustomerCreatedWebhookObject instance) {
+  final val = <String, dynamic>{
+    'customer': instance.customer.toJson(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('event_context', instance.eventContext?.toJson());
+  return val;
+}
 
 CustomerCreatedWebhookEventContext _$CustomerCreatedWebhookEventContextFromJson(
         Map<String, dynamic> json) =>
@@ -71,10 +80,18 @@ CustomerCreatedWebhookEventContext _$CustomerCreatedWebhookEventContextFromJson(
     );
 
 Map<String, dynamic> _$CustomerCreatedWebhookEventContextToJson(
-        CustomerCreatedWebhookEventContext instance) =>
-    <String, dynamic>{
-      'merge': instance.merge?.toJson(),
-    };
+    CustomerCreatedWebhookEventContext instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('merge', instance.merge?.toJson());
+  return val;
+}
 
 CustomerCreatedWebhookEventContextMerge
     _$CustomerCreatedWebhookEventContextMergeFromJson(
@@ -87,8 +104,16 @@ CustomerCreatedWebhookEventContextMerge
         );
 
 Map<String, dynamic> _$CustomerCreatedWebhookEventContextMergeToJson(
-        CustomerCreatedWebhookEventContextMerge instance) =>
-    <String, dynamic>{
-      'from_customer_ids': instance.fromCustomerIds,
-      'to_customer_id': instance.toCustomerId,
-    };
+    CustomerCreatedWebhookEventContextMerge instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('from_customer_ids', instance.fromCustomerIds);
+  writeNotNull('to_customer_id', instance.toCustomerId);
+  return val;
+}

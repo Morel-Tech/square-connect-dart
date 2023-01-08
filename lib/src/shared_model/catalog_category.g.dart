@@ -14,8 +14,16 @@ CatalogCategory _$CatalogCategoryFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$CatalogCategoryToJson(CatalogCategory instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'image_ids': instance.imageIds,
-    };
+Map<String, dynamic> _$CatalogCategoryToJson(CatalogCategory instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('image_ids', instance.imageIds);
+  return val;
+}

@@ -19,10 +19,18 @@ ListSubscriptionEventsResponse _$ListSubscriptionEventsResponseFromJson(
     );
 
 Map<String, dynamic> _$ListSubscriptionEventsResponseToJson(
-        ListSubscriptionEventsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription_events':
-          instance.subscriptionEvents?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-    };
+    ListSubscriptionEventsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription_events',
+      instance.subscriptionEvents?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  return val;
+}

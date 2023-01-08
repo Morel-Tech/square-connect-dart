@@ -32,8 +32,16 @@ RedeemLoyaltyRewardResponse _$RedeemLoyaltyRewardResponseFromJson(
     );
 
 Map<String, dynamic> _$RedeemLoyaltyRewardResponseToJson(
-        RedeemLoyaltyRewardResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'event': instance.event?.toJson(),
-    };
+    RedeemLoyaltyRewardResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('event', instance.event?.toJson());
+  return val;
+}

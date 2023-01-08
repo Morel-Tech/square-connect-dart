@@ -19,10 +19,18 @@ RetrieveCatalogObjectResponse _$RetrieveCatalogObjectResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveCatalogObjectResponseToJson(
-        RetrieveCatalogObjectResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'object': instance.object.toJson(),
-      'related_objects':
-          instance.relatedObjects.map((e) => e.toJson()).toList(),
-    };
+    RetrieveCatalogObjectResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['object'] = instance.object.toJson();
+  val['related_objects'] =
+      instance.relatedObjects.map((e) => e.toJson()).toList();
+  return val;
+}

@@ -19,15 +19,24 @@ CatalogDiscount _$CatalogDiscountFromJson(Map<String, dynamic> json) =>
       labelColor: json['label_color'] as String?,
     );
 
-Map<String, dynamic> _$CatalogDiscountToJson(CatalogDiscount instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'discount_type': _$CatalogDiscountTypeEnumMap[instance.discountType],
-      'percentage': instance.percentage,
-      'amount_money': instance.amountMoney?.toJson(),
-      'pin_required': instance.pinRequired,
-      'label_color': instance.labelColor,
-    };
+Map<String, dynamic> _$CatalogDiscountToJson(CatalogDiscount instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull(
+      'discount_type', _$CatalogDiscountTypeEnumMap[instance.discountType]);
+  writeNotNull('percentage', instance.percentage);
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  writeNotNull('pin_required', instance.pinRequired);
+  writeNotNull('label_color', instance.labelColor);
+  return val;
+}
 
 const _$CatalogDiscountTypeEnumMap = {
   CatalogDiscountType.fixedPercentage: 'FIXED_PERCENTAGE',

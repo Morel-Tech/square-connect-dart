@@ -56,28 +56,39 @@ OrderFulfillmentPickupDetails _$OrderFulfillmentPickupDetailsFromJson(
     );
 
 Map<String, dynamic> _$OrderFulfillmentPickupDetailsToJson(
-        OrderFulfillmentPickupDetails instance) =>
-    <String, dynamic>{
-      'recipient': instance.recipient?.toJson(),
-      'expires_at': instance.expiresAt?.toIso8601String(),
-      'auto_complete_duration': instance.autoCompleteDuration,
-      'schedule_type': _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap[
-          instance.scheduleType],
-      'pickup_at': instance.pickupAt?.toIso8601String(),
-      'pickup_window_duration': instance.pickupWindowDuration,
-      'prep_time_duration': instance.prepTimeDuration,
-      'note': instance.note,
-      'placed_at': instance.placedAt?.toIso8601String(),
-      'accepted_at': instance.acceptedAt?.toIso8601String(),
-      'rejected_at': instance.rejectedAt?.toIso8601String(),
-      'ready_at': instance.readyAt?.toIso8601String(),
-      'expired_at': instance.expiredAt?.toIso8601String(),
-      'picked_up_at': instance.pickedUpAt?.toIso8601String(),
-      'canceled_at': instance.canceledAt?.toIso8601String(),
-      'cancel_reason': instance.cancelReason,
-      'is_curbside_pickup': instance.isCurbsidePickup,
-      'curbside_pickup_details': instance.curbsidePickupDetails?.toJson(),
-    };
+    OrderFulfillmentPickupDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('recipient', instance.recipient?.toJson());
+  writeNotNull('expires_at', instance.expiresAt?.toIso8601String());
+  writeNotNull('auto_complete_duration', instance.autoCompleteDuration);
+  writeNotNull(
+      'schedule_type',
+      _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap[
+          instance.scheduleType]);
+  writeNotNull('pickup_at', instance.pickupAt?.toIso8601String());
+  writeNotNull('pickup_window_duration', instance.pickupWindowDuration);
+  writeNotNull('prep_time_duration', instance.prepTimeDuration);
+  writeNotNull('note', instance.note);
+  writeNotNull('placed_at', instance.placedAt?.toIso8601String());
+  writeNotNull('accepted_at', instance.acceptedAt?.toIso8601String());
+  writeNotNull('rejected_at', instance.rejectedAt?.toIso8601String());
+  writeNotNull('ready_at', instance.readyAt?.toIso8601String());
+  writeNotNull('expired_at', instance.expiredAt?.toIso8601String());
+  writeNotNull('picked_up_at', instance.pickedUpAt?.toIso8601String());
+  writeNotNull('canceled_at', instance.canceledAt?.toIso8601String());
+  writeNotNull('cancel_reason', instance.cancelReason);
+  writeNotNull('is_curbside_pickup', instance.isCurbsidePickup);
+  writeNotNull(
+      'curbside_pickup_details', instance.curbsidePickupDetails?.toJson());
+  return val;
+}
 
 const _$OrderFulfillmentPickupDetailsScheduleTypeEnumMap = {
   OrderFulfillmentPickupDetailsScheduleType.scheduled: 'SCHEDULED',

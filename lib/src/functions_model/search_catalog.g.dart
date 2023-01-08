@@ -23,16 +23,24 @@ SearchCatalogRequest _$SearchCatalogRequestFromJson(
     );
 
 Map<String, dynamic> _$SearchCatalogRequestToJson(
-        SearchCatalogRequest instance) =>
-    <String, dynamic>{
-      'cursor': instance.cursor,
-      'object_types': instance.objectTypes,
-      'include_deleted_objects': instance.includeDeletedObjects,
-      'include_related_objects': instance.includeRelatedObjects,
-      'begin_time': instance.beginTime,
-      'query': instance.query?.toJson(),
-      'limit': instance.limit,
-    };
+    SearchCatalogRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cursor', instance.cursor);
+  writeNotNull('object_types', instance.objectTypes);
+  writeNotNull('include_deleted_objects', instance.includeDeletedObjects);
+  writeNotNull('include_related_objects', instance.includeRelatedObjects);
+  writeNotNull('begin_time', instance.beginTime);
+  writeNotNull('query', instance.query?.toJson());
+  writeNotNull('limit', instance.limit);
+  return val;
+}
 
 SearchCatalogResponse _$SearchCatalogResponseFromJson(
         Map<String, dynamic> json) =>
@@ -47,9 +55,17 @@ SearchCatalogResponse _$SearchCatalogResponseFromJson(
     );
 
 Map<String, dynamic> _$SearchCatalogResponseToJson(
-        SearchCatalogResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-      'objects': instance.objects.map((e) => e.toJson()).toList(),
-    };
+    SearchCatalogResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  val['objects'] = instance.objects.map((e) => e.toJson()).toList();
+  return val;
+}

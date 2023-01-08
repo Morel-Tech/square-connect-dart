@@ -51,27 +51,35 @@ OrderReturnLineItem _$OrderReturnLineItemFromJson(Map<String, dynamic> json) =>
           : Money.fromJson(json['total_money'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OrderReturnLineItemToJson(
-        OrderReturnLineItem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'source_line_item_id': instance.sourceLineItemId,
-      'name': instance.name,
-      'quantity': instance.quantity,
-      'quantity_unit': instance.quantityUnit?.toJson(),
-      'note': instance.note,
-      'catalog_object_id': instance.catalogObjectId,
-      'variation_name': instance.variationName,
-      'return_modifiers':
-          instance.returnModifiers?.map((e) => e.toJson()).toList(),
-      'return_taxes': instance.returnTaxes?.map((e) => e.toJson()).toList(),
-      'return_discounts':
-          instance.returnDiscounts?.map((e) => e.toJson()).toList(),
-      'base_price_money': instance.basePriceMoney?.toJson(),
-      'variation_total_price_money':
-          instance.variationTotalPriceMoney?.toJson(),
-      'gross_return_money': instance.grossReturnMoney?.toJson(),
-      'total_tax_money': instance.totalTaxMoney?.toJson(),
-      'total_discount_money': instance.totalDiscountMoney?.toJson(),
-      'total_money': instance.totalMoney?.toJson(),
-    };
+Map<String, dynamic> _$OrderReturnLineItemToJson(OrderReturnLineItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('source_line_item_id', instance.sourceLineItemId);
+  writeNotNull('name', instance.name);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('quantity_unit', instance.quantityUnit?.toJson());
+  writeNotNull('note', instance.note);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('variation_name', instance.variationName);
+  writeNotNull('return_modifiers',
+      instance.returnModifiers?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'return_taxes', instance.returnTaxes?.map((e) => e.toJson()).toList());
+  writeNotNull('return_discounts',
+      instance.returnDiscounts?.map((e) => e.toJson()).toList());
+  writeNotNull('base_price_money', instance.basePriceMoney?.toJson());
+  writeNotNull('variation_total_price_money',
+      instance.variationTotalPriceMoney?.toJson());
+  writeNotNull('gross_return_money', instance.grossReturnMoney?.toJson());
+  writeNotNull('total_tax_money', instance.totalTaxMoney?.toJson());
+  writeNotNull('total_discount_money', instance.totalDiscountMoney?.toJson());
+  writeNotNull('total_money', instance.totalMoney?.toJson());
+  return val;
+}

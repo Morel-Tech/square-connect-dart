@@ -39,22 +39,31 @@ Tender _$TenderFromJson(Map<String, dynamic> json) => Tender(
       type: $enumDecode(_$TenderTypeEnumMap, json['type']),
     );
 
-Map<String, dynamic> _$TenderToJson(Tender instance) => <String, dynamic>{
-      'id': instance.id,
-      'location_id': instance.locationId,
-      'transaction_id': instance.transactionId,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'note': instance.note,
-      'amount_money': instance.amountMoney?.toJson(),
-      'tip_money': instance.tipMoney?.toJson(),
-      'processing_fee_money': instance.processingFeeMoney?.toJson(),
-      'customer_id': instance.customerId,
-      'card_details': instance.cardDetails?.toJson(),
-      'cash_details': instance.cashDetails?.toJson(),
-      'additional_recipients':
-          instance.additionalRecipients?.map((e) => e.toJson()).toList(),
-      'type': _$TenderTypeEnumMap[instance.type]!,
-    };
+Map<String, dynamic> _$TenderToJson(Tender instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('transaction_id', instance.transactionId);
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('note', instance.note);
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  writeNotNull('tip_money', instance.tipMoney?.toJson());
+  writeNotNull('processing_fee_money', instance.processingFeeMoney?.toJson());
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('card_details', instance.cardDetails?.toJson());
+  writeNotNull('cash_details', instance.cashDetails?.toJson());
+  writeNotNull('additional_recipients',
+      instance.additionalRecipients?.map((e) => e.toJson()).toList());
+  val['type'] = _$TenderTypeEnumMap[instance.type]!;
+  return val;
+}
 
 const _$TenderTypeEnumMap = {
   TenderType.card: 'CARD',

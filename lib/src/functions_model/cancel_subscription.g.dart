@@ -21,9 +21,17 @@ CancelSubscriptionResponse _$CancelSubscriptionResponseFromJson(
     );
 
 Map<String, dynamic> _$CancelSubscriptionResponseToJson(
-        CancelSubscriptionResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-      'actions': instance.actions?.map((e) => e.toJson()).toList(),
-    };
+    CancelSubscriptionResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  writeNotNull('actions', instance.actions?.map((e) => e.toJson()).toList());
+  return val;
+}

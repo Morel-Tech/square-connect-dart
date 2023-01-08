@@ -25,7 +25,15 @@ ChargeRequestAdditionalRecipientResponse
         );
 
 Map<String, dynamic> _$ChargeRequestAdditionalRecipientResponseToJson(
-        ChargeRequestAdditionalRecipientResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-    };
+    ChargeRequestAdditionalRecipientResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  return val;
+}

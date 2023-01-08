@@ -20,17 +20,25 @@ OrderReturnTax _$OrderReturnTaxFromJson(Map<String, dynamic> json) =>
       scope: $enumDecodeNullable(_$OrderLineItemTaxScopeEnumMap, json['scope']),
     );
 
-Map<String, dynamic> _$OrderReturnTaxToJson(OrderReturnTax instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'source_tax_id': instance.sourceTaxId,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'type': _$OrderLineItemTaxTypeEnumMap[instance.type],
-      'percentage': instance.percentage,
-      'applied_money': instance.appliedMoney?.toJson(),
-      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
-    };
+Map<String, dynamic> _$OrderReturnTaxToJson(OrderReturnTax instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('source_tax_id', instance.sourceTaxId);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('name', instance.name);
+  writeNotNull('type', _$OrderLineItemTaxTypeEnumMap[instance.type]);
+  writeNotNull('percentage', instance.percentage);
+  writeNotNull('applied_money', instance.appliedMoney?.toJson());
+  writeNotNull('scope', _$OrderLineItemTaxScopeEnumMap[instance.scope]);
+  return val;
+}
 
 const _$OrderLineItemTaxTypeEnumMap = {
   OrderLineItemTaxType.unknownTax: 'UNKNOWN_TAX',

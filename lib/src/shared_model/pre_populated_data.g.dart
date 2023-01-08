@@ -15,9 +15,17 @@ PrePopulatedData _$PrePopulatedDataFromJson(Map<String, dynamic> json) =>
       buyerPhoneNumber: json['buyer_phone_number'] as String?,
     );
 
-Map<String, dynamic> _$PrePopulatedDataToJson(PrePopulatedData instance) =>
-    <String, dynamic>{
-      'buyer_address': instance.buyerAddress?.toJson(),
-      'buyer_email': instance.buyerEmail,
-      'buyer_phone_number': instance.buyerPhoneNumber,
-    };
+Map<String, dynamic> _$PrePopulatedDataToJson(PrePopulatedData instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('buyer_address', instance.buyerAddress?.toJson());
+  writeNotNull('buyer_email', instance.buyerEmail);
+  writeNotNull('buyer_phone_number', instance.buyerPhoneNumber);
+  return val;
+}

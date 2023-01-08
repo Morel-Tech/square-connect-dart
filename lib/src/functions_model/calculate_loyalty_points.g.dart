@@ -18,12 +18,21 @@ CalculateLoyaltyPointsRequest _$CalculateLoyaltyPointsRequestFromJson(
     );
 
 Map<String, dynamic> _$CalculateLoyaltyPointsRequestToJson(
-        CalculateLoyaltyPointsRequest instance) =>
-    <String, dynamic>{
-      'order_id': instance.orderId,
-      'transaction_amount_money': instance.transactionAmountMoney?.toJson(),
-      'loyalty_account_id': instance.loyaltyAccountId,
-    };
+    CalculateLoyaltyPointsRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull(
+      'transaction_amount_money', instance.transactionAmountMoney?.toJson());
+  writeNotNull('loyalty_account_id', instance.loyaltyAccountId);
+  return val;
+}
 
 CalculateLoyaltyPointsResponse _$CalculateLoyaltyPointsResponseFromJson(
         Map<String, dynamic> json) =>
@@ -36,9 +45,17 @@ CalculateLoyaltyPointsResponse _$CalculateLoyaltyPointsResponseFromJson(
     );
 
 Map<String, dynamic> _$CalculateLoyaltyPointsResponseToJson(
-        CalculateLoyaltyPointsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'points': instance.points,
-      'promotion_points': instance.promotionPoints,
-    };
+    CalculateLoyaltyPointsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('points', instance.points);
+  writeNotNull('promotion_points', instance.promotionPoints);
+  return val;
+}

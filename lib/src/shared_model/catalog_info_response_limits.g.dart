@@ -32,23 +32,34 @@ CatalogInfoResponseLimits _$CatalogInfoResponseLimitsFromJson(
     );
 
 Map<String, dynamic> _$CatalogInfoResponseLimitsToJson(
-        CatalogInfoResponseLimits instance) =>
-    <String, dynamic>{
-      'batch_upsert_max_objects_per_batch':
-          instance.batchUpsertMaxObjectsPerBatch,
-      'batch_upsert_max_total_objects': instance.batchUpsertMaxTotalObjects,
-      'batch_retrieve_max_object_ids': instance.batchRetrieveMaxObjectIds,
-      'search_max_page_limit': instance.searchMaxPageLimit,
-      'batch_delete_max_object_ids': instance.batchDeleteMaxObjectIds,
-      'update_item_taxes_max_item_ids': instance.updateItemTaxesMaxItemIds,
-      'update_item_taxes_max_taxes_to_enable':
-          instance.updateItemTaxesMaxTaxesToEnable,
-      'update_item_taxes_max_taxes_to_disable':
-          instance.updateItemTaxesMaxTaxesToDisable,
-      'update_item_modifier_lists_max_item_ids':
-          instance.updateItemModifierListsMaxItemIds,
-      'update_item_modifier_lists_max_modifier_lists_to_enable':
-          instance.updateItemModifierListsMaxModifierListsToEnable,
-      'update_item_modifier_lists_max_modifier_lists_to_disable':
-          instance.updateItemModifierListsMaxModifierListsToDisable,
-    };
+    CatalogInfoResponseLimits instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('batch_upsert_max_objects_per_batch',
+      instance.batchUpsertMaxObjectsPerBatch);
+  writeNotNull(
+      'batch_upsert_max_total_objects', instance.batchUpsertMaxTotalObjects);
+  writeNotNull(
+      'batch_retrieve_max_object_ids', instance.batchRetrieveMaxObjectIds);
+  writeNotNull('search_max_page_limit', instance.searchMaxPageLimit);
+  writeNotNull('batch_delete_max_object_ids', instance.batchDeleteMaxObjectIds);
+  writeNotNull(
+      'update_item_taxes_max_item_ids', instance.updateItemTaxesMaxItemIds);
+  writeNotNull('update_item_taxes_max_taxes_to_enable',
+      instance.updateItemTaxesMaxTaxesToEnable);
+  writeNotNull('update_item_taxes_max_taxes_to_disable',
+      instance.updateItemTaxesMaxTaxesToDisable);
+  writeNotNull('update_item_modifier_lists_max_item_ids',
+      instance.updateItemModifierListsMaxItemIds);
+  writeNotNull('update_item_modifier_lists_max_modifier_lists_to_enable',
+      instance.updateItemModifierListsMaxModifierListsToEnable);
+  writeNotNull('update_item_modifier_lists_max_modifier_lists_to_disable',
+      instance.updateItemModifierListsMaxModifierListsToDisable);
+  return val;
+}

@@ -11,7 +11,15 @@ CustomerTaxIds _$CustomerTaxIdsFromJson(Map<String, dynamic> json) =>
       euVat: json['eu_vat'] as String?,
     );
 
-Map<String, dynamic> _$CustomerTaxIdsToJson(CustomerTaxIds instance) =>
-    <String, dynamic>{
-      'eu_vat': instance.euVat,
-    };
+Map<String, dynamic> _$CustomerTaxIdsToJson(CustomerTaxIds instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('eu_vat', instance.euVat);
+  return val;
+}

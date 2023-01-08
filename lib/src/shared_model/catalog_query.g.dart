@@ -50,19 +50,28 @@ CatalogQuery _$CatalogQueryFromJson(Map<String, dynamic> json) => CatalogQuery(
               json['items_for_item_options_query'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CatalogQueryToJson(CatalogQuery instance) =>
-    <String, dynamic>{
-      'sorted_attribute_query': instance.sortedAttributeQuery?.toJson(),
-      'exact_query': instance.exactQuery?.toJson(),
-      'set_query': instance.setQuery?.toJson(),
-      'prefix_query': instance.prefixQuery?.toJson(),
-      'range_query': instance.rangeQuery?.toJson(),
-      'text_query': instance.textQuery?.toJson(),
-      'items_for_tax_query': instance.itemsForTaxQuery?.toJson(),
-      'items_for_modifier_list_query':
-          instance.itemsForModifierListQuery?.toJson(),
-      'items_for_item_options_query':
-          instance.itemsForItemOptionsQuery?.toJson(),
-      'item_variations_for_item_option_values_query':
-          instance.itemVariationsForItemOptionValuesQuery?.toJson(),
-    };
+Map<String, dynamic> _$CatalogQueryToJson(CatalogQuery instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'sorted_attribute_query', instance.sortedAttributeQuery?.toJson());
+  writeNotNull('exact_query', instance.exactQuery?.toJson());
+  writeNotNull('set_query', instance.setQuery?.toJson());
+  writeNotNull('prefix_query', instance.prefixQuery?.toJson());
+  writeNotNull('range_query', instance.rangeQuery?.toJson());
+  writeNotNull('text_query', instance.textQuery?.toJson());
+  writeNotNull('items_for_tax_query', instance.itemsForTaxQuery?.toJson());
+  writeNotNull('items_for_modifier_list_query',
+      instance.itemsForModifierListQuery?.toJson());
+  writeNotNull('items_for_item_options_query',
+      instance.itemsForItemOptionsQuery?.toJson());
+  writeNotNull('item_variations_for_item_option_values_query',
+      instance.itemVariationsForItemOptionValuesQuery?.toJson());
+  return val;
+}

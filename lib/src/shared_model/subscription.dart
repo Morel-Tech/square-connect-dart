@@ -7,7 +7,7 @@ part 'subscription.g.dart';
 @JsonSerializable()
 class Subscription extends Equatable {
   const Subscription({
-    required this.id,
+    this.id,
     this.locationId,
     this.planId,
     this.customerId,
@@ -18,7 +18,7 @@ class Subscription extends Equatable {
     this.taxPercentage,
     this.invoiceIds,
     this.priceOverrideMoney,
-    required this.version,
+    this.version,
     this.createdAt,
     this.cardId,
     this.timezone,
@@ -34,7 +34,7 @@ class Subscription extends Equatable {
   Map<String, dynamic> toJson() => _$SubscriptionToJson(this);
 
   /// **Read only** The Square-assigned ID of the subscription.
-  final String id;
+  final String? id;
 
   /// **Read only** The ID of the location associated with the subscription.
   final String? locationId;
@@ -88,7 +88,7 @@ class Subscription extends Equatable {
   /// The version of the object. When updating an object, the version
   /// supplied must match the version in the database, otherwise the write
   /// will be rejected as conflicting.
-  final int version;
+  final int? version;
 
   /// **Read only** The timestamp when the subscription was created.
   final DateTime? createdAt;

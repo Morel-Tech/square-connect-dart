@@ -17,9 +17,17 @@ LoyaltyAccountMapping _$LoyaltyAccountMappingFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyAccountMappingToJson(
-        LoyaltyAccountMapping instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'phone_number': instance.phoneNumber,
-    };
+    LoyaltyAccountMapping instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('phone_number', instance.phoneNumber);
+  return val;
+}

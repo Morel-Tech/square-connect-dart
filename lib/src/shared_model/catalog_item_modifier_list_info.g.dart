@@ -20,12 +20,21 @@ CatalogItemModifierListInfo _$CatalogItemModifierListInfoFromJson(
     );
 
 Map<String, dynamic> _$CatalogItemModifierListInfoToJson(
-        CatalogItemModifierListInfo instance) =>
-    <String, dynamic>{
-      'modifier_list_id': instance.modifierListId,
-      'modifier_overrides':
-          instance.modifierOverrides?.map((e) => e.toJson()).toList(),
-      'min_selected_modifiers': instance.minSelectedModifiers,
-      'max_selected_modifiers': instance.maxSelectedModifiers,
-      'enabled': instance.enabled,
-    };
+    CatalogItemModifierListInfo instance) {
+  final val = <String, dynamic>{
+    'modifier_list_id': instance.modifierListId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('modifier_overrides',
+      instance.modifierOverrides?.map((e) => e.toJson()).toList());
+  writeNotNull('min_selected_modifiers', instance.minSelectedModifiers);
+  writeNotNull('max_selected_modifiers', instance.maxSelectedModifiers);
+  writeNotNull('enabled', instance.enabled);
+  return val;
+}

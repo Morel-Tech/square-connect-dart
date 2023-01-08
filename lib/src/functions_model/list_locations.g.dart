@@ -18,8 +18,16 @@ ListLocationsResponse _$ListLocationsResponseFromJson(
     );
 
 Map<String, dynamic> _$ListLocationsResponseToJson(
-        ListLocationsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'locations': instance.locations.map((e) => e.toJson()).toList(),
-    };
+    ListLocationsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['locations'] = instance.locations.map((e) => e.toJson()).toList();
+  return val;
+}

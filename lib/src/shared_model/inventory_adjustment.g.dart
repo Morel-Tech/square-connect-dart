@@ -37,28 +37,35 @@ InventoryAdjustment _$InventoryAdjustmentFromJson(Map<String, dynamic> json) =>
       goodsReceiptId: json['goods_receipt_id'] as String?,
     );
 
-Map<String, dynamic> _$InventoryAdjustmentToJson(
-        InventoryAdjustment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'reference_id': instance.referenceId,
-      'from_state': _$InventoryStateEnumMap[instance.fromState],
-      'to_state': _$InventoryStateEnumMap[instance.toState],
-      'location_id': instance.locationId,
-      'catalog_object_id': instance.catalogObjectId,
-      'catalog_object_type':
-          _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
-      'quantity': instance.quantity,
-      'total_price_money': instance.totalPriceMoney?.toJson(),
-      'occurred_at': instance.occurredAt?.toIso8601String(),
-      'created_at': instance.createdAt?.toIso8601String(),
-      'source': instance.source?.toJson(),
-      'employee_id': instance.employeeId,
-      'transaction_id': instance.transactionId,
-      'refund_id': instance.refundId,
-      'purchase_order_id': instance.purchaseOrderId,
-      'goods_receipt_id': instance.goodsReceiptId,
-    };
+Map<String, dynamic> _$InventoryAdjustmentToJson(InventoryAdjustment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('from_state', _$InventoryStateEnumMap[instance.fromState]);
+  writeNotNull('to_state', _$InventoryStateEnumMap[instance.toState]);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('catalog_object_type',
+      _$CatalogObjectTypeEnumMap[instance.catalogObjectType]);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('total_price_money', instance.totalPriceMoney?.toJson());
+  writeNotNull('occurred_at', instance.occurredAt?.toIso8601String());
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('employee_id', instance.employeeId);
+  writeNotNull('transaction_id', instance.transactionId);
+  writeNotNull('refund_id', instance.refundId);
+  writeNotNull('purchase_order_id', instance.purchaseOrderId);
+  writeNotNull('goods_receipt_id', instance.goodsReceiptId);
+  return val;
+}
 
 const _$InventoryStateEnumMap = {
   InventoryState.custom: 'CUSTOM',

@@ -21,11 +21,19 @@ OrderLineItemModifier _$OrderLineItemModifierFromJson(
     );
 
 Map<String, dynamic> _$OrderLineItemModifierToJson(
-        OrderLineItemModifier instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'base_price_money': instance.basePriceMoney?.toJson(),
-      'total_price_money': instance.totalPriceMoney?.toJson(),
-    };
+    OrderLineItemModifier instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('uid', instance.uid);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('name', instance.name);
+  writeNotNull('base_price_money', instance.basePriceMoney?.toJson());
+  writeNotNull('total_price_money', instance.totalPriceMoney?.toJson());
+  return val;
+}

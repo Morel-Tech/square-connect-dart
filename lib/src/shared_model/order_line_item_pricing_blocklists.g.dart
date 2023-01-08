@@ -20,9 +20,18 @@ OrderLineItemPricingBlocklists _$OrderLineItemPricingBlocklistsFromJson(
     );
 
 Map<String, dynamic> _$OrderLineItemPricingBlocklistsToJson(
-        OrderLineItemPricingBlocklists instance) =>
-    <String, dynamic>{
-      'blocked_discounts':
-          instance.blockedDiscounts?.map((e) => e.toJson()).toList(),
-      'blocked_taxes': instance.blockedTaxes?.map((e) => e.toJson()).toList(),
-    };
+    OrderLineItemPricingBlocklists instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('blocked_discounts',
+      instance.blockedDiscounts?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'blocked_taxes', instance.blockedTaxes?.map((e) => e.toJson()).toList());
+  return val;
+}

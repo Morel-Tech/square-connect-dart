@@ -26,17 +26,27 @@ Checkout _$CheckoutFromJson(Map<String, dynamic> json) => Checkout(
           .toList(),
     );
 
-Map<String, dynamic> _$CheckoutToJson(Checkout instance) => <String, dynamic>{
-      'id': instance.id,
-      'ask_for_shipping_address': instance.askForShippingAddress,
-      'checkout_page_url': instance.checkoutPageUrl,
-      'created_at': instance.createdAt.toIso8601String(),
-      'merchant_support_email': instance.merchantSupportEmail,
-      'order': instance.order?.toJson(),
-      'pre_populate_buyer_email': instance.prePopulateBuyerEmail,
-      'pre_populate_shipping_address':
-          instance.prePopulateShippingAddress?.toJson(),
-      'redirect_url': instance.redirectUrl,
-      'additional_recipients':
-          instance.additionalRecipients?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$CheckoutToJson(Checkout instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ask_for_shipping_address', instance.askForShippingAddress);
+  writeNotNull('checkout_page_url', instance.checkoutPageUrl);
+  val['created_at'] = instance.createdAt.toIso8601String();
+  writeNotNull('merchant_support_email', instance.merchantSupportEmail);
+  writeNotNull('order', instance.order?.toJson());
+  writeNotNull('pre_populate_buyer_email', instance.prePopulateBuyerEmail);
+  writeNotNull('pre_populate_shipping_address',
+      instance.prePopulateShippingAddress?.toJson());
+  writeNotNull('redirect_url', instance.redirectUrl);
+  writeNotNull('additional_recipients',
+      instance.additionalRecipients?.map((e) => e.toJson()).toList());
+  return val;
+}

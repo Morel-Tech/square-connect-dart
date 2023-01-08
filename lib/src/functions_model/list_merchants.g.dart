@@ -19,9 +19,17 @@ ListMerchantsResponse _$ListMerchantsResponseFromJson(
     );
 
 Map<String, dynamic> _$ListMerchantsResponseToJson(
-        ListMerchantsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'merchants': instance.merchants.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-    };
+    ListMerchantsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['merchants'] = instance.merchants.map((e) => e.toJson()).toList();
+  writeNotNull('cursor', instance.cursor);
+  return val;
+}

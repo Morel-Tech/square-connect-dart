@@ -16,12 +16,19 @@ UpdateOrderResponse _$UpdateOrderResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$UpdateOrderResponseToJson(
-        UpdateOrderResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'order': instance.order?.toJson(),
-    };
+Map<String, dynamic> _$UpdateOrderResponseToJson(UpdateOrderResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('order', instance.order?.toJson());
+  return val;
+}
 
 UpdateOrderRequest _$UpdateOrderRequestFromJson(Map<String, dynamic> json) =>
     UpdateOrderRequest(
@@ -34,9 +41,17 @@ UpdateOrderRequest _$UpdateOrderRequestFromJson(Map<String, dynamic> json) =>
       idempotencyKey: json['idempotency_key'] as String?,
     );
 
-Map<String, dynamic> _$UpdateOrderRequestToJson(UpdateOrderRequest instance) =>
-    <String, dynamic>{
-      'order': instance.order?.toJson(),
-      'fields_to_clear': instance.fieldsToClear,
-      'idempotency_key': instance.idempotencyKey,
-    };
+Map<String, dynamic> _$UpdateOrderRequestToJson(UpdateOrderRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('order', instance.order?.toJson());
+  writeNotNull('fields_to_clear', instance.fieldsToClear);
+  writeNotNull('idempotency_key', instance.idempotencyKey);
+  return val;
+}

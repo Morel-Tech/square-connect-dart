@@ -20,11 +20,21 @@ LoyaltyProgramRewardTier _$LoyaltyProgramRewardTierFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyProgramRewardTierToJson(
-        LoyaltyProgramRewardTier instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'created_at': instance.createdAt.toIso8601String(),
-      'name': instance.name,
-      'points': instance.points,
-      'pricing_rule_reference': instance.pricingRuleReference?.toJson(),
-    };
+    LoyaltyProgramRewardTier instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'created_at': instance.createdAt.toIso8601String(),
+    'name': instance.name,
+    'points': instance.points,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'pricing_rule_reference', instance.pricingRuleReference?.toJson());
+  return val;
+}

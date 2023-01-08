@@ -13,7 +13,15 @@ BusinessHours _$BusinessHoursFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$BusinessHoursToJson(BusinessHours instance) =>
-    <String, dynamic>{
-      'periods': instance.periods?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$BusinessHoursToJson(BusinessHours instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('periods', instance.periods?.map((e) => e.toJson()).toList());
+  return val;
+}

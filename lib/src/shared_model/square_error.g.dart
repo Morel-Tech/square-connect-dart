@@ -24,13 +24,22 @@ SquareError _$SquareErrorFromJson(Map<String, dynamic> json) => SquareError(
       field: json['field'] as String?,
     );
 
-Map<String, dynamic> _$SquareErrorToJson(SquareError instance) =>
-    <String, dynamic>{
-      'category': _$CategoryEnumMap[instance.category]!,
-      'code': _$ErrorCodeEnumMap[instance.code]!,
-      'detail': instance.detail,
-      'field': instance.field,
-    };
+Map<String, dynamic> _$SquareErrorToJson(SquareError instance) {
+  final val = <String, dynamic>{
+    'category': _$CategoryEnumMap[instance.category]!,
+    'code': _$ErrorCodeEnumMap[instance.code]!,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('detail', instance.detail);
+  writeNotNull('field', instance.field);
+  return val;
+}
 
 const _$CategoryEnumMap = {
   Category.apiError: 'API_ERROR',

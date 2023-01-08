@@ -16,12 +16,19 @@ CreateOrderResponse _$CreateOrderResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$CreateOrderResponseToJson(
-        CreateOrderResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'order': instance.order?.toJson(),
-    };
+Map<String, dynamic> _$CreateOrderResponseToJson(CreateOrderResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('order', instance.order?.toJson());
+  return val;
+}
 
 CreateOrderRequest _$CreateOrderRequestFromJson(Map<String, dynamic> json) =>
     CreateOrderRequest(

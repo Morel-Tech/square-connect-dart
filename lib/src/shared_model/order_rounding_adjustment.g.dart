@@ -17,9 +17,17 @@ OrderRoundingAdjustment _$OrderRoundingAdjustmentFromJson(
     );
 
 Map<String, dynamic> _$OrderRoundingAdjustmentToJson(
-        OrderRoundingAdjustment instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'name': instance.name,
-      'amount_money': instance.amountMoney?.toJson(),
-    };
+    OrderRoundingAdjustment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('uid', instance.uid);
+  writeNotNull('name', instance.name);
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  return val;
+}

@@ -33,17 +33,25 @@ LoyaltyAccount _$LoyaltyAccountFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updated_at'] as String),
     );
 
-Map<String, dynamic> _$LoyaltyAccountToJson(LoyaltyAccount instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'program_id': instance.programId,
-      'balance': instance.balance,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'customer_id': instance.customerId,
-      'enrolled_at': instance.enrolledAt?.toIso8601String(),
-      'expiring_point_deadlines':
-          instance.expiringPointDeadlines?.map((e) => e.toJson()).toList(),
-      'lifetime_points': instance.lifetimePoints,
-      'mapping': instance.mapping?.toJson(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-    };
+Map<String, dynamic> _$LoyaltyAccountToJson(LoyaltyAccount instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['program_id'] = instance.programId;
+  writeNotNull('balance', instance.balance);
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('enrolled_at', instance.enrolledAt?.toIso8601String());
+  writeNotNull('expiring_point_deadlines',
+      instance.expiringPointDeadlines?.map((e) => e.toJson()).toList());
+  writeNotNull('lifetime_points', instance.lifetimePoints);
+  writeNotNull('mapping', instance.mapping?.toJson());
+  writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
+  return val;
+}

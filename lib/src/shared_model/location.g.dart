@@ -42,32 +42,44 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
           : Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'address': instance.address?.toJson(),
-      'timezone': instance.timezone,
-      'capabilities': instance.capabilities
+Map<String, dynamic> _$LocationToJson(Location instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('address', instance.address?.toJson());
+  writeNotNull('timezone', instance.timezone);
+  writeNotNull(
+      'capabilities',
+      instance.capabilities
           ?.map((e) => _$LocationCapabilityEnumMap[e]!)
-          .toList(),
-      'status': _$LocationStatusEnumMap[instance.status]!,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'merchant_id': instance.merchantId,
-      'country': instance.country,
-      'language_code': instance.languageCode,
-      'currency': instance.currency,
-      'phone_number': instance.phoneNumber,
-      'business_name': instance.businessName,
-      'type': _$LocationTypeEnumMap[instance.type]!,
-      'website_url': instance.websiteUrl,
-      'business_hours': instance.businessHours?.toJson(),
-      'business_email': instance.businessEmail,
-      'description': instance.description,
-      'twitter_username': instance.twitterUsername,
-      'instagram_username': instance.instagramUsername,
-      'facebook_url': instance.facebookUrl,
-      'coordinates': instance.coordinates?.toJson(),
-    };
+          .toList());
+  val['status'] = _$LocationStatusEnumMap[instance.status]!;
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('merchant_id', instance.merchantId);
+  writeNotNull('country', instance.country);
+  writeNotNull('language_code', instance.languageCode);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('phone_number', instance.phoneNumber);
+  writeNotNull('business_name', instance.businessName);
+  val['type'] = _$LocationTypeEnumMap[instance.type]!;
+  writeNotNull('website_url', instance.websiteUrl);
+  writeNotNull('business_hours', instance.businessHours?.toJson());
+  writeNotNull('business_email', instance.businessEmail);
+  writeNotNull('description', instance.description);
+  writeNotNull('twitter_username', instance.twitterUsername);
+  writeNotNull('instagram_username', instance.instagramUsername);
+  writeNotNull('facebook_url', instance.facebookUrl);
+  writeNotNull('coordinates', instance.coordinates?.toJson());
+  return val;
+}
 
 const _$LocationCapabilityEnumMap = {
   LocationCapability.creditCardProcessing: 'CREDIT_CARD_PROCESSING',

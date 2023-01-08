@@ -7,7 +7,7 @@ part of 'subscription.dart';
 // **************************************************************************
 
 Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
-      id: json['id'] as String,
+      id: json['id'] as String?,
       locationId: json['location_id'] as String?,
       planId: json['plan_id'] as String?,
       customerId: json['customer_id'] as String?,
@@ -23,7 +23,7 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
           ? null
           : Money.fromJson(
               json['price_override_money'] as Map<String, dynamic>),
-      version: json['version'] as int,
+      version: json['version'] as int?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -37,26 +37,34 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
           .toList(),
     );
 
-Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'location_id': instance.locationId,
-      'plan_id': instance.planId,
-      'customer_id': instance.customerId,
-      'start_date': instance.startDate,
-      'canceled_date': instance.canceledDate,
-      'charged_through_date': instance.chargedThroughDate,
-      'status': _$SubscriptionStatusEnumMap[instance.status],
-      'tax_percentage': instance.taxPercentage,
-      'invoice_ids': instance.invoiceIds,
-      'price_override_money': instance.priceOverrideMoney?.toJson(),
-      'version': instance.version,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'card_id': instance.cardId,
-      'timezone': instance.timezone,
-      'source': instance.source?.toJson(),
-      'actions': instance.actions?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('plan_id', instance.planId);
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('start_date', instance.startDate);
+  writeNotNull('canceled_date', instance.canceledDate);
+  writeNotNull('charged_through_date', instance.chargedThroughDate);
+  writeNotNull('status', _$SubscriptionStatusEnumMap[instance.status]);
+  writeNotNull('tax_percentage', instance.taxPercentage);
+  writeNotNull('invoice_ids', instance.invoiceIds);
+  writeNotNull('price_override_money', instance.priceOverrideMoney?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('card_id', instance.cardId);
+  writeNotNull('timezone', instance.timezone);
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('actions', instance.actions?.map((e) => e.toJson()).toList());
+  return val;
+}
 
 const _$SubscriptionStatusEnumMap = {
   SubscriptionStatus.pending: 'PENDING',

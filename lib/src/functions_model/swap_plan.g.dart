@@ -29,9 +29,17 @@ SwapPlanResponse _$SwapPlanResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$SwapPlanResponseToJson(SwapPlanResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-      'actions': instance.actions?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$SwapPlanResponseToJson(SwapPlanResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  writeNotNull('actions', instance.actions?.map((e) => e.toJson()).toList());
+  return val;
+}

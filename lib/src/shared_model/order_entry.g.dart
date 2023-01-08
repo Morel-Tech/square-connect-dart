@@ -12,9 +12,17 @@ OrderEntry _$OrderEntryFromJson(Map<String, dynamic> json) => OrderEntry(
       version: json['version'] as int?,
     );
 
-Map<String, dynamic> _$OrderEntryToJson(OrderEntry instance) =>
-    <String, dynamic>{
-      'order_id': instance.orderId,
-      'location_id': instance.locationId,
-      'version': instance.version,
-    };
+Map<String, dynamic> _$OrderEntryToJson(OrderEntry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('version', instance.version);
+  return val;
+}

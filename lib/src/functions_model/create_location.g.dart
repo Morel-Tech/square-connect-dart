@@ -16,11 +16,19 @@ CreateLocationResponse _$CreateLocationResponseFromJson(
     );
 
 Map<String, dynamic> _$CreateLocationResponseToJson(
-        CreateLocationResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'location': instance.location.toJson(),
-    };
+    CreateLocationResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['location'] = instance.location.toJson();
+  return val;
+}
 
 CreateLocationRequest _$CreateLocationRequestFromJson(
         Map<String, dynamic> json) =>

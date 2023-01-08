@@ -16,12 +16,21 @@ AdjustLoyaltyPointsRequest _$AdjustLoyaltyPointsRequestFromJson(
     );
 
 Map<String, dynamic> _$AdjustLoyaltyPointsRequestToJson(
-        AdjustLoyaltyPointsRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'adjust_points': instance.adjustPoints.toJson(),
-      'allow_negative_balance': instance.allowNegativeBalance,
-    };
+    AdjustLoyaltyPointsRequest instance) {
+  final val = <String, dynamic>{
+    'idempotency_key': instance.idempotencyKey,
+    'adjust_points': instance.adjustPoints.toJson(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('allow_negative_balance', instance.allowNegativeBalance);
+  return val;
+}
 
 AdjustLoyaltyPointsResponse _$AdjustLoyaltyPointsResponseFromJson(
         Map<String, dynamic> json) =>
@@ -35,8 +44,16 @@ AdjustLoyaltyPointsResponse _$AdjustLoyaltyPointsResponseFromJson(
     );
 
 Map<String, dynamic> _$AdjustLoyaltyPointsResponseToJson(
-        AdjustLoyaltyPointsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'event': instance.event?.toJson(),
-    };
+    AdjustLoyaltyPointsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('event', instance.event?.toJson());
+  return val;
+}

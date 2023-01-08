@@ -12,9 +12,17 @@ CatalogImage _$CatalogImageFromJson(Map<String, dynamic> json) => CatalogImage(
       caption: json['caption'] as String?,
     );
 
-Map<String, dynamic> _$CatalogImageToJson(CatalogImage instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'url': instance.url,
-      'caption': instance.caption,
-    };
+Map<String, dynamic> _$CatalogImageToJson(CatalogImage instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('url', instance.url);
+  writeNotNull('caption', instance.caption);
+  return val;
+}

@@ -15,9 +15,17 @@ ProcessingFee _$ProcessingFeeFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$ProcessingFeeToJson(ProcessingFee instance) =>
-    <String, dynamic>{
-      'amount_money': instance.amountMoney?.toJson(),
-      'effective_at': instance.effectiveAt,
-      'type': instance.type,
-    };
+Map<String, dynamic> _$ProcessingFeeToJson(ProcessingFee instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  writeNotNull('effective_at', instance.effectiveAt);
+  writeNotNull('type', instance.type);
+  return val;
+}

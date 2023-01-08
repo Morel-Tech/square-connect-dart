@@ -18,9 +18,17 @@ StandardUnitDescriptionGroup _$StandardUnitDescriptionGroupFromJson(
     );
 
 Map<String, dynamic> _$StandardUnitDescriptionGroupToJson(
-        StandardUnitDescriptionGroup instance) =>
-    <String, dynamic>{
-      'standard_unit_descriptions':
-          instance.standardUnitDescriptions?.map((e) => e.toJson()).toList(),
-      'language_code': instance.languageCode,
-    };
+    StandardUnitDescriptionGroup instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('standard_unit_descriptions',
+      instance.standardUnitDescriptions?.map((e) => e.toJson()).toList());
+  writeNotNull('language_code', instance.languageCode);
+  return val;
+}

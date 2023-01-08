@@ -35,13 +35,21 @@ CustomerFilter _$CustomerFilterFromJson(Map<String, dynamic> json) =>
           : TimeRange.fromJson(json['updated_at'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CustomerFilterToJson(CustomerFilter instance) =>
-    <String, dynamic>{
-      'created_at': instance.createdAt?.toJson(),
-      'creation_source': instance.creationSource?.toJson(),
-      'email_address': instance.emailAddress?.toJson(),
-      'group_ids': instance.groupIds?.toJson(),
-      'phone_number': instance.phoneNumber?.toJson(),
-      'reference_id': instance.referenceId?.toJson(),
-      'updated_at': instance.updatedAt?.toJson(),
-    };
+Map<String, dynamic> _$CustomerFilterToJson(CustomerFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('created_at', instance.createdAt?.toJson());
+  writeNotNull('creation_source', instance.creationSource?.toJson());
+  writeNotNull('email_address', instance.emailAddress?.toJson());
+  writeNotNull('group_ids', instance.groupIds?.toJson());
+  writeNotNull('phone_number', instance.phoneNumber?.toJson());
+  writeNotNull('reference_id', instance.referenceId?.toJson());
+  writeNotNull('updated_at', instance.updatedAt?.toJson());
+  return val;
+}

@@ -31,24 +31,32 @@ CatalogPricingRule _$CatalogPricingRuleFromJson(Map<String, dynamic> json) =>
           _$DiscountTargetScopeTypeEnumMap, json['discount_target_scope']),
     );
 
-Map<String, dynamic> _$CatalogPricingRuleToJson(CatalogPricingRule instance) =>
-    <String, dynamic>{
-      'customer_group_ids_any': instance.customerGroupIdsAny,
-      'discount_id': instance.discountId,
-      'exclude_products_id': instance.excludeProductsId,
-      'exclude_strategy': instance.excludeStrategy,
-      'match_products_id': instance.matchProductsId,
-      'minimum_order_subtotal_money':
-          instance.minimumOrderSubtotalMoney?.toJson(),
-      'name': instance.name,
-      'time_period_ids': instance.timePeriodIds,
-      'valid_from_date': instance.validFromDate,
-      'valid_from_local_time': instance.validFromLocalTime,
-      'valid_until_date': instance.validUntilDate,
-      'valid_until_local_time': instance.validUntilLocalTime,
-      'discount_target_scope':
-          _$DiscountTargetScopeTypeEnumMap[instance.discountTargetScope],
-    };
+Map<String, dynamic> _$CatalogPricingRuleToJson(CatalogPricingRule instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('customer_group_ids_any', instance.customerGroupIdsAny);
+  writeNotNull('discount_id', instance.discountId);
+  writeNotNull('exclude_products_id', instance.excludeProductsId);
+  writeNotNull('exclude_strategy', instance.excludeStrategy);
+  writeNotNull('match_products_id', instance.matchProductsId);
+  writeNotNull('minimum_order_subtotal_money',
+      instance.minimumOrderSubtotalMoney?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('time_period_ids', instance.timePeriodIds);
+  writeNotNull('valid_from_date', instance.validFromDate);
+  writeNotNull('valid_from_local_time', instance.validFromLocalTime);
+  writeNotNull('valid_until_date', instance.validUntilDate);
+  writeNotNull('valid_until_local_time', instance.validUntilLocalTime);
+  writeNotNull('discount_target_scope',
+      _$DiscountTargetScopeTypeEnumMap[instance.discountTargetScope]);
+  return val;
+}
 
 const _$DiscountTargetScopeTypeEnumMap = {
   DiscountTargetScopeType.wholePurchase: 'WHOLE_PURCHASE',

@@ -15,12 +15,20 @@ SearchCustomersRequest _$SearchCustomersRequestFromJson(
     );
 
 Map<String, dynamic> _$SearchCustomersRequestToJson(
-        SearchCustomersRequest instance) =>
-    <String, dynamic>{
-      'cursor': instance.cursor,
-      'limit': instance.limit,
-      'query': instance.query.toJson(),
-    };
+    SearchCustomersRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cursor', instance.cursor);
+  writeNotNull('limit', instance.limit);
+  val['query'] = instance.query.toJson();
+  return val;
+}
 
 SearchCustomersResponse _$SearchCustomersResponseFromJson(
         Map<String, dynamic> json) =>
@@ -32,8 +40,17 @@ SearchCustomersResponse _$SearchCustomersResponseFromJson(
     );
 
 Map<String, dynamic> _$SearchCustomersResponseToJson(
-        SearchCustomersResponse instance) =>
-    <String, dynamic>{
-      'customers': instance.customers?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-    };
+    SearchCustomersResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'customers', instance.customers?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  return val;
+}

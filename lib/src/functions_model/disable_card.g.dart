@@ -16,9 +16,16 @@ DisableCardResponse _$DisableCardResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$DisableCardResponseToJson(
-        DisableCardResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'card': instance.card?.toJson(),
-    };
+Map<String, dynamic> _$DisableCardResponseToJson(DisableCardResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('card', instance.card?.toJson());
+  return val;
+}

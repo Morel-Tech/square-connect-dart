@@ -16,8 +16,16 @@ RetrieveLocationResponse _$RetrieveLocationResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveLocationResponseToJson(
-        RetrieveLocationResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'location': instance.location.toJson(),
-    };
+    RetrieveLocationResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['location'] = instance.location.toJson();
+  return val;
+}

@@ -28,23 +28,35 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
       sublocality3: json['sublocality_3'] as String?,
     );
 
-Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
-      'address_line_1': instance.addressLine1,
-      'address_line_2': instance.addressLine2,
-      'address_line_3': instance.addressLine3,
-      'administrative_district_level_1': instance.administrativeDistrictLevel1,
-      'administrative_district_level_2': instance.administrativeDistrictLevel2,
-      'administrative_district_level_3': instance.administrativeDistrictLevel3,
-      'country': _$CountryEnumMap[instance.country],
-      'first_name': instance.firstName,
-      'last_name': instance.lastName,
-      'locality': instance.locality,
-      'organization': instance.organization,
-      'postal_code': instance.postalCode,
-      'sublocality': instance.sublocality,
-      'sublocality_2': instance.sublocality2,
-      'sublocality_3': instance.sublocality3,
-    };
+Map<String, dynamic> _$AddressToJson(Address instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('address_line_1', instance.addressLine1);
+  writeNotNull('address_line_2', instance.addressLine2);
+  writeNotNull('address_line_3', instance.addressLine3);
+  writeNotNull(
+      'administrative_district_level_1', instance.administrativeDistrictLevel1);
+  writeNotNull(
+      'administrative_district_level_2', instance.administrativeDistrictLevel2);
+  writeNotNull(
+      'administrative_district_level_3', instance.administrativeDistrictLevel3);
+  writeNotNull('country', _$CountryEnumMap[instance.country]);
+  writeNotNull('first_name', instance.firstName);
+  writeNotNull('last_name', instance.lastName);
+  writeNotNull('locality', instance.locality);
+  writeNotNull('organization', instance.organization);
+  writeNotNull('postal_code', instance.postalCode);
+  writeNotNull('sublocality', instance.sublocality);
+  writeNotNull('sublocality_2', instance.sublocality2);
+  writeNotNull('sublocality_3', instance.sublocality3);
+  return val;
+}
 
 const _$CountryEnumMap = {
   Country.unknown: 'ZZ',

@@ -13,10 +13,17 @@ CardPaymentTimeline _$CardPaymentTimelineFromJson(Map<String, dynamic> json) =>
       voidedAt: json['voided_at'] as String?,
     );
 
-Map<String, dynamic> _$CardPaymentTimelineToJson(
-        CardPaymentTimeline instance) =>
-    <String, dynamic>{
-      'authorized_at': instance.authorizedAt,
-      'captured_at': instance.capturedAt,
-      'voided_at': instance.voidedAt,
-    };
+Map<String, dynamic> _$CardPaymentTimelineToJson(CardPaymentTimeline instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('authorized_at', instance.authorizedAt);
+  writeNotNull('captured_at', instance.capturedAt);
+  writeNotNull('voided_at', instance.voidedAt);
+  return val;
+}

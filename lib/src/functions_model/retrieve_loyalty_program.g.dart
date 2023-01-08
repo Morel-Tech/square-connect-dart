@@ -18,8 +18,16 @@ RetrieveLoyaltyProgramResponse _$RetrieveLoyaltyProgramResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveLoyaltyProgramResponseToJson(
-        RetrieveLoyaltyProgramResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'program': instance.program?.toJson(),
-    };
+    RetrieveLoyaltyProgramResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('program', instance.program?.toJson());
+  return val;
+}

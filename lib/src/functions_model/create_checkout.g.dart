@@ -28,20 +28,29 @@ CreateCheckoutRequest _$CreateCheckoutRequestFromJson(
     );
 
 Map<String, dynamic> _$CreateCheckoutRequestToJson(
-        CreateCheckoutRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'order': instance.order.toJson(),
-      'ask_for_shipping_address': instance.askForShippingAddress,
-      'merchant_support_email': instance.merchantSupportEmail,
-      'pre_populate_buyer_email': instance.prePopulateBuyerEmail,
-      'pre_populate_shipping_address':
-          instance.prePopulateShippingAddress?.toJson(),
-      'redirect_url': instance.redirectUrl,
-      'additional_recipients':
-          instance.additionalRecipients?.map((e) => e.toJson()).toList(),
-      'note': instance.note,
-    };
+    CreateCheckoutRequest instance) {
+  final val = <String, dynamic>{
+    'idempotency_key': instance.idempotencyKey,
+    'order': instance.order.toJson(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ask_for_shipping_address', instance.askForShippingAddress);
+  writeNotNull('merchant_support_email', instance.merchantSupportEmail);
+  writeNotNull('pre_populate_buyer_email', instance.prePopulateBuyerEmail);
+  writeNotNull('pre_populate_shipping_address',
+      instance.prePopulateShippingAddress?.toJson());
+  writeNotNull('redirect_url', instance.redirectUrl);
+  writeNotNull('additional_recipients',
+      instance.additionalRecipients?.map((e) => e.toJson()).toList());
+  writeNotNull('note', instance.note);
+  return val;
+}
 
 CreateCheckoutRequestOrder _$CreateCheckoutRequestOrderFromJson(
         Map<String, dynamic> json) =>
@@ -69,8 +78,16 @@ CreateCheckoutResponse _$CreateCheckoutResponseFromJson(
     );
 
 Map<String, dynamic> _$CreateCheckoutResponseToJson(
-        CreateCheckoutResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'checkout': instance.checkout?.toJson(),
-    };
+    CreateCheckoutResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('checkout', instance.checkout?.toJson());
+  return val;
+}

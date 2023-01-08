@@ -18,10 +18,19 @@ ExternalPaymentDetails _$ExternalPaymentDetailsFromJson(
     );
 
 Map<String, dynamic> _$ExternalPaymentDetailsToJson(
-        ExternalPaymentDetails instance) =>
-    <String, dynamic>{
-      'source': instance.source,
-      'type': instance.type,
-      'source_fee_money': instance.sourceFeeMoney?.toJson(),
-      'source_id': instance.sourceId,
-    };
+    ExternalPaymentDetails instance) {
+  final val = <String, dynamic>{
+    'source': instance.source,
+    'type': instance.type,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('source_fee_money', instance.sourceFeeMoney?.toJson());
+  writeNotNull('source_id', instance.sourceId);
+  return val;
+}

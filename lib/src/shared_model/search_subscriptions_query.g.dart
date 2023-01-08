@@ -16,7 +16,15 @@ SearchSubscriptionsQuery _$SearchSubscriptionsQueryFromJson(
     );
 
 Map<String, dynamic> _$SearchSubscriptionsQueryToJson(
-        SearchSubscriptionsQuery instance) =>
-    <String, dynamic>{
-      'filter': instance.filter?.toJson(),
-    };
+    SearchSubscriptionsQuery instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('filter', instance.filter?.toJson());
+  return val;
+}

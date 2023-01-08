@@ -19,18 +19,26 @@ LoyaltyReward _$LoyaltyRewardFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String?,
     );
 
-Map<String, dynamic> _$LoyaltyRewardToJson(LoyaltyReward instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'loyalty_account_id': instance.loyaltyAccountId,
-      'reward_tier_id': instance.rewardTierId,
-      'created_at': instance.createdAt,
-      'order_id': instance.orderId,
-      'points': instance.points,
-      'redeemed_at': instance.redeemedAt,
-      'status': _$LoyaltyRewardStatusEnumMap[instance.status],
-      'updated_at': instance.updatedAt,
-    };
+Map<String, dynamic> _$LoyaltyRewardToJson(LoyaltyReward instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['loyalty_account_id'] = instance.loyaltyAccountId;
+  val['reward_tier_id'] = instance.rewardTierId;
+  writeNotNull('created_at', instance.createdAt);
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('points', instance.points);
+  writeNotNull('redeemed_at', instance.redeemedAt);
+  writeNotNull('status', _$LoyaltyRewardStatusEnumMap[instance.status]);
+  writeNotNull('updated_at', instance.updatedAt);
+  return val;
+}
 
 const _$LoyaltyRewardStatusEnumMap = {
   LoyaltyRewardStatus.issued: 'ISSUED',

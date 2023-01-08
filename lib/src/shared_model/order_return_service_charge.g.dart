@@ -36,22 +36,31 @@ OrderReturnServiceCharge _$OrderReturnServiceChargeFromJson(
     );
 
 Map<String, dynamic> _$OrderReturnServiceChargeToJson(
-        OrderReturnServiceCharge instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'source_service_charge_id': instance.sourceServiceChargeId,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'percentage': instance.percentage,
-      'amount_money': instance.amountMoney?.toJson(),
-      'applied_money': instance.appliedMoney?.toJson(),
-      'total_money': instance.totalMoney?.toJson(),
-      'total_tax_money': instance.totalTaxMoney?.toJson(),
-      'calculation_phase': _$OrderServiceChargeCalculationPhaseEnumMap[
-          instance.calculationPhase],
-      'taxable': instance.taxable,
-      'return_taxes': instance.returnTaxes?.map((e) => e.toJson()).toList(),
-    };
+    OrderReturnServiceCharge instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('source_service_charge_id', instance.sourceServiceChargeId);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('name', instance.name);
+  writeNotNull('percentage', instance.percentage);
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  writeNotNull('applied_money', instance.appliedMoney?.toJson());
+  writeNotNull('total_money', instance.totalMoney?.toJson());
+  writeNotNull('total_tax_money', instance.totalTaxMoney?.toJson());
+  writeNotNull('calculation_phase',
+      _$OrderServiceChargeCalculationPhaseEnumMap[instance.calculationPhase]);
+  writeNotNull('taxable', instance.taxable);
+  writeNotNull(
+      'return_taxes', instance.returnTaxes?.map((e) => e.toJson()).toList());
+  return val;
+}
 
 const _$OrderServiceChargeCalculationPhaseEnumMap = {
   OrderServiceChargeCalculationPhase.subtotalPhase: 'SUBTOTAL_PHASE',

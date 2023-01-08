@@ -49,32 +49,41 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
     );
 
 Map<String, dynamic> _$CatalogItemVariationToJson(
-        CatalogItemVariation instance) =>
-    <String, dynamic>{
-      'item_id': instance.itemId,
-      'name': instance.name,
-      'sku': instance.sku,
-      'upc': instance.upc,
-      'ordinal': instance.ordinal,
-      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
-      'price_money': instance.priceMoney?.toJson(),
-      'location_overrides':
-          instance.locationOverrides?.map((e) => e.toJson()).toList(),
-      'track_inventory': instance.trackInventory,
-      'inventory_alert_type':
-          _$InventoryAlertTypeEnumMap[instance.inventoryAlertType],
-      'inventory_alert_threshold': instance.inventoryAlertThreshold,
-      'user_data': instance.userData,
-      'service_duration': instance.serviceDuration,
-      'measurement_unit_id': instance.measurementUnitId,
-      'available_for_booking': instance.availableForBooking,
-      'item_option_value':
-          instance.itemOptionValue?.map((e) => e.toJson()).toList(),
-      'stockable': instance.stockable,
-      'stockable_conversion': instance.stockableConversion?.toJson(),
-      'team_member_ids': instance.teamMemberIds,
-      'image_ids': instance.imageIds,
-    };
+    CatalogItemVariation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('item_id', instance.itemId);
+  writeNotNull('name', instance.name);
+  writeNotNull('sku', instance.sku);
+  writeNotNull('upc', instance.upc);
+  writeNotNull('ordinal', instance.ordinal);
+  writeNotNull(
+      'pricing_type', _$CatalogPricingTypeEnumMap[instance.pricingType]);
+  writeNotNull('price_money', instance.priceMoney?.toJson());
+  writeNotNull('location_overrides',
+      instance.locationOverrides?.map((e) => e.toJson()).toList());
+  writeNotNull('track_inventory', instance.trackInventory);
+  writeNotNull('inventory_alert_type',
+      _$InventoryAlertTypeEnumMap[instance.inventoryAlertType]);
+  writeNotNull('inventory_alert_threshold', instance.inventoryAlertThreshold);
+  writeNotNull('user_data', instance.userData);
+  writeNotNull('service_duration', instance.serviceDuration);
+  writeNotNull('measurement_unit_id', instance.measurementUnitId);
+  writeNotNull('available_for_booking', instance.availableForBooking);
+  writeNotNull('item_option_value',
+      instance.itemOptionValue?.map((e) => e.toJson()).toList());
+  writeNotNull('stockable', instance.stockable);
+  writeNotNull('stockable_conversion', instance.stockableConversion?.toJson());
+  writeNotNull('team_member_ids', instance.teamMemberIds);
+  writeNotNull('image_ids', instance.imageIds);
+  return val;
+}
 
 const _$CatalogPricingTypeEnumMap = {
   CatalogPricingType.fixedPricing: 'FIXED_PRICING',

@@ -43,27 +43,36 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       version: json['version'] as int?,
     );
 
-Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
-      'id': instance.id,
-      'address': instance.address?.toJson(),
-      'birthday': instance.birthday?.toIso8601String(),
-      'company_name': instance.companyName,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'creation_source':
-          _$CustomerCreationSourceEnumMap[instance.creationSource],
-      'email_address': instance.emailAddress,
-      'family_name': instance.familyName,
-      'given_name': instance.givenName,
-      'group_ids': instance.groupIds,
-      'nickname': instance.nickname,
-      'note': instance.note,
-      'phone_number': instance.phoneNumber,
-      'preferences': instance.preferences?.toJson(),
-      'reference_id': instance.referenceId,
-      'segment_ids': instance.segmentIds,
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'version': instance.version,
-    };
+Map<String, dynamic> _$CustomerToJson(Customer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('address', instance.address?.toJson());
+  writeNotNull('birthday', instance.birthday?.toIso8601String());
+  writeNotNull('company_name', instance.companyName);
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('creation_source',
+      _$CustomerCreationSourceEnumMap[instance.creationSource]);
+  writeNotNull('email_address', instance.emailAddress);
+  writeNotNull('family_name', instance.familyName);
+  writeNotNull('given_name', instance.givenName);
+  writeNotNull('group_ids', instance.groupIds);
+  writeNotNull('nickname', instance.nickname);
+  writeNotNull('note', instance.note);
+  writeNotNull('phone_number', instance.phoneNumber);
+  writeNotNull('preferences', instance.preferences?.toJson());
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('segment_ids', instance.segmentIds);
+  writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
+  writeNotNull('version', instance.version);
+  return val;
+}
 
 const _$CustomerCreationSourceEnumMap = {
   CustomerCreationSource.other: 'OTHER',

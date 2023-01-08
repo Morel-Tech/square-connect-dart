@@ -60,30 +60,40 @@ OrderLineItem _$OrderLineItemFromJson(Map<String, dynamic> json) =>
               json['pricing_blocklists'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OrderLineItemToJson(OrderLineItem instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'name': instance.name,
-      'quantity': instance.quantity,
-      'quantity_unit': instance.quantityUnit?.toJson(),
-      'note': instance.note,
-      'catalog_object_id': instance.catalogObjectId,
-      'variation_name': instance.variationName,
-      'modifiers': instance.modifiers?.map((e) => e.toJson()).toList(),
-      'applied_taxes': instance.appliedTaxes?.map((e) => e.toJson()).toList(),
-      'applied_discounts':
-          instance.appliedDiscounts?.map((e) => e.toJson()).toList(),
-      'base_price_money': instance.basePriceMoney?.toJson(),
-      'variation_total_price_money':
-          instance.variationTotalPriceMoney?.toJson(),
-      'gross_sales_money': instance.grossSalesMoney?.toJson(),
-      'total_tax_money': instance.totalTaxMoney?.toJson(),
-      'total_discount_money': instance.totalDiscountMoney?.toJson(),
-      'total_money': instance.totalMoney?.toJson(),
-      'item_type': _$OrderLineItemTypeEnumMap[instance.itemType],
-      'metadata': instance.metadata,
-      'pricing_blocklists': instance.pricingBlocklists?.toJson(),
-    };
+Map<String, dynamic> _$OrderLineItemToJson(OrderLineItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('uid', instance.uid);
+  writeNotNull('name', instance.name);
+  val['quantity'] = instance.quantity;
+  writeNotNull('quantity_unit', instance.quantityUnit?.toJson());
+  writeNotNull('note', instance.note);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('variation_name', instance.variationName);
+  writeNotNull(
+      'modifiers', instance.modifiers?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'applied_taxes', instance.appliedTaxes?.map((e) => e.toJson()).toList());
+  writeNotNull('applied_discounts',
+      instance.appliedDiscounts?.map((e) => e.toJson()).toList());
+  writeNotNull('base_price_money', instance.basePriceMoney?.toJson());
+  writeNotNull('variation_total_price_money',
+      instance.variationTotalPriceMoney?.toJson());
+  writeNotNull('gross_sales_money', instance.grossSalesMoney?.toJson());
+  writeNotNull('total_tax_money', instance.totalTaxMoney?.toJson());
+  writeNotNull('total_discount_money', instance.totalDiscountMoney?.toJson());
+  writeNotNull('total_money', instance.totalMoney?.toJson());
+  writeNotNull('item_type', _$OrderLineItemTypeEnumMap[instance.itemType]);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('pricing_blocklists', instance.pricingBlocklists?.toJson());
+  return val;
+}
 
 const _$OrderLineItemTypeEnumMap = {
   OrderLineItemType.item: 'ITEM',

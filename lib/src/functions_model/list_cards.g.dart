@@ -17,9 +17,17 @@ ListCardsResponse _$ListCardsResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ListCardsResponseToJson(ListCardsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'cards': instance.cards?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-    };
+Map<String, dynamic> _$ListCardsResponseToJson(ListCardsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('cards', instance.cards?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  return val;
+}

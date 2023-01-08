@@ -18,15 +18,23 @@ PauseSubscriptionRequest _$PauseSubscriptionRequestFromJson(
     );
 
 Map<String, dynamic> _$PauseSubscriptionRequestToJson(
-        PauseSubscriptionRequest instance) =>
-    <String, dynamic>{
-      'pause_effective_date': instance.pauseEffectiveDate,
-      'pause_cycle_duration': instance.pauseCycleDuration,
-      'resume_effective_date': instance.resumeEffectiveDate,
-      'resume_change_timing':
-          _$ChangeTimingEnumMap[instance.resumeChangeTiming],
-      'pause_reason': instance.pauseReason,
-    };
+    PauseSubscriptionRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('pause_effective_date', instance.pauseEffectiveDate);
+  writeNotNull('pause_cycle_duration', instance.pauseCycleDuration);
+  writeNotNull('resume_effective_date', instance.resumeEffectiveDate);
+  writeNotNull('resume_change_timing',
+      _$ChangeTimingEnumMap[instance.resumeChangeTiming]);
+  writeNotNull('pause_reason', instance.pauseReason);
+  return val;
+}
 
 const _$ChangeTimingEnumMap = {
   ChangeTiming.immediate: 'IMMEDIATE',
@@ -48,9 +56,17 @@ PauseSubscriptionResponse _$PauseSubscriptionResponseFromJson(
     );
 
 Map<String, dynamic> _$PauseSubscriptionResponseToJson(
-        PauseSubscriptionResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-      'actions': instance.actions?.map((e) => e.toJson()).toList(),
-    };
+    PauseSubscriptionResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  writeNotNull('actions', instance.actions?.map((e) => e.toJson()).toList());
+  return val;
+}

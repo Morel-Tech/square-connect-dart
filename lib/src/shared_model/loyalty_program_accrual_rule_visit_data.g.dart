@@ -17,8 +17,17 @@ LoyaltyProgramAccrualRuleVisitData _$LoyaltyProgramAccrualRuleVisitDataFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyProgramAccrualRuleVisitDataToJson(
-        LoyaltyProgramAccrualRuleVisitData instance) =>
-    <String, dynamic>{
-      'tax_mode': instance.taxMode,
-      'minimum_amount_money': instance.minimumAmountMoney?.toJson(),
-    };
+    LoyaltyProgramAccrualRuleVisitData instance) {
+  final val = <String, dynamic>{
+    'tax_mode': instance.taxMode,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('minimum_amount_money', instance.minimumAmountMoney?.toJson());
+  return val;
+}

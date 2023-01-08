@@ -21,18 +21,28 @@ ObtainTokenRequest _$ObtainTokenRequestFromJson(Map<String, dynamic> json) =>
       shortLived: json['short_lived'] as bool?,
     );
 
-Map<String, dynamic> _$ObtainTokenRequestToJson(ObtainTokenRequest instance) =>
-    <String, dynamic>{
-      'client_id': instance.clientId,
-      'client_secret': instance.clientSecret,
-      'code': instance.code,
-      'redirect_uri': instance.redirectUri,
-      'grant_type': _$OAuthGrantTypeEnumMap[instance.grantType]!,
-      'refresh_token': instance.refreshToken,
-      'migration_token': instance.migrationToken,
-      'scopes': instance.scopes?.map((e) => _$OAuthScopeEnumMap[e]!).toList(),
-      'short_lived': instance.shortLived,
-    };
+Map<String, dynamic> _$ObtainTokenRequestToJson(ObtainTokenRequest instance) {
+  final val = <String, dynamic>{
+    'client_id': instance.clientId,
+    'client_secret': instance.clientSecret,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('code', instance.code);
+  writeNotNull('redirect_uri', instance.redirectUri);
+  val['grant_type'] = _$OAuthGrantTypeEnumMap[instance.grantType]!;
+  writeNotNull('refresh_token', instance.refreshToken);
+  writeNotNull('migration_token', instance.migrationToken);
+  writeNotNull(
+      'scopes', instance.scopes?.map((e) => _$OAuthScopeEnumMap[e]!).toList());
+  writeNotNull('short_lived', instance.shortLived);
+  return val;
+}
 
 const _$OAuthGrantTypeEnumMap = {
   OAuthGrantType.authorizationCode: 'authorization_code',
@@ -81,17 +91,24 @@ ObtainTokenResponse _$ObtainTokenResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ObtainTokenResponseToJson(
-        ObtainTokenResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'access_token': instance.accessToken,
-      'token_type': instance.tokenType,
-      'expires_at': instance.expiresAt.toIso8601String(),
-      'merchant_id': instance.merchantId,
-      'subscription_id': instance.subscriptionId,
-      'plan_id': instance.planId,
-      'id_token': instance.idToken,
-      'refresh_token': instance.refreshToken,
-      'short_lived': instance.shortLived,
-    };
+Map<String, dynamic> _$ObtainTokenResponseToJson(ObtainTokenResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['access_token'] = instance.accessToken;
+  val['token_type'] = instance.tokenType;
+  val['expires_at'] = instance.expiresAt.toIso8601String();
+  val['merchant_id'] = instance.merchantId;
+  writeNotNull('subscription_id', instance.subscriptionId);
+  writeNotNull('plan_id', instance.planId);
+  writeNotNull('id_token', instance.idToken);
+  val['refresh_token'] = instance.refreshToken;
+  writeNotNull('short_lived', instance.shortLived);
+  return val;
+}

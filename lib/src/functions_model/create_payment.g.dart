@@ -40,29 +40,39 @@ CreatePaymentRequest _$CreatePaymentRequestFromJson(
     );
 
 Map<String, dynamic> _$CreatePaymentRequestToJson(
-        CreatePaymentRequest instance) =>
-    <String, dynamic>{
-      'source_id': instance.sourceId,
-      'idempotency_key': instance.idempotencyKey,
-      'amount_money': instance.amountMoney.toJson(),
-      'tip_money': instance.tipMoney?.toJson(),
-      'app_fee_money': instance.appFeeMoney?.toJson(),
-      'delay_duration': instance.delayDuration,
-      'autocomplete': instance.autocomplete,
-      'order_id': instance.orderId,
-      'customer_id': instance.customerId,
-      'location_id': instance.locationId,
-      'team_member_id': instance.teamMemberId,
-      'reference_id': instance.referenceId,
-      'verification_token': instance.verificationToken,
-      'accept_partial_authorization': instance.acceptPartialAuthorization,
-      'buyer_email_address': instance.buyerEmailAddress,
-      'billing_address': instance.billingAddress?.toJson(),
-      'shipping_address': instance.shippingAddress?.toJson(),
-      'note': instance.note,
-      'statement_description_identifier':
-          instance.statementDescriptionIdentifier,
-    };
+    CreatePaymentRequest instance) {
+  final val = <String, dynamic>{
+    'source_id': instance.sourceId,
+    'idempotency_key': instance.idempotencyKey,
+    'amount_money': instance.amountMoney.toJson(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('tip_money', instance.tipMoney?.toJson());
+  writeNotNull('app_fee_money', instance.appFeeMoney?.toJson());
+  writeNotNull('delay_duration', instance.delayDuration);
+  writeNotNull('autocomplete', instance.autocomplete);
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('team_member_id', instance.teamMemberId);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('verification_token', instance.verificationToken);
+  writeNotNull(
+      'accept_partial_authorization', instance.acceptPartialAuthorization);
+  writeNotNull('buyer_email_address', instance.buyerEmailAddress);
+  writeNotNull('billing_address', instance.billingAddress?.toJson());
+  writeNotNull('shipping_address', instance.shippingAddress?.toJson());
+  writeNotNull('note', instance.note);
+  writeNotNull('statement_description_identifier',
+      instance.statementDescriptionIdentifier);
+  return val;
+}
 
 CreatePaymentResponse _$CreatePaymentResponseFromJson(
         Map<String, dynamic> json) =>
@@ -76,8 +86,16 @@ CreatePaymentResponse _$CreatePaymentResponseFromJson(
     );
 
 Map<String, dynamic> _$CreatePaymentResponseToJson(
-        CreatePaymentResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'payment': instance.payment?.toJson(),
-    };
+    CreatePaymentResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('payment', instance.payment?.toJson());
+  return val;
+}

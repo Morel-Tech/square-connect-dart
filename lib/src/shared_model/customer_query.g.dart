@@ -16,8 +16,16 @@ CustomerQuery _$CustomerQueryFromJson(Map<String, dynamic> json) =>
           : CustomerSort.fromJson(json['sort'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CustomerQueryToJson(CustomerQuery instance) =>
-    <String, dynamic>{
-      'filter': instance.filter?.toJson(),
-      'sort': instance.sort?.toJson(),
-    };
+Map<String, dynamic> _$CustomerQueryToJson(CustomerQuery instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('filter', instance.filter?.toJson());
+  writeNotNull('sort', instance.sort?.toJson());
+  return val;
+}

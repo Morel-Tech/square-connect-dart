@@ -16,7 +16,15 @@ CatalogQueryItemVariationsForItemOptionValues
         );
 
 Map<String, dynamic> _$CatalogQueryItemVariationsForItemOptionValuesToJson(
-        CatalogQueryItemVariationsForItemOptionValues instance) =>
-    <String, dynamic>{
-      'item_option_value_ids': instance.itemOptionValueIds,
-    };
+    CatalogQueryItemVariationsForItemOptionValues instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('item_option_value_ids', instance.itemOptionValueIds);
+  return val;
+}

@@ -23,18 +23,27 @@ OrderLineItemTax _$OrderLineItemTaxFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$OrderLineItemTaxToJson(OrderLineItemTax instance) =>
-    <String, dynamic>{
-      'uid': instance.uid,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'type': _$OrderLineItemTaxTypeEnumMap[instance.type],
-      'percentage': instance.percentage,
-      'metadata': instance.metadata,
-      'applied_money': instance.appliedMoney?.toJson(),
-      'scope': _$OrderLineItemTaxScopeEnumMap[instance.scope],
-      'auto_applied': instance.autoApplied,
-    };
+Map<String, dynamic> _$OrderLineItemTaxToJson(OrderLineItemTax instance) {
+  final val = <String, dynamic>{
+    'uid': instance.uid,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('name', instance.name);
+  writeNotNull('type', _$OrderLineItemTaxTypeEnumMap[instance.type]);
+  writeNotNull('percentage', instance.percentage);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('applied_money', instance.appliedMoney?.toJson());
+  writeNotNull('scope', _$OrderLineItemTaxScopeEnumMap[instance.scope]);
+  writeNotNull('auto_applied', instance.autoApplied);
+  return val;
+}
 
 const _$OrderLineItemTaxTypeEnumMap = {
   OrderLineItemTaxType.unknownTax: 'UNKNOWN_TAX',

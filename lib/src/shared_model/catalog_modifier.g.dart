@@ -16,10 +16,18 @@ CatalogModifier _$CatalogModifierFromJson(Map<String, dynamic> json) =>
       modifierListId: json['modifier_list_id'] as String?,
     );
 
-Map<String, dynamic> _$CatalogModifierToJson(CatalogModifier instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'price_money': instance.priceMoney?.toJson(),
-      'ordinal': instance.ordinal,
-      'modifier_list_id': instance.modifierListId,
-    };
+Map<String, dynamic> _$CatalogModifierToJson(CatalogModifier instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('price_money', instance.priceMoney?.toJson());
+  writeNotNull('ordinal', instance.ordinal);
+  writeNotNull('modifier_list_id', instance.modifierListId);
+  return val;
+}

@@ -22,13 +22,23 @@ CheckoutOptions _$CheckoutOptionsFromJson(Map<String, dynamic> json) =>
       subscriptionPlanId: json['subscription_plan_id'] as String?,
     );
 
-Map<String, dynamic> _$CheckoutOptionsToJson(CheckoutOptions instance) =>
-    <String, dynamic>{
-      'accepted_payment_methods': instance.acceptedPaymentMethods?.toJson(),
-      'allow_tipping': instance.allowTipping,
-      'ask_for_shipping_address': instance.askForShippingAddress,
-      'custom_fields': instance.customFields?.map((e) => e.toJson()).toList(),
-      'merchant_support_email': instance.merchantSupportEmail,
-      'redirect_url': instance.redirectUrl,
-      'subscription_plan_id': instance.subscriptionPlanId,
-    };
+Map<String, dynamic> _$CheckoutOptionsToJson(CheckoutOptions instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'accepted_payment_methods', instance.acceptedPaymentMethods?.toJson());
+  writeNotNull('allow_tipping', instance.allowTipping);
+  writeNotNull('ask_for_shipping_address', instance.askForShippingAddress);
+  writeNotNull(
+      'custom_fields', instance.customFields?.map((e) => e.toJson()).toList());
+  writeNotNull('merchant_support_email', instance.merchantSupportEmail);
+  writeNotNull('redirect_url', instance.redirectUrl);
+  writeNotNull('subscription_plan_id', instance.subscriptionPlanId);
+  return val;
+}

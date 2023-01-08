@@ -23,13 +23,22 @@ InventoryChange _$InventoryChangeFromJson(Map<String, dynamic> json) =>
               json['transfer'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$InventoryChangeToJson(InventoryChange instance) =>
-    <String, dynamic>{
-      'type': _$InventoryChangeTypeEnumMap[instance.type]!,
-      'physical_count': instance.physicalCount?.toJson(),
-      'adjustment': instance.adjustment?.toJson(),
-      'transfer': instance.transfer?.toJson(),
-    };
+Map<String, dynamic> _$InventoryChangeToJson(InventoryChange instance) {
+  final val = <String, dynamic>{
+    'type': _$InventoryChangeTypeEnumMap[instance.type]!,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('physical_count', instance.physicalCount?.toJson());
+  writeNotNull('adjustment', instance.adjustment?.toJson());
+  writeNotNull('transfer', instance.transfer?.toJson());
+  return val;
+}
 
 const _$InventoryChangeTypeEnumMap = {
   InventoryChangeType.physicalCount: 'PHYSICAL_COUNT',

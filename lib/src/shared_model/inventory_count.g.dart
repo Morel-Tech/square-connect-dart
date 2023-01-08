@@ -20,16 +20,25 @@ InventoryCount _$InventoryCountFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['calculated_at'] as String),
     );
 
-Map<String, dynamic> _$InventoryCountToJson(InventoryCount instance) =>
-    <String, dynamic>{
-      'catalog_object_id': instance.catalogObjectId,
-      'catalog_object_type':
-          _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
-      'inventory_state': _$InventoryStateEnumMap[instance.inventoryState],
-      'location_id': instance.locationId,
-      'quantity': instance.quantity,
-      'calculated_at': instance.calculatedAt?.toIso8601String(),
-    };
+Map<String, dynamic> _$InventoryCountToJson(InventoryCount instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('catalog_object_type',
+      _$CatalogObjectTypeEnumMap[instance.catalogObjectType]);
+  writeNotNull(
+      'inventory_state', _$InventoryStateEnumMap[instance.inventoryState]);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('calculated_at', instance.calculatedAt?.toIso8601String());
+  return val;
+}
 
 const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.item: 'ITEM',

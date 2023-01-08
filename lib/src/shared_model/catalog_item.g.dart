@@ -37,26 +37,37 @@ CatalogItem _$CatalogItemFromJson(Map<String, dynamic> json) => CatalogItem(
           .toList(),
     );
 
-Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'description': instance.description,
-      'abbreviation': instance.abbreviation,
-      'label_color': instance.labelColor,
-      'available_online': instance.availableOnline,
-      'available_for_pickup': instance.availableForPickup,
-      'available_electronically': instance.availableElectronically,
-      'category_id': instance.categoryId,
-      'tax_ids': instance.taxIds,
-      'modifier_list_info':
-          instance.modifierListInfo?.map((e) => e.toJson()).toList(),
-      'variations': instance.variations?.map((e) => e.toJson()).toList(),
-      'product_type': _$CatalogItemProductTypeEnumMap[instance.productType],
-      'skip_modifier_screen': instance.skipModifierScreen,
-      'item_options': instance.itemOptions?.map((e) => e.toJson()).toList(),
-      'sort_name': instance.sortName,
-      'image_ids': instance.imageIds,
-    };
+Map<String, dynamic> _$CatalogItemToJson(CatalogItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('description', instance.description);
+  writeNotNull('abbreviation', instance.abbreviation);
+  writeNotNull('label_color', instance.labelColor);
+  writeNotNull('available_online', instance.availableOnline);
+  writeNotNull('available_for_pickup', instance.availableForPickup);
+  writeNotNull('available_electronically', instance.availableElectronically);
+  writeNotNull('category_id', instance.categoryId);
+  writeNotNull('tax_ids', instance.taxIds);
+  writeNotNull('modifier_list_info',
+      instance.modifierListInfo?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'variations', instance.variations?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'product_type', _$CatalogItemProductTypeEnumMap[instance.productType]);
+  writeNotNull('skip_modifier_screen', instance.skipModifierScreen);
+  writeNotNull(
+      'item_options', instance.itemOptions?.map((e) => e.toJson()).toList());
+  writeNotNull('sort_name', instance.sortName);
+  writeNotNull('image_ids', instance.imageIds);
+  return val;
+}
 
 const _$CatalogItemProductTypeEnumMap = {
   CatalogItemProductType.regular: 'REGULAR',

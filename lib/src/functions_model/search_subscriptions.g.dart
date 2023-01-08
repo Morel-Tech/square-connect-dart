@@ -20,13 +20,21 @@ SearchSubscriptionsRequest _$SearchSubscriptionsRequestFromJson(
     );
 
 Map<String, dynamic> _$SearchSubscriptionsRequestToJson(
-        SearchSubscriptionsRequest instance) =>
-    <String, dynamic>{
-      'cursor': instance.cursor,
-      'limit': instance.limit,
-      'query': instance.query?.toJson(),
-      'include': instance.include,
-    };
+    SearchSubscriptionsRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cursor', instance.cursor);
+  writeNotNull('limit', instance.limit);
+  writeNotNull('query', instance.query?.toJson());
+  writeNotNull('include', instance.include);
+  return val;
+}
 
 SearchSubscriptionsResponse _$SearchSubscriptionsResponseFromJson(
         Map<String, dynamic> json) =>
@@ -41,9 +49,18 @@ SearchSubscriptionsResponse _$SearchSubscriptionsResponseFromJson(
     );
 
 Map<String, dynamic> _$SearchSubscriptionsResponseToJson(
-        SearchSubscriptionsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-      'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
-    };
+    SearchSubscriptionsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  writeNotNull(
+      'subscriptions', instance.subscriptions?.map((e) => e.toJson()).toList());
+  return val;
+}

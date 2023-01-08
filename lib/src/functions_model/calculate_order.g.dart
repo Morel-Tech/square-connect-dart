@@ -16,12 +16,21 @@ CalculateOrderRequest _$CalculateOrderRequestFromJson(
     );
 
 Map<String, dynamic> _$CalculateOrderRequestToJson(
-        CalculateOrderRequest instance) =>
-    <String, dynamic>{
-      'order': instance.order.toJson(),
-      'proposed_rewards':
-          instance.proposedRewards?.map((e) => e.toJson()).toList(),
-    };
+    CalculateOrderRequest instance) {
+  final val = <String, dynamic>{
+    'order': instance.order.toJson(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('proposed_rewards',
+      instance.proposedRewards?.map((e) => e.toJson()).toList());
+  return val;
+}
 
 CalculateOrderResponse _$CalculateOrderResponseFromJson(
         Map<String, dynamic> json) =>
@@ -35,8 +44,16 @@ CalculateOrderResponse _$CalculateOrderResponseFromJson(
     );
 
 Map<String, dynamic> _$CalculateOrderResponseToJson(
-        CalculateOrderResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'order': instance.order?.toJson(),
-    };
+    CalculateOrderResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('order', instance.order?.toJson());
+  return val;
+}

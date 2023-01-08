@@ -47,21 +47,30 @@ LoyaltyEvent _$LoyaltyEventFromJson(Map<String, dynamic> json) => LoyaltyEvent(
               json['redeem_reward'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LoyaltyEventToJson(LoyaltyEvent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'created_at': instance.createdAt.toIso8601String(),
-      'loyalty_account_id': instance.loyaltyAccountId,
-      'source': instance.source,
-      'type': instance.type,
-      'location_id': instance.locationId,
-      'accumulate_points': instance.accumulatePoints?.toJson(),
-      'accumulate_promotion_points':
-          instance.accumulatePromotionPoints?.toJson(),
-      'adjust_points': instance.adjustPoints?.toJson(),
-      'create_reward': instance.createReward?.toJson(),
-      'delete_reward': instance.deleteReward?.toJson(),
-      'expire_points': instance.expirePoints?.toJson(),
-      'other_event': instance.otherEvent?.toJson(),
-      'redeem_reward': instance.redeemReward?.toJson(),
-    };
+Map<String, dynamic> _$LoyaltyEventToJson(LoyaltyEvent instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'created_at': instance.createdAt.toIso8601String(),
+    'loyalty_account_id': instance.loyaltyAccountId,
+    'source': instance.source,
+    'type': instance.type,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('accumulate_points', instance.accumulatePoints?.toJson());
+  writeNotNull('accumulate_promotion_points',
+      instance.accumulatePromotionPoints?.toJson());
+  writeNotNull('adjust_points', instance.adjustPoints?.toJson());
+  writeNotNull('create_reward', instance.createReward?.toJson());
+  writeNotNull('delete_reward', instance.deleteReward?.toJson());
+  writeNotNull('expire_points', instance.expirePoints?.toJson());
+  writeNotNull('other_event', instance.otherEvent?.toJson());
+  writeNotNull('redeem_reward', instance.redeemReward?.toJson());
+  return val;
+}

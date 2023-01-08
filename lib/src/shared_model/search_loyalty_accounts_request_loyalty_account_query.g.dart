@@ -20,8 +20,16 @@ SearchLoyaltyAccountsRequestLoyaltyAccountQuery
         );
 
 Map<String, dynamic> _$SearchLoyaltyAccountsRequestLoyaltyAccountQueryToJson(
-        SearchLoyaltyAccountsRequestLoyaltyAccountQuery instance) =>
-    <String, dynamic>{
-      'customer_ids': instance.customerIds,
-      'mappings': instance.mappings?.map((e) => e.toJson()).toList(),
-    };
+    SearchLoyaltyAccountsRequestLoyaltyAccountQuery instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('customer_ids', instance.customerIds);
+  writeNotNull('mappings', instance.mappings?.map((e) => e.toJson()).toList());
+  return val;
+}

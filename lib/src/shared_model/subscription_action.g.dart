@@ -14,13 +14,22 @@ SubscriptionAction _$SubscriptionActionFromJson(Map<String, dynamic> json) =>
       newPlanId: json['new_plan_id'] as String?,
     );
 
-Map<String, dynamic> _$SubscriptionActionToJson(SubscriptionAction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'type': _$SubscriptionActionTypeEnumMap[instance.type]!,
-      'effective_date': instance.effectiveDate,
-      'new_plan_id': instance.newPlanId,
-    };
+Map<String, dynamic> _$SubscriptionActionToJson(SubscriptionAction instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'type': _$SubscriptionActionTypeEnumMap[instance.type]!,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('effective_date', instance.effectiveDate);
+  writeNotNull('new_plan_id', instance.newPlanId);
+  return val;
+}
 
 const _$SubscriptionActionTypeEnumMap = {
   SubscriptionActionType.cancel: 'CANCEL',

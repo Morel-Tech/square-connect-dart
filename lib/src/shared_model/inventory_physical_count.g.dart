@@ -30,21 +30,29 @@ InventoryPhysicalCount _$InventoryPhysicalCountFromJson(
     );
 
 Map<String, dynamic> _$InventoryPhysicalCountToJson(
-        InventoryPhysicalCount instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'reference_id': instance.referenceId,
-      'catalog_object_id': instance.catalogObjectId,
-      'catalog_object_type':
-          _$CatalogObjectTypeEnumMap[instance.catalogObjectType],
-      'state': _$InventoryStateEnumMap[instance.state],
-      'location_id': instance.locationId,
-      'quantity': instance.quantity,
-      'source': instance.source?.toJson(),
-      'employee_id': instance.employeeId,
-      'occurred_at': instance.occurredAt?.toIso8601String(),
-      'created_at': instance.createdAt?.toIso8601String(),
-    };
+    InventoryPhysicalCount instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('catalog_object_type',
+      _$CatalogObjectTypeEnumMap[instance.catalogObjectType]);
+  writeNotNull('state', _$InventoryStateEnumMap[instance.state]);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('employee_id', instance.employeeId);
+  writeNotNull('occurred_at', instance.occurredAt?.toIso8601String());
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  return val;
+}
 
 const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.item: 'ITEM',

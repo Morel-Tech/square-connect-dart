@@ -14,8 +14,16 @@ CatalogObjectReference _$CatalogObjectReferenceFromJson(
     );
 
 Map<String, dynamic> _$CatalogObjectReferenceToJson(
-        CatalogObjectReference instance) =>
-    <String, dynamic>{
-      'catalog_version': instance.catalogVersion,
-      'object_id': instance.objectId,
-    };
+    CatalogObjectReference instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('catalog_version', instance.catalogVersion);
+  writeNotNull('object_id', instance.objectId);
+  return val;
+}

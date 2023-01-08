@@ -78,34 +78,47 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       version: json['version'] as int?,
     );
 
-Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
-      'id': instance.id,
-      'location_id': instance.locationId,
-      'reference_id': instance.referenceId,
-      'source': instance.source?.toJson(),
-      'customer_id': instance.customerId,
-      'line_items': instance.lineItems?.map((e) => e.toJson()).toList(),
-      'taxes': instance.taxes?.map((e) => e.toJson()).toList(),
-      'discounts': instance.discounts?.map((e) => e.toJson()).toList(),
-      'service_charges':
-          instance.serviceCharges?.map((e) => e.toJson()).toList(),
-      'fulfillments': instance.fulfillments?.map((e) => e.toJson()).toList(),
-      'returns': instance.returns?.map((e) => e.toJson()).toList(),
-      'return_amounts': instance.returnAmounts?.toJson(),
-      'net_amounts': instance.netAmounts?.toJson(),
-      'rounding_adjustment': instance.roundingAdjustment?.toJson(),
-      'tenders': instance.tenders?.map((e) => e.toJson()).toList(),
-      'refunds': instance.refunds?.map((e) => e.toJson()).toList(),
-      'created_at': instance.createdAt?.toIso8601String(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'closed_at': instance.closedAt?.toIso8601String(),
-      'state': _$OrderStateEnumMap[instance.state],
-      'total_money': instance.totalMoney?.toJson(),
-      'total_tax_money': instance.totalTaxMoney?.toJson(),
-      'total_discount_money': instance.totalDiscountMoney?.toJson(),
-      'total_service_charge_money': instance.totalServiceChargeMoney?.toJson(),
-      'version': instance.version,
-    };
+Map<String, dynamic> _$OrderToJson(Order instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull(
+      'line_items', instance.lineItems?.map((e) => e.toJson()).toList());
+  writeNotNull('taxes', instance.taxes?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'discounts', instance.discounts?.map((e) => e.toJson()).toList());
+  writeNotNull('service_charges',
+      instance.serviceCharges?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'fulfillments', instance.fulfillments?.map((e) => e.toJson()).toList());
+  writeNotNull('returns', instance.returns?.map((e) => e.toJson()).toList());
+  writeNotNull('return_amounts', instance.returnAmounts?.toJson());
+  writeNotNull('net_amounts', instance.netAmounts?.toJson());
+  writeNotNull('rounding_adjustment', instance.roundingAdjustment?.toJson());
+  writeNotNull('tenders', instance.tenders?.map((e) => e.toJson()).toList());
+  writeNotNull('refunds', instance.refunds?.map((e) => e.toJson()).toList());
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
+  writeNotNull('closed_at', instance.closedAt?.toIso8601String());
+  writeNotNull('state', _$OrderStateEnumMap[instance.state]);
+  writeNotNull('total_money', instance.totalMoney?.toJson());
+  writeNotNull('total_tax_money', instance.totalTaxMoney?.toJson());
+  writeNotNull('total_discount_money', instance.totalDiscountMoney?.toJson());
+  writeNotNull(
+      'total_service_charge_money', instance.totalServiceChargeMoney?.toJson());
+  writeNotNull('version', instance.version);
+  return val;
+}
 
 const _$OrderStateEnumMap = {
   OrderState.open: 'OPEN',

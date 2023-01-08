@@ -32,21 +32,29 @@ CardPaymentDetails _$CardPaymentDetailsFromJson(Map<String, dynamic> json) =>
               json['refund_requires_card_presence'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CardPaymentDetailsToJson(CardPaymentDetails instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'card': instance.card?.toJson(),
-      'entry_method': instance.entryMethod,
-      'cvv_status': instance.cvvStatus,
-      'avs_status': instance.avsStatus,
-      'auth_result_code': instance.authResultCode,
-      'application_identifier': instance.applicationIdentifier,
-      'application_name': instance.applicationName,
-      'application_cryptogram': instance.applicationCryptogram,
-      'verification_method': instance.verificationMethod,
-      'verification_results': instance.verificationResults,
-      'statement_description': instance.statementDescription,
-      'device_details': instance.deviceDetails?.toJson(),
-      'refund_requires_card_presence':
-          instance.refundRequiresCardPresence?.toJson(),
-    };
+Map<String, dynamic> _$CardPaymentDetailsToJson(CardPaymentDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('status', instance.status);
+  writeNotNull('card', instance.card?.toJson());
+  writeNotNull('entry_method', instance.entryMethod);
+  writeNotNull('cvv_status', instance.cvvStatus);
+  writeNotNull('avs_status', instance.avsStatus);
+  writeNotNull('auth_result_code', instance.authResultCode);
+  writeNotNull('application_identifier', instance.applicationIdentifier);
+  writeNotNull('application_name', instance.applicationName);
+  writeNotNull('application_cryptogram', instance.applicationCryptogram);
+  writeNotNull('verification_method', instance.verificationMethod);
+  writeNotNull('verification_results', instance.verificationResults);
+  writeNotNull('statement_description', instance.statementDescription);
+  writeNotNull('device_details', instance.deviceDetails?.toJson());
+  writeNotNull('refund_requires_card_presence',
+      instance.refundRequiresCardPresence?.toJson());
+  return val;
+}

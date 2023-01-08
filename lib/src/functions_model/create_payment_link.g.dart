@@ -29,16 +29,24 @@ CreatePaymentLinkRequest _$CreatePaymentLinkRequestFromJson(
     );
 
 Map<String, dynamic> _$CreatePaymentLinkRequestToJson(
-        CreatePaymentLinkRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'description': instance.description,
-      'quick_pay': instance.quickPay?.toJson(),
-      'order': instance.order?.toJson(),
-      'checkout_options': instance.checkoutOptions?.toJson(),
-      'pre_populated_data': instance.prePopulatedData?.toJson(),
-      'payment_note': instance.paymentNote,
-    };
+    CreatePaymentLinkRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('idempotency_key', instance.idempotencyKey);
+  writeNotNull('description', instance.description);
+  writeNotNull('quick_pay', instance.quickPay?.toJson());
+  writeNotNull('order', instance.order?.toJson());
+  writeNotNull('checkout_options', instance.checkoutOptions?.toJson());
+  writeNotNull('pre_populated_data', instance.prePopulatedData?.toJson());
+  writeNotNull('payment_note', instance.paymentNote);
+  return val;
+}
 
 CreatePaymentLinkResponse _$CreatePaymentLinkResponseFromJson(
         Map<String, dynamic> json) =>
@@ -49,13 +57,24 @@ CreatePaymentLinkResponse _$CreatePaymentLinkResponseFromJson(
       paymentLink: json['payment_link'] == null
           ? null
           : PaymentLink.fromJson(json['payment_link'] as Map<String, dynamic>),
-      relatedResources: json['related_resources'],
+      relatedResources: json['related_resources'] == null
+          ? null
+          : PaymentLinkRelatedResources.fromJson(
+              json['related_resources'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CreatePaymentLinkResponseToJson(
-        CreatePaymentLinkResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'payment_link': instance.paymentLink?.toJson(),
-      'related_resources': instance.relatedResources,
-    };
+    CreatePaymentLinkResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('payment_link', instance.paymentLink?.toJson());
+  writeNotNull('related_resources', instance.relatedResources?.toJson());
+  return val;
+}

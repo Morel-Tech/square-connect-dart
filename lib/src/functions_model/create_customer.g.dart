@@ -28,21 +28,29 @@ CreateCustomerRequest _$CreateCustomerRequestFromJson(
     );
 
 Map<String, dynamic> _$CreateCustomerRequestToJson(
-        CreateCustomerRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'given_name': instance.givenName,
-      'family_name': instance.familyName,
-      'company_name': instance.companyName,
-      'nickname': instance.nickname,
-      'email_address': instance.emailAddress,
-      'address': instance.address?.toJson(),
-      'phone_number': instance.phoneNumber,
-      'reference_id': instance.referenceId,
-      'note': instance.note,
-      'birthday': instance.birthday,
-      'tax_ids': instance.taxIds?.map((e) => e.toJson()).toList(),
-    };
+    CreateCustomerRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('idempotency_key', instance.idempotencyKey);
+  writeNotNull('given_name', instance.givenName);
+  writeNotNull('family_name', instance.familyName);
+  writeNotNull('company_name', instance.companyName);
+  writeNotNull('nickname', instance.nickname);
+  writeNotNull('email_address', instance.emailAddress);
+  writeNotNull('address', instance.address?.toJson());
+  writeNotNull('phone_number', instance.phoneNumber);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('note', instance.note);
+  writeNotNull('birthday', instance.birthday);
+  writeNotNull('tax_ids', instance.taxIds?.map((e) => e.toJson()).toList());
+  return val;
+}
 
 CreateCustomerResponse _$CreateCustomerResponseFromJson(
         Map<String, dynamic> json) =>
@@ -56,8 +64,16 @@ CreateCustomerResponse _$CreateCustomerResponseFromJson(
     );
 
 Map<String, dynamic> _$CreateCustomerResponseToJson(
-        CreateCustomerResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'customer': instance.customer?.toJson(),
-    };
+    CreateCustomerResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('customer', instance.customer?.toJson());
+  return val;
+}

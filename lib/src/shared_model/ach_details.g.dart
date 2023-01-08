@@ -12,9 +12,17 @@ AchDetails _$AchDetailsFromJson(Map<String, dynamic> json) => AchDetails(
       routingNumber: json['routing_number'] as String?,
     );
 
-Map<String, dynamic> _$AchDetailsToJson(AchDetails instance) =>
-    <String, dynamic>{
-      'account_number_suffix': instance.accountNumberSuffix,
-      'account_type': instance.accountType,
-      'routing_number': instance.routingNumber,
-    };
+Map<String, dynamic> _$AchDetailsToJson(AchDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('account_number_suffix', instance.accountNumberSuffix);
+  writeNotNull('account_type', instance.accountType);
+  writeNotNull('routing_number', instance.routingNumber);
+  return val;
+}

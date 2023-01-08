@@ -14,13 +14,22 @@ CreateCardRequest _$CreateCardRequestFromJson(Map<String, dynamic> json) =>
       card: Card.fromJson(json['card'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CreateCardRequestToJson(CreateCardRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'source_id': instance.sourceId,
-      'verification_token': instance.verificationToken,
-      'card': instance.card.toJson(),
-    };
+Map<String, dynamic> _$CreateCardRequestToJson(CreateCardRequest instance) {
+  final val = <String, dynamic>{
+    'idempotency_key': instance.idempotencyKey,
+    'source_id': instance.sourceId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('verification_token', instance.verificationToken);
+  val['card'] = instance.card.toJson();
+  return val;
+}
 
 CreateCardResponse _$CreateCardResponseFromJson(Map<String, dynamic> json) =>
     CreateCardResponse(
@@ -32,8 +41,16 @@ CreateCardResponse _$CreateCardResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$CreateCardResponseToJson(CreateCardResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'card': instance.card?.toJson(),
-    };
+Map<String, dynamic> _$CreateCardResponseToJson(CreateCardResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('card', instance.card?.toJson());
+  return val;
+}

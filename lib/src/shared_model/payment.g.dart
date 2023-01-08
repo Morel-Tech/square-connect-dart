@@ -82,41 +82,51 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) => Payment(
       delayDuration: json['delay_duration'] as String?,
     );
 
-Map<String, dynamic> _$PaymentToJson(Payment instance) => <String, dynamic>{
-      'id': instance.id,
-      'amount_money': instance.amountMoney?.toJson(),
-      'app_fee_money': instance.appFeeMoney?.toJson(),
-      'approved_money': instance.approvedMoney?.toJson(),
-      'bank_account_details': instance.bankAccountDetails?.toJson(),
-      'billing_address': instance.billingAddress?.toJson(),
-      'buyer_email_address': instance.buyerEmailAddress,
-      'capabilities': instance.capabilities,
-      'card_details': instance.cardDetails?.toJson(),
-      'cash_details': instance.cashDetails?.toJson(),
-      'created_at': instance.createdAt,
-      'customer_id': instance.customerId,
-      'delay_action': instance.delayAction,
-      'delay_duration': instance.delayDuration,
-      'delayed_until': instance.delayedUntil,
-      'employee_id': instance.employeeId,
-      'external_details': instance.externalDetails?.toJson(),
-      'location_id': instance.locationId,
-      'note': instance.note,
-      'order_id': instance.orderId,
-      'processing_fee': instance.processingFee?.map((e) => e.toJson()).toList(),
-      'receipt_number': instance.receiptNumber,
-      'receipt_url': instance.receiptUrl,
-      'reference_id': instance.referenceId,
-      'refund_ids': instance.refundIds,
-      'refunded_money': instance.refundedMoney?.toJson(),
-      'risk_evaluation': instance.riskEvaluation?.toJson(),
-      'shipping_address': instance.shippingAddress?.toJson(),
-      'source_type': instance.sourceType,
-      'statement_description_identifier':
-          instance.statementDescriptionIdentifier,
-      'status': instance.status,
-      'tip_money': instance.tipMoney?.toJson(),
-      'total_money': instance.totalMoney?.toJson(),
-      'updated_at': instance.updatedAt,
-      'version_token': instance.versionToken,
-    };
+Map<String, dynamic> _$PaymentToJson(Payment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  writeNotNull('app_fee_money', instance.appFeeMoney?.toJson());
+  writeNotNull('approved_money', instance.approvedMoney?.toJson());
+  writeNotNull('bank_account_details', instance.bankAccountDetails?.toJson());
+  writeNotNull('billing_address', instance.billingAddress?.toJson());
+  writeNotNull('buyer_email_address', instance.buyerEmailAddress);
+  writeNotNull('capabilities', instance.capabilities);
+  writeNotNull('card_details', instance.cardDetails?.toJson());
+  writeNotNull('cash_details', instance.cashDetails?.toJson());
+  writeNotNull('created_at', instance.createdAt);
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('delay_action', instance.delayAction);
+  writeNotNull('delay_duration', instance.delayDuration);
+  writeNotNull('delayed_until', instance.delayedUntil);
+  writeNotNull('employee_id', instance.employeeId);
+  writeNotNull('external_details', instance.externalDetails?.toJson());
+  writeNotNull('location_id', instance.locationId);
+  writeNotNull('note', instance.note);
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('processing_fee',
+      instance.processingFee?.map((e) => e.toJson()).toList());
+  writeNotNull('receipt_number', instance.receiptNumber);
+  writeNotNull('receipt_url', instance.receiptUrl);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('refund_ids', instance.refundIds);
+  writeNotNull('refunded_money', instance.refundedMoney?.toJson());
+  writeNotNull('risk_evaluation', instance.riskEvaluation?.toJson());
+  writeNotNull('shipping_address', instance.shippingAddress?.toJson());
+  writeNotNull('source_type', instance.sourceType);
+  writeNotNull('statement_description_identifier',
+      instance.statementDescriptionIdentifier);
+  writeNotNull('status', instance.status);
+  writeNotNull('tip_money', instance.tipMoney?.toJson());
+  writeNotNull('total_money', instance.totalMoney?.toJson());
+  writeNotNull('updated_at', instance.updatedAt);
+  writeNotNull('version_token', instance.versionToken);
+  return val;
+}

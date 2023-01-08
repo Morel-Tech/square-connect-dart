@@ -16,11 +16,19 @@ UpdateLocationResponse _$UpdateLocationResponseFromJson(
     );
 
 Map<String, dynamic> _$UpdateLocationResponseToJson(
-        UpdateLocationResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'location': instance.location.toJson(),
-    };
+    UpdateLocationResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['location'] = instance.location.toJson();
+  return val;
+}
 
 UpdateLocationRequest _$UpdateLocationRequestFromJson(
         Map<String, dynamic> json) =>

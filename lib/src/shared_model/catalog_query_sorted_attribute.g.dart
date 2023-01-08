@@ -15,9 +15,18 @@ CatalogQuerySortedAttribute _$CatalogQuerySortedAttributeFromJson(
     );
 
 Map<String, dynamic> _$CatalogQuerySortedAttributeToJson(
-        CatalogQuerySortedAttribute instance) =>
-    <String, dynamic>{
-      'attribute_name': instance.attributeName,
-      'initial_attribute_value': instance.initialAttributeValue,
-      'sort_order': instance.sortOrder,
-    };
+    CatalogQuerySortedAttribute instance) {
+  final val = <String, dynamic>{
+    'attribute_name': instance.attributeName,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('initial_attribute_value', instance.initialAttributeValue);
+  writeNotNull('sort_order', instance.sortOrder);
+  return val;
+}

@@ -30,12 +30,21 @@ LoyaltyProgramAccrualRule _$LoyaltyProgramAccrualRuleFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyProgramAccrualRuleToJson(
-        LoyaltyProgramAccrualRule instance) =>
-    <String, dynamic>{
-      'accrual_type': instance.accrualType,
-      'category_data': instance.categoryData?.toJson(),
-      'item_variation_data': instance.itemVariationData?.toJson(),
-      'points': instance.points,
-      'spend_data': instance.spendData?.toJson(),
-      'visit_data': instance.visitData?.toJson(),
-    };
+    LoyaltyProgramAccrualRule instance) {
+  final val = <String, dynamic>{
+    'accrual_type': instance.accrualType,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('category_data', instance.categoryData?.toJson());
+  writeNotNull('item_variation_data', instance.itemVariationData?.toJson());
+  writeNotNull('points', instance.points);
+  writeNotNull('spend_data', instance.spendData?.toJson());
+  writeNotNull('visit_data', instance.visitData?.toJson());
+  return val;
+}

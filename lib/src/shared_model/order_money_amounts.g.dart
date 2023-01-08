@@ -26,11 +26,19 @@ OrderMoneyAmounts _$OrderMoneyAmountsFromJson(Map<String, dynamic> json) =>
               json['service_charge_money'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OrderMoneyAmountsToJson(OrderMoneyAmounts instance) =>
-    <String, dynamic>{
-      'total_money': instance.totalMoney?.toJson(),
-      'tax_money': instance.taxMoney?.toJson(),
-      'discount_money': instance.discountMoney?.toJson(),
-      'tip_money': instance.tipMoney?.toJson(),
-      'service_charge_money': instance.serviceChargeMoney?.toJson(),
-    };
+Map<String, dynamic> _$OrderMoneyAmountsToJson(OrderMoneyAmounts instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('total_money', instance.totalMoney?.toJson());
+  writeNotNull('tax_money', instance.taxMoney?.toJson());
+  writeNotNull('discount_money', instance.discountMoney?.toJson());
+  writeNotNull('tip_money', instance.tipMoney?.toJson());
+  writeNotNull('service_charge_money', instance.serviceChargeMoney?.toJson());
+  return val;
+}

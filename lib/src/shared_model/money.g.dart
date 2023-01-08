@@ -11,10 +11,19 @@ Money _$MoneyFromJson(Map<String, dynamic> json) => Money(
       currency: $enumDecodeNullable(_$CurrencyEnumMap, json['currency']),
     );
 
-Map<String, dynamic> _$MoneyToJson(Money instance) => <String, dynamic>{
-      'amount': instance.amount,
-      'currency': _$CurrencyEnumMap[instance.currency],
-    };
+Map<String, dynamic> _$MoneyToJson(Money instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('amount', instance.amount);
+  writeNotNull('currency', _$CurrencyEnumMap[instance.currency]);
+  return val;
+}
 
 const _$CurrencyEnumMap = {
   Currency.unknownCurrency: 'UNKNOWN_CURRENCY',

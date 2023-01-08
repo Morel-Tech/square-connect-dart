@@ -15,10 +15,18 @@ UpdateSubscriptionRequest _$UpdateSubscriptionRequestFromJson(
     );
 
 Map<String, dynamic> _$UpdateSubscriptionRequestToJson(
-        UpdateSubscriptionRequest instance) =>
-    <String, dynamic>{
-      'subscription': instance.subscription?.toJson(),
-    };
+    UpdateSubscriptionRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('subscription', instance.subscription?.toJson());
+  return val;
+}
 
 UpdateSubscriptionResponse _$UpdateSubscriptionResponseFromJson(
         Map<String, dynamic> json) =>
@@ -32,8 +40,16 @@ UpdateSubscriptionResponse _$UpdateSubscriptionResponseFromJson(
     );
 
 Map<String, dynamic> _$UpdateSubscriptionResponseToJson(
-        UpdateSubscriptionResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-    };
+    UpdateSubscriptionResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  return val;
+}

@@ -19,8 +19,16 @@ RetrieveLoyaltyAccountResponse _$RetrieveLoyaltyAccountResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveLoyaltyAccountResponseToJson(
-        RetrieveLoyaltyAccountResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'loyalty_account': instance.loyaltyAccount?.toJson(),
-    };
+    RetrieveLoyaltyAccountResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('loyalty_account', instance.loyaltyAccount?.toJson());
+  return val;
+}

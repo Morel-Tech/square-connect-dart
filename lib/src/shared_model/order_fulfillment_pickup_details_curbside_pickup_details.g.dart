@@ -17,8 +17,16 @@ OrderFulfillmentPickupDetailsCurbsidePickupDetails
         );
 
 Map<String, dynamic> _$OrderFulfillmentPickupDetailsCurbsidePickupDetailsToJson(
-        OrderFulfillmentPickupDetailsCurbsidePickupDetails instance) =>
-    <String, dynamic>{
-      'buyer_arrived_at': instance.buyerArrivedAt?.toIso8601String(),
-      'curbside_details': instance.curbsideDetails,
-    };
+    OrderFulfillmentPickupDetailsCurbsidePickupDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('buyer_arrived_at', instance.buyerArrivedAt?.toIso8601String());
+  writeNotNull('curbside_details', instance.curbsideDetails);
+  return val;
+}

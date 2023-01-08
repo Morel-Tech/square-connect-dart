@@ -16,8 +16,16 @@ RetrieveOrderResponse _$RetrieveOrderResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveOrderResponseToJson(
-        RetrieveOrderResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'order': instance.order.toJson(),
-    };
+    RetrieveOrderResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['order'] = instance.order.toJson();
+  return val;
+}

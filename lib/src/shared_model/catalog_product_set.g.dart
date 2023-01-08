@@ -21,13 +21,21 @@ CatalogProductSet _$CatalogProductSetFromJson(Map<String, dynamic> json) =>
       allProducts: json['all_products'] as bool?,
     );
 
-Map<String, dynamic> _$CatalogProductSetToJson(CatalogProductSet instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'product_ids_any': instance.productIdsAny,
-      'product_ids_all': instance.productIdsAll,
-      'quantity_exact': instance.quantityExact,
-      'quantity_min': instance.quantityMin,
-      'quantity_max': instance.quantityMax,
-      'all_products': instance.allProducts,
-    };
+Map<String, dynamic> _$CatalogProductSetToJson(CatalogProductSet instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('product_ids_any', instance.productIdsAny);
+  writeNotNull('product_ids_all', instance.productIdsAll);
+  writeNotNull('quantity_exact', instance.quantityExact);
+  writeNotNull('quantity_min', instance.quantityMin);
+  writeNotNull('quantity_max', instance.quantityMax);
+  writeNotNull('all_products', instance.allProducts);
+  return val;
+}

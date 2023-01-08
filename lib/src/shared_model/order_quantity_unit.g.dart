@@ -17,10 +17,18 @@ OrderQuantityUnit _$OrderQuantityUnitFromJson(Map<String, dynamic> json) =>
       catalogVersion: json['catalog_version'] as int?,
     );
 
-Map<String, dynamic> _$OrderQuantityUnitToJson(OrderQuantityUnit instance) =>
-    <String, dynamic>{
-      'measurement_unit': instance.measurementUnit?.toJson(),
-      'precision': instance.precision,
-      'catalog_version': instance.catalogVersion,
-      'catalog_object_id': instance.catalogObjectId,
-    };
+Map<String, dynamic> _$OrderQuantityUnitToJson(OrderQuantityUnit instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('measurement_unit', instance.measurementUnit?.toJson());
+  writeNotNull('precision', instance.precision);
+  writeNotNull('catalog_version', instance.catalogVersion);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  return val;
+}

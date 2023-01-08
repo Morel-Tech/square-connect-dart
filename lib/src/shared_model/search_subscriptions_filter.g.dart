@@ -21,9 +21,17 @@ SearchSubscriptionsFilter _$SearchSubscriptionsFilterFromJson(
     );
 
 Map<String, dynamic> _$SearchSubscriptionsFilterToJson(
-        SearchSubscriptionsFilter instance) =>
-    <String, dynamic>{
-      'customer_ids': instance.customerIds,
-      'location_ids': instance.locationIds,
-      'source_names': instance.sourceNames,
-    };
+    SearchSubscriptionsFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('customer_ids', instance.customerIds);
+  writeNotNull('location_ids', instance.locationIds);
+  writeNotNull('source_names', instance.sourceNames);
+  return val;
+}

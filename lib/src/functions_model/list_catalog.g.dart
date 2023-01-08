@@ -17,10 +17,17 @@ ListCatalogResponse _$ListCatalogResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ListCatalogResponseToJson(
-        ListCatalogResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-      'objects': instance.objects.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$ListCatalogResponseToJson(ListCatalogResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  val['objects'] = instance.objects.map((e) => e.toJson()).toList();
+  return val;
+}

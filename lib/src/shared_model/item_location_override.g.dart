@@ -24,18 +24,28 @@ ItemVariationLocationOverrides _$ItemVariationLocationOverridesFromJson(
     );
 
 Map<String, dynamic> _$ItemVariationLocationOverridesToJson(
-        ItemVariationLocationOverrides instance) =>
-    <String, dynamic>{
-      'location_id': instance.locationId,
-      'price_money': instance.priceMoney?.toJson(),
-      'pricing_type': _$CatalogPricingTypeEnumMap[instance.pricingType],
-      'track_inventory': instance.trackInventory,
-      'inventory_alert_type':
-          _$InventoryAlertTypeEnumMap[instance.inventoryAlertType],
-      'inventory_alert_threshold': instance.inventoryAlertThreshold,
-      'sold_out': instance.soldOut,
-      'sold_out_valid_until': instance.soldOutValidUntil,
-    };
+    ItemVariationLocationOverrides instance) {
+  final val = <String, dynamic>{
+    'location_id': instance.locationId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('price_money', instance.priceMoney?.toJson());
+  writeNotNull(
+      'pricing_type', _$CatalogPricingTypeEnumMap[instance.pricingType]);
+  writeNotNull('track_inventory', instance.trackInventory);
+  writeNotNull('inventory_alert_type',
+      _$InventoryAlertTypeEnumMap[instance.inventoryAlertType]);
+  writeNotNull('inventory_alert_threshold', instance.inventoryAlertThreshold);
+  writeNotNull('sold_out', instance.soldOut);
+  writeNotNull('sold_out_valid_until', instance.soldOutValidUntil);
+  return val;
+}
 
 const _$CatalogPricingTypeEnumMap = {
   CatalogPricingType.fixedPricing: 'FIXED_PRICING',

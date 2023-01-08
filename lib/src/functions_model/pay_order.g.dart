@@ -15,12 +15,21 @@ PayOrderRequest _$PayOrderRequestFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$PayOrderRequestToJson(PayOrderRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'order_version': instance.orderVersion,
-      'payment_ids': instance.paymentIds,
-    };
+Map<String, dynamic> _$PayOrderRequestToJson(PayOrderRequest instance) {
+  final val = <String, dynamic>{
+    'idempotency_key': instance.idempotencyKey,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('order_version', instance.orderVersion);
+  writeNotNull('payment_ids', instance.paymentIds);
+  return val;
+}
 
 PayOrderResponse _$PayOrderResponseFromJson(Map<String, dynamic> json) =>
     PayOrderResponse(
@@ -32,8 +41,16 @@ PayOrderResponse _$PayOrderResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$PayOrderResponseToJson(PayOrderResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'order': instance.order?.toJson(),
-    };
+Map<String, dynamic> _$PayOrderResponseToJson(PayOrderResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('order', instance.order?.toJson());
+  return val;
+}

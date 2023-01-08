@@ -17,13 +17,21 @@ TenderCardDetails _$TenderCardDetailsFromJson(Map<String, dynamic> json) =>
           _$TenderCardDetailsEntryMethodEnumMap, json['entry_method']),
     );
 
-Map<String, dynamic> _$TenderCardDetailsToJson(TenderCardDetails instance) =>
-    <String, dynamic>{
-      'status': _$TenderCardDetailsStatusEnumMap[instance.status],
-      'card': instance.card?.toJson(),
-      'entry_method':
-          _$TenderCardDetailsEntryMethodEnumMap[instance.entryMethod],
-    };
+Map<String, dynamic> _$TenderCardDetailsToJson(TenderCardDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('status', _$TenderCardDetailsStatusEnumMap[instance.status]);
+  writeNotNull('card', instance.card?.toJson());
+  writeNotNull('entry_method',
+      _$TenderCardDetailsEntryMethodEnumMap[instance.entryMethod]);
+  return val;
+}
 
 const _$TenderCardDetailsStatusEnumMap = {
   TenderCardDetailsStatus.authorized: 'AUTHORIZED',

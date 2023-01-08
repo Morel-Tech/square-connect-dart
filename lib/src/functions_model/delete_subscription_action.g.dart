@@ -18,8 +18,16 @@ DeleteSubscriptionActionResponse _$DeleteSubscriptionActionResponseFromJson(
     );
 
 Map<String, dynamic> _$DeleteSubscriptionActionResponseToJson(
-        DeleteSubscriptionActionResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-    };
+    DeleteSubscriptionActionResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  return val;
+}

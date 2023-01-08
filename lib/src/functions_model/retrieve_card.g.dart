@@ -18,8 +18,16 @@ RetrieveCardResponse _$RetrieveCardResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveCardResponseToJson(
-        RetrieveCardResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'card': instance.card?.toJson(),
-    };
+    RetrieveCardResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('card', instance.card?.toJson());
+  return val;
+}

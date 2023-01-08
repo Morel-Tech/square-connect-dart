@@ -17,8 +17,16 @@ CatalogMeasurementUnit _$CatalogMeasurementUnitFromJson(
     );
 
 Map<String, dynamic> _$CatalogMeasurementUnitToJson(
-        CatalogMeasurementUnit instance) =>
-    <String, dynamic>{
-      'measurement_unit': instance.measurementUnit?.toJson(),
-      'precision': instance.precision,
-    };
+    CatalogMeasurementUnit instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('measurement_unit', instance.measurementUnit?.toJson());
+  writeNotNull('precision', instance.precision);
+  return val;
+}

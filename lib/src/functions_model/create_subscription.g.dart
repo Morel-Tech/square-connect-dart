@@ -28,20 +28,28 @@ CreateSubscriptionRequest _$CreateSubscriptionRequestFromJson(
     );
 
 Map<String, dynamic> _$CreateSubscriptionRequestToJson(
-        CreateSubscriptionRequest instance) =>
-    <String, dynamic>{
-      'idempotency_key': instance.idempotencyKey,
-      'location_id': instance.locationId,
-      'plan_id': instance.planId,
-      'customer_id': instance.customerId,
-      'start_date': instance.startDate,
-      'canceled_date': instance.canceledDate,
-      'tax_percentage': instance.taxPercentage,
-      'price_override_money': instance.priceOverrideMoney?.toJson(),
-      'card_id': instance.cardId,
-      'timezone': instance.timezone,
-      'source': instance.source?.toJson(),
-    };
+    CreateSubscriptionRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('idempotency_key', instance.idempotencyKey);
+  val['location_id'] = instance.locationId;
+  val['plan_id'] = instance.planId;
+  val['customer_id'] = instance.customerId;
+  writeNotNull('start_date', instance.startDate);
+  writeNotNull('canceled_date', instance.canceledDate);
+  writeNotNull('tax_percentage', instance.taxPercentage);
+  writeNotNull('price_override_money', instance.priceOverrideMoney?.toJson());
+  writeNotNull('card_id', instance.cardId);
+  writeNotNull('timezone', instance.timezone);
+  writeNotNull('source', instance.source?.toJson());
+  return val;
+}
 
 CreateSubscriptionResponse _$CreateSubscriptionResponseFromJson(
         Map<String, dynamic> json) =>
@@ -55,8 +63,16 @@ CreateSubscriptionResponse _$CreateSubscriptionResponseFromJson(
     );
 
 Map<String, dynamic> _$CreateSubscriptionResponseToJson(
-        CreateSubscriptionResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-    };
+    CreateSubscriptionResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  return val;
+}

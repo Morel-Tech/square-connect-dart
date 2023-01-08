@@ -15,7 +15,15 @@ CatalogQueryItemsForItemOptions _$CatalogQueryItemsForItemOptionsFromJson(
     );
 
 Map<String, dynamic> _$CatalogQueryItemsForItemOptionsToJson(
-        CatalogQueryItemsForItemOptions instance) =>
-    <String, dynamic>{
-      'item_option_ids': instance.itemOptionIds,
-    };
+    CatalogQueryItemsForItemOptions instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('item_option_ids', instance.itemOptionIds);
+  return val;
+}

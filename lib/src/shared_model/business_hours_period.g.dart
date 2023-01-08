@@ -17,13 +17,20 @@ BusinessHoursPeriod _$BusinessHoursPeriodFromJson(Map<String, dynamic> json) =>
       dayOfWeek: $enumDecodeNullable(_$DayOfWeekEnumMap, json['day_of_week']),
     );
 
-Map<String, dynamic> _$BusinessHoursPeriodToJson(
-        BusinessHoursPeriod instance) =>
-    <String, dynamic>{
-      'start_local_time': instance.startLocalTime?.toJson(),
-      'end_local_time': instance.endLocalTime?.toJson(),
-      'day_of_week': _$DayOfWeekEnumMap[instance.dayOfWeek],
-    };
+Map<String, dynamic> _$BusinessHoursPeriodToJson(BusinessHoursPeriod instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('start_local_time', instance.startLocalTime?.toJson());
+  writeNotNull('end_local_time', instance.endLocalTime?.toJson());
+  writeNotNull('day_of_week', _$DayOfWeekEnumMap[instance.dayOfWeek]);
+  return val;
+}
 
 const _$DayOfWeekEnumMap = {
   DayOfWeek.sunday: 'SUN',

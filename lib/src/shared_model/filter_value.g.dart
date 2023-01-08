@@ -12,9 +12,17 @@ FilterValue _$FilterValueFromJson(Map<String, dynamic> json) => FilterValue(
       none: (json['none'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$FilterValueToJson(FilterValue instance) =>
-    <String, dynamic>{
-      'all': instance.all,
-      'any': instance.any,
-      'none': instance.none,
-    };
+Map<String, dynamic> _$FilterValueToJson(FilterValue instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('all', instance.all);
+  writeNotNull('any', instance.any);
+  writeNotNull('none', instance.none);
+  return val;
+}

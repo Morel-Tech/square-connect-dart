@@ -13,7 +13,15 @@ LoyaltyEventQuery _$LoyaltyEventQueryFromJson(Map<String, dynamic> json) =>
           : LoyaltyEventFilter.fromJson(json['filter'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LoyaltyEventQueryToJson(LoyaltyEventQuery instance) =>
-    <String, dynamic>{
-      'filter': instance.filter?.toJson(),
-    };
+Map<String, dynamic> _$LoyaltyEventQueryToJson(LoyaltyEventQuery instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('filter', instance.filter?.toJson());
+  return val;
+}

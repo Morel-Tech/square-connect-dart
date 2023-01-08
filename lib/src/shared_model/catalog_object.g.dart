@@ -63,28 +63,37 @@ CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
               json['product_set_data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'type': _$CatalogObjectTypeEnumMap[instance.type]!,
-      'updated_at': instance.updatedAt.toIso8601String(),
-      'version': instance.version,
-      'is_deleted': instance.isDeleted,
-      'present_at_all_locations': instance.presentAtAllLocations,
-      'present_at_location_ids': instance.presentAtLocationIds,
-      'absent_at_location_ids': instance.absentAtLocationIds,
-      'item_data': instance.itemData?.toJson(),
-      'item_variation_data': instance.itemVariationData?.toJson(),
-      'category_data': instance.categoryData?.toJson(),
-      'tax_data': instance.taxData?.toJson(),
-      'discount_data': instance.discountData?.toJson(),
-      'modifier_list_data': instance.modifierListData?.toJson(),
-      'modifier_data': instance.modifierData?.toJson(),
-      'image_data': instance.imageData?.toJson(),
-      'measurement_unit_data': instance.measurementUnitData?.toJson(),
-      'pricing_rule_data': instance.pricingRuleData?.toJson(),
-      'product_set_data': instance.productSetData?.toJson(),
-    };
+Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'type': _$CatalogObjectTypeEnumMap[instance.type]!,
+    'updated_at': instance.updatedAt.toIso8601String(),
+    'version': instance.version,
+    'is_deleted': instance.isDeleted,
+    'present_at_all_locations': instance.presentAtAllLocations,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('present_at_location_ids', instance.presentAtLocationIds);
+  writeNotNull('absent_at_location_ids', instance.absentAtLocationIds);
+  writeNotNull('item_data', instance.itemData?.toJson());
+  writeNotNull('item_variation_data', instance.itemVariationData?.toJson());
+  writeNotNull('category_data', instance.categoryData?.toJson());
+  writeNotNull('tax_data', instance.taxData?.toJson());
+  writeNotNull('discount_data', instance.discountData?.toJson());
+  writeNotNull('modifier_list_data', instance.modifierListData?.toJson());
+  writeNotNull('modifier_data', instance.modifierData?.toJson());
+  writeNotNull('image_data', instance.imageData?.toJson());
+  writeNotNull('measurement_unit_data', instance.measurementUnitData?.toJson());
+  writeNotNull('pricing_rule_data', instance.pricingRuleData?.toJson());
+  writeNotNull('product_set_data', instance.productSetData?.toJson());
+  return val;
+}
 
 const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.item: 'ITEM',

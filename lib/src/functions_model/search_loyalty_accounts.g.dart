@@ -18,12 +18,20 @@ SearchLoyaltyAccountsRequest _$SearchLoyaltyAccountsRequestFromJson(
     );
 
 Map<String, dynamic> _$SearchLoyaltyAccountsRequestToJson(
-        SearchLoyaltyAccountsRequest instance) =>
-    <String, dynamic>{
-      'query': instance.query?.toJson(),
-      'limit': instance.limit,
-      'cursor': instance.cursor,
-    };
+    SearchLoyaltyAccountsRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('query', instance.query?.toJson());
+  writeNotNull('limit', instance.limit);
+  writeNotNull('cursor', instance.cursor);
+  return val;
+}
 
 SearchLoyaltyAccountsResponse _$SearchLoyaltyAccountsResponseFromJson(
         Map<String, dynamic> json) =>
@@ -38,10 +46,18 @@ SearchLoyaltyAccountsResponse _$SearchLoyaltyAccountsResponseFromJson(
     );
 
 Map<String, dynamic> _$SearchLoyaltyAccountsResponseToJson(
-        SearchLoyaltyAccountsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'loyalty_accounts':
-          instance.loyaltyAccounts?.map((e) => e.toJson()).toList(),
-      'cursor': instance.cursor,
-    };
+    SearchLoyaltyAccountsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('loyalty_accounts',
+      instance.loyaltyAccounts?.map((e) => e.toJson()).toList());
+  writeNotNull('cursor', instance.cursor);
+  return val;
+}

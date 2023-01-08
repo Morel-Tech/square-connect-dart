@@ -32,17 +32,26 @@ OrderReturn _$OrderReturnFromJson(Map<String, dynamic> json) => OrderReturn(
               json['return_amounts'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OrderReturnToJson(OrderReturn instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'source_order_id': instance.sourceOrderId,
-      'return_line_items':
-          instance.returnLineItems?.map((e) => e.toJson()).toList(),
-      'return_service_charges':
-          instance.returnServiceCharges?.map((e) => e.toJson()).toList(),
-      'return_taxes': instance.returnTaxes?.map((e) => e.toJson()).toList(),
-      'return_discounts':
-          instance.returnDiscounts?.map((e) => e.toJson()).toList(),
-      'rounding_adjustment': instance.roundingAdjustment?.toJson(),
-      'return_amounts': instance.returnAmounts?.toJson(),
-    };
+Map<String, dynamic> _$OrderReturnToJson(OrderReturn instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('source_order_id', instance.sourceOrderId);
+  writeNotNull('return_line_items',
+      instance.returnLineItems?.map((e) => e.toJson()).toList());
+  writeNotNull('return_service_charges',
+      instance.returnServiceCharges?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'return_taxes', instance.returnTaxes?.map((e) => e.toJson()).toList());
+  writeNotNull('return_discounts',
+      instance.returnDiscounts?.map((e) => e.toJson()).toList());
+  writeNotNull('rounding_adjustment', instance.roundingAdjustment?.toJson());
+  writeNotNull('return_amounts', instance.returnAmounts?.toJson());
+  return val;
+}

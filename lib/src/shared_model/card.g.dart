@@ -27,23 +27,32 @@ Card _$CardFromJson(Map<String, dynamic> json) => Card(
       version: json['version'] as int?,
     );
 
-Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
-      'id': instance.id,
-      'billing_address': instance.billingAddress?.toJson(),
-      'bin': instance.bin,
-      'card_brand': _$CardBrandEnumMap[instance.cardBrand],
-      'card_type': _$CardTypeEnumMap[instance.cardType],
-      'cardholder_name': instance.cardholderName,
-      'customer_id': instance.customerId,
-      'enabled': instance.enabled,
-      'exp_month': instance.expMonth,
-      'exp_year': instance.expYear,
-      'fingerprint': instance.fingerprint,
-      'last_4': instance.last_4,
-      'prepaid_type': _$CardPrepaidTypeEnumMap[instance.prepaidType],
-      'reference_id': instance.referenceId,
-      'version': instance.version,
-    };
+Map<String, dynamic> _$CardToJson(Card instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('billing_address', instance.billingAddress?.toJson());
+  writeNotNull('bin', instance.bin);
+  writeNotNull('card_brand', _$CardBrandEnumMap[instance.cardBrand]);
+  writeNotNull('card_type', _$CardTypeEnumMap[instance.cardType]);
+  writeNotNull('cardholder_name', instance.cardholderName);
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('enabled', instance.enabled);
+  writeNotNull('exp_month', instance.expMonth);
+  writeNotNull('exp_year', instance.expYear);
+  writeNotNull('fingerprint', instance.fingerprint);
+  writeNotNull('last_4', instance.last_4);
+  writeNotNull('prepaid_type', _$CardPrepaidTypeEnumMap[instance.prepaidType]);
+  writeNotNull('reference_id', instance.referenceId);
+  writeNotNull('version', instance.version);
+  return val;
+}
 
 const _$CardBrandEnumMap = {
   CardBrand.otherBrand: 'OTHER_BRAND',

@@ -18,8 +18,16 @@ RetrieveCustomerResponse _$RetrieveCustomerResponseFromJson(
     );
 
 Map<String, dynamic> _$RetrieveCustomerResponseToJson(
-        RetrieveCustomerResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'customer': instance.customer?.toJson(),
-    };
+    RetrieveCustomerResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('customer', instance.customer?.toJson());
+  return val;
+}

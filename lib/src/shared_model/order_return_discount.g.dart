@@ -25,19 +25,26 @@ OrderReturnDiscount _$OrderReturnDiscountFromJson(Map<String, dynamic> json) =>
           _$OrderLineItemDiscountScopeEnumMap, json['scope']),
     );
 
-Map<String, dynamic> _$OrderReturnDiscountToJson(
-        OrderReturnDiscount instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'source_discount_id': instance.sourceDiscountId,
-      'catalog_object_id': instance.catalogObjectId,
-      'name': instance.name,
-      'type': _$OrderLineItemDiscountTypeEnumMap[instance.type],
-      'percentage': instance.percentage,
-      'amount_money': instance.amountMoney?.toJson(),
-      'applied_money': instance.appliedMoney?.toJson(),
-      'scope': _$OrderLineItemDiscountScopeEnumMap[instance.scope],
-    };
+Map<String, dynamic> _$OrderReturnDiscountToJson(OrderReturnDiscount instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('source_discount_id', instance.sourceDiscountId);
+  writeNotNull('catalog_object_id', instance.catalogObjectId);
+  writeNotNull('name', instance.name);
+  writeNotNull('type', _$OrderLineItemDiscountTypeEnumMap[instance.type]);
+  writeNotNull('percentage', instance.percentage);
+  writeNotNull('amount_money', instance.amountMoney?.toJson());
+  writeNotNull('applied_money', instance.appliedMoney?.toJson());
+  writeNotNull('scope', _$OrderLineItemDiscountScopeEnumMap[instance.scope]);
+  return val;
+}
 
 const _$OrderLineItemDiscountTypeEnumMap = {
   OrderLineItemDiscountType.unknownDiscount: 'UNKNOWN_DISCOUNT',

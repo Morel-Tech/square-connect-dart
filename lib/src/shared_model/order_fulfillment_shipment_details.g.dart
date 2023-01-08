@@ -46,21 +46,30 @@ OrderFulfillmentShipmentDetails _$OrderFulfillmentShipmentDetailsFromJson(
     );
 
 Map<String, dynamic> _$OrderFulfillmentShipmentDetailsToJson(
-        OrderFulfillmentShipmentDetails instance) =>
-    <String, dynamic>{
-      'cancel_reason': instance.cancelReason,
-      'canceled_at': instance.canceledAt?.toIso8601String(),
-      'carrier': instance.carrier,
-      'expected_shipped_at': instance.expectedShippedAt?.toIso8601String(),
-      'failed_at': instance.failedAt?.toIso8601String(),
-      'failure_reason': instance.failureReason?.toIso8601String(),
-      'in_progress_at': instance.inProgressAt?.toIso8601String(),
-      'packaged_at': instance.packagedAt?.toIso8601String(),
-      'placed_at': instance.placedAt?.toIso8601String(),
-      'recipient': instance.recipient?.toJson(),
-      'shipped_at': instance.shippedAt?.toIso8601String(),
-      'shipping_note': instance.shippingNote,
-      'shipping_type': instance.shippingType,
-      'tracking_number': instance.trackingNumber,
-      'tracking_url': instance.trackingUrl,
-    };
+    OrderFulfillmentShipmentDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cancel_reason', instance.cancelReason);
+  writeNotNull('canceled_at', instance.canceledAt?.toIso8601String());
+  writeNotNull('carrier', instance.carrier);
+  writeNotNull(
+      'expected_shipped_at', instance.expectedShippedAt?.toIso8601String());
+  writeNotNull('failed_at', instance.failedAt?.toIso8601String());
+  writeNotNull('failure_reason', instance.failureReason?.toIso8601String());
+  writeNotNull('in_progress_at', instance.inProgressAt?.toIso8601String());
+  writeNotNull('packaged_at', instance.packagedAt?.toIso8601String());
+  writeNotNull('placed_at', instance.placedAt?.toIso8601String());
+  writeNotNull('recipient', instance.recipient?.toJson());
+  writeNotNull('shipped_at', instance.shippedAt?.toIso8601String());
+  writeNotNull('shipping_note', instance.shippingNote);
+  writeNotNull('shipping_type', instance.shippingType);
+  writeNotNull('tracking_number', instance.trackingNumber);
+  writeNotNull('tracking_url', instance.trackingUrl);
+  return val;
+}

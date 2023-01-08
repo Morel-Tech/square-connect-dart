@@ -11,11 +11,19 @@ CustomerSort _$CustomerSortFromJson(Map<String, dynamic> json) => CustomerSort(
       order: $enumDecodeNullable(_$SortOrderEnumMap, json['order']),
     );
 
-Map<String, dynamic> _$CustomerSortToJson(CustomerSort instance) =>
-    <String, dynamic>{
-      'field': _$CustomerSortFieldEnumMap[instance.field],
-      'order': _$SortOrderEnumMap[instance.order],
-    };
+Map<String, dynamic> _$CustomerSortToJson(CustomerSort instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('field', _$CustomerSortFieldEnumMap[instance.field]);
+  writeNotNull('order', _$SortOrderEnumMap[instance.order]);
+  return val;
+}
 
 const _$CustomerSortFieldEnumMap = {
   CustomerSortField.createdAt: 'CREATED_AT',

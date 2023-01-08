@@ -18,13 +18,22 @@ BatchRetrieveCatalogObjectsRequest _$BatchRetrieveCatalogObjectsRequestFromJson(
     );
 
 Map<String, dynamic> _$BatchRetrieveCatalogObjectsRequestToJson(
-        BatchRetrieveCatalogObjectsRequest instance) =>
-    <String, dynamic>{
-      'object_ids': instance.objectIds,
-      'include_related_objects': instance.includeRelatedObjects,
-      'catalog_version': instance.catalogVersion,
-      'include_deleted_objects': instance.includeDeletedObjects,
-    };
+    BatchRetrieveCatalogObjectsRequest instance) {
+  final val = <String, dynamic>{
+    'object_ids': instance.objectIds,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('include_related_objects', instance.includeRelatedObjects);
+  writeNotNull('catalog_version', instance.catalogVersion);
+  writeNotNull('include_deleted_objects', instance.includeDeletedObjects);
+  return val;
+}
 
 BatchRetrieveCatalogObjectsResponse
     _$BatchRetrieveCatalogObjectsResponseFromJson(Map<String, dynamic> json) =>
@@ -41,10 +50,18 @@ BatchRetrieveCatalogObjectsResponse
         );
 
 Map<String, dynamic> _$BatchRetrieveCatalogObjectsResponseToJson(
-        BatchRetrieveCatalogObjectsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'objects': instance.objects.map((e) => e.toJson()).toList(),
-      'related_objects':
-          instance.relatedObjects.map((e) => e.toJson()).toList(),
-    };
+    BatchRetrieveCatalogObjectsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['objects'] = instance.objects.map((e) => e.toJson()).toList();
+  val['related_objects'] =
+      instance.relatedObjects.map((e) => e.toJson()).toList();
+  return val;
+}

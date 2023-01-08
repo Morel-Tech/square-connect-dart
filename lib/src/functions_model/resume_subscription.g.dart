@@ -14,11 +14,19 @@ ResumeSubscriptionRequest _$ResumeSubscriptionRequestFromJson(
     );
 
 Map<String, dynamic> _$ResumeSubscriptionRequestToJson(
-        ResumeSubscriptionRequest instance) =>
-    <String, dynamic>{
-      'resume_effective_date': instance.resumeEffectiveDate,
-      'resume_change_timing': instance.resumeChangeTiming,
-    };
+    ResumeSubscriptionRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resume_effective_date', instance.resumeEffectiveDate);
+  writeNotNull('resume_change_timing', instance.resumeChangeTiming);
+  return val;
+}
 
 ResumeSubscriptionResponse _$ResumeSubscriptionResponseFromJson(
         Map<String, dynamic> json) =>
@@ -35,9 +43,17 @@ ResumeSubscriptionResponse _$ResumeSubscriptionResponseFromJson(
     );
 
 Map<String, dynamic> _$ResumeSubscriptionResponseToJson(
-        ResumeSubscriptionResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'subscription': instance.subscription?.toJson(),
-      'actions': instance.actions?.map((e) => e.toJson()).toList(),
-    };
+    ResumeSubscriptionResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('subscription', instance.subscription?.toJson());
+  writeNotNull('actions', instance.actions?.map((e) => e.toJson()).toList());
+  return val;
+}

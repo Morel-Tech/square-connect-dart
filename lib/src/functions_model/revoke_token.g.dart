@@ -14,13 +14,22 @@ RevokeTokenRequest _$RevokeTokenRequestFromJson(Map<String, dynamic> json) =>
       revokeOnlyAccessToken: json['revoke_only_access_token'] as bool?,
     );
 
-Map<String, dynamic> _$RevokeTokenRequestToJson(RevokeTokenRequest instance) =>
-    <String, dynamic>{
-      'client_id': instance.clientId,
-      'access_token': instance.accessToken,
-      'merchant_id': instance.merchantId,
-      'revoke_only_access_token': instance.revokeOnlyAccessToken,
-    };
+Map<String, dynamic> _$RevokeTokenRequestToJson(RevokeTokenRequest instance) {
+  final val = <String, dynamic>{
+    'client_id': instance.clientId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('access_token', instance.accessToken);
+  writeNotNull('merchant_id', instance.merchantId);
+  writeNotNull('revoke_only_access_token', instance.revokeOnlyAccessToken);
+  return val;
+}
 
 RevokeTokenResponse _$RevokeTokenResponseFromJson(Map<String, dynamic> json) =>
     RevokeTokenResponse(
@@ -30,9 +39,16 @@ RevokeTokenResponse _$RevokeTokenResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$RevokeTokenResponseToJson(
-        RevokeTokenResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'success': instance.success,
-    };
+Map<String, dynamic> _$RevokeTokenResponseToJson(RevokeTokenResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  val['success'] = instance.success;
+  return val;
+}

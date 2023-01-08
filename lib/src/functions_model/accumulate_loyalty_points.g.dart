@@ -35,8 +35,16 @@ AccumulateLoyaltyPointsResponse _$AccumulateLoyaltyPointsResponseFromJson(
     );
 
 Map<String, dynamic> _$AccumulateLoyaltyPointsResponseToJson(
-        AccumulateLoyaltyPointsResponse instance) =>
-    <String, dynamic>{
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-      'events': instance.events?.map((e) => e.toJson()).toList(),
-    };
+    AccumulateLoyaltyPointsResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('events', instance.events?.map((e) => e.toJson()).toList());
+  return val;
+}

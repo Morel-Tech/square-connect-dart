@@ -15,9 +15,18 @@ LoyaltyEventRedeemReward _$LoyaltyEventRedeemRewardFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyEventRedeemRewardToJson(
-        LoyaltyEventRedeemReward instance) =>
-    <String, dynamic>{
-      'loyalty_program_id': instance.loyaltyProgramId,
-      'order_id': instance.orderId,
-      'reward_id': instance.rewardId,
-    };
+    LoyaltyEventRedeemReward instance) {
+  final val = <String, dynamic>{
+    'loyalty_program_id': instance.loyaltyProgramId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('reward_id', instance.rewardId);
+  return val;
+}

@@ -30,11 +30,20 @@ LoyaltyEventFilter _$LoyaltyEventFilterFromJson(Map<String, dynamic> json) =>
               json['type_filter'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LoyaltyEventFilterToJson(LoyaltyEventFilter instance) =>
-    <String, dynamic>{
-      'date_time_filter': instance.dateTimeFilter?.toJson(),
-      'location_filter': instance.locationFilter?.toJson(),
-      'loyalty_account_filter': instance.loyaltyAccountFilter?.toJson(),
-      'order_filter': instance.orderFilter?.toJson(),
-      'type_filter': instance.typeFilter?.toJson(),
-    };
+Map<String, dynamic> _$LoyaltyEventFilterToJson(LoyaltyEventFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('date_time_filter', instance.dateTimeFilter?.toJson());
+  writeNotNull('location_filter', instance.locationFilter?.toJson());
+  writeNotNull(
+      'loyalty_account_filter', instance.loyaltyAccountFilter?.toJson());
+  writeNotNull('order_filter', instance.orderFilter?.toJson());
+  writeNotNull('type_filter', instance.typeFilter?.toJson());
+  return val;
+}

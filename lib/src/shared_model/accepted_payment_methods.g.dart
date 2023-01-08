@@ -16,10 +16,18 @@ AcceptedPaymentMethods _$AcceptedPaymentMethodsFromJson(
     );
 
 Map<String, dynamic> _$AcceptedPaymentMethodsToJson(
-        AcceptedPaymentMethods instance) =>
-    <String, dynamic>{
-      'afterpay_clearpay': instance.afterpayClearpay,
-      'apple_pay': instance.applePay,
-      'cash_app_pay': instance.cashAppPay,
-      'google_pay': instance.googlePay,
-    };
+    AcceptedPaymentMethods instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('afterpay_clearpay', instance.afterpayClearpay);
+  writeNotNull('apple_pay', instance.applePay);
+  writeNotNull('cash_app_pay', instance.cashAppPay);
+  writeNotNull('google_pay', instance.googlePay);
+  return val;
+}

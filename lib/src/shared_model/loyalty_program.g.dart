@@ -31,15 +31,24 @@ LoyaltyProgram _$LoyaltyProgramFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$LoyaltyProgramToJson(LoyaltyProgram instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'accrual_rules': instance.accrualRules.map((e) => e.toJson()).toList(),
-      'created_at': instance.createdAt.toIso8601String(),
-      'reward_tiers': instance.rewardTiers.map((e) => e.toJson()).toList(),
-      'status': instance.status,
-      'terminology': instance.terminology.toJson(),
-      'updated_at': instance.updatedAt.toIso8601String(),
-      'expiration_policy': instance.expirationPolicy?.toJson(),
-      'location_ids': instance.locationIds,
-    };
+Map<String, dynamic> _$LoyaltyProgramToJson(LoyaltyProgram instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'accrual_rules': instance.accrualRules.map((e) => e.toJson()).toList(),
+    'created_at': instance.createdAt.toIso8601String(),
+    'reward_tiers': instance.rewardTiers.map((e) => e.toJson()).toList(),
+    'status': instance.status,
+    'terminology': instance.terminology.toJson(),
+    'updated_at': instance.updatedAt.toIso8601String(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('expiration_policy', instance.expirationPolicy?.toJson());
+  writeNotNull('location_ids', instance.locationIds);
+  return val;
+}

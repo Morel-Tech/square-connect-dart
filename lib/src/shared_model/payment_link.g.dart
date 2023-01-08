@@ -29,16 +29,25 @@ PaymentLink _$PaymentLinkFromJson(Map<String, dynamic> json) => PaymentLink(
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$PaymentLinkToJson(PaymentLink instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'version': instance.version,
-      'checkout_options': instance.checkoutOptions?.toJson(),
-      'created_at': instance.createdAt?.toIso8601String(),
-      'description': instance.description,
-      'order_id': instance.orderId,
-      'payment_note': instance.paymentNote,
-      'pre_populated_data': instance.prePopulatedData?.toJson(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'url': instance.url,
-    };
+Map<String, dynamic> _$PaymentLinkToJson(PaymentLink instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('version', instance.version);
+  writeNotNull('checkout_options', instance.checkoutOptions?.toJson());
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
+  writeNotNull('description', instance.description);
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('payment_note', instance.paymentNote);
+  writeNotNull('pre_populated_data', instance.prePopulatedData?.toJson());
+  writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
+  writeNotNull('url', instance.url);
+  return val;
+}

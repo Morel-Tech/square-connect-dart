@@ -20,16 +20,24 @@ SubscriptionEvent _$SubscriptionEventFromJson(Map<String, dynamic> json) =>
               json['info'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$SubscriptionEventToJson(SubscriptionEvent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'subscription_event_type':
-          _$SubscriptionEventSubscriptionEventTypeEnumMap[
-              instance.subscriptionEventType]!,
-      'effective_date': instance.effectiveDate,
-      'plan_id': instance.planId,
-      'info': instance.info?.toJson(),
-    };
+Map<String, dynamic> _$SubscriptionEventToJson(SubscriptionEvent instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'subscription_event_type': _$SubscriptionEventSubscriptionEventTypeEnumMap[
+        instance.subscriptionEventType]!,
+    'effective_date': instance.effectiveDate,
+    'plan_id': instance.planId,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('info', instance.info?.toJson());
+  return val;
+}
 
 const _$SubscriptionEventSubscriptionEventTypeEnumMap = {
   SubscriptionEventSubscriptionEventType.startSubscription:

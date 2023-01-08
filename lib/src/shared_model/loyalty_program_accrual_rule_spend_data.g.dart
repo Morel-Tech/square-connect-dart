@@ -21,10 +21,20 @@ LoyaltyProgramAccrualRuleSpendData _$LoyaltyProgramAccrualRuleSpendDataFromJson(
     );
 
 Map<String, dynamic> _$LoyaltyProgramAccrualRuleSpendDataToJson(
-        LoyaltyProgramAccrualRuleSpendData instance) =>
-    <String, dynamic>{
-      'amount_money': instance.amountMoney.toJson(),
-      'tax_mode': instance.taxMode,
-      'excluded_category_ids': instance.excludedCategoryIds,
-      'excluded_item_variation_ids': instance.excludedItemVariationIds,
-    };
+    LoyaltyProgramAccrualRuleSpendData instance) {
+  final val = <String, dynamic>{
+    'amount_money': instance.amountMoney.toJson(),
+    'tax_mode': instance.taxMode,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('excluded_category_ids', instance.excludedCategoryIds);
+  writeNotNull(
+      'excluded_item_variation_ids', instance.excludedItemVariationIds);
+  return val;
+}

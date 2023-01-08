@@ -23,15 +23,26 @@ MeasurementUnit _$MeasurementUnitFromJson(Map<String, dynamic> json) =>
       genericUnit: json['generic_unit'] as String?,
     );
 
-Map<String, dynamic> _$MeasurementUnitToJson(MeasurementUnit instance) =>
-    <String, dynamic>{
-      'custom_unit': instance.customUnit?.toJson(),
-      'area_unit': _$MeasurementUnitAreaEnumMap[instance.areaUnit],
-      'length_unit': _$MeasurementUnitLengthEnumMap[instance.lengthUnit],
-      'volume_unit': _$MeasurementUnitVolumeEnumMap[instance.volumeUnit],
-      'weight_unit': _$MeasurementUnitWeightEnumMap[instance.weightUnit],
-      'generic_unit': instance.genericUnit,
-    };
+Map<String, dynamic> _$MeasurementUnitToJson(MeasurementUnit instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('custom_unit', instance.customUnit?.toJson());
+  writeNotNull('area_unit', _$MeasurementUnitAreaEnumMap[instance.areaUnit]);
+  writeNotNull(
+      'length_unit', _$MeasurementUnitLengthEnumMap[instance.lengthUnit]);
+  writeNotNull(
+      'volume_unit', _$MeasurementUnitVolumeEnumMap[instance.volumeUnit]);
+  writeNotNull(
+      'weight_unit', _$MeasurementUnitWeightEnumMap[instance.weightUnit]);
+  writeNotNull('generic_unit', instance.genericUnit);
+  return val;
+}
 
 const _$MeasurementUnitAreaEnumMap = {
   MeasurementUnitArea.imperialAcre: 'IMPERIAL_ACRE',

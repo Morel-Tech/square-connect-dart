@@ -18,8 +18,15 @@ class OrderEntry extends Equatable {
   /// Converts a [OrderEntry] to a [Map]
   Map<String, dynamic> toJson() => _$OrderEntryToJson(this);
 
+  /// The ID of the order.
   final String? orderId;
+
+  /// The location ID the order belongs to.
   final String? locationId;
+
+  /// Read only The version number, which is incremented each time an update
+  /// is committed to the order. Orders that were not created through the API
+  /// do not include a version number and therefore cannot be updated.
   final int? version;
 
   @override

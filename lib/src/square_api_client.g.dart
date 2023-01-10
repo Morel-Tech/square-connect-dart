@@ -327,7 +327,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<RetrieveOrderResponse> retrieveOrder(orderId) async {
+  Future<RetrieveOrderResponse> retrieveOrder({required orderId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -350,7 +350,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateOrderResponse> createOrder(createOrderRequest) async {
+  Future<CreateOrderResponse> createOrder({required createOrderRequest}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -374,10 +374,10 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<UpdateOrderResponse> updateOrder(
-    orderId,
-    updateOrderRequest,
-  ) async {
+  Future<UpdateOrderResponse> updateOrder({
+    required orderId,
+    required updateOrderRequest,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -401,10 +401,10 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<PayOrderResponse> payOrder(
-    orderId,
-    payOrderRequest,
-  ) async {
+  Future<PayOrderResponse> payOrder({
+    required orderId,
+    required payOrderRequest,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -428,7 +428,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CalculateOrderResponse> calculateOrder(request) async {
+  Future<CalculateOrderResponse> calculateOrder({required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -452,7 +452,7 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<SearchOrdersResponse> searchOrders(request) async {
+  Future<SearchOrdersResponse> searchOrders({required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -472,6 +472,55 @@ class _SquareApiClient implements SquareApiClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SearchOrdersResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CloneOrderResponse> cloneOrder({required request}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CloneOrderResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/orders/clone',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CloneOrderResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BatchRetrieveOrdersResponse> batchRetrieveOrders(
+      {required request}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BatchRetrieveOrdersResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/orders/batch-retrieve',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BatchRetrieveOrdersResponse.fromJson(_result.data!);
     return value;
   }
 

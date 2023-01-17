@@ -4,11 +4,11 @@ import 'package:json_annotation/json_annotation.dart';
 /// request are returned.
 enum SortOrder {
   /// The results are returned in ascending (e.g., oldest-first or A-Z) order.
-  @JsonValue('ASCENDING')
+  @JsonValue('ASC')
   ascending,
 
   /// The results are returned in descending (e.g., newest-first or Z-A) order.
-  @JsonValue('DESCENDING')
+  @JsonValue('DESC')
   descending,
 }
 

@@ -31,6 +31,6 @@ const _$CustomerSortFieldEnumMap = {
 };
 
 const _$SortOrderEnumMap = {
-  SortOrder.ascending: 'ASCENDING',
-  SortOrder.descending: 'DESCENDING',
+  SortOrder.ascending: 'ASC',
+  SortOrder.descending: 'DESC',
 };

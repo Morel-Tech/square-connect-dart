@@ -1263,7 +1263,7 @@ class _SquareApiClient implements SquareApiClient {
     )
             .compose(
               _dio.options,
-              '/v2/subscriptions/{subscriptionId',
+              '/v2/subscriptions/${subscriptionId}',
               queryParameters: queryParameters,
               data: _data,
             )

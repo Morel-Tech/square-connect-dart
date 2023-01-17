@@ -356,7 +356,7 @@ abstract class SquareApiClient {
   });
 
   /// Retrieves a subscription.
-  @GET('/v2/subscriptions/{subscriptionId')
+  @GET('/v2/subscriptions/{subscriptionId}')
   Future<RetrieveSubscriptionResponse> retrieveSubscription({
     @Path() required String subscriptionId,
     @Query('include') String? include,

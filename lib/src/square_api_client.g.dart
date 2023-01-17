@@ -1648,6 +1648,73 @@ class _SquareApiClient implements SquareApiClient {
     return value;
   }
 
+  @override
+  Future<ListGiftCardsResponse> listGiftCardActivities({
+    giftCardId,
+    type,
+    locationId,
+    beginTime,
+    endTime,
+    limit,
+    cursor,
+    sortOrder,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'gift_card_id': giftCardId,
+      r'type': type,
+      r'location_id': locationId,
+      r'begin_time': beginTime?.toJson(),
+      r'end_time': endTime?.toJson(),
+      r'limit': limit,
+      r'cursor': cursor,
+      r'sort_order': sortOrder,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ListGiftCardsResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/gift-cards/activities',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ListGiftCardsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CreateGiftCardActivityResponse> createGiftCardActivity(
+      {required body}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CreateGiftCardActivityResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v2/gift-cards/activities',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CreateGiftCardActivityResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

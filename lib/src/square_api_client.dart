@@ -478,4 +478,33 @@ abstract class SquareApiClient {
   Future<RetrieveGiftCardResponse> retrieveGiftCard({
     @Path() required String id,
   });
+
+  /// Lists gift card activities.
+  ///
+  /// By default, you get gift card activities for all gift cards in the
+  /// seller's account. You can optionally specify query parameters to filter
+  /// the list. For example, you can get a list of gift card activities for a
+  /// gift card, for all gift cards in a specific region, or for activities
+  /// within a time window.
+  @GET('/v2/gift-cards/activities')
+  Future<ListGiftCardsResponse> listGiftCardActivities({
+    @Query('gift_card_id') String? giftCardId,
+    @Query('type') String? type,
+    @Query('location_id') String? locationId,
+    @Query('begin_time') DateTime? beginTime,
+    @Query('end_time') DateTime? endTime,
+    @Query('limit') int? limit,
+    @Query('cursor') String? cursor,
+    @Query('sort_order') String? sortOrder,
+  });
+
+  /// Creates a gift card activity to manage the balance or state of a
+  /// gift card.
+  ///
+  /// For example, you create an ACTIVATE activity to activate a gift card with
+  /// an initial balance before the gift card can be used.
+  @POST('/v2/gift-cards/activities')
+  Future<CreateGiftCardActivityResponse> createGiftCardActivity({
+    @Body() required CreateGiftCardActivityRequest body,
+  });
 }

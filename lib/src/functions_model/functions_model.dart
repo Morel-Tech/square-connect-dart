@@ -10,6 +10,7 @@ export 'create_card.dart';
 export 'create_checkout.dart';
 export 'create_customer.dart';
 export 'create_gift_card.dart';
+export 'create_gift_card_activity.dart';
 export 'create_location.dart';
 export 'create_loyalty_account.dart';
 export 'create_loyalty_reward.dart';

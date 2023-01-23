@@ -507,4 +507,99 @@ abstract class SquareApiClient {
   Future<CreateGiftCardActivityResponse> createGiftCardActivity({
     @Body() required CreateGiftCardActivityRequest body,
   });
+
+  /// Returns a list of invoices for a given location.
+  ///
+  /// The response is paginated. If truncated, the response includes a `cursor`
+  /// that you use in a subsequent request to retrieve the next set of invoices.
+  @GET('/v2/invoices')
+  Future<ListInvoicesResponse> listInvoices({
+    @Query('location_id') required String locationId,
+    @Query('cursor') String? cursor,
+    @Query('limit') int? limit,
+  });
+
+  /// Creates a draft invoice for an order created using the Orders API.
+  ///
+  /// A draft invoice remains in your account and no action is taken. You must
+  /// publish the invoice before Square can process it (send it to the
+  /// customer's email address or charge the customer’s card on file).
+  @POST('/v2/invoices')
+  Future<CreateInvoiceResponse> createInvoice({
+    @Body() required CreateInvoiceRequest body,
+  });
+
+  /// Searches for invoices from a location specified in the filter.
+  ///
+  /// You can optionally specify customers in the filter for whom to retrieve
+  /// invoices. In the current implementation, you can only specify one
+  /// location and optionally one customer.
+  ///
+  /// The response is paginated. If truncated, the response includes a
+  /// `cursor` that you use in a subsequent request to retrieve the next set
+  /// of invoices.
+  @POST('/v2/invoices/search')
+  Future<SearchInvoicesResponse> searchInvoices({
+    @Body() required SearchInvoicesRequest body,
+  });
+
+  /// Deletes the specified invoice.
+  ///
+  /// When an invoice is deleted, the associated order status changes to
+  /// `CANCELED`. You can only delete a draft invoice (you cannot delete a
+  /// published invoice, including one that is scheduled for processing).
+  @DELETE('/v2/invoices/{invoiceId}')
+  Future<DeleteInvoiceResponse> deleteInvoice({
+    @Path() required String invoiceId,
+    @Query('version') int? version,
+  });
+
+  /// Retrieves an invoice by invoice ID.
+  @GET('/v2/invoices/{invoiceId}')
+  Future<GetInvoiceResponse> getInvoice({
+    @Path() required String invoiceId,
+  });
+
+  /// Updates an invoice by modifying fields, clearing fields, or both.
+  ///
+  /// For most updates, you can use a sparse `Invoice` object to add fields or
+  /// change values and use the `fields_to_clear` field to specify fields to
+  /// clear. However, some restrictions apply. For example, you cannot change
+  /// the `order_id` or `location_id` field and you must provide the complete
+  /// `custom_fields` list to update a custom field. Published invoices have
+  /// additional restrictions.
+  @PUT('/v2/invoices/{invoiceId}')
+  Future<UpdateInvoiceResponse> updateInvoice({
+    @Path() required String invoiceId,
+    @Body() required UpdateInvoiceRequest body,
+  });
+
+  /// Cancels an invoice.
+  ///
+  /// The seller cannot collect payments for the canceled invoice.
+  ///
+  /// You cannot cancel an invoice in the `DRAFT` state or in a terminal state:
+  /// `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
+  @POST('/v2/invoices/{invoiceId}/cancel')
+  Future<CancelInvoiceResponse> cancelInvoice({
+    @Path() required String invoiceId,
+    @Body() required CancelInvoiceRequest body,
+  });
+
+  /// Publishes the specified draft invoice.
+  ///
+  /// After an invoice is published, Square follows up based on the invoice
+  /// configuration. For example, Square sends the invoice to the customer's
+  /// email address, charges the customer's card on file, or does nothing.
+  /// Square also makes the invoice available on a Square-hosted invoice page.
+  ///
+  /// The invoice `status` also changes from `DRAFT` to a status based on the
+  /// invoice configuration. For example, the status changes to `UNPAID` if
+  /// Square emails the invoice or `PARTIALLY_PAID` if Square charge a card on
+  /// file for a portion of the invoice amount.
+  @POST('/v2/invoices/{invoiceId}/publish')
+  Future<PublishInvoiceResponse> publishInvoice({
+    @Path() required String invoiceId,
+    @Body() required PublishInvoiceRequest body,
+  });
 }

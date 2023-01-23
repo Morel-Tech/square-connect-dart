@@ -16,9 +16,9 @@ extension SortOrderHelper on SortOrder {
   String toJson() {
     switch (this) {
       case SortOrder.ascending:
-        return 'ASCENDING';
+        return 'ASC';
       case SortOrder.descending:
-        return 'DESCENDING';
+        return 'DESC';
     }
   }
 }

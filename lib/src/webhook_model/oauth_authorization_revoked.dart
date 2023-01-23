@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'package:square_connect/square_connect.dart';
 
 part 'oauth_authorization_revoked.g.dart';

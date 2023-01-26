@@ -9,6 +9,11 @@ part of 'retrieve_token_status.dart';
 RetrieveTokenStatusResponse _$RetrieveTokenStatusResponseFromJson(
         Map<String, dynamic> json) =>
     RetrieveTokenStatusResponse(
+      clientId: json['client_id'] as String?,
+      expiresAt: json['expires_at'] as String?,
+      merchantId: json['merchant_id'] as String?,
+      scopes:
+          (json['scopes'] as List<dynamic>?)?.map((e) => e as String).toList(),
       errors: (json['errors'] as List<dynamic>?)
           ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -25,5 +30,9 @@ Map<String, dynamic> _$RetrieveTokenStatusResponseToJson(
   }
 
   writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('scopes', instance.scopes);
+  writeNotNull('expires_at', instance.expiresAt);
+  writeNotNull('client_id', instance.clientId);
+  writeNotNull('merchant_id', instance.merchantId);
   return val;
 }

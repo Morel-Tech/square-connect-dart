@@ -55,6 +55,7 @@ export 'retrieve_loyalty_reward.dart';
 export 'retrieve_merchant.dart';
 export 'retrieve_order.dart';
 export 'retrieve_subscription.dart';
+export 'retrieve_token_status.dart';
 export 'revoke_token.dart';
 export 'search_catalog.dart';
 export 'search_customers.dart';

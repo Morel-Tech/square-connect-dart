@@ -12,44 +12,44 @@ Due to the way Square authenticates it's API, **DO NOT** use this package in Flu
 
 ## Supported APIs
 
-| API                        | Support Level        |
-| -------------------------- | -------------------- |
-| Payments                   | ⏳ Partial Support   |
-| Refunds                    | ❌ Not Yet Supported |
-| Disputes                   | ❌ Not Yet Supported |
-| Checkout                   | ⏳ Partial Support   |
-| Apple Pay                  | ❌ Not Yet Supported |
-| Cards                      | ⏳ Partial Support   |
-| Payouts                    | ❌ Not Yet Supported |
-| Terminal                   | ❌ Not Yet Supported |
-| Orders                     | ✅ Full Support      |
-| Order Custom Attributes    | ❌ Not Yet Supported |
-| Subscriptions              | ✅ Full Support      |
-| Catalog                    | ⏳ Partial Support   |
-| Inventory                  | ❌ Not Yet Supported |
-| Customers                  | ✅ Full Support      |
-| Customer Custom Attributes | ❌ Not Yet Supported |
-| Customer Groups            | ❌ Not Yet Supported |
-| Customer Segments          | ❌ Not Yet Supported |
-| Loyalty                    | ✅ Full Support      |
-| Gift Cards                 | ✅ Full Support      |
-| Gift Card Activities       | ✅ Full Support      |
-| Bookings                   | ❌ Not Yet Supported |
-| Booking Custom Attributes  | ❌ Not Yet Supported |
-| Merchants                  | ✅ Full Support      |
-| Locations                  | ✅ Full Support      |
-| Location Custom Attributes | ❌ Not Yet Supported |
-| Devices                    | ❌ Not Yet Supported |
-| Cash Drawers               | ❌ Not Yet Supported |
-| Vendors                    | ❌ Not Yet Supported |
-| Team                       | ⏳ Partial Support   |
-| Labor                      | ❌ Not Yet Supported |
-| Bank Accounts              | ❌ Not Yet Supported |
-| Sites                      | ❌ Not Yet Supported |
-| Snippets                   | ❌ Not Yet Supported |
-| OAuth                      | ✅ Full Support      |
-| Mobile Authorization       | ❌ Not Yet Supported |
-| Webhook Subscriptions      | ❌ Not Yet Supported |
+| API                        | Support Level          |
+| -------------------------- | ---------------------- |
+| Payments                   | ⏳ Partially Supported |
+| Refunds                    | ❌ Not Yet Supported   |
+| Disputes                   | ❌ Not Yet Supported   |
+| Checkout                   | ⏳ Partially Supported |
+| Apple Pay                  | ❌ Not Yet Supported   |
+| Cards                      | ⏳ Partially Supported |
+| Payouts                    | ❌ Not Yet Supported   |
+| Terminal                   | ❌ Not Yet Supported   |
+| Orders                     | ✅ Fully Supported     |
+| Order Custom Attributes    | ❌ Not Yet Supported   |
+| Subscriptions              | ✅ Fully Supported     |
+| Catalog                    | ⏳ Partially Supported |
+| Inventory                  | ❌ Not Yet Supported   |
+| Customers                  | ✅ Fully Supported     |
+| Customer Custom Attributes | ❌ Not Yet Supported   |
+| Customer Groups            | ❌ Not Yet Supported   |
+| Customer Segments          | ❌ Not Yet Supported   |
+| Loyalty                    | ✅ Fully Supported     |
+| Gift Cards                 | ✅ Fully Supported     |
+| Gift Card Activities       | ✅ Fully Supported     |
+| Bookings                   | ❌ Not Yet Supported   |
+| Booking Custom Attributes  | ❌ Not Yet Supported   |
+| Merchants                  | ✅ Fully Supported     |
+| Locations                  | ✅ Fully Supported     |
+| Location Custom Attributes | ❌ Not Yet Supported   |
+| Devices                    | ❌ Not Yet Supported   |
+| Cash Drawers               | ❌ Not Yet Supported   |
+| Vendors                    | ❌ Not Yet Supported   |
+| Team                       | ⏳ Partially Supported |
+| Labor                      | ❌ Not Yet Supported   |
+| Bank Accounts              | ❌ Not Yet Supported   |
+| Sites                      | ❌ Not Yet Supported   |
+| Snippets                   | ❌ Not Yet Supported   |
+| OAuth                      | ✅ Fully Supported     |
+| Mobile Authorization       | ❌ Not Yet Supported   |
+| Webhook Subscriptions      | ❌ Not Yet Supported   |
 
 ## Usage
 

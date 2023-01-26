@@ -43,16 +43,48 @@ abstract class SquareApiClient {
     @Body() required UpdateLocationRequest body,
   });
 
+  /// Returns an OAuth access token and a refresh token unless the
+  /// `short_lived` parameter is set to `true`, in which case the endpoint
+  /// returns only an access token.
+  ///
+  /// The `grant_type` parameter specifies the type of OAuth request. If
+  /// `grant_type` is `authorization_code`, you must include the authorization
+  /// code you received when a seller granted you authorization. If
+  /// `grant_type` is `refresh_token`, you must provide a valid refresh token.
+  ///  If you are using an old version of the Square APIs (prior to March 13,
+  /// 2019), `grant_type` can be `migration_token` and you must provide a
+  /// valid migration token.
+  ///
+  /// You can use the `scopes` parameter to limit the set of permissions
+  /// granted to the access token and refresh token. You can use the
+  /// `short_lived` parameter to create an access token that expires in
+  /// 24 hours.
+  ///
+  /// Note: OAuth tokens should be encrypted and stored on a secure server.
+  /// Application clients should never interact directly with OAuth tokens.
   @POST('/oauth2/token')
   Future<ObtainTokenResponse> obtainToken({
     @Body() required ObtainTokenRequest body,
   });
 
+  /// Revokes an access token generated with the OAuth flow.
+  ///
+  /// If an account has more than one OAuth access token for your application,
+  /// this endpoint revokes all of them, regardless of which token you specify.
+  /// When an OAuth access token is revoked, all of the active subscriptions
+  /// associated with that OAuth token are canceled immediately.
   @POST('/oauth2/revoke')
   Future<RevokeTokenResponse> revokeToken({
     @Body() required RevokeTokenRequest body,
     @Header('Authorization') required String applicationSecret,
   });
+
+  /// Returns information about an OAuth access token or an application’s
+  /// personal access token.
+  ///
+  /// Add the access token to the Authorization header of the request.
+  @POST('/oauth2/token/status')
+  Future<RetrieveTokenStatusResponse> retrieveTokenStatus();
 
   @GET('/v2/merchants/{merchantId}')
   Future<RetrieveMerchantResponse> retrieveMerchant({

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:square_connect/square_connect.dart';
+import 'package:square_connect/src/dio_interceptor.dart';
 
 part 'square_api_client.g.dart';
 
@@ -21,7 +22,7 @@ abstract class SquareApiClient {
             },
             contentType: 'application/json',
           ),
-        ),
+        )..interceptors.add(SquareResponseInterceptor()),
       );
 
   @GET('/v2/locations')

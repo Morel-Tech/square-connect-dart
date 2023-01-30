@@ -7,7 +7,7 @@ part 'list_catalog.g.dart';
 class ListCatalogResponse extends SquareResponse {
   const ListCatalogResponse({
     this.cursor,
-    required this.objects,
+    this.objects,
     super.errors,
   });
 
@@ -19,7 +19,7 @@ class ListCatalogResponse extends SquareResponse {
   Map<String, dynamic> toJson() => _$ListCatalogResponseToJson(this);
 
   final String? cursor;
-  final List<CatalogObject> objects;
+  final List<CatalogObject>? objects;
 
   @override
   List<Object?> get props => [cursor, objects, errors];

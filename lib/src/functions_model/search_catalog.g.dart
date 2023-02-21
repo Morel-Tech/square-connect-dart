@@ -46,8 +46,8 @@ SearchCatalogResponse _$SearchCatalogResponseFromJson(
         Map<String, dynamic> json) =>
     SearchCatalogResponse(
       cursor: json['cursor'] as String?,
-      objects: (json['objects'] as List<dynamic>)
-          .map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
+      objects: (json['objects'] as List<dynamic>?)
+          ?.map((e) => CatalogObject.fromJson(e as Map<String, dynamic>))
           .toList(),
       errors: (json['errors'] as List<dynamic>?)
           ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
@@ -66,6 +66,6 @@ Map<String, dynamic> _$SearchCatalogResponseToJson(
 
   writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
   writeNotNull('cursor', instance.cursor);
-  val['objects'] = instance.objects.map((e) => e.toJson()).toList();
+  writeNotNull('objects', instance.objects?.map((e) => e.toJson()).toList());
   return val;
 }

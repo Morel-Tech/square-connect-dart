@@ -9,10 +9,10 @@ class CatalogObject extends Equatable {
   const CatalogObject({
     required this.type,
     required this.id,
-    required this.updatedAt,
     required this.version,
     required this.isDeleted,
     required this.presentAtAllLocations,
+    this.updatedAt,
     this.presentAtLocationIds,
     this.absentAtLocationIds,
     this.itemData,
@@ -42,12 +42,12 @@ class CatalogObject extends Equatable {
   /// Converts a [CatalogObject] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogObjectToJson(this);
 
-  final String id;
-  final CatalogObjectType type;
-  final DateTime updatedAt;
-  final int version;
-  final bool isDeleted;
-  final bool presentAtAllLocations;
+  final String? id;
+  final CatalogObjectType? type;
+  final DateTime? updatedAt;
+  final int? version;
+  final bool? isDeleted;
+  final bool? presentAtAllLocations;
   final List<String>? presentAtLocationIds;
   final List<String>? absentAtLocationIds;
   final CatalogItem? itemData;

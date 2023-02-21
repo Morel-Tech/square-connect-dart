@@ -94,4 +94,6 @@ const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.pricingRule: 'PRICING_RULE',
   CatalogObjectType.productSet: 'PRODUCT_SET',
   CatalogObjectType.timePeriod: 'TIME_PERIOD',
+  CatalogObjectType.itemOption: 'ITEM_OPTION',
+  CatalogObjectType.itemOptionVal: 'ITEM_OPTION_VAL',
 };

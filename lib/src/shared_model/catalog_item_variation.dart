@@ -22,7 +22,7 @@ class CatalogItemVariation extends Equatable {
     this.serviceDuration,
     this.measurementUnitId,
     this.availableForBooking,
-    this.itemOptionValue,
+    this.itemOptionValues,
     this.stockable,
     this.stockableConversion,
     this.teamMemberIds,
@@ -51,7 +51,7 @@ class CatalogItemVariation extends Equatable {
   final int? serviceDuration;
   final String? measurementUnitId;
   final bool? availableForBooking;
-  final List<CatalogItemOptionValueForItemVariation>? itemOptionValue;
+  final List<CatalogItemOptionValueForItemVariation>? itemOptionValues;
   final bool? stockable;
   final CatalogStockConversion? stockableConversion;
   final List<String>? teamMemberIds;
@@ -75,6 +75,7 @@ class CatalogItemVariation extends Equatable {
       serviceDuration,
       measurementUnitId,
       imageIds,
+      itemOptionValues,
     ];
   }
 }

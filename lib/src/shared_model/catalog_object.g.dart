@@ -8,12 +8,14 @@ part of 'catalog_object.dart';
 
 CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
     CatalogObject(
-      type: $enumDecode(_$CatalogObjectTypeEnumMap, json['type']),
-      id: json['id'] as String,
-      updatedAt: DateTime.parse(json['updated_at'] as String),
-      version: json['version'] as int,
-      isDeleted: json['is_deleted'] as bool,
-      presentAtAllLocations: json['present_at_all_locations'] as bool,
+      type: $enumDecodeNullable(_$CatalogObjectTypeEnumMap, json['type']),
+      id: json['id'] as String?,
+      version: json['version'] as int?,
+      isDeleted: json['is_deleted'] as bool?,
+      presentAtAllLocations: json['present_at_all_locations'] as bool?,
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
       presentAtLocationIds: (json['present_at_location_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -72,14 +74,7 @@ CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'type': _$CatalogObjectTypeEnumMap[instance.type]!,
-    'updated_at': instance.updatedAt.toIso8601String(),
-    'version': instance.version,
-    'is_deleted': instance.isDeleted,
-    'present_at_all_locations': instance.presentAtAllLocations,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -87,6 +82,12 @@ Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
+  writeNotNull('type', _$CatalogObjectTypeEnumMap[instance.type]);
+  writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
+  writeNotNull('version', instance.version);
+  writeNotNull('is_deleted', instance.isDeleted);
+  writeNotNull('present_at_all_locations', instance.presentAtAllLocations);
   writeNotNull('present_at_location_ids', instance.presentAtLocationIds);
   writeNotNull('absent_at_location_ids', instance.absentAtLocationIds);
   writeNotNull('item_data', instance.itemData?.toJson());
@@ -118,4 +119,6 @@ const _$CatalogObjectTypeEnumMap = {
   CatalogObjectType.pricingRule: 'PRICING_RULE',
   CatalogObjectType.productSet: 'PRODUCT_SET',
   CatalogObjectType.timePeriod: 'TIME_PERIOD',
+  CatalogObjectType.itemOption: 'ITEM_OPTION',
+  CatalogObjectType.itemOptionVal: 'ITEM_OPTION_VAL',
 };

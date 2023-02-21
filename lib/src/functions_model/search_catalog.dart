@@ -47,7 +47,7 @@ class SearchCatalogRequest extends Equatable {
 class SearchCatalogResponse extends SquareResponse {
   const SearchCatalogResponse({
     this.cursor,
-    required this.objects,
+    this.objects,
     super.errors,
   });
 
@@ -59,7 +59,7 @@ class SearchCatalogResponse extends SquareResponse {
   Map<String, dynamic> toJson() => _$SearchCatalogResponseToJson(this);
 
   final String? cursor;
-  final List<CatalogObject> objects;
+  final List<CatalogObject>? objects;
 
   @override
   List<Object?> get props => [cursor, objects, errors];

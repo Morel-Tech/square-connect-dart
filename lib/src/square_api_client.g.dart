@@ -328,14 +328,14 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<ListCatalogResponse> searchCatalog({required body}) async {
+  Future<SearchCatalogResponse> searchCatalog({required body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ListCatalogResponse>(Options(
+        _setStreamType<SearchCatalogResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -347,7 +347,7 @@ class _SquareApiClient implements SquareApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ListCatalogResponse.fromJson(_result.data!);
+    final value = SearchCatalogResponse.fromJson(_result.data!);
     return value;
   }
 

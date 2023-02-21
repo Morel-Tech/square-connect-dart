@@ -8,11 +8,11 @@ part of 'catalog_object.dart';
 
 CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
     CatalogObject(
-      type: $enumDecode(_$CatalogObjectTypeEnumMap, json['type']),
-      id: json['id'] as String,
-      version: json['version'] as int,
-      isDeleted: json['is_deleted'] as bool,
-      presentAtAllLocations: json['present_at_all_locations'] as bool,
+      type: $enumDecodeNullable(_$CatalogObjectTypeEnumMap, json['type']),
+      id: json['id'] as String?,
+      version: json['version'] as int?,
+      isDeleted: json['is_deleted'] as bool?,
+      presentAtAllLocations: json['present_at_all_locations'] as bool?,
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
@@ -74,10 +74,7 @@ CatalogObject _$CatalogObjectFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'type': _$CatalogObjectTypeEnumMap[instance.type]!,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -85,10 +82,12 @@ Map<String, dynamic> _$CatalogObjectToJson(CatalogObject instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
+  writeNotNull('type', _$CatalogObjectTypeEnumMap[instance.type]);
   writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
-  val['version'] = instance.version;
-  val['is_deleted'] = instance.isDeleted;
-  val['present_at_all_locations'] = instance.presentAtAllLocations;
+  writeNotNull('version', instance.version);
+  writeNotNull('is_deleted', instance.isDeleted);
+  writeNotNull('present_at_all_locations', instance.presentAtAllLocations);
   writeNotNull('present_at_location_ids', instance.presentAtLocationIds);
   writeNotNull('absent_at_location_ids', instance.absentAtLocationIds);
   writeNotNull('item_data', instance.itemData?.toJson());

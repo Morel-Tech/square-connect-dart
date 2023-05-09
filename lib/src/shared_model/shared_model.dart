@@ -190,6 +190,7 @@ export 'order_line_item_tax_scope.dart';
 export 'order_line_item_tax_type.dart';
 export 'order_line_item_type.dart';
 export 'order_money_amounts.dart';
+export 'order_pricing_options.dart';
 export 'order_quantity_unit.dart';
 export 'order_return.dart';
 export 'order_return_discount.dart';

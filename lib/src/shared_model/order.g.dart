@@ -76,6 +76,21 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
           ?.map((e) => OrderReturn.fromJson(e as Map<String, dynamic>))
           .toList(),
       version: json['version'] as int?,
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
+      netAmountDueMoney: json['net_amount_due_money'] == null
+          ? null
+          : Money.fromJson(
+              json['net_amount_due_money'] as Map<String, dynamic>),
+      pricingOptions: json['pricing_options'] == null
+          ? null
+          : OrderPricingOptions.fromJson(
+              json['pricing_options'] as Map<String, dynamic>),
+      rewards: (json['rewards'] as List<dynamic>?)
+          ?.map((e) => OrderReward.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      ticketName: json['ticket_name'] as String?,
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) {
@@ -107,6 +122,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) {
   writeNotNull('rounding_adjustment', instance.roundingAdjustment?.toJson());
   writeNotNull('tenders', instance.tenders?.map((e) => e.toJson()).toList());
   writeNotNull('refunds', instance.refunds?.map((e) => e.toJson()).toList());
+  writeNotNull('metadata', instance.metadata);
   writeNotNull('created_at', instance.createdAt?.toIso8601String());
   writeNotNull('updated_at', instance.updatedAt?.toIso8601String());
   writeNotNull('closed_at', instance.closedAt?.toIso8601String());
@@ -117,6 +133,10 @@ Map<String, dynamic> _$OrderToJson(Order instance) {
   writeNotNull(
       'total_service_charge_money', instance.totalServiceChargeMoney?.toJson());
   writeNotNull('version', instance.version);
+  writeNotNull('ticket_name', instance.ticketName);
+  writeNotNull('pricing_options', instance.pricingOptions?.toJson());
+  writeNotNull('rewards', instance.rewards?.map((e) => e.toJson()).toList());
+  writeNotNull('net_amount_due_money', instance.netAmountDueMoney?.toJson());
   return val;
 }
 

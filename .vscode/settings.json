@@ -5,6 +5,8 @@
     "Clearpay",
     "endtemplate",
     "idempotence",
-    "idempotency"
+    "idempotency",
+    "preconfigured",
+    "rollup"
   ]
 }

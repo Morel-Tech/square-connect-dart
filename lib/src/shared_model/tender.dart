@@ -9,6 +9,7 @@ part 'tender.g.dart';
 @JsonSerializable()
 class Tender extends Equatable {
   const Tender({
+    required this.type,
     this.id,
     this.locationId,
     this.transactionId,
@@ -21,7 +22,6 @@ class Tender extends Equatable {
     this.cardDetails,
     this.cashDetails,
     this.additionalRecipients,
-    required this.type,
   });
 
   /// Converts a [Map] to an [Tender]

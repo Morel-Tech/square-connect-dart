@@ -7,9 +7,9 @@ part 'search_customers.g.dart';
 @JsonSerializable()
 class SearchCustomersRequest extends Equatable {
   const SearchCustomersRequest({
+    required this.query,
     this.cursor,
     this.limit,
-    required this.query,
   });
 
   /// Converts a [Map] to an [SearchCustomersRequest]

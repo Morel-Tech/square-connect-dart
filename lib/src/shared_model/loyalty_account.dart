@@ -7,8 +7,8 @@ part 'loyalty_account.g.dart';
 @JsonSerializable()
 class LoyaltyAccount extends Equatable {
   const LoyaltyAccount({
-    this.id,
     required this.programId,
+    this.id,
     this.balance,
     this.createdAt,
     this.customerId,

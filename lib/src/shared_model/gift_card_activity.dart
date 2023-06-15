@@ -7,9 +7,9 @@ part 'gift_card_activity.g.dart';
 @JsonSerializable()
 class GiftCardActivity extends Equatable {
   const GiftCardActivity({
-    this.id,
     required this.type,
     required this.locationId,
+    this.id,
     this.createdAt,
     this.giftCardId,
     this.giftCardGan,

@@ -28,8 +28,8 @@ class CreateLoyaltyAccountRequest extends Equatable {
 @JsonSerializable()
 class CreateLoyaltyAccountResponse extends SquareResponse {
   const CreateLoyaltyAccountResponse({
-    super.errors,
     required this.loyaltyAccount,
+    super.errors,
   });
 
   /// Converts a [Map] to an [CreateLoyaltyAccountResponse]

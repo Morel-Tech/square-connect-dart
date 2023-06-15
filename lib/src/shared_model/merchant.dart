@@ -6,8 +6,8 @@ part 'merchant.g.dart';
 @JsonSerializable()
 class Merchant extends Equatable {
   const Merchant({
-    this.id,
     required this.country,
+    this.id,
     this.businessName,
     this.currency,
     this.languageCode,

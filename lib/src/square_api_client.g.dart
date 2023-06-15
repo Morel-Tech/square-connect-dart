@@ -23,7 +23,7 @@ class _SquareApiClient implements SquareApiClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListLocationsResponse>(Options(
       method: 'GET',
@@ -43,11 +43,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveLocationResponse> retrieveLocation(
-      {required locationId}) async {
+      {required String locationId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveLocationResponse>(Options(
       method: 'GET',
@@ -66,7 +66,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateLocationResponse> createLocation({required input}) async {
+  Future<CreateLocationResponse> createLocation(
+      {required CreateLocationRequest input}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -91,8 +92,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<UpdateLocationResponse> updateLocation({
-    required locationId,
-    required body,
+    required String locationId,
+    required UpdateLocationRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -117,7 +118,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<ObtainTokenResponse> obtainToken({required body}) async {
+  Future<ObtainTokenResponse> obtainToken(
+      {required ObtainTokenRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -142,8 +144,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RevokeTokenResponse> revokeToken({
-    required body,
-    required applicationSecret,
+    required RevokeTokenRequest body,
+    required String applicationSecret,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -173,7 +175,7 @@ class _SquareApiClient implements SquareApiClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveTokenStatusResponse>(Options(
       method: 'POST',
@@ -193,11 +195,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveMerchantResponse> retrieveMerchant(
-      {required merchantId}) async {
+      {required String merchantId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveMerchantResponse>(Options(
       method: 'GET',
@@ -216,12 +218,12 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<ListMerchantsResponse> listMerchants({cursor}) async {
+  Future<ListMerchantsResponse> listMerchants({int? cursor}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'cursor': cursor};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListMerchantsResponse>(Options(
       method: 'GET',
@@ -241,9 +243,9 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListCatalogResponse> listCatalog({
-    cursor,
-    types,
-    catalogVersion,
+    String? cursor,
+    String? types,
+    int? catalogVersion,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -253,7 +255,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListCatalogResponse>(Options(
       method: 'GET',
@@ -273,9 +275,9 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveCatalogObjectResponse> retrieveCatalogObject({
-    required objectId,
-    includeRelatedObjects,
-    catalogVersion,
+    required String objectId,
+    bool? includeRelatedObjects,
+    int? catalogVersion,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -284,7 +286,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveCatalogObjectResponse>(Options(
       method: 'GET',
@@ -304,7 +306,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObjects(
-      {required body}) async {
+      {required BatchRetrieveCatalogObjectsRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -328,7 +330,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<SearchCatalogResponse> searchCatalog({required body}) async {
+  Future<SearchCatalogResponse> searchCatalog(
+      {required SearchCatalogRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -352,11 +355,11 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<RetrieveOrderResponse> retrieveOrder({required orderId}) async {
+  Future<RetrieveOrderResponse> retrieveOrder({required String orderId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveOrderResponse>(Options(
       method: 'GET',
@@ -375,7 +378,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateOrderResponse> createOrder({required body}) async {
+  Future<CreateOrderResponse> createOrder(
+      {required CreateOrderRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -400,8 +404,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<UpdateOrderResponse> updateOrder({
-    required orderId,
-    required body,
+    required String orderId,
+    required UpdateOrderRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -427,8 +431,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<PayOrderResponse> payOrder({
-    required orderId,
-    required payOrderRequest,
+    required String orderId,
+    required PayOrderRequest payOrderRequest,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -453,7 +457,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CalculateOrderResponse> calculateOrder({required body}) async {
+  Future<CalculateOrderResponse> calculateOrder(
+      {required CalculateOrderRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -477,7 +482,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<SearchOrdersResponse> searchOrders({required body}) async {
+  Future<SearchOrdersResponse> searchOrders(
+      {required SearchOrdersRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -501,7 +507,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CloneOrderResponse> cloneOrder({required body}) async {
+  Future<CloneOrderResponse> cloneOrder(
+      {required CloneOrderRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -526,7 +533,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<BatchRetrieveOrdersResponse> batchRetrieveOrders(
-      {required body}) async {
+      {required BatchRetrieveOrdersRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -550,7 +557,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreatePaymentResponse> createPayment({required body}) async {
+  Future<CreatePaymentResponse> createPayment(
+      {required CreatePaymentRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -575,10 +583,10 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListCustomersResponse> listCustomers({
-    cursor,
-    limit,
-    sortField,
-    sortOrder,
+    String? cursor,
+    int? limit,
+    CustomerSortField? sortField,
+    SortOrder? sortOrder,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -589,7 +597,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListCustomersResponse>(Options(
       method: 'GET',
@@ -608,7 +616,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateCustomerResponse> createCustomer({required body}) async {
+  Future<CreateCustomerResponse> createCustomer(
+      {required CreateCustomerRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -632,7 +641,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<SearchCustomersResponse> searchCustomers({required body}) async {
+  Future<SearchCustomersResponse> searchCustomers(
+      {required SearchCustomersRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -656,11 +666,12 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<DeleteCustomerResponse> deleteCustomer({required customerId}) async {
+  Future<DeleteCustomerResponse> deleteCustomer(
+      {required String customerId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DeleteCustomerResponse>(Options(
       method: 'DELETE',
@@ -680,11 +691,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveCustomerResponse> retrieveCustomer(
-      {required customerId}) async {
+      {required String customerId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveCustomerResponse>(Options(
       method: 'GET',
@@ -704,8 +715,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<UpdateCustomerResponse> updateCustomer({
-    required customerId,
-    required body,
+    required String customerId,
+    required UpdateCustomerRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -731,8 +742,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CreateCheckoutResponse> createCheckout({
-    required locationId,
-    required body,
+    required String locationId,
+    required CreateCheckoutRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -758,8 +769,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListPaymentResponse> listPaymentLinks({
-    cursor,
-    limit,
+    String? cursor,
+    int? limit,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -768,7 +779,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListPaymentResponse>(Options(
       method: 'GET',
@@ -787,7 +798,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreatePaymentLinkResponse> createPaymentLink({required body}) async {
+  Future<CreatePaymentLinkResponse> createPaymentLink(
+      {required CreatePaymentLinkRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -812,11 +824,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListCardsResponse> listCards({
-    cursor,
-    customerId,
-    includeDisabled,
-    referenceId,
-    sortOrder,
+    String? cursor,
+    String? customerId,
+    bool? includeDisabled,
+    String? referenceId,
+    String? sortOrder,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -828,7 +840,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ListCardsResponse>(Options(
       method: 'GET',
@@ -847,7 +859,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateCardResponse> createCard({required body}) async {
+  Future<CreateCardResponse> createCard(
+      {required CreateCardRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -871,11 +884,11 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<RetrieveCardResponse> retrieveCard({required cardId}) async {
+  Future<RetrieveCardResponse> retrieveCard({required String cardId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveCardResponse>(Options(
       method: 'GET',
@@ -894,11 +907,11 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<DisableCardResponse> disableCard({required cardId}) async {
+  Future<DisableCardResponse> disableCard({required String cardId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DisableCardResponse>(Options(
       method: 'POST',
@@ -918,7 +931,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CreateLoyaltyAccountResponse> createLoyaltyAccount(
-      {required body}) async {
+      {required CreateLoyaltyAccountRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -943,7 +956,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<SearchLoyaltyAccountsResponse> searchLoyaltyAccounts(
-      {required body}) async {
+      {required SearchLoyaltyAccountsRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -968,11 +981,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveLoyaltyAccountResponse> retrieveLoyaltyAccount(
-      {required accountId}) async {
+      {required String accountId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveLoyaltyAccountResponse>(Options(
       method: 'GET',
@@ -992,8 +1005,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<AccumulateLoyaltyPointsResponse> accumulateLoyaltyPoints({
-    required body,
-    required accountId,
+    required AccumulateLoyaltyPointsRequest body,
+    required String accountId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1019,8 +1032,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<AdjustLoyaltyPointsResponse> adjustLoyaltyPoints({
-    required body,
-    required accountId,
+    required AdjustLoyaltyPointsRequest body,
+    required String accountId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1046,7 +1059,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<SearchLoyaltyEventsResponse> searchLoyaltyEvents(
-      {required body}) async {
+      {required SearchLoyaltyEventsRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1071,11 +1084,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveLoyaltyProgramResponse> retrieveLoyaltyProgram(
-      {required programId}) async {
+      {required String programId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveLoyaltyProgramResponse>(Options(
       method: 'GET',
@@ -1095,8 +1108,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RedeemLoyaltyRewardResponse> redeemLoyaltyReward({
-    required rewardId,
-    required body,
+    required String rewardId,
+    required RedeemLoyaltyRewardRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1122,7 +1135,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CreateLoyaltyRewardResponse> createLoyaltyReward(
-      {required body}) async {
+      {required CreateLoyaltyRewardRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1146,11 +1159,12 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<DeleteLoyaltyReward> deleteLoyaltyReward({required rewardId}) async {
+  Future<DeleteLoyaltyReward> deleteLoyaltyReward(
+      {required String rewardId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DeleteLoyaltyReward>(Options(
       method: 'DELETE',
@@ -1170,11 +1184,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveLoyaltyRewardResponse> retrieveLoyaltyReward(
-      {required rewardId}) async {
+      {required String rewardId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveLoyaltyRewardResponse>(Options(
       method: 'GET',
@@ -1194,8 +1208,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CalculateLoyaltyPointsResponse> calculateLoyaltyPoints({
-    required programId,
-    required body,
+    required String programId,
+    required CalculateLoyaltyPointsRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1220,7 +1234,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateSubscriptionResponse> createSubscription({required body}) async {
+  Future<CreateSubscriptionResponse> createSubscription(
+      {required CreateSubscriptionRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1245,7 +1260,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<SearchSubscriptionsResponse> searchSubscriptions(
-      {required body}) async {
+      {required SearchSubscriptionsRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1270,14 +1285,14 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveSubscriptionResponse> retrieveSubscription({
-    required subscriptionId,
-    include,
+    required String subscriptionId,
+    String? include,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'include': include};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveSubscriptionResponse>(Options(
       method: 'GET',
@@ -1297,8 +1312,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<UpdateSubscriptionResponse> updateSubscription({
-    required subscriptionId,
-    required body,
+    required String subscriptionId,
+    required UpdateSubscriptionRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1324,13 +1339,13 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<DeleteSubscriptionActionResponse> deleteSubscriptionAction({
-    required subscriptionId,
-    required actionId,
+    required String subscriptionId,
+    required String actionId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DeleteSubscriptionActionResponse>(Options(
       method: 'DELETE',
@@ -1350,11 +1365,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CancelSubscriptionResponse> cancelSubscription(
-      {required subscriptionId}) async {
+      {required String subscriptionId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<CancelSubscriptionResponse>(Options(
       method: 'POST',
@@ -1374,9 +1389,9 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListSubscriptionEventsResponse> listSubscriptionEvents({
-    required subscriptionId,
-    cursor,
-    limit,
+    required String subscriptionId,
+    String? cursor,
+    String? limit,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1385,7 +1400,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListSubscriptionEventsResponse>(Options(
       method: 'GET',
@@ -1405,8 +1420,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<PauseSubscriptionResponse> pauseSubscription({
-    required subscriptionId,
-    required body,
+    required String subscriptionId,
+    required PauseSubscriptionRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1432,8 +1447,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ResumeSubscriptionResponse> resumeSubscription({
-    required subscriptionId,
-    required body,
+    required String subscriptionId,
+    required ResumeSubscriptionRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1459,8 +1474,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<SwapPlanResponse> swapPlan({
-    required subscriptionId,
-    required body,
+    required String subscriptionId,
+    required SwapPlanResponse body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1486,11 +1501,11 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListGiftCardsResponse> listGiftCards({
-    type,
-    state,
-    limit,
-    cursor,
-    customerId,
+    String? type,
+    String? state,
+    int? limit,
+    String? cursor,
+    String? customerId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1502,7 +1517,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListGiftCardsResponse>(Options(
       method: 'GET',
@@ -1521,7 +1536,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateGiftCardResponse> createGiftCard({required body}) async {
+  Future<CreateGiftCardResponse> createGiftCard(
+      {required CreateGiftCardRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1546,7 +1562,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveGiftCardFromGanResponse> retrieveGiftCardFromGAN(
-      {required body}) async {
+      {required RetrieveGiftCardFromGanRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1571,7 +1587,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<RetrieveGiftCardFromNonceResponse> retrieveGiftCardFromNonce(
-      {required body}) async {
+      {required RetrieveGiftCardFromNonceRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1596,8 +1612,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<LinkCustomerToGiftCardResponse> linkCustomerToGiftCard({
-    required body,
-    required giftCardId,
+    required LinkCustomerToGiftCardRequest body,
+    required String giftCardId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1623,8 +1639,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<UnlinkCustomerFromGiftCardResponse> unlinkCustomerFromGiftCard({
-    required body,
-    required giftCardId,
+    required UnlinkCustomerFromGiftCardRequest body,
+    required String giftCardId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1649,11 +1665,12 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<RetrieveGiftCardResponse> retrieveGiftCard({required id}) async {
+  Future<RetrieveGiftCardResponse> retrieveGiftCard(
+      {required String id}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<RetrieveGiftCardResponse>(Options(
       method: 'GET',
@@ -1673,14 +1690,14 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListGiftCardsResponse> listGiftCardActivities({
-    giftCardId,
-    type,
-    locationId,
-    beginTime,
-    endTime,
-    limit,
-    cursor,
-    sortOrder,
+    String? giftCardId,
+    String? type,
+    String? locationId,
+    String? beginTime,
+    String? endTime,
+    int? limit,
+    String? cursor,
+    String? sortOrder,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1695,7 +1712,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListGiftCardsResponse>(Options(
       method: 'GET',
@@ -1715,7 +1732,7 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CreateGiftCardActivityResponse> createGiftCardActivity(
-      {required body}) async {
+      {required CreateGiftCardActivityRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1740,9 +1757,9 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<ListInvoicesResponse> listInvoices({
-    required locationId,
-    cursor,
-    limit,
+    required String locationId,
+    String? cursor,
+    int? limit,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1752,7 +1769,7 @@ class _SquareApiClient implements SquareApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListInvoicesResponse>(Options(
       method: 'GET',
@@ -1771,7 +1788,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<CreateInvoiceResponse> createInvoice({required body}) async {
+  Future<CreateInvoiceResponse> createInvoice(
+      {required CreateInvoiceRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1795,7 +1813,8 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<SearchInvoicesResponse> searchInvoices({required body}) async {
+  Future<SearchInvoicesResponse> searchInvoices(
+      {required SearchInvoicesRequest body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1820,14 +1839,14 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<DeleteInvoiceResponse> deleteInvoice({
-    required invoiceId,
-    version,
+    required String invoiceId,
+    int? version,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'version': version};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DeleteInvoiceResponse>(Options(
       method: 'DELETE',
@@ -1846,11 +1865,11 @@ class _SquareApiClient implements SquareApiClient {
   }
 
   @override
-  Future<GetInvoiceResponse> getInvoice({required invoiceId}) async {
+  Future<GetInvoiceResponse> getInvoice({required String invoiceId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<GetInvoiceResponse>(Options(
       method: 'GET',
@@ -1870,8 +1889,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<UpdateInvoiceResponse> updateInvoice({
-    required invoiceId,
-    required body,
+    required String invoiceId,
+    required UpdateInvoiceRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1897,8 +1916,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<CancelInvoiceResponse> cancelInvoice({
-    required invoiceId,
-    required body,
+    required String invoiceId,
+    required CancelInvoiceRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1924,8 +1943,8 @@ class _SquareApiClient implements SquareApiClient {
 
   @override
   Future<PublishInvoiceResponse> publishInvoice({
-    required invoiceId,
-    required body,
+    required String invoiceId,
+    required PublishInvoiceRequest body,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

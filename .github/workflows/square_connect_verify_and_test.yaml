@@ -1,0 +1,32 @@
+name: Square Connect
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - ".github/workflows/square_connect_verify_and_test.yaml"
+      - "**"
+
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - ".github/workflows/**"
+      - "**"
+
+jobs:
+  verify_and_test:
+    name: Verify and Test
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@main
+    with:
+      working_directory: .
+      dart_sdk: stable
+      min_coverage: 0
+      format_directories: lib

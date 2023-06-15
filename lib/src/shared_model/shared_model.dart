@@ -164,6 +164,7 @@ export 'measurement_unit_length.dart';
 export 'measurement_unit_volume.dart';
 export 'measurement_unit_weight.dart';
 export 'merchant.dart';
+export 'modifier_location_overrides.dart';
 export 'money.dart';
 export 'oauth_grant_type.dart';
 export 'oauth_scope.dart';

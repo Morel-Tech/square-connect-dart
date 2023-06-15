@@ -9,8 +9,8 @@ class CreateCardRequest extends Equatable {
   const CreateCardRequest({
     required this.idempotencyKey,
     required this.sourceId,
-    this.verificationToken,
     required this.card,
+    this.verificationToken,
   });
 
   /// Converts a [Map] to an [CreateCardRequest]

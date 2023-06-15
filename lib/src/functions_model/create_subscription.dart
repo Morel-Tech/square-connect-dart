@@ -7,10 +7,10 @@ part 'create_subscription.g.dart';
 @JsonSerializable()
 class CreateSubscriptionRequest extends Equatable {
   const CreateSubscriptionRequest({
-    this.idempotencyKey,
     required this.locationId,
     required this.planId,
     required this.customerId,
+    this.idempotencyKey,
     this.startDate,
     this.canceledDate,
     this.taxPercentage,

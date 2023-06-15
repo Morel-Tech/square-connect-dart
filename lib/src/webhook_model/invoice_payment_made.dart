@@ -39,7 +39,8 @@ class InvoicePaymentMadeSquareEventData extends WebhookData {
 
   /// Converts a [Map] to an [InvoicePaymentMadeSquareEventData]
   factory InvoicePaymentMadeSquareEventData.fromJson(
-          Map<String, dynamic> json,) =>
+    Map<String, dynamic> json,
+  ) =>
       _$InvoicePaymentMadeSquareEventDataFromJson(json);
 
   /// Converts a [InvoicePaymentMadeSquareEventData] to a [Map]

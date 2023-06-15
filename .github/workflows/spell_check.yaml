@@ -14,4 +14,4 @@ jobs:
   spell_check:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
     with:
-      config: .github/cspell.json
+      config: cspell.json

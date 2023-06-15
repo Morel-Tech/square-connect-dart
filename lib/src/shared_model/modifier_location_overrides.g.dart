@@ -8,8 +8,14 @@ part of 'modifier_location_overrides.dart';
 
 ModifierLocationOverrides _$ModifierLocationOverridesFromJson(
         Map<String, dynamic> json) =>
-    ModifierLocationOverrides();
+    ModifierLocationOverrides(
+      locationId: json['location_id'] as String,
+      priceMoney: Money.fromJson(json['price_money'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$ModifierLocationOverridesToJson(
         ModifierLocationOverrides instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'location_id': instance.locationId,
+      'price_money': instance.priceMoney.toJson(),
+    };

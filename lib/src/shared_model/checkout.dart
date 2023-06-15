@@ -8,9 +8,9 @@ part 'checkout.g.dart';
 class Checkout extends Equatable {
   const Checkout({
     required this.id,
+    required this.createdAt,
     this.askForShippingAddress,
     this.checkoutPageUrl,
-    required this.createdAt,
     this.merchantSupportEmail,
     this.order,
     this.prePopulateBuyerEmail,

@@ -1,0 +1,19 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "Afterpay",
+    "blocklists",
+    "Clearpay",
+    "endtemplate",
+    "idempotence",
+    "idempotency",
+    "PKCE",
+    "preconfigured",
+    "rollup"
+  ],
+  "ignoreWords": [],
+  "import": []
+}

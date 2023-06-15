@@ -11,6 +11,8 @@ class CatalogModifier extends Equatable {
     this.priceMoney,
     this.ordinal,
     this.modifierListId,
+    this.imageId,
+    this.locationOverrides,
   });
 
   /// Converts a [Map] to an [CatalogModifier]
@@ -24,6 +26,8 @@ class CatalogModifier extends Equatable {
   final Money? priceMoney;
   final int? ordinal;
   final String? modifierListId;
+  final String? imageId;
+  final List<ModifierLocationOverrides>? locationOverrides;
 
   @override
   List<Object?> get props => [
@@ -31,5 +35,7 @@ class CatalogModifier extends Equatable {
         priceMoney,
         ordinal,
         modifierListId,
+        imageId,
+        locationOverrides,
       ];
 }

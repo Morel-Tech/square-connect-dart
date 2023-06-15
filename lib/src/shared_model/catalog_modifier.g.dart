@@ -14,6 +14,7 @@ CatalogModifier _$CatalogModifierFromJson(Map<String, dynamic> json) =>
           : Money.fromJson(json['price_money'] as Map<String, dynamic>),
       ordinal: json['ordinal'] as int?,
       modifierListId: json['modifier_list_id'] as String?,
+      imageId: json['image_id'] as String?,
     );
 
 Map<String, dynamic> _$CatalogModifierToJson(CatalogModifier instance) {
@@ -29,5 +30,6 @@ Map<String, dynamic> _$CatalogModifierToJson(CatalogModifier instance) {
   writeNotNull('price_money', instance.priceMoney?.toJson());
   writeNotNull('ordinal', instance.ordinal);
   writeNotNull('modifier_list_id', instance.modifierListId);
+  writeNotNull('image_id', instance.imageId);
   return val;
 }

@@ -1,13 +1,10 @@
-## 2.0.0-dev.7
+## 2.0.0
 
-**New Direction for Package:**
+**New Direction for Package**
 
-- Null saftey support!
+- Null safety support!
 - All the objects still support `.toJson` and `.fromJson`; however, now all json methods are generated using [json_serializable](https://pub.dev/packages/json_serializable).
 - In addition to objects, now has `SquareApiClient`. This allows you make requests to Square APIs.
-  **NOTE!** Due to the way Square authenticates it's API, **DO NOT** use this package in Flutter apps! There is currently no supported way to securely store API tokens on the client device. This package is entirely for server-side Dart applicatations like those created with the [Dart Functions Framework](https://pub.dev/packages/functions_framework).
-- Currently only Locations API is supported, but plans are to have all Square APIs supported.
-- A renewed interest in developing the package to keep current with Square APIs in general. PRs welcome!
 
 ## 1.1.0
 

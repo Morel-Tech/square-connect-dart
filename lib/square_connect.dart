@@ -1,4 +1,4 @@
-export 'package:dio/dio.dart' show DioError;
+export 'package:dio/dio.dart' show DioException;
 
 export 'src/functions_model/functions_model.dart';
 export 'src/shared_model/shared_model.dart';

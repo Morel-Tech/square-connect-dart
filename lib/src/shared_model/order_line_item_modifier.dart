@@ -12,6 +12,9 @@ class OrderLineItemModifier extends Equatable {
     this.name,
     this.basePriceMoney,
     this.totalPriceMoney,
+    this.catalogVersion,
+    this.metadata,
+    this.quantity,
   });
 
   /// Converts a [Map] to an [OrderLineItemModifier]
@@ -23,9 +26,12 @@ class OrderLineItemModifier extends Equatable {
 
   final String? uid;
   final String? catalogObjectId;
+  final int? catalogVersion;
   final String? name;
   final Money? basePriceMoney;
   final Money? totalPriceMoney;
+  final String? quantity;
+  final Map<String, String>? metadata;
 
   @override
   List<Object?> get props {
@@ -35,6 +41,9 @@ class OrderLineItemModifier extends Equatable {
       name,
       basePriceMoney,
       totalPriceMoney,
+      quantity,
+      metadata,
+      catalogVersion,
     ];
   }
 }

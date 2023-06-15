@@ -115,7 +115,7 @@ abstract class SquareApiClient {
   });
 
   @POST('/v2/catalog/search')
-  Future<ListCatalogResponse> searchCatalog({
+  Future<SearchCatalogResponse> searchCatalog({
     @Body() required SearchCatalogRequest body,
   });
 

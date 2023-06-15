@@ -51,7 +51,7 @@ class InvoiceRefundedSquareEventData extends WebhookData {
   List<Object?> get props => [...super.props, object];
 }
 
-@JsonSerializable() 
+@JsonSerializable()
 class InvoiceRefundedSquareEventObject extends Equatable {
   const InvoiceRefundedSquareEventObject({
     required this.invoice,

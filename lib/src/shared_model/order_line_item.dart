@@ -7,9 +7,9 @@ part 'order_line_item.g.dart';
 @JsonSerializable()
 class OrderLineItem extends Equatable {
   const OrderLineItem({
+    required this.quantity,
     this.uid,
     this.name,
-    required this.quantity,
     this.quantityUnit,
     this.note,
     this.catalogObjectId,

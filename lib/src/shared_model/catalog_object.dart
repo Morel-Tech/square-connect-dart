@@ -9,10 +9,10 @@ class CatalogObject extends Equatable {
   const CatalogObject({
     required this.type,
     required this.id,
-    required this.updatedAt,
     required this.version,
     required this.isDeleted,
     required this.presentAtAllLocations,
+    this.updatedAt,
     this.presentAtLocationIds,
     this.absentAtLocationIds,
     this.itemData,
@@ -26,8 +26,8 @@ class CatalogObject extends Equatable {
     this.measurementUnitData,
     // this.customAttributeDefinitionData,
     // this.customAttributeValues,
-    // this.itemOptionData,
-    // this.itemOptionValueData,
+    this.itemOptionData,
+    this.itemOptionValueData,
     this.pricingRuleData,
     this.productSetData,
     // this.quickAmountsSettingsData,
@@ -42,12 +42,12 @@ class CatalogObject extends Equatable {
   /// Converts a [CatalogObject] to a [Map]
   Map<String, dynamic> toJson() => _$CatalogObjectToJson(this);
 
-  final String id;
-  final CatalogObjectType type;
-  final DateTime updatedAt;
-  final int version;
-  final bool isDeleted;
-  final bool presentAtAllLocations;
+  final String? id;
+  final CatalogObjectType? type;
+  final DateTime? updatedAt;
+  final int? version;
+  final bool? isDeleted;
+  final bool? presentAtAllLocations;
   final List<String>? presentAtLocationIds;
   final List<String>? absentAtLocationIds;
   final CatalogItem? itemData;
@@ -61,8 +61,8 @@ class CatalogObject extends Equatable {
   final CatalogMeasurementUnit? measurementUnitData;
   // final CatalogCustomAttributeDefinition? customAttributeDefinitionData;
   // final Map<String, CatalogCustomAttributeValue>? customAttributeValues;
-  // final CatalogItemOption? itemOptionData;
-  // final CatalogItemOptionValue? itemOptionValueData;
+  final CatalogItemOption? itemOptionData;
+  final CatalogItemOptionValue? itemOptionValueData;
   final CatalogPricingRule? pricingRuleData;
   final CatalogProductSet? productSetData;
   // final CatalogQuickAmountsSettings? quickAmountsSettingsData;
@@ -91,8 +91,8 @@ class CatalogObject extends Equatable {
       measurementUnitData,
       // customAttributeDefinitionData,
       // customAttributeValues,
-      // itemOptionData,
-      // itemOptionValueData,
+      itemOptionData,
+      itemOptionValueData,
       pricingRuleData,
       productSetData,
       // quickAmountsSettingsData,

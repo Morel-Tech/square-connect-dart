@@ -6,13 +6,13 @@ part 'merchant.g.dart';
 @JsonSerializable()
 class Merchant extends Equatable {
   const Merchant({
-    required this.id,
     required this.country,
-    required this.businessName,
-    required this.currency,
-    required this.languageCode,
-    required this.mainLocationId,
-    required this.status,
+    this.id,
+    this.businessName,
+    this.currency,
+    this.languageCode,
+    this.mainLocationId,
+    this.status,
   });
 
   /// Converts a [Map] to an [Merchant]
@@ -22,13 +22,13 @@ class Merchant extends Equatable {
   /// Converts a [Merchant] to a [Map]
   Map<String, dynamic> toJson() => _$MerchantToJson(this);
 
-  final String id;
+  final String? id;
   final String country;
-  final String businessName;
-  final String currency;
-  final String languageCode;
-  final String mainLocationId;
-  final String status;
+  final String? businessName;
+  final String? currency;
+  final String? languageCode;
+  final String? mainLocationId;
+  final String? status;
 
   @override
   List<Object?> get props {

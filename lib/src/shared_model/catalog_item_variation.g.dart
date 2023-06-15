@@ -31,7 +31,7 @@ CatalogItemVariation _$CatalogItemVariationFromJson(
       serviceDuration: json['service_duration'] as int?,
       measurementUnitId: json['measurement_unit_id'] as String?,
       availableForBooking: json['available_for_booking'] as bool?,
-      itemOptionValue: (json['item_option_value'] as List<dynamic>?)
+      itemOptionValues: (json['item_option_values'] as List<dynamic>?)
           ?.map((e) => CatalogItemOptionValueForItemVariation.fromJson(
               e as Map<String, dynamic>))
           .toList(),
@@ -76,8 +76,8 @@ Map<String, dynamic> _$CatalogItemVariationToJson(
   writeNotNull('service_duration', instance.serviceDuration);
   writeNotNull('measurement_unit_id', instance.measurementUnitId);
   writeNotNull('available_for_booking', instance.availableForBooking);
-  writeNotNull('item_option_value',
-      instance.itemOptionValue?.map((e) => e.toJson()).toList());
+  writeNotNull('item_option_values',
+      instance.itemOptionValues?.map((e) => e.toJson()).toList());
   writeNotNull('stockable', instance.stockable);
   writeNotNull('stockable_conversion', instance.stockableConversion?.toJson());
   writeNotNull('team_member_ids', instance.teamMemberIds);

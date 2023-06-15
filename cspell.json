@@ -1,0 +1,26 @@
+{
+  "version": "0.2",
+  "ignorePaths": [
+    "**/*.g.dart"
+  ],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "Afterpay",
+    "blocklists",
+    "Clearpay",
+    "endtemplate",
+    "Firestore",
+    "idempotence",
+    "idempotency",
+    "mtwichel",
+    "Pana",
+    "PKCE",
+    "preconfigured",
+    "rollup",
+    "timerange",
+    "idempotency"
+  ],
+  "ignoreWords": [],
+  "import": []
+}

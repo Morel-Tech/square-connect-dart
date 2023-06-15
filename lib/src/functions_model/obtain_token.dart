@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'package:square_connect/square_connect.dart';
 
 part 'obtain_token.g.dart';
@@ -10,9 +9,9 @@ class ObtainTokenRequest extends Equatable {
   const ObtainTokenRequest({
     required this.clientId,
     required this.clientSecret,
+    required this.grantType,
     this.code,
     this.redirectUri,
-    required this.grantType,
     this.refreshToken,
     this.migrationToken,
     this.scopes,
@@ -59,10 +58,10 @@ class ObtainTokenResponse extends SquareResponse {
     required this.tokenType,
     required this.expiresAt,
     required this.merchantId,
+    required this.refreshToken,
     this.subscriptionId,
     this.planId,
     this.idToken,
-    required this.refreshToken,
     this.shortLived,
     super.errors,
   });

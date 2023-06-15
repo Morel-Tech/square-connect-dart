@@ -5,4 +5,4 @@ bricks:
     path: bricks/webhook_event
   function_object:
     path: bricks/function_object
-  github_actions_dart: ^0.0.9
+  github_actions_dart: ^0.0.18

@@ -24,4 +24,8 @@ enum CatalogObjectType {
   productSet,
   @JsonValue('TIME_PERIOD')
   timePeriod,
+  @JsonValue('ITEM_OPTION')
+  itemOption,
+  @JsonValue('ITEM_OPTION_VAL')
+  itemOptionVal,
 }

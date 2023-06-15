@@ -8,7 +8,7 @@ This package allows Dart developers to easily interact with [Square APIs](https:
 
 ## NOTE!
 
-Due to the way Square authenticates it's API, **DO NOT** use this package in Flutter apps! There is currently no supported way to securely store API tokens on the client device. This package is entirely for server-side Dart applications like those created with the [Dart Functions Framework](https://pub.dev/packages/functions_framework) or APIs like [Dart Frog](https://pub.dev/packages/dart_frog).
+Due to the way Square authenticates it's API, **DO NOT** use this package in Flutter apps unless using the [PKCE authentication flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow).
 
 ## Supported APIs
 

@@ -5,7 +5,7 @@ import 'package:square_connect/square_connect.dart';
 part 'location.g.dart';
 
 /// {@template location}
-/// Represents a buisness's locations. Can be physical or mobile. They are set
+/// Represents a business's locations. Can be physical or mobile. They are set
 /// up in the Square dashboard. Their id is used in many other endpoints.
 /// {@endtemplate}
 @JsonSerializable()
@@ -13,19 +13,19 @@ class Location extends Equatable {
   /// {@macro location}
   const Location({
     required this.id,
+    required this.status,
+    required this.merchantId,
+    required this.type,
     this.name,
     this.address,
     this.timezone,
     this.capabilities,
-    required this.status,
     this.createdAt,
-    required this.merchantId,
     this.country,
     this.languageCode,
     this.currency,
     this.phoneNumber,
     this.businessName,
-    required this.type,
     this.websiteUrl,
     this.businessHours,
     this.businessEmail,
@@ -79,7 +79,7 @@ class Location extends Equatable {
   /// The [Location]'s phone number.
   final String? phoneNumber;
 
-  /// The customer facing business name, shown on customer recipts.
+  /// The customer facing business name, shown on customer receipts.
   final String? businessName;
 
   /// Whether the [Location] is physical or mobile.
@@ -94,7 +94,7 @@ class Location extends Equatable {
   /// The email address for the [Location].
   final String? businessEmail;
 
-  /// The desciption of the [Location].
+  /// The description of the [Location].
   final String? description;
 
   /// The twitter username for the [Location].

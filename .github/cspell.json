@@ -13,7 +13,9 @@
     "Pana",
     "PKCE",
     "preconfigured",
-    "rollup"
+    "rollup",
+    "Firestore",
+    "timerange"
   ],
   "ignoreWords": [],
   "import": []

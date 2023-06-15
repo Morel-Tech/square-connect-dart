@@ -10,17 +10,16 @@ on:
       - master
       - main
     paths:
-      - '.github/workflows/square_connect_verify_and_test.yaml'
-      - '**'
+      - ".github/workflows/square_connect_verify_and_test.yaml"
+      - "**"
 
   push:
     branches:
       - master
       - main
     paths:
-      - '.github/workflows/**'
-      - '**'
-
+      - ".github/workflows/**"
+      - "**"
 
 jobs:
   verify_and_test:
@@ -30,3 +29,4 @@ jobs:
       working_directory: .
       dart_sdk: stable
       min_coverage: 0
+      format_directories: lib

@@ -1,4 +1,4 @@
-## 2.0.0
+## 2.0.0 June 14th, 2023
 
 **New Direction for Package**
 
@@ -22,13 +22,13 @@
   - There is now no support for calling API functions directly from this package
   - This also means no support for creating an instance of the API.
   - It's primary purpose is a library of native Dart objects that mirror the conceptual objects used in the Square API.
-  - You can create these objects by specifiying `ObjectName.fromJson(response)`
+  - You can create these objects by specifying `ObjectName.fromJson(response)`
 - If you have feedback on these changes, feel free to create an issue on https://github.com/mtwichel/square-connect-flutter-library/issues, or send them to marcust@citybrew.com
 
 ## 0.2.6
 
 - Fixed some bugs in Payments API
-- Removed InApp payments (and all realted converter methods) from this project as it was causing configuration problems.
+- Removed InApp payments (and all related converter methods) from this project as it was causing configuration problems.
 
 ## 0.2.5+4
 
@@ -51,8 +51,8 @@
 - Added Refunds API and Payments API
   - Initial implementation. Still needs documentation and tests.
 - Added changes to Orders API from 8/14 update
-  - Added `payOrder()` and `updateOrder()` methods, as well as shippment fulfillemnt type.
-- **BREAKING CHANGE:** Deprecated `FulfillmentRequest` and renamed input in `createOrder()` to `fulfillemntRequest`. `fulfillment` property now refers to a `OrderFulfillment` object.
+  - Added `payOrder()` and `updateOrder()` methods, as well as shipment fulfillment type.
+- **BREAKING CHANGE:** Deprecated `FulfillmentRequest` and renamed input in `createOrder()` to `fulfillmentRequest`. `fulfillment` property now refers to a `OrderFulfillment` object.
 - Added a `Card` factory method from In App Payments `Card`.
 
 ## 0.2.4
@@ -86,7 +86,7 @@
 - Added option for using refresh tokens instead of auth token - consider this beta at this point.
   - To use, call SquareConnect.getInstanceWithRefreshToken(refreshToken, clientId, clientSecret)
   - **Make Sure You Secure Your Client Secret!**
-- Removed cursor from Requst Obj helper funciton. Won't change any API, just makes things simplier to maintain.
+- Removed cursor from Request Obj helper function. Won't change any API, just makes things simpler to maintain.
 
 ## 0.2.0
 
@@ -123,7 +123,7 @@
   - Now only the enums themselves will be accessible through the API
 - Added shared enums and shared objects
   - This shouldn't affect public facing API, just internally making general things easier to find
-- Moved Api Objects into documenation scope
+- Moved Api Objects into documentation scope
   - There should now be documentation of API methods in the docs
   - Also made tokens and clients private so they cannot be accessed once set
 - Added and optional SquareConnect constructor that allows you to input token when you get your instance
@@ -141,7 +141,7 @@
 
 ## 0.0.10
 
-- inital implementing Create Orders API
+- initial implementing Create Orders API
 
 ## 0.0.9
 
@@ -149,7 +149,7 @@
 
 ## 0.0.8
 
-- Added .hasErrors to Response objects for easier error handeling
+- Added .hasErrors to Response objects for easier error handling
 - Added `searchCatalogObjects()` method
   - Still needs tests and documentation
 
@@ -173,7 +173,7 @@
 
 ## 0.0.4
 
-- Added some formating on multiple files
+- Added some formatting on multiple files
 
 ## 0.0.3
 
@@ -186,4 +186,4 @@
 ## 0.0.1
 
 - Initial Release
-- Initial framework decisions and implementaion of most of the Catalog API
+- Initial framework decisions and implementation of most of the Catalog API

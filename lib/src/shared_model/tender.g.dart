@@ -7,6 +7,7 @@ part of 'tender.dart';
 // **************************************************************************
 
 Tender _$TenderFromJson(Map<String, dynamic> json) => Tender(
+      type: $enumDecode(_$TenderTypeEnumMap, json['type']),
       id: json['id'] as String?,
       locationId: json['location_id'] as String?,
       transactionId: json['transaction_id'] as String?,
@@ -36,7 +37,6 @@ Tender _$TenderFromJson(Map<String, dynamic> json) => Tender(
       additionalRecipients: (json['additional_recipients'] as List<dynamic>?)
           ?.map((e) => AdditionalRecipient.fromJson(e as Map<String, dynamic>))
           .toList(),
-      type: $enumDecode(_$TenderTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$TenderToJson(Tender instance) {

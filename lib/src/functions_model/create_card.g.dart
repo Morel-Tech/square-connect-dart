@@ -10,8 +10,8 @@ CreateCardRequest _$CreateCardRequestFromJson(Map<String, dynamic> json) =>
     CreateCardRequest(
       idempotencyKey: json['idempotency_key'] as String,
       sourceId: json['source_id'] as String,
-      verificationToken: json['verification_token'] as String?,
       card: Card.fromJson(json['card'] as Map<String, dynamic>),
+      verificationToken: json['verification_token'] as String?,
     );
 
 Map<String, dynamic> _$CreateCardRequestToJson(CreateCardRequest instance) {

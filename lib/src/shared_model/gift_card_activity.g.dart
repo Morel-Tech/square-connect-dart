@@ -8,9 +8,9 @@ part of 'gift_card_activity.dart';
 
 GiftCardActivity _$GiftCardActivityFromJson(Map<String, dynamic> json) =>
     GiftCardActivity(
-      id: json['id'] as String?,
       type: $enumDecode(_$GiftCardActivityTypeEnumMap, json['type']),
       locationId: json['location_id'] as String,
+      id: json['id'] as String?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

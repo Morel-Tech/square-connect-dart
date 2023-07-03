@@ -36,7 +36,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListLocationsResponse.fromJson(_result.data!);
     return value;
   }
@@ -60,7 +64,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveLocationResponse.fromJson(_result.data!);
     return value;
   }
@@ -85,7 +93,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateLocationResponse.fromJson(_result.data!);
     return value;
   }
@@ -112,7 +124,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = UpdateLocationResponse.fromJson(_result.data!);
     return value;
   }
@@ -137,7 +153,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ObtainTokenResponse.fromJson(_result.data!);
     return value;
   }
@@ -165,7 +185,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RevokeTokenResponse.fromJson(_result.data!);
     return value;
   }
@@ -188,7 +212,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveTokenStatusResponse.fromJson(_result.data!);
     return value;
   }
@@ -212,7 +240,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveMerchantResponse.fromJson(_result.data!);
     return value;
   }
@@ -236,7 +268,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListMerchantsResponse.fromJson(_result.data!);
     return value;
   }
@@ -268,7 +304,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListCatalogResponse.fromJson(_result.data!);
     return value;
   }
@@ -299,7 +339,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveCatalogObjectResponse.fromJson(_result.data!);
     return value;
   }
@@ -324,7 +368,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BatchRetrieveCatalogObjectsResponse.fromJson(_result.data!);
     return value;
   }
@@ -349,7 +397,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchCatalogResponse.fromJson(_result.data!);
     return value;
   }
@@ -372,7 +424,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveOrderResponse.fromJson(_result.data!);
     return value;
   }
@@ -397,7 +453,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateOrderResponse.fromJson(_result.data!);
     return value;
   }
@@ -424,7 +484,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = UpdateOrderResponse.fromJson(_result.data!);
     return value;
   }
@@ -451,7 +515,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = PayOrderResponse.fromJson(_result.data!);
     return value;
   }
@@ -476,7 +544,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CalculateOrderResponse.fromJson(_result.data!);
     return value;
   }
@@ -501,7 +573,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchOrdersResponse.fromJson(_result.data!);
     return value;
   }
@@ -526,7 +602,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CloneOrderResponse.fromJson(_result.data!);
     return value;
   }
@@ -551,7 +631,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = BatchRetrieveOrdersResponse.fromJson(_result.data!);
     return value;
   }
@@ -576,7 +660,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreatePaymentResponse.fromJson(_result.data!);
     return value;
   }
@@ -592,8 +680,8 @@ class _SquareApiClient implements SquareApiClient {
     final queryParameters = <String, dynamic>{
       r'cursor': cursor,
       r'limit': limit,
-      r'sort_field': sortField?.toJson(),
-      r'sort_order': sortOrder?.toJson(),
+      r'sort_field': sortField?.name,
+      r'sort_order': sortOrder?.name,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -610,7 +698,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListCustomersResponse.fromJson(_result.data!);
     return value;
   }
@@ -635,7 +727,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateCustomerResponse.fromJson(_result.data!);
     return value;
   }
@@ -660,7 +756,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchCustomersResponse.fromJson(_result.data!);
     return value;
   }
@@ -684,7 +784,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = DeleteCustomerResponse.fromJson(_result.data!);
     return value;
   }
@@ -708,7 +812,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveCustomerResponse.fromJson(_result.data!);
     return value;
   }
@@ -735,7 +843,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = UpdateCustomerResponse.fromJson(_result.data!);
     return value;
   }
@@ -762,7 +874,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateCheckoutResponse.fromJson(_result.data!);
     return value;
   }
@@ -792,7 +908,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListPaymentResponse.fromJson(_result.data!);
     return value;
   }
@@ -817,7 +937,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreatePaymentLinkResponse.fromJson(_result.data!);
     return value;
   }
@@ -853,7 +977,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListCardsResponse.fromJson(_result.data!);
     return value;
   }
@@ -878,7 +1006,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -901,7 +1033,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -924,7 +1060,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = DisableCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -949,7 +1089,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateLoyaltyAccountResponse.fromJson(_result.data!);
     return value;
   }
@@ -974,7 +1118,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchLoyaltyAccountsResponse.fromJson(_result.data!);
     return value;
   }
@@ -998,7 +1146,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveLoyaltyAccountResponse.fromJson(_result.data!);
     return value;
   }
@@ -1025,7 +1177,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = AccumulateLoyaltyPointsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1052,7 +1208,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = AdjustLoyaltyPointsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1077,7 +1237,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchLoyaltyEventsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1101,7 +1265,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveLoyaltyProgramResponse.fromJson(_result.data!);
     return value;
   }
@@ -1128,7 +1296,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RedeemLoyaltyRewardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1153,7 +1325,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateLoyaltyRewardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1177,7 +1353,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = DeleteLoyaltyReward.fromJson(_result.data!);
     return value;
   }
@@ -1201,7 +1381,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveLoyaltyRewardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1228,7 +1412,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CalculateLoyaltyPointsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1253,7 +1441,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1278,7 +1470,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchSubscriptionsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1305,7 +1501,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1332,7 +1532,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = UpdateSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1358,7 +1562,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = DeleteSubscriptionActionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1382,7 +1590,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CancelSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1413,7 +1625,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListSubscriptionEventsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1440,7 +1656,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = PauseSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1467,7 +1687,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ResumeSubscriptionResponse.fromJson(_result.data!);
     return value;
   }
@@ -1494,7 +1718,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SwapPlanResponse.fromJson(_result.data!);
     return value;
   }
@@ -1530,7 +1758,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListGiftCardsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1555,7 +1787,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateGiftCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1580,7 +1816,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveGiftCardFromGanResponse.fromJson(_result.data!);
     return value;
   }
@@ -1605,7 +1845,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveGiftCardFromNonceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1632,7 +1876,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = LinkCustomerToGiftCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1659,7 +1907,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = UnlinkCustomerFromGiftCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1683,7 +1935,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = RetrieveGiftCardResponse.fromJson(_result.data!);
     return value;
   }
@@ -1725,7 +1981,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListGiftCardsResponse.fromJson(_result.data!);
     return value;
   }
@@ -1750,7 +2010,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateGiftCardActivityResponse.fromJson(_result.data!);
     return value;
   }
@@ -1782,7 +2046,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = ListInvoicesResponse.fromJson(_result.data!);
     return value;
   }
@@ -1807,7 +2075,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CreateInvoiceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1832,7 +2104,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SearchInvoicesResponse.fromJson(_result.data!);
     return value;
   }
@@ -1859,7 +2135,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = DeleteInvoiceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1882,7 +2162,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = GetInvoiceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1909,7 +2193,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = UpdateInvoiceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1936,7 +2224,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = CancelInvoiceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1963,7 +2255,11 @@ class _SquareApiClient implements SquareApiClient {
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = PublishInvoiceResponse.fromJson(_result.data!);
     return value;
   }
@@ -1979,5 +2275,22 @@ class _SquareApiClient implements SquareApiClient {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

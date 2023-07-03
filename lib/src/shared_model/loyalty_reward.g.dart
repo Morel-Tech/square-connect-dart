@@ -8,9 +8,9 @@ part of 'loyalty_reward.dart';
 
 LoyaltyReward _$LoyaltyRewardFromJson(Map<String, dynamic> json) =>
     LoyaltyReward(
-      id: json['id'] as String?,
       loyaltyAccountId: json['loyalty_account_id'] as String,
       rewardTierId: json['reward_tier_id'] as String,
+      id: json['id'] as String?,
       createdAt: json['created_at'] as String?,
       orderId: json['order_id'] as String?,
       points: json['points'] as int?,

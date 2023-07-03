@@ -8,8 +8,8 @@ part of 'loyalty_account.dart';
 
 LoyaltyAccount _$LoyaltyAccountFromJson(Map<String, dynamic> json) =>
     LoyaltyAccount(
-      id: json['id'] as String?,
       programId: json['program_id'] as String,
+      id: json['id'] as String?,
       balance: json['balance'] as int?,
       createdAt: json['created_at'] == null
           ? null

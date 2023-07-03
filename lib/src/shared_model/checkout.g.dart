@@ -8,9 +8,9 @@ part of 'checkout.dart';
 
 Checkout _$CheckoutFromJson(Map<String, dynamic> json) => Checkout(
       id: json['id'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
       askForShippingAddress: json['ask_for_shipping_address'] as bool?,
       checkoutPageUrl: json['checkout_page_url'] as String?,
-      createdAt: DateTime.parse(json['created_at'] as String),
       merchantSupportEmail: json['merchant_support_email'] as String?,
       order: json['order'] == null
           ? null

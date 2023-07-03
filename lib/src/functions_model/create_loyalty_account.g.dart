@@ -24,13 +24,13 @@ Map<String, dynamic> _$CreateLoyaltyAccountRequestToJson(
 CreateLoyaltyAccountResponse _$CreateLoyaltyAccountResponseFromJson(
         Map<String, dynamic> json) =>
     CreateLoyaltyAccountResponse(
-      errors: (json['errors'] as List<dynamic>?)
-          ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
-          .toList(),
       loyaltyAccount: json['loyalty_account'] == null
           ? null
           : LoyaltyAccount.fromJson(
               json['loyalty_account'] as Map<String, dynamic>),
+      errors: (json['errors'] as List<dynamic>?)
+          ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$CreateLoyaltyAccountResponseToJson(

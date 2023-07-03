@@ -7,8 +7,8 @@ part of 'gift_card.dart';
 // **************************************************************************
 
 GiftCard _$GiftCardFromJson(Map<String, dynamic> json) => GiftCard(
-      id: json['id'] as String?,
       type: $enumDecode(_$GiftCardTypeEnumMap, json['type']),
+      id: json['id'] as String?,
       ganSource:
           $enumDecodeNullable(_$GiftCardGANSourceEnumMap, json['gan_source']),
       state: $enumDecodeNullable(_$GiftCardStatusEnumMap, json['state']),

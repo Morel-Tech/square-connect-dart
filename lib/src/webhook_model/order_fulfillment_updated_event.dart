@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'package:square_connect/square_connect.dart';
 
 part 'order_fulfillment_updated_event.g.dart';
@@ -155,7 +154,7 @@ class OrderFulfillmentUpdatedUpdate extends Equatable {
 
   /// The state of the fulfillment before the change. The state is not populated
   ///  if the fulfillment is created with this new `Order` version.
-  final OrderFulfillmentState oldState;
+  final OrderFulfillmentState? oldState;
 
   @override
   List<Object?> get props => [fulfillmentUid, newState, oldState];

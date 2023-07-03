@@ -7,8 +7,8 @@ part of 'merchant.dart';
 // **************************************************************************
 
 Merchant _$MerchantFromJson(Map<String, dynamic> json) => Merchant(
-      id: json['id'] as String?,
       country: json['country'] as String,
+      id: json['id'] as String?,
       businessName: json['business_name'] as String?,
       currency: json['currency'] as String?,
       languageCode: json['language_code'] as String?,

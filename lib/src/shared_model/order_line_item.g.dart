@@ -8,9 +8,9 @@ part of 'order_line_item.dart';
 
 OrderLineItem _$OrderLineItemFromJson(Map<String, dynamic> json) =>
     OrderLineItem(
+      quantity: json['quantity'] as String,
       uid: json['uid'] as String?,
       name: json['name'] as String?,
-      quantity: json['quantity'] as String,
       quantityUnit: json['quantity_unit'] == null
           ? null
           : OrderQuantityUnit.fromJson(

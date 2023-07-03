@@ -97,16 +97,26 @@ OrderFulfillmentUpdatedUpdate _$OrderFulfillmentUpdatedUpdateFromJson(
     OrderFulfillmentUpdatedUpdate(
       fulfillmentUid: json['fulfillment_uid'] as String,
       newState: $enumDecode(_$OrderFulfillmentStateEnumMap, json['new_state']),
-      oldState: $enumDecode(_$OrderFulfillmentStateEnumMap, json['old_state']),
+      oldState: $enumDecodeNullable(
+          _$OrderFulfillmentStateEnumMap, json['old_state']),
     );
 
 Map<String, dynamic> _$OrderFulfillmentUpdatedUpdateToJson(
-        OrderFulfillmentUpdatedUpdate instance) =>
-    <String, dynamic>{
-      'fulfillment_uid': instance.fulfillmentUid,
-      'new_state': _$OrderFulfillmentStateEnumMap[instance.newState]!,
-      'old_state': _$OrderFulfillmentStateEnumMap[instance.oldState]!,
-    };
+    OrderFulfillmentUpdatedUpdate instance) {
+  final val = <String, dynamic>{
+    'fulfillment_uid': instance.fulfillmentUid,
+    'new_state': _$OrderFulfillmentStateEnumMap[instance.newState]!,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('old_state', _$OrderFulfillmentStateEnumMap[instance.oldState]);
+  return val;
+}
 
 const _$OrderFulfillmentStateEnumMap = {
   OrderFulfillmentState.proposed: 'PROPOSED',

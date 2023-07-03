@@ -8,6 +8,9 @@ part of 'location.dart';
 
 Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       id: json['id'] as String,
+      status: $enumDecode(_$LocationStatusEnumMap, json['status']),
+      merchantId: json['merchant_id'] as String?,
+      type: $enumDecode(_$LocationTypeEnumMap, json['type']),
       name: json['name'] as String?,
       address: json['address'] == null
           ? null
@@ -16,17 +19,14 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       capabilities: (json['capabilities'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$LocationCapabilityEnumMap, e))
           .toList(),
-      status: $enumDecode(_$LocationStatusEnumMap, json['status']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
-      merchantId: json['merchant_id'] as String?,
       country: json['country'] as String?,
       languageCode: json['language_code'] as String?,
       currency: json['currency'] as String?,
       phoneNumber: json['phone_number'] as String?,
       businessName: json['business_name'] as String?,
-      type: $enumDecode(_$LocationTypeEnumMap, json['type']),
       websiteUrl: json['website_url'] as String?,
       businessHours: json['business_hours'] == null
           ? null
@@ -81,11 +81,6 @@ Map<String, dynamic> _$LocationToJson(Location instance) {
   return val;
 }
 
-const _$LocationCapabilityEnumMap = {
-  LocationCapability.creditCardProcessing: 'CREDIT_CARD_PROCESSING',
-  LocationCapability.automaticTransfers: 'AUTOMATIC_TRANSFERS',
-};
-
 const _$LocationStatusEnumMap = {
   LocationStatus.active: 'ACTIVE',
   LocationStatus.inactive: 'INACTIVE',
@@ -94,4 +89,9 @@ const _$LocationStatusEnumMap = {
 const _$LocationTypeEnumMap = {
   LocationType.physical: 'PHYSICAL',
   LocationType.mobile: 'MOBILE',
+};
+
+const _$LocationCapabilityEnumMap = {
+  LocationCapability.creditCardProcessing: 'CREDIT_CARD_PROCESSING',
+  LocationCapability.automaticTransfers: 'AUTOMATIC_TRANSFERS',
 };

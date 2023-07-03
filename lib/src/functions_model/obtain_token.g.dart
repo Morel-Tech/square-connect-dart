@@ -10,9 +10,9 @@ ObtainTokenRequest _$ObtainTokenRequestFromJson(Map<String, dynamic> json) =>
     ObtainTokenRequest(
       clientId: json['client_id'] as String,
       clientSecret: json['client_secret'] as String,
+      grantType: $enumDecode(_$OAuthGrantTypeEnumMap, json['grant_type']),
       code: json['code'] as String?,
       redirectUri: json['redirect_uri'] as String?,
-      grantType: $enumDecode(_$OAuthGrantTypeEnumMap, json['grant_type']),
       refreshToken: json['refresh_token'] as String?,
       migrationToken: json['migration_token'] as String?,
       scopes: (json['scopes'] as List<dynamic>?)
@@ -81,10 +81,10 @@ ObtainTokenResponse _$ObtainTokenResponseFromJson(Map<String, dynamic> json) =>
       tokenType: json['token_type'] as String,
       expiresAt: DateTime.parse(json['expires_at'] as String),
       merchantId: json['merchant_id'] as String,
+      refreshToken: json['refresh_token'] as String,
       subscriptionId: json['subscription_id'] as String?,
       planId: json['plan_id'] as String?,
       idToken: json['id_token'] as String?,
-      refreshToken: json['refresh_token'] as String,
       shortLived: json['short_lived'] as bool?,
       errors: (json['errors'] as List<dynamic>?)
           ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))

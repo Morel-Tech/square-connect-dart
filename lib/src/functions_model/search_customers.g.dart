@@ -9,9 +9,9 @@ part of 'search_customers.dart';
 SearchCustomersRequest _$SearchCustomersRequestFromJson(
         Map<String, dynamic> json) =>
     SearchCustomersRequest(
+      query: CustomerQuery.fromJson(json['query'] as Map<String, dynamic>),
       cursor: json['cursor'] as String?,
       limit: json['limit'] as int?,
-      query: CustomerQuery.fromJson(json['query'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SearchCustomersRequestToJson(

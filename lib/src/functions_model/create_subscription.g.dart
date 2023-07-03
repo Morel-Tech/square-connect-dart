@@ -9,10 +9,10 @@ part of 'create_subscription.dart';
 CreateSubscriptionRequest _$CreateSubscriptionRequestFromJson(
         Map<String, dynamic> json) =>
     CreateSubscriptionRequest(
-      idempotencyKey: json['idempotency_key'] as String?,
       locationId: json['location_id'] as String,
       planId: json['plan_id'] as String,
       customerId: json['customer_id'] as String,
+      idempotencyKey: json['idempotency_key'] as String?,
       startDate: json['start_date'] as String?,
       canceledDate: json['canceled_date'] as String?,
       taxPercentage: json['tax_percentage'] as String?,

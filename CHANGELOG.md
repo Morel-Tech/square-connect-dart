@@ -1,3 +1,7 @@
+### 2.0.1 July 3rd, 2023
+
+- Hot fixed issue in `OrderFulfillmentUpdatedEvent`
+
 ### 2.0.0+1 July 3rd, 2023
 
 - Hot fixed and export error for `OrderFulfillmentUpdatedEvent`

@@ -7,8 +7,8 @@ part 'modifier_location_overrides.g.dart';
 @JsonSerializable()
 class ModifierLocationOverrides extends Equatable {
   const ModifierLocationOverrides({
-    required this.locationId,
-    required this.priceMoney,
+    this.locationId,
+    this.priceMoney,
   });
 
   /// Converts a [Map]<[String], [dynamic]> to a [ModifierLocationOverrides]
@@ -18,8 +18,8 @@ class ModifierLocationOverrides extends Equatable {
   /// Converts a [ModifierLocationOverrides] to a [Map]<[String], [dynamic]>
   Map<String, dynamic> toJson() => _$ModifierLocationOverridesToJson(this);
 
-  final String locationId;
-  final Money priceMoney;
+  final String? locationId;
+  final Money? priceMoney;
 
   @override
   List<Object?> get props => [locationId, priceMoney];

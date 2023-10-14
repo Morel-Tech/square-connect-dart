@@ -1,3 +1,6 @@
+### 2.0.2 October 14th, 2023
+- Hot fixed issue with modifier location overrides
+
 ### 2.0.1 July 3rd, 2023
 
 - Hot fixed issue in `OrderFulfillmentUpdatedEvent`

@@ -45,6 +45,6 @@ class LoyaltyProgram extends Equatable {
         terminology,
         updatedAt,
         expirationPolicy,
-        locationIds
+        locationIds,
       ];
 }

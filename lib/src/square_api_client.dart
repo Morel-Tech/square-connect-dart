@@ -635,4 +635,51 @@ abstract class SquareApiClient {
     @Path() required String invoiceId,
     @Body() required PublishInvoiceRequest body,
   });
+
+  /// Retrieves the list of customer groups of a business.
+  @GET('/v2/customers/groups')
+  Future<ListCustomerGroupsResponse> listCustomerGroups({
+    @Query('cursor') String? cursor,
+    @Query('limit') int? limit,
+  });
+
+  /// Creates a new customer group for a business.
+  /// The request must include the name value of the group.
+  @POST('/v2/customers/groups')
+  Future<CreateCustomerGroupRequest> createCustomerGroup({
+    @Body() required CreateCustomerGroupRequest body,
+  });
+
+  /// Deletes a customer group as identified by the group_id value.
+  @DELETE('/v2/customers/groups/{groupId}')
+  Future<DeleteCustomerGroupResponse> deleteCustomerGroup({
+    @Path() required String groupId,
+  });
+
+  /// Retrieves a specific customer group as identified by the group_id value.
+  @GET('/v2/customers/groups/{groupId}')
+  Future<RetrieveCustomerGroupResponse> retrieveCustomerGroup({
+    @Path() required String groupId,
+  });
+
+  /// Updates a customer group as identified by the group_id value.
+  @PUT('/v2/customers/groups/{groupId}')
+  Future<UpdateCustomerGroupResponse> updateCustomerGroup({
+    @Path() required String groupId,
+    @Body() required UpdateCustomerGroupRequest body,
+  });
+
+  /// Retrieves the list of customer segments of a business.
+  @GET('/v2/customers/segments')
+  Future<ListCustomerSegmentsResponse> listCustomerSegments({
+    @Query('cursor') String? cursor,
+    @Query('limit') int? limit,
+  });
+
+  /// Retrieves a specific customer segment as identified by the segment_id
+  /// value.
+  @GET('/v2/customers/segments/{segmentId}')
+  Future<RetrieveCustomerSegmentResponse> retrieveCustomerSegment({
+    @Path() required String segmentId,
+  });
 }

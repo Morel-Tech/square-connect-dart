@@ -1,3 +1,6 @@
+### 2.1.0 October 14th, 2023
+- Added customer group and customer segment endpoints!
+
 ### 2.0.2 October 14th, 2023
 - Hot fixed issue with modifier location overrides
 

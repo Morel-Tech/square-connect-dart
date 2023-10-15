@@ -39,7 +39,7 @@ class CreatePaymentLinkRequest extends Equatable {
         order,
         checkoutOptions,
         prePopulatedData,
-        paymentNote
+        paymentNote,
       ];
 }
 

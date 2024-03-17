@@ -23,8 +23,8 @@ OrderLineItem _$OrderLineItemFromJson(Map<String, dynamic> json) =>
               (e) => OrderLineItemModifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       appliedDiscounts: (json['applied_discounts'] as List<dynamic>?)
-          ?.map(
-              (e) => OrderLineItemDiscount.fromJson(e as Map<String, dynamic>))
+          ?.map((e) =>
+              OrderLineItemAppliedDiscount.fromJson(e as Map<String, dynamic>))
           .toList(),
       appliedTaxes: (json['applied_taxes'] as List<dynamic>?)
           ?.map((e) =>

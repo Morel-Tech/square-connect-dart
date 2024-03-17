@@ -181,6 +181,8 @@ export 'order_fulfillment_shipment_details.dart';
 export 'order_fulfillment_state.dart';
 export 'order_fulfillment_type.dart';
 export 'order_line_item.dart';
+export 'order_line_item_applied_discount.dart';
+export 'order_line_item_applied_tax.dart';
 export 'order_line_item_discount.dart';
 export 'order_line_item_discount_scope.dart';
 export 'order_line_item_discount_type.dart';

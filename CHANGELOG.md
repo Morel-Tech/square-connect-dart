@@ -1,7 +1,13 @@
+### 2.1.1 March 17th, 2024
+
+- Fixed applied taxes and applied discounts on `OrderLineItem`
+
 ### 2.1.0 October 14th, 2023
+
 - Added customer group and customer segment endpoints!
 
 ### 2.0.2 October 14th, 2023
+
 - Hot fixed issue with modifier location overrides
 
 ### 2.0.1 July 3rd, 2023

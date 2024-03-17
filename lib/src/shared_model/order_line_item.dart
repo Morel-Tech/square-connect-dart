@@ -43,8 +43,8 @@ class OrderLineItem extends Equatable {
   final String? catalogObjectId;
   final String? variationName;
   final List<OrderLineItemModifier>? modifiers;
-  final List<OrderLineItemTax>? appliedTaxes;
-  final List<OrderLineItemDiscount>? appliedDiscounts;
+  final List<OrderLineItemAppliedTax>? appliedTaxes;
+  final List<OrderLineItemAppliedDiscount>? appliedDiscounts;
   final Money? basePriceMoney;
   final Money? variationTotalPriceMoney;
   final Money? grossSalesMoney;
